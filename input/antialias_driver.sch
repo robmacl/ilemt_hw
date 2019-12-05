@@ -5,7 +5,7 @@ EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 5
+Sheet 5 5
 Title ""
 Date ""
 Rev ""
@@ -17,7 +17,7 @@ Comment4 ""
 $EndDescr
 $Comp
 L power:+15V #PWR?
-U 1 1 5DE453A9
+U 1 1 5DE6EE06
 P 4000 1400
 F 0 "#PWR?" H 4000 1250 50  0001 C CNN
 F 1 "+15V" H 4015 1573 50  0000 C CNN
@@ -30,7 +30,7 @@ Wire Wire Line
 	4000 1400 4000 1500
 $Comp
 L Device:C_Small C?
-U 1 1 5DE6EE08
+U 1 1 5DE48FEB
 P 4350 1500
 F 0 "C?" V 4121 1500 50  0000 C CNN
 F 1 "1u" V 4212 1500 50  0000 C CNN
@@ -43,7 +43,7 @@ Wire Wire Line
 	4000 2200 4000 2350
 $Comp
 L power:-15V #PWR?
-U 1 1 5DE6EE07
+U 1 1 5DE467A9
 P 4000 2400
 F 0 "#PWR?" H 4000 2500 50  0001 C CNN
 F 1 "-15V" H 4015 2573 50  0000 C CNN
@@ -59,7 +59,7 @@ Wire Wire Line
 	4000 1500 4000 1600
 $Comp
 L power:GNDA #PWR?
-U 1 1 5DE6EE09
+U 1 1 5DE52F1A
 P 4600 1500
 F 0 "#PWR?" H 4600 1250 50  0001 C CNN
 F 1 "GNDA" V 4605 1372 50  0000 R CNN
@@ -72,7 +72,7 @@ Wire Wire Line
 	4450 1500 4600 1500
 $Comp
 L Device:C_Small C?
-U 1 1 5DE6EE0A
+U 1 1 5DE5507D
 P 4350 2350
 F 0 "C?" V 4121 2350 50  0000 C CNN
 F 1 "1u" V 4212 2350 50  0000 C CNN
@@ -83,7 +83,7 @@ F 3 "~" H 4350 2350 50  0001 C CNN
 $EndComp
 $Comp
 L power:GNDA #PWR?
-U 1 1 5DE6EE0B
+U 1 1 5DE55083
 P 4600 2350
 F 0 "#PWR?" H 4600 2100 50  0001 C CNN
 F 1 "GNDA" V 4605 2222 50  0000 R CNN
@@ -96,7 +96,7 @@ Wire Wire Line
 	4450 2350 4600 2350
 $Comp
 L ilemt_input:opamp_single U?
-U 1 1 5DE44053
+U 1 1 5DE6EE05
 P 3950 1900
 F 0 "U?" H 4294 1946 50  0000 L CNN
 F 1 "LT1028" H 4294 1855 50  0000 L CNN
@@ -107,7 +107,7 @@ F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 4000 2050 50  0001 C CNN
 $EndComp
 $Comp
 L Device:C_Small C?
-U 1 1 5DE57C96
+U 1 1 5DE6EE0C
 P 4450 5250
 F 0 "C?" V 4221 5250 50  0000 C CNN
 F 1 "1u" V 4312 5250 50  0000 C CNN
@@ -118,7 +118,7 @@ F 3 "~" H 4450 5250 50  0001 C CNN
 $EndComp
 $Comp
 L power:GNDA #PWR?
-U 1 1 5DE57CA6
+U 1 1 5DE6EE0D
 P 4700 5250
 F 0 "#PWR?" H 4700 5000 50  0001 C CNN
 F 1 "GNDA" V 4705 5122 50  0000 R CNN
@@ -131,7 +131,7 @@ Wire Wire Line
 	4550 5250 4700 5250
 $Comp
 L Device:C_Small C?
-U 1 1 5DE57CAD
+U 1 1 5DE6EE0E
 P 4450 6100
 F 0 "C?" V 4221 6100 50  0000 C CNN
 F 1 "1u" V 4312 6100 50  0000 C CNN
@@ -142,7 +142,7 @@ F 3 "~" H 4450 6100 50  0001 C CNN
 $EndComp
 $Comp
 L power:GNDA #PWR?
-U 1 1 5DE57CB3
+U 1 1 5DE6EE0F
 P 4700 6100
 F 0 "#PWR?" H 4700 5850 50  0001 C CNN
 F 1 "GNDA" V 4705 5972 50  0000 R CNN
@@ -157,7 +157,7 @@ Wire Wire Line
 	4350 6100 4100 6100
 $Comp
 L ilemt_input:opamp_single U?
-U 1 1 5DE57CBD
+U 1 1 5DE6EE10
 P 4050 5650
 F 0 "U?" H 4394 5696 50  0000 L CNN
 F 1 "LT1028" H 4394 5605 50  0000 L CNN
@@ -168,7 +168,7 @@ F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 4100 5800 50  0001 C CNN
 $EndComp
 $Comp
 L power:+15V #PWR?
-U 1 1 5DE6EE11
+U 1 1 5DE58B33
 P 4100 6250
 F 0 "#PWR?" H 4100 6100 50  0001 C CNN
 F 1 "+15V" H 4115 6423 50  0000 C CNN
@@ -186,7 +186,7 @@ Wire Wire Line
 	4100 5150 4100 5250
 $Comp
 L power:-15V #PWR?
-U 1 1 5DE5ACAE
+U 1 1 5DE6EE12
 P 4100 5150
 F 0 "#PWR?" H 4100 5250 50  0001 C CNN
 F 1 "-15V" H 4115 5323 50  0000 C CNN
@@ -207,28 +207,22 @@ Wire Wire Line
 	4000 2350 4250 2350
 $Comp
 L Device:R_US R?
-U 1 1 5DE6107D
-P 4100 2850
-F 0 "R?" V 4200 2850 50  0000 C CNN
-F 1 "499" V 4000 2850 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 4140 2840 50  0001 C CNN
-F 3 "~" H 4100 2850 50  0001 C CNN
-	1    4100 2850
+U 1 1 5DE6EE13
+P 3300 2300
+F 0 "R?" V 3400 2300 50  0000 C CNN
+F 1 "750" V 3200 2300 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 3340 2290 50  0001 C CNN
+F 3 "~" H 3300 2300 50  0001 C CNN
+	1    3300 2300
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	4250 2850 5450 2850
-Wire Wire Line
-	5450 2850 5450 1900
-Wire Wire Line
-	3950 2850 3450 2850
-Wire Wire Line
-	3450 2000 3700 2000
+	3450 2300 3550 2300
 Wire Wire Line
 	4350 1900 5450 1900
 $Comp
 L Device:R_US R?
-U 1 1 5DE6EE14
+U 1 1 5DE68CE1
 P 4100 4650
 F 0 "R?" V 4200 4650 50  0000 C CNN
 F 1 "499" V 4000 4650 50  0000 C CNN
@@ -243,99 +237,15 @@ Wire Wire Line
 	4250 4650 5450 4650
 Wire Wire Line
 	5450 5650 5450 4650
-$Comp
-L Connector_Generic:Conn_02x02_Odd_Even J?
-U 1 1 5DE6EE15
-P 3100 3500
-F 0 "J?" V 3200 3700 50  0000 C CNN
-F 1 "Conn_02x02_Odd_Even" V 3100 4050 50  0000 C CNN
-F 2 "" H 3100 3500 50  0001 C CNN
-F 3 "~" H 3100 3500 50  0001 C CNN
-	1    3100 3500
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R_US R?
-U 1 1 5DE6EE16
-P 3100 4000
-F 0 "R?" V 3200 4000 50  0000 C CNN
-F 1 "49.9" V 3000 4000 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 3140 3990 50  0001 C CNN
-F 3 "~" H 3100 4000 50  0001 C CNN
-	1    3100 4000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_US R?
-U 1 1 5DE6EE17
-P 3500 4000
-F 0 "R?" V 3600 4000 50  0000 C CNN
-F 1 "143" V 3400 4000 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 3540 3990 50  0001 C CNN
-F 3 "~" H 3500 4000 50  0001 C CNN
-	1    3500 4000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_US R?
-U 1 1 5DE76F92
-P 3900 4000
-F 0 "R?" V 4000 4000 50  0000 C CNN
-F 1 "499" V 3800 4000 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 3940 3990 50  0001 C CNN
-F 3 "~" H 3900 4000 50  0001 C CNN
-	1    3900 4000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3100 4150 3100 4300
-Wire Wire Line
-	3100 4300 3400 4300
-Wire Wire Line
-	3500 4300 3500 4150
-Wire Wire Line
-	3500 4300 3900 4300
-Wire Wire Line
-	3900 4300 3900 4150
-Connection ~ 3500 4300
-Connection ~ 3400 4300
-Wire Wire Line
-	3400 4300 3500 4300
-Wire Wire Line
-	3100 3700 3100 3850
-Wire Wire Line
-	3100 3200 3200 3200
-Wire Wire Line
-	3200 3200 3450 3200
-Wire Wire Line
-	3900 3200 3900 3850
-Connection ~ 3200 3200
-Connection ~ 3450 2850
-Connection ~ 3450 3200
-Wire Wire Line
-	3450 3200 3900 3200
-Wire Wire Line
-	3200 3700 3500 3700
-Wire Wire Line
-	3500 3700 3500 3850
-Text Notes 1900 4700 0    50   ~ 0
-Both jumpers: gain 30\nJumper 1-2: gain 21\nJumper 3-4: gain 10\nNo jumpers: gain 3\nNote that ADC driver has gain 1/2, \nso overall gain is half this\n
 Wire Wire Line
 	3800 5550 3400 5550
 Wire Wire Line
 	3400 5550 3400 4650
 Wire Wire Line
 	3400 4650 3950 4650
-Wire Wire Line
-	3450 2850 3450 3200
-Wire Wire Line
-	3450 2000 3450 2850
-Wire Wire Line
-	3400 4300 3400 4650
-Connection ~ 3400 4650
 $Comp
 L Device:C_Small C?
-U 1 1 5DE8AF02
+U 1 1 5DE6EE19
 P 7400 3000
 F 0 "C?" V 7171 3000 50  0000 C CNN
 F 1 "1u" V 7262 3000 50  0000 C CNN
@@ -346,7 +256,7 @@ F 3 "~" H 7400 3000 50  0001 C CNN
 $EndComp
 $Comp
 L power:GNDA #PWR?
-U 1 1 5DE8AF08
+U 1 1 5DE6EE1A
 P 7650 3000
 F 0 "#PWR?" H 7650 2750 50  0001 C CNN
 F 1 "GNDA" V 7655 2872 50  0000 R CNN
@@ -359,7 +269,7 @@ Wire Wire Line
 	7500 3000 7650 3000
 $Comp
 L Device:C_Small C?
-U 1 1 5DE6EE1B
+U 1 1 5DE8AF0F
 P 7400 3850
 F 0 "C?" V 7171 3850 50  0000 C CNN
 F 1 "1u" V 7262 3850 50  0000 C CNN
@@ -370,7 +280,7 @@ F 3 "~" H 7400 3850 50  0001 C CNN
 $EndComp
 $Comp
 L power:GNDA #PWR?
-U 1 1 5DE6EE1C
+U 1 1 5DE8AF15
 P 7650 3850
 F 0 "#PWR?" H 7650 3600 50  0001 C CNN
 F 1 "GNDA" V 7655 3722 50  0000 R CNN
@@ -385,7 +295,7 @@ Wire Wire Line
 	7300 3850 7050 3850
 $Comp
 L ilemt_input:opamp_single U?
-U 1 1 5DE8AF1D
+U 1 1 5DE6EE1D
 P 7000 3400
 F 0 "U?" H 7344 3446 50  0000 L CNN
 F 1 "LT1028" H 7344 3355 50  0000 L CNN
@@ -396,7 +306,7 @@ F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 7050 3550 50  0001 C CNN
 $EndComp
 $Comp
 L power:+15V #PWR?
-U 1 1 5DE6EE1E
+U 1 1 5DE8AF23
 P 7050 4000
 F 0 "#PWR?" H 7050 3850 50  0001 C CNN
 F 1 "+15V" H 7065 4173 50  0000 C CNN
@@ -414,7 +324,7 @@ Wire Wire Line
 	7050 2900 7050 3000
 $Comp
 L power:-15V #PWR?
-U 1 1 5DE6EE1F
+U 1 1 5DE8AF2D
 P 7050 2900
 F 0 "#PWR?" H 7050 3000 50  0001 C CNN
 F 1 "-15V" H 7065 3073 50  0000 C CNN
@@ -428,70 +338,151 @@ Wire Wire Line
 	7050 3000 7300 3000
 Wire Wire Line
 	7050 3000 7050 3100
-Wire Wire Line
-	7400 3400 8250 3400
-$Comp
-L Device:R_Pack04 RN?
-U 1 1 5DE6EE20
-P 6250 3500
-F 0 "RN?" V 5950 3500 50  0000 C CNN
-F 1 "1K" V 6450 3500 50  0000 C CNN
-F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 6525 3500 50  0001 C CNN
-F 3 "~" H 6250 3500 50  0001 C CNN
-	1    6250 3500
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	6050 3300 6050 2350
-Wire Wire Line
-	8250 2350 8250 3400
-Connection ~ 8250 3400
-Wire Wire Line
-	6450 3400 6500 3400
-Wire Wire Line
-	6500 3400 6500 3300
-Wire Wire Line
-	6050 3400 5450 3400
-Wire Wire Line
-	5450 3400 5450 2850
-Connection ~ 5450 2850
-Wire Wire Line
-	6050 3500 5450 3500
-Wire Wire Line
-	5450 3500 5450 4650
-Connection ~ 5450 4650
-Wire Wire Line
-	6450 3600 6500 3600
-Wire Wire Line
-	6500 3600 6500 3500
-Wire Wire Line
-	6050 2350 8250 2350
-Wire Wire Line
-	6500 3500 6750 3500
-Wire Wire Line
-	6450 3300 6500 3300
-Wire Wire Line
-	6750 3300 6500 3300
-Connection ~ 6500 3300
-Wire Wire Line
-	6500 3500 6450 3500
-Connection ~ 6500 3500
-Text HLabel 2950 1800 0    50   Input ~ 0
--in
+Text HLabel 2000 2300 0    50   Input ~ 0
+in
 Text HLabel 3050 5750 0    50   Input ~ 0
 +in
 Text HLabel 8800 3400 2    50   Input ~ 0
 out
 Wire Wire Line
-	8250 3400 8800 3400
-Wire Wire Line
-	2950 1800 3700 1800
-Wire Wire Line
 	3050 5750 3800 5750
 Text HLabel 8800 4350 2    50   Input ~ 0
 out_ref
 Wire Wire Line
-	6050 4350 8800 4350
+	7400 3400 8800 3400
+Text HLabel 2050 3600 0    50   Input ~ 0
+ref
+$Comp
+L Device:R_US R?
+U 1 1 5DE73C3F
+P 4450 3250
+F 0 "R?" V 4550 3250 50  0000 C CNN
+F 1 "1.07K" V 4350 3250 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 4490 3240 50  0001 C CNN
+F 3 "~" H 4450 3250 50  0001 C CNN
+	1    4450 3250
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 5DE74D95
+P 4450 2900
+F 0 "C?" V 4221 2900 50  0000 C CNN
+F 1 "2.05n" V 4312 2900 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4450 2900 50  0001 C CNN
+F 3 "~" H 4450 2900 50  0001 C CNN
+	1    4450 2900
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 5DE7579B
+P 2700 2700
+F 0 "C?" V 2471 2700 50  0000 C CNN
+F 1 "16.9n" V 2562 2700 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2700 2700 50  0001 C CNN
+F 3 "~" H 2700 2700 50  0001 C CNN
+	1    2700 2700
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	6050 3600 6050 4350
+	4550 2900 5450 2900
+Wire Wire Line
+	5450 1900 5450 2900
+Wire Wire Line
+	4350 2900 3550 2900
+Connection ~ 3550 2300
+Wire Wire Line
+	3550 2300 3700 2300
+Wire Wire Line
+	4600 3250 5450 3250
+Wire Wire Line
+	5450 3250 5450 2900
+Connection ~ 5450 2900
+Wire Wire Line
+	4300 3250 3000 3250
+Wire Wire Line
+	3000 2300 3150 2300
+$Comp
+L Device:R_US R?
+U 1 1 5DE7F15D
+P 2300 2300
+F 0 "R?" V 2400 2300 50  0000 C CNN
+F 1 "1.07K" V 2200 2300 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 2340 2290 50  0001 C CNN
+F 3 "~" H 2300 2300 50  0001 C CNN
+	1    2300 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2000 2300 2150 2300
+Wire Wire Line
+	2450 2300 2700 2300
+Connection ~ 3000 2300
+Wire Wire Line
+	2700 2600 2700 2300
+Connection ~ 2700 2300
+Wire Wire Line
+	2700 2300 3000 2300
+Wire Wire Line
+	2050 3600 2700 3600
+$Comp
+L Device:R_US R?
+U 1 1 5DE86C70
+P 2700 3950
+F 0 "R?" V 2800 3950 50  0000 C CNN
+F 1 "0" V 2600 3950 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 2740 3940 50  0001 C CNN
+F 3 "~" H 2700 3950 50  0001 C CNN
+	1    2700 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 3800 2700 3600
+Connection ~ 2700 3600
+$Comp
+L power:GNDA #PWR?
+U 1 1 5DE8AB8D
+P 2700 4200
+F 0 "#PWR?" H 2700 3950 50  0001 C CNN
+F 1 "GNDA" V 2705 4072 50  0000 R CNN
+F 2 "" H 2700 4200 50  0001 C CNN
+F 3 "" H 2700 4200 50  0001 C CNN
+	1    2700 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 4100 2700 4200
+$Comp
+L power:GNDA #PWR?
+U 1 1 5DE8F7E7
+P 3600 1800
+F 0 "#PWR?" H 3600 1550 50  0001 C CNN
+F 1 "GNDA" V 3450 1900 50  0000 R CNN
+F 2 "" H 3600 1800 50  0001 C CNN
+F 3 "" H 3600 1800 50  0001 C CNN
+	1    3600 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 3250 3000 2300
+Wire Wire Line
+	3550 2900 3550 2300
+Wire Wire Line
+	2700 3600 2700 2800
+Wire Wire Line
+	3600 1800 3700 1800
+Wire Wire Line
+	3700 2000 3700 2300
+$Comp
+L Amplifier_Difference:ADA4940-2 U?
+U 1 1 5DEA3186
+P 7400 1900
+F 0 "U?" H 7600 2100 50  0000 C CNN
+F 1 "ADA4940-2" H 7750 1700 50  0000 C CNN
+F 2 "Package_CSP:LFCSP-24-1EP_4x4mm_P0.5mm_EP2.5x2.5mm" H 7400 1500 50  0001 C CNN
+F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4940-1_4940-2.pdf" H 5700 3100 50  0001 C CNN
+	1    7400 1900
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

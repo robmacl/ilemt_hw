@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:input-cache
+LIBS:in_amp-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268

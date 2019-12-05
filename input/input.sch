@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:input-cache
+LIBS:in_amp-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -19,12 +20,6 @@ S 7550 3000 1600 1350
 U 5DA78AA2
 F0 "ADC" 50
 F1 "adc.sch" 50
-$EndSheet
-$Sheet
-S 5500 3000 1500 1050
-U 5DA78B4D
-F0 "Antialias" 50
-F1 "antialias.sch" 50
 $EndSheet
 $Sheet
 S 3400 3000 1600 1050
@@ -50,4 +45,10 @@ Wire Wire Line
 	3150 3350 3400 3350
 Wire Wire Line
 	3150 3650 3400 3650
+$Sheet
+S 5450 3250 1200 500 
+U 5DE6CDF8
+F0 "antialias_driver" 50
+F1 "antialias_driver.sch" 50
+$EndSheet
 $EndSCHEMATC
