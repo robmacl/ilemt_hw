@@ -2,3 +2,5 @@
 /simetrix/design.net
 /simetrix/design.out
 /simetrix/*.lck
+fp-info-cache
+*.kicad_pcb-bak

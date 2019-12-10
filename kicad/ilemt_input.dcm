@@ -36,6 +36,12 @@ K single opamp
 F http://www.ti.com/lit/ds/symlink/ne5534.pdf
 $ENDCMP
 #
+$CMP THS4131
+D Low noise differential amp
+K differential amplifier
+F https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4940-1_4940-2.pdf
+$ENDCMP
+#
 $CMP opamp_single
 D Single Low-Noise Operational Amplifiers, DIP-8/SOIC-8
 K single opamp

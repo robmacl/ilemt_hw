@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:input-cache
-LIBS:in_amp-cache
+LIBS:input_channel-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -20,8 +19,8 @@ L Analog_ADC:LTC2508IDKD-32 U?
 U 1 1 5DA7BB2A
 P 8800 3450
 AR Path="/5DA7BB2A" Ref="U?"  Part="1" 
-AR Path="/5DA78AA2/5DA7BB2A" Ref="U?"  Part="1" 
-F 0 "U?" H 8800 4531 50  0000 C CNN
+AR Path="/5DA78AA2/5DA7BB2A" Ref="U101"  Part="1" 
+F 0 "U101" H 8800 4531 50  0000 C CNN
 F 1 "LTC2508IDKD-32" H 8800 4440 50  0000 C CNN
 F 2 "Package_DFN_QFN:DFN-24-1EP_4x7mm_P0.5mm_EP2.64x6.44mm" H 7850 2500 50  0001 L CNN
 F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/250832fc.pdf" H 9000 2400 50  0001 C CNN
@@ -47,8 +46,8 @@ L power:GNDA #PWR?
 U 1 1 5DA7BB38
 P 8600 4600
 AR Path="/5DA7BB38" Ref="#PWR?"  Part="1" 
-AR Path="/5DA78AA2/5DA7BB38" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 8600 4350 50  0001 C CNN
+AR Path="/5DA78AA2/5DA7BB38" Ref="#PWR0101"  Part="1" 
+F 0 "#PWR0101" H 8600 4350 50  0001 C CNN
 F 1 "GNDA" H 8605 4427 50  0000 C CNN
 F 2 "" H 8600 4600 50  0001 C CNN
 F 3 "" H 8600 4600 50  0001 C CNN

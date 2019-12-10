@@ -1,0 +1,18 @@
+XLR to T-568B RJ45 ethernet cable:
+
+Pin	Function	T-586B
+1: 	N/C 		WHT/ORN
+2: 	N/C		ORN
+3: 	X-		WHT/GRN
+4: 	Z+	 	BLU
+5: 	Z-	 	WHT/BLU
+6: 	X+	 	GRN
+7: 	Y- 		WHT/BRN
+8: 	Y+ 		BRN
+
+Each pair also has 4 turns on a small ferrite toroid. The XLR drain
+pins are N/C.  The box is not connected to anything.  (Not sure why I
+didn't connect the drain pins, or at least one of them).  The shield
+contacts on the RJ45 are connected to the box, but this has no effect
+with unshielded UTP.
+
