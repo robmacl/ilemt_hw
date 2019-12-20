@@ -30,6 +30,11 @@ K single opamp
 F https://www.analog.com/media/en/technical-documentation/data-sheets/lt1012.pdf
 $ENDCMP
 #
+$CMP OVDD
+D Power symbol creates a global label with name "VDD"
+K power-flag
+$ENDCMP
+#
 $CMP SA5534_copy
 D Single Low-Noise Operational Amplifiers, DIP-8/SOIC-8
 K single opamp

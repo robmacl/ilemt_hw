@@ -6,16 +6,15 @@ Calibration todo:
 
 
 Input board design/capture tasks
- -- input network (x)
- -- amplifier (x)
- -- antialias (x)
- -- balancer +
- -- reference buffer (x)
+ -- antialias/driver: capacitors need to be on E24 series
+ -- diff_amp and antialias, change to dual opamps
+ -- ADC
  -- digital driver/receivers
  -- local power conditioning.  Get 3.3V logic supply from 5V via a
     LDO.  We also want passive filtration on the 5V supply to
     keep digital noise from the main board out.  Likewise on the
     analog supplies, maybe 3-wire CM filter?
+ -- BIST drivers
  -- connector
 
 Rough component placement to get idea of board areas:
@@ -129,6 +128,59 @@ password BogPickle
 ________________
 
 
+[18 Dec 19]
+
+AHC is rather slow for clock buffer at 3.3V, the drive is only ~4 mA.
+I'm unsure about how serious I am about wanting to get the full-rate
+output from the ADC.  But if I want to do that, then B SPI port has to
+run at 100 MHz, which is not at all slow.  I don't have any plans to
+use the full-rate data in normal operation, but it might be useful
+during development and perhaps for BIST.
+
+
+
+[16 Dec 19]
+
+Realized I want on-board fan-out buffers on the shared ADC clock
+lines, or something.  Maybe AHC buffers, which are not too strong.
+There is a weird plot in the SN74AHC541 datasheet which shows
+"simulated propagation delay" with ~300 ps rise/fall time.  Fairchild
+"Logic Selection Guide is a lot better, nice tables.  Fairchild VHC
+family which has similar drive and supply range is shown as having 3-4
+ns rise/fall with 50 pF load.  None of their families have sub-ns slew
+under those conditions.  VHC slew is about the same as HC (the
+propagation delay is much lower, 10 ns vs. 50 ns).
+
+Or I guess we could just fan out through separate back-termination
+resistors.  The FIN1048 LVDS receiver is moderately low drive on the
+output, characterized at +/- 8 mA.
+
+Pretty sure output is going to load down if driving three lines.  That
+is not necessarily bad, but we do risk giving up on the possibility of
+using the full rate output, where we really need 100 MHz clock.
+
+I am unsure of the importance of keeping the channels isolated on the
+digital lines.  If each did have a separate buffer there would
+presumably be less cross-coupling.  But I think this is mainly a
+digital signal integrity issue, not an analog thing.  We just don't
+want ringing to mess up our edges.
+
+Thinking of main board distribution of some slow/quasi-static signals as
+single-ended, rather than everything LVDS.  Decimate selection bits
+for ADC, SYNC, card select line for card enumeration, etc.  This is
+mainly to reduce pin usage on FPGA and pin count on connector.  We
+would buffer these signals from FPGA before distribution.
+
+
+
+
+[11 Dec 19]
+
+Got the current hardware and software files checked into github,
+working on adapting some of the old ASAP evaluation Matlab code to
+work with Claudia's calibration code.
+
+
 [8 Dec 19]
 
  -- OPA2210 (dual), super beta, En=2.2 nV/rtHz
@@ -169,16 +221,24 @@ price/amp.
 
 I was wondering if it might make sense to not use a differential amp
 to drive the ADC.  Probably doesn't make that much difference one the
-way or the other, but it seems that in the 1 to 2 mode the difference
-amps don't have super low distortion in comparison to high-end audio
-opamps.  And it might be a bit cheaper.  It would require more passive
-components.  I think it would be best to use a DC level shift rather
-than AC coupling, since this can be done at a low impedance node.
-Just use inverting and non-inverting amp driven by the antialias
-output.  The non-inverting needs a voltage divider at the input to get
-gain 1/2.
-
-
+way or the other, but it seems that with unbalanaced input the
+difference amps don't have super low distortion in comparison to
+high-end audio opamps.  And it might be a bit cheaper.  It would
+require more passive components.  I think it would be best to use a DC
+level shift rather than AC coupling, since this can be done at a low
+impedance node.  Just use inverting and non-inverting amp driven by
+the antialias output.  The non-inverting needs a voltage divider at
+the input to get gain 1/2.  But I think that in inverting mode we get
+an attenuation of the amp's own noise, which does not happen with the
+non-inverting.  We still attenuate the upstream noise, though, which
+should be dominant anyway.
+ ==> For eg. THS4131 this is hard to tell because the plots only go
+     down to 100 kHz, and the THD goes off the bottom before then.
+     But it looks like this is first order, increasing 20 dB per
+     decade, so if -97 dB @ 250 kHz, it would be -125 dB @ 10 kHz.
+     But that is way optimistic, since we run out of loop gain at some
+     point in the LF, and in many of the plots this seems to happen
+     around 200 kHz.    
 
 
 

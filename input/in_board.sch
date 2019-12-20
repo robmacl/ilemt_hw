@@ -1,0 +1,123 @@
+EESchema Schematic File Version 4
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L 74xx:74LS541 U?
+U 1 1 5DF71C19
+P 7950 3500
+AR Path="/5DA78AA2/5DF71C19" Ref="U?"  Part="1" 
+AR Path="/5DF71C19" Ref="U?"  Part="1" 
+F 0 "U?" H 7650 4150 50  0000 C CNN
+F 1 "74LVC541A" H 7650 2850 50  0000 C CNN
+F 2 "" H 7950 3500 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS541" H 7950 3500 50  0001 C CNN
+	1    7950 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR?
+U 1 1 5DF71D3C
+P 7950 4500
+F 0 "#PWR?" H 7950 4250 50  0001 C CNN
+F 1 "GNDD" H 7950 4375 50  0000 C CNN
+F 2 "" H 7950 4500 50  0001 C CNN
+F 3 "" H 7950 4500 50  0001 C CNN
+	1    7950 4500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7950 4500 7950 4350
+Wire Wire Line
+	7450 3900 7350 3900
+Wire Wire Line
+	7350 3900 7350 4000
+Wire Wire Line
+	7350 4000 7450 4000
+Wire Wire Line
+	7350 4000 7350 4350
+Wire Wire Line
+	7350 4350 7950 4350
+Connection ~ 7350 4000
+Connection ~ 7950 4350
+Wire Wire Line
+	7950 4350 7950 4300
+$Comp
+L ilemt_input:OVDD #PWR?
+U 1 1 5DF72748
+P 7950 2600
+F 0 "#PWR?" H 7950 2450 50  0001 C CNN
+F 1 "OVDD" H 7950 2750 50  0000 C CNN
+F 2 "" H 7950 2600 50  0001 C CNN
+F 3 "" H 7950 2600 50  0001 C CNN
+	1    7950 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7950 2600 7950 2700
+$Comp
+L Device:R_Pack04 RN?
+U 1 1 5DF7325B
+P 8900 3200
+F 0 "RN?" V 8600 3200 50  0000 C CNN
+F 1 "50" V 9100 3200 50  0000 C CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 9175 3200 50  0001 C CNN
+F 3 "~" H 8900 3200 50  0001 C CNN
+	1    8900 3200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8450 3000 8700 3000
+Wire Wire Line
+	8450 3100 8700 3100
+Wire Wire Line
+	8450 3200 8700 3200
+Wire Wire Line
+	8450 3300 8700 3300
+$Comp
+L Device:R_Pack04 RN?
+U 1 1 5DF74C21
+P 8900 3800
+F 0 "RN?" V 8600 3800 50  0000 C CNN
+F 1 "50" V 9100 3800 50  0000 C CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 9175 3800 50  0001 C CNN
+F 3 "~" H 8900 3800 50  0001 C CNN
+	1    8900 3800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8450 3400 8650 3400
+Wire Wire Line
+	8650 3400 8650 3600
+Wire Wire Line
+	8650 3600 8700 3600
+Wire Wire Line
+	8450 3500 8600 3500
+Wire Wire Line
+	8600 3500 8600 3700
+Wire Wire Line
+	8600 3700 8700 3700
+Wire Wire Line
+	8450 3600 8550 3600
+Wire Wire Line
+	8550 3600 8550 3800
+Wire Wire Line
+	8550 3800 8700 3800
+Wire Wire Line
+	8450 3700 8500 3700
+Wire Wire Line
+	8500 3700 8500 3900
+Wire Wire Line
+	8500 3900 8700 3900
+$EndSCHEMATC
