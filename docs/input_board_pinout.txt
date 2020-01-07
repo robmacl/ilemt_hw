@@ -1,0 +1,66 @@
+LVDS data out (point to point routed from card to FPGA):
+SDOA1+
+SDOA1-
+SDOB1+
+SDOB1-
+SDOA2+
+SDOA2-
+SDOA3+
+SDOA3-
+[8]
+
+LVDS clocks in (per-card lines individually buffered at FPGA output)
+MCLK+
+MCLK-
+SCKA+
+SCKA-
+[4]
+
+LVDS SCKB (full rate output) not buffered at FPGA, routed only to first card:
+SCKB+
+SCKB-
+[2]
+
+Digital supply:
++5V		At least 2 pins, used to derive +3.3V
+                for ADC VCCIO, LVDS drivers and receivers.
+[2]
+
+Low speed digital:
+SYNC		3.3V CMOS, bussed, conversion SYNC signal to all ADCs
+SCL		I2C bus for config memory, bussed
+SDA
+CARDSELA	Lines used to identify card and/or select config
+CARDSELB	memory for card vs. probe, details TBD.  I2C mux, etc.
+CARDSELC	Routed individually and/or strapped to fixed values.
+[6]
+
+[Put extra lines here]
+
+Analog supplies:
++15V		Analog supplies, at least 2 pins each.  ADC +2.5
+-15V		supply might be regulated down from +15V.  Or route
+                separate filtered +5V supply here?
+[4]
+
+Built In Self Test:
+BIST++		Test voltages that can be directed into the analog 
+BIST+-		inputs, bussed.  Normally the BIST?+ lines
+BIST-+		are < -10V and the BIST?- lines are > +10V, which
+BIST--		turns off BIST injection. 
+[4]
+
+Analog reference voltage:
+REF+		10V differential, bussed
+REF-
+[2]
+
+
+sum([8 4 2 2 6 4 4 2]) = 32
+
+If we allow 50% grounds, then that is 64, which would be the full
+connector.  But we don't need quite that many grounds, for eg. BIST,
+REF, low speed digital.  May want 2 or more chassis ground pins at the
+front of the connector.
+
+

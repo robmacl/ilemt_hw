@@ -6,6 +6,18 @@ K single opamp
 F https://www.analog.com/media/en/technical-documentation/data-sheets/AD797.pdf
 $ENDCMP
 #
+$CMP FIN1046
+D Dual LVDS Receiver, >155Mbps, 5V, SOIC-8
+K Dual LVDS Receiver
+F http://www.ti.com/lit/ds/symlink/ds90c402.pdf
+$ENDCMP
+#
+$CMP FIN1048
+D Quad LVDS Receiver, 3.3V, SOIC-16
+K Quad LVDS Receiver
+F https://www.onsemi.com/pub/Collateral/FIN1048-D.pdf
+$ENDCMP
+#
 $CMP LM101_copy
 D Operational Amplifier, DIP-8/TO-99-8
 K single opamp

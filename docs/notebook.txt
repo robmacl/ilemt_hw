@@ -128,6 +128,95 @@ password BogPickle
 ________________
 
 
+[7 Jan 20]
+
+Todo:
+ -- Update reference buffer schematic with current booster transistor
+ -- Update input channel to use two dual opamps
+ -- Capture schematic for BIST driver
+ -- Design board-level filtering and regulators for power supplies
+
+Starting to look at power budget, see ilemt_hw/input/power_budget.xslx
+
+
+
+[6 Jan 20]
+
+Summary:
+ -- See input_board_pinout.txt in this directory.  We are using 64 pin
+    "Type B" Eurocard connectors.
+ -- Some thoughts on signal integrity for the full-rate SDOB output.
+ -- Could use an off-the-shelf balun for a wideband differential
+    passive probe. 
+
+Maybe not a good idea to use the PCIE connector because it will not
+work well unless you have electroplated fingers, which is an extra
+cost PCB step.
+
+DIN 41612 connectors are a possibility.  There are many sources and
+they are not too expensive, < $10 a pair.  There seem to be a lot of
+options with 64 position 2 rows 0.1" centers.  These connectors are
+intended for 50-60 Ohm single-ended operation, not differential.
+These are "eurocard" connectors, with the three row version used for
+VMEBUS.  Eurocard type B is 2 row with 0.1" centers.
+
+TI SLLA088A describes multidrop LVDS on VMEBUS, and chooses to leave
+many pins unpopulated, putting all the grounds at one end.  It seems
+that this was because they were going multidrop and wanted to minimize
+capacitance.  Their suggestion that you want no coupling to ground for
+a differential signal is (so far as I know) simply wrong.
+
+The "LVDS Owner's Manual" does not seem too tense about about
+connectors, and does emphasize that you should have lots of grounds.
+AFAICT the main issue going through the connector is that the coupling
+between the differential pair is minimal during the transition (at
+eg. 100 mil spacing), so EMI emission and susceptibility are
+increased.  As long as each line is independently 50 Ohms this is a
+100 Ohm differential impedance, so should not create much reflection.
+
+There is a lot of discussion in these older LVDS app notes about
+trying to run LVDS over a bus, which creates lots of signal integrity
+problems.  While LVDS is still going strong, in eg. PCIE, the parallel
+multidrop bus is dead, killed by time skew and reflection problems.
+
+On the full rate SCKB/SDOB we want to minimize time skew between the
+clock and data, but this is not simply a matter of length matching
+because the clock and data are travelling in opposite directions.  All
+we can do is hope that round-trip time is less than 10 ns (which seems
+plausible).  This mainly means to minimize the trace lengths, both on
+the input board and main board.  I'm only planning to route SDOB on
+one channel in one slot; these can be chosen to minimize distance.
+Also, we would not add any extra clock distribution buffering.  Should
+lay out the SCKB output trace so that it can be cut and jumpered at
+the microzed output, because I'm nervous about coupling out digital
+noise into the main board analog ground from the unbuffered FPGA
+output.
+
+If we decide we need the full rate output and have problems with the
+delay, then we can generate a delayed SDOB read clock internal to the
+FPGA using a FPGA PLL.
+
+
+Idea: we can make a passive broadband differential probe using a balun
+with a resistive input divider.  This is like the usual low-Z passive
+probe, but two resistors feed a 2:1 balun which then drives coax back
+to the scope.  For example, MACOM MABA-007681-CT2010 covers 5 MHz -
+1200 MHz.  There will be some response ugliness at the low end, but a
+balun does have DC continuity.
+
+
+[28 Dec 19]
+
+LVDS pinout situation is messier than I had realized, even in the 4x
+driver or 4x receiver there are several variants.  TI alone has > 40
+4x Rx in TSSOP/SOIC.  The non-flow-through pinout seems rather more
+common than flow through, but there are multi-source options.  The TI
+DS90LV048A has the same pinout as the FIN1048 receiver (hmmn, 048
+digits in common).  And the DS90LV047A transmitter has the same pinout
+as the FIN1047.  So there is some direct second-sourcing going on
+here.
+
+
 [18 Dec 19]
 
 AHC is rather slow for clock buffer at 3.3V, the drive is only ~4 mA.
@@ -136,7 +225,6 @@ output from the ADC.  But if I want to do that, then B SPI port has to
 run at 100 MHz, which is not at all slow.  I don't have any plans to
 use the full-rate data in normal operation, but it might be useful
 during development and perhaps for BIST.
-
 
 
 [16 Dec 19]
