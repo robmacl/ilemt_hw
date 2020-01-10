@@ -18,6 +18,12 @@ K Quad LVDS Receiver
 F https://www.onsemi.com/pub/Collateral/FIN1048-D.pdf
 $ENDCMP
 #
+$CMP GDT
+D Spark gap
+K spark gap ESD electrostatic suppression
+F ~
+$ENDCMP
+#
 $CMP LM101_copy
 D Operational Amplifier, DIP-8/TO-99-8
 K single opamp

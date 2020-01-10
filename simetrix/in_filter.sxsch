@@ -186,63 +186,63 @@ Style name="DefaultWireCreation" lineColour="0" lineThickness="0" penstyle="soli
 Style name="DefaultWireMoving" lineColour="10761149" lineThickness="0" penstyle="solid" fontFamily="arial" fontSize="9" fontItalics="0" fontBold="0" fontColour="0" fontOverline="0" fontUnderline="0" propertyStyle=0
 .EndStyleLibrary
 .Instance
-Attributes type=symbol name="gnd" selected=1 protected=0 x=1920 y=5520 orient=N0 
+Attributes type=symbol name="gnd" selected=0 protected=0 x=1920 y=5520 orient=N0 
 Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Netnames pin1="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="gnd" selected=1 protected=0 x=3840 y=2400 orient=N0 
+Attributes type=symbol name="gnd" selected=0 protected=0 x=3840 y=2400 orient=N0 
 Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Netnames pin1="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="gnd" selected=1 protected=0 x=3840 y=4920 orient=N0 
+Attributes type=symbol name="gnd" selected=0 protected=0 x=3840 y=4920 orient=N0 
 Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Netnames pin1="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="gnd" selected=1 protected=0 x=7320 y=2400 orient=N0 
+Attributes type=symbol name="gnd" selected=0 protected=0 x=7320 y=2400 orient=N0 
 Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Netnames pin1="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="gnd" selected=1 protected=0 x=7320 y=4440 orient=N0 
+Attributes type=symbol name="gnd" selected=0 protected=0 x=7320 y=4440 orient=N0 
 Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Netnames pin1="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="gnd" selected=1 protected=0 x=9120 y=480 orient=N180 
+Attributes type=symbol name="gnd" selected=0 protected=0 x=9120 y=480 orient=N180 
 Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Netnames pin1="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="gnd" selected=1 protected=0 x=9120 y=4440 orient=N0 
+Attributes type=symbol name="gnd" selected=0 protected=0 x=9120 y=4440 orient=N0 
 Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Netnames pin1="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="gnd" selected=1 protected=0 x=10080 y=3480 orient=N0 
+Attributes type=symbol name="gnd" selected=0 protected=0 x=10080 y=3480 orient=N0 
 Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Netnames pin1="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="cap" selected=1 protected=0 x=3840 y=1440 orient=N0 
+Attributes type=symbol name="cap" selected=0 protected=0 x=3840 y=1440 orient=N0 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default order=-1
 Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default order=-1
 Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -255,7 +255,7 @@ Property name="VALUE" value="990p" autopos=1 normal=Right rotated=Top font=Defau
 Netnames pin1="L1_N" pin2="C1_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="cap" selected=1 protected=0 x=3840 y=3960 orient=N0 
+Attributes type=symbol name="cap" selected=0 protected=0 x=3840 y=3960 orient=N0 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default order=-1
 Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default order=-1
 Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -268,7 +268,7 @@ Property name="VALUE" value="1n" autopos=1 normal=Right rotated=Top font=Default
 Netnames pin1="C9_N" pin2="C2_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="cap" selected=1 protected=0 x=7320 y=1440 orient=N0 
+Attributes type=symbol name="cap" selected=0 protected=0 x=7320 y=1440 orient=N0 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default order=-1
 Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default order=-1
 Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -281,7 +281,7 @@ Property name="VALUE" value="990p" autopos=1 normal=Right rotated=Top font=Defau
 Netnames pin1="R14_P" pin2="C3_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="cap" selected=1 protected=0 x=7320 y=3480 orient=N0 
+Attributes type=symbol name="cap" selected=0 protected=0 x=7320 y=3480 orient=N0 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default order=-1
 Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default order=-1
 Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -294,7 +294,7 @@ Property name="VALUE" value="1n" autopos=1 normal=Right rotated=Top font=Default
 Netnames pin1="R12_N" pin2="C4_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="cap" selected=1 protected=0 x=8160 y=2040 orient=N0 
+Attributes type=symbol name="cap" selected=0 protected=0 x=8160 y=2040 orient=N0 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default order=-1
 Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default order=-1
 Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -307,7 +307,7 @@ Property name="VALUE" value="3.3n" autopos=1 normal=Right rotated=Top font=Defau
 Netnames pin1="R14_P" pin2="C5_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="cap" selected=1 protected=0 x=1920 y=3960 orient=N0 
+Attributes type=symbol name="cap" selected=0 protected=0 x=1920 y=3960 orient=N0 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default order=-1
 Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default order=-1
 Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -320,7 +320,7 @@ Property name="VALUE" value="50p" autopos=1 normal=Right rotated=Top font=Defaul
 Netnames pin1="V3_N" pin2="C6_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="cap" selected=1 protected=0 x=2400 y=1440 orient=N0 
+Attributes type=symbol name="cap" selected=0 protected=0 x=2400 y=1440 orient=N0 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default order=-1
 Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default order=-1
 Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -333,7 +333,7 @@ Property name="VALUE" value="50p" autopos=1 normal=Right rotated=Top font=Defaul
 Netnames pin1="L1_P" pin2="C7_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="cap" selected=1 protected=0 x=5280 y=1320 orient=N90 
+Attributes type=symbol name="cap" selected=0 protected=0 x=5280 y=1320 orient=N90 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default order=-1
 Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default order=-1
 Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -346,7 +346,7 @@ Property name="VALUE" value="10p" autopos=1 normal=Right rotated=Top font=Defaul
 Netnames pin1="C8_P" pin2="L1_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="cap" selected=1 protected=0 x=5280 y=3840 orient=N90 
+Attributes type=symbol name="cap" selected=0 protected=0 x=5280 y=3840 orient=N90 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default order=-1
 Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default order=-1
 Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -359,7 +359,7 @@ Property name="VALUE" value="10p" autopos=1 normal=Right rotated=Top font=Defaul
 Netnames pin1="R5_P" pin2="C9_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="vcvs_2" selected=1 protected=0 x=9600 y=2880 orient=N0 
+Attributes type=symbol name="vcvs_2" selected=0 protected=0 x=9600 y=2880 orient=N0 
 Property name="MODEL" value="E" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -368,7 +368,7 @@ Property name="VALUE" value="1" autopos=1 normal=Top rotated=Right font=Default 
 Netnames pin1="E1_P" pin2="0" pin3="R14_P" pin4="R12_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="ind" selected=1 protected=0 x=2760 y=1080 orient=N0 
+Attributes type=symbol name="ind" selected=0 protected=0 x=2760 y=1080 orient=N0 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=600 align=LeftTop visible=0 font=Default order=-1
 Property name="MODEL" value="L" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="REF" value="L1" autopos=1 normal=Bottom rotated=Right font=Default order=-1
@@ -378,7 +378,7 @@ Property name="VALUE" value="3u" autopos=1 normal=Top rotated=Right font=Default
 Netnames pin1="L1_P" pin2="L1_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="ind" selected=1 protected=0 x=2760 y=3600 orient=N0 
+Attributes type=symbol name="ind" selected=0 protected=0 x=2760 y=3600 orient=N0 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=600 align=LeftTop visible=0 font=Default order=-1
 Property name="MODEL" value="L" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="L2" autopos=1 normal=Bottom rotated=Right font=Default order=-1
@@ -388,7 +388,7 @@ Property name="VALUE" value="3u" autopos=1 normal=Top rotated=Right font=Default
 Netnames pin1="V3_N" pin2="C9_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="ind" selected=1 protected=0 x=3840 y=4320 orient=N90 
+Attributes type=symbol name="ind" selected=0 protected=0 x=3840 y=4320 orient=N90 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=600 align=LeftTop visible=0 font=Default order=-1
 Property name="MODEL" value="L" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="L3" autopos=1 normal=Bottom rotated=Right font=Default order=-1
@@ -398,7 +398,7 @@ Property name="VALUE" value="2n" autopos=1 normal=Top rotated=Right font=Default
 Netnames pin1="C2_N" pin2="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="ind" selected=1 protected=0 x=3840 y=1800 orient=N90 
+Attributes type=symbol name="ind" selected=0 protected=0 x=3840 y=1800 orient=N90 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=600 align=LeftTop visible=0 font=Default order=-1
 Property name="MODEL" value="L" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="L4" autopos=1 normal=Bottom rotated=Right font=Default order=-1
@@ -408,7 +408,7 @@ Property name="VALUE" value="2n" autopos=1 normal=Top rotated=Right font=Default
 Netnames pin1="C1_N" pin2="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="ind" selected=1 protected=0 x=7320 y=1800 orient=N90 
+Attributes type=symbol name="ind" selected=0 protected=0 x=7320 y=1800 orient=N90 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=600 align=LeftTop visible=0 font=Default order=-1
 Property name="MODEL" value="L" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="L5" autopos=1 normal=Bottom rotated=Right font=Default order=-1
@@ -418,7 +418,7 @@ Property name="VALUE" value="2n" autopos=1 normal=Top rotated=Right font=Default
 Netnames pin1="C3_N" pin2="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="ind" selected=1 protected=0 x=7320 y=3840 orient=N90 
+Attributes type=symbol name="ind" selected=0 protected=0 x=7320 y=3840 orient=N90 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=600 align=LeftTop visible=0 font=Default order=-1
 Property name="MODEL" value="L" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="L6" autopos=1 normal=Bottom rotated=Right font=Default order=-1
@@ -428,7 +428,7 @@ Property name="VALUE" value="2n" autopos=1 normal=Top rotated=Right font=Default
 Netnames pin1="C4_N" pin2="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="ind" selected=1 protected=0 x=1320 y=1440 orient=N90 
+Attributes type=symbol name="ind" selected=0 protected=0 x=1320 y=1440 orient=N90 
 Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=600 align=LeftTop visible=0 font=Default order=-1
 Property name="MODEL" value="L" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="REF" value="L7" autopos=1 normal=Bottom rotated=Right font=Default order=-1
@@ -438,7 +438,7 @@ Property name="VALUE" value="20m" autopos=1 normal=Top rotated=Right font=Defaul
 Netnames pin1="L1_P" pin2="L7_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="new_probe_db" selected=1 protected=0 x=9960 y=3000 orient=N0 
+Attributes type=symbol name="new_probe_db" selected=0 protected=0 x=9960 y=3000 orient=N0 
 Property name="label" value="Diff mode" autopos=1 normal=Right rotated=Right font=Default order=-1
 Property name="MULTISTEP_OPTIONS" value="advancedstats=false mode=multi numbins=0" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="PROBE_DISABLED" value="false" autopos=0 x=0 y=780 align=LeftTop visible=0 font=Default order=-1
@@ -450,7 +450,7 @@ Property name="VALUE_SIMPLIS" value="axisType=\"auto\" persistence=3 curveLabel=
 Netnames pin1="E1_P"
 .EndInstance
 .Instance
-Attributes type=symbol name="new_probe_db" selected=1 protected=0 x=7680 y=1320 orient=N0 
+Attributes type=symbol name="new_probe_db" selected=0 protected=0 x=7680 y=1320 orient=N0 
 Property name="label" value="Unbalanced" autopos=1 normal=Right rotated=Right font=Default order=-1
 Property name="MULTISTEP_OPTIONS" value="advancedstats=false mode=multi numbins=0" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="PROBE_DISABLED" value="false" autopos=0 x=0 y=780 align=LeftTop visible=0 font=Default order=-1
@@ -462,7 +462,7 @@ Property name="VALUE_SIMPLIS" value="axisType=\"auto\" persistence=1 curveLabel=
 Netnames pin1="R14_P"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=3120 y=1560 orient=N90 
+Attributes type=symbol name="res" selected=0 protected=0 x=3120 y=1560 orient=N90 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="REF" value="R1" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -471,7 +471,7 @@ Property name="value" value="2k" autopos=1 normal=Right rotated=Top font=Default
 Netnames pin1="L1_N" pin2="L1_P"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=2400 y=4320 orient=N0 
+Attributes type=symbol name="res" selected=0 protected=0 x=2400 y=4320 orient=N0 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="REF" value="R10" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -480,7 +480,7 @@ Property name="value" value="100" autopos=1 normal=Right rotated=Top font=Defaul
 Netnames pin1="C7_N" pin2="R11_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=1920 y=4320 orient=N0 
+Attributes type=symbol name="res" selected=0 protected=0 x=1920 y=4320 orient=N0 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R11" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -489,7 +489,7 @@ Property name="value" value="100" autopos=1 normal=Right rotated=Top font=Defaul
 Netnames pin1="C6_N" pin2="R11_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=8880 y=2160 orient=N0 
+Attributes type=symbol name="res" selected=0 protected=0 x=8880 y=2160 orient=N0 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R12" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -498,7 +498,7 @@ Property name="value" value="100k" autopos=1 normal=Right rotated=Top font=Defau
 Netnames pin1="R14_P" pin2="R12_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=9120 y=3840 orient=N0 
+Attributes type=symbol name="res" selected=0 protected=0 x=9120 y=3840 orient=N0 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R13" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -507,7 +507,7 @@ Property name="value" value="200k" autopos=1 normal=Right rotated=Top font=Defau
 Netnames pin1="R12_N" pin2="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=9120 y=1080 orient=N180 
+Attributes type=symbol name="res" selected=0 protected=0 x=9120 y=1080 orient=N180 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R14" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -516,7 +516,7 @@ Property name="value" value="200k" autopos=1 normal=Right rotated=Top font=Defau
 Netnames pin1="R14_P" pin2="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=5400 y=1920 orient=N90 
+Attributes type=symbol name="res" selected=0 protected=0 x=5400 y=1920 orient=N90 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="REF" value="R2" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -525,7 +525,7 @@ Property name="value" value="1.6k" autopos=1 normal=Right rotated=Top font=Defau
 Netnames pin1="C8_P" pin2="L1_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=1320 y=2160 orient=N0 
+Attributes type=symbol name="res" selected=0 protected=0 x=1320 y=2160 orient=N0 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R20" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -534,7 +534,7 @@ Property name="value" value="180" autopos=1 normal=Right rotated=Top font=Defaul
 Netnames pin1="L7_N" pin2="R20_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=3120 y=4080 orient=N90 
+Attributes type=symbol name="res" selected=0 protected=0 x=3120 y=4080 orient=N90 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R3" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -543,7 +543,7 @@ Property name="value" value="2k" autopos=1 normal=Right rotated=Top font=Default
 Netnames pin1="C9_N" pin2="V3_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=6120 y=2400 orient=N90 
+Attributes type=symbol name="res" selected=0 protected=0 x=6120 y=2400 orient=N90 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R4" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -552,7 +552,7 @@ Property name="value" value="50m" autopos=1 normal=Right rotated=Top font=Defaul
 Netnames pin1="C8_P" pin2="TX1_10"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=6120 y=2880 orient=N90 
+Attributes type=symbol name="res" selected=0 protected=0 x=6120 y=2880 orient=N90 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R5" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -561,7 +561,7 @@ Property name="value" value="50m" autopos=1 normal=Right rotated=Top font=Defaul
 Netnames pin1="R5_P" pin2="TX1_20"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=8160 y=2520 orient=N0 
+Attributes type=symbol name="res" selected=0 protected=0 x=8160 y=2520 orient=N0 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R6" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -570,7 +570,7 @@ Property name="value" value="200" autopos=1 normal=Right rotated=Top font=Defaul
 Netnames pin1="C5_N" pin2="R12_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=5400 y=3360 orient=N90 
+Attributes type=symbol name="res" selected=0 protected=0 x=5400 y=3360 orient=N90 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R7" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -579,7 +579,7 @@ Property name="value" value="1.6k" autopos=1 normal=Right rotated=Top font=Defau
 Netnames pin1="R5_P" pin2="C9_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=6960 y=3240 orient=N90 
+Attributes type=symbol name="res" selected=0 protected=0 x=6960 y=3240 orient=N90 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="REF" value="R8" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -588,7 +588,7 @@ Property name="value" value="20" autopos=1 normal=Right rotated=Top font=Default
 Netnames pin1="R12_N" pin2="R5_P"
 .EndInstance
 .Instance
-Attributes type=symbol name="res" selected=1 protected=0 x=6960 y=1320 orient=N90 
+Attributes type=symbol name="res" selected=0 protected=0 x=6960 y=1320 orient=N90 
 Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="R9" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -597,7 +597,7 @@ Property name="value" value="20" autopos=1 normal=Right rotated=Top font=Default
 Netnames pin1="R14_P" pin2="C8_P"
 .EndInstance
 .Instance
-Attributes type=symbol name="idealTx_1_1_v3" selected=1 protected=0 x=5520 y=2520 orient=N90 
+Attributes type=symbol name="idealTx_1_1_v3" selected=0 protected=0 x=5520 y=2520 orient=N90 
 Property name="idealTxInd" value="5m" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="idealTxKPP" value="1" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="idealTxKPS" value="900m" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -612,7 +612,7 @@ Property name="template" value="X$%ref% <nodelist> Ideal_Tx%ref% <pinnames> ;.su
 Netnames pin1="TX1_10" pin2="L1_N" pin3="TX1_20" pin4="C9_N"
 .EndInstance
 .Instance
-Attributes type=symbol name="vsrc" selected=1 protected=0 x=1920 y=4920 orient=N0 
+Attributes type=symbol name="vsrc" selected=0 protected=0 x=1920 y=4920 orient=N0 
 Property name="MODEL" value="V" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="V2" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -621,7 +621,7 @@ Property name="value" value="0 AC 1 0" autopos=1 normal=Right rotated=Top font=D
 Netnames pin1="R11_N" pin2="0"
 .EndInstance
 .Instance
-Attributes type=symbol name="vsrc" selected=1 protected=0 x=1320 y=3000 orient=N0 
+Attributes type=symbol name="vsrc" selected=0 protected=0 x=1320 y=3000 orient=N0 
 Property name="MODEL" value="V" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="ref" value="V3" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
@@ -1390,7 +1390,7 @@ Property name="TextAlignment" value="AlignLeft" autopos=1 normal=Left rotated=Le
 .EndTextAnnotation
 --SXVERSION1.5
 .Instance
-Attributes type=symbol name="Free_text" selected=1 protected=0 x=2280 y=720 orient=N0
+Attributes type=symbol name="Free_text" selected=0 protected=0 x=2280 y=720 orient=N0
 Property name="value" value="Ferrite bead approximation" autopos=0 x=0 y=156 align=LeftBase linear=1 selectable=1 font=FreeText
 Netnames
 .EndInstance
@@ -1404,7 +1404,7 @@ Property name="TextAlignment" value="AlignLeft" autopos=1 normal=Left rotated=Le
 .EndTextAnnotation
 --SXVERSION1.5
 .Instance
-Attributes type=symbol name="Free_text" selected=1 protected=0 x=2280 y=5520 orient=N0
+Attributes type=symbol name="Free_text" selected=0 protected=0 x=2280 y=5520 orient=N0
 Property name="value" value="CM signal injection and cable capcitance.  Signal gets loaded down\nby C1/C2, which is realistic, but CMR 0 dB point then depends on\nwhat we think the the coupling capacitance is. \n\nR10/R11 model VHF CM impedance of input cable." autopos=0 x=0 y=156 align=LeftBase linear=1 selectable=1 font=FreeText
 Netnames
 .EndInstance
@@ -1418,7 +1418,7 @@ Property name="TextAlignment" value="AlignLeft" autopos=1 normal=Left rotated=Le
 .EndTextAnnotation
 --SXVERSION1.5
 .Instance
-Attributes type=symbol name="Free_text" selected=1 protected=0 x=6720 y=5520 orient=N0
+Attributes type=symbol name="Free_text" selected=0 protected=0 x=6720 y=5520 orient=N0
 Property name="value" value="Like R6, R12 can also damp the diff mode resonance of the sensor\nwith the input capacitance.  But both are also noise sources.  \nA high value of R12 mainly improves DC balance for bias current.\n\nR13/R14 are DC bias path.\n" autopos=0 x=0 y=156 align=LeftBase linear=1 selectable=1 font=FreeText
 Netnames
 .EndInstance
@@ -1426,10 +1426,10 @@ Netnames
 Text value=".simulator SIMETRIX\n.AC DEC 100 1k 200000000\n.simulator DEFAULT\n"
 LicenseInfo version="8.20k" feats=Basic|AD|Micron|Mcore2|Schematic|Advanced|Sim|Demo|Rtn|SIMPLIS_IF|beta serial=unknown user="unknown" code=unknown product="Elements" binarch=x86 system="WINNT/10.0/x64/34260295680/4/1/8/1215923956"
 SimulatorMode value="SIMetrix"
-View x=0 y=-270 zoomlevel=31 zoom=8 snapgrid=120 offsetX=0 offsetY=0
+View x=0 y=-335 zoomlevel=31 zoom=8 snapgrid=120 offsetX=0 offsetY=0
 Property name="CreateProduct" value="Elements" type=value
 Property name="GUID" value="{8d084f3a-63bb-460e-9508-8088554d6b39}" type=value
-Property name="UserVersion" value="24" type=value
-Property name="WriteLog" value="24/24/46098/46098" type=value
+Property name="UserVersion" value="28" type=value
+Property name="WriteLog" value="28/28/170770/170770" type=value
 .EndSchematic
 .EndComponent

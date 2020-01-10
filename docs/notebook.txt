@@ -128,16 +128,124 @@ password BogPickle
 ________________
 
 
+[8 Jan 20]
+
+Summary:
+  Started look at analog supply issues.  In particular, I was
+  concerned that supply noise could couple directly into the stage 1
+  input via reverse-biased BIST and clamp diodes.  The magnitude of
+  this coupling is roughly similar to the PSRR of the OPAMP at 10
+  kHz.  So the diodes are not a particular concern, but the overall
+  supply is, especially for stage 1.  
+
+  Working from 60 dB PSRR, we get that the rail noise should be less
+  than +56 dB re. 1 nV/RtHz, or 631 nV/RtHz.  This is just about where
+  the noise of the low-noise LT1963 is.  So maybe this is a demanding
+  spec?  Or use a different amp with higher PSRR?  
+
+
+Note on BAS21 diode pair vs. BAV99.  I recall picking BAS21 because at
+least on the Fairchild/On Semi datasheed it is shown as having much
+more lower capacitance under reverse bias, approx 0.5 pF at -15V vs. 1
+pF.  But the plot completely disagrees with the max capacitance spec
+(1.5 pF vs 5 pF).  For some reason the BAV99 capacitance is oddly flat
+vs. reverse bias.  It is also characterized in a plot for up to 25A
+surge current for a few microseconds, whereas te BAV99 has a spec of
+2A @ 1 us.  Also, in the SC70-5 package the diodes are independent,
+which would be especially useful for the BIST injection.  But the
+layout is slightly more awkward for the series connection, and the
+lead space is much narrower in SC70-5.
+
+Cleaned up the Kicad BOM a bit, merging parts with similar values,
+adding data from Digikey BOM.
+
+So, is it a problem that noise on the +/- 15V rails can capacitively
+couple into the first stage input via reverse biased diodes?  I had
+started worrying about this wrt. the BIST diodes, and then I realized
+that the clamp diodes are the same.  (The BIST diodes are also
+normally at the reverse rail.)
+
+One mitigating factor is that whatever coupling there is will be
+substantially common mode because the same type diode runs from the
+same rail to both inputs.  But I'd rather not lean on that too much,
+maybe 20 dB?
+
+So, let's say the reverse bias capacitance is 1 pF, which may or may
+not be conservative. (I'm hoping for 0.5 pF.)  Anyway, there are three
+diodes from each input to each rail.  So 3 pF from the rail.
+  3 pF @ 13.5 kHz = 3.9 MOhm Xc
+  
+So, looking at this as a capacitive divider, we have 2 nF of CM
+capcitance, which is -56 dB.  Or if we use the 3 pF with the 20 mH
+from the diff-mode sensor impedance, then we get about -68 dB.  This
+is what we expect in-band (ignoring the CMR effect), and this will
+improve up to 20 dB with lower inductance sensors.
+
+How much attenuation of noise on the rail do we need?  Well, if we
+suppose that the amp RTI noise is 2 nV/rtHz, then we need the
+transmitted rail noise to be at least -10 dB re. 2 nV/rtHz, or -4 dB
+re. 1 nV/rtHz.  If the attenuation is -68 dB, then the rail noise
+density could be +64 dB re 1 nV/rtHz, or 1.6 uV/rtHz.  In a 10 kHz
+bandwidth that would be 158 uV.  If we add another 20 dB for CMR, then
+we get 1.6 mV RMS in 10 kHz bandwidth, or 9.6 mV p-p.
+
+Note that for the AD8599 the PSRR is only 60 dB at 10 kHz, which is
+somewhat worse than the proposed coupling.  So we need the supply to
+be that quiet anyway.  (The LT1028 PSRR is 10-20 dB better, which
+mainly reflects its higher GBW.)
+ ==> Possibly supply noise could be the source of the excess noise I
+     am seeing in the prototype preamp.  I am not doing anything special
+     to reduce the LF noise, just going with whatever is coming out of
+     the ua723 regulated supply.
+
+Working from 60 dB PSRR, we get that the rail noise should be less
+than +56 dB re. 1 nV/RtHz, or 631 nV/RtHz.  This would be 200 uV RMS
+in 100 kHz BW, which is a common regulator spec.  However the actual
+regulator noise is non-flat, so the in-band noise density will be
+higher.  It seems that this is just about where the noise of the
+low-noise LT1963 is.  So maybe this is a demanding spec?  Or use a
+different amp with higher PSRR?  The diode coupling issue seems about
+30 dB below the PSRR, allowing for CMRR.  Though perhaps the PSRR
+error would also benefit from CMRR somewhat, since both channels would
+presumably be affected the same way.
+
+I'm thinking that we want on card regulation of low noise supplies.  
+For the first stage our output swing is only +/- 5V, so we could use
+significantly lower supplies.  But for +/- 10V we really need at least
+13V, preferably more, which would mean lower dropout than eg. LM317 if
+we are starting from +/- 15V.  The LD1086 would work for positive (a
+lower dropout 317), and is available in D2PAK.  The LM2991 would work
+for negative.  There are not any multi-sourced LDO negative
+adjustable regulators in Digikey stock.
+
+The LT3015 is of course nice, and also comes in D2PAK with the same
+number of pins, but the pinout and shutdown function are different.
+The LT1963 is positive version.  I'm not clear on why they don't tell
+you to bypass the lower side of divider in adjustable mode to prevent
+the noise from scaling with output voltage.  Maybe this is just
+because they are emphasizing the fixed voltage versions.
+
+Given that we already have a low noise 5V reference, I'm tempted to
+roll my own split supply using a dual opamp and a couple transistors.
+The opamp would have to RRO, but does not actually have to be super
+low noise because of the low gain, eg. 10 nV/rtHz would be fine.
+
+The OPA1678 (FET) looks good for this.  Uh, well, the OPA1688 has
+"high drive", 8 nV/rtHz and is a lot more convincing for output
+current near the rail.  With a follower setup with 2V dropout the amp
+output is about 1.3V from the rail.  Probably we could go down to 1.5V
+dropout.
+
+
+
 [7 Jan 20]
 
 Todo:
- -- Update reference buffer schematic with current booster transistor
  -- Update input channel to use two dual opamps
  -- Capture schematic for BIST driver
  -- Design board-level filtering and regulators for power supplies
 
 Starting to look at power budget, see ilemt_hw/input/power_budget.xslx
-
 
 
 [6 Jan 20]

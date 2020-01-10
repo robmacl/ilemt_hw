@@ -15,14 +15,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Sheet
-S 7850 1800 1100 450 
-U 5E1DA2AA
-F0 "sheet5E1DA2A6" 50
-F1 "reference_buffer.sch" 50
-F2 "-reference" I L 7850 2100 50 
-F3 "+reference" I L 7850 1950 50 
-$EndSheet
 Text Notes 7250 6800 0    50   ~ 0
 The connector to the main board, and other support circuitry that\nconnects by global labels
 Text Notes 7600 1450 0    50   ~ 0
@@ -60,19 +52,23 @@ L Connector:C64AB J?
 U 1 1 5E1D6B84
 P 1150 4200
 AR Path="/5E1D6B84" Ref="J?"  Part="1" 
-AR Path="/5E1D6729/5E1D6B84" Ref="J?"  Part="1" 
-F 0 "J?" H 1150 7550 50  0000 C CNN
+AR Path="/5E1D6729/5E1D6B84" Ref="J2"  Part="1" 
+F 0 "J2" H 1150 7550 50  0000 C CNN
 F 1 "C64AB" V 1400 4250 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x32_P2.54mm_Vertical" H 1150 4250 50  0001 C CNN
+F 2 "Connector_DIN:DIN41612_B_2x32_Horizontal" H 1150 4250 50  0001 C CNN
 F 3 " ~" H 1150 4250 50  0001 C CNN
+F 4 "64 Position Din Connector Header, Male Pins Gold Through Hole, Right Angle" H 1150 4200 50  0001 C CNN "Description"
+F 5 "609-5856-ND" H 1150 4200 50  0001 C CNN "Digikey"
+F 6 "86092645113755ELF" H 1150 4200 50  0001 C CNN "MPN"
+F 7 "Eurocard type B" H 1150 4200 50  0001 C CNN "Notes"
 	1    1150 4200
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power:GNDD #PWR?
+L power:GNDD #PWR011
 U 1 1 5E271928
 P 1900 4000
-F 0 "#PWR?" H 1900 3750 50  0001 C CNN
+F 0 "#PWR011" H 1900 3750 50  0001 C CNN
 F 1 "GNDD" H 1900 3875 50  0000 C CNN
 F 2 "" H 1900 4000 50  0001 C CNN
 F 3 "" H 1900 4000 50  0001 C CNN
@@ -196,10 +192,10 @@ Wire Wire Line
 Wire Wire Line
 	1600 4100 1600 4000
 $Comp
-L power:+5VD #PWR?
+L power:+5VD #PWR012
 U 1 1 5E27F010
 P 2200 4300
-F 0 "#PWR?" H 2200 4150 50  0001 C CNN
+F 0 "#PWR012" H 2200 4150 50  0001 C CNN
 F 1 "+5VD" H 2200 4440 50  0000 C CNN
 F 2 "" H 2200 4300 50  0001 C CNN
 F 3 "" H 2200 4300 50  0001 C CNN
@@ -215,4 +211,14 @@ Wire Wire Line
 Wire Wire Line
 	2200 4300 1700 4300
 Connection ~ 1700 4300
+Text GLabel 3000 6650 2    50   Output ~ 0
++reference
+Text GLabel 3000 6800 2    50   Output ~ 0
+-reference
+Text GLabel 2450 4650 2    50   Output ~ 0
+SYNC_IN
+Text GLabel 3300 5600 0    50   Input ~ 0
+SEL0
+Text GLabel 3300 5700 0    50   Input ~ 0
+SEL1
 $EndSCHEMATC

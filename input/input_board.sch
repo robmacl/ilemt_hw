@@ -23,7 +23,7 @@ AR Path="/5DA78AA2/5DF71C19" Ref="U?"  Part="1"
 AR Path="/5DF71C19" Ref="U5"  Part="1" 
 F 0 "U5" H 3400 5850 50  0000 C CNN
 F 1 "74LVC541A" H 3400 4550 50  0000 C CNN
-F 2 "" H 3700 5200 50  0001 C CNN
+F 2 "Package_SO:SSOP-20_5.3x7.2mm_P0.65mm" H 3700 5200 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74LS541" H 3700 5200 50  0001 C CNN
 	1    3700 5200
 	1    0    0    -1  
@@ -134,10 +134,10 @@ F5 "data" O R 6800 1300 50
 F6 "clocks" I L 5650 1600 50 
 $EndSheet
 $Comp
-L Interface:SN65LVDS047PW U?
+L Interface:SN65LVDS047PW U2
 U 1 1 5E00215D
 P 8600 5150
-F 0 "U?" H 8100 6000 50  0000 L CNN
+F 0 "U2" H 8100 6000 50  0000 L CNN
 F 1 "FIN1047" H 8650 6000 50  0000 L CNN
 F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 8500 4200 50  0001 C CNN
 F 3 "" H 8650 5150 50  0001 C CNN
@@ -241,10 +241,10 @@ Wire Wire Line
 Wire Wire Line
 	1500 2200 1500 2350
 $Comp
-L power:Earth_Protective #PWR?
+L power:Earth_Protective #PWR04
 U 1 1 5E1BF51D
 P 1500 2350
-F 0 "#PWR?" H 1750 2100 50  0001 C CNN
+F 0 "#PWR04" H 1750 2100 50  0001 C CNN
 F 1 "Earth_Protective" H 1950 2200 50  0001 C CNN
 F 2 "" H 1500 2250 50  0001 C CNN
 F 3 "~" H 1500 2250 50  0001 C CNN
@@ -252,13 +252,16 @@ F 3 "~" H 1500 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:RJ45_Shielded J?
+L Connector:RJ45_Shielded J1
 U 1 1 5E1BD14E
 P 1500 1700
-F 0 "J?" H 1300 2250 50  0000 R CNN
+F 0 "J1" H 1300 2250 50  0000 R CNN
 F 1 "Input" H 1600 2250 50  0000 L CNN
-F 2 "" V 1500 1725 50  0001 C CNN
-F 3 "~" V 1500 1725 50  0001 C CNN
+F 2 "Connector_RJ:RJ45_Amphenol_RJHSE538X" V 1500 1725 50  0001 C CNN
+F 3 "https://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/rjhse538x.pdf" V 1500 1725 50  0001 C CNN
+F 4 "RJHSE5387-ND" H 1500 1700 50  0001 C CNN "Digikey"
+F 5 "RJHSE5387" H 1500 1700 50  0001 C CNN "MPN"
+F 6 "CONN MOD JACK 8P8C R/A SHIELDED" H 1500 1700 50  0001 C CNN "Description"
 	1    1500 1700
 	1    0    0    -1  
 $EndComp
@@ -275,16 +278,16 @@ Wire Wire Line
 Wire Wire Line
 	3950 1600 3950 3400
 $Sheet
-S 2950 6800 1450 500 
+S 9500 800  1450 500 
 U 5E1D6729
 F0 "board_connecctor" 50
 F1 "board_connector.sch" 50
 $EndSheet
 $Comp
-L power:GNDD #PWR?
+L power:GNDD #PWR010
 U 1 1 5E1DDC3F
 P 8600 6150
-F 0 "#PWR?" H 8600 5900 50  0001 C CNN
+F 0 "#PWR010" H 8600 5900 50  0001 C CNN
 F 1 "GNDD" H 8600 6025 50  0000 C CNN
 F 2 "" H 8600 6150 50  0001 C CNN
 F 3 "" H 8600 6150 50  0001 C CNN
@@ -294,10 +297,10 @@ $EndComp
 Wire Wire Line
 	8600 6050 8600 6100
 $Comp
-L ilemt_input:OVDD #PWR?
+L ilemt_input:OVDD #PWR09
 U 1 1 5E1DF216
 P 8600 4200
-F 0 "#PWR?" H 8600 4050 50  0001 C CNN
+F 0 "#PWR09" H 8600 4050 50  0001 C CNN
 F 1 "OVDD" H 8600 4350 50  0000 C CNN
 F 2 "" H 8600 4200 50  0001 C CNN
 F 3 "" H 8600 4200 50  0001 C CNN
@@ -316,10 +319,10 @@ Connection ~ 8600 6100
 Wire Wire Line
 	8600 6100 8600 6150
 $Comp
-L ilemt_input:OVDD #PWR?
+L ilemt_input:OVDD #PWR08
 U 1 1 5E1E260B
 P 7850 5750
-F 0 "#PWR?" H 7850 5600 50  0001 C CNN
+F 0 "#PWR08" H 7850 5600 50  0001 C CNN
 F 1 "OVDD" H 7850 5900 50  0000 C CNN
 F 2 "" H 7850 5750 50  0001 C CNN
 F 3 "" H 7850 5750 50  0001 C CNN
@@ -397,10 +400,10 @@ Entry Wire Line
 Text Label 4850 4900 0    50   ~ 0
 MCLK
 $Comp
-L ilemt_input:FIN1048 U?
+L ilemt_input:FIN1048 U1
 U 1 1 5E233AEC
 P 1850 4900
-F 0 "U?" H 1450 5450 50  0000 L CNN
+F 0 "U1" H 1450 5450 50  0000 L CNN
 F 1 "FIN1048" H 1900 5450 50  0000 L CNN
 F 2 "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" H 1850 3150 50  0001 C CNN
 F 3 "https://www.onsemi.com/pub/Collateral/FIN1048-D.pdf" H 1150 4050 50  0001 C CNN
@@ -408,10 +411,10 @@ F 3 "https://www.onsemi.com/pub/Collateral/FIN1048-D.pdf" H 1150 4050 50  0001 C
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GNDD #PWR?
+L power:GNDD #PWR06
 U 1 1 5E2352F1
 P 1850 6750
-F 0 "#PWR?" H 1850 6500 50  0001 C CNN
+F 0 "#PWR06" H 1850 6500 50  0001 C CNN
 F 1 "GNDD" H 1850 6625 50  0000 C CNN
 F 2 "" H 1850 6750 50  0001 C CNN
 F 3 "" H 1850 6750 50  0001 C CNN
@@ -421,10 +424,10 @@ $EndComp
 Wire Wire Line
 	1850 6650 1850 6700
 $Comp
-L ilemt_input:OVDD #PWR?
+L ilemt_input:OVDD #PWR05
 U 1 1 5E2373A2
 P 1850 4200
-F 0 "#PWR?" H 1850 4050 50  0001 C CNN
+F 0 "#PWR05" H 1850 4050 50  0001 C CNN
 F 1 "OVDD" H 1850 4350 50  0000 C CNN
 F 2 "" H 1850 4200 50  0001 C CNN
 F 3 "" H 1850 4200 50  0001 C CNN
@@ -448,10 +451,10 @@ Connection ~ 1850 6700
 Wire Wire Line
 	1850 6700 1850 6750
 $Comp
-L ilemt_input:OVDD #PWR?
+L ilemt_input:OVDD #PWR03
 U 1 1 5E23EF0C
 P 1200 6200
-F 0 "#PWR?" H 1200 6050 50  0001 C CNN
+F 0 "#PWR03" H 1200 6050 50  0001 C CNN
 F 1 "OVDD" H 1200 6350 50  0000 C CNN
 F 2 "" H 1200 6200 50  0001 C CNN
 F 3 "" H 1200 6200 50  0001 C CNN
@@ -475,25 +478,18 @@ Entry Wire Line
 Entry Wire Line
 	5450 5850 5550 5750
 $Comp
-L power:GNDD #PWR?
+L power:GNDD #PWR07
 U 1 1 5E2509BE
-P 5200 5900
-F 0 "#PWR?" H 5200 5650 50  0001 C CNN
-F 1 "GNDD" H 5200 5775 50  0000 C CNN
-F 2 "" H 5200 5900 50  0001 C CNN
-F 3 "" H 5200 5900 50  0001 C CNN
-	1    5200 5900
+P 5000 5900
+F 0 "#PWR07" H 5000 5650 50  0001 C CNN
+F 1 "GNDD" H 5000 5775 50  0000 C CNN
+F 2 "" H 5000 5900 50  0001 C CNN
+F 3 "" H 5000 5900 50  0001 C CNN
+	1    5000 5900
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5200 5900 5200 5850
-Connection ~ 5200 5850
-Wire Wire Line
-	5200 5850 5450 5850
-Wire Wire Line
-	5200 5850 5200 5750
-Wire Wire Line
-	5200 5750 5300 5750
+	5000 5850 5000 5750
 Text GLabel 1250 4600 0    50   Input ~ 0
 MCLK+
 Text GLabel 1250 4800 0    50   Input ~ 0
@@ -518,6 +514,47 @@ Wire Wire Line
 	1250 5400 1350 5400
 Wire Wire Line
 	1250 5600 1350 5600
+$Sheet
+S 9500 1700 1100 450 
+U 5E2EB92B
+F0 "reference_buffer" 50
+F1 "reference_buffer.sch" 50
+F2 "-reference" I L 9500 2000 50 
+F3 "+reference" I L 9500 1850 50 
+$EndSheet
+Text GLabel 9400 1850 0    50   Input ~ 0
++reference
+Wire Wire Line
+	9400 1850 9500 1850
+Text GLabel 9400 2000 0    50   Input ~ 0
+-reference
+Wire Wire Line
+	9400 2000 9500 2000
+Text GLabel 3100 5300 0    50   Input ~ 0
+SYNC_IN
+Wire Wire Line
+	3100 5300 3200 5300
+Text GLabel 4900 5500 2    50   Output ~ 0
+SYNC
+Wire Wire Line
+	4850 5500 4900 5500
+NoConn ~ 2350 5900
+NoConn ~ 1350 6000
+NoConn ~ 1350 5800
+NoConn ~ 3200 5400
+NoConn ~ 4850 5600
+Text Notes 7150 6750 0    50   ~ 0
+Top level schematic for an input board
+Wire Wire Line
+	5000 5750 5300 5750
+Wire Wire Line
+	5000 5850 5450 5850
+Text Label 5050 5750 0    50   ~ 0
+SCKB
+Text Label 5050 5850 0    50   ~ 0
+SCKB
+Wire Wire Line
+	5000 5900 5000 5850
 Wire Bus Line
 	7250 1300 7250 4750
 Wire Wire Line
@@ -528,4 +565,5 @@ Wire Bus Line
 	5400 2550 5400 5650
 Wire Bus Line
 	5550 3550 5550 5750
+Connection ~ 5000 5850
 $EndSCHEMATC
