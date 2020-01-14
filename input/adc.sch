@@ -1,11 +1,12 @@
 EESchema Schematic File Version 4
 LIBS:input_board-cache
 LIBS:input_channel-cache
+LIBS:reference_buffer-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 10
+Sheet 3 11
 Title ""
 Date ""
 Rev ""
@@ -113,7 +114,7 @@ F 3 "" H 6800 1600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 8850 2300 2    50   Input ~ 0
-reference
+VREF
 Wire Wire Line
 	6900 3000 7000 3000
 Wire Wire Line

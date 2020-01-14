@@ -6,6 +6,12 @@ K single opamp
 F https://www.analog.com/media/en/technical-documentation/data-sheets/AD797.pdf
 $ENDCMP
 #
+$CMP BAS21S
+D High-speed switching diodes
+K diode
+F https://www.mccsemi.com/pdf/Products/BAS21A,C,S(SOT-23).PDF
+$ENDCMP
+#
 $CMP FIN1046
 D Dual LVDS Receiver, >155Mbps, 5V, SOIC-8
 K Dual LVDS Receiver
@@ -16,6 +22,12 @@ $CMP FIN1048
 D Quad LVDS Receiver, 3.3V, SOIC-16
 K Quad LVDS Receiver
 F https://www.onsemi.com/pub/Collateral/FIN1048-D.pdf
+$ENDCMP
+#
+$CMP GDT
+D Spark gap
+K spark gap ESD electrostatic suppression
+F ~
 $ENDCMP
 #
 $CMP LM101_copy
@@ -42,6 +54,11 @@ K single opamp
 F https://www.analog.com/media/en/technical-documentation/data-sheets/lt1012.pdf
 $ENDCMP
 #
+$CMP OPAMP_DUAL
+D IC OPAMP  2 CIRCUIT
+F http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Flm358
+$ENDCMP
+#
 $CMP OVDD
 D Power symbol creates a global label with name "VDD"
 K power-flag
@@ -57,6 +74,16 @@ $CMP THS4131
 D Low noise differential amp
 K differential amplifier
 F https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4940-1_4940-2.pdf
+$ENDCMP
+#
+$CMP V+
+D Power symbol creates a global label with name "+15V"
+K power-flag
+$ENDCMP
+#
+$CMP V-
+D Power symbol creates a global label with name "+15V"
+K power-flag
 $ENDCMP
 #
 $CMP opamp_single

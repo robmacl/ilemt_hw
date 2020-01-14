@@ -1,11 +1,12 @@
 EESchema Schematic File Version 4
 LIBS:input_board-cache
 LIBS:input_channel-cache
+LIBS:reference_buffer-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 10
+Sheet 6 11
 Title ""
 Date ""
 Rev ""
@@ -15,19 +16,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L power:+15V #PWR0139
-U 1 1 5DFFAD16
-P 4000 900
-AR Path="/5DFCF14D/5DA78BF5/5DFFAD16" Ref="#PWR0139"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DFFAD16" Ref="#PWR0139"  Part="1" 
-F 0 "#PWR0139" H 4000 750 50  0001 C CNN
-F 1 "+15V" H 4015 1073 50  0000 C CNN
-F 2 "" H 4000 900 50  0001 C CNN
-F 3 "" H 4000 900 50  0001 C CNN
-	1    4000 900 
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4000 900  4000 1000
 $Comp
@@ -45,19 +33,6 @@ F 3 "~" H 4350 1000 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4000 1700 4000 1850
-$Comp
-L power:-15V #PWR0140
-U 1 1 5DE6EE07
-P 4000 1900
-AR Path="/5DFCF14D/5DA78BF5/5DE6EE07" Ref="#PWR0140"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DE6EE07" Ref="#PWR0140"  Part="1" 
-F 0 "#PWR0140" H 4000 2000 50  0001 C CNN
-F 1 "-15V" H 4015 2073 50  0000 C CNN
-F 2 "" H 4000 1900 50  0001 C CNN
-F 3 "" H 4000 1900 50  0001 C CNN
-	1    4000 1900
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	4250 1000 4000 1000
 Connection ~ 4000 1000
@@ -106,128 +81,6 @@ F 3 "" H 4600 1850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4450 1850 4600 1850
-$Comp
-L ilemt_input:opamp_single U105
-U 1 1 5DFFAD15
-P 3950 1400
-AR Path="/5DFCF14D/5DA78BF5/5DFFAD15" Ref="U105"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DFFAD15" Ref="U105"  Part="1" 
-F 0 "U105" H 4294 1446 50  0000 L CNN
-F 1 "LT1028" H 4294 1355 50  0000 L CNN
-F 2 "" H 4000 1450 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 4000 1550 50  0001 C CNN
-	1    3950 1400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C133
-U 1 1 5E19556B
-P 4450 5850
-AR Path="/5DFCF14D/5DA78BF5/5E19556B" Ref="C133"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5E19556B" Ref="C133"  Part="1" 
-F 0 "C133" V 4221 5850 50  0000 C CNN
-F 1 "1uF" V 4312 5850 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 4450 5850 50  0001 C CNN
-F 3 "~" H 4450 5850 50  0001 C CNN
-	1    4450 5850
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GNDA #PWR0145
-U 1 1 5E19556C
-P 4700 5850
-AR Path="/5DFCF14D/5DA78BF5/5E19556C" Ref="#PWR0145"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5E19556C" Ref="#PWR0145"  Part="1" 
-F 0 "#PWR0145" H 4700 5600 50  0001 C CNN
-F 1 "GNDA" V 4705 5722 50  0000 R CNN
-F 2 "" H 4700 5850 50  0001 C CNN
-F 3 "" H 4700 5850 50  0001 C CNN
-	1    4700 5850
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	4550 5850 4700 5850
-$Comp
-L Device:C_Small C134
-U 1 1 5DE57CAD
-P 4450 6700
-AR Path="/5DFCF14D/5DA78BF5/5DE57CAD" Ref="C134"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DE57CAD" Ref="C134"  Part="1" 
-F 0 "C134" V 4221 6700 50  0000 C CNN
-F 1 "1uF" V 4312 6700 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 4450 6700 50  0001 C CNN
-F 3 "~" H 4450 6700 50  0001 C CNN
-	1    4450 6700
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GNDA #PWR0146
-U 1 1 5DE57CB3
-P 4700 6700
-AR Path="/5DFCF14D/5DA78BF5/5DE57CB3" Ref="#PWR0146"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DE57CB3" Ref="#PWR0146"  Part="1" 
-F 0 "#PWR0146" H 4700 6450 50  0001 C CNN
-F 1 "GNDA" V 4705 6572 50  0000 R CNN
-F 2 "" H 4700 6700 50  0001 C CNN
-F 3 "" H 4700 6700 50  0001 C CNN
-	1    4700 6700
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	4550 6700 4700 6700
-Wire Wire Line
-	4350 6700 4100 6700
-$Comp
-L ilemt_input:opamp_single U106
-U 1 1 5DE57CBD
-P 4050 6250
-AR Path="/5DFCF14D/5DA78BF5/5DE57CBD" Ref="U106"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DE57CBD" Ref="U106"  Part="1" 
-F 0 "U106" H 4394 6296 50  0000 L CNN
-F 1 "LT1028" H 4394 6205 50  0000 L CNN
-F 2 "" H 4100 6300 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 4100 6400 50  0001 C CNN
-	1    4050 6250
-	1    0    0    1   
-$EndComp
-$Comp
-L power:+15V #PWR0142
-U 1 1 5DE6EE11
-P 4100 6850
-AR Path="/5DFCF14D/5DA78BF5/5DE6EE11" Ref="#PWR0142"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DE6EE11" Ref="#PWR0142"  Part="1" 
-F 0 "#PWR0142" H 4100 6700 50  0001 C CNN
-F 1 "+15V" H 4115 7023 50  0000 C CNN
-F 2 "" H 4100 6850 50  0001 C CNN
-F 3 "" H 4100 6850 50  0001 C CNN
-	1    4100 6850
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	4100 6700 4100 6850
-Wire Wire Line
-	4100 6550 4100 6700
-Connection ~ 4100 6700
-Wire Wire Line
-	4100 5750 4100 5850
-$Comp
-L power:-15V #PWR0141
-U 1 1 5DE5ACAE
-P 4100 5750
-AR Path="/5DFCF14D/5DA78BF5/5DE5ACAE" Ref="#PWR0141"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DE5ACAE" Ref="#PWR0141"  Part="1" 
-F 0 "#PWR0141" H 4100 5850 50  0001 C CNN
-F 1 "-15V" H 4115 5923 50  0000 C CNN
-F 2 "" H 4100 5750 50  0001 C CNN
-F 3 "" H 4100 5750 50  0001 C CNN
-	1    4100 5750
-	1    0    0    -1  
-$EndComp
-Connection ~ 4100 5850
-Wire Wire Line
-	4100 5850 4350 5850
-Wire Wire Line
-	4100 5850 4100 5950
 Wire Wire Line
 	4000 1900 4000 1850
 Connection ~ 4000 1850
@@ -257,7 +110,7 @@ Wire Wire Line
 Wire Wire Line
 	3450 1500 3700 1500
 Wire Wire Line
-	4350 1400 5450 1400
+	4300 1400 5450 1400
 $Comp
 L Device:R_US R130
 U 1 1 5E19558D
@@ -274,11 +127,7 @@ F 5 "541-3877-1-ND" H 4100 5250 50  0001 C CNN "Digikey"
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	4450 6250 5450 6250
-Wire Wire Line
 	4250 5250 5450 5250
-Wire Wire Line
-	5450 6250 5450 5250
 $Comp
 L Connector_Generic:Conn_02x02_Odd_Even J101
 U 1 1 5DE6EE15
@@ -299,9 +148,10 @@ P 3100 4050
 AR Path="/5DFCF14D/5DA78BF5/5DE6EE16" Ref="R126"  Part="1" 
 AR Path="/5DFCF14D/5E195558/5DE6EE16" Ref="R126"  Part="1" 
 F 0 "R126" V 3200 4050 50  0000 C CNN
-F 1 "49.9" V 3000 4050 50  0000 C CNN
+F 1 "100" V 3000 4050 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3140 4040 50  0001 C CNN
 F 3 "~" H 3100 4050 50  0001 C CNN
+F 4 "0.1%" V 3100 4050 50  0001 C CNN "Notes"
 	1    3100 4050
 	1    0    0    -1  
 $EndComp
@@ -312,7 +162,7 @@ P 3500 4050
 AR Path="/5DFCF14D/5DA78BF5/5DE6EE17" Ref="R127"  Part="1" 
 AR Path="/5DFCF14D/5E195558/5DE6EE17" Ref="R127"  Part="1" 
 F 0 "R127" V 3600 4050 50  0000 C CNN
-F 1 "143" V 3400 4050 50  0000 C CNN
+F 1 "243" V 3400 4050 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3540 4040 50  0001 C CNN
 F 3 "~" H 3500 4050 50  0001 C CNN
 	1    3500 4050
@@ -325,11 +175,9 @@ P 3900 4050
 AR Path="/5DFCF14D/5DA78BF5/5DE76F92" Ref="R128"  Part="1" 
 AR Path="/5DFCF14D/5E195558/5DE76F92" Ref="R128"  Part="1" 
 F 0 "R128" V 4000 4050 50  0000 C CNN
-F 1 "499" V 3800 4050 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 3940 4040 50  0001 C CNN
+F 1 "1K" V 3800 4050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 3940 4040 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 3900 4050 50  0001 C CNN
-F 4 "RES 499 OHM 0.1% 2/5W 1206" H 3900 4050 50  0001 C CNN "Description"
-F 5 "541-3877-1-ND" H 3900 4050 50  0001 C CNN "Digikey"
 	1    3900 4050
 	1    0    0    -1  
 $EndComp
@@ -355,189 +203,25 @@ Wire Wire Line
 Wire Wire Line
 	3500 3750 3500 3900
 Text Notes 1500 4350 0    50   ~ 0
-Both jumpers: gain 30\nJumper 1-2: gain 21\nJumper 3-4: gain 10\nNo jumpers: gain 3\nNote that ADC driver has gain 1/2, \nso overall gain is half this\n
+Both jumpers: gain 16\nJumper 1-2: gain 12\nJumper 3-4: gain 6\nNo jumpers: gain 2\n
 Wire Wire Line
-	3800 6150 3400 6150
-Wire Wire Line
-	3400 6150 3400 5250
+	3800 5950 3400 5950
 Wire Wire Line
 	3400 5250 3950 5250
 Wire Wire Line
 	3450 1500 3450 2350
-Connection ~ 3400 5250
-$Comp
-L Device:C_Small C135
-U 1 1 5E1955A1
-P 7400 3000
-AR Path="/5DFCF14D/5DA78BF5/5E1955A1" Ref="C135"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5E1955A1" Ref="C135"  Part="1" 
-F 0 "C135" V 7171 3000 50  0000 C CNN
-F 1 "1uF" V 7262 3000 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 7400 3000 50  0001 C CNN
-F 3 "~" H 7400 3000 50  0001 C CNN
-	1    7400 3000
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GNDA #PWR0149
-U 1 1 5DE8AF08
-P 7650 3000
-AR Path="/5DFCF14D/5DA78BF5/5DE8AF08" Ref="#PWR0149"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DE8AF08" Ref="#PWR0149"  Part="1" 
-F 0 "#PWR0149" H 7650 2750 50  0001 C CNN
-F 1 "GNDA" V 7655 2872 50  0000 R CNN
-F 2 "" H 7650 3000 50  0001 C CNN
-F 3 "" H 7650 3000 50  0001 C CNN
-	1    7650 3000
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	7500 3000 7650 3000
-$Comp
-L Device:C_Small C136
-U 1 1 5DE6EE1B
-P 7400 3850
-AR Path="/5DFCF14D/5DA78BF5/5DE6EE1B" Ref="C136"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DE6EE1B" Ref="C136"  Part="1" 
-F 0 "C136" V 7171 3850 50  0000 C CNN
-F 1 "1uF" V 7262 3850 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 7400 3850 50  0001 C CNN
-F 3 "~" H 7400 3850 50  0001 C CNN
-	1    7400 3850
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GNDA #PWR0150
-U 1 1 5DE6EE1C
-P 7650 3850
-AR Path="/5DFCF14D/5DA78BF5/5DE6EE1C" Ref="#PWR0150"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DE6EE1C" Ref="#PWR0150"  Part="1" 
-F 0 "#PWR0150" H 7650 3600 50  0001 C CNN
-F 1 "GNDA" V 7655 3722 50  0000 R CNN
-F 2 "" H 7650 3850 50  0001 C CNN
-F 3 "" H 7650 3850 50  0001 C CNN
-	1    7650 3850
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	7500 3850 7650 3850
-Wire Wire Line
-	7300 3850 7050 3850
-$Comp
-L ilemt_input:opamp_single U107
-U 1 1 5E1955A3
-P 7000 3400
-AR Path="/5DFCF14D/5DA78BF5/5E1955A3" Ref="U107"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5E1955A3" Ref="U107"  Part="1" 
-F 0 "U107" H 7344 3446 50  0000 L CNN
-F 1 "LT1028" H 7344 3355 50  0000 L CNN
-F 2 "" H 7050 3450 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 7050 3550 50  0001 C CNN
-	1    7000 3400
-	1    0    0    1   
-$EndComp
-$Comp
-L power:+15V #PWR0148
-U 1 1 5DE6EE1E
-P 7050 4000
-AR Path="/5DFCF14D/5DA78BF5/5DE6EE1E" Ref="#PWR0148"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5DE6EE1E" Ref="#PWR0148"  Part="1" 
-F 0 "#PWR0148" H 7050 3850 50  0001 C CNN
-F 1 "+15V" H 7065 4173 50  0000 C CNN
-F 2 "" H 7050 4000 50  0001 C CNN
-F 3 "" H 7050 4000 50  0001 C CNN
-	1    7050 4000
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	7050 3850 7050 4000
-Wire Wire Line
-	7050 3700 7050 3850
-Connection ~ 7050 3850
-Wire Wire Line
-	7050 2900 7050 3000
-$Comp
-L power:-15V #PWR0147
-U 1 1 5E195594
-P 7050 2900
-AR Path="/5DFCF14D/5DA78BF5/5E195594" Ref="#PWR0147"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5E195594" Ref="#PWR0147"  Part="1" 
-F 0 "#PWR0147" H 7050 3000 50  0001 C CNN
-F 1 "-15V" H 7065 3073 50  0000 C CNN
-F 2 "" H 7050 2900 50  0001 C CNN
-F 3 "" H 7050 2900 50  0001 C CNN
-	1    7050 2900
-	1    0    0    -1  
-$EndComp
-Connection ~ 7050 3000
-Wire Wire Line
-	7050 3000 7300 3000
-Wire Wire Line
-	7050 3000 7050 3100
-Wire Wire Line
-	7400 3400 8250 3400
-$Comp
-L Device:R_Pack04 RN103
-U 1 1 5E195595
-P 6250 3500
-AR Path="/5DFCF14D/5DA78BF5/5E195595" Ref="RN103"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5E195595" Ref="RN103"  Part="1" 
-F 0 "RN103" V 5950 3500 50  0000 C CNN
-F 1 "1K" V 6450 3500 50  0000 C CNN
-F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 6525 3500 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/28751/acasprec.pdf" H 6250 3500 50  0001 C CNN
-F 4 "749-1015-1-ND" V 6250 3500 50  0001 C CNN "Digikey"
-F 5 "ACASA1001S1001P100" V 6250 3500 50  0001 C CNN "MPN"
-F 6 "RES ARRAY 4 RES 1K OHM 1206 0.1%" V 6250 3500 50  0001 C CNN "Description"
-	1    6250 3500
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	6050 3300 6050 2350
-Wire Wire Line
-	8250 2350 8250 3400
-Connection ~ 8250 3400
-Wire Wire Line
-	6450 3400 6500 3400
-Wire Wire Line
-	6500 3400 6500 3300
-Wire Wire Line
-	6050 3500 5450 3500
-Connection ~ 5450 5250
-Wire Wire Line
-	6450 3600 6500 3600
-Wire Wire Line
-	6500 3600 6500 3500
-Wire Wire Line
-	6050 2350 8250 2350
-Wire Wire Line
-	6500 3500 6750 3500
-Wire Wire Line
-	6450 3300 6500 3300
-Wire Wire Line
-	6750 3300 6500 3300
-Connection ~ 6500 3300
-Wire Wire Line
-	6500 3500 6450 3500
-Connection ~ 6500 3500
 Text HLabel 2950 1300 0    50   Input ~ 0
--in
-Text HLabel 3050 6350 0    50   Input ~ 0
 +in
-Text HLabel 8800 3400 2    50   Input ~ 0
-out
-Wire Wire Line
-	8250 3400 8800 3400
+Text HLabel 3050 6150 0    50   Input ~ 0
+-in
+Text HLabel 5800 1400 2    50   Input ~ 0
++out
 Wire Wire Line
 	2950 1300 3700 1300
 Wire Wire Line
-	3050 6350 3800 6350
-Text HLabel 8800 4350 2    50   Input ~ 0
-out_ref
-Wire Wire Line
-	6050 4350 8800 4350
-Wire Wire Line
-	6050 3600 6050 4350
+	3050 6150 3800 6150
+Text HLabel 5800 6050 2    50   Input ~ 0
+-out
 Wire Wire Line
 	3450 2350 3450 2850
 Wire Wire Line
@@ -547,8 +231,6 @@ Wire Wire Line
 	3450 3250 3900 3250
 Wire Wire Line
 	5450 2350 5450 2850
-Wire Wire Line
-	5450 3400 6050 3400
 Connection ~ 5450 2350
 $Comp
 L Device:C_Small C129
@@ -568,13 +250,8 @@ Wire Wire Line
 	4000 2850 3450 2850
 Wire Wire Line
 	4200 2850 5450 2850
-Connection ~ 5450 2850
-Wire Wire Line
-	5450 2850 5450 3400
 Wire Wire Line
 	3100 4350 3400 4350
-Wire Wire Line
-	5450 3500 5450 5250
 Wire Wire Line
 	3400 4350 3400 4800
 Connection ~ 3400 4350
@@ -604,6 +281,70 @@ Wire Wire Line
 Wire Wire Line
 	3400 4800 3400 5250
 Connection ~ 3450 2850
-Text Notes 5800 5250 0    50   ~ 0
-C195, C1230 mainly there to swamp excess capacitance at the \ninverting input due to gain switching network, but also give\nsome band limiting, 144 kHz.  The antialias filter gives plenty\nof rejection, so we are not risking compromising CMR by\ntaking a strong cut here (though to first order, mismatch should\nnot matter).
+Text Notes 4450 3900 0    50   ~ 0
+C129, C130 give a pole at 30 kHz which is part of the 3rd order\nantialias filter.  They also swamp stray capacitance at the\ninverting input due to gain switching network.
+Wire Wire Line
+	5800 1400 5450 1400
+Connection ~ 5450 1400
+Wire Wire Line
+	5450 4800 5450 5250
+Text Notes 7150 6950 0    50   ~ 0
+This is a differential amplifier, like the first part of a 3 opamp style \ninstrumentation amp, but we output to the fully-differential\ndriver/antialias filter in the antialias_driver sheet.
+$Comp
+L ilemt_input:V+ #PWR0132
+U 1 1 5E4F57E2
+P 4000 900
+F 0 "#PWR0132" H 4000 750 50  0001 C CNN
+F 1 "V+" H 4000 1040 50  0000 C CNN
+F 2 "" H 4000 900 50  0001 C CNN
+F 3 "" H 4000 900 50  0001 C CNN
+	1    4000 900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L ilemt_input:V- #PWR0139
+U 1 1 5E4F5C06
+P 4000 2000
+F 0 "#PWR0139" H 4000 1850 50  0001 C CNN
+F 1 "V-" H 4000 1960 50  0000 C CNN
+F 2 "" H 4000 2100 50  0001 C CNN
+F 3 "" H 4000 2100 50  0001 C CNN
+	1    4000 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L ilemt_input:OPAMP_DUAL U101
+U 1 1 5E501ACE
+P 4000 1400
+F 0 "U101" H 3700 1700 60  0000 C CNN
+F 1 "AD8599" H 4250 1600 60  0000 L CNN
+F 2 "Package_SO:SO-8_5.3x6.2mm_P1.27mm" H 4200 1600 60  0001 L CNN
+F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Flm358" H 4200 1700 60  0001 L CNN
+F 4 "IC OPAMP 2 CIRCUIT" H 4200 2400 60  0001 L CNN "Description"
+	1    4000 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L ilemt_input:OPAMP_DUAL U101
+U 2 1 5E503A0A
+P 4100 6050
+F 0 "U101" H 3800 6350 60  0000 C CNN
+F 1 "AD8599" H 4100 6300 60  0000 L CNN
+F 2 "Package_SO:SO-8_5.3x6.2mm_P1.27mm" H 4300 6250 60  0001 L CNN
+F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Flm358" H 4300 6350 60  0001 L CNN
+F 4 "IC OPAMP 2 CIRCUIT" H 4300 7050 60  0001 L CNN "Description"
+	2    4100 6050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 6050 5450 6050
+Wire Wire Line
+	3400 5950 3400 5250
+Connection ~ 3400 5250
+Connection ~ 5450 6050
+Wire Wire Line
+	5450 6050 5800 6050
+Wire Wire Line
+	5450 5250 5450 6050
+Connection ~ 5450 5250
 $EndSCHEMATC

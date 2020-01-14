@@ -1,11 +1,12 @@
 EESchema Schematic File Version 4
 LIBS:input_board-cache
 LIBS:input_channel-cache
+LIBS:reference_buffer-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 10
+Sheet 2 11
 Title ""
 Date ""
 Rev ""
@@ -30,10 +31,10 @@ S 5100 3250 1050 550
 U 5DE6CDF8
 F0 "antialias_driver" 50
 F1 "antialias_driver.sch" 50
-F2 "in" I L 5100 3350 50 
-F3 "-out" I R 6150 3500 50 
-F4 "+out" I R 6150 3350 50 
-F5 "ref" I L 5100 3500 50 
+F2 "-out" I R 6150 3500 50 
+F3 "+out" I R 6150 3350 50 
+F4 "-in" I L 5100 3500 50 
+F5 "+in" I L 5100 3350 50 
 $EndSheet
 Text Notes 7150 6750 0    50   ~ 0
 One input channel, from filter and protection, all the way through to the ADC.
@@ -51,17 +52,13 @@ $EndSheet
 $Sheet
 S 3700 3250 1100 550 
 U 5E195558
-F0 "In amp" 50
+F0 "in_amp" 50
 F1 "in_amp.sch" 50
 F2 "-in" I L 3700 3500 50 
 F3 "+in" I L 3700 3350 50 
-F4 "out" I R 4800 3350 50 
-F5 "out_ref" I R 4800 3500 50 
+F4 "+out" I R 4800 3350 50 
+F5 "-out" I R 4800 3500 50 
 $EndSheet
-Wire Wire Line
-	4800 3350 5100 3350
-Wire Wire Line
-	4800 3500 5100 3500
 Wire Wire Line
 	6150 3500 6450 3500
 Wire Wire Line
@@ -98,4 +95,8 @@ Wire Bus Line
 	3500 3700 3500 4100
 Wire Bus Line
 	3500 4100 3650 4100
+Wire Wire Line
+	4800 3350 5100 3350
+Wire Wire Line
+	4800 3500 5100 3500
 $EndSCHEMATC

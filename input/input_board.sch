@@ -1,11 +1,12 @@
 EESchema Schematic File Version 4
 LIBS:input_board-cache
 LIBS:input_channel-cache
+LIBS:reference_buffer-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 10
+Sheet 1 11
 Title ""
 Date ""
 Rev ""
@@ -555,6 +556,7 @@ Text Label 5050 5850 0    50   ~ 0
 SCKB
 Wire Wire Line
 	5000 5900 5000 5850
+Connection ~ 5000 5850
 Wire Bus Line
 	7250 1300 7250 4750
 Wire Wire Line
@@ -565,5 +567,10 @@ Wire Bus Line
 	5400 2550 5400 5650
 Wire Bus Line
 	5550 3550 5550 5750
-Connection ~ 5000 5850
+$Sheet
+S 9550 2650 1150 500 
+U 5E51E83D
+F0 "power" 50
+F1 "power.sch" 50
+$EndSheet
 $EndSCHEMATC

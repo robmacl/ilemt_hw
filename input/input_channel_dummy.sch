@@ -1,11 +1,12 @@
 EESchema Schematic File Version 4
 LIBS:input_board-cache
 LIBS:input_channel-cache
+LIBS:reference_buffer-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 10
+Sheet 10 11
 Title ""
 Date ""
 Rev ""

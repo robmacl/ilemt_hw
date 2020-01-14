@@ -128,7 +128,287 @@ password BogPickle
 ________________
 
 
-[8 Jan 20]
+[13 Jan 20]
+
+    [11 Jan 20]
+    From [8-9 Jan 20], based on stage 1 PSRR, the rail noise should be
+    less than 631 nV/rtHz, or 200 uV RMS in 100 kHz bandwidth.  At +30 dB
+    that would be 6.3 mV RMS at the input.  This is way more than what I
+    am seeing from the Condor linear supply I am using, and even well
+    above the highly conservative spec.
+
+100 kHz bandwidth is standard for analog supply specs, but what we
+care about most is the stuff in our bandwidth.  Any narrowband
+interference, such as coupling from other channels, is detectable at a
+much lower level than white noise.  If we say our bandwidth is 1 kHz,
+then 2 nV/rtHz in 1 kHz bandwidth is 63 nV RMS.  (FWIW, this is 155 dB
+FS.)  Supposing that we wanted any PSRR error to be 20 nV RMS RTI (so
+as to be completely undetectable), then this is -154 dB re. 1V.  If
+the amp PSRR is so dB, then we need the rail ripple to be -94 dBV, or
+20 uV RMS.  If we take the modulated load current to be 20 mA, then
+the supply output impedance needs to be 1 mOhm at 10 kHz.
+
+This would be quite hard to achieve with a single regulator common to
+the channels, since there is some copper resistance drop between the
+regulator output and the load.  But we are mainly concerned with the
+cross-coupling between the channels, not self-coupling, and this is as
+good or better than the regulator output impedance as long as we use
+different distribution traces for each channel.
+
+[For comparison, the LT1963A does not specify output impedance
+vs. frequency, but based on the DC load regulation and the PSRR
+frequency response and the output voltage, it looks like it might be
+about 7 mOhm at 10 kHz.  Really, probably both the ripple rejection
+and output impedance of the LT1963A would be good enough, but it
+bugged me spending that much for a chip that did not do as well as I
+could.  If the simulation is to be believed, I am getting about 0.6
+mOhm Zout at the regulator.]
+
+
+[11 Jan 20]
+
+Todo:
+ -- Redo antialias filter component values using E24 capacitors.
+    There has been some random walk due to successive tweaks.
+ -- Power sheet, input filtering, regulators
+
+The spec'd leakage for BAV99 is terrible, 2.5 uA, which is about 50x
+larger than the typical value on the plot.  But even at that current,
+the shot noise is quite negligible, about 1e-26 A/rtHz.  So diode shot
+noise is not a problem.
+
+The BAS21 leakage is much lower, 100 nA spec'd, about 1.5 nA typical
+at 8V reverse bias and 25 degrees C.  Leakage does go up exponentially
+with temperature, of course.
+
+I don't see any obvious problem with even 2.5 uA leakage since we are
+doing AC measurement, but a 2.5 uA differential current across a 100
+Ohm sensor coild would create a 250 uV offset, which is well above our
+noise floor.  And with the CM bias resistance of 100K we get 0.25V.
+We do have 4 diodes on each input, but they are going to opposite
+rails, so some degree of cancellation would be expected.  The main
+possible issue I can see is that there is nonlinearity due to the
+exponential change in leakage with reverse bias, which might create
+measurable distortion.
+
+For perspective, the AD8599 opamp bias current is 25 nA typ, 200 nA
+max.
+
+Uh, OK.  The BAS21SLT from ON semi is series connected, would be a
+drop-in replacement for BAV99.  The BAS21L is a single diode, and the
+BAS21DW5 is a dual independent (in in SOT-353).  Puzzlingly, the these
+parts from ON semi have different datasheets.  The one with the
+BAS21DW5 has much more complete data, but the overlapping specs and
+plots are the same.  The BAS21S has two sources on Digikey.
+
+
+I was heading toward using the LT1963A and LT3015E low noise LDOs,
+which are a bit pricy, but low dropout and nicely protected.  But I
+see that the LT1963 does not have all that great ripple rejection,
+only 55 dB @ 10 KHz and 65 dB @ 120 Hz.  Some versions of the 317 spec
+80 dB rejection at 120 Hz with the reference bypass, and characterized
+as extending out to 10 KHz, in eg. the LM317M from ON semi.  It seems
+kind of odd to have such low ripple rejection in what is supposed to
+be low noise, although I guess in most applications these days it will
+be driven from a switching supply which has minimal low-frequency
+noise.
+
+
+I don't recall paying a whole lot of attention to the ripple rejection
+of regulators in the past, but I notice that as characterized, with
+only the nominal required output capacitor, the capacitance is not
+taking over at high frequency.  For the LT1963A They show the ripple
+rejection as deteriorating all the way out to the end of the plot, 20
+dB at 1 MHz.  It's this way for the 317 also.  I guess this is a
+standard practice which is surely at least partly due to the desire to
+claim that only a minimal output capacitor is needed.
+
+Hum, don't really have much traction on the design requirements here.
+Let's see, if we are looking at the noise spec, 40 uV RMS from 10 Hz
+to 100 kHz, then if we want the ripple contribution to contribute
+negligibly, and the ripple rejection over most of this bandwidth is
+about 40 dB, then we want less than +40 - 10 dB re. 40 uV on the
+regulator input, or 1.3 mV RMS.  That's a moderately low noise input
+supply, isn't it?
+
+ ==> 50 uV RMS is for the 3.3V part, though.  It would be about 180 uV
+     RMS at 15V, or 97 uV at 8V.  So the input noise could be 3 mV
+     RMS or 18 mV p-p.
+
+From [8-9 Jan 20], based on stage 1 PSRR, the rail noise should be
+less than 631 nV/rtHz, or 200 uV RMS in 100 kHz bandwidth.  At +30 dB
+that would be 6.3 mV RMS at the input.  This is way more than what I
+am seeing from the Condor linear supply I am using, and even well
+above the highly conservative spec.
+
+But the actual ripple of the linear is 120 Hz, and for SMPS it would
+be at the switching frequency, probably > 100 kHz.  Neither of these
+are anything like white noise.  Probably you would need an extra LC
+filter stage to get rid of the switching ripple, and then the question
+is how much noise would be left that falls in our passband.
+
+
+
+
+I tried simulating my simple follower supply, and am getting results
+all over the place depending on which opamp macromodel I use, even
+sticking to OP27/OP37 times.  It claims it would be stable with OP37,
+and the bandwidth is better.  But the models have wildly different
+PSRR, like 60 dB different.
+ ==> The "OP27" model seems totally bogus.  With "OP27A", if it is to
+     be believed, we get 120 dB ripple rejection at 10 kHz.
+
+ ==> The "OP27A" has plausible dynamics, but does not model the PSRR.
+     If I use the parametric model giving it a 120 dB PSRR, then this
+     shows reasonable PSRR when tested in a seperate sim, and gives a
+     much more reasonable ripple rejection of 55 dB at 10 kHz.
+
+This is not hugely better than the LT1963A at 10 kHz (sim is 15 dB
+better).  But the rejection keeps improving at lower frequencies,
+rather than being flat (as the LT1963A does below about 3 kHz).  That
+is, the DC PSRR (and presumably gain) are worse.
+
+
+The OPA1688 which I was thinking of using in the regulator has a V+
+PSRR of 90 dB at 10 kHz, whereas the OPA27 only has 55 dB.  Hum, I
+guess in this circuit, the overall PSRR is identical to the opamp?  Or
+at least currently is being limited by that.  It can't be any *better*
+than the opamp PSRR when the amp is being driven by the same supply as
+the input.  In our passband range, passive filtration is pretty
+ineffective for cleaning up the regulator input, but we *could* clean up
+just the opamp supply.
+ ==> Woot!  That works real good.  Using 22 Ohm/330 uF on the V+
+     supply causes the PSRR to stop degrading at about 50 Hz.  About 50 dB
+     better at 10 kHz.  The filter pole is at 22 Hz, so that makes
+     sense.
+
+Really, the OPA1688 regulator would probably be fine even without
+heavy LF supply filtering.  It's already 50 dB better than the LT1963
+at 10 kHz.  Because we are operating right at the rail, we can't do
+anything in the way of active filtering of the opamp supply without
+increasing our dropout, which is already not in the true LDO range
+(less than one Vbe).
+
+See 330 uF aluminum polymer cap 565-4285-1-ND, rated 22 mOhm, and
+tiny.  $0.76 in quantity 10, with 15k hour life @ 105 C.
+
+
+My regulator does have problems if the output capacitor has too low ESR,
+and the simulation says it is also unstable if we add low ESR caps,
+like 1 uF ceramic decoupling caps.  However if the low ESR caps
+downstream are decoupled from the regulator by a lossy inductor then
+we are good.  This slows the load transient response, but it is still
+decently fast.
+
+
+Woah! The 1 uF X7R 0603 cap I picked for analog bypass loses 75% of
+its capacitance at 15V, and 85% at the rated 25V.  It seems that with
+size shrinks and base metal electrodes the voltage coefficient of X7R
+has gotten more like Z5U was in the old days.  And some datasheets
+don't seem to even mention the voltage coefficient.
+
+Also, you really need to model the frequency dependent DF dielectric
+loss because it dominates the loss except near resonance.  Eg. the
+real part of impedance (called ESR) is 60 mOhm at 100 kHz, whereas 10
+mOhm at SRF around 6 MHz.  For bypassing, the DF loss mainly helps to
+damp resonances, since it is maybe 5% of the capacitive reactance.
+  ==> Maybe?  It doesn't have much effect for an isolated bypass cap
+      because the impedance doesn't change much.  But it could be
+      relevant for the low frequency resonances with low ESR inductive
+      impedances such as polymer electrolytic bulk and the regulator
+      output impedance.  But with tbe big/small resonance effects, 
+      if the "big" ESR is low enough for the resonance to be a
+      problem, the Q in the small cap is high enough to make a "big"
+      resonance, whether that Q is 10 or 100.  So your model of
+      the resonance Q may be substantially wrong without the small
+      cap loss, but it doesn't really matter
+
+Looking at the Kemet web impedance curve calcuator, and interestingly
+the Q for their equivalent to our cap increases dramatically with bias
+because both the capacitance and dilectric loss decrease.  Q goes from
+about 10 at 0V to 60 at 8V.
+
+App note for polymer electrolytics suggested that if there is a
+big/small resonance problem, you should increase the small cap.  This
+can push down the resonance to where the Q is lower.
+
+
+
+
+[10 Jan 20]
+
+In the places where we need VREF/2, I think it's best to just use
+separate dividers.  We don't want to create unnecessary coupling paths
+between the channels or stages, which would be a risk if we tried to
+generate and distribute this as a shared bias supply
+
+
+While looking into adding a low noise LDO to the board for the analog
+rails, started to get very unhappy about power consumption, especially
+when the input is saturated.  I fleshed out power_budget.xlsx
+dramatically, modelling the currents in load (and feedback) resistors
+as a single effective parallel resistance per stage, and also added
+evaluation of several signal levels, including saturated.
+
+With the +/- 15V rails, the situation is quite bad, up to 15W per
+board when in saturation.  So 45W with 3 boards.  While supporting
+this level of dissipation is of course *possible*, it seems quite
+unreasonable for the input section to use much more power than the
+power output section.
+
+I've come up with a plan where we:
+ 1] Reduce the supplies to support only a 0-5V swing (with some
+    margin).  This works out to something like +8/-4 rails, or +9/-5
+    analog suppliesa with 1V LDO regulators.  This gives satuation
+    voltage of about +6/-1, or 7V.
+ 2] Bias the sensor common mode voltage to +2.5V for more symmetrical
+    CM range.
+ 3] Change the driver to unity gain and halve the swing for the signals
+    (reducing stage 1 gain by 1/2).
+ 4] Fold the stage 2 different and antialias function into the
+    driver.  This is something like "Plan B" from [26 Nov 19] 
+
+These changes reduce the total board power by about 3x, both when
+input is at FS and when in saturation.  The voltage reduction [1,2]
+should have minimal effect on performance.  Reducing the gain [3]
+might have minor effect on SNR, but this is offset by getting rid of
+two opamps in the signal path.  The whole idea of running the
+single-ended segment at 20V PP was to reduce noise in the diff amp and
+antialias, but with [4] we entirely eliminate those stages.  [4] will
+probably degrade CMR somewhat because it now depends on the matching
+of the two filter arms (1%), not just 0.1% resistors.  But
+considerable CMR happens in stage 1, and CMR is also bounded by the
+input filter mismatch (see [26 Nov 19]).
+
+The reduced total supply for the FD amp (to 12V) also opens more
+possible part choices, though I don't see any need to investigate.
+
+For the antialias, make the pole in stage 1 be the odd pole from the
+existing 30 kHz third order antialias design.  This does get rid of a
+pole, but deploys the stage 1 pole to a more useful lower frequency.
+The stage 1 rolloff does run out when we reach unity gain, but the
+third order design will give a pretty transition.  Mismatch in the
+stage 1 feedback network has no effect on CMR, so there is no need to
+push the corner out to high frequency to minimize this.
+ ==> Possibly noise floor increase w/o antialias in prototype was from
+     300 kHz ripple from the class D source driver.  This would be
+     poorly attenuated by the 100 kHz first order pole.  This may have
+     been a problem with the sigma-delta ADC setup also.  Not clear
+     what effect the diff-mode filter at input would have since this
+     is well above the sensor/filter resonance, and perhaps above the
+     sensor self-resonance.
+
+The THS4131 FD amp (now stage 2) has loads of bandwidth, ~100 MHz, so
+should be able to maintain active filter rolloff out into the MHz,
+where the input filter network starts to take over.  Also, running the
+FD amp full balanced improves distortion performance a bit by not
+exercising the CM buffer.
+
+Of course getting rid of two stages also reduces our BOM and board
+area somewhat (though we now need two filter networks instead of one).
+
+
+[8-9 Jan 20]
 
 Summary:
   Started look at analog supply issues.  In particular, I was
@@ -1242,10 +1522,11 @@ output isolation resistor.
 
 I'm not clear on whether the input is sampled just once per (high
 rate) conversion, or once per SAR cycle, so 24x higher rate (24 MHz).
+ ==> Once per conversion
 
 Because of the LPF aspect from the viewpoint of the buffer, it would
-see most of the load ripple at the sample rate, but higher frequency
-components would be significantly attenuated.
+see most of the load ripple at the sample rate, while higher frequency
+components are significantly attenuated.
 
 The recommended LT6202 is a 100 MHz GBW part, which should give decent
 suppression of the ~1 MHz sample rate ripple.  The output impedance
