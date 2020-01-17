@@ -1,12 +1,10 @@
 EESchema Schematic File Version 4
 LIBS:input_board-cache
-LIBS:input_channel-cache
-LIBS:reference_buffer-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 11
+Sheet 3 12
 Title ""
 Date ""
 Rev ""
@@ -16,16 +14,17 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Wire Wire Line
-	4650 3000 4650 3100
 $Comp
 L Device:C_Small C117
 U 1 1 5E195560
 P 5000 3100
 F 0 "C117" V 4771 3100 50  0000 C CNN
 F 1 "1uF" V 4862 3100 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 5000 3100 50  0001 C CNN
-F 3 "~" H 5000 3100 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 5000 3100 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 5000 3100 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 5000 3100 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 5000 3100 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 5000 3100 50  0001 C CNN "MPN"
 	1    5000 3100
 	0    1    1    0   
 $EndComp
@@ -126,71 +125,70 @@ $EndComp
 $Comp
 L Device:R_US R111
 U 1 1 5E1955AB
-P 3900 6050
-F 0 "R111" V 4000 6050 50  0000 C CNN
-F 1 "4.02K" V 3800 6050 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 3940 6040 50  0001 C CNN
-F 3 "~" H 3900 6050 50  0001 C CNN
-F 4 "0.1%" H 3900 6050 50  0001 C CNN "Notes"
-	1    3900 6050
+P 3800 6050
+F 0 "R111" V 3900 6050 50  0000 C CNN
+F 1 "4.02K" V 3700 6050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 3840 6040 50  0001 C CNN
+F 3 "~" H 3800 6050 50  0001 C CNN
+F 4 "0.1%" H 3800 6050 50  0001 C CNN "Notes"
+	1    3800 6050
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R_US R112
 U 1 1 5E1955AC
-P 3900 6500
-F 0 "R112" V 4000 6500 50  0000 C CNN
-F 1 "4.02K" V 3800 6500 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 3940 6490 50  0001 C CNN
-F 3 "~" H 3900 6500 50  0001 C CNN
-F 4 "0.1%" H 3900 6500 50  0001 C CNN "Notes"
-	1    3900 6500
+P 3800 6500
+F 0 "R112" V 3900 6500 50  0000 C CNN
+F 1 "4.02K" V 3700 6500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 3840 6490 50  0001 C CNN
+F 3 "~" H 3800 6500 50  0001 C CNN
+F 4 "0.1%" H 3800 6500 50  0001 C CNN "Notes"
+	1    3800 6500
 	-1   0    0    1   
 $EndComp
 $Comp
 L power:GNDA #PWR0120
 U 1 1 5E1955AD
-P 3900 6750
-F 0 "#PWR0120" H 3900 6500 50  0001 C CNN
-F 1 "GNDA" H 4000 6550 50  0000 R CNN
-F 2 "" H 3900 6750 50  0001 C CNN
-F 3 "" H 3900 6750 50  0001 C CNN
-	1    3900 6750
+P 3800 6750
+F 0 "#PWR0120" H 3800 6500 50  0001 C CNN
+F 1 "GNDA" H 3900 6550 50  0000 R CNN
+F 2 "" H 3800 6750 50  0001 C CNN
+F 3 "" H 3800 6750 50  0001 C CNN
+	1    3800 6750
 	1    0    0    -1  
 $EndComp
-Text GLabel 3700 5750 0    50   Input ~ 0
-VREF
 Wire Wire Line
-	3700 5750 3900 5750
+	3800 5750 3800 5900
+Connection ~ 3800 6300
 Wire Wire Line
-	3900 5750 3900 5900
-Connection ~ 3900 6300
+	3800 6300 3800 6200
 Wire Wire Line
-	3900 6300 3900 6200
+	3800 6650 3800 6700
 Wire Wire Line
-	3900 6650 3900 6700
-Wire Wire Line
-	3900 6300 3900 6350
+	3800 6300 3800 6350
 $Comp
 L Device:C_Small C115
 U 1 1 5E1955AE
-P 4250 6500
-F 0 "C115" V 4021 6500 50  0000 C CNN
-F 1 "1uF" V 4112 6500 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 4250 6500 50  0001 C CNN
-F 3 "~" H 4250 6500 50  0001 C CNN
-	1    4250 6500
+P 4150 6500
+F 0 "C115" V 3921 6500 50  0000 C CNN
+F 1 "1uF" V 4012 6500 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4150 6500 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 4150 6500 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 4150 6500 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 4150 6500 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 4150 6500 50  0001 C CNN "MPN"
+	1    4150 6500
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	4250 6400 4250 6300
+	4150 6400 4150 6300
 Wire Wire Line
-	3900 6700 4250 6700
+	3800 6700 4150 6700
 Wire Wire Line
-	4250 6600 4250 6700
-Connection ~ 3900 6700
+	4150 6600 4150 6700
+Connection ~ 3800 6700
 Wire Wire Line
-	3900 6700 3900 6750
+	3800 6700 3800 6750
 Wire Wire Line
 	4650 3800 4650 3950
 $Comp
@@ -199,8 +197,11 @@ U 1 1 5E1955B4
 P 5000 3950
 F 0 "C118" V 4850 3950 50  0000 C CNN
 F 1 "1uF" V 5150 3950 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 5000 3950 50  0001 C CNN
-F 3 "~" H 5000 3950 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 5000 3950 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 5000 3950 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 5000 3950 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 5000 3950 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 5000 3950 50  0001 C CNN "MPN"
 	1    5000 3950
 	0    1    1    0   
 $EndComp
@@ -217,8 +218,6 @@ F 3 "" H 5250 3950 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5100 3950 5250 3950
-Wire Wire Line
-	4650 4000 4650 3950
 Connection ~ 4650 3950
 Wire Wire Line
 	4650 3950 4900 3950
@@ -229,7 +228,7 @@ Wire Wire Line
 Text Notes 7100 6950 0    50   ~ 0
 This sheet is the ADC driver combined with 2 poles \nof a 3 pole 30 kHz antialias filter (the third pole is in the in_amp).\n
 Wire Wire Line
-	3900 6300 4250 6300
+	3800 6300 4150 6300
 Wire Wire Line
 	3950 4100 4050 4100
 Wire Wire Line
@@ -251,10 +250,8 @@ Wire Wire Line
 Wire Wire Line
 	5750 5100 5750 4750
 Wire Wire Line
-	4250 6300 4250 3500
-Connection ~ 4250 6300
-Wire Wire Line
-	4250 3500 4350 3500
+	4150 6300 4150 3500
+Connection ~ 4150 6300
 Wire Wire Line
 	3550 5100 4950 5100
 Connection ~ 4050 4100
@@ -386,8 +383,11 @@ AR Path="/5DFCF14D/5DE42731/5E3F9905" Ref="C?"  Part="1"
 AR Path="/5DFCF14D/5DE6CDF8/5E3F9905" Ref="C113"  Part="1" 
 F 0 "C113" V 7600 2150 50  0000 L CNN
 F 1 "1uF" V 7300 2150 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 7450 2200 50  0001 C CNN
-F 3 "~" H 7450 2200 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7450 2200 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 7450 2200 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 7450 2200 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 7450 2200 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 7450 2200 50  0001 C CNN "MPN"
 	1    7450 2200
 	0    1    1    0   
 $EndComp
@@ -461,8 +461,11 @@ AR Path="/5DFCF14D/5DE42731/5E403D70" Ref="C?"  Part="1"
 AR Path="/5DFCF14D/5DE6CDF8/5E403D70" Ref="C116"  Part="1" 
 F 0 "C116" V 7600 3650 50  0000 L CNN
 F 1 "1uF" V 7300 3650 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 7450 3700 50  0001 C CNN
-F 3 "~" H 7450 3700 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7450 3700 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 7450 3700 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 7450 3700 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 7450 3700 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 7450 3700 50  0001 C CNN "MPN"
 	1    7450 3700
 	0    1    1    0   
 $EndComp
@@ -484,8 +487,6 @@ Wire Wire Line
 Connection ~ 7000 3700
 Wire Wire Line
 	7000 3700 7000 3750
-Text GLabel 6600 1650 1    50   Input ~ 0
-VREF
 Wire Wire Line
 	5750 3600 5750 4150
 Wire Wire Line
@@ -500,17 +501,6 @@ Wire Wire Line
 Connection ~ 5750 2650
 Wire Wire Line
 	5750 2650 5750 3400
-$Comp
-L Device:D_Zener D111
-U 1 1 5E40EE20
-P 7150 1750
-F 0 "D111" H 7150 1850 50  0000 C CNN
-F 1 "5V standoff" H 7150 1650 50  0000 C CNN
-F 2 "" H 7150 1750 50  0001 C CNN
-F 3 "~" H 7150 1750 50  0001 C CNN
-	1    7150 1750
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	6600 3700 7000 3700
 $Comp
@@ -556,29 +546,43 @@ Wire Wire Line
 Text Notes 7600 3250 0    50   ~ 0
 When the input saturates this diode clamp keeps \nus from driving a lot of current into the ADC's \ninternal clamp diodes.  U104 will go into current\nlimiting, perhaps 50 mA.
 Text Notes 6800 1500 0    50   ~ 0
-This zener is for redundancy in preventing VREF from floating up\nwhen we source current into it.  Normally the reference buffer\nshould absorb this, but if for some reason it doesn't, then\nwe want to limit the ADC overvoltage as much as we can.
+This TVS is for redundancy in preventing VREF from floating up\nwhen we source current into it.  Normally the reference buffer\nshould absorb this, but if for some reason it doesn't, then\nwe want to limit the ADC overvoltage as much as we can.
 Text Notes 1750 3650 0    50   ~ 0
 This stage is inverting, so we \nswap + and - inputs to get\nnoninverted output.  (Not \nthat it really matters.)
+Text HLabel 4600 2950 0    50   Input ~ 0
+CHAN_V+
+Text HLabel 4600 4050 0    50   Input ~ 0
+CHAN_V-
+Wire Wire Line
+	4600 2950 4650 2950
+Wire Wire Line
+	4650 2950 4650 3100
+Wire Wire Line
+	4600 4050 4650 4050
+Wire Wire Line
+	4650 3950 4650 4050
+Wire Wire Line
+	4150 3500 4350 3500
 $Comp
-L ilemt_input:V+ #PWR0119
-U 1 1 5E50E0CF
-P 4650 3000
-F 0 "#PWR0119" H 4650 2850 50  0001 C CNN
-F 1 "V+" H 4650 3140 50  0000 C CNN
-F 2 "" H 4650 3000 50  0001 C CNN
-F 3 "" H 4650 3000 50  0001 C CNN
-	1    4650 3000
+L Device:D_Zener D?
+U 1 1 5E341688
+P 7150 1750
+AR Path="/5E51E83D/5E341688" Ref="D?"  Part="1" 
+AR Path="/5DFCF14D/5DE6CDF8/5E341688" Ref="D111"  Part="1" 
+F 0 "D111" H 7150 1850 50  0000 C CNN
+F 1 "5V (standoff)" H 7150 1650 50  0000 C CNN
+F 2 "Diode_SMD:D_SMA" H 7150 1750 50  0001 C CNN
+F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 7150 1750 50  0001 C CNN
+F 4 "824500500" H 7150 1750 50  0001 C CNN "MPN"
+F 5 "TVS DIODE 5V 9.2V DO214AC" H 7150 1750 50  0001 C CNN "Description"
+F 6 "732-9974-1-ND" H 7150 1750 50  0001 C CNN "Digikey"
+	1    7150 1750
 	1    0    0    -1  
 $EndComp
-$Comp
-L ilemt_input:V- #PWR0121
-U 1 1 5E50E68B
-P 4650 4100
-F 0 "#PWR0121" H 4650 3950 50  0001 C CNN
-F 1 "V-" H 4650 4060 50  0000 C CNN
-F 2 "" H 4650 4200 50  0001 C CNN
-F 3 "" H 4650 4200 50  0001 C CNN
-	1    4650 4100
-	1    0    0    -1  
-$EndComp
+Text HLabel 6600 1650 1    50   Input ~ 0
+CHAN_VREF
+Text HLabel 3600 5750 0    50   Input ~ 0
+CHAN_VREF
+Wire Wire Line
+	3600 5750 3800 5750
 $EndSCHEMATC

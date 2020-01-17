@@ -1,12 +1,10 @@
 EESchema Schematic File Version 4
 LIBS:input_board-cache
-LIBS:input_channel-cache
-LIBS:reference_buffer-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 11
+Sheet 1 12
 Title ""
 Date ""
 Rev ""
@@ -16,19 +14,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L 74xx:74LS541 U?
-U 1 1 5DF71C19
-P 3700 5200
-AR Path="/5DA78AA2/5DF71C19" Ref="U?"  Part="1" 
-AR Path="/5DF71C19" Ref="U5"  Part="1" 
-F 0 "U5" H 3400 5850 50  0000 C CNN
-F 1 "74LVC541A" H 3400 4550 50  0000 C CNN
-F 2 "Package_SO:SSOP-20_5.3x7.2mm_P0.65mm" H 3700 5200 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS541" H 3700 5200 50  0001 C CNN
-	1    3700 5200
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:GNDD #PWR02
 U 1 1 5DF71D3C
@@ -69,17 +54,6 @@ F 3 "" H 3700 4300 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3700 4300 3700 4400
-$Comp
-L Device:R_Pack04 RN1
-U 1 1 5DF7325B
-P 4650 4900
-F 0 "RN1" V 4350 4900 50  0000 C CNN
-F 1 "33" V 4850 4900 50  0000 C CNN
-F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 4925 4900 50  0001 C CNN
-F 3 "~" H 4650 4900 50  0001 C CNN
-	1    4650 4900
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	4200 4700 4450 4700
 Wire Wire Line
@@ -88,17 +62,6 @@ Wire Wire Line
 	4200 4900 4450 4900
 Wire Wire Line
 	4200 5000 4450 5000
-$Comp
-L Device:R_Pack04 RN2
-U 1 1 5DF74C21
-P 4650 5500
-F 0 "RN2" V 4350 5500 50  0000 C CNN
-F 1 "33" V 4850 5500 50  0000 C CNN
-F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 4925 5500 50  0001 C CNN
-F 3 "~" H 4650 5500 50  0001 C CNN
-	1    4650 5500
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	4200 5100 4400 5100
 Wire Wire Line
@@ -134,17 +97,6 @@ F4 "BIST_feedback" O R 6800 1450 50
 F5 "data" O R 6800 1300 50 
 F6 "clocks" I L 5650 1600 50 
 $EndSheet
-$Comp
-L Interface:SN65LVDS047PW U2
-U 1 1 5E00215D
-P 8600 5150
-F 0 "U2" H 8100 6000 50  0000 L CNN
-F 1 "FIN1047" H 8650 6000 50  0000 L CNN
-F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 8500 4200 50  0001 C CNN
-F 3 "" H 8650 5150 50  0001 C CNN
-	1    8600 5150
-	1    0    0    -1  
-$EndComp
 Entry Wire Line
 	5100 4700 5200 4600
 Wire Wire Line
@@ -252,20 +204,6 @@ F 3 "~" H 1500 2250 50  0001 C CNN
 	1    1500 2350
 	1    0    0    -1  
 $EndComp
-$Comp
-L Connector:RJ45_Shielded J1
-U 1 1 5E1BD14E
-P 1500 1700
-F 0 "J1" H 1300 2250 50  0000 R CNN
-F 1 "Input" H 1600 2250 50  0000 L CNN
-F 2 "Connector_RJ:RJ45_Amphenol_RJHSE538X" V 1500 1725 50  0001 C CNN
-F 3 "https://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/rjhse538x.pdf" V 1500 1725 50  0001 C CNN
-F 4 "RJHSE5387-ND" H 1500 1700 50  0001 C CNN "Digikey"
-F 5 "RJHSE5387" H 1500 1700 50  0001 C CNN "MPN"
-F 6 "CONN MOD JACK 8P8C R/A SHIELDED" H 1500 1700 50  0001 C CNN "Description"
-	1    1500 1700
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4850 1500 4850 1300
 Wire Wire Line
@@ -279,7 +217,7 @@ Wire Wire Line
 Wire Wire Line
 	3950 1600 3950 3400
 $Sheet
-S 9500 800  1450 500 
+S 9550 1700 1450 500 
 U 5E1D6729
 F0 "board_connecctor" 50
 F1 "board_connector.sch" 50
@@ -401,17 +339,6 @@ Entry Wire Line
 Text Label 4850 4900 0    50   ~ 0
 MCLK
 $Comp
-L ilemt_input:FIN1048 U1
-U 1 1 5E233AEC
-P 1850 4900
-F 0 "U1" H 1450 5450 50  0000 L CNN
-F 1 "FIN1048" H 1900 5450 50  0000 L CNN
-F 2 "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" H 1850 3150 50  0001 C CNN
-F 3 "https://www.onsemi.com/pub/Collateral/FIN1048-D.pdf" H 1150 4050 50  0001 C CNN
-	1    1850 4900
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GNDD #PWR06
 U 1 1 5E2352F1
 P 1850 6750
@@ -516,21 +443,21 @@ Wire Wire Line
 Wire Wire Line
 	1250 5600 1350 5600
 $Sheet
-S 9500 1700 1100 450 
+S 9550 2600 1100 450 
 U 5E2EB92B
 F0 "reference_buffer" 50
 F1 "reference_buffer.sch" 50
-F2 "-reference" I L 9500 2000 50 
-F3 "+reference" I L 9500 1850 50 
+F2 "-reference" I L 9550 2900 50 
+F3 "+reference" I L 9550 2750 50 
 $EndSheet
-Text GLabel 9400 1850 0    50   Input ~ 0
+Text GLabel 9450 2750 0    50   Input ~ 0
 +reference
 Wire Wire Line
-	9400 1850 9500 1850
-Text GLabel 9400 2000 0    50   Input ~ 0
+	9450 2750 9550 2750
+Text GLabel 9450 2900 0    50   Input ~ 0
 -reference
 Wire Wire Line
-	9400 2000 9500 2000
+	9450 2900 9550 2900
 Text GLabel 3100 5300 0    50   Input ~ 0
 SYNC_IN
 Wire Wire Line
@@ -557,20 +484,100 @@ SCKB
 Wire Wire Line
 	5000 5900 5000 5850
 Connection ~ 5000 5850
+$Sheet
+S 9550 3500 1150 500 
+U 5E51E83D
+F0 "power" 50
+F1 "power.sch" 50
+$EndSheet
+$Comp
+L ilemt_input:FIN1048 U1
+U 1 1 5E233AEC
+P 1850 4900
+F 0 "U1" H 1450 5450 50  0000 L CNN
+F 1 "FIN1048" H 1900 5450 50  0000 L CNN
+F 2 "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" H 1850 3150 50  0001 C CNN
+F 3 "https://www.onsemi.com/pub/Collateral/FIN1048-D.pdf" H 1150 4050 50  0001 C CNN
+	1    1850 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:RJ45_Shielded J1
+U 1 1 5E1BD14E
+P 1500 1700
+F 0 "J1" H 1300 2250 50  0000 R CNN
+F 1 "Input" H 1600 2250 50  0000 L CNN
+F 2 "Connector_RJ:RJ45_Amphenol_RJHSE538X" V 1500 1725 50  0001 C CNN
+F 3 "https://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/rjhse538x.pdf" V 1500 1725 50  0001 C CNN
+F 4 "RJHSE5387-ND" H 1500 1700 50  0001 C CNN "Digikey"
+F 5 "RJHSE5387" H 1500 1700 50  0001 C CNN "MPN"
+F 6 "CONN MOD JACK 8P8C R/A SHIELDED" H 1500 1700 50  0001 C CNN "Description"
+	1    1500 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Interface:SN65LVDS047PW U2
+U 1 1 5E00215D
+P 8600 5150
+F 0 "U2" H 8100 6000 50  0000 L CNN
+F 1 "FIN1047" H 8650 6000 50  0000 L CNN
+F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 8500 4200 50  0001 C CNN
+F 3 "" H 8650 5150 50  0001 C CNN
+	1    8600 5150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Pack04 RN2
+U 1 1 5DF74C21
+P 4650 5500
+F 0 "RN2" V 4350 5500 50  0000 C CNN
+F 1 "33" V 4850 5500 50  0000 C CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 4925 5500 50  0001 C CNN
+F 3 "~" H 4650 5500 50  0001 C CNN
+	1    4650 5500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Pack04 RN1
+U 1 1 5DF7325B
+P 4650 4900
+F 0 "RN1" V 4350 4900 50  0000 C CNN
+F 1 "33" V 4850 4900 50  0000 C CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 4925 4900 50  0001 C CNN
+F 3 "~" H 4650 4900 50  0001 C CNN
+	1    4650 4900
+	0    1    1    0   
+$EndComp
+$Comp
+L 74xx:74LS541 U?
+U 1 1 5DF71C19
+P 3700 5200
+AR Path="/5DA78AA2/5DF71C19" Ref="U?"  Part="1" 
+AR Path="/5DF71C19" Ref="U5"  Part="1" 
+F 0 "U5" H 3400 5850 50  0000 C CNN
+F 1 "74LVC541A" H 3400 4550 50  0000 C CNN
+F 2 "Package_SO:SSOP-20_5.3x7.2mm_P0.65mm" H 3700 5200 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS541" H 3700 5200 50  0001 C CNN
+	1    3700 5200
+	1    0    0    -1  
+$EndComp
+$Sheet
+S 7750 1100 1150 600 
+U 5E5A51EB
+F0 "bist_buffer" 50
+F1 "bist_buffer.sch" 50
+F2 "BIST_feedback" I L 7750 1450 50 
+$EndSheet
 Wire Bus Line
 	7250 1300 7250 4750
 Wire Wire Line
 	4850 4900 5450 4900
+Wire Bus Line
+	6800 1450 7750 1450
 Wire Bus Line
 	5200 1600 5200 4900
 Wire Bus Line
 	5400 2550 5400 5650
 Wire Bus Line
 	5550 3550 5550 5750
-$Sheet
-S 9550 2650 1150 500 
-U 5E51E83D
-F0 "power" 50
-F1 "power.sch" 50
-$EndSheet
 $EndSCHEMATC

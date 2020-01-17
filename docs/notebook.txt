@@ -1,4 +1,6 @@
 Calibration todo:
+ -- Linearity tests
+ -- Paper
  -- Rotate source 45 degrees so that our workspace is more centered on
     the source field strength.  Wondering if the reason we have poor
     accuracy at -Y extreme is just low signal strength, and perhaps
@@ -6,25 +8,26 @@ Calibration todo:
 
 
 Input board design/capture tasks
+ -- Revisit stage 1 opamp selection, may want higher bandwidth for low
+    distortion (and PSRR).
  -- antialias/driver: capacitors need to be on E24 series
- -- diff_amp and antialias, change to dual opamps
- -- ADC
- -- digital driver/receivers
- -- local power conditioning.  Get 3.3V logic supply from 5V via a
-    LDO.  We also want passive filtration on the 5V supply to
-    keep digital noise from the main board out.  Likewise on the
-    analog supplies, maybe 3-wire CM filter?
- -- BIST drivers
- -- connector
+ -- Test points
+ -- Finish connector assignments
+ -- Decide on package for LVDS
 
 Rough component placement to get idea of board areas:
- -- chassis ground input network
- -- input channel: protection, amp, antialias
- -- input channel: balancer, ADC, reference driver
+ -- Create footprints for nonstandard components:
+     - Common mode choke
+     - GDT
+ -- input channel: protection, stage 1, driver, ADC
  -- board entry filtering for power and reference
+ -- reference driver
+ -- power
  -- digital tx/rx
 
 Board floor plan w/ preliminary sizes, connector locations
+
+ ==> DOUBLE CHECK pinouts on all components
 
 Layout tasks:
  -- Power and ground layout
@@ -33,8 +36,9 @@ Layout tasks:
  -- duplicate channels
  -- extra test features on channel 1
 
+ ==> Order BOM and DOUBLE CHECK footprints on all components
+
 Hardware todo:
- -- Prototype antialias?
  -- Prototype reference buffer?
  -- Build prototype reference, used until main board is complete.
 
@@ -99,8 +103,7 @@ only" mode is doing (and doesn't include any source channel
 interaction effects that might exist, but are not there in TCP only
 mode).
 
-
-
+Shell snips: 
 ________________
 Send ADC data to labview:
 # Has laptop IP address wired in, may change
@@ -126,6 +129,117 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[16 Jan 20]
+
+According to Kemet K-Sim the huge loss of capacitance under 5V bias
+with the 0603 1uF X7R is specific to the 0603 package and 25V value.
+1 uF is the largest capacitance available at 25V 0603.  Both the 0805
+25V and the 0603 16V are significantly better in holding capacitance.
+Also, the 0805 16V actually has a lower self inductance than the 0603
+parts. (Maybe it is thinner?)  Aside from the outlier of the 0603 25V,
+there is very little difference with the other 3 combinations of
+voltage and package.  But especially at higher bias the 16V parts have
+less capacitance drop.
+
+So, we should go for a 16V part now that we have the lower voltages.
+The main difference between 0603 and 0805 is that the 0805 is lossier
+(lower Q) at LF, especially under higher bias (even though the total
+impedance is lower).  (This is because the bigger part has retained
+more of its dielectric coefficient.)  For decoupling this lower Q is
+perhaps desirable because it will contribute damping.
+
+Oh, and for digital bypass, the 10nF/100nF 6.3V 0603 caps have
+basically no C loss due to bias. With plausible external inductance
+(1.5 nH), there is basically no difference in VHF impedance above SRF.
+The 10 nF has slightly higher Q.  The only advantage I can see of 10
+nF is that, because of the ~4x higher ESR below resonance (since Q is
+roughly constant but Xc is much lower), any high/low resonances may
+be better damped.  But the resonances will also shift higer in
+frequency, which will increase the Q of the inductor, making it more
+nearly a wash.
+
+And at 100 nF 0603 there is very little difference between 6.3V and
+25V.
+
+
+
+
+[15 Jan 20]
+
+Summary:
+ -- Exploration of analog decoupling system, with ferrite bead.  I
+    have picked components, ended up basically back where I was.
+    Updated reference buffer to use the same scheme.
+ -- Don't route reference over ground plane cuts, try to avoid
+    for V+/V- also.
+
+Looked at the analog decoupling some more.  I think we want a ferrite
+bead on the supplies for each channel, like I did for VREF.  This
+greatly reduces channel cross coupling at 1 MHz and above.  Another
+concern is that heavy decoupling of a fat bus trace to each channel's
+ground may undermine the ground plane cuts.  But what bead to use?
+
+I had picked a bead characterized as inductor for the reference
+buffer, 270 nH, 286 mOhm DCR.  But this is a really high DC
+resistance, undermines the supply output impedance.  With the supply
+decoupling I have set up, with the 330 uF caps at each channel, we
+need an inductance of 100 nH or below to move the LC resonance above
+10 kHz.  Otherwise we undermine the supply impedance in our band.
+
+Getting an inductance this *low* combined with a low ESR < 10 mOhm is
+actually a bit awkward, I needed to go for a high-frequency material.
+And to figure out the inductance at LF you need to peer at a lot of
+impedance plots, since this is not a spec.  If I use a standard
+frequency material then the inductance is more like 800 nH, which does
+give much better channel isolation at 1 MHz, but creates a resonance
+at 10 kHz, boosting the "self" bus impedance from 10 mOhm to 100 mOhm
+at 10 kHz.  This seems bad.
+ ==> Hmmn, it seems that the large caps are not really having much
+     direct impedance effect at the frequencies we really care about,
+     near 10 kHz and above 900 kHz.  But they are stabilizing things.
+
+Playing with the simulation, it seems that mainly what the big caps
+are doing is damping the resonance of the small caps and the
+decoupling inductor.  Without them we are unstable, so they seem
+necessary, but we might as well use the smallest/cheapest type.  But
+the cheapest aluminum poly caps have too *low* ESR.  I'm relucant to
+use non-poly aluminum because of life issues.  I can get the right ESR
+in tantalum, but that is more expensive, similar to the higher value
+poly caps.
+
+It seems that the capacitance and value of the bulk cap are not too
+critical as long as there is an ESR zero below about 16 kHz, values of
+47uF to 330uF will work.  So far as the bead impedance, it doesn't
+really affect stability over a range of 100nH to 1 uH, but tradeoff of
+channel isolation vs. supply impedance.
+
+A 100nH ferrite does preserve the in-band supply impedance, but may be
+somewhat triggering for the channel ground isolation issue.  This will
+depend on layout.  I had been thinking of having the analog busses cut
+across the ground plane slots, but maybe this is not a good idea.
+Given the size of our ground peninsulas, we are not into any
+transmission line effects below VHF, where the bead impedance is at a
+reasonably high plateau, eg. 21 Ohms in this case.  The only issue I
+can see is that we have a largeish loop at DC thru say 10 MHz, and
+this could possibly pick up or radiate (but HF antenna efficiency will
+be terrible with such a small single turn loop).  (If there is a
+strong in-band magnetic field we could pick that up, though this
+doesn't seem likely unless the source is close.)
+ ==> We really don't want to cut across the plane notches with VREF,
+     which is very sensitive and has HF currents thru ground.  If
+     reasonable, it would be best to not cut across the plane notches
+     with the analog supplies.
+ ==> Note that the in-band analog currents go entirely from V+ to V-,
+     and are connected to ground only thru the decoupling caps.  So
+     there should not really be much in-band IR drops in the plane,
+     especially not thru the ground bridge out to the common ground.
+
+We want the sense location for the regulator (and reference buffer) LF
+feedback to be located near the branching of the ground planes.  This
+should tend to minimize ground plane IR drop contribution to the
+in-band performance.
 
 
 [13 Jan 20]
@@ -163,6 +277,8 @@ and output impedance of the LT1963A would be good enough, but it
 bugged me spending that much for a chip that did not do as well as I
 could.  If the simulation is to be believed, I am getting about 0.6
 mOhm Zout at the regulator.]
+
+
 
 
 [11 Jan 20]
@@ -291,6 +407,14 @@ increasing our dropout, which is already not in the true LDO range
 
 See 330 uF aluminum polymer cap 565-4285-1-ND, rated 22 mOhm, and
 tiny.  $0.76 in quantity 10, with 15k hour life @ 105 C.
+ ==> FWIW, only United Chemi-Con is claiming 15k hours for their
+     parts.  Most makes top out at 5k, and 2k is common.  However it
+     seems that poly caps improve in life even faster than liquid
+     electrolyte, 10x per 20 C drop.  So at 45 C we expect 1000x
+     lifetime, or 570 years for a 5k hour 105 C part.  Pretty good, I
+     guess?  The main downside of poly vs. regular seems to be
+     increased leakage current.  The impedance curve looks at lot more
+     like a ceramic, with minimal capacitance drop over frequency.
 
 
 My regulator does have problems if the output capacitor has too low ESR,

@@ -1,12 +1,10 @@
 EESchema Schematic File Version 4
 LIBS:input_board-cache
-LIBS:input_channel-cache
-LIBS:reference_buffer-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 11
+Sheet 6 12
 Title ""
 Date ""
 Rev ""
@@ -113,7 +111,7 @@ F 3 "" H 6800 1600 50  0001 C CNN
 	1    6800 1600
 	1    0    0    -1  
 $EndComp
-Text GLabel 8850 2300 2    50   Input ~ 0
+Text GLabel 9100 2150 2    50   Input ~ 0
 VREF
 Wire Wire Line
 	6900 3000 7000 3000
@@ -128,68 +126,53 @@ Wire Wire Line
 	7100 3000 7000 3000
 Connection ~ 7000 3000
 $Comp
-L Device:C_Small C110
-U 1 1 5E1955C5
-P 8000 2500
-F 0 "C110" H 8010 2570 50  0000 L CNN
-F 1 "47uF" H 8010 2420 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1210_3225Metric" H 8000 2500 50  0001 C CNN
-F 3 "~" H 8000 2500 50  0001 C CNN
-	1    8000 2500
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GNDA #PWR?
 U 1 1 5E1955C6
-P 8000 2650
+P 8150 2500
 AR Path="/5E1955C6" Ref="#PWR?"  Part="1" 
 AR Path="/5DA78AA2/5E1955C6" Ref="#PWR?"  Part="1" 
 AR Path="/5DFCF14D/5DA78AA2/5E1955C6" Ref="#PWR0114"  Part="1" 
-F 0 "#PWR0114" H 8000 2400 50  0001 C CNN
-F 1 "GNDA" H 8005 2477 50  0000 C CNN
-F 2 "" H 8000 2650 50  0001 C CNN
-F 3 "" H 8000 2650 50  0001 C CNN
-	1    8000 2650
+F 0 "#PWR0114" H 8150 2250 50  0001 C CNN
+F 1 "GNDA" H 8155 2327 50  0000 C CNN
+F 2 "" H 8150 2500 50  0001 C CNN
+F 3 "" H 8150 2500 50  0001 C CNN
+	1    8150 2500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8000 2650 8000 2600
-Wire Wire Line
-	8000 2400 8000 2300
-Connection ~ 8000 2300
-Wire Wire Line
-	8000 2300 7650 2300
-Wire Wire Line
-	6900 2300 6900 3000
+	8150 2250 8150 2150
 $Comp
 L Device:C_Small C109
 U 1 1 5E1955C7
-P 7650 2500
-F 0 "C109" H 7660 2570 50  0000 L CNN
-F 1 "47uF" H 7660 2420 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1210_3225Metric" H 7650 2500 50  0001 C CNN
-F 3 "~" H 7650 2500 50  0001 C CNN
-	1    7650 2500
+P 7700 2350
+F 0 "C109" H 7710 2420 50  0000 L CNN
+F 1 "47uF" H 7710 2270 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 7700 2350 50  0001 C CNN
+F 3 "https://api.kemet.com/component-edge/download/datasheet/C1210C476M9RACTU.pdf" H 7700 2350 50  0001 C CNN
+F 4 "CAP CER 47UF 6.3V X7R 1210" H 7700 2350 50  0001 C CNN "Description"
+F 5 "399-5516-1-ND" H 7700 2350 50  0001 C CNN "Digikey"
+F 6 "C1210C476M9RACTU" H 7700 2350 50  0001 C CNN "MPN"
+	1    7700 2350
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GNDA #PWR?
 U 1 1 5E1955C8
-P 7650 2650
+P 7700 2500
 AR Path="/5E1955C8" Ref="#PWR?"  Part="1" 
 AR Path="/5DA78AA2/5E1955C8" Ref="#PWR?"  Part="1" 
 AR Path="/5DFCF14D/5DA78AA2/5E1955C8" Ref="#PWR0112"  Part="1" 
-F 0 "#PWR0112" H 7650 2400 50  0001 C CNN
-F 1 "GNDA" H 7655 2477 50  0000 C CNN
-F 2 "" H 7650 2650 50  0001 C CNN
-F 3 "" H 7650 2650 50  0001 C CNN
-	1    7650 2650
+F 0 "#PWR0112" H 7700 2250 50  0001 C CNN
+F 1 "GNDA" H 7705 2327 50  0000 C CNN
+F 2 "" H 7700 2500 50  0001 C CNN
+F 3 "" H 7700 2500 50  0001 C CNN
+	1    7700 2500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7650 2650 7650 2600
+	7700 2500 7700 2450
 Wire Wire Line
-	7650 2400 7650 2300
+	7700 2250 7700 2150
 $Comp
 L Device:C_Small C105
 U 1 1 5E1955C9
@@ -197,7 +180,10 @@ P 5900 2650
 F 0 "C105" H 5910 2720 50  0000 L CNN
 F 1 "10uF" H 5910 2570 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 5900 2650 50  0001 C CNN
-F 3 "~" H 5900 2650 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 5900 2650 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 5900 2650 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 5900 2650 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 5900 2650 50  0001 C CNN "MPN"
 	1    5900 2650
 	1    0    0    -1  
 $EndComp
@@ -257,7 +243,10 @@ P 5900 1900
 F 0 "C104" H 5910 1970 50  0000 L CNN
 F 1 "10uF" H 5910 1820 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 5900 1900 50  0001 C CNN
-F 3 "~" H 5900 1900 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 5900 1900 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 5900 1900 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 5900 1900 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 5900 1900 50  0001 C CNN "MPN"
 	1    5900 1900
 	1    0    0    -1  
 $EndComp
@@ -313,38 +302,35 @@ Wire Wire Line
 $Comp
 L Device:C_Small C108
 U 1 1 5E1955D1
-P 7250 2500
-F 0 "C108" H 7260 2570 50  0000 L CNN
-F 1 "100nF" H 7260 2420 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 7250 2500 50  0001 C CNN
-F 3 "~" H 7250 2500 50  0001 C CNN
-	1    7250 2500
+P 7250 2350
+F 0 "C108" H 7260 2420 50  0000 L CNN
+F 1 "100nF" H 7260 2270 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7250 2350 50  0001 C CNN
+F 3 "~" H 7250 2350 50  0001 C CNN
+	1    7250 2350
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GNDA #PWR?
 U 1 1 5E1955D2
-P 7250 2650
+P 7250 2500
 AR Path="/5E1955D2" Ref="#PWR?"  Part="1" 
 AR Path="/5DA78AA2/5E1955D2" Ref="#PWR?"  Part="1" 
 AR Path="/5DFCF14D/5DA78AA2/5E1955D2" Ref="#PWR0111"  Part="1" 
-F 0 "#PWR0111" H 7250 2400 50  0001 C CNN
-F 1 "GNDA" H 7255 2477 50  0000 C CNN
-F 2 "" H 7250 2650 50  0001 C CNN
-F 3 "" H 7250 2650 50  0001 C CNN
-	1    7250 2650
+F 0 "#PWR0111" H 7250 2250 50  0001 C CNN
+F 1 "GNDA" H 7255 2327 50  0000 C CNN
+F 2 "" H 7250 2500 50  0001 C CNN
+F 3 "" H 7250 2500 50  0001 C CNN
+	1    7250 2500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7250 2650 7250 2600
+	7250 2500 7250 2450
 Wire Wire Line
-	7250 2400 7250 2300
-Connection ~ 7250 2300
+	7250 2250 7250 2150
+Connection ~ 7250 2150
 Wire Wire Line
-	7250 2300 6900 2300
-Connection ~ 7650 2300
-Wire Wire Line
-	7250 2300 7650 2300
+	7250 2150 6900 2150
 Wire Wire Line
 	6700 2350 6700 2450
 Wire Wire Line
@@ -585,25 +571,69 @@ Wire Bus Line
 Connection ~ 5450 5700
 Wire Bus Line
 	5450 4000 5450 5700
+Text Notes 8650 2600 0    50   ~ 0
+FB105 minimizes cross-coupling of \nreference noise between channels.\nSee reference_buffer.sch
 $Comp
-L Device:L_Core_Ferrite L101
-U 1 1 5E2E1824
-P 8550 2300
-F 0 "L101" V 8500 2300 50  0000 C CNN
-F 1 "270nH" V 8660 2300 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric" H 8550 2300 50  0001 C CNN
-F 3 "https://product.tdk.com/info/en/catalog/datasheets/inductor_commercial_standard_mlj1608_en.pdf" H 8550 2300 50  0001 C CNN
-F 4 "MLJ1608WR27JT000" V 8550 2300 50  0001 C CNN "MPN"
-F 5 "445-174189-1-ND" H 8550 2300 50  0001 C CNN "Digikey"
-	1    8550 2300
-	0    1    1    0   
+L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
+U 1 1 5E24DC2D
+P 8750 2150
+AR Path="/5DFCF14D/5DE42731/5E24DC2D" Ref="FB?"  Part="1" 
+AR Path="/5DFCF14D/5E24DC2D" Ref="FB?"  Part="1" 
+AR Path="/5DFCF14D/5DA78AA2/5E24DC2D" Ref="FB105"  Part="1" 
+F 0 "FB105" H 8750 2437 60  0000 C CNN
+F 1 "21 Ohm" H 8750 2331 60  0000 C CNN
+F 2 "digikey-footprints:0805" H 8950 2350 60  0001 L CNN
+F 3 "https://www.yuden.co.jp/productdata/catalog/chipbeads01_e.pdf" H 8950 2450 60  0001 L CNN
+F 4 "HZ0805C202R-10" H 8950 2650 60  0001 L CNN "MPN"
+F 5 "Ferrite Beads and Chips" H 8950 2850 60  0001 L CNN "Family"
+F 6 "FERRITE BEAD 21 OHM 0805, 100 nH, 5 mOhm" H 8950 3150 60  0001 L CNN "Description"
+F 7 "587-1765-1-ND" H 8750 2150 50  0001 C CNN "Digikey"
+	1    8750 2150
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8000 2300 8400 2300
+	8950 2150 9100 2150
 Wire Wire Line
-	8700 2300 8850 2300
-Text Notes 8100 2150 0    50   ~ 0
-L101 minimizes cross-coupling of \nreference noise between channels.\nSee reference_buffer.sch
+	6900 2150 6900 3000
+Wire Wire Line
+	8150 2500 8150 2450
+Connection ~ 7700 2150
+Wire Wire Line
+	7700 2150 8150 2150
+Wire Wire Line
+	7250 2150 7700 2150
+Connection ~ 8150 2150
+Wire Wire Line
+	8150 2150 8400 2150
+$Comp
+L Device:CP1_Small C?
+U 1 1 5E2551B7
+P 8150 2350
+AR Path="/5DFF6C0D/5E2551B7" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5E2551B7" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5E2551B7" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5E2551B7" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E2551B7" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5DA78AA2/5E2551B7" Ref="C110"  Part="1" 
+F 0 "C110" H 8300 2450 50  0000 C CNN
+F 1 "330uF" H 8300 2250 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 8150 2350 50  0001 C CNN
+F 3 "~" H 8150 2350 50  0001 C CNN
+F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 8150 2350 50  0001 C CNN "Description"
+F 5 "565-4285-1-ND" H 8150 2350 50  0001 C CNN "Digikey"
+F 6 "APXG160ARA331MH70G" H 8150 2350 50  0001 C CNN "MPN"
+	1    8150 2350
+	1    0    0    -1  
+$EndComp
+Text HLabel 8750 1600 2    50   Output ~ 0
+CHAN_VREF
+Wire Wire Line
+	8750 1600 8400 1600
+Connection ~ 8400 2150
+Wire Wire Line
+	8400 1600 8400 2150
+Wire Wire Line
+	8400 2150 8550 2150
 Wire Bus Line
 	5450 5700 8950 5700
 Wire Bus Line

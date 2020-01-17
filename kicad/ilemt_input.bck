@@ -9,7 +9,31 @@ $ENDCMP
 $CMP BAS21S
 D High-speed switching diodes
 K diode
-F https://www.mccsemi.com/pdf/Products/BAS21A,C,S(SOT-23).PDF
+F http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF
+$ENDCMP
+#
+$CMP EMI_Filter_CommonMode
+D EMI 2-inductor common mode filter
+K EMI common mode filter
+F ~
+$ENDCMP
+#
+$CMP EMI_Filter_CommonMode_3Line
+D EMI 2-inductor filter
+K EMI filter
+F ~
+$ENDCMP
+#
+$CMP EMI_Filter_CommonMode_copy
+D EMI 2-inductor common mode filter
+K EMI common mode filter
+F ~
+$ENDCMP
+#
+$CMP EMI_Filter_LL
+D EMI 2-inductor filter
+K EMI filter
+F ~
 $ENDCMP
 #
 $CMP FIN1046

@@ -1,12 +1,10 @@
 EESchema Schematic File Version 4
 LIBS:input_board-cache
-LIBS:input_channel-cache
-LIBS:reference_buffer-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 11
+Sheet 6 12
 Title ""
 Date ""
 Rev ""
@@ -16,8 +14,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Wire Wire Line
-	4000 900  4000 1000
 $Comp
 L Device:C_Small C131
 U 1 1 5DE6EE08
@@ -26,8 +22,11 @@ AR Path="/5DFCF14D/5DA78BF5/5DE6EE08" Ref="C131"  Part="1"
 AR Path="/5DFCF14D/5E195558/5DE6EE08" Ref="C131"  Part="1" 
 F 0 "C131" V 4121 1000 50  0000 C CNN
 F 1 "1uF" V 4212 1000 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 4350 1000 50  0001 C CNN
-F 3 "~" H 4350 1000 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4350 1000 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 4350 1000 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 4350 1000 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 4350 1000 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 4350 1000 50  0001 C CNN "MPN"
 	1    4350 1000
 	0    1    1    0   
 $EndComp
@@ -61,8 +60,11 @@ AR Path="/5DFCF14D/5DA78BF5/5E195589" Ref="C132"  Part="1"
 AR Path="/5DFCF14D/5E195558/5E195589" Ref="C132"  Part="1" 
 F 0 "C132" V 4121 1850 50  0000 C CNN
 F 1 "1uF" V 4212 1850 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 4350 1850 50  0001 C CNN
-F 3 "~" H 4350 1850 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4350 1850 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 4350 1850 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 4350 1850 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 4350 1850 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 4350 1850 50  0001 C CNN "MPN"
 	1    4350 1850
 	0    1    1    0   
 $EndComp
@@ -81,8 +83,6 @@ F 3 "" H 4600 1850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4450 1850 4600 1850
-Wire Wire Line
-	4000 1900 4000 1850
 Connection ~ 4000 1850
 Wire Wire Line
 	4000 1850 4250 1850
@@ -94,10 +94,11 @@ AR Path="/5DFCF14D/5DA78BF5/5DFFAD17" Ref="R129"  Part="1"
 AR Path="/5DFCF14D/5E195558/5DFFAD17" Ref="R129"  Part="1" 
 F 0 "R129" V 4200 2350 50  0000 C CNN
 F 1 "499" V 4000 2350 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 4140 2340 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 4140 2340 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 4100 2350 50  0001 C CNN
-F 4 "RES 499 OHM 0.1% 2/5W 1206" H 4100 2350 50  0001 C CNN "Description"
-F 5 "541-3877-1-ND" H 4100 2350 50  0001 C CNN "Digikey"
+F 4 "RES SMD 499 OHM 0.1% 1/4W 0805" H 4100 2350 50  0001 C CNN "Description"
+F 5 "A110514CT-ND" H 4100 2350 50  0001 C CNN "Digikey"
+F 6 "0.1%" H 4100 2350 50  0001 C CNN "Notes"
 	1    4100 2350
 	0    1    1    0   
 $EndComp
@@ -119,10 +120,11 @@ AR Path="/5DFCF14D/5DA78BF5/5E19558D" Ref="R130"  Part="1"
 AR Path="/5DFCF14D/5E195558/5E19558D" Ref="R130"  Part="1" 
 F 0 "R130" V 4200 5250 50  0000 C CNN
 F 1 "499" V 4000 5250 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 4140 5240 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 4140 5240 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 4100 5250 50  0001 C CNN
-F 4 "RES 499 OHM 0.1% 2/5W 1206" H 4100 5250 50  0001 C CNN "Description"
-F 5 "541-3877-1-ND" H 4100 5250 50  0001 C CNN "Digikey"
+F 4 "RES SMD 499 OHM 0.1% 1/4W 0805" H 4100 5250 50  0001 C CNN "Description"
+F 5 "A110514CT-ND" H 4100 5250 50  0001 C CNN "Digikey"
+F 6 "0.1%" H 4100 5250 50  0001 C CNN "Notes"
 	1    4100 5250
 	0    1    1    0   
 $EndComp
@@ -178,6 +180,7 @@ F 0 "R128" V 4000 4050 50  0000 C CNN
 F 1 "1K" V 3800 4050 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3940 4040 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 3900 4050 50  0001 C CNN
+F 4 "0.1%" H 3900 4050 50  0001 C CNN "Notes"
 	1    3900 4050
 	1    0    0    -1  
 $EndComp
@@ -291,28 +294,6 @@ Wire Wire Line
 Text Notes 7150 6950 0    50   ~ 0
 This is a differential amplifier, like the first part of a 3 opamp style \ninstrumentation amp, but we output to the fully-differential\ndriver/antialias filter in the antialias_driver sheet.
 $Comp
-L ilemt_input:V+ #PWR0132
-U 1 1 5E4F57E2
-P 4000 900
-F 0 "#PWR0132" H 4000 750 50  0001 C CNN
-F 1 "V+" H 4000 1040 50  0000 C CNN
-F 2 "" H 4000 900 50  0001 C CNN
-F 3 "" H 4000 900 50  0001 C CNN
-	1    4000 900 
-	1    0    0    -1  
-$EndComp
-$Comp
-L ilemt_input:V- #PWR0139
-U 1 1 5E4F5C06
-P 4000 2000
-F 0 "#PWR0139" H 4000 1850 50  0001 C CNN
-F 1 "V-" H 4000 1960 50  0000 C CNN
-F 2 "" H 4000 2100 50  0001 C CNN
-F 3 "" H 4000 2100 50  0001 C CNN
-	1    4000 2000
-	1    0    0    -1  
-$EndComp
-$Comp
 L ilemt_input:OPAMP_DUAL U101
 U 1 1 5E501ACE
 P 4000 1400
@@ -347,4 +328,16 @@ Wire Wire Line
 Wire Wire Line
 	5450 5250 5450 6050
 Connection ~ 5450 5250
+Text HLabel 3950 850  0    50   Input ~ 0
+CHAN_V+
+Text HLabel 3950 1950 0    50   Input ~ 0
+CHAN_V-
+Wire Wire Line
+	3950 850  4000 850 
+Wire Wire Line
+	4000 850  4000 1000
+Wire Wire Line
+	3950 1950 4000 1950
+Wire Wire Line
+	4000 1850 4000 1950
 $EndSCHEMATC
