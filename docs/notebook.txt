@@ -12,13 +12,15 @@ Input board design/capture tasks
     distortion (and PSRR).
  -- antialias/driver: capacitors need to be on E24 series
  -- Test points
- -- Finish connector assignments
  -- Decide on package for LVDS
-
-Rough component placement to get idea of board areas:
+ -- Select gain jumper header
  -- Create footprints for nonstandard components:
      - Common mode choke
      - GDT
+ -- Select all other parts (mainly resistors)
+ -- Reconcile Kicad BOM with Digikey, add refid to Digikey BOM
+
+Rough component placement to get idea of board areas:
  -- input channel: protection, stage 1, driver, ADC
  -- board entry filtering for power and reference
  -- reference driver
@@ -129,6 +131,17 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[18 Jan 20]
+
+I've been thinking about the system power supply, and I looked at
+integrated switching regulator chips.  If we use a 24V offline supply
+at the input, then there are lots of chips that can run in buck or
+inverter mode to generate our -7, +5, +11 rails @ 1A.  Some even
+multi-sourced.  For the +/- 80V rails to the driver we will need to
+use an external switch controller.
+
 
 
 [16 Jan 20]

@@ -28,7 +28,7 @@ ENDDEF
 DEF EMI_Filter_CommonMode_3Line FL 0 10 Y N 1 F N
 F0 "FL" 0 175 50 H V C CNN
 F1 "EMI_Filter_CommonMode_3Line" 50 -400 50 H V C CNN
-F2 "" -400 340 50 H I C CNN
+F2 "input:L_CommonMode_Wuerth_WE-SL3" -400 340 50 H I C CNN
 F3 "" -400 340 50 H I C CNN
 ALIAS EMI_Filter_CommonMode_copy
 $FPLIST

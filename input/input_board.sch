@@ -4,7 +4,7 @@ EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 12
+Sheet 1 13
 Title ""
 Date ""
 Rev ""
@@ -169,55 +169,8 @@ Wire Bus Line
 	6800 2300 7100 2300
 Wire Bus Line
 	7100 2300 7100 5050
-Wire Wire Line
-	4850 1300 5650 1300
-Wire Wire Line
-	4950 1450 5650 1450
-Wire Wire Line
-	4550 2250 5650 2250
-Wire Wire Line
-	4400 2400 5650 2400
-NoConn ~ 1900 2000
-NoConn ~ 1900 1900
-Wire Wire Line
-	1900 1600 3950 1600
-Wire Wire Line
-	1900 1700 4100 1700
-Wire Wire Line
-	1900 1400 4400 1400
-Wire Wire Line
-	1900 1300 4550 1300
-Wire Wire Line
-	1900 1800 4950 1800
-Wire Wire Line
-	1900 1500 4850 1500
-Wire Wire Line
-	1500 2200 1500 2350
-$Comp
-L power:Earth_Protective #PWR04
-U 1 1 5E1BF51D
-P 1500 2350
-F 0 "#PWR04" H 1750 2100 50  0001 C CNN
-F 1 "Earth_Protective" H 1950 2200 50  0001 C CNN
-F 2 "" H 1500 2250 50  0001 C CNN
-F 3 "~" H 1500 2250 50  0001 C CNN
-	1    1500 2350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4850 1500 4850 1300
-Wire Wire Line
-	4950 1800 4950 1450
-Wire Wire Line
-	4550 1300 4550 2250
-Wire Wire Line
-	4400 1400 4400 2400
-Wire Wire Line
-	4100 1700 4100 3250
-Wire Wire Line
-	3950 1600 3950 3400
 $Sheet
-S 9550 1700 1450 500 
+S 9400 1100 1100 450 
 U 5E1D6729
 F0 "board_connecctor" 50
 F1 "board_connector.sch" 50
@@ -312,10 +265,6 @@ F3 "+in" I L 5650 3250 50
 F4 "-in" I L 5650 3400 50 
 F5 "clocks" I L 5650 3550 50 
 $EndSheet
-Wire Wire Line
-	3950 3400 5650 3400
-Wire Wire Line
-	4100 3250 5650 3250
 Entry Wire Line
 	7000 5450 6900 5350
 Text Label 7650 5450 0    50   ~ 0
@@ -443,21 +392,11 @@ Wire Wire Line
 Wire Wire Line
 	1250 5600 1350 5600
 $Sheet
-S 9550 2600 1100 450 
+S 9400 1850 1100 450 
 U 5E2EB92B
 F0 "reference_buffer" 50
 F1 "reference_buffer.sch" 50
-F2 "-reference" I L 9550 2900 50 
-F3 "+reference" I L 9550 2750 50 
 $EndSheet
-Text GLabel 9450 2750 0    50   Input ~ 0
-+reference
-Wire Wire Line
-	9450 2750 9550 2750
-Text GLabel 9450 2900 0    50   Input ~ 0
--reference
-Wire Wire Line
-	9450 2900 9550 2900
 Text GLabel 3100 5300 0    50   Input ~ 0
 SYNC_IN
 Wire Wire Line
@@ -485,7 +424,7 @@ Wire Wire Line
 	5000 5900 5000 5850
 Connection ~ 5000 5850
 $Sheet
-S 9550 3500 1150 500 
+S 7750 1850 1100 450 
 U 5E51E83D
 F0 "power" 50
 F1 "power.sch" 50
@@ -499,20 +438,6 @@ F 1 "FIN1048" H 1900 5450 50  0000 L CNN
 F 2 "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" H 1850 3150 50  0001 C CNN
 F 3 "https://www.onsemi.com/pub/Collateral/FIN1048-D.pdf" H 1150 4050 50  0001 C CNN
 	1    1850 4900
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:RJ45_Shielded J1
-U 1 1 5E1BD14E
-P 1500 1700
-F 0 "J1" H 1300 2250 50  0000 R CNN
-F 1 "Input" H 1600 2250 50  0000 L CNN
-F 2 "Connector_RJ:RJ45_Amphenol_RJHSE538X" V 1500 1725 50  0001 C CNN
-F 3 "https://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/rjhse538x.pdf" V 1500 1725 50  0001 C CNN
-F 4 "RJHSE5387-ND" H 1500 1700 50  0001 C CNN "Digikey"
-F 5 "RJHSE5387" H 1500 1700 50  0001 C CNN "MPN"
-F 6 "CONN MOD JACK 8P8C R/A SHIELDED" H 1500 1700 50  0001 C CNN "Description"
-	1    1500 1700
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -562,22 +487,84 @@ F 3 "http://www.ti.com/lit/gpn/sn74LS541" H 3700 5200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Sheet
-S 7750 1100 1150 600 
+S 7750 1100 1050 450 
 U 5E5A51EB
 F0 "bist_buffer" 50
 F1 "bist_buffer.sch" 50
 F2 "BIST_feedback" I L 7750 1450 50 
 $EndSheet
 Wire Bus Line
+	6800 1450 7750 1450
+$Sheet
+S 3000 1500 1100 450 
+U 5E756356
+F0 "probe_connector" 50
+F1 "probe_connector.sch" 50
+F2 "Inputs" O R 4100 1750 50 
+$EndSheet
+Entry Wire Line
+	4700 3350 4600 3250
+Entry Wire Line
+	4700 3250 4600 3150
+Entry Wire Line
+	4700 2350 4600 2250
+Entry Wire Line
+	4700 2250 4600 2150
+Entry Wire Line
+	4700 1400 4600 1500
+Entry Wire Line
+	4700 1300 4600 1400
+Text Label 4950 1400 2    50   ~ 0
+X-
+Text Label 4900 3250 2    50   ~ 0
+Z+
+Text Label 4900 3350 2    50   ~ 0
+Z-
+Text Label 4950 1300 2    50   ~ 0
+X+
+Text Label 4950 2350 2    50   ~ 0
+Y-
+Text Label 4950 2250 2    50   ~ 0
+Y+
+Wire Wire Line
+	4700 1300 5650 1300
+Wire Wire Line
+	5650 1450 5550 1450
+Wire Wire Line
+	5550 1450 5550 1400
+Wire Wire Line
+	4700 1400 5550 1400
+Wire Wire Line
+	4700 3250 5650 3250
+Wire Wire Line
+	5650 3400 5600 3400
+Wire Wire Line
+	5600 3400 5600 3350
+Wire Wire Line
+	4700 3350 5600 3350
+Wire Wire Line
+	4700 2250 5650 2250
+Wire Wire Line
+	5650 2400 5550 2400
+Wire Wire Line
+	5550 2400 5550 2350
+Wire Wire Line
+	4700 2350 5550 2350
+Wire Bus Line
+	4100 1750 4600 1750
+Connection ~ 4600 1750
+Wire Bus Line
 	7250 1300 7250 4750
 Wire Wire Line
 	4850 4900 5450 4900
-Wire Bus Line
-	6800 1450 7750 1450
 Wire Bus Line
 	5200 1600 5200 4900
 Wire Bus Line
 	5400 2550 5400 5650
 Wire Bus Line
 	5550 3550 5550 5750
+Wire Bus Line
+	4600 1350 4600 1750
+Wire Bus Line
+	4600 1750 4600 3250
 $EndSCHEMATC

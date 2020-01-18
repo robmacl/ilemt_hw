@@ -4,7 +4,7 @@ EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 12
+Sheet 10 13
 Title ""
 Date ""
 Rev ""
@@ -168,11 +168,9 @@ F 4 "0.1%" V 2300 3650 50  0001 C CNN "Notes"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1500 3150 1650 3150
+	1450 3150 1650 3150
 Wire Wire Line
 	1450 4750 1600 4750
-Text HLabel 1450 4750 0    50   Input ~ 0
--reference
 $Comp
 L Device:R_US R2
 U 1 1 5E52A145
@@ -203,8 +201,6 @@ F 4 "0.1%" V 1800 3150 50  0001 C CNN "Notes"
 	1    1800 3150
 	0    1    1    0   
 $EndComp
-Text HLabel 1500 3150 0    50   Input ~ 0
-+reference
 Wire Wire Line
 	2300 3150 2300 3350
 Wire Wire Line
@@ -722,4 +718,8 @@ Wire Wire Line
 	2950 2450 3000 2450
 Wire Wire Line
 	3650 2450 4050 2450
+Text GLabel 1450 3150 0    50   Input ~ 0
++reference
+Text GLabel 1450 4750 0    50   Input ~ 0
+-reference
 $EndSCHEMATC
