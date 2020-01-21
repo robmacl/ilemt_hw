@@ -33,8 +33,6 @@ F 6 "CL21B105KOFNNNG" H 4400 2850 50  0001 C CNN "MPN"
 $EndComp
 Wire Wire Line
 	4050 3550 4050 3700
-Wire Wire Line
-	4300 2850 4050 2850
 Connection ~ 4050 2850
 Wire Wire Line
 	4050 2850 4050 2950
@@ -101,8 +99,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 4050 3400 50  0001 C CNN
 	1    4000 3250
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4050 3700 4300 3700
 $Comp
 L Device:R_US R4
 U 1 1 5DE6107D
@@ -317,7 +313,7 @@ The buffer is normally biased into class-A operation by R5, which supplies\n12 m
 Text Notes 7100 6700 0    50   ~ 0
 Reference buffer
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 2 1 5E52A154
 P 5300 3050
 AR Path="/5DFCF14D/5DE42731/5E52A154" Ref="D?"  Part="1" 
@@ -478,11 +474,11 @@ Wire Wire Line
 	4050 3700 4050 3950
 Connection ~ 4050 3700
 Text GLabel 1500 2450 0    50   Input ~ 0
-RAW_V+
+FILT_+10V
 Wire Wire Line
 	4050 2450 4050 2850
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 1 1 5E29F9EE
 P 4300 2200
 AR Path="/5DFCF14D/5DE42731/5E29F9EE" Ref="D?"  Part="2" 
@@ -511,7 +507,7 @@ F 3 "" H 4300 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 1 1 5E291915
 P 3800 4200
 AR Path="/5DFCF14D/5DE42731/5E291915" Ref="D?"  Part="1" 
@@ -540,20 +536,6 @@ F 3 "" H 3800 4400 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3800 4400 3800 4350
-$Comp
-L Diode:BAV99 D?
-U 1 1 5E29190F
-P 4300 4200
-AR Path="/5DFCF14D/5DE42731/5E29190F" Ref="D?"  Part="2" 
-AR Path="/5E1D6729/5E1DA2AA/5E29190F" Ref="D?"  Part="2" 
-AR Path="/5E2EB92B/5E29190F" Ref="D7"  Part="1" 
-F 0 "D7" H 4300 4415 50  0000 C CNN
-F 1 "BAS21S" H 4300 4324 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 4300 4050 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 4300 4300 50  0001 C CNN
-	1    4300 4200
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	4300 4400 4300 4350
 Wire Wire Line
@@ -562,7 +544,7 @@ Wire Wire Line
 	4300 3950 4300 4050
 Connection ~ 4050 3950
 Wire Wire Line
-	3800 3950 4050 3950
+	3800 3950 3850 3950
 Connection ~ 4050 2450
 Wire Wire Line
 	4050 2450 4300 2450
@@ -574,7 +556,7 @@ Wire Wire Line
 Wire Wire Line
 	5750 2500 6100 2500
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 1 1 5E52A153
 P 5750 2700
 AR Path="/5DFCF14D/5DE42731/5E52A153" Ref="D?"  Part="1" 
@@ -588,7 +570,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 5750 2800
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 2 1 5E52A152
 P 5750 3050
 AR Path="/5DFCF14D/5DE42731/5E52A152" Ref="D?"  Part="2" 
@@ -621,7 +603,7 @@ F 5 "NSS1C300ET4GOSCT-ND" H 6000 3250 50  0001 C CNN "Digikey"
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 1 1 5E5E3816
 P 1750 2450
 AR Path="/5DFCF14D/5DE42731/5E5E3816" Ref="D?"  Part="1" 
@@ -635,7 +617,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 1750 2550
 	-1   0    0    1   
 $EndComp
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 2 1 5E5E381C
 P 2100 2450
 AR Path="/5DFCF14D/5DE42731/5E5E381C" Ref="D?"  Part="2" 
@@ -651,7 +633,7 @@ $EndComp
 Wire Wire Line
 	1900 2450 1950 2450
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 1 1 5E5E5222
 P 2450 2450
 AR Path="/5DFCF14D/5DE42731/5E5E5222" Ref="D?"  Part="1" 
@@ -665,7 +647,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 2450 2550
 	-1   0    0    1   
 $EndComp
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 2 1 5E5E5228
 P 2800 2450
 AR Path="/5DFCF14D/5DE42731/5E5E5228" Ref="D?"  Part="2" 
@@ -685,7 +667,7 @@ Wire Wire Line
 Wire Wire Line
 	1500 2450 1600 2450
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 1 1 5E600273
 P 3150 2450
 AR Path="/5DFCF14D/5DE42731/5E600273" Ref="D?"  Part="1" 
@@ -699,7 +681,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 3150 2550
 	-1   0    0    1   
 $EndComp
 $Comp
-L Diode:BAV99 D?
+L ilemt_input:BAS21S D?
 U 2 1 5E600279
 P 3500 2450
 AR Path="/5DFCF14D/5DE42731/5E600279" Ref="D?"  Part="2" 
@@ -717,9 +699,55 @@ Wire Wire Line
 Wire Wire Line
 	2950 2450 3000 2450
 Wire Wire Line
-	3650 2450 4050 2450
+	3650 2450 3850 2450
 Text GLabel 1450 3150 0    50   Input ~ 0
 +reference
 Text GLabel 1450 4750 0    50   Input ~ 0
 -reference
+$Comp
+L power:PWR_FLAG #FLG0108
+U 1 1 5E9020E8
+P 3850 2450
+F 0 "#FLG0108" H 3850 2525 50  0001 C CNN
+F 1 "PWR_FLAG" H 3850 2600 50  0000 C CNN
+F 2 "" H 3850 2450 50  0001 C CNN
+F 3 "~" H 3850 2450 50  0001 C CNN
+	1    3850 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0110
+U 1 1 5E902531
+P 3850 3950
+F 0 "#FLG0110" H 3850 4025 50  0001 C CNN
+F 1 "PWR_FLAG" H 3850 4100 50  0000 C CNN
+F 2 "" H 3850 3950 50  0001 C CNN
+F 3 "~" H 3850 3950 50  0001 C CNN
+	1    3850 3950
+	1    0    0    -1  
+$EndComp
+Connection ~ 3850 2450
+Wire Wire Line
+	3850 2450 4050 2450
+Connection ~ 3850 3950
+Wire Wire Line
+	3850 3950 4050 3950
+Wire Wire Line
+	4050 3700 4300 3700
+Wire Wire Line
+	4050 2850 4300 2850
+$Comp
+L ilemt_input:BAS21S D?
+U 1 1 5E29190F
+P 4300 4200
+AR Path="/5DFCF14D/5DE42731/5E29190F" Ref="D?"  Part="2" 
+AR Path="/5E1D6729/5E1DA2AA/5E29190F" Ref="D?"  Part="2" 
+AR Path="/5E2EB92B/5E29190F" Ref="D7"  Part="1" 
+F 0 "D7" H 4300 4415 50  0000 C CNN
+F 1 "BAS21S" H 4300 4324 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 4300 4050 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 4300 4300 50  0001 C CNN
+	1    4300 4200
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC

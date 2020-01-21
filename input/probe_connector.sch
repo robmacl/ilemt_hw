@@ -17,19 +17,6 @@ $EndDescr
 Wire Wire Line
 	2650 3250 2650 3300
 $Comp
-L power:Earth_Protective #PWR?
-U 1 1 5E75AFB4
-P 2650 3400
-AR Path="/5E75AFB4" Ref="#PWR?"  Part="1" 
-AR Path="/5E756356/5E75AFB4" Ref="#PWR04"  Part="1" 
-F 0 "#PWR04" H 2900 3150 50  0001 C CNN
-F 1 "Earth_Protective" H 3100 3250 50  0001 C CNN
-F 2 "" H 2650 3300 50  0001 C CNN
-F 3 "~" H 2650 3300 50  0001 C CNN
-	1    2650 3400
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector:RJ45_Shielded J?
 U 1 1 5E75AFBD
 P 2650 2750
@@ -56,22 +43,6 @@ Wire Wire Line
 Connection ~ 2650 3300
 Wire Wire Line
 	2650 3300 2650 3400
-Wire Bus Line
-	4600 3100 4800 3100
-Text HLabel 4800 3100 2    50   Output ~ 0
-Inputs
-Entry Wire Line
-	4500 2350 4600 2450
-Entry Wire Line
-	4500 2450 4600 2550
-Entry Wire Line
-	4500 2550 4600 2650
-Entry Wire Line
-	4500 2650 4600 2750
-Entry Wire Line
-	4500 2750 4600 2850
-Entry Wire Line
-	4500 2850 4600 2950
 Wire Wire Line
 	3050 2350 4500 2350
 Wire Wire Line
@@ -104,7 +75,7 @@ AR Path="/5DFCF14D/5DE42731/5E75F20B" Ref="FB?"  Part="1"
 AR Path="/5E756356/5E75F20B" Ref="FB5"  Part="1" 
 F 0 "FB5" H 4000 4337 60  0000 C CNN
 F 1 "600 Ohm" H 4000 4231 60  0000 C CNN
-F 2 "digikey-footprints:0805" H 4200 4250 60  0001 L CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 4200 4250 60  0001 L CNN
 F 3 "" H 4200 4350 60  0001 L CNN
 F 4 " 240-2396-1-ND" H 4200 4450 60  0001 L CNN "Digi-Key_PN"
 F 5 "HZ0805C202R-10" H 4200 4550 60  0001 L CNN "MPN"
@@ -127,36 +98,23 @@ Wire Wire Line
 $Comp
 L Device:D_Zener D?
 U 1 1 5E7695B8
-P 5550 4450
+P 5550 4400
 AR Path="/5E51E83D/5E7695B8" Ref="D?"  Part="1" 
 AR Path="/5E756356/5E7695B8" Ref="D9"  Part="1" 
-F 0 "D9" H 5550 4550 50  0000 C CNN
-F 1 "5V (standoff)" H 5650 4250 50  0000 C CNN
-F 2 "Diode_SMD:D_SMA" H 5550 4450 50  0001 C CNN
-F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 5550 4450 50  0001 C CNN
-F 4 "824500500" H 5550 4450 50  0001 C CNN "MPN"
-F 5 "TVS DIODE 5V 9.2V DO214AC" H 5550 4450 50  0001 C CNN "Description"
-F 6 "732-9974-1-ND" H 5550 4450 50  0001 C CNN "Digikey"
-	1    5550 4450
+F 0 "D9" H 5550 4500 50  0000 C CNN
+F 1 "5V (standoff)" H 5650 4200 50  0000 C CNN
+F 2 "Diode_SMD:D_SMA" H 5550 4400 50  0001 C CNN
+F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 5550 4400 50  0001 C CNN
+F 4 "824500500" H 5550 4400 50  0001 C CNN "MPN"
+F 5 "TVS DIODE 5V 9.2V DO214AC" H 5550 4400 50  0001 C CNN "Description"
+F 6 "732-9974-1-ND" H 5550 4400 50  0001 C CNN "Digikey"
+	1    5550 4400
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5550 4050 5550 4300
-$Comp
-L power:Earth_Protective #PWR?
-U 1 1 5E75F219
-P 5550 4700
-AR Path="/5DFCF14D/5DE42731/5E75F219" Ref="#PWR?"  Part="1" 
-AR Path="/5E756356/5E75F219" Ref="#PWR049"  Part="1" 
-F 0 "#PWR049" H 5800 4450 50  0001 C CNN
-F 1 "Earth_Protective" H 6000 4550 50  0001 C CNN
-F 2 "" H 5550 4600 50  0001 C CNN
-F 3 "~" H 5550 4600 50  0001 C CNN
-	1    5550 4700
-	1    0    0    -1  
-$EndComp
+	5550 4050 5550 4250
 Wire Wire Line
-	5550 4600 5550 4700
+	5550 4550 5550 4650
 $Comp
 L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
 U 1 1 5E76B461
@@ -165,7 +123,7 @@ AR Path="/5DFCF14D/5DE42731/5E76B461" Ref="FB?"  Part="1"
 AR Path="/5E756356/5E76B461" Ref="FB6"  Part="1" 
 F 0 "FB6" H 5000 4337 60  0000 C CNN
 F 1 "600 Ohm" H 5000 4231 60  0000 C CNN
-F 2 "digikey-footprints:0805" H 5200 4250 60  0001 L CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 5200 4250 60  0001 L CNN
 F 3 "" H 5200 4350 60  0001 L CNN
 F 4 " 240-2396-1-ND" H 5200 4450 60  0001 L CNN "Digi-Key_PN"
 F 5 "HZ0805C202R-10" H 5200 4550 60  0001 L CNN "MPN"
@@ -201,19 +159,6 @@ Wire Wire Line
 Connection ~ 4450 4050
 Wire Wire Line
 	4450 4050 4800 4050
-$Comp
-L power:Earth_Protective #PWR?
-U 1 1 5E76FD86
-P 4450 4650
-AR Path="/5DFCF14D/5DE42731/5E76FD86" Ref="#PWR?"  Part="1" 
-AR Path="/5E756356/5E76FD86" Ref="#PWR048"  Part="1" 
-F 0 "#PWR048" H 4700 4400 50  0001 C CNN
-F 1 "Earth_Protective" H 4900 4500 50  0001 C CNN
-F 2 "" H 4450 4550 50  0001 C CNN
-F 3 "~" H 4450 4550 50  0001 C CNN
-	1    4450 4650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4450 4450 4450 4650
 Wire Wire Line
@@ -221,8 +166,51 @@ Wire Wire Line
 Wire Wire Line
 	5800 4050 5550 4050
 Connection ~ 5550 4050
-Wire Bus Line
-	4600 2400 4600 3100
 Text Notes 3250 2150 0    50   ~ 0
 This pinout uses the pairs in \n T-568B RJ45 ethernet cable
+Text HLabel 4500 2350 2    50   Output ~ 0
+Y+
+Text HLabel 4500 2450 2    50   Output ~ 0
+Y-
+Text HLabel 4500 2550 2    50   Output ~ 0
+X+
+Text HLabel 4500 2650 2    50   Output ~ 0
+Z-
+Text HLabel 4500 2750 2    50   Output ~ 0
+Z+
+Text HLabel 4500 2850 2    50   Output ~ 0
+X-
+$Comp
+L power:Earth #PWR0155
+U 1 1 5E36FAA0
+P 2650 3400
+F 0 "#PWR0155" H 2650 3150 50  0001 C CNN
+F 1 "Earth" H 2650 3250 50  0001 C CNN
+F 2 "" H 2650 3400 50  0001 C CNN
+F 3 "~" H 2650 3400 50  0001 C CNN
+	1    2650 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR0156
+U 1 1 5E36FFC7
+P 4450 4650
+F 0 "#PWR0156" H 4450 4400 50  0001 C CNN
+F 1 "Earth" H 4450 4500 50  0001 C CNN
+F 2 "" H 4450 4650 50  0001 C CNN
+F 3 "~" H 4450 4650 50  0001 C CNN
+	1    4450 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR0157
+U 1 1 5E370459
+P 5550 4650
+F 0 "#PWR0157" H 5550 4400 50  0001 C CNN
+F 1 "Earth" H 5550 4500 50  0001 C CNN
+F 2 "" H 5550 4650 50  0001 C CNN
+F 3 "~" H 5550 4650 50  0001 C CNN
+	1    5550 4650
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

@@ -38,10 +38,9 @@ F2 "+out" O R 5350 3050 50
 F3 "-out" O R 5350 3200 50 
 F4 "-in" I L 4150 3200 50 
 F5 "+in" I L 4150 3050 50 
-F6 "BIST_feedback" O R 5350 3400 50 
-F7 "CHAN_V+" I L 4150 3350 50 
-F8 "CHAN_V-" I L 4150 3450 50 
-F9 "CHAN_VREF" I L 4150 3600 50 
+F6 "CHAN_V+" I L 4150 3350 50 
+F7 "CHAN_V-" I L 4150 3450 50 
+F8 "CHAN_VREF" I L 4150 3600 50 
 $EndSheet
 $Sheet
 S 6000 2950 1100 750 
@@ -55,12 +54,6 @@ F5 "-out" I R 7100 3200 50
 F6 "CHAN_V+" I L 6000 3350 50 
 F7 "CHAN_V-" I L 6000 3450 50 
 $EndSheet
-Wire Wire Line
-	8750 3200 9050 3200
-Wire Wire Line
-	8750 3050 9050 3050
-Text HLabel 10400 3050 2    50   Output ~ 0
-data
 Text HLabel 3800 3050 0    50   Input ~ 0
 +in
 Text HLabel 3800 3200 0    50   Input ~ 0
@@ -69,22 +62,6 @@ Wire Wire Line
 	3800 3050 4150 3050
 Wire Wire Line
 	3800 3200 4150 3200
-Text HLabel 8700 4050 0    50   Input ~ 0
-clocks
-Wire Bus Line
-	9050 3350 8950 3350
-Wire Bus Line
-	8950 3350 8950 4050
-Wire Bus Line
-	8950 4050 8700 4050
-Wire Bus Line
-	10150 3050 10400 3050
-Wire Bus Line
-	5350 3400 5500 3400
-Wire Bus Line
-	5500 3400 5500 2550
-Wire Bus Line
-	5500 2550 5650 2550
 Wire Wire Line
 	7100 3050 7700 3050
 Wire Wire Line
@@ -97,7 +74,7 @@ AR Path="/5DFCF14D/5DE42731/5E23902C" Ref="FB?"  Part="1"
 AR Path="/5DFCF14D/5E23902C" Ref="FB103"  Part="1" 
 F 0 "FB103" H 2200 4387 60  0000 C CNN
 F 1 "21 Ohm" H 2200 4281 60  0000 C CNN
-F 2 "digikey-footprints:0805" H 2400 4300 60  0001 L CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 2400 4300 60  0001 L CNN
 F 3 "https://www.yuden.co.jp/productdata/catalog/chipbeads01_e.pdf" H 2400 4400 60  0001 L CNN
 F 4 "HZ0805C202R-10" H 2400 4600 60  0001 L CNN "MPN"
 F 5 "Ferrite Beads and Chips" H 2400 4800 60  0001 L CNN "Family"
@@ -152,7 +129,7 @@ F 6 "APXG160ARA331MH70G" H 2800 4300 50  0001 C CNN "MPN"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2400 4100 2800 4100
+	2400 4100 2650 4100
 Wire Wire Line
 	2800 4100 2800 4200
 $Comp
@@ -176,7 +153,7 @@ AR Path="/5DFCF14D/5DE42731/5E24179B" Ref="FB?"  Part="1"
 AR Path="/5DFCF14D/5E24179B" Ref="FB104"  Part="1" 
 F 0 "FB104" H 2200 5487 60  0000 C CNN
 F 1 "21 Ohm" H 2200 5381 60  0000 C CNN
-F 2 "digikey-footprints:0805" H 2400 5400 60  0001 L CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 2400 5400 60  0001 L CNN
 F 3 "https://www.yuden.co.jp/productdata/catalog/chipbeads01_e.pdf" H 2400 5500 60  0001 L CNN
 F 4 "HZ0805C202R-10" H 2400 5700 60  0001 L CNN "MPN"
 F 5 "Ferrite Beads and Chips" H 2400 5900 60  0001 L CNN "Family"
@@ -205,7 +182,7 @@ F 6 "APXG160ARA331MH70G" H 2800 5400 50  0001 C CNN "MPN"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2400 5200 2800 5200
+	2400 5200 2650 5200
 Wire Wire Line
 	2800 5200 2800 5300
 $Comp
@@ -243,8 +220,6 @@ Wire Wire Line
 Wire Wire Line
 	7450 3450 7700 3450
 Connection ~ 2800 5200
-Text HLabel 5650 2550 2    50   Output ~ 0
-BIST_feedback
 Wire Wire Line
 	5750 3350 5750 4100
 Wire Wire Line
@@ -264,15 +239,18 @@ Wire Wire Line
 Wire Wire Line
 	3900 4200 5850 4200
 $Sheet
-S 9050 2950 1100 550 
+S 9350 2950 1100 700 
 U 5DA78AA2
 F0 "ADC" 50
 F1 "adc.sch" 50
-F2 "+in" I L 9050 3050 50 
-F3 "-in" I L 9050 3200 50 
-F4 "data" O R 10150 3050 50 
-F5 "clocks" I L 9050 3350 50 
-F6 "CHAN_VREF" O R 10150 3350 50 
+F2 "+in" I L 9350 3050 50 
+F3 "-in" I L 9350 3200 50 
+F4 "CHAN_VREF" O R 10450 3350 50 
+F5 "SDOA" O R 10450 3050 50 
+F6 "SDOB" O R 10450 3200 50 
+F7 "MCLK" I L 9350 3350 50 
+F8 "SCKB" I L 9350 3550 50 
+F9 "SCKA" I L 9350 3450 50 
 $EndSheet
 Wire Wire Line
 	5350 3050 6000 3050
@@ -289,9 +267,9 @@ Wire Wire Line
 	5850 4200 7450 4200
 Connection ~ 5850 4200
 Wire Wire Line
-	10150 3350 10300 3350
+	10450 3350 10600 3350
 Wire Wire Line
-	10300 3350 10300 4500
+	10600 3350 10600 4500
 Wire Wire Line
 	7700 3600 7600 3600
 Wire Wire Line
@@ -300,9 +278,61 @@ Wire Wire Line
 	4050 4500 7600 4500
 Connection ~ 7600 4500
 Wire Wire Line
-	7600 4500 10300 4500
-Wire Wire Line
 	4150 3600 4050 3600
 Wire Wire Line
 	4050 3600 4050 4500
+$Comp
+L power:PWR_FLAG #FLG0103
+U 1 1 5E8B0766
+P 2650 4100
+F 0 "#FLG0103" H 2650 4175 50  0001 C CNN
+F 1 "PWR_FLAG" H 2650 4250 50  0000 C CNN
+F 2 "" H 2650 4100 50  0001 C CNN
+F 3 "~" H 2650 4100 50  0001 C CNN
+	1    2650 4100
+	1    0    0    -1  
+$EndComp
+Connection ~ 2650 4100
+Wire Wire Line
+	2650 4100 2800 4100
+$Comp
+L power:PWR_FLAG #FLG0104
+U 1 1 5E8B104C
+P 2650 5200
+F 0 "#FLG0104" H 2650 5275 50  0001 C CNN
+F 1 "PWR_FLAG" H 2650 5350 50  0000 C CNN
+F 2 "" H 2650 5200 50  0001 C CNN
+F 3 "~" H 2650 5200 50  0001 C CNN
+	1    2650 5200
+	1    0    0    -1  
+$EndComp
+Connection ~ 2650 5200
+Wire Wire Line
+	2650 5200 2800 5200
+Text HLabel 10600 3050 2    50   Output ~ 0
+SDOA
+Text HLabel 10600 3200 2    50   Output ~ 0
+SDOB
+Text HLabel 9250 3350 0    50   Input ~ 0
+MCLK
+Text HLabel 9250 3550 0    50   Input ~ 0
+SCKB
+Text HLabel 9250 3450 0    50   Input ~ 0
+SCKA
+Wire Wire Line
+	10450 3050 10600 3050
+Wire Wire Line
+	10450 3200 10600 3200
+Wire Wire Line
+	9250 3350 9350 3350
+Wire Wire Line
+	9250 3450 9350 3450
+Wire Wire Line
+	9250 3550 9350 3550
+Wire Wire Line
+	8750 3200 9350 3200
+Wire Wire Line
+	8750 3050 9350 3050
+Wire Wire Line
+	7600 4500 10600 4500
 $EndSCHEMATC

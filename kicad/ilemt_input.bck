@@ -12,6 +12,12 @@ K diode
 F http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF
 $ENDCMP
 #
+$CMP C64AB
+D Connector Europe 64 contacts ranges A,B
+K connector DIN
+F  ~
+$ENDCMP
+#
 $CMP EMI_Filter_CommonMode
 D EMI 2-inductor common mode filter
 K EMI common mode filter
@@ -108,6 +114,17 @@ $ENDCMP
 $CMP V-
 D Power symbol creates a global label with name "+15V"
 K power-flag
+$ENDCMP
+#
+$CMP my_C64AB
+D Connector Europe 64 contacts ranges A,B
+K connector DIN
+F  ~
+$ENDCMP
+#
+$CMP opamp_quad
+D IC OPAMP GP 4 CIRCUIT 14SOIC
+K 296-9540-1-ND
 $ENDCMP
 #
 $CMP opamp_single

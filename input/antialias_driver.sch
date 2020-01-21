@@ -343,29 +343,29 @@ Connection ~ 3450 4100
 Wire Wire Line
 	3450 4100 3550 4100
 $Comp
-L Diode:BAV99 D?
-U 2 1 5E3F98E8
+L ilemt_input:BAS21S D?
+U 1 1 5E3F98E8
 P 7000 2900
 AR Path="/5DFCF14D/5DE42731/5E3F98E8" Ref="D?"  Part="2" 
-AR Path="/5DFCF14D/5DE6CDF8/5E3F98E8" Ref="D109"  Part="2" 
+AR Path="/5DFCF14D/5DE6CDF8/5E3F98E8" Ref="D109"  Part="1" 
 F 0 "D109" H 7000 3115 50  0000 C CNN
 F 1 "BAS21S" H 7000 3024 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7000 2750 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 7000 3000 50  0001 C CNN
-	2    7000 2900
+	1    7000 2900
 	0    1    1    0   
 $EndComp
 $Comp
-L Diode:BAV99 D?
-U 1 1 5E3F98EE
+L ilemt_input:BAS21S D?
+U 2 1 5E3F98EE
 P 7000 2400
 AR Path="/5DFCF14D/5DE42731/5E3F98EE" Ref="D?"  Part="1" 
-AR Path="/5DFCF14D/5DE6CDF8/5E3F98EE" Ref="D109"  Part="1" 
+AR Path="/5DFCF14D/5DE6CDF8/5E3F98EE" Ref="D109"  Part="2" 
 F 0 "D109" H 7000 2615 50  0000 C CNN
 F 1 "BAS21S" H 7000 2524 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7000 2250 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 7000 2500 50  0001 C CNN
-	1    7000 2400
+	2    7000 2400
 	0    1    1    0   
 $EndComp
 Wire Wire Line
@@ -423,29 +423,29 @@ Connection ~ 7000 2200
 Wire Wire Line
 	7000 2200 7000 2250
 $Comp
-L Diode:BAV99 D?
-U 2 1 5E403D60
+L ilemt_input:BAS21S D?
+U 1 1 5E403D60
 P 7000 4400
 AR Path="/5DFCF14D/5DE42731/5E403D60" Ref="D?"  Part="2" 
-AR Path="/5DFCF14D/5DE6CDF8/5E403D60" Ref="D110"  Part="2" 
+AR Path="/5DFCF14D/5DE6CDF8/5E403D60" Ref="D110"  Part="1" 
 F 0 "D110" H 7000 4615 50  0000 C CNN
 F 1 "BAS21S" H 7000 4524 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7000 4250 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 7000 4500 50  0001 C CNN
-	2    7000 4400
+	1    7000 4400
 	0    1    1    0   
 $EndComp
 $Comp
-L Diode:BAV99 D?
-U 1 1 5E403D66
+L ilemt_input:BAS21S D?
+U 2 1 5E403D66
 P 7000 3900
 AR Path="/5DFCF14D/5DE42731/5E403D66" Ref="D?"  Part="1" 
-AR Path="/5DFCF14D/5DE6CDF8/5E403D66" Ref="D110"  Part="1" 
+AR Path="/5DFCF14D/5DE6CDF8/5E403D66" Ref="D110"  Part="2" 
 F 0 "D110" H 7000 4115 50  0000 C CNN
 F 1 "BAS21S" H 7000 4024 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7000 3750 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 7000 4000 50  0001 C CNN
-	1    7000 3900
+	2    7000 3900
 	0    1    1    0   
 $EndComp
 Wire Wire Line
