@@ -8,20 +8,17 @@ Calibration todo:
 
 
 Input board design/capture tasks
+ -- Missing LVDS Rx termination resistors?  And decoupling caps
+    Swap Rx order to avoid wire crosses. 
+ -- Decide on package for LVDS
+ -- 10V TVS on V+/V- outputs
+ -- Input TVS can now be unidirectional
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
-    distortion (and PSRR).
+    distortion, PSRR, CMRR.
  -- antialias/driver: capacitors need to be on E24 series
  -- Test points
- -- Decide on package for LVDS
  -- Select all other parts (mainly resistors)
  -- Reconcile Kicad BOM with Digikey, add refid to Digikey BOM
-
-Rough component placement to get idea of board areas:
- -- input channel: protection, stage 1, driver, ADC
- -- board entry filtering for power and reference
- -- reference driver
- -- power
- -- digital tx/rx
 
 Board floor plan w/ preliminary sizes, connector locations
 
@@ -35,6 +32,10 @@ Layout tasks:
  -- extra test features on channel 1
 
  ==> Order BOM and DOUBLE CHECK footprints on all components
+ 
+ -- Check connector footprint wrt board edge.  It seems to be a
+    non-metric size?  Won't center on 0.5mm grid.
+ -- Check symmetry of +/- input channel
 
 Hardware todo:
  -- Prototype reference buffer?
@@ -127,6 +128,177 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[23 Jan 20]
+
+I have approximate part placement for the input board, and of course
+it is bigger than I was imagining.  As expected, the input channel is
+rather long and skinny, so need to be repeated vertically.  But they
+are wide enough that my layout with my main ground support circuitry
+below was getting pretty tall.  That arrangement was aimed toward a
+card packaging like a PC motherboard/case.
+
+Also, as I was looking at the layout, it became clear that putting the
+connector and main ground at the back of the card was making more
+sense.  This got me into looking at cases and subracks for eurocards.
+While this is going to be kind of expensive, using one of these is
+really going to simplify the enclosure construction.  There are just
+all the brackets and whatnot that you need available in stock.
+
+This would also give a lot of flexibility for mounting the power
+supply and source driver components, which are pretty vague at this
+point.  Without the driver it will easily fit in a 1/2 rack enclosure.
+The other half should be plenty of room for the driver and supplies.
+
+The standard eurocard sizes are a bit limiting, since you go right
+from 3U to 6U, whereas I had been thinking maybe 4U.  But it looks
+like we can squeeze three channels into a 100mm high 3U card as long
+as there is nothing else above/below.  And the most common "deep" card
+size is 280mm, which seems barely long enough.  This corresponds to a
+12" deep enclosure.  But 15" enclosures are also available if it comes
+to that.
+
+Either either the recessed front or standard style of subrack would be
+possible.  For a fancy box with high-reliability sensor connectors we
+could break out the sensor connection from the cards to a connector
+board mounted on the front panel, connected by RJ45 jumpers.  Or to
+directly expose the board RJ45 you could use either the per-card split
+front panel or a single panel where you access thru a cutout in the
+panel.
+
+Another possible packaging would be to flat-mount the boards as
+daughtercards edge-to-edge on the main board.  This would give a much
+shorter (much wider) box, and would not need all the fancy rack
+hardware.  The same card could be mounted in either form factor by
+using a different connector.  Face up would actually be nicer for
+testing because you can easily access the top surface and components.
+This would be awfully wide when there are many input cards.  The
+standard rack scales a lot better mechanically.  Until we implement
+the digital driver we want at least three cards, one for feedback, and
+two sensors (for calibration).
+
+So anyway I am aiming for a 100x280mm eurocard compatible card with
+the connector at the back.  We don't have to decide on the box until I
+do the main board.
+
+Unclear how much board I am going to need for routing, but I can
+definitely gain a fair amount of area by changing most of those 330uF
+polymer caps to a mechanically smaller tantalum or something.  The
+electrolytics are mostly for damping, and they do not need to have
+such a high capacitance.
+
+
+
+
+[22 Jan 20]
+
+Channel isolation:
+HF/VHF ground bounce and magnetic
+In band, via supplies
+
+The ferrites should largely eliminate any HF/VHF coupling across the
+ground moats via power. In band and LF it is probably better that
+analog supply currents flow thru the busses rather than the ground
+plane.
+
+What analog currents do flow to ground?  All the feedback currents
+flow rail to rail. A bit of this might leak to ground via decoupling
+caps, but not much. More significant is current to/from the ADC input
+filter and the ADC itself.
+
+Usually you think of this current flowing in the bypass cap, but
+in-band the bus connection is much lower Z than the bypass. So it is
+really going to flow out the ground peninsula and all the way back to
+the supply.
+
+ ==> Oh, wait. The signal current into the filter is balanced because
+     the driver output is balanced, with no CM signal. And the in-band
+     current is tiny anyway, ~1mA for a FS signal into 6.8 nF.  
+
+Now, there is the sampling current. Probably much of this flows
+between the ADC +/- inputs (if there is a single flying sampling
+cap). This would be balanced, and go to the rails (or at > 1 MHz, to
+the bypass caps).  At 1 MHz the bead impedance is already 0.6 Ohm,
+>10x higher than the impedance of a single bypass cap. So very little
+of HF current will go into the supply bus.
+
+
+[11 Jan 20]
+
+Noise on Condor supply I've been using for tracker test.  +15, which
+is a 317 output I added from +24, is 37 uV RMS from 10 Hz to 100
+kHz. This is band limited white noise, with no visible 120 Hz
+ripple. -15, which comes direct from the supply, has 150 uV RMS of 120
+Hz (400 uV PP). This is under 10 mA load, tho 30 mA is not much
+different.
+
+Data sheet for a very similar supply says 3 mV + 0.05% of output p-p.
+But 5e-4 * 15 is 7.5 mV? So 10 mV p-p?  That's crazy high compared to
+what I am seeing on the -15V. The ripple hardly increases even at 1.5
+A, which is the rated continuous output. Also, the -15V output was
+says -12V on the label, so I had adjusted it up, which should only
+hurt things
+
+Huh, don't know what to make of that. I checked all the ranges from 1
+mV up using the calibrator, and nothing weird happens as you step down
+from there. I checked the load current too. Looking at the 723
+datasheet, it should be able to do something like what we are seeing,
+so I don't have an unusually good part.
+
+I am using AC coupling, so there is always highpass, but that isn't
+nearly enough to explain it.
+
+I'm thinking they use very conservative specs so that they can be
+confident they are met across component variation.  That is, most
+people don't care, and are happy with the spec.  I guess.
+
+Looked at a couple of 15V 1.5 A switching supply datasheets, and their
+rating is 120 mV p-p or so, in 20 MHz bandwidth, with some capacitors
+added at the output. If you had that as input then your low noise
+linear regulator would be in trouble, especially since this is > 100
+kHz ripple. Like, at 40 dB ripple rejection you would have maybe 0.5
+mV RMS at the output?
+
+
+[12 Dec 19]
+
+Frequency domain harmonics could be one way to detect ferromagnetic
+interference, if electronic distortion is well controlled.
+
+Lm32 soft core
+ 
+JLC 6 layer pcb
+Spinal HDL
+
+
+[11 Dec 19]
+
+Code is moved. Only works with old version of Corke  toolbox?
+
+Bad pose solutions in big test data statistics
+ -- Always starting from initial pose?
+Is medium data calibration better than small?
+ -- reducing tolerance helps pose solution
+
+ -- weakest source axis norm histogram
+
+
+[4 Dec 19]
+
+EFT fast transient test is with capacitive coupling by a standard
+fixture, typical capacitance 100 pF. So that explains why the test is
+considered "low energy".
+
+May make sense to lay out the channels horizontally, with digital at
+the back rather than bottom. Partly because this is looking more
+compact than I had expected. SMT components, no per channel reference
+buffer, very little digital. If we use dual opamps this will make a
+big difference also.
+
+This avoids long input signal runs at the top off the board. We have
+very direct connection from the chassis filter components to the amp
+input.
 
 
 [18 Jan 20]

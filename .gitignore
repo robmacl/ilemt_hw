@@ -4,3 +4,4 @@
 /simetrix/*.lck
 fp-info-cache
 *.kicad_pcb-bak
+*.sch-bak
