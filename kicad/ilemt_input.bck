@@ -122,6 +122,12 @@ K connector DIN
 F  ~
 $ENDCMP
 #
+$CMP my_EMI_Filter_LL
+D EMI 2-inductor filter, pin-connections 1-4 and 2-3
+K EMI filter common-mode choke
+F ~
+$ENDCMP
+#
 $CMP opamp_quad
 D IC OPAMP GP 4 CIRCUIT 14SOIC
 K 296-9540-1-ND

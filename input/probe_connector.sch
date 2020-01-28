@@ -48,13 +48,11 @@ Wire Wire Line
 Wire Wire Line
 	3050 2450 4500 2450
 Wire Wire Line
-	3050 2550 4500 2550
-Wire Wire Line
-	3050 2650 4500 2650
+	3050 2550 4200 2550
 Wire Wire Line
 	3050 2750 4500 2750
 Wire Wire Line
-	3050 2850 4500 2850
+	3050 2850 4400 2850
 Text Label 4100 2850 2    50   ~ 0
 X-
 Text Label 4100 2750 2    50   ~ 0
@@ -213,4 +211,46 @@ F 3 "~" H 5550 4650 50  0001 C CNN
 	1    5550 4650
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5E5ADFFD
+P 4200 2950
+AR Path="/5DFCF14D/5DA78AA2/5E5ADFFD" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5E5ADFFD" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5E5ADFFD" Ref="TP?"  Part="1" 
+AR Path="/5E756356/5E5ADFFD" Ref="TP1"  Part="1" 
+F 0 "TP1" H 4200 3200 50  0000 C CNN
+F 1 "X+" H 4200 3300 50  0000 C CNN
+F 2 "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" H 4400 2950 50  0001 C CNN
+F 3 "~" H 4400 2950 50  0001 C CNN
+	1    4200 2950
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5E5AE003
+P 4400 2950
+AR Path="/5DFCF14D/5DA78AA2/5E5AE003" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5E5AE003" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5E5AE003" Ref="TP?"  Part="1" 
+AR Path="/5E756356/5E5AE003" Ref="TP2"  Part="1" 
+F 0 "TP2" H 4400 3200 50  0000 C CNN
+F 1 "X-" H 4400 3300 50  0000 C CNN
+F 2 "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" H 4600 2950 50  0001 C CNN
+F 3 "~" H 4600 2950 50  0001 C CNN
+	1    4400 2950
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4200 2950 4200 2550
+Connection ~ 4200 2550
+Wire Wire Line
+	4200 2550 4500 2550
+Wire Wire Line
+	3050 2650 4500 2650
+Wire Wire Line
+	4400 2950 4400 2850
+Connection ~ 4400 2850
+Wire Wire Line
+	4400 2850 4500 2850
 $EndSCHEMATC

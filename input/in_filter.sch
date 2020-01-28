@@ -533,13 +533,13 @@ F 4 "0.1%" H 8200 4250 50  0001 C CNN "Notes"
 $EndComp
 $Comp
 L ilemt_input:BAS21S D108
-U 2 1 5E1955BE
+U 1 1 5E1955BE
 P 8900 4800
 F 0 "D108" H 8900 5015 50  0000 C CNN
 F 1 "BAS21S" H 8900 4924 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8900 4650 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8900 4900 50  0001 C CNN
-	2    8900 4800
+	1    8900 4800
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -555,13 +555,13 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8900 4350
 $EndComp
 $Comp
 L ilemt_input:BAS21S D107
-U 2 1 5E1955C0
+U 1 1 5E1955C0
 P 8900 6000
 F 0 "D107" H 8900 6215 50  0000 C CNN
 F 1 "BAS21S" H 8900 6124 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8900 5850 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8900 6100 50  0001 C CNN
-	2    8900 6000
+	1    8900 6000
 	-1   0    0    1   
 $EndComp
 $Comp

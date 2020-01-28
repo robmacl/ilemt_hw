@@ -8,15 +8,12 @@ Calibration todo:
 
 
 Input board design/capture tasks
- -- Missing LVDS Rx termination resistors?  And decoupling caps
-    Swap Rx order to avoid wire crosses. 
+ -- Look at ADC reference design PCB
  -- Decide on package for LVDS
- -- 10V TVS on V+/V- outputs
  -- Input TVS can now be unidirectional
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
     distortion, PSRR, CMRR.
  -- antialias/driver: capacitors need to be on E24 series
- -- Test points
  -- Select all other parts (mainly resistors)
  -- Reconcile Kicad BOM with Digikey, add refid to Digikey BOM
 
@@ -128,6 +125,128 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[27 Jan 20]
+
+The test points on the DC2222A ADC eval board are 70 mil diameter by 30 mil
+hole.  This works pretty nice because you can slip a scope probe tip
+thru the hole.  I thought there were some non-drilled testpoints, but
+there aren't The two turret terminals are in 0.065" and 0.095" holes.
+The turret terminals are meant to be staked on, but I don't think they
+are.
+
+Looking at the gerbers, I see that layer 3 is basically full of power
+pours, and they have grounded guard traces between them.  I can see
+that the guard could possibly do some good for eg. VDD vs. OVDD, but
+it really doesn't make sense between V+/V- since we we *want*
+capacitance there.  As long as it doesn't risk coupling in the wrong
+place I can see that it makes sense to maximize the area of the L3
+power pours, since it minimizes the impedance and also maximizes the
+distributed capacitance to ground.
+
+The top is covered with a ground pour which is heavily stitched to the
+ground plane.
+
+One note/possible concern is that they use a somewhat nonstandard 4
+layer build, with 2 oz/1 oz copper rather than 1/0.5, and also they
+have filled vias with via-in-pad.  The copper weight seems a bit
+gratuitous here, but using PCB calculator it does seem that below 10
+MHz it will reduce impedance. For say a 25 mil x 1" trace, R=22 mOhm
+(DC resistance), L=5 nH.  This is a bit high, because the skin depth
+for 1 Oz copper is only 70% at 28 MHz.  But inner layers are thinner.
+
+I had been pretty concerned about vias in the ADC exposed pad, but it
+seems that it is acceptable or even preferable to *not* fill the EP
+vias.  The thermal pad is not considered "via in pad" for the PCB
+fabricator.  The question is how much of a problem it is that solder
+wicks into the vias.  People had been tenting the vias on the top or
+bottom, but it seems that this has fallen somewhat out of favor.  Best
+practice is to use the smallest possible via, and perhaps not go berserk
+with the via count.  Also, you can ring the via bottom side with
+solder mask (encroached via).  This prevents solder from flowing
+across the bottom-side copper, though it may form balls that stick
+up.  For me, any bottom-side balls are not a problem since there is
+nothing going on on the bottom.  I expect that we could use somewhat
+fewer vias than is standard for thermal use, but reducing the amount
+of solder in the vias would require use of less paste.  Probably best
+to stick with a more-or-less standard EP.
+
+Via tenting is now standard, not extra cost.  Opinions vary about
+whether to tent.  Tenting all the vias is perhaps better for
+environmental protection.  Tenting only those near SMT pads allows the
+open vias to be used as test points during development (and board
+test).  I guess I will do minimal tenting at this point.
+
+JLC PCB (China) seems pretty slick.  They have a lot of options
+available, and it seems that many things like controlled impedance and
+gold fingers don't cost anything extra.  2 oz copper does roughly
+double the price, but it is still quite reasonable.  There is a big
+price jump between 4 and 6 layer, >2x.
+ ==> If gold fingers are not expensive, then it might make sense to go
+     to an edge connector that is suited to LVDS, like my original
+     PCIE idea.  I expect that the eurocard connector is not going to
+     be that great, especially with those right-angle leads bending
+     thru the air.
+
+So far as process, I *really* really want solder mask between the DFN
+pads.  But this is not restrictive, since the mask web is 10 mils
+between pads and 9 mils pad to EP; oshpark allows down to 4 mil.
+
+For oshpark, the 4 layer process is 5 mil trace/space, min drill 10
+mil.  For JLC with controlled impedance, it is 3.5 mil trace/space,
+0.2 mm (8 mil) drill.  They also offer a 4 mil plane height (JLC2313
+Stackup), which permits narrower traces at a given impedance.  I guess
+this should also reduce inductance to the ground plane.  Not sure if
+controlled impedance is compatible with 2 oz copper?  The quote engine
+doesn't seem to have a problem, but I'm a little surprised there is no
+extra cost for controlled impedance.
+
+The eval board is using 6 mil traces with 10 mil vias.  The fab
+drawing doesn't say anything about controlled impedance, which I guess
+is reasonable since everything is so compact and it may not be running
+all that fast.  In particular, the back-termination resistors at the
+ADC outputs are actually placed at the logic device inputs, but this
+is less than 0.5".
+
+JLC has assembly, but only from parts in their library, which the
+LTC25xx parts are not.
+
+The DS90LV048 LVDS receiver has typical rise/fall spec'd as 0.5 ns.
+For LVC logic the web says rise/fall is "a few ns".  For LVC541 TI
+specifies only propagation delay with cap load, 1.5 ns (min) to 5.1 ns
+(max).  3 ns Pd typ with 50 pF load.  So the LVC buffer would be
+pretty marginal for 100 MHz, but I'm not running the B port through
+that.  So LVDS is a *lot* faster than LVC, perhaps 6x.  Given that the
+LVDS edges are so much faster, it seems that it probably is a good
+idea to put the receiver at the board edge.  This will also keep out
+common mode noise from the FPGA/processor.
+
+I notice the eval board makes some use of unbuffered inverters, maybe
+for the lower propagation delay or something?  The one place where it
+would make sense for the usual reasons to use an unbuffered inverter
+is on the AC coupled clock input, and they don't.  Is this because
+they use different family 5V inverters as buffers on external lines?
+Not really relevant AFAICT.  After following through the negations I
+verified that the clock arrangement does derive MCLK from the high
+speed clock using a D flip-flop by holding MCLK low from the
+programmable logic, then permitting it to (effectively) clock in a
+high level (which will persist until the logic forces it low again).
+This avoids any jitter contribution from the logic.
+
+
+
+
+[25 Jan 20]
+
+It seems that the usual 4-layer stackup is with the thick core in the
+middle.  For the OSHPark 4-layer, the height is 6.7 mils, and min
+trace/space is 5 mils.  To get 100 Ohm differential impedance you need
+6.2 mil traces with 5 mil spacing.  This gives a single-ended
+impedance of 65 Ohms.  Turns out it isn't feasible to get both 50 Ohm
+single-ended and 100 Ohm differential.  That works out to 13 mil width
+for the pair.  If we use 2x this for spacing, then each pair occupies
+about 26 mils or 660 um (call it 700).
 
 
 [23 Jan 20]
