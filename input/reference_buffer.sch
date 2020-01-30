@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:input_board-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -28,6 +27,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 4400 2850 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 4400 2850 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 4400 2850 50  0001 C CNN "MPN"
+F 7 "27" H 4400 2850 50  0001 C CNN "DK line"
 	1    4400 2850
 	0    1    1    0   
 $EndComp
@@ -66,6 +66,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 4400 3700 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 4400 3700 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 4400 3700 50  0001 C CNN "MPN"
+F 7 "27" H 4400 3700 50  0001 C CNN "DK line"
 	1    4400 3700
 	0    1    1    0   
 $EndComp
@@ -96,6 +97,9 @@ F 0 "U3" H 4150 3500 50  0000 L CNN
 F 1 "OP27" H 4150 3400 50  0000 L CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 4050 3300 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 4050 3400 50  0001 C CNN
+F 4 "15" H 4000 3250 50  0001 C CNN "DK line"
+F 5 "IC OPAMP GP 1 CIRCUIT 8SOIC" H 4000 3250 50  0001 C CNN "Description"
+F 6 "296-31706-1-ND" H 4000 3250 50  0001 C CNN "Digikey"
 	1    4000 3250
 	1    0    0    -1  
 $EndComp
@@ -109,8 +113,11 @@ AR Path="/5E2EB92B/5DE6107D" Ref="R4"  Part="1"
 F 0 "R4" V 7250 4750 50  0000 C CNN
 F 1 "2K" V 7050 4750 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 7190 4740 50  0001 C CNN
-F 3 "~" H 7150 4750 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 7150 4750 50  0001 C CNN
 F 4 "0.1%" V 7150 4750 50  0001 C CNN "Notes"
+F 5 "17" H 7150 4750 50  0001 C CNN "DK line"
+F 6 "RES 2K OHM 0.1% 1/8W 0805" H 7150 4750 50  0001 C CNN "Description"
+F 7 "P2.0KDACT-ND" H 7150 4750 50  0001 C CNN "Digikey"
 	1    7150 4750
 	0    1    1    0   
 $EndComp
@@ -126,11 +133,12 @@ AR Path="/5E2EB92B/5DEB4146" Ref="C2"  Part="1"
 F 0 "C2" V 6471 4050 50  0000 C CNN
 F 1 "10nF" V 6562 4050 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 6700 4050 50  0001 C CNN
-F 3 "~" H 6700 4050 50  0001 C CNN
+F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 6700 4050 50  0001 C CNN
 F 4 "2% C0G" H 6700 4050 50  0001 C CNN "Notes"
 F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 6700 4050 50  0001 C CNN "Description"
 F 6 "490-8296-1-ND" H 6700 4050 50  0001 C CNN "Digikey"
 F 7 "GRM2195C1H103GA01D" H 6700 4050 50  0001 C CNN "MPN"
+F 8 "14" H 6700 4050 50  0001 C CNN "DK line"
 	1    6700 4050
 	-1   0    0    1   
 $EndComp
@@ -144,7 +152,10 @@ AR Path="/5E2EB92B/5E52A144" Ref="R7"  Part="1"
 F 0 "R7" V 7300 2400 50  0000 C CNN
 F 1 "68m" V 7100 2400 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric" V 7240 2390 50  0001 C CNN
-F 3 "~" H 7200 2400 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RL_Group_521_RoHS_L_2.pdf" H 7200 2400 50  0001 C CNN
+F 4 "10" H 7200 2400 50  0001 C CNN "DK line"
+F 5 "RES 0.068 OHM 1% 1/4W 1206" H 7200 2400 50  0001 C CNN "Description"
+F 6 "311-.068LWCT-ND" H 7200 2400 50  0001 C CNN "Digikey"
 	1    7200 2400
 	0    1    1    0   
 $EndComp
@@ -158,8 +169,11 @@ AR Path="/5E2EB92B/5E52A146" Ref="R3"  Part="1"
 F 0 "R3" V 2400 3650 50  0000 C CNN
 F 1 "2K" V 2200 3650 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 2340 3640 50  0001 C CNN
-F 3 "~" H 2300 3650 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 2300 3650 50  0001 C CNN
 F 4 "0.1%" V 2300 3650 50  0001 C CNN "Notes"
+F 5 "17" H 2300 3650 50  0001 C CNN "DK line"
+F 6 "RES 2K OHM 0.1% 1/8W 0805" H 2300 3650 50  0001 C CNN "Description"
+F 7 "P2.0KDACT-ND" H 2300 3650 50  0001 C CNN "Digikey"
 	1    2300 3650
 	1    0    0    -1  
 $EndComp
@@ -177,8 +191,11 @@ AR Path="/5E2EB92B/5E52A145" Ref="R2"  Part="1"
 F 0 "R2" V 1850 4750 50  0000 C CNN
 F 1 "2K" V 1650 4750 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 1790 4740 50  0001 C CNN
-F 3 "~" H 1750 4750 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 1750 4750 50  0001 C CNN
 F 4 "0.1%" V 1750 4750 50  0001 C CNN "Notes"
+F 5 "17" H 1750 4750 50  0001 C CNN "DK line"
+F 6 "RES 2K OHM 0.1% 1/8W 0805" H 1750 4750 50  0001 C CNN "Description"
+F 7 "P2.0KDACT-ND" H 1750 4750 50  0001 C CNN "Digikey"
 	1    1750 4750
 	0    1    1    0   
 $EndComp
@@ -192,8 +209,11 @@ AR Path="/5E2EB92B/5DEB389F" Ref="R1"  Part="1"
 F 0 "R1" V 1900 3150 50  0000 C CNN
 F 1 "2K" V 1700 3150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 1840 3140 50  0001 C CNN
-F 3 "~" H 1800 3150 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 1800 3150 50  0001 C CNN
 F 4 "0.1%" V 1800 3150 50  0001 C CNN "Notes"
+F 5 "17" H 1800 3150 50  0001 C CNN "DK line"
+F 6 "RES 2K OHM 0.1% 1/8W 0805" H 1800 3150 50  0001 C CNN "Description"
+F 7 "P2.0KDACT-ND" H 1800 3150 50  0001 C CNN "Digikey"
 	1    1800 3150
 	0    1    1    0   
 $EndComp
@@ -241,11 +261,12 @@ AR Path="/5E2EB92B/5E286955" Ref="C1"  Part="1"
 F 0 "C1" V 2571 3650 50  0000 C CNN
 F 1 "10nF" V 2662 3650 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 2800 3650 50  0001 C CNN
-F 3 "~" H 2800 3650 50  0001 C CNN
+F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 2800 3650 50  0001 C CNN
 F 4 "2% C0G" H 2800 3650 50  0001 C CNN "Notes"
 F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 2800 3650 50  0001 C CNN "Description"
 F 6 "490-8296-1-ND" H 2800 3650 50  0001 C CNN "Digikey"
 F 7 "GRM2195C1H103GA01D" H 2800 3650 50  0001 C CNN "MPN"
+F 8 "14" H 2800 3650 50  0001 C CNN "DK line"
 	1    2800 3650
 	-1   0    0    1   
 $EndComp
@@ -259,7 +280,11 @@ AR Path="/5E2EB92B/5E29BAC1" Ref="R6"  Part="1"
 F 0 "R6" V 6200 2800 50  0000 C CNN
 F 1 "2.74" V 6000 2800 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric" V 6140 2790 50  0001 C CNN
-F 3 "~" H 6100 2800 50  0001 C CNN
+F 3 "http://www.koaspeer.com/catimages/Products/RK73H/RK73H.pdf" H 6100 2800 50  0001 C CNN
+F 4 "16" H 6100 2800 50  0001 C CNN "DK line"
+F 5 "2.74 Ohms ±1% 0.25W, 1/4W Chip Resistor 1206 (3216 Metric) Automotive AEC-Q200, Moisture Resistant Thick Film" H 6100 2800 50  0001 C CNN "Description"
+F 6 "2019-RK73H2BTTD2R74FCT-ND" H 6100 2800 50  0001 C CNN "Digikey"
+F 7 "RK73H2BTTD2R74F" H 6100 2800 50  0001 C CNN "MPN"
 	1    6100 2800
 	-1   0    0    1   
 $EndComp
@@ -289,10 +314,11 @@ AR Path="/5E2EB92B/5E2C0B95" Ref="R5"  Part="1"
 F 0 "R5" V 6200 2150 50  0000 C CNN
 F 1 "499" V 6000 2150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 6140 2140 50  0001 C CNN
-F 3 "~" H 6100 2150 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 6100 2150 50  0001 C CNN
 F 4 "RES SMD 499 OHM 0.1% 1/4W 0805" H 6100 2150 50  0001 C CNN "Description"
 F 5 "A110514CT-ND" H 6100 2150 50  0001 C CNN "Digikey"
 F 6 "0.1%" H 6100 2150 50  0001 C CNN "Notes"
+F 7 "30" H 6100 2150 50  0001 C CNN "DK line"
 	1    6100 2150
 	-1   0    0    1   
 $EndComp
@@ -323,6 +349,10 @@ F 0 "D1" H 5300 2850 50  0000 C CNN
 F 1 "BAS21S" H 5300 2950 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 5300 2900 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 5300 3150 50  0001 C CNN
+F 4 "43" H 5300 3050 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 5300 3050 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 5300 3050 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 5300 3050 50  0001 C CNN "MPN"
 	2    5300 3050
 	0    1    1    0   
 $EndComp
@@ -333,7 +363,7 @@ Wire Wire Line
 Text Notes 8000 3950 0    50   ~ 0
 C5, C6 at the output (same part as at the ADCs)\nform a tee filter with the decoupling inductors at the \nADC on each channel to minimize cross-coupling\nof noise between the ADCs.  LTC documents that\nthis is a problem, though suggests buying one\nof their references per-ADC to solve it.
 Wire Wire Line
-	8600 2400 8100 2400
+	8600 2400 8350 2400
 Connection ~ 8600 2400
 Wire Wire Line
 	8600 2650 8600 2400
@@ -362,6 +392,7 @@ F 3 "https://api.kemet.com/component-edge/download/datasheet/C1210C476M9RACTU.pd
 F 4 "CAP CER 47UF 6.3V X7R 1210" H 8600 2750 50  0001 C CNN "Description"
 F 5 "399-5516-1-ND" H 8600 2750 50  0001 C CNN "Digikey"
 F 6 "C1210C476M9RACTU" H 8600 2750 50  0001 C CNN "MPN"
+F 7 "28" H 8600 2750 50  0001 C CNN "DK line"
 	1    8600 2750
 	1    0    0    -1  
 $EndComp
@@ -397,6 +428,7 @@ F 3 "https://api.kemet.com/component-edge/download/datasheet/C1210C476M9RACTU.pd
 F 4 "CAP CER 47UF 6.3V X7R 1210" H 8100 2750 50  0001 C CNN "Description"
 F 5 "399-5516-1-ND" H 8100 2750 50  0001 C CNN "Digikey"
 F 6 "C1210C476M9RACTU" H 8100 2750 50  0001 C CNN "MPN"
+F 7 "28" H 8100 2750 50  0001 C CNN "DK line"
 	1    8100 2750
 	1    0    0    -1  
 $EndComp
@@ -488,6 +520,10 @@ F 0 "D5" H 4300 2415 50  0000 C CNN
 F 1 "BAS21S" H 4300 2324 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 4300 2050 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 4300 2300 50  0001 C CNN
+F 4 "43" H 4300 2200 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 4300 2200 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 4300 2200 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 4300 2200 50  0001 C CNN "MPN"
 	1    4300 2200
 	0    -1   -1   0   
 $EndComp
@@ -517,6 +553,10 @@ F 0 "D6" H 3800 4415 50  0000 C CNN
 F 1 "BAS21S" H 3800 4324 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 3800 4050 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 3800 4300 50  0001 C CNN
+F 4 "43" H 3800 4200 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 3800 4200 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 3800 4200 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 3800 4200 50  0001 C CNN "MPN"
 	1    3800 4200
 	0    -1   -1   0   
 $EndComp
@@ -566,6 +606,10 @@ F 0 "D2" H 5750 2915 50  0000 C CNN
 F 1 "BAS21S" H 5750 2824 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 5750 2550 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 5750 2800 50  0001 C CNN
+F 4 "43" H 5750 2700 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 5750 2700 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 5750 2700 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 5750 2700 50  0001 C CNN "MPN"
 	1    5750 2700
 	0    -1   -1   0   
 $EndComp
@@ -580,6 +624,10 @@ F 0 "D2" H 5750 3265 50  0000 C CNN
 F 1 "BAS21S" H 5750 3174 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 5750 2900 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 5750 3150 50  0001 C CNN
+F 4 "43" H 5750 3050 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 5750 3050 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 5750 3050 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 5750 3050 50  0001 C CNN "MPN"
 	2    5750 3050
 	0    -1   -1   0   
 $EndComp
@@ -599,6 +647,7 @@ F 2 "Package_TO_SOT_SMD:TO-252-3_TabPin2" H 6200 3350 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/MJD31-D.PDF" H 6000 3250 50  0001 C CNN
 F 4 "TRANS PNP 100V 3A 3DPAK" H 6000 3250 50  0001 C CNN "Description"
 F 5 "NSS1C300ET4GOSCT-ND" H 6000 3250 50  0001 C CNN "Digikey"
+F 6 "23" H 6000 3250 50  0001 C CNN "DK line"
 	1    6000 3250
 	1    0    0    1   
 $EndComp
@@ -613,6 +662,10 @@ F 0 "D12" H 1750 2665 50  0000 C CNN
 F 1 "BAS21S" H 1750 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 1750 2300 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 1750 2550 50  0001 C CNN
+F 4 "43" H 1750 2450 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 1750 2450 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 1750 2450 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 1750 2450 50  0001 C CNN "MPN"
 	1    1750 2450
 	-1   0    0    1   
 $EndComp
@@ -627,6 +680,10 @@ F 0 "D12" H 2100 2665 50  0000 C CNN
 F 1 "BAS21S" H 2100 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 2100 2300 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 2100 2550 50  0001 C CNN
+F 4 "43" H 2100 2450 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 2100 2450 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 2100 2450 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 2100 2450 50  0001 C CNN "MPN"
 	2    2100 2450
 	-1   0    0    1   
 $EndComp
@@ -643,6 +700,10 @@ F 0 "D13" H 2450 2665 50  0000 C CNN
 F 1 "BAS21S" H 2450 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 2450 2300 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 2450 2550 50  0001 C CNN
+F 4 "43" H 2450 2450 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 2450 2450 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 2450 2450 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 2450 2450 50  0001 C CNN "MPN"
 	1    2450 2450
 	-1   0    0    1   
 $EndComp
@@ -657,6 +718,10 @@ F 0 "D13" H 2800 2665 50  0000 C CNN
 F 1 "BAS21S" H 2800 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 2800 2300 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 2800 2550 50  0001 C CNN
+F 4 "43" H 2800 2450 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 2800 2450 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 2800 2450 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 2800 2450 50  0001 C CNN "MPN"
 	2    2800 2450
 	-1   0    0    1   
 $EndComp
@@ -677,6 +742,10 @@ F 0 "D14" H 3150 2665 50  0000 C CNN
 F 1 "BAS21S" H 3150 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 3150 2300 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 3150 2550 50  0001 C CNN
+F 4 "43" H 3150 2450 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 3150 2450 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 3150 2450 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 3150 2450 50  0001 C CNN "MPN"
 	1    3150 2450
 	-1   0    0    1   
 $EndComp
@@ -691,6 +760,10 @@ F 0 "D14" H 3500 2665 50  0000 C CNN
 F 1 "BAS21S" H 3500 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 3500 2300 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 3500 2550 50  0001 C CNN
+F 4 "43" H 3500 2450 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 3500 2450 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 3500 2450 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 3500 2450 50  0001 C CNN "MPN"
 	2    3500 2450
 	-1   0    0    1   
 $EndComp
@@ -701,9 +774,9 @@ Wire Wire Line
 Wire Wire Line
 	3650 2450 3850 2450
 Text GLabel 1450 3150 0    50   Input ~ 0
-+reference
+VREF+
 Text GLabel 1450 4750 0    50   Input ~ 0
--reference
+VREF-
 $Comp
 L power:PWR_FLAG #FLG0108
 U 1 1 5E9020E8
@@ -747,7 +820,31 @@ F 0 "D7" H 4300 4415 50  0000 C CNN
 F 1 "BAS21S" H 4300 4324 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 4300 4050 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 4300 4300 50  0001 C CNN
+F 4 "43" H 4300 4200 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 4300 4200 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 4300 4200 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 4300 4200 50  0001 C CNN "MPN"
 	1    4300 4200
 	0    -1   -1   0   
 $EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5E36BAB3
+P 8350 2350
+AR Path="/5DFCF14D/5DA78AA2/5E36BAB3" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5E36BAB3" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5E36BAB3" Ref="TP?"  Part="1" 
+AR Path="/5E2EB92B/5E36BAB3" Ref="TP5"  Part="1" 
+F 0 "TP5" H 8350 2600 50  0000 C CNN
+F 1 "VREF" H 8350 2700 50  0000 C CNN
+F 2 "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" H 8550 2350 50  0001 C CNN
+F 3 "~" H 8550 2350 50  0001 C CNN
+	1    8350 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8350 2350 8350 2400
+Connection ~ 8350 2400
+Wire Wire Line
+	8350 2400 8100 2400
 $EndSCHEMATC

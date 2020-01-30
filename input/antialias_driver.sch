@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:input_board-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -25,6 +24,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 5550 3100 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 5550 3100 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 5550 3100 50  0001 C CNN "MPN"
+F 7 "27" H 5550 3100 50  0001 C CNN "DK line"
 	1    5550 3100
 	0    1    1    0   
 $EndComp
@@ -48,8 +48,11 @@ P 3800 4100
 F 0 "R107" V 3900 4100 50  0000 C CNN
 F 1 "698" V 3700 4100 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3840 4090 50  0001 C CNN
-F 3 "~" H 3800 4100 50  0001 C CNN
+F 3 "" H 3800 4100 50  0001 C CNN
 F 4 "0.1%" H 3800 4100 50  0001 C CNN "Notes"
+F 5 "47" H 3800 4100 50  0001 C CNN "DK line"
+F 6 "698 Ohms ±0.5% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 3800 4100 50  0001 C CNN "Description"
+F 7 "311-2653-1-ND" H 3800 4100 50  0001 C CNN "Digikey"
 	1    3800 4100
 	0    1    1    0   
 $EndComp
@@ -68,6 +71,9 @@ F 1 "1K" V 5000 5100 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 5140 5090 50  0001 C CNN
 F 3 "~" H 5100 5100 50  0001 C CNN
 F 4 "0.1%" H 5100 5100 50  0001 C CNN "Notes"
+F 5 "48" H 5100 5100 50  0001 C CNN "DK line"
+F 6 "RES SMD 1K OHM 0.1% 1/10W 0603" H 5100 5100 50  0001 C CNN "Description"
+F 7 "P1.0KDBCT-ND" H 5100 5100 50  0001 C CNN "Digikey"
 	1    5100 5100
 	0    1    1    0   
 $EndComp
@@ -77,9 +83,12 @@ U 1 1 5E195597
 P 5100 4750
 F 0 "C114" V 4871 4750 50  0000 C CNN
 F 1 "2.2nF" V 4962 4750 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 5100 4750 50  0001 C CNN
-F 3 "~" H 5100 4750 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5100 4750 50  0001 C CNN
+F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 5100 4750 50  0001 C CNN
 F 4 "2% C0G" H 5100 4750 50  0001 C CNN "Notes"
+F 5 "36" H 5100 4750 50  0001 C CNN "DK line"
+F 6 "2200pF ±2% 50V Ceramic Capacitor C0G, NP0 0603 (1608 Metric)" H 5100 4750 50  0001 C CNN "Description"
+F 7 "490-6381-1-ND" H 5100 4750 50  0001 C CNN "Digikey"
 	1    5100 4750
 	0    1    1    0   
 $EndComp
@@ -90,9 +99,10 @@ P 3450 3500
 F 0 "C111" V 3221 3500 50  0000 C CNN
 F 1 "33nF" V 3312 3500 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 3450 3500 50  0001 C CNN
-F 3 "~" H 3450 3500 50  0001 C CNN
-F 4 "CAP CER 0.033UF 50V C0G 0805" H 3450 3500 50  0001 C CNN "Description"
+F 3 "https://product.tdk.com/info/en/documents/chara_sheet/CGA4J2C0G1H333J125AA.pdf?ref_disty=digikey" H 3450 3500 50  0001 C CNN
+F 4 "0.033µF ±5% 50V Ceramic Capacitor C0G, NP0 0805 (2012 Metric)" H 3450 3500 50  0001 C CNN "Description"
 F 5 "445-6950-1-ND" H 3450 3500 50  0001 C CNN "Digikey"
+F 6 "37" H 3450 3500 50  0001 C CNN "DK line"
 	1    3450 3500
 	1    0    0    -1  
 $EndComp
@@ -107,6 +117,9 @@ F 1 "1K" V 3100 4100 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3240 4090 50  0001 C CNN
 F 3 "~" H 3200 4100 50  0001 C CNN
 F 4 "0.1%" H 3200 4100 50  0001 C CNN "Notes"
+F 5 "48" H 3200 4100 50  0001 C CNN "DK line"
+F 6 "RES SMD 1K OHM 0.1% 1/10W 0603" H 3200 4100 50  0001 C CNN "Description"
+F 7 "P1.0KDBCT-ND" H 3200 4100 50  0001 C CNN "Digikey"
 	1    3200 4100
 	0    1    1    0   
 $EndComp
@@ -119,7 +132,10 @@ P 4650 3500
 F 0 "U104" H 4850 3700 50  0000 C CNN
 F 1 "THS4131" H 4250 3850 50  0000 C CNN
 F 2 "Package_SO:SO-8_5.3x6.2mm_P1.27mm" H 4650 3100 50  0001 C CNN
-F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4940-1_4940-2.pdf" H 2950 4700 50  0001 C CNN
+F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fths4131" H 2950 4700 50  0001 C CNN
+F 4 "42" H 4650 3500 50  0001 C CNN "DK line"
+F 5 "IC OPAMP DIFF 1 CIRCUIT 8SOIC" H 4650 3500 50  0001 C CNN "Description"
+F 6 "296-46339-1-ND" H 4650 3500 50  0001 C CNN "Digikey"
 	1    4650 3500
 	1    0    0    -1  
 $EndComp
@@ -131,7 +147,10 @@ F 0 "R111" V 3900 6050 50  0000 C CNN
 F 1 "3.3K" V 3700 6050 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3840 6040 50  0001 C CNN
 F 3 "~" H 3800 6050 50  0001 C CNN
-F 4 "0.1%" H 3800 6050 50  0001 C CNN "Notes"
+F 4 "" H 3800 6050 50  0001 C CNN "Notes"
+F 5 "53" H 3800 6050 50  0001 C CNN "DK line"
+F 6 "3.3 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 3800 6050 50  0001 C CNN "Description"
+F 7 "YAG3354CT-ND" H 3800 6050 50  0001 C CNN "Digikey"
 	1    3800 6050
 	-1   0    0    1   
 $EndComp
@@ -143,7 +162,10 @@ F 0 "R112" V 3900 6500 50  0000 C CNN
 F 1 "3.3K" V 3700 6500 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3840 6490 50  0001 C CNN
 F 3 "~" H 3800 6500 50  0001 C CNN
-F 4 "0.1%" H 3800 6500 50  0001 C CNN "Notes"
+F 4 "" H 3800 6500 50  0001 C CNN "Notes"
+F 5 "53" H 3800 6500 50  0001 C CNN "DK line"
+F 6 "3.3 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 3800 6500 50  0001 C CNN "Description"
+F 7 "YAG3354CT-ND" H 3800 6500 50  0001 C CNN "Digikey"
 	1    3800 6500
 	-1   0    0    1   
 $EndComp
@@ -178,6 +200,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 4150 6500 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 4150 6500 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 4150 6500 50  0001 C CNN "MPN"
+F 7 "27" H 4150 6500 50  0001 C CNN "DK line"
 	1    4150 6500
 	-1   0    0    1   
 $EndComp
@@ -201,6 +224,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 5550 3950 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 5550 3950 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 5550 3950 50  0001 C CNN "MPN"
+F 7 "27" H 5550 3950 50  0001 C CNN "DK line"
 	1    5550 3950
 	0    1    1    0   
 $EndComp
@@ -256,8 +280,11 @@ P 3800 2850
 F 0 "R109" V 3900 2850 50  0000 C CNN
 F 1 "698" V 3700 2850 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3840 2840 50  0001 C CNN
-F 3 "~" H 3800 2850 50  0001 C CNN
+F 3 "" H 3800 2850 50  0001 C CNN
 F 4 "0.1%" H 3800 2850 50  0001 C CNN "Notes"
+F 5 "47" H 3800 2850 50  0001 C CNN "DK line"
+F 6 "698 Ohms ±0.5% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 3800 2850 50  0001 C CNN "Description"
+F 7 "311-2653-1-ND" H 3800 2850 50  0001 C CNN "Digikey"
 	1    3800 2850
 	0    1    -1   0   
 $EndComp
@@ -272,6 +299,9 @@ F 1 "1K" V 5000 1850 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 5140 1840 50  0001 C CNN
 F 3 "~" H 5100 1850 50  0001 C CNN
 F 4 "0.1%" H 5100 1850 50  0001 C CNN "Notes"
+F 5 "48" H 5100 1850 50  0001 C CNN "DK line"
+F 6 "RES SMD 1K OHM 0.1% 1/10W 0603" H 5100 1850 50  0001 C CNN "Description"
+F 7 "P1.0KDBCT-ND" H 5100 1850 50  0001 C CNN "Digikey"
 	1    5100 1850
 	0    1    -1   0   
 $EndComp
@@ -281,9 +311,12 @@ U 1 1 5E3E5A99
 P 5100 2200
 F 0 "C112" V 4871 2200 50  0000 C CNN
 F 1 "2.2nF" V 4962 2200 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 5100 2200 50  0001 C CNN
-F 3 "~" H 5100 2200 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5100 2200 50  0001 C CNN
+F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 5100 2200 50  0001 C CNN
 F 4 "2% C0G" H 5100 2200 50  0001 C CNN "Notes"
+F 5 "36" H 5100 2200 50  0001 C CNN "DK line"
+F 6 "2200pF ±2% 50V Ceramic Capacitor C0G, NP0 0603 (1608 Metric)" H 5100 2200 50  0001 C CNN "Description"
+F 7 "490-6381-1-ND" H 5100 2200 50  0001 C CNN "Digikey"
 	1    5100 2200
 	0    1    -1   0   
 $EndComp
@@ -298,6 +331,9 @@ F 1 "1K" V 3100 2850 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3240 2840 50  0001 C CNN
 F 3 "~" H 3200 2850 50  0001 C CNN
 F 4 "0.1%" H 3200 2850 50  0001 C CNN "Notes"
+F 5 "48" H 3200 2850 50  0001 C CNN "DK line"
+F 6 "RES SMD 1K OHM 0.1% 1/10W 0603" H 3200 2850 50  0001 C CNN "Description"
+F 7 "P1.0KDBCT-ND" H 3200 2850 50  0001 C CNN "Digikey"
 	1    3200 2850
 	0    1    -1   0   
 $EndComp
@@ -348,6 +384,10 @@ F 0 "D109" H 7000 3115 50  0000 C CNN
 F 1 "BAS21S" H 7000 3024 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7000 2750 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 7000 3000 50  0001 C CNN
+F 4 "43" H 7000 2900 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 7000 2900 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 7000 2900 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 7000 2900 50  0001 C CNN "MPN"
 	1    7000 2900
 	0    1    1    0   
 $EndComp
@@ -361,6 +401,10 @@ F 0 "D109" H 7000 2615 50  0000 C CNN
 F 1 "BAS21S" H 7000 2524 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7000 2250 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 7000 2500 50  0001 C CNN
+F 4 "43" H 7000 2400 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 7000 2400 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 7000 2400 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 7000 2400 50  0001 C CNN "MPN"
 	2    7000 2400
 	0    1    1    0   
 $EndComp
@@ -384,6 +428,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 7450 2200 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 7450 2200 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 7450 2200 50  0001 C CNN "MPN"
+F 7 "27" H 7450 2200 50  0001 C CNN "DK line"
 	1    7450 2200
 	0    1    1    0   
 $EndComp
@@ -428,6 +473,10 @@ F 0 "D110" H 7000 4615 50  0000 C CNN
 F 1 "BAS21S" H 7000 4524 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7000 4250 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 7000 4500 50  0001 C CNN
+F 4 "43" H 7000 4400 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 7000 4400 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 7000 4400 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 7000 4400 50  0001 C CNN "MPN"
 	1    7000 4400
 	0    1    1    0   
 $EndComp
@@ -441,6 +490,10 @@ F 0 "D110" H 7000 4115 50  0000 C CNN
 F 1 "BAS21S" H 7000 4024 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7000 3750 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 7000 4000 50  0001 C CNN
+F 4 "43" H 7000 3900 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 7000 3900 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 7000 3900 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 7000 3900 50  0001 C CNN "MPN"
 	2    7000 3900
 	0    1    1    0   
 $EndComp
@@ -462,6 +515,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 7450 3700 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 7450 3700 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 7450 3700 50  0001 C CNN "MPN"
+F 7 "27" H 7450 3700 50  0001 C CNN "DK line"
 	1    7450 3700
 	0    1    1    0   
 $EndComp
@@ -554,6 +608,7 @@ F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 7150 1750 50  0
 F 4 "824500500" H 7150 1750 50  0001 C CNN "MPN"
 F 5 "TVS DIODE 5V 9.2V DO214AC" H 7150 1750 50  0001 C CNN "Description"
 F 6 "732-9974-1-ND" H 7150 1750 50  0001 C CNN "Digikey"
+F 7 "40" H 7150 1750 50  0001 C CNN "DK line"
 	1    7150 1750
 	1    0    0    -1  
 $EndComp
@@ -580,6 +635,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 5275 3775 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 5275 3775 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 5275 3775 50  0001 C CNN "MPN"
+F 7 "27" H 5275 3775 50  0001 C CNN "DK line"
 	1    5275 3775
 	-1   0    0    1   
 $EndComp

@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:input_board-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -80,6 +79,7 @@ F 4 "HZ0805C202R-10" H 2400 4600 60  0001 L CNN "MPN"
 F 5 "Ferrite Beads and Chips" H 2400 4800 60  0001 L CNN "Family"
 F 6 "FERRITE BEAD 21 OHM 0805, 100 nH, 5 mOhm" H 2400 5100 60  0001 L CNN "Description"
 F 7 "587-1765-1-ND" H 2200 4100 50  0001 C CNN "Digikey"
+F 8 "24" H 2200 4100 50  0001 C CNN "DK line"
 	1    2200 4100
 	1    0    0    -1  
 $EndComp
@@ -121,10 +121,11 @@ AR Path="/5DFCF14D/5E23EF6F" Ref="C119"  Part="1"
 F 0 "C119" V 2950 4350 50  0000 C CNN
 F 1 "330uF" V 2662 4350 50  0000 C CNN
 F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 2800 4350 50  0001 C CNN
-F 3 "~" H 2800 4350 50  0001 C CNN
+F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 2800 4350 50  0001 C CNN
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 2800 4350 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 2800 4350 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 2800 4350 50  0001 C CNN "MPN"
+F 7 "19" H 2800 4350 50  0001 C CNN "DK line"
 	1    2800 4350
 	1    0    0    -1  
 $EndComp
@@ -155,6 +156,7 @@ F 4 "HZ0805C202R-10" H 2350 5750 60  0001 L CNN "MPN"
 F 5 "Ferrite Beads and Chips" H 2350 5950 60  0001 L CNN "Family"
 F 6 "FERRITE BEAD 21 OHM 0805, 100 nH, 5 mOhm" H 2350 6250 60  0001 L CNN "Description"
 F 7 "587-1765-1-ND" H 2150 5250 50  0001 C CNN "Digikey"
+F 8 "24" H 2150 5250 50  0001 C CNN "DK line"
 	1    2150 5250
 	1    0    0    -1  
 $EndComp
@@ -170,10 +172,11 @@ AR Path="/5DFCF14D/5E2417A1" Ref="C133"  Part="1"
 F 0 "C133" V 2950 4950 50  0000 C CNN
 F 1 "330uF" V 2662 4950 50  0000 C CNN
 F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 2800 4950 50  0001 C CNN
-F 3 "~" H 2800 4950 50  0001 C CNN
+F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 2800 4950 50  0001 C CNN
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 2800 4950 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 2800 4950 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 2800 4950 50  0001 C CNN "MPN"
+F 7 "19" H 2800 4950 50  0001 C CNN "DK line"
 	1    2800 4950
 	1    0    0    -1  
 $EndComp

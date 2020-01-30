@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:input_board-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -39,9 +38,9 @@ SDOA2-
 Text GLabel 2400 2800 0    50   Input ~ 0
 SDOA2+
 Text GLabel 5350 2900 0    50   Output ~ 0
-+reference
+VREF+
 Text GLabel 5350 3350 0    50   Output ~ 0
--reference
+VREF-
 Text GLabel 3500 1400 2    50   Output ~ 0
 SYNC_IN
 Text GLabel 2475 6225 2    50   Output ~ 0
@@ -82,6 +81,9 @@ F 0 "R27" V 1075 5925 50  0000 C CNN
 F 1 "3.3K" V 875 5925 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 1015 5915 50  0001 C CNN
 F 3 "~" H 975 5925 50  0001 C CNN
+F 4 "53" H 975 5925 50  0001 C CNN "DK line"
+F 5 "3.3 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 975 5925 50  0001 C CNN "Description"
+F 6 "YAG3354CT-ND" H 975 5925 50  0001 C CNN "Digikey"
 	1    975  5925
 	1    0    0    -1  
 $EndComp
@@ -104,6 +106,9 @@ F 0 "R28" V 1475 5925 50  0000 C CNN
 F 1 "3.3K" V 1275 5925 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 1415 5915 50  0001 C CNN
 F 3 "~" H 1375 5925 50  0001 C CNN
+F 4 "53" H 1375 5925 50  0001 C CNN "DK line"
+F 5 "3.3 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 1375 5925 50  0001 C CNN "Description"
+F 6 "YAG3354CT-ND" H 1375 5925 50  0001 C CNN "Digikey"
 	1    1375 5925
 	1    0    0    -1  
 $EndComp
@@ -133,6 +138,7 @@ F 2 "Connector_PinHeader_2.00mm:PinHeader_2x02_P2.00mm_Vertical_SMD" H 2275 6875
 F 3 "~" H 2275 6875 50  0001 C CNN
 F 4 "CONN HEADER SMD 4POS 2MM" H 2275 6875 50  0001 C CNN "Description"
 F 5 "S6009-02-ND" H 2275 6875 50  0001 C CNN "Digikey"
+F 6 "32" H 2275 6875 50  0001 C CNN "DK line"
 	1    2275 6875
 	0    -1   -1   0   
 $EndComp
@@ -169,6 +175,9 @@ F 0 "C29" H 985 6895 50  0000 L CNN
 F 1 "100nF" H 985 6745 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 975 6825 50  0001 C CNN
 F 3 "~" H 975 6825 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 975 6825 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 975 6825 50  0001 C CNN "Digikey"
+F 6 "2" H 975 6825 50  0001 C CNN "DK line"
 	1    975  6825
 	1    0    0    -1  
 $EndComp
@@ -192,6 +201,9 @@ F 0 "C30" H 1385 6895 50  0000 L CNN
 F 1 "100nF" H 1385 6745 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 1375 6825 50  0001 C CNN
 F 3 "~" H 1375 6825 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 1375 6825 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 1375 6825 50  0001 C CNN "Digikey"
+F 6 "2" H 1375 6825 50  0001 C CNN "DK line"
 	1    1375 6825
 	1    0    0    -1  
 $EndComp

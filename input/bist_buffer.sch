@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:input_board-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -23,9 +22,10 @@ F 1 "OPA1679" H 4350 3400 60  0000 L CNN
 F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5100 3300 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa1679" H 5100 3400 60  0001 L CNN
 F 4 "OPA1679IDR" H 5100 3600 60  0001 L CNN "MPN"
-F 5 "IC AUDIO 4 CIRCUIT 14SOIC" H 5100 4100 60  0001 L CNN "Description"
+F 5 "" H 5100 4100 60  0001 L CNN "Description"
 F 6 "Texas Instruments" H 5100 4200 60  0001 L CNN "Manufacturer"
 F 7 "296-46621-1-ND" H 4900 3100 50  0001 C CNN "Digikey"
+F 8 "31" H 4900 3100 50  0001 C CNN "DK line"
 	1    4900 3100
 	1    0    0    -1  
 $EndComp
@@ -44,6 +44,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 5250 2700 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 5250 2700 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 5250 2700 50  0001 C CNN "MPN"
+F 7 "27" H 5250 2700 50  0001 C CNN "DK line"
 	1    5250 2700
 	0    1    1    0   
 $EndComp
@@ -82,6 +83,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 5250 3550 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 5250 3550 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 5250 3550 50  0001 C CNN "MPN"
+F 7 "27" H 5250 3550 50  0001 C CNN "DK line"
 	1    5250 3550
 	0    1    1    0   
 $EndComp
@@ -158,10 +160,13 @@ P 4200 3200
 AR Path="/5DFCF14D/5DE6CDF8/5E5B741A" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5B741A" Ref="R23"  Part="1" 
 F 0 "R23" V 4300 3200 50  0000 C CNN
-F 1 "3.3K" V 4100 3200 50  0000 C CNN
+F 1 "200" V 4100 3200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4240 3190 50  0001 C CNN
 F 3 "~" H 4200 3200 50  0001 C CNN
-F 4 "0.1%" H 4200 3200 50  0001 C CNN "Notes"
+F 4 "" H 4200 3200 50  0001 C CNN "Notes"
+F 5 "55" H 4200 3200 50  0001 C CNN "DK line"
+F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 4200 3200 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD200RCT-ND" H 4200 3200 50  0001 C CNN "Digikey"
 	1    4200 3200
 	0    1    1    0   
 $EndComp
@@ -180,7 +185,7 @@ F 1 "OPA1679" H 7300 3400 60  0000 L CNN
 F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 8050 3300 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa1679" H 8050 3400 60  0001 L CNN
 F 4 "LM324ADR" H 8050 3600 60  0001 L CNN "MPN"
-F 5 "IC OPAMP GP 4 CIRCUIT 14SOIC" H 8050 4100 60  0001 L CNN "Description"
+F 5 "" H 8050 4100 60  0001 L CNN "Description"
 F 6 "Texas Instruments" H 8050 4200 60  0001 L CNN "Manufacturer"
 F 7 "296-46621-1-ND" H 7850 3100 50  0001 C CNN "Digikey"
 F 8 "Integrated Circuits (ICs)" H 7850 3100 50  0001 C CNN "Category"
@@ -189,6 +194,7 @@ F 10 "/product-detail/en/texas-instruments/LM324ADR/296-9540-1-ND/405286" H 7850
 F 11 "296-9540-1-ND" H 7850 3100 50  0001 C CNN "Digi-Key_PN"
 F 12 "Linear - Amplifiers - Instrumentation, OP Amps, Buffer Amps" H 7850 3100 50  0001 C CNN "Family"
 F 13 "Active" H 7850 3100 50  0001 C CNN "Status"
+F 14 "31" H 7850 3100 50  0001 C CNN "DK line"
 	2    7850 3100
 	1    0    0    -1  
 $EndComp
@@ -199,10 +205,13 @@ P 7150 3200
 AR Path="/5DFCF14D/5DE6CDF8/5E5BA20D" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5BA20D" Ref="R25"  Part="1" 
 F 0 "R25" V 7250 3200 50  0000 C CNN
-F 1 "3.3K" V 7050 3200 50  0000 C CNN
+F 1 "200" V 7050 3200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 7190 3190 50  0001 C CNN
 F 3 "~" H 7150 3200 50  0001 C CNN
-F 4 "0.1%" H 7150 3200 50  0001 C CNN "Notes"
+F 4 "" H 7150 3200 50  0001 C CNN "Notes"
+F 5 "55" H 7150 3200 50  0001 C CNN "DK line"
+F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 7150 3200 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD200RCT-ND" H 7150 3200 50  0001 C CNN "Digikey"
 	1    7150 3200
 	0    1    1    0   
 $EndComp
@@ -221,7 +230,7 @@ F 1 "OPA1679" H 4350 5350 60  0000 L CNN
 F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5100 5250 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa1679" H 5100 5350 60  0001 L CNN
 F 4 "LM324ADR" H 5100 5550 60  0001 L CNN "MPN"
-F 5 "IC OPAMP GP 4 CIRCUIT 14SOIC" H 5100 6050 60  0001 L CNN "Description"
+F 5 "" H 5100 6050 60  0001 L CNN "Description"
 F 6 "Texas Instruments" H 5100 6150 60  0001 L CNN "Manufacturer"
 F 7 "296-46621-1-ND" H 4900 5050 50  0001 C CNN "Digikey"
 F 8 "Integrated Circuits (ICs)" H 4900 5050 50  0001 C CNN "Category"
@@ -230,6 +239,7 @@ F 10 "/product-detail/en/texas-instruments/LM324ADR/296-9540-1-ND/405286" H 4900
 F 11 "296-9540-1-ND" H 4900 5050 50  0001 C CNN "Digi-Key_PN"
 F 12 "Linear - Amplifiers - Instrumentation, OP Amps, Buffer Amps" H 4900 5050 50  0001 C CNN "Family"
 F 13 "Active" H 4900 5050 50  0001 C CNN "Status"
+F 14 "31" H 4900 5050 50  0001 C CNN "DK line"
 	3    4900 5050
 	1    0    0    -1  
 $EndComp
@@ -240,10 +250,13 @@ P 4200 5150
 AR Path="/5DFCF14D/5DE6CDF8/5E5CB3B9" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5CB3B9" Ref="R24"  Part="1" 
 F 0 "R24" V 4300 5150 50  0000 C CNN
-F 1 "3.3K" V 4100 5150 50  0000 C CNN
+F 1 "200" V 4100 5150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4240 5140 50  0001 C CNN
 F 3 "~" H 4200 5150 50  0001 C CNN
-F 4 "0.1%" H 4200 5150 50  0001 C CNN "Notes"
+F 4 "" H 4200 5150 50  0001 C CNN "Notes"
+F 5 "55" H 4200 5150 50  0001 C CNN "DK line"
+F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 4200 5150 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD200RCT-ND" H 4200 5150 50  0001 C CNN "Digikey"
 	1    4200 5150
 	0    1    1    0   
 $EndComp
@@ -262,9 +275,10 @@ F 1 "OPA1679" H 7300 5350 60  0000 L CNN
 F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 8050 5250 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa1679" H 8050 5350 60  0001 L CNN
 F 4 "OPA1679IDR" H 8050 5550 60  0001 L CNN "MPN"
-F 5 "IC AUDIO 4 CIRCUIT 14SOIC" H 8050 6050 60  0001 L CNN "Description"
+F 5 "" H 8050 6050 60  0001 L CNN "Description"
 F 6 "Texas Instruments" H 8050 6150 60  0001 L CNN "Manufacturer"
 F 7 "296-46621-1-ND" H 7850 5050 50  0001 C CNN "Digikey"
+F 8 "31" H 7850 5050 50  0001 C CNN "DK line"
 	4    7850 5050
 	1    0    0    -1  
 $EndComp
@@ -275,10 +289,13 @@ P 7150 5150
 AR Path="/5DFCF14D/5DE6CDF8/5E5CB3D1" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5CB3D1" Ref="R26"  Part="1" 
 F 0 "R26" V 7250 5150 50  0000 C CNN
-F 1 "3.3K" V 7050 5150 50  0000 C CNN
+F 1 "200" V 7050 5150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 7190 5140 50  0001 C CNN
 F 3 "~" H 7150 5150 50  0001 C CNN
-F 4 "0.1%" H 7150 5150 50  0001 C CNN "Notes"
+F 4 "" H 7150 5150 50  0001 C CNN "Notes"
+F 5 "55" H 7150 5150 50  0001 C CNN "DK line"
+F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 7150 5150 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD200RCT-ND" H 7150 5150 50  0001 C CNN "Digikey"
 	1    7150 5150
 	0    1    1    0   
 $EndComp

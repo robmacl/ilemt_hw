@@ -8,16 +8,15 @@ Calibration todo:
 
 
 Input board design/capture tasks
- -- Look at ADC reference design PCB
- -- Decide on package for LVDS
+ -- Do we need 33 ohm terminators in both x4 and single?  The array is
+    not really saving any space wrt 0603, but it does reduce component
+    count a bit.  Using just the array is not attractive at the ADC
+    where we need only 2 (or 1 for channels 2, 3).
+ -- Switch to different LVDS parts with more sources, standard footprint
  -- Input TVS can now be unidirectional
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
     distortion, PSRR, CMRR.
- -- antialias/driver: capacitors need to be on E24 series
- -- Select all other parts (mainly resistors)
- -- Reconcile Kicad BOM with Digikey, add refid to Digikey BOM
-
-Board floor plan w/ preliminary sizes, connector locations
+ -- Check symmetry of +/- input channel
 
  ==> DOUBLE CHECK pinouts on all components
 
@@ -30,9 +29,6 @@ Layout tasks:
 
  ==> Order BOM and DOUBLE CHECK footprints on all components
  
- -- Check connector footprint wrt board edge.  It seems to be a
-    non-metric size?  Won't center on 0.5mm grid.
- -- Check symmetry of +/- input channel
 
 Hardware todo:
  -- Prototype reference buffer?
@@ -125,6 +121,79 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[30 Jan 20]
+
+Almost ready to start routing traces.
+
+I'm going to aim for the JLC 7628 stackup.  This is the more standard
+stackup, with 0.2mm plane height.  This will have less capacitance
+than the 0.1mm, which seems worthwhile, especially for the input
+filter region before the stage 1 amp, since in this zone capacitance
+mismatch can dominate CMRR performance.
+
+So far as matching the capacitance, I'm going to go for symmetry as
+much as possible and then figure out how to match the copper areas (or
+at least trace length) on each net.  Defining these as diff pairs may
+help.  I'm guessing that there is not a huge matching benefit from
+choosing narrow vs. wide traces.  While the relative capacitance match
+will be better with wider traces, the absolute match is what we care
+about, and is going to be determined by process variation at the trace
+edges. 
+
+If I use a 6 mil digital trace, that gives Z0 = 67 Ohms according to
+JLC calculator (based on 1 oz copper), or 64 Ohms (according to PCB
+toolkit, with 2 oz copper but w/o soldermask). I'll round that to 0.15
+mm.  0.15/0.15 as the initial design rule, but will perhaps go smaller
+later for DRC.  The JLC process capability is much finer.
+
+With JLC, with 2 Oz copper the inner layers are still 0.5 Oz.  This
+reduces the interest of the 2 Oz option for resistance reduction.  It
+will probably improve the via thickness somewhat.
+
+
+
+
+[29 Jan 20]
+
+Work on the BOM: I cleaned out everything in the Digikey BOM no longer
+in the design, and annotated the Kicad BOM with the digikey line
+number, filling in the Digikey PN and other missing info.  I also
+picked parts for everything missing from the Digikey BOM, mostly
+resistors.  I also updated the Digikey quantity, allowing for the
+channel duplication.  This will need to be double-checked when I have
+the PCB BOM.
+
+The BOM is up to $234.  This is for one board, some price breaks will
+kick in even for small multiples.
+
+I notice the ADC is pretty low stock.  I'm thinking maybe I should
+make the board work with the LTC2500/32 also to give more options.
+
+
+[28 Jan 20]
+
+I switched to a PCIe 8x connector.  This gives about 50% more pins,
+and the finer pitch is a better match for the digital signals.  I
+moved pin assignments around to get better component placement.  There
+is now a big no-man's-land between the digital and analog lines, which
+is good.
+
+The only downside is that this means I pretty much have to give up on
+my vague plan to somehow hand-wire the input card to the MicroZed.
+I'm tending toward doing at least a minimal version of the main board
+in order to test the input board.  This is now seeming not such a big
+jump since I have a pretty good idea of what needs to go on the main
+board, and I am getting up to speed on Kicad.  The idea of hand-wiring
+with LVDS was not great anyway.  Maybe it would work, but if it didn't
+then it would be hard to tell if the wiring was the problem.
+
+I still like the idea of doing daughter-card style in-plane mounting
+of the input cards during initial testing, but am mixed on doing a
+main board spin which is surely throwaway.  The flat mount is not so
+good for more than one card because the analog and digital zones have
+to cross to some degree.
 
 
 [27 Jan 20]

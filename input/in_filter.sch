@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:input_board-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -19,18 +18,20 @@ L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB101
 U 1 1 5DE42B90
 P 1800 1600
 F 0 "FB101" H 1800 1887 60  0000 C CNN
-F 1 "600 Ohm" H 1800 1781 60  0000 C CNN
+F 1 "2K Ohm" H 1800 1781 60  0000 C CNN
 F 2 "Inductor_SMD:L_0805_2012Metric" H 2000 1800 60  0001 L CNN
-F 3 "" H 2000 1900 60  0001 L CNN
+F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 2000 1900 60  0001 L CNN
 F 4 " 240-2396-1-ND" H 2000 2000 60  0001 L CNN "Digi-Key_PN"
 F 5 "HZ0805C202R-10" H 2000 2100 60  0001 L CNN "MPN"
 F 6 "Filters" H 2000 2200 60  0001 L CNN "Category"
 F 7 "Ferrite Beads and Chips" H 2000 2300 60  0001 L CNN "Family"
 F 8 "https://product.tdk.com/info/en/catalog/datasheets/beads_commercial_power_mpz2012_en.pdf" H 2000 2400 60  0001 L CNN "DK_Datasheet_Link"
 F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H 2000 2500 60  0001 L CNN "DK_Detail_Page"
-F 10 "FERRITE BEAD 600 OHM 0805 1LN" H 2000 2600 60  0001 L CNN "Description"
+F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 2000 2600 60  0001 L CNN "Description"
 F 11 "TDK Corporation" H 2000 2700 60  0001 L CNN "Manufacturer"
 F 12 "Active" H 2000 2800 60  0001 L CNN "Status"
+F 13 "5" H 1800 1600 50  0001 C CNN "DK line"
+F 14 "240-2396-1-ND" H 1800 1600 50  0001 C CNN "Digikey"
 	1    1800 1600
 	1    0    0    -1  
 $EndComp
@@ -44,6 +45,8 @@ F 2 "Capacitor_SMD:C_0805_2012Metric" H 2450 1800 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Yageo%20PDFs/CCseries_mlcc_2002.pdf" H 2450 1800 50  0001 C CNN
 F 4 "311-3585-1-ND" H 2450 1800 50  0001 C CNN "Digikey"
 F 5 "CC0805FRNPO0BN102" H 2450 1800 50  0001 C CNN "MPN"
+F 6 "CAP CER 1000PF 100V NPO 0805" H 2450 1800 50  0001 C CNN "Description"
+F 7 "1" H 2450 1800 50  0001 C CNN "DK line"
 	1    2450 1800
 	1    0    0    -1  
 $EndComp
@@ -63,6 +66,8 @@ F 2 "input:L_CommonMode_Bourns_DR331" H 3400 2100 50  0001 C CNN
 F 3 "https://www.bourns.com/docs/Product-Datasheets/dr331.pdf" V 3400 2390 50  0001 C CNN
 F 4 "DR331-475BECT-ND" H 3400 2350 50  0001 C CNN "Digikey"
 F 5 "DR331-475BE" H 3400 2350 50  0001 C CNN "MPN"
+F 6 "6" H 3400 2350 50  0001 C CNN "DK line"
+F 7 "CMC 4.7MH 200MA 2LN SMD" H 3400 2350 50  0001 C CNN "Description"
 	1    3400 2350
 	1    0    0    -1  
 $EndComp
@@ -71,18 +76,20 @@ L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB102
 U 1 1 5DE4DC1A
 P 1800 3150
 F 0 "FB102" H 1800 3437 60  0000 C CNN
-F 1 "600 Ohm" H 1800 3331 60  0000 C CNN
+F 1 "2K Ohm" H 1800 3331 60  0000 C CNN
 F 2 "Inductor_SMD:L_0805_2012Metric" H 2000 3350 60  0001 L CNN
-F 3 "" H 2000 3450 60  0001 L CNN
+F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 2000 3450 60  0001 L CNN
 F 4 " 240-2396-1-ND" H 2000 3550 60  0001 L CNN "Digi-Key_PN"
 F 5 "HZ0805C202R-10" H 2000 3650 60  0001 L CNN "MPN"
 F 6 "Filters" H 2000 3750 60  0001 L CNN "Category"
 F 7 "Ferrite Beads and Chips" H 2000 3850 60  0001 L CNN "Family"
 F 8 "https://product.tdk.com/info/en/catalog/datasheets/beads_commercial_power_mpz2012_en.pdf" H 2000 3950 60  0001 L CNN "DK_Datasheet_Link"
 F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H 2000 4050 60  0001 L CNN "DK_Detail_Page"
-F 10 "FERRITE BEAD 600 OHM 0805 1LN" H 2000 4150 60  0001 L CNN "Description"
+F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 2000 4150 60  0001 L CNN "Description"
 F 11 "TDK Corporation" H 2000 4250 60  0001 L CNN "Manufacturer"
 F 12 "Active" H 2000 4350 60  0001 L CNN "Status"
+F 13 "5" H 1800 3150 50  0001 C CNN "DK line"
+F 14 "240-2396-1-ND" H 1800 3150 50  0001 C CNN "Digikey"
 	1    1800 3150
 	1    0    0    -1  
 $EndComp
@@ -96,6 +103,8 @@ F 2 "Capacitor_SMD:C_0805_2012Metric" H 2450 3400 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Yageo%20PDFs/CCseries_mlcc_2002.pdf" H 2450 3400 50  0001 C CNN
 F 4 "311-3585-1-ND" H 2450 3400 50  0001 C CNN "Digikey"
 F 5 "CC0805FRNPO0BN102" H 2450 3400 50  0001 C CNN "MPN"
+F 6 "CAP CER 1000PF 100V NPO 0805" H 2450 3400 50  0001 C CNN "Description"
+F 7 "1" H 2450 3400 50  0001 C CNN "DK line"
 	1    2450 3400
 	1    0    0    -1  
 $EndComp
@@ -123,6 +132,8 @@ F 2 "Capacitor_SMD:C_0805_2012Metric" H 9900 1800 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Yageo%20PDFs/CCseries_mlcc_2002.pdf" H 9900 1800 50  0001 C CNN
 F 4 "311-3585-1-ND" H 9900 1800 50  0001 C CNN "Digikey"
 F 5 "CC0805FRNPO0BN102" H 9900 1800 50  0001 C CNN "MPN"
+F 6 "CAP CER 1000PF 100V NPO 0805" H 9900 1800 50  0001 C CNN "Description"
+F 7 "1" H 9900 1800 50  0001 C CNN "DK line"
 	1    9900 1800
 	1    0    0    -1  
 $EndComp
@@ -133,10 +144,12 @@ P 9450 1600
 F 0 "R124" V 9245 1600 50  0000 C CNN
 F 1 "10" V 9336 1600 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 9490 1590 50  0001 C CNN
-F 3 "~" H 9450 1600 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 9450 1600 50  0001 C CNN
 F 4 "541-10TACT-ND" V 9450 1600 50  0001 C CNN "Digikey"
 F 5 "CRCW080510R0JNEAHP" V 9450 1600 50  0001 C CNN "MPN"
 F 6 "Thick film surge resist" V 9450 1600 50  0001 C CNN "Notes"
+F 7 "9" H 9450 1600 50  0001 C CNN "DK line"
+F 8 "RES SMD 10 OHM 5% 1/2W 0805" H 9450 1600 50  0001 C CNN "Description"
 	1    9450 1600
 	0    1    1    0   
 $EndComp
@@ -167,6 +180,10 @@ F 0 "D103" H 8350 2065 50  0000 C CNN
 F 1 "BAS21S" H 8350 1974 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8350 1700 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8350 1950 50  0001 C CNN
+F 4 "43" H 8350 1850 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 8350 1850 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 8350 1850 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 8350 1850 50  0001 C CNN "MPN"
 	1    8350 1850
 	0    1    1    0   
 $EndComp
@@ -178,6 +195,10 @@ F 0 "D103" H 8350 1565 50  0000 C CNN
 F 1 "BAS21S" H 8350 1474 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8350 1200 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8350 1450 50  0001 C CNN
+F 4 "43" H 8350 1350 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 8350 1350 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 8350 1350 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 8350 1350 50  0001 C CNN "MPN"
 	2    8350 1350
 	0    1    1    0   
 $EndComp
@@ -194,6 +215,8 @@ F 2 "Diode_SMD:D_SOD-323" H 4250 1900 50  0001 C CNN
 F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq4022_datasheet.pdf" H 4250 1900 50  0001 C CNN
 F 4 "F10399CT-ND" V 4250 1900 50  0001 C CNN "Digikey"
 F 5 "AQ4022-01FTG-C" V 4250 1900 50  0001 C CNN "MPN"
+F 6 "7" H 4250 1900 50  0001 C CNN "DK line"
+F 7 "TVS DIODE 12V 35V SOD323" H 4250 1900 50  0001 C CNN "Description"
 	1    4250 1900
 	0    1    1    0   
 $EndComp
@@ -211,6 +234,8 @@ F 2 "Capacitor_SMD:C_0805_2012Metric" H 9900 3350 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Yageo%20PDFs/CCseries_mlcc_2002.pdf" H 9900 3350 50  0001 C CNN
 F 4 "311-3585-1-ND" H 9900 3350 50  0001 C CNN "Digikey"
 F 5 "CC0805FRNPO0BN102" H 9900 3350 50  0001 C CNN "MPN"
+F 6 "CAP CER 1000PF 100V NPO 0805" H 9900 3350 50  0001 C CNN "Description"
+F 7 "1" H 9900 3350 50  0001 C CNN "DK line"
 	1    9900 3350
 	1    0    0    -1  
 $EndComp
@@ -237,6 +262,10 @@ F 0 "D104" H 8350 3615 50  0000 C CNN
 F 1 "BAS21S" H 8350 3524 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8350 3250 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8350 3500 50  0001 C CNN
+F 4 "43" H 8350 3400 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 8350 3400 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 8350 3400 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 8350 3400 50  0001 C CNN "MPN"
 	1    8350 3400
 	0    1    1    0   
 $EndComp
@@ -248,6 +277,10 @@ F 0 "D104" H 8350 3115 50  0000 C CNN
 F 1 "BAS21S" H 8350 3024 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8350 2750 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8350 3000 50  0001 C CNN
+F 4 "43" H 8350 2900 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 8350 2900 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 8350 2900 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 8350 2900 50  0001 C CNN "MPN"
 	2    8350 2900
 	0    1    1    0   
 $EndComp
@@ -266,6 +299,8 @@ F 2 "Diode_SMD:D_SOD-323" H 4250 3450 50  0001 C CNN
 F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq4022_datasheet.pdf" H 4250 3450 50  0001 C CNN
 F 4 "F10399CT-ND" V 4250 3450 50  0001 C CNN "Digikey"
 F 5 "AQ4022-01FTG-C" V 4250 3450 50  0001 C CNN "MPN"
+F 6 "7" H 4250 3450 50  0001 C CNN "DK line"
+F 7 "TVS DIODE 12V 35V SOD323" H 4250 3450 50  0001 C CNN "Description"
 	1    4250 3450
 	0    1    1    0   
 $EndComp
@@ -297,6 +332,9 @@ F 0 "R119" H 7368 2596 50  0000 L CNN
 F 1 "200" H 7368 2505 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 7340 2540 50  0001 C CNN
 F 3 "~" H 7300 2550 50  0001 C CNN
+F 4 "55" H 7300 2550 50  0001 C CNN "DK line"
+F 5 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 7300 2550 50  0001 C CNN "Description"
+F 6 "RNCP0603FTD200RCT-ND" H 7300 2550 50  0001 C CNN "Digikey"
 	1    7300 2550
 	1    0    0    -1  
 $EndComp
@@ -306,8 +344,11 @@ U 1 1 5DE87196
 P 7300 2050
 F 0 "C122" H 7392 2096 50  0000 L CNN
 F 1 "3.3nF" H 7392 2005 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 7300 2050 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7300 2050 50  0001 C CNN
 F 3 "~" H 7300 2050 50  0001 C CNN
+F 4 "3300pF ±5% 50V Ceramic Capacitor C0G, NP0 0805 (2012 Metric)" H 7300 2050 50  0001 C CNN "Description"
+F 5 "311-4211-1-ND" H 7300 2050 50  0001 C CNN "Digikey"
+F 6 "45" H 7300 2050 50  0001 C CNN "DK line"
 	1    7300 2050
 	1    0    0    -1  
 $EndComp
@@ -326,10 +367,12 @@ P 9450 3150
 F 0 "R125" V 9245 3150 50  0000 C CNN
 F 1 "10" V 9336 3150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 9490 3140 50  0001 C CNN
-F 3 "~" H 9450 3150 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 9450 3150 50  0001 C CNN
 F 4 "541-10TACT-ND" V 9450 3150 50  0001 C CNN "Digikey"
 F 5 "CRCW080510R0JNEAHP" V 9450 3150 50  0001 C CNN "MPN"
 F 6 "Thick film surge resist" V 9450 3150 50  0001 C CNN "Notes"
+F 7 "9" H 9450 3150 50  0001 C CNN "DK line"
+F 8 "RES SMD 10 OHM 5% 1/2W 0805" H 9450 3150 50  0001 C CNN "Description"
 	1    9450 3150
 	0    1    1    0   
 $EndComp
@@ -340,10 +383,12 @@ P 5450 1600
 F 0 "R117" V 5245 1600 50  0000 C CNN
 F 1 "10" V 5336 1600 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 5490 1590 50  0001 C CNN
-F 3 "~" H 5450 1600 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 5450 1600 50  0001 C CNN
 F 4 "541-10TACT-ND" V 5450 1600 50  0001 C CNN "Digikey"
 F 5 "CRCW080510R0JNEAHP" V 5450 1600 50  0001 C CNN "MPN"
 F 6 "Thick film surge resist" V 5450 1600 50  0001 C CNN "Notes"
+F 7 "9" H 5450 1600 50  0001 C CNN "DK line"
+F 8 "RES SMD 10 OHM 5% 1/2W 0805" H 5450 1600 50  0001 C CNN "Description"
 	1    5450 1600
 	0    1    1    0   
 $EndComp
@@ -354,10 +399,12 @@ P 5450 3150
 F 0 "R118" V 5245 3150 50  0000 C CNN
 F 1 "10" V 5336 3150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 5490 3140 50  0001 C CNN
-F 3 "~" H 5450 3150 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 5450 3150 50  0001 C CNN
 F 4 "541-10TACT-ND" V 5450 3150 50  0001 C CNN "Digikey"
 F 5 "CRCW080510R0JNEAHP" V 5450 3150 50  0001 C CNN "MPN"
 F 6 "Thick film surge resist" V 5450 3150 50  0001 C CNN "Notes"
+F 7 "9" H 5450 3150 50  0001 C CNN "DK line"
+F 8 "RES SMD 10 OHM 5% 1/2W 0805" H 5450 3150 50  0001 C CNN "Description"
 	1    5450 3150
 	0    1    1    0   
 $EndComp
@@ -368,10 +415,12 @@ P 4950 1600
 F 0 "R115" V 4745 1600 50  0000 C CNN
 F 1 "10" V 4836 1600 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 4990 1590 50  0001 C CNN
-F 3 "~" H 4950 1600 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 4950 1600 50  0001 C CNN
 F 4 "541-10TACT-ND" V 4950 1600 50  0001 C CNN "Digikey"
 F 5 "CRCW080510R0JNEAHP" V 4950 1600 50  0001 C CNN "MPN"
 F 6 "Thick film surge resist" V 4950 1600 50  0001 C CNN "Notes"
+F 7 "9" H 4950 1600 50  0001 C CNN "DK line"
+F 8 "RES SMD 10 OHM 5% 1/2W 0805" H 4950 1600 50  0001 C CNN "Description"
 	1    4950 1600
 	0    1    1    0   
 $EndComp
@@ -382,10 +431,12 @@ P 4950 3150
 F 0 "R116" V 4745 3150 50  0000 C CNN
 F 1 "10" V 4836 3150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 4990 3140 50  0001 C CNN
-F 3 "~" H 4950 3150 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 4950 3150 50  0001 C CNN
 F 4 "541-10TACT-ND" V 4950 3150 50  0001 C CNN "Digikey"
 F 5 "CRCW080510R0JNEAHP" V 4950 3150 50  0001 C CNN "MPN"
 F 6 "Thick film surge resist" V 4950 3150 50  0001 C CNN "Notes"
+F 7 "9" H 4950 3150 50  0001 C CNN "DK line"
+F 8 "RES SMD 10 OHM 5% 1/2W 0805" H 4950 3150 50  0001 C CNN "Description"
 	1    4950 3150
 	0    1    1    0   
 $EndComp
@@ -412,6 +463,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 8800 1150 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 8800 1150 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 8800 1150 50  0001 C CNN "MPN"
+F 7 "27" H 8800 1150 50  0001 C CNN "DK line"
 	1    8800 1150
 	0    1    1    0   
 $EndComp
@@ -442,6 +494,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 8800 2000 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 8800 2000 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 8800 2000 50  0001 C CNN "MPN"
+F 7 "27" H 8800 2000 50  0001 C CNN "DK line"
 	1    8800 2000
 	0    1    1    0   
 $EndComp
@@ -469,6 +522,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 8800 2700 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 8800 2700 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 8800 2700 50  0001 C CNN "MPN"
+F 7 "27" H 8800 2700 50  0001 C CNN "DK line"
 	1    8800 2700
 	0    1    1    0   
 $EndComp
@@ -494,6 +548,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 8800 3550 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 8800 3550 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 8800 3550 50  0001 C CNN "MPN"
+F 7 "27" H 8800 3550 50  0001 C CNN "DK line"
 	1    8800 3550
 	0    1    1    0   
 $EndComp
@@ -528,6 +583,9 @@ F 1 "10K" V 8100 4200 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 8240 4240 50  0001 C CNN
 F 3 "~" H 8200 4250 50  0001 C CNN
 F 4 "0.1%" H 8200 4250 50  0001 C CNN "Notes"
+F 5 "56" H 8200 4250 50  0001 C CNN "DK line"
+F 6 "RES SMD 10K OHM 0.1% 1/10W 0603" H 8200 4250 50  0001 C CNN "Description"
+F 7 "P10KDBCT-ND" H 8200 4250 50  0001 C CNN "Digikey"
 	1    8200 4250
 	0    1    1    0   
 $EndComp
@@ -539,6 +597,10 @@ F 0 "D108" H 8900 5015 50  0000 C CNN
 F 1 "BAS21S" H 8900 4924 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8900 4650 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8900 4900 50  0001 C CNN
+F 4 "43" H 8900 4800 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 8900 4800 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 8900 4800 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 8900 4800 50  0001 C CNN "MPN"
 	1    8900 4800
 	-1   0    0    1   
 $EndComp
@@ -550,6 +612,10 @@ F 0 "D105" H 8900 4465 50  0000 C CNN
 F 1 "BAS21S" H 8900 4374 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8900 4100 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8900 4350 50  0001 C CNN
+F 4 "43" H 8900 4250 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 8900 4250 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 8900 4250 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 8900 4250 50  0001 C CNN "MPN"
 	1    8900 4250
 	1    0    0    -1  
 $EndComp
@@ -561,6 +627,10 @@ F 0 "D107" H 8900 6215 50  0000 C CNN
 F 1 "BAS21S" H 8900 6124 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8900 5850 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8900 6100 50  0001 C CNN
+F 4 "43" H 8900 6000 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 8900 6000 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 8900 6000 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 8900 6000 50  0001 C CNN "MPN"
 	1    8900 6000
 	-1   0    0    1   
 $EndComp
@@ -572,6 +642,10 @@ F 0 "D106" H 8900 5665 50  0000 C CNN
 F 1 "BAS21S" H 8900 5574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8900 5300 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8900 5550 50  0001 C CNN
+F 4 "43" H 8900 5450 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 8900 5450 50  0001 C CNN "Description"
+F 6 "BAS21SLT1GOSCT-ND" H 8900 5450 50  0001 C CNN "Digikey"
+F 7 "BAS21SLT1G" H 8900 5450 50  0001 C CNN "MPN"
 	1    8900 5450
 	1    0    0    -1  
 $EndComp
@@ -602,6 +676,9 @@ F 1 "10K" V 8100 4750 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 8240 4790 50  0001 C CNN
 F 3 "~" H 8200 4800 50  0001 C CNN
 F 4 "0.1%" H 8200 4800 50  0001 C CNN "Notes"
+F 5 "56" H 8200 4800 50  0001 C CNN "DK line"
+F 6 "RES SMD 10K OHM 0.1% 1/10W 0603" H 8200 4800 50  0001 C CNN "Description"
+F 7 "P10KDBCT-ND" H 8200 4800 50  0001 C CNN "Digikey"
 	1    8200 4800
 	0    1    1    0   
 $EndComp
@@ -616,6 +693,9 @@ F 1 "10K" V 8100 5400 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 8240 5440 50  0001 C CNN
 F 3 "~" H 8200 5450 50  0001 C CNN
 F 4 "0.1%" H 8200 5450 50  0001 C CNN "Notes"
+F 5 "56" H 8200 5450 50  0001 C CNN "DK line"
+F 6 "RES SMD 10K OHM 0.1% 1/10W 0603" H 8200 5450 50  0001 C CNN "Description"
+F 7 "P10KDBCT-ND" H 8200 5450 50  0001 C CNN "Digikey"
 	1    8200 5450
 	0    1    1    0   
 $EndComp
@@ -628,6 +708,9 @@ F 1 "10K" V 8100 5950 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 8240 5990 50  0001 C CNN
 F 3 "~" H 8200 6000 50  0001 C CNN
 F 4 "0.1%" H 8200 6000 50  0001 C CNN "Notes"
+F 5 "56" H 8200 6000 50  0001 C CNN "DK line"
+F 6 "RES SMD 10K OHM 0.1% 1/10W 0603" H 8200 6000 50  0001 C CNN "Description"
+F 7 "P10KDBCT-ND" H 8200 6000 50  0001 C CNN "Digikey"
 	1    8200 6000
 	0    1    1    0   
 $EndComp
@@ -662,6 +745,9 @@ F 1 "200K" V 6150 1300 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 6290 1340 50  0001 C CNN
 F 3 "~" H 6250 1350 50  0001 C CNN
 F 4 "1%" H 6250 1350 50  0001 C CNN "Notes"
+F 5 "54" H 6250 1350 50  0001 C CNN "DK line"
+F 6 "200 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 6250 1350 50  0001 C CNN "Description"
+F 7 "YAG5945CT-ND" H 6250 1350 50  0001 C CNN "Digikey"
 	1    6250 1350
 	-1   0    0    1   
 $EndComp
@@ -678,6 +764,9 @@ F 1 "200K" V 6150 2850 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 6290 2890 50  0001 C CNN
 F 3 "~" H 6250 2900 50  0001 C CNN
 F 4 "1%" H 6250 2900 50  0001 C CNN "Notes"
+F 5 "54" H 6250 2900 50  0001 C CNN "DK line"
+F 6 "200 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 6250 2900 50  0001 C CNN "Description"
+F 7 "YAG5945CT-ND" H 6250 2900 50  0001 C CNN "Digikey"
 	1    6250 2900
 	-1   0    0    1   
 $EndComp
@@ -703,6 +792,9 @@ F 1 "200K" V 6150 3350 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 6290 3390 50  0001 C CNN
 F 3 "~" H 6250 3400 50  0001 C CNN
 F 4 "1%" H 6250 3400 50  0001 C CNN "Notes"
+F 5 "54" H 6250 3400 50  0001 C CNN "DK line"
+F 6 "200 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 6250 3400 50  0001 C CNN "Description"
+F 7 "YAG5945CT-ND" H 6250 3400 50  0001 C CNN "Digikey"
 	1    6250 3400
 	-1   0    0    1   
 $EndComp
@@ -741,6 +833,9 @@ F 1 "200K" V 6150 1800 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 6290 1840 50  0001 C CNN
 F 3 "~" H 6250 1850 50  0001 C CNN
 F 4 "1%" H 6250 1850 50  0001 C CNN "Notes"
+F 5 "54" H 6250 1850 50  0001 C CNN "DK line"
+F 6 "200 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 6250 1850 50  0001 C CNN "Description"
+F 7 "YAG5945CT-ND" H 6250 1850 50  0001 C CNN "Digikey"
 	1    6250 1850
 	-1   0    0    1   
 $EndComp
@@ -906,15 +1001,16 @@ F 3 "~" H 1500 2350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L ilemt_input:GDT E1
+L ilemt_input:GDT E101
 U 1 1 5E376466
 P 1200 2350
-F 0 "E1" H 1200 2550 50  0000 C CNN
+F 0 "E101" H 1200 2550 50  0000 C CNN
 F 1 "2036-07-SMLF" H 1200 2450 50  0000 C CNN
 F 2 "input:GDT_3LINE_Bourns_2036-xx-SM" H 1200 2280 50  0001 C CNN
 F 3 "https://www.bourns.com/docs/Product-Datasheets/2036-xx-SM.pdf" V 1200 2350 50  0001 C CNN
 F 4 "2036-07-SMLF-ND" H 1200 2350 50  0001 C CNN "Digikey"
 F 5 "GDT 75V 20% 10KA SURFACE MOUNT" H 1200 2350 50  0001 C CNN "Description"
+F 6 "8" H 1200 2350 50  0001 C CNN "DK line"
 	1    1200 2350
 	0    -1   -1   0   
 $EndComp
