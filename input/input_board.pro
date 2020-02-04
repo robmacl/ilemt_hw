@@ -1,4 +1,4 @@
-update=1/30/2020 5:46:47 PM
+update=2/4/2020 10:31:13 AM
 version=1
 last_client=kicad
 [general]
@@ -33,7 +33,7 @@ AllowBlindVias=0
 RequireCourtyardDefinitions=0
 ProhibitOverlappingCourtyards=1
 MinTrackWidth=0.1016
-MinViaDiameter=0.5
+MinViaDiameter=0.45
 MinViaDrill=0.2
 MinMicroViaDiameter=0.2
 MinMicroViaDrill=0.09999999999999999
@@ -42,11 +42,15 @@ TrackWidth1=0.25
 TrackWidth2=0.15
 TrackWidth3=0.175
 TrackWidth4=0.25
-TrackWidth5=0.5
+TrackWidth5=0.36
+TrackWidth6=0.5
+TrackWidth7=1
 ViaDiameter1=0.6
 ViaDrill1=0.3
-ViaDiameter2=0.6
-ViaDrill2=0.3
+ViaDiameter2=0.45
+ViaDrill2=0.2
+ViaDiameter3=0.6
+ViaDrill3=0.3
 dPairWidth1=0.175
 dPairGap1=0.2
 dPairViaGap1=0.25
@@ -54,9 +58,9 @@ dPairWidth2=0.175
 dPairGap2=0.2
 dPairViaGap2=0
 SilkLineWidth=0.12
-SilkTextSizeV=0.8128
-SilkTextSizeH=0.8128
-SilkTextSizeThickness=0.1524
+SilkTextSizeV=1
+SilkTextSizeH=1
+SilkTextSizeThickness=0.18
 SilkTextItalic=0
 SilkTextUpright=1
 CopperLineWidth=0.2
@@ -256,9 +260,9 @@ dPairWidth=0.175
 dPairGap=0.2
 dPairViaGap=0.25
 [pcbnew/Netclasses/1]
-Name=Fast
-Clearance=0.635
-TrackWidth=0.15
+Name=50 Ohm
+Clearance=0.24
+TrackWidth=0.36
 ViaDiameter=0.6
 ViaDrill=0.3
 uViaDiameter=0.3
@@ -267,6 +271,17 @@ dPairWidth=0.175
 dPairGap=0.2
 dPairViaGap=0.25
 [pcbnew/Netclasses/2]
+Name=Fast
+Clearance=0.2
+TrackWidth=0.15
+ViaDiameter=0.45
+ViaDrill=0.2
+uViaDiameter=0.3
+uViaDrill=0.1
+dPairWidth=0.175
+dPairGap=0.2
+dPairViaGap=0.25
+[pcbnew/Netclasses/3]
 Name=Ground
 Clearance=0.2
 TrackWidth=0.5
@@ -277,18 +292,18 @@ uViaDrill=0.1
 dPairWidth=0.175
 dPairGap=0.2
 dPairViaGap=0.25
-[pcbnew/Netclasses/3]
+[pcbnew/Netclasses/4]
 Name=LVDS
-Clearance=0.635
+Clearance=0.0889
 TrackWidth=0.175
-ViaDiameter=0.6
-ViaDrill=0.3
+ViaDiameter=0.45
+ViaDrill=0.2
 uViaDiameter=0.3
 uViaDrill=0.1
 dPairWidth=0.175
 dPairGap=0.2
 dPairViaGap=0.25
-[pcbnew/Netclasses/4]
+[pcbnew/Netclasses/5]
 Name=Power
 Clearance=0.2
 TrackWidth=0.5
@@ -299,7 +314,7 @@ uViaDrill=0.1
 dPairWidth=0.175
 dPairGap=0.2
 dPairViaGap=0.25
-[pcbnew/Netclasses/5]
+[pcbnew/Netclasses/6]
 Name=Sensitive
 Clearance=0.2
 TrackWidth=0.15
@@ -310,12 +325,12 @@ uViaDrill=0.1
 dPairWidth=0.175
 dPairGap=0.2
 dPairViaGap=0.25
-[pcbnew/Netclasses/6]
+[pcbnew/Netclasses/7]
 Name=Slow
 Clearance=0.2
 TrackWidth=0.15
-ViaDiameter=0.6
-ViaDrill=0.3
+ViaDiameter=0.45
+ViaDrill=0.2
 uViaDiameter=0.3
 uViaDrill=0.1
 dPairWidth=0.175

@@ -12,30 +12,32 @@ Input board design/capture tasks
     not really saving any space wrt 0603, but it does reduce component
     count a bit.  Using just the array is not attractive at the ADC
     where we need only 2 (or 1 for channels 2, 3).
+ -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
  -- Switch to different LVDS parts with more sources, standard footprint
  -- Input TVS can now be unidirectional
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
     distortion, PSRR, CMRR.
- -- Check symmetry of +/- input channel
 
  ==> DOUBLE CHECK pinouts on all components
 
 Layout tasks:
  -- Power and ground layout
- -- lay out a channel
- -- common support on main ground region
  -- duplicate channels
- -- extra test features on channel 1
+ -- BIST routing
+ -- Have an L3 ground pour under high-speed traces on the bottom layer
+    stitched to ground, especially near the layer switches.
 
- ==> Order BOM and DOUBLE CHECK footprints on all components
- 
+BOM tasks:
+ -- Recheck BOM quantities with PCB BOM.
+ -- Add Manufacturer/MPN to all parts
+ -- Order BOM and DOUBLE CHECK footprints on all components
+
 
 Hardware todo:
- -- Prototype reference buffer?
- -- Build prototype reference, used until main board is complete.
+ -- Need at least a preliminary main board in order to test input
+    board: power filters, microzed breakout, reference and clock generator.
 
 Eval box issues:
- -- Rework for input board testing in advance of main board.
  -- Set up for 3 DAC outputs with LPF.
  -- Test for EMI issues, power adapters coupling into signal wiring.
 
@@ -123,6 +125,44 @@ password BogPickle
 ________________
 
 
+[4 Feb 20]
+
+Trying to get a handle on what digital signal integrity I need to
+worry about.  Via impedance discontinuty seems to only be an issue
+above 1 GHz.
+
+Our main signal integrity issues are:
+ -- We want MCLK to be "clean", low jitter with minimal interference
+    from other digital activity on the main board.
+ -- We want 100 MHz clocking on SCKB/SDOB.
+
+What is our relevant space/time scale?  The longest run on the input
+board from channel 3 SDOA to the transmitter.  This is about 150mm,
+which has to be treated as a transmission line when rise time is below
+~4ns.  This is driven by the ADC, which seems somewhat slower than the
+LVDS.  If we take the typical 10 mA drive with 20 pF lumped capacitive
+load, then we get 6.6 ns to slew 3.3 V.  But the line is not going to
+present a 20 pF load.  I'm guessing the rise time is going to be 1-2
+ns.  At 1 ns according to the IPC-2251 conductor length method, our
+effective bandwidth is 350 MHz, where the max conductor length is 45
+mm.  Then stubs of 10mm or so should not be a big deal.
+
+The LVDS path on-board is very short, so is not much of an issue
+(revisit when we get to the main board).  The fastest on-board edges
+are the LVDS RX outputs (0.5 ns), but aside from SCKB these do not
+make it out past the clock buffer, which is LVC and going to be more
+in the 1 ns ballpark.
+
+
+
+[31 Jan 20]
+
+Instant manufacturing quote: https://circuithub.com/
+
+Haven't yet figured out how the plane clearance around vias is
+defined.  But this does affect the via impedance.
+
+
 [30 Jan 20]
 
 Almost ready to start routing traces.
@@ -147,12 +187,13 @@ JLC calculator (based on 1 oz copper), or 64 Ohms (according to PCB
 toolkit, with 2 oz copper but w/o soldermask). I'll round that to 0.15
 mm.  0.15/0.15 as the initial design rule, but will perhaps go smaller
 later for DRC.  The JLC process capability is much finer.
+ => 0.2 mm plane height is more like 8 mils, not 6.  With this height
+    and an 0.15 mm trace, PCB toolkit says 74 Ohms.  0.2mm width gives
+    66 ohms.
 
 With JLC, with 2 Oz copper the inner layers are still 0.5 Oz.  This
 reduces the interest of the 2 Oz option for resistance reduction.  It
 will probably improve the via thickness somewhat.
-
-
 
 
 [29 Jan 20]

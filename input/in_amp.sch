@@ -108,8 +108,6 @@ Wire Wire Line
 Wire Wire Line
 	3950 2850 3450 2850
 Wire Wire Line
-	3450 2000 3700 2000
-Wire Wire Line
 	4300 1900 5450 1900
 $Comp
 L Device:R_US R130
@@ -223,9 +221,7 @@ Wire Wire Line
 	3800 6450 3400 6450
 Wire Wire Line
 	3400 5750 3950 5750
-Wire Wire Line
-	3450 2000 3450 2850
-Text HLabel 2500 1800 0    50   Input ~ 0
+Text HLabel 2600 2000 0    50   Input ~ 0
 +in
 Text HLabel 2350 6650 0    50   Input ~ 0
 -in
@@ -391,19 +387,19 @@ Wire Wire Line
 Wire Wire Line
 	2350 6650 2700 6650
 Wire Wire Line
-	2500 1800 2850 1800
+	2600 2000 2950 2000
 $Comp
 L Connector:TestPoint TP?
 U 1 1 5E58FCA8
-P 2850 1850
+P 2950 2050
 AR Path="/5DFCF14D/5DA78AA2/5E58FCA8" Ref="TP?"  Part="1" 
 AR Path="/5DFCF14D/5E295469/5E58FCA8" Ref="TP?"  Part="1" 
 AR Path="/5DFCF14D/5E195558/5E58FCA8" Ref="TP108"  Part="1" 
-F 0 "TP108" H 2850 2100 50  0000 C CNN
-F 1 "+IN1" H 2850 2200 50  0000 C CNN
-F 2 "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" H 3050 1850 50  0001 C CNN
-F 3 "~" H 3050 1850 50  0001 C CNN
-	1    2850 1850
+F 0 "TP108" H 2950 2300 50  0000 C CNN
+F 1 "+IN1" H 2950 2400 50  0000 C CNN
+F 2 "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" H 3150 2050 50  0001 C CNN
+F 3 "~" H 3150 2050 50  0001 C CNN
+	1    2950 2050
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -424,8 +420,12 @@ Connection ~ 2700 6650
 Wire Wire Line
 	2700 6650 3800 6650
 Wire Wire Line
-	2850 1850 2850 1800
-Connection ~ 2850 1800
+	2950 2050 2950 2000
 Wire Wire Line
-	2850 1800 3700 1800
+	3700 1800 3450 1800
+Wire Wire Line
+	3450 1800 3450 2850
+Wire Wire Line
+	3700 2000 2950 2000
+Connection ~ 2950 2000
 $EndSCHEMATC

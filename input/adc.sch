@@ -699,31 +699,11 @@ F 3 "~" H 8750 4550 50  0001 C CNN
 	1    8550 4550
 	-1   0    0    1   
 $EndComp
-$Comp
-L Connector:TestPoint TP104
-U 1 1 5E4705E0
-P 8850 4550
-AR Path="/5DFCF14D/5DA78AA2/5E4705E0" Ref="TP104"  Part="1" 
-AR Path="/5DFCF14D/5E295469/5E4705E0" Ref="TP?"  Part="1" 
-F 0 "TP104" H 8850 4800 50  0000 C CNN
-F 1 "SDOB" H 8850 4900 50  0000 C CNN
-F 2 "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" H 9050 4550 50  0001 C CNN
-F 3 "~" H 9050 4550 50  0001 C CNN
-	1    8850 4550
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	8550 4550 8550 4200
 Connection ~ 8550 4200
 Wire Wire Line
 	8550 4200 9150 4200
-Wire Wire Line
-	8850 4550 8850 4400
-Connection ~ 8850 4400
-Wire Wire Line
-	8850 4400 9150 4400
-Wire Wire Line
-	8100 4400 8850 4400
 $Comp
 L Connector:Conn_Coaxial J?
 U 1 1 5E5441CF
@@ -855,4 +835,12 @@ F 3 "" H 8000 1700 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8000 1700 8000 1600
+Text Label 7725 3800 0    50   ~ 0
+DRL
+Text Label 7725 3900 0    50   ~ 0
+BUSY
+Wire Wire Line
+	8100 4400 9150 4400
+Text Label 4975 2350 0    50   ~ 0
+J102_J103_GND
 $EndSCHEMATC
