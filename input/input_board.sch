@@ -51,11 +51,13 @@ F5 "SDOB" O R 8450 1400 50
 F6 "MCLK" I L 7300 1300 50 
 F7 "SCKB" I L 7300 1500 50 
 F8 "SCKA" I L 7300 1400 50 
+F9 "CHAN_V+" O R 8450 1000 50 
+F10 "CHAN_V-" O R 8450 1100 50 
 $EndSheet
 $Sheet
 S 7300 1950 1150 800 
 U 5E194E0B
-F0 "channel_dummy1" 50
+F0 "channel_dummy2" 50
 F1 "input_channel_dummy.sch" 50
 F2 "+in" I L 7300 2100 50 
 F3 "-in" I L 7300 2200 50 
@@ -143,7 +145,7 @@ Wire Wire Line
 $Sheet
 S 7300 3050 1150 800 
 U 5E1F318C
-F0 "channel_dummy2" 50
+F0 "channel_dummy3" 50
 F1 "input_channel_dummy.sch" 50
 F2 "+in" I L 7300 3200 50 
 F3 "-in" I L 7300 3300 50 
@@ -1027,4 +1029,14 @@ Text Label 4450 7050 0    50   ~ 0
 MCLK_JACK
 Text Label 9825 3300 1    50   ~ 0
 SDOB1_JACK
+Text GLabel 8575 1000 2    50   Output ~ 0
+CHAN1_V+
+Text GLabel 8575 1100 2    50   Output ~ 0
+CHAN1_V-
+Wire Wire Line
+	8575 1000 8450 1000
+Wire Wire Line
+	8575 1100 8450 1100
+Text Notes 4600 3175 0    50   ~ 0
+Channels are named X, Y, Z,\nand numbered 1, 2, 3.
 $EndSCHEMATC

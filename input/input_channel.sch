@@ -308,9 +308,9 @@ Connection ~ 3250 4100
 Wire Wire Line
 	3250 4100 3800 4100
 Wire Wire Line
-	2400 4100 2800 4100
+	2400 4100 2625 4100
 Wire Wire Line
-	2350 5250 2800 5250
+	2350 5250 2625 5250
 Connection ~ 2800 5250
 Wire Wire Line
 	2800 5250 2800 5050
@@ -330,4 +330,22 @@ F 3 "~" H 3250 5250 50  0001 C CNN
 	1    3250 5250
 	1    0    0    -1  
 $EndComp
+Text HLabel 2700 3800 2    50   Output ~ 0
+CHAN_V+
+Text HLabel 2700 5550 2    50   Output ~ 0
+CHAN_V-
+Wire Wire Line
+	2700 3800 2625 3800
+Wire Wire Line
+	2625 3800 2625 4100
+Connection ~ 2625 4100
+Wire Wire Line
+	2625 4100 2800 4100
+Wire Wire Line
+	2700 5550 2625 5550
+Wire Wire Line
+	2625 5550 2625 5250
+Connection ~ 2625 5250
+Wire Wire Line
+	2625 5250 2800 5250
 $EndSCHEMATC

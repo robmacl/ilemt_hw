@@ -125,6 +125,20 @@ password BogPickle
 ________________
 
 
+[5 Feb 20]
+
+A little nervous about whether the BIST injection might inject noise.
+But we are relatively insensitive to noise on the BIST input lines in
+normal operation because the buffer will be open-loop, saturated at
+the rail.  There is also a possibility of channel cross-coupling
+because the buffer outputs are in common and run across the channel
+ground cuts.  Whatever the voltage is across the cut will be injected
+at say -80 dB at 10 kHz (1 pF 1 kOhm).  This seems tolerable since I'm
+happy with -60 dB channel isolation.  Also there should be very little
+voltage difference across the cut at those frequencies.  I'm going to
+add an RC fiter at the board connector.
+
+
 [4 Feb 20]
 
 Trying to get a handle on what digital signal integrity I need to

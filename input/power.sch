@@ -1001,7 +1001,7 @@ F 3 "" H 9000 1200 50  0001 C CNN
 	1    9000 1200
 	0    -1   -1   0   
 $EndComp
-Text GLabel 7200 2100 0    50   Input ~ 0
+Text GLabel 7100 2100 0    50   Input ~ 0
 VREF
 $Comp
 L Device:Polyfuse F1
@@ -1276,8 +1276,8 @@ Wire Wire Line
 Wire Wire Line
 	8050 6450 8250 6450
 Wire Wire Line
-	7550 6450 7750 6450
-Text GLabel 7550 6450 0    50   Input ~ 0
+	7500 6450 7600 6450
+Text GLabel 7500 6450 0    50   Input ~ 0
 VREF
 $Comp
 L Device:R_US R?
@@ -1521,17 +1521,17 @@ Wire Wire Line
 $Comp
 L power:GNDA #PWR?
 U 1 1 5E52A14D
-P 9250 6000
+P 7600 6850
 AR Path="/5DFF6C0D/5E52A14D" Ref="#PWR?"  Part="1" 
 AR Path="/5E1D6729/5E1DA2AA/5E52A14D" Ref="#PWR?"  Part="1" 
 AR Path="/5E2EB92B/5E52A14D" Ref="#PWR?"  Part="1" 
 AR Path="/5E51E83D/5E52A14D" Ref="#PWR029"  Part="1" 
-F 0 "#PWR029" H 9250 5750 50  0001 C CNN
-F 1 "GNDA" V 9255 5872 50  0000 R CNN
-F 2 "" H 9250 6000 50  0001 C CNN
-F 3 "" H 9250 6000 50  0001 C CNN
-	1    9250 6000
-	0    -1   -1   0   
+F 0 "#PWR029" H 7600 6600 50  0001 C CNN
+F 1 "GNDA" V 7605 6722 50  0000 R CNN
+F 2 "" H 7600 6850 50  0001 C CNN
+F 3 "" H 7600 6850 50  0001 C CNN
+	1    7600 6850
+	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C_Small C?
@@ -1613,7 +1613,7 @@ Wire Wire Line
 	4350 2250 4350 2550
 Connection ~ 8050 2100
 Wire Wire Line
-	7200 2100 7350 2100
+	7100 2100 7250 2100
 $Comp
 L Device:R_US R?
 U 1 1 5E58A52A
@@ -2051,4 +2051,71 @@ Wire Wire Line
 	8100 4450 8150 4450
 Wire Wire Line
 	7700 4450 7800 4450
+$Comp
+L Device:C_Small C?
+U 1 1 5E3DBA02
+P 7600 6700
+AR Path="/5DFF6C0D/5E3DBA02" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5E3DBA02" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5E3DBA02" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5E3DBA02" Ref="C40"  Part="1" 
+F 0 "C40" V 7371 6700 50  0000 C CNN
+F 1 "1uF" V 7462 6700 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7600 6700 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 7600 6700 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 7600 6700 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 7600 6700 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 7600 6700 50  0001 C CNN "MPN"
+F 7 "27" H 7600 6700 50  0001 C CNN "DK line"
+	1    7600 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7600 6600 7600 6450
+Connection ~ 7600 6450
+Wire Wire Line
+	7600 6450 7750 6450
+Wire Wire Line
+	7600 6800 7600 6850
+$Comp
+L power:GNDA #PWR?
+U 1 1 5E3F0E4B
+P 7250 2500
+AR Path="/5DFF6C0D/5E3F0E4B" Ref="#PWR?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5E3F0E4B" Ref="#PWR?"  Part="1" 
+AR Path="/5E2EB92B/5E3F0E4B" Ref="#PWR?"  Part="1" 
+AR Path="/5E51E83D/5E3F0E4B" Ref="#PWR0165"  Part="1" 
+F 0 "#PWR0165" H 7250 2250 50  0001 C CNN
+F 1 "GNDA" V 7255 2372 50  0000 R CNN
+F 2 "" H 7250 2500 50  0001 C CNN
+F 3 "" H 7250 2500 50  0001 C CNN
+	1    7250 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 5E3F0E55
+P 7250 2350
+AR Path="/5DFF6C0D/5E3F0E55" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5E3F0E55" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5E3F0E55" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5E3F0E55" Ref="C39"  Part="1" 
+F 0 "C39" V 7021 2350 50  0000 C CNN
+F 1 "1uF" V 7112 2350 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7250 2350 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 7250 2350 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 7250 2350 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 7250 2350 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 7250 2350 50  0001 C CNN "MPN"
+F 7 "27" H 7250 2350 50  0001 C CNN "DK line"
+	1    7250 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7250 2450 7250 2500
+Wire Wire Line
+	7250 2250 7250 2100
+Connection ~ 7250 2100
+Wire Wire Line
+	7250 2100 7350 2100
 $EndSCHEMATC

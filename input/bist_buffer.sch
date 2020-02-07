@@ -96,7 +96,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E5AA248" Ref="#PWR?"  Part="1"
 AR Path="/5E2EB92B/5E5AA248" Ref="#PWR?"  Part="1" 
 AR Path="/5E5A51EB/5E5AA248" Ref="#PWR044"  Part="1" 
 F 0 "#PWR044" H 5500 3300 50  0001 C CNN
-F 1 "GNDA" V 5505 3422 50  0000 R CNN
+F 1 "GNDA" V 5500 3425 50  0000 R CNN
 F 2 "" H 5500 3550 50  0001 C CNN
 F 3 "" H 5500 3550 50  0001 C CNN
 	1    5500 3550
@@ -111,17 +111,6 @@ Wire Wire Line
 Wire Wire Line
 	4900 3400 4900 3550
 $Comp
-L ilemt_input:V+ #PWR041
-U 1 1 5E5AB465
-P 4900 2550
-F 0 "#PWR041" H 4900 2400 50  0001 C CNN
-F 1 "V+" H 4900 2690 50  0000 C CNN
-F 2 "" H 4900 2550 50  0001 C CNN
-F 3 "" H 4900 2550 50  0001 C CNN
-	1    4900 2550
-	1    0    0    -1  
-$EndComp
-$Comp
 L ilemt_input:V- #PWR040
 U 1 1 5E5AB6F2
 P 3900 350
@@ -132,10 +121,6 @@ F 3 "" H 3900 450 50  0001 C CNN
 	1    3900 350 
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4900 2550 4900 2700
-Wire Wire Line
-	4900 3700 4900 3550
 Connection ~ 4900 3550
 Text GLabel 8300 3100 2    50   Input ~ 0
 BIST-+
@@ -156,24 +141,24 @@ BIST+-_IN
 $Comp
 L Device:R_US R?
 U 1 1 5E5B741A
-P 4200 3200
+P 4050 3200
 AR Path="/5DFCF14D/5DE6CDF8/5E5B741A" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5B741A" Ref="R23"  Part="1" 
-F 0 "R23" V 4300 3200 50  0000 C CNN
-F 1 "200" V 4100 3200 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 4240 3190 50  0001 C CNN
-F 3 "~" H 4200 3200 50  0001 C CNN
-F 4 "" H 4200 3200 50  0001 C CNN "Notes"
-F 5 "55" H 4200 3200 50  0001 C CNN "DK line"
-F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 4200 3200 50  0001 C CNN "Description"
-F 7 "RNCP0603FTD200RCT-ND" H 4200 3200 50  0001 C CNN "Digikey"
-	1    4200 3200
+F 0 "R23" V 4150 3200 50  0000 C CNN
+F 1 "200" V 3950 3200 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 4090 3190 50  0001 C CNN
+F 3 "~" H 4050 3200 50  0001 C CNN
+F 4 "" H 4050 3200 50  0001 C CNN "Notes"
+F 5 "55" H 4050 3200 50  0001 C CNN "DK line"
+F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 4050 3200 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD200RCT-ND" H 4050 3200 50  0001 C CNN "Digikey"
+	1    4050 3200
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	4050 3200 3800 3200
+	3900 3200 3800 3200
 Wire Wire Line
-	4350 3200 4600 3200
+	4200 3200 4350 3200
 Wire Wire Line
 	5550 3100 5200 3100
 $Comp
@@ -201,24 +186,22 @@ $EndComp
 $Comp
 L Device:R_US R?
 U 1 1 5E5BA20D
-P 7150 3200
+P 7000 3200
 AR Path="/5DFCF14D/5DE6CDF8/5E5BA20D" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5BA20D" Ref="R25"  Part="1" 
-F 0 "R25" V 7250 3200 50  0000 C CNN
-F 1 "200" V 7050 3200 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 7190 3190 50  0001 C CNN
-F 3 "~" H 7150 3200 50  0001 C CNN
-F 4 "" H 7150 3200 50  0001 C CNN "Notes"
-F 5 "55" H 7150 3200 50  0001 C CNN "DK line"
-F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 7150 3200 50  0001 C CNN "Description"
-F 7 "RNCP0603FTD200RCT-ND" H 7150 3200 50  0001 C CNN "Digikey"
-	1    7150 3200
+F 0 "R25" V 7100 3200 50  0000 C CNN
+F 1 "200" V 6900 3200 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7040 3190 50  0001 C CNN
+F 3 "~" H 7000 3200 50  0001 C CNN
+F 4 "" H 7000 3200 50  0001 C CNN "Notes"
+F 5 "55" H 7000 3200 50  0001 C CNN "DK line"
+F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 7000 3200 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD200RCT-ND" H 7000 3200 50  0001 C CNN "Digikey"
+	1    7000 3200
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	7000 3200 6750 3200
-Wire Wire Line
-	7300 3200 7550 3200
+	6850 3200 6750 3200
 Wire Wire Line
 	8300 3100 8150 3100
 $Comp
@@ -246,24 +229,24 @@ $EndComp
 $Comp
 L Device:R_US R?
 U 1 1 5E5CB3B9
-P 4200 5150
+P 4075 5150
 AR Path="/5DFCF14D/5DE6CDF8/5E5CB3B9" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5CB3B9" Ref="R24"  Part="1" 
-F 0 "R24" V 4300 5150 50  0000 C CNN
-F 1 "200" V 4100 5150 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 4240 5140 50  0001 C CNN
-F 3 "~" H 4200 5150 50  0001 C CNN
-F 4 "" H 4200 5150 50  0001 C CNN "Notes"
-F 5 "55" H 4200 5150 50  0001 C CNN "DK line"
-F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 4200 5150 50  0001 C CNN "Description"
-F 7 "RNCP0603FTD200RCT-ND" H 4200 5150 50  0001 C CNN "Digikey"
-	1    4200 5150
+F 0 "R24" V 4175 5150 50  0000 C CNN
+F 1 "200" V 3975 5150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 4115 5140 50  0001 C CNN
+F 3 "~" H 4075 5150 50  0001 C CNN
+F 4 "" H 4075 5150 50  0001 C CNN "Notes"
+F 5 "55" H 4075 5150 50  0001 C CNN "DK line"
+F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 4075 5150 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD200RCT-ND" H 4075 5150 50  0001 C CNN "Digikey"
+	1    4075 5150
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	4050 5150 3800 5150
+	3925 5150 3800 5150
 Wire Wire Line
-	4350 5150 4600 5150
+	4225 5150 4350 5150
 Wire Wire Line
 	5550 5050 5200 5050
 $Comp
@@ -285,41 +268,28 @@ $EndComp
 $Comp
 L Device:R_US R?
 U 1 1 5E5CB3D1
-P 7150 5150
+P 7025 5150
 AR Path="/5DFCF14D/5DE6CDF8/5E5CB3D1" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5CB3D1" Ref="R26"  Part="1" 
-F 0 "R26" V 7250 5150 50  0000 C CNN
-F 1 "200" V 7050 5150 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 7190 5140 50  0001 C CNN
-F 3 "~" H 7150 5150 50  0001 C CNN
-F 4 "" H 7150 5150 50  0001 C CNN "Notes"
-F 5 "55" H 7150 5150 50  0001 C CNN "DK line"
-F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 7150 5150 50  0001 C CNN "Description"
-F 7 "RNCP0603FTD200RCT-ND" H 7150 5150 50  0001 C CNN "Digikey"
-	1    7150 5150
+F 0 "R26" V 7125 5150 50  0000 C CNN
+F 1 "200" V 6925 5150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7065 5140 50  0001 C CNN
+F 3 "~" H 7025 5150 50  0001 C CNN
+F 4 "" H 7025 5150 50  0001 C CNN "Notes"
+F 5 "55" H 7025 5150 50  0001 C CNN "DK line"
+F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 7025 5150 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD200RCT-ND" H 7025 5150 50  0001 C CNN "Digikey"
+	1    7025 5150
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	7000 5150 6750 5150
-Wire Wire Line
-	7300 5150 7550 5150
+	6875 5150 6750 5150
 Wire Wire Line
 	8300 5050 8150 5050
-$Comp
-L ilemt_input:V- #PWR042
-U 1 1 5E5D122E
-P 4900 3800
-F 0 "#PWR042" H 4900 3650 50  0001 C CNN
-F 1 "V-" H 4900 3760 50  0000 C CNN
-F 2 "" H 4900 3900 50  0001 C CNN
-F 3 "" H 4900 3900 50  0001 C CNN
-	1    4900 3800
-	1    0    0    -1  
-$EndComp
 Text Notes 7100 6850 0    50   ~ 0
 BIST buffer\nBuffers the Built In Self Test signals from the main board, using feedback\nfrom channel 1 to null out the diode drop.
-Text Notes 7400 4350 0    50   ~ 0
-The BIST buffer is in effect a "precision rectifier" because the outputs are thru\ndiodes and the feedback is taken after the diode.  This cancels the diode Vf.\nThe diodes are placed at the input of each channel, with all channels in \nparallel.  The feedback can only be taken from a single channel (channel 1),\nso the Vf cancellation on the other channels depends on diode matching.\n\nDuring normal operation the input BIST lines are set at 0V for BIST?+\nand 5V for BIST?-.  This causes the BIST buffer to saturate at V+ or V- \nso as to reverse-bias the injection diodes.   
+Text Notes 7675 4400 0    50   ~ 0
+The BIST buffer is in effect a "precision rectifier" because the output is thru a\ndiode and the feedback is taken after the diode.  This cancels the diode Vf.\nThe diodes are placed at the input of each channel, with all channels in \nparallel.  The feedback can only be taken from a single channel (channel 1),\nso the Vf cancellation on the other channels depends on diode matching.\n\nDuring normal operation the input BIST lines are set at 0V for BIST?+\nand 5V for BIST?-.  This causes the BIST buffer to saturate at V+ or V- \nso as to reverse-bias the injection diodes.   
 Text GLabel 6750 3000 0    50   Input ~ 0
 BIST+-_FB
 Wire Wire Line
@@ -336,4 +306,174 @@ Text GLabel 6750 4950 0    50   Input ~ 0
 BIST--_FB
 Wire Wire Line
 	6750 4950 7550 4950
+$Comp
+L Device:C_Small C?
+U 1 1 5ED01E80
+P 4350 3450
+AR Path="/5DFF6C0D/5ED01E80" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED01E80" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED01E80" Ref="C?"  Part="1" 
+AR Path="/5E5A51EB/5ED01E80" Ref="C35"  Part="1" 
+F 0 "C35" V 4121 3450 50  0000 C CNN
+F 1 "10nF" V 4212 3450 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4350 3450 50  0001 C CNN
+F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 4350 3450 50  0001 C CNN
+F 4 "2% C0G" H 4350 3450 50  0001 C CNN "Notes"
+F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 4350 3450 50  0001 C CNN "Description"
+F 6 "490-8296-1-ND" H 4350 3450 50  0001 C CNN "Digikey"
+F 7 "GRM2195C1H103GA01D" H 4350 3450 50  0001 C CNN "MPN"
+F 8 "14" H 4350 3450 50  0001 C CNN "DK line"
+	1    4350 3450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4350 3350 4350 3200
+Connection ~ 4350 3200
+Wire Wire Line
+	4350 3200 4600 3200
+$Comp
+L power:GNDA #PWR011
+U 1 1 5ED032E0
+P 4350 3625
+F 0 "#PWR011" H 4350 3375 50  0001 C CNN
+F 1 "GNDA" H 4350 3475 50  0000 C CNN
+F 2 "" H 4350 3625 50  0001 C CNN
+F 3 "" H 4350 3625 50  0001 C CNN
+	1    4350 3625
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 3625 4350 3550
+$Comp
+L Device:C_Small C?
+U 1 1 5ED05F9F
+P 4350 5400
+AR Path="/5DFF6C0D/5ED05F9F" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED05F9F" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED05F9F" Ref="C?"  Part="1" 
+AR Path="/5E5A51EB/5ED05F9F" Ref="C36"  Part="1" 
+F 0 "C36" V 4121 5400 50  0000 C CNN
+F 1 "10nF" V 4212 5400 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4350 5400 50  0001 C CNN
+F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 4350 5400 50  0001 C CNN
+F 4 "2% C0G" H 4350 5400 50  0001 C CNN "Notes"
+F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 4350 5400 50  0001 C CNN "Description"
+F 6 "490-8296-1-ND" H 4350 5400 50  0001 C CNN "Digikey"
+F 7 "GRM2195C1H103GA01D" H 4350 5400 50  0001 C CNN "MPN"
+F 8 "14" H 4350 5400 50  0001 C CNN "DK line"
+	1    4350 5400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4350 5300 4350 5150
+$Comp
+L power:GNDA #PWR034
+U 1 1 5ED05FA6
+P 4350 5575
+F 0 "#PWR034" H 4350 5325 50  0001 C CNN
+F 1 "GNDA" H 4350 5425 50  0000 C CNN
+F 2 "" H 4350 5575 50  0001 C CNN
+F 3 "" H 4350 5575 50  0001 C CNN
+	1    4350 5575
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 5575 4350 5500
+$Comp
+L Device:C_Small C?
+U 1 1 5ED06F32
+P 7300 3450
+AR Path="/5DFF6C0D/5ED06F32" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED06F32" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED06F32" Ref="C?"  Part="1" 
+AR Path="/5E5A51EB/5ED06F32" Ref="C37"  Part="1" 
+F 0 "C37" V 7071 3450 50  0000 C CNN
+F 1 "10nF" V 7162 3450 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7300 3450 50  0001 C CNN
+F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 7300 3450 50  0001 C CNN
+F 4 "2% C0G" H 7300 3450 50  0001 C CNN "Notes"
+F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 7300 3450 50  0001 C CNN "Description"
+F 6 "490-8296-1-ND" H 7300 3450 50  0001 C CNN "Digikey"
+F 7 "GRM2195C1H103GA01D" H 7300 3450 50  0001 C CNN "MPN"
+F 8 "14" H 7300 3450 50  0001 C CNN "DK line"
+	1    7300 3450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7300 3350 7300 3200
+$Comp
+L power:GNDA #PWR036
+U 1 1 5ED06F39
+P 7300 3625
+F 0 "#PWR036" H 7300 3375 50  0001 C CNN
+F 1 "GNDA" H 7300 3475 50  0000 C CNN
+F 2 "" H 7300 3625 50  0001 C CNN
+F 3 "" H 7300 3625 50  0001 C CNN
+	1    7300 3625
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7300 3625 7300 3550
+$Comp
+L Device:C_Small C?
+U 1 1 5ED0788A
+P 7300 5400
+AR Path="/5DFF6C0D/5ED0788A" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED0788A" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED0788A" Ref="C?"  Part="1" 
+AR Path="/5E5A51EB/5ED0788A" Ref="C38"  Part="1" 
+F 0 "C38" V 7071 5400 50  0000 C CNN
+F 1 "10nF" V 7162 5400 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7300 5400 50  0001 C CNN
+F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 7300 5400 50  0001 C CNN
+F 4 "2% C0G" H 7300 5400 50  0001 C CNN "Notes"
+F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 7300 5400 50  0001 C CNN "Description"
+F 6 "490-8296-1-ND" H 7300 5400 50  0001 C CNN "Digikey"
+F 7 "GRM2195C1H103GA01D" H 7300 5400 50  0001 C CNN "MPN"
+F 8 "14" H 7300 5400 50  0001 C CNN "DK line"
+	1    7300 5400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GNDA #PWR038
+U 1 1 5ED07891
+P 7300 5575
+F 0 "#PWR038" H 7300 5325 50  0001 C CNN
+F 1 "GNDA" H 7300 5425 50  0000 C CNN
+F 2 "" H 7300 5575 50  0001 C CNN
+F 3 "" H 7300 5575 50  0001 C CNN
+	1    7300 5575
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7300 5575 7300 5500
+Wire Wire Line
+	7175 5150 7300 5150
+Wire Wire Line
+	7300 5300 7300 5150
+Connection ~ 7300 5150
+Wire Wire Line
+	7300 5150 7550 5150
+Connection ~ 4350 5150
+Wire Wire Line
+	4350 5150 4600 5150
+Wire Wire Line
+	7150 3200 7300 3200
+Connection ~ 7300 3200
+Wire Wire Line
+	7300 3200 7550 3200
+Text Notes 4450 4325 0    50   ~ 0
+R23/C35 etc. RC filters are placed at the card edge connector.
+Text GLabel 4825 2550 0    50   Input ~ 0
+CHAN1_V+
+Text GLabel 4825 3950 0    50   Input ~ 0
+CHAN1_V-
+Wire Wire Line
+	4825 2550 4900 2550
+Wire Wire Line
+	4900 2550 4900 2700
+Wire Wire Line
+	4825 3950 4900 3950
+Wire Wire Line
+	4900 3550 4900 3950
 $EndSCHEMATC
