@@ -714,25 +714,6 @@ X V- 1 0 100 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# ilemt_input_channel_dummy
-#
-DEF ilemt_input_channel_dummy X 0 40 N Y 1 F N
-F0 "X" 0 0 50 H V C CNN
-F1 "ilemt_input_channel_dummy" -750 -200 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-S -425 300 400 -250 0 1 0 N
-X MCLK 1 -300 400 100 D 50 50 1 1 I
-X SCKB 2 -150 400 100 D 50 50 1 1 I
-X SCKA 3 0 400 100 D 50 50 1 1 I
-X +IN 4 150 400 100 D 50 50 1 1 I
-X -IN 5 300 400 100 D 50 50 1 1 I
-X SDOA 6 300 -350 100 U 50 50 1 1 O
-X SDOB 7 150 -350 100 U 50 50 1 1 O
-ENDDRAW
-ENDDEF
-#
 # ilemt_input_my_EMI_Filter_LL
 #
 DEF ilemt_input_my_EMI_Filter_LL FL 0 20 Y N 1 F N

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 13
+Sheet 1 21
 Title ""
 Date ""
 Rev ""
@@ -53,19 +53,6 @@ F7 "SCKB" I L 7300 1500 50
 F8 "SCKA" I L 7300 1400 50 
 F9 "CHAN_V+" O R 8450 1000 50 
 F10 "CHAN_V-" O R 8450 1100 50 
-$EndSheet
-$Sheet
-S 7300 1950 1150 800 
-U 5E194E0B
-F0 "channel_dummy2" 50
-F1 "input_channel_dummy.sch" 50
-F2 "+in" I L 7300 2100 50 
-F3 "-in" I L 7300 2200 50 
-F4 "SDOA" O R 8450 2400 50 
-F5 "SDOB" O R 8450 2500 50 
-F6 "MCLK" I L 7300 2400 50 
-F7 "SCKB" I L 7300 2600 50 
-F8 "SCKA" I L 7300 2500 50 
 $EndSheet
 $Sheet
 S 2200 950  1100 450 
@@ -142,19 +129,6 @@ Wire Wire Line
 	10450 5550 10750 5550
 Wire Wire Line
 	10450 5650 10750 5650
-$Sheet
-S 7300 3050 1150 800 
-U 5E1F318C
-F0 "channel_dummy3" 50
-F1 "input_channel_dummy.sch" 50
-F2 "+in" I L 7300 3200 50 
-F3 "-in" I L 7300 3300 50 
-F4 "SDOA" O R 8450 3450 50 
-F5 "SDOB" O R 8450 3550 50 
-F6 "MCLK" I L 7300 3500 50 
-F7 "SCKB" I L 7300 3700 50 
-F8 "SCKA" I L 7300 3600 50 
-$EndSheet
 Wire Wire Line
 	2800 6400 2800 6450
 $Comp
@@ -310,11 +284,10 @@ Wire Wire Line
 Wire Wire Line
 	9250 5550 8850 5550
 Wire Wire Line
-	8850 5550 8850 3450
+	8850 5550 8850 3500
 Wire Wire Line
-	8850 3450 8450 3450
+	8850 3500 8450 3500
 NoConn ~ 8450 2500
-NoConn ~ 8450 3550
 Wire Wire Line
 	5550 2050 5700 2050
 Wire Wire Line
@@ -1039,4 +1012,31 @@ Wire Wire Line
 	8575 1100 8450 1100
 Text Notes 4600 3175 0    50   ~ 0
 Channels are named X, Y, Z,\nand numbered 1, 2, 3.
+$Sheet
+S 7300 1950 1150 800 
+U 5E448095
+F0 "channel2" 50
+F1 "input_channel.sch" 50
+F2 "+in" I L 7300 2100 50 
+F3 "-in" I L 7300 2200 50 
+F4 "SDOA" O R 8450 2400 50 
+F5 "SDOB" O R 8450 2500 50 
+F6 "MCLK" I L 7300 2400 50 
+F7 "SCKB" I L 7300 2600 50 
+F8 "SCKA" I L 7300 2500 50 
+$EndSheet
+$Sheet
+S 7300 3050 1150 800 
+U 5E45936E
+F0 "channel3" 50
+F1 "input_channel.sch" 50
+F2 "+in" I L 7300 3200 50 
+F3 "-in" I L 7300 3300 50 
+F4 "SDOA" O R 8450 3500 50 
+F5 "SDOB" O R 8450 3600 50 
+F6 "MCLK" I L 7300 3500 50 
+F7 "SCKB" I L 7300 3700 50 
+F8 "SCKA" I L 7300 3600 50 
+$EndSheet
+NoConn ~ 8450 3600
 $EndSCHEMATC

@@ -21,11 +21,10 @@ Input board design/capture tasks
  ==> DOUBLE CHECK pinouts on all components
 
 Layout tasks:
- -- Power and ground layout
+ -- vias under ADC EP
+ -- stitching vias
  -- duplicate channels
  -- BIST routing
- -- Have an L3 ground pour under high-speed traces on the bottom layer
-    stitched to ground, especially near the layer switches.
 
 BOM tasks:
  -- Recheck BOM quantities with PCB BOM.
