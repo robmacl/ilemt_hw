@@ -21,10 +21,9 @@ Input board design/capture tasks
  ==> DOUBLE CHECK pinouts on all components
 
 Layout tasks:
- -- vias under ADC EP
  -- stitching vias
- -- duplicate channels
- -- BIST routing
+
+[Review schematic for blunders]
 
 BOM tasks:
  -- Recheck BOM quantities with PCB BOM.

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr B 17000 11000
 encoding utf-8
-Sheet 11 21
+Sheet 4 21
 Title ""
 Date ""
 Rev ""
@@ -1745,6 +1745,11 @@ F 0 "TP4" H 2750 8550 50  0000 C CNN
 F 1 "GND" H 2750 8650 50  0000 C CNN
 F 2 "input:TestPoint_THTPad_D5.0mm_Drill2.41mm" H 2950 8300 50  0001 C CNN
 F 3 "~" H 2950 8300 50  0001 C CNN
+F 4 "33" H 2750 8300 50  0001 C CNN "DK line"
+F 5 "TERM TURRET HOLLOW L=6.75MM TIN" H 2750 8300 50  0001 C CNN "Description"
+F 6 "36-1540-2-ND" H 2750 8300 50  0001 C CNN "Digikey"
+F 7 "1540-2" H 2750 8300 50  0001 C CNN "MPN"
+F 8 "Keystone Electronics" H 2750 8300 50  0001 C CNN "Manufacturer"
 	1    2750 8300
 	1    0    0    -1  
 $EndComp
@@ -2118,4 +2123,19 @@ Wire Wire Line
 Connection ~ 7250 2100
 Wire Wire Line
 	7250 2100 7350 2100
+$Comp
+L power:GNDA #PWR?
+U 1 1 5E478F7A
+P 9250 6000
+AR Path="/5DFF6C0D/5E478F7A" Ref="#PWR?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5E478F7A" Ref="#PWR?"  Part="1" 
+AR Path="/5E2EB92B/5E478F7A" Ref="#PWR?"  Part="1" 
+AR Path="/5E51E83D/5E478F7A" Ref="#PWR0166"  Part="1" 
+F 0 "#PWR0166" H 9250 5750 50  0001 C CNN
+F 1 "GNDA" H 9350 5800 50  0000 R CNN
+F 2 "" H 9250 6000 50  0001 C CNN
+F 3 "" H 9250 6000 50  0001 C CNN
+	1    9250 6000
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC
