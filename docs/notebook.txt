@@ -14,21 +14,16 @@ Input board design/capture tasks
     where we need only 2 (or 1 for channels 2, 3).
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
  -- Switch to different LVDS parts with more sources, standard footprint
- -- Input TVS can now be unidirectional
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
     distortion, PSRR, CMRR.
 
  ==> DOUBLE CHECK pinouts on all components
 
-Layout tasks:
- -- stitching vias
-
 [Review schematic for blunders]
 
 BOM tasks:
- -- Recheck BOM quantities with PCB BOM.
+ -- DOUBLE CHECK footprints on all components
  -- Add Manufacturer/MPN to all parts
- -- Order BOM and DOUBLE CHECK footprints on all components
 
 
 Hardware todo:
@@ -121,6 +116,107 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[15 Feb 20]
+
+I've been thinking about the problem of what I can't see using the
+instruments I've got.  It's always nice to have instruments with
+higher performance than what you are trying to achieve, but this is
+hard here because we are pushing the dynamic range as high as we can.
+
+I've been thinking about something like a spectrum analyzer for
+identifying undesired stuff that may be submerged in the noise, or in
+any case way way below the carrier.  So far as what is going on
+in-band, it seems there is nothing better than the ADC itself, running
+with a really big FFT block, and perhaps with a lower decimation than
+we usually use.  We can also use the full-rate output, and the
+LTC2500-32.
+
+The more subtle problem is with high frequency stuff that should not
+be there, in the signal, on the supplies, in the ground system, etc.
+It's to look for this sort of thing that I've placed MMCX connectors
+at the ADC inputs.  It's mainly stuff from say 0.5 to 20 MHz that is a
+concern, since the ADC digital filter should suppress HF stuff below
+about 0.9 MHz.
+
+But how to measure this stuff which is way below the carrier?  A swept
+spectrum analyzer measures over a very wide bandwidth.  The dynamic
+range is also pretty good, but not as high as we would need in the
+presence of the carrier.  For audio work people tend to use notch
+filters, and I made one for 10 kHz already.  But this doesn't work
+with the full multi-carrier signal, and mine wasn't designed for high
+bandwidth.
+
+I was thinking about heterodyne techniques such as mixing the carrier
+down to DC.  Thermal noise in a 50 Ohm system at room temperature is
+-174 dBm / Hz.  Looking for example at the Mini-Circuits SRA-6+ double
+balanced mixer (3 kHz to 100 MHz).  The noise factor for a mixer is
+only a bit more than the conversion loss , which is 4.6 dB for this
+part.  And the upper end of the mixer dynamic range (1 dB compression)
+is +1 dBm.  So in 1 Hz bandwidth the dynamic range could be as much as
+174 - 4.6 + 1, or 170 dB.
+
+At the ADC input, the noise density is 30 nV/rtHz, or 30 nV in 1 Hz
+bandwidth.  At FS the carrier is 3.6 V, so the SNR is 161 dB.  This is
+probably noiser than the mixer, but only by 13 dB, which is not much
+better than the 10 dB "contribute negligibly" criterion.
+
+One thing to bear in mind is that RF systems operate a 50 Ohm
+impedance, with significantly lower voltage than the ADC.  V RMS =
+sqrt(P*R), so 0 dBm is 220 mV RMS.  At 50 Ohms the ADC full scale is
++28 dBm or 260 mW.  That would be pretty high power if you drove it at
+that impedance.
+
+What we really want is something much better than the ADC.  It
+finally occurred to me was that for evaluating HF crud what we want is
+a highpass filter.  For example, if we have a 4'th order 50 kHz
+highpass filter with 40 dB gain, then our gain is -6 dB @ 13.5 kHz.
+Or if we bump the HP corner to 100 kHz, then we are -30 dB @ 13.5 kHz.
+I was thinking of making a fully differential version using something
+like the LMH6552.  This would give a 3 dB bandwidth of a few hundred
+MHz, substantially flat out to 100.
+
+The beauty of the highpass approach is that the carrier disappears
+across the input coupling capacitor, so that no active circuitry sees
+the full dynamic range.
+
+Hetrodyne techniques are still useful.  Even at -30 dB the carriers
+will still dominate the signal as seen on a scope, so you need some
+way to see the HF spurs and broadband noise.  A broadband digitizer
+with FFT processing would be the modern approach, but...
+
+A big old spectrum analyzer like the HP3589A might be a good starting
+point.  The direct display can be useful, especially with the
+highpass, but it can also be interesting to pull out the IF or video
+signals and digitize them with more modern hardware.  For example,
+with a baseband design like the HP4195A we could use the LTC2500-32,
+with the digital filter (and FFT processing) defining the resolution
+bandwidth.  Also the spectrum analyzer should have a tracking
+generator and scalar response measurement, which will be useful
+elsewhere.
+
+3577A 	NETWORK 	VHF 	1985 	Digital Network Analyser 5Hz
+to 200MHz - 100 dB Dynamic
+4195A 	NETWORK 	UHF 	1988 	Combined Network/Spectrum
+Analyser 10Hz to 500MHz - "S" Parms, Smith Chart
+3585A 	SA 	RF 	1979 	Digital Spectrum Analyser 20Hz to 40MHz - 3Hz Max Res.
+8568B 	SA 	UHF 	1985 	Automatic Spectrum Analyser 100Hz to 1500MHz - 10Hz Max Res.
+
+From [2 Aug 19],
+ HP-3582A
+ HP3585A
+ 3588A (20Hz to 150MHz) /3589A
+ 4195A/4395A (5Hz to 500MHz).
+
+
+Another reason for my interest in an HF spectrum analyzer is for the
+driver design effort.  The design is quite sketchy, but we clearly
+have the same problem of characterizing a signal at a very high
+dynamic range.
+
+
+
 
 
 [5 Feb 20]
