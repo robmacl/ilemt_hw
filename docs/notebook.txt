@@ -8,16 +8,12 @@ Calibration todo:
 
 
 Input board design/capture tasks
- -- Do we need 33 ohm terminators in both x4 and single?  The array is
-    not really saving any space wrt 0603, but it does reduce component
-    count a bit.  Using just the array is not attractive at the ADC
-    where we need only 2 (or 1 for channels 2, 3).
+ -- Mounting holes, overall length
+ -- Paste mask shrink?
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
  -- Switch to different LVDS parts with more sources, standard footprint
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
     distortion, PSRR, CMRR.
-
- ==> DOUBLE CHECK pinouts on all components
 
 [Review schematic for blunders]
 

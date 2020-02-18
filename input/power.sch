@@ -783,7 +783,7 @@ AR Path="/5E51E83D/5E282E2C" Ref="D3"  Part="1"
 F 0 "D3" H 8950 4665 50  0000 C CNN
 F 1 "BAS21S" H 8950 4574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8950 4300 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 8950 4550 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 8950 4550 50  0001 C CNN
 F 4 "43" H 8950 4450 50  0001 C CNN "DK line"
 F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 8950 4450 50  0001 C CNN "Description"
 F 6 "BAS21SLT1GOSCT-ND" H 8950 4450 50  0001 C CNN "Digikey"
@@ -1452,7 +1452,7 @@ AR Path="/5E51E83D/5E29E594" Ref="D3"  Part="2"
 F 0 "D3" H 9350 4665 50  0000 C CNN
 F 1 "BAS21S" H 9350 4574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 9350 4300 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf" H 9350 4550 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 9350 4550 50  0001 C CNN
 F 4 "43" H 9350 4450 50  0001 C CNN "DK line"
 F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 9350 4450 50  0001 C CNN "Description"
 F 6 "BAS21SLT1GOSCT-ND" H 9350 4450 50  0001 C CNN "Digikey"
@@ -2138,4 +2138,32 @@ F 3 "" H 9250 6000 50  0001 C CNN
 	1    9250 6000
 	0    -1   -1   0   
 $EndComp
+Text Label 8250 6000 0    50   ~ 0
+U6-
+Text Label 8100 5250 0    50   ~ 0
+U6+
+Text Label 9100 5550 0    50   ~ 0
+U6OUT
+Text Label 8700 5150 0    50   ~ 0
+U6V+
+Text Label 8700 6000 0    50   ~ 0
+U6V-
+Text Label 9050 2200 0    50   ~ 0
+U4OUT
+Text Label 8600 2550 0    50   ~ 0
+U4V-
+Text Label 8650 1800 0    50   ~ 0
+U4V+
+Text Label 8200 2550 0    50   ~ 0
+U4-
+Text Label 8100 2100 0    50   ~ 0
+U4+
+Text Label 10500 2450 0    50   ~ 0
+Q2E
+Text Label 10500 5250 0    50   ~ 0
+Q3E
+Text Label 3500 5000 0    50   ~ 0
+U7IN
+Text Label 3500 6150 0    50   ~ 0
+U8IN
 $EndSCHEMATC

@@ -123,13 +123,13 @@ F 3 "" H 3900 450 50  0001 C CNN
 $EndComp
 Connection ~ 4900 3550
 Text GLabel 8300 3100 2    50   Input ~ 0
-BIST-+
+BIST+-
 Text GLabel 8300 5050 2    50   Input ~ 0
 BIST--
 Text GLabel 5550 3100 2    50   Input ~ 0
 BIST++
 Text GLabel 5550 5050 2    50   Input ~ 0
-BIST+-
+BIST-+
 Text GLabel 3800 5150 0    50   Input ~ 0
 BIST-+_IN
 Text GLabel 6750 5150 0    50   Input ~ 0
@@ -476,4 +476,12 @@ Wire Wire Line
 	4825 3950 4900 3950
 Wire Wire Line
 	4900 3550 4900 3950
+Text Label 4400 3200 0    50   ~ 0
+U9A+
+Text Label 7350 3200 0    50   ~ 0
+U9B+
+Text Label 4400 5150 0    50   ~ 0
+U9C+
+Text Label 7350 5150 0    50   ~ 0
+U9D+
 $EndSCHEMATC
