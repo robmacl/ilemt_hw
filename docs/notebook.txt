@@ -1,11 +1,6 @@
-Calibration todo:
- -- Linearity tests
- -- Paper
- -- Rotate source 45 degrees so that our workspace is more centered on
-    the source field strength.  Wondering if the reason we have poor
-    accuracy at -Y extreme is just low signal strength, and perhaps
-    also unfavorable coupling configuration.
-
+ -- 10V TVS is bidirectional??
+ -- 2mm jumper shunts
+ -- solder mask on edge conn
 
 Input board design/capture tasks
  -- Mounting holes, overall length
@@ -25,6 +20,15 @@ BOM tasks:
 Hardware todo:
  -- Need at least a preliminary main board in order to test input
     board: power filters, microzed breakout, reference and clock generator.
+
+Calibration todo:
+ -- Linearity tests
+ -- Paper
+ -- Rotate source 45 degrees so that our workspace is more centered on
+    the source field strength.  Wondering if the reason we have poor
+    accuracy at -Y extreme is just low signal strength, and perhaps
+    also unfavorable coupling configuration.
+
 
 Eval box issues:
  -- Set up for 3 DAC outputs with LPF.
@@ -112,6 +116,52 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[19 Feb 20]
+
+Starting on the main board design, and the voltage reference in
+particular.  See [4 Dec 19].  Recall in particular that due to the
+multiplicative nature of reference noise (and the extremely high SNR
+of the input signal) we mainly care about noise that falls in our
+output measurement bandwidth < 500 Hz, rather than at the carrier
+frequency.  Because the overall system is ratiometric when we have a
+common reference for the input and output, low frequency noise and
+drift is not a particular problem.  So we care about approximately
+50-500 Hz.
+
+The ADC input noise is about 30 nV/rtHz, so we would like the
+reference noise to be less than 10 nV/rtHz over this range.
+Characterization for voltage references is a bit of a mess, also with
+selective presentation that seems motivated by marketing.  The only
+spec that is always there is the 0.1 Hz to 10 Hz P-P noise.  There may
+also be a noise density plot, which may not go down to the 1/f corner.
+Within this vague landscape there does seem to be significantly
+different parts.  For example, in comparison to bipolar bandgap
+references such as the REF6225, the LTC6655 (presumably CMOS) has
+several times lower 0.1-10 Hz noise, but also 10 times higher white
+noise over the 1 kHz - 100 kHz range.
+
+The LTC6655 boasts about its low 1 Hz 1/f corner, and does indeed seem
+to have low LF noise, but the low corner is in part due to the high
+broadband noise.  Maybe this part is some sort of zener reference?
+Those also have high broadband noise, but usually require supply
+voltages > 10V.
+
+
+OK< I think what is going on with the REF6250 is that the 1/f corner
+shown is actually where the noise reduction capacitor brings the
+broadband noise down to the buffer noise floor.  This is not what you
+get with an unfiltered bandgap reference.  But the LTC6655-LN is a
+similar architecture.  Looking at the plots and allowing for different
+axis limits, it seems the main difference is that the LTC6655-LN has
+about a 6x higher buffer noise floor.  But it seems that the LTC6655
+does genuinely seem to have lower 1/f noise. Adding a big filter cap
+on the REF6250 might reveal 1/f noise, which may be why they don't
+characterize it with large caps.
+
+
+
 
 
 [15 Feb 20]
@@ -1705,7 +1755,7 @@ bypass performance to deal with a hypothetical microphonics
 problem. But jack up the buffer disturbance rejection bandwidth? Sure.
 
 
-IR drop in reference bus on the main board is at a
+IR voltage drop in reference bus on the main board is at a
 possibly-significant level due to load from the diff amps. But not
 using the diff amp is even worse because we affected by ground drops
 due to supply current, etc.
