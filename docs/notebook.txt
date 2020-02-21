@@ -1,10 +1,8 @@
  -- 10V TVS is bidirectional??
  -- 2mm jumper shunts
- -- solder mask on edge conn
 
 Input board design/capture tasks
- -- Mounting holes, overall length
- -- Paste mask shrink?
+ -- 3-5 mil paste stencil for DFN
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
  -- Switch to different LVDS parts with more sources, standard footprint
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
@@ -116,6 +114,17 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[21 Feb 20]
+
+ -- mounting holes: 88.9mm spacing M2.5 (2.9mm), 6.2mm - 2.5mm flange
+    (3.7mm from front card edge).
+ -- Overall length: the 280 mm length does not include the connector
+    stack, which is allowed 10-11 mm or so.  So we could make it a bit
+    longer, but it would also not be a big problem being on the short
+    side.  We could use standoffs on the main board if the box rails
+    don't adjust enough.
 
 
 [19 Feb 20]
