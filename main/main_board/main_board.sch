@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 5
+Sheet 1 13
 Title ""
 Date ""
 Rev ""
@@ -45,4 +45,22 @@ F1 "input_slots.sch" 50
 $EndSheet
 Text Notes 7200 6950 0    50   ~ 0
 The main board is system integration for the ILEMT tracker.\nIt connects the MicroZED SOC with the input boards and\nclock, and provides support for in the analog side \n(voltage reference and BIST).
+$Sheet
+S 2800 1850 1100 450 
+U 5EC15224
+F0 "output_slot" 50
+F1 "output_slot.sch" 50
+$EndSheet
+$Sheet
+S 2800 2650 1100 450 
+U 5EC4BDFA
+F0 "BIST_DAC" 50
+F1 "BIST.sch" 50
+$EndSheet
+$Sheet
+S 2950 4500 1100 450 
+U 5E9C9ED4
+F0 "sheet5E9C9ED2" 50
+F1 "../../input/power.sch" 50
+$EndSheet
 $EndSCHEMATC

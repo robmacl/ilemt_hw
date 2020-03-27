@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 21
+Sheet 5 33
 Title ""
 Date ""
 Rev ""
@@ -14,10 +14,10 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L ilemt_input:opamp_quad U9
+L ilemt_input:opamp_quad U?
 U 1 1 5E5A93B1
 P 4900 3100
-F 0 "U9" H 4600 3500 60  0000 C CNN
+F 0 "U?" H 4600 3500 60  0000 C CNN
 F 1 "OPA1679" H 4350 3400 60  0000 L CNN
 F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5100 3300 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa1679" H 5100 3400 60  0001 L CNN
@@ -37,7 +37,8 @@ AR Path="/5DFF6C0D/5E5AA22E" Ref="C?"  Part="1"
 AR Path="/5E1D6729/5E1DA2AA/5E5AA22E" Ref="C?"  Part="1" 
 AR Path="/5E2EB92B/5E5AA22E" Ref="C?"  Part="1" 
 AR Path="/5E5A51EB/5E5AA22E" Ref="C27"  Part="1" 
-F 0 "C27" V 5021 2700 50  0000 C CNN
+AR Path="/5E624B3C/5E5A51EB/5E5AA22E" Ref="C27"  Part="1" 
+F 0 "C?" V 5021 2700 50  0000 C CNN
 F 1 "1uF" V 5112 2700 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 5250 2700 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 5250 2700 50  0001 C CNN
@@ -59,7 +60,8 @@ AR Path="/5DFF6C0D/5E5AA238" Ref="#PWR?"  Part="1"
 AR Path="/5E1D6729/5E1DA2AA/5E5AA238" Ref="#PWR?"  Part="1" 
 AR Path="/5E2EB92B/5E5AA238" Ref="#PWR?"  Part="1" 
 AR Path="/5E5A51EB/5E5AA238" Ref="#PWR043"  Part="1" 
-F 0 "#PWR043" H 5500 2450 50  0001 C CNN
+AR Path="/5E624B3C/5E5A51EB/5E5AA238" Ref="#PWR043"  Part="1" 
+F 0 "#PWR?" H 5500 2450 50  0001 C CNN
 F 1 "GNDA" V 5505 2572 50  0000 R CNN
 F 2 "" H 5500 2700 50  0001 C CNN
 F 3 "" H 5500 2700 50  0001 C CNN
@@ -76,7 +78,8 @@ AR Path="/5DFF6C0D/5E5AA242" Ref="C?"  Part="1"
 AR Path="/5E1D6729/5E1DA2AA/5E5AA242" Ref="C?"  Part="1" 
 AR Path="/5E2EB92B/5E5AA242" Ref="C?"  Part="1" 
 AR Path="/5E5A51EB/5E5AA242" Ref="C28"  Part="1" 
-F 0 "C28" V 5021 3550 50  0000 C CNN
+AR Path="/5E624B3C/5E5A51EB/5E5AA242" Ref="C28"  Part="1" 
+F 0 "C?" V 5021 3550 50  0000 C CNN
 F 1 "1uF" V 5112 3550 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 5250 3550 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 5250 3550 50  0001 C CNN
@@ -95,7 +98,8 @@ AR Path="/5DFF6C0D/5E5AA248" Ref="#PWR?"  Part="1"
 AR Path="/5E1D6729/5E1DA2AA/5E5AA248" Ref="#PWR?"  Part="1" 
 AR Path="/5E2EB92B/5E5AA248" Ref="#PWR?"  Part="1" 
 AR Path="/5E5A51EB/5E5AA248" Ref="#PWR044"  Part="1" 
-F 0 "#PWR044" H 5500 3300 50  0001 C CNN
+AR Path="/5E624B3C/5E5A51EB/5E5AA248" Ref="#PWR044"  Part="1" 
+F 0 "#PWR?" H 5500 3300 50  0001 C CNN
 F 1 "GNDA" V 5500 3425 50  0000 R CNN
 F 2 "" H 5500 3550 50  0001 C CNN
 F 3 "" H 5500 3550 50  0001 C CNN
@@ -111,10 +115,10 @@ Wire Wire Line
 Wire Wire Line
 	4900 3400 4900 3550
 $Comp
-L ilemt_input:V- #PWR040
+L ilemt_input:V- #PWR?
 U 1 1 5E5AB6F2
 P 3900 350
-F 0 "#PWR040" H 3900 200 50  0001 C CNN
+F 0 "#PWR?" H 3900 200 50  0001 C CNN
 F 1 "V-" H 3900 310 50  0000 C CNN
 F 2 "" H 3900 450 50  0001 C CNN
 F 3 "" H 3900 450 50  0001 C CNN
@@ -144,7 +148,8 @@ U 1 1 5E5B741A
 P 4050 3200
 AR Path="/5DFCF14D/5DE6CDF8/5E5B741A" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5B741A" Ref="R23"  Part="1" 
-F 0 "R23" V 4150 3200 50  0000 C CNN
+AR Path="/5E624B3C/5E5A51EB/5E5B741A" Ref="R23"  Part="1" 
+F 0 "R?" V 4150 3200 50  0000 C CNN
 F 1 "200" V 3950 3200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4090 3190 50  0001 C CNN
 F 3 "~" H 4050 3200 50  0001 C CNN
@@ -162,10 +167,10 @@ Wire Wire Line
 Wire Wire Line
 	5550 3100 5200 3100
 $Comp
-L ilemt_input:opamp_quad U9
+L ilemt_input:opamp_quad U?
 U 2 1 5E5BA1D6
 P 7850 3100
-F 0 "U9" H 7550 3500 60  0000 C CNN
+F 0 "U?" H 7550 3500 60  0000 C CNN
 F 1 "OPA1679" H 7300 3400 60  0000 L CNN
 F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 8050 3300 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa1679" H 8050 3400 60  0001 L CNN
@@ -189,7 +194,8 @@ U 1 1 5E5BA20D
 P 7000 3200
 AR Path="/5DFCF14D/5DE6CDF8/5E5BA20D" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5BA20D" Ref="R25"  Part="1" 
-F 0 "R25" V 7100 3200 50  0000 C CNN
+AR Path="/5E624B3C/5E5A51EB/5E5BA20D" Ref="R25"  Part="1" 
+F 0 "R?" V 7100 3200 50  0000 C CNN
 F 1 "200" V 6900 3200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 7040 3190 50  0001 C CNN
 F 3 "~" H 7000 3200 50  0001 C CNN
@@ -205,10 +211,10 @@ Wire Wire Line
 Wire Wire Line
 	8300 3100 8150 3100
 $Comp
-L ilemt_input:opamp_quad U9
+L ilemt_input:opamp_quad U?
 U 3 1 5E5CB380
 P 4900 5050
-F 0 "U9" H 4600 5450 60  0000 C CNN
+F 0 "U?" H 4600 5450 60  0000 C CNN
 F 1 "OPA1679" H 4350 5350 60  0000 L CNN
 F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5100 5250 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa1679" H 5100 5350 60  0001 L CNN
@@ -232,7 +238,8 @@ U 1 1 5E5CB3B9
 P 4075 5150
 AR Path="/5DFCF14D/5DE6CDF8/5E5CB3B9" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5CB3B9" Ref="R24"  Part="1" 
-F 0 "R24" V 4175 5150 50  0000 C CNN
+AR Path="/5E624B3C/5E5A51EB/5E5CB3B9" Ref="R24"  Part="1" 
+F 0 "R?" V 4175 5150 50  0000 C CNN
 F 1 "200" V 3975 5150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4115 5140 50  0001 C CNN
 F 3 "~" H 4075 5150 50  0001 C CNN
@@ -250,10 +257,10 @@ Wire Wire Line
 Wire Wire Line
 	5550 5050 5200 5050
 $Comp
-L ilemt_input:opamp_quad U9
+L ilemt_input:opamp_quad U?
 U 4 1 5E5CB3CA
 P 7850 5050
-F 0 "U9" H 7550 5450 60  0000 C CNN
+F 0 "U?" H 7550 5450 60  0000 C CNN
 F 1 "OPA1679" H 7300 5350 60  0000 L CNN
 F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 8050 5250 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa1679" H 8050 5350 60  0001 L CNN
@@ -271,7 +278,8 @@ U 1 1 5E5CB3D1
 P 7025 5150
 AR Path="/5DFCF14D/5DE6CDF8/5E5CB3D1" Ref="R?"  Part="1" 
 AR Path="/5E5A51EB/5E5CB3D1" Ref="R26"  Part="1" 
-F 0 "R26" V 7125 5150 50  0000 C CNN
+AR Path="/5E624B3C/5E5A51EB/5E5CB3D1" Ref="R26"  Part="1" 
+F 0 "R?" V 7125 5150 50  0000 C CNN
 F 1 "200" V 6925 5150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 7065 5140 50  0001 C CNN
 F 3 "~" H 7025 5150 50  0001 C CNN
@@ -314,7 +322,8 @@ AR Path="/5DFF6C0D/5ED01E80" Ref="C?"  Part="1"
 AR Path="/5E1D6729/5E1DA2AA/5ED01E80" Ref="C?"  Part="1" 
 AR Path="/5E2EB92B/5ED01E80" Ref="C?"  Part="1" 
 AR Path="/5E5A51EB/5ED01E80" Ref="C35"  Part="1" 
-F 0 "C35" V 4121 3450 50  0000 C CNN
+AR Path="/5E624B3C/5E5A51EB/5ED01E80" Ref="C35"  Part="1" 
+F 0 "C?" V 4121 3450 50  0000 C CNN
 F 1 "10nF" V 4212 3450 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 4350 3450 50  0001 C CNN
 F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 4350 3450 50  0001 C CNN
@@ -332,10 +341,10 @@ Connection ~ 4350 3200
 Wire Wire Line
 	4350 3200 4600 3200
 $Comp
-L power:GNDA #PWR011
+L power:GNDA #PWR?
 U 1 1 5ED032E0
 P 4350 3625
-F 0 "#PWR011" H 4350 3375 50  0001 C CNN
+F 0 "#PWR?" H 4350 3375 50  0001 C CNN
 F 1 "GNDA" H 4350 3475 50  0000 C CNN
 F 2 "" H 4350 3625 50  0001 C CNN
 F 3 "" H 4350 3625 50  0001 C CNN
@@ -352,7 +361,8 @@ AR Path="/5DFF6C0D/5ED05F9F" Ref="C?"  Part="1"
 AR Path="/5E1D6729/5E1DA2AA/5ED05F9F" Ref="C?"  Part="1" 
 AR Path="/5E2EB92B/5ED05F9F" Ref="C?"  Part="1" 
 AR Path="/5E5A51EB/5ED05F9F" Ref="C36"  Part="1" 
-F 0 "C36" V 4121 5400 50  0000 C CNN
+AR Path="/5E624B3C/5E5A51EB/5ED05F9F" Ref="C36"  Part="1" 
+F 0 "C?" V 4121 5400 50  0000 C CNN
 F 1 "10nF" V 4212 5400 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 4350 5400 50  0001 C CNN
 F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 4350 5400 50  0001 C CNN
@@ -367,10 +377,10 @@ $EndComp
 Wire Wire Line
 	4350 5300 4350 5150
 $Comp
-L power:GNDA #PWR034
+L power:GNDA #PWR?
 U 1 1 5ED05FA6
 P 4350 5575
-F 0 "#PWR034" H 4350 5325 50  0001 C CNN
+F 0 "#PWR?" H 4350 5325 50  0001 C CNN
 F 1 "GNDA" H 4350 5425 50  0000 C CNN
 F 2 "" H 4350 5575 50  0001 C CNN
 F 3 "" H 4350 5575 50  0001 C CNN
@@ -387,7 +397,8 @@ AR Path="/5DFF6C0D/5ED06F32" Ref="C?"  Part="1"
 AR Path="/5E1D6729/5E1DA2AA/5ED06F32" Ref="C?"  Part="1" 
 AR Path="/5E2EB92B/5ED06F32" Ref="C?"  Part="1" 
 AR Path="/5E5A51EB/5ED06F32" Ref="C37"  Part="1" 
-F 0 "C37" V 7071 3450 50  0000 C CNN
+AR Path="/5E624B3C/5E5A51EB/5ED06F32" Ref="C37"  Part="1" 
+F 0 "C?" V 7071 3450 50  0000 C CNN
 F 1 "10nF" V 7162 3450 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 7300 3450 50  0001 C CNN
 F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 7300 3450 50  0001 C CNN
@@ -402,10 +413,10 @@ $EndComp
 Wire Wire Line
 	7300 3350 7300 3200
 $Comp
-L power:GNDA #PWR036
+L power:GNDA #PWR?
 U 1 1 5ED06F39
 P 7300 3625
-F 0 "#PWR036" H 7300 3375 50  0001 C CNN
+F 0 "#PWR?" H 7300 3375 50  0001 C CNN
 F 1 "GNDA" H 7300 3475 50  0000 C CNN
 F 2 "" H 7300 3625 50  0001 C CNN
 F 3 "" H 7300 3625 50  0001 C CNN
@@ -422,7 +433,8 @@ AR Path="/5DFF6C0D/5ED0788A" Ref="C?"  Part="1"
 AR Path="/5E1D6729/5E1DA2AA/5ED0788A" Ref="C?"  Part="1" 
 AR Path="/5E2EB92B/5ED0788A" Ref="C?"  Part="1" 
 AR Path="/5E5A51EB/5ED0788A" Ref="C38"  Part="1" 
-F 0 "C38" V 7071 5400 50  0000 C CNN
+AR Path="/5E624B3C/5E5A51EB/5ED0788A" Ref="C38"  Part="1" 
+F 0 "C?" V 7071 5400 50  0000 C CNN
 F 1 "10nF" V 7162 5400 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 7300 5400 50  0001 C CNN
 F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 7300 5400 50  0001 C CNN
@@ -435,10 +447,10 @@ F 8 "14" H 7300 5400 50  0001 C CNN "DK line"
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:GNDA #PWR038
+L power:GNDA #PWR?
 U 1 1 5ED07891
 P 7300 5575
-F 0 "#PWR038" H 7300 5325 50  0001 C CNN
+F 0 "#PWR?" H 7300 5325 50  0001 C CNN
 F 1 "GNDA" H 7300 5425 50  0000 C CNN
 F 2 "" H 7300 5575 50  0001 C CNN
 F 3 "" H 7300 5575 50  0001 C CNN

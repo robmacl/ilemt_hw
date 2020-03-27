@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 5
+Sheet 4 13
 Title ""
 Date ""
 Rev ""
@@ -13,4 +13,276 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text GLabel 4550 3650 0    50   Input ~ 0
+FPGA_SCKA+
+Text GLabel 4550 3850 0    50   Input ~ 0
+FPGA_SCKA-
+Text GLabel 4550 4050 0    50   Input ~ 0
+FPGA_SCKB+
+Text GLabel 4550 4250 0    50   Input ~ 0
+FPGA_SCKB-
+Wire Wire Line
+	6100 4900 6100 4950
+Wire Wire Line
+	6100 2250 6100 2400
+Wire Wire Line
+	5600 4650 5425 4650
+Wire Wire Line
+	5425 4650 5425 4950
+Wire Wire Line
+	5425 4950 6100 4950
+Connection ~ 6100 4950
+Wire Wire Line
+	6100 4950 6100 5000
+$Comp
+L ilemt_input:OVDD #PWR055
+U 1 1 5EB3F7C2
+P 5375 4450
+F 0 "#PWR055" H 5375 4300 50  0001 C CNN
+F 1 "OVDD" V 5375 4700 50  0000 C CNN
+F 2 "" H 5375 4450 50  0001 C CNN
+F 3 "" H 5375 4450 50  0001 C CNN
+	1    5375 4450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5600 4450 5375 4450
+$Comp
+L ilemt_input:FIN1048 U13
+U 1 1 5EB3F7CC
+P 6100 3150
+F 0 "U13" H 6275 1400 50  0000 L CNN
+F 1 "DS90LV048" H 6275 1300 50  0000 L CNN
+F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 6100 1400 50  0001 C CNN
+F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fds90lv048a" H 5400 2300 50  0001 C CNN
+F 4 "39" H 6100 3150 50  0001 C CNN "DK line"
+F 5 "0/4 Receiver  LVDS 16-TSSOP" H 6100 3150 50  0001 C CNN "Description"
+F 6 "DS90LV048ATMTC/NOPB-ND" H 6100 3150 50  0001 C CNN "Digikey"
+	1    6100 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR058
+U 1 1 5EB3F7D2
+P 6100 5000
+F 0 "#PWR058" H 6100 4750 50  0001 C CNN
+F 1 "GND" H 6100 4850 50  0000 C CNN
+F 2 "" H 6100 5000 50  0001 C CNN
+F 3 "" H 6100 5000 50  0001 C CNN
+	1    6100 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 5EB3F7DB
+P 4975 3350
+AR Path="/5DFF6C0D/5EB3F7DB" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EB3F7DB" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5EB3F7DB" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5EB3F7DB" Ref="R?"  Part="1" 
+AR Path="/5EB3F7DB" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5EB3F7DB" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5EB3F7DB" Ref="R37"  Part="1" 
+F 0 "R37" V 5125 3550 50  0000 C CNN
+F 1 "100" V 5125 3350 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5015 3340 50  0001 C CNN
+F 3 "~" H 4975 3350 50  0001 C CNN
+F 4 "P100DBCT-ND" H 4975 3350 50  0001 C CNN "Digikey"
+F 5 "51" H 4975 3350 50  0001 C CNN "DK line"
+F 6 "100 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 4975 3350 50  0001 C CNN "Description"
+	1    4975 3350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4825 3350 4775 3350
+Wire Wire Line
+	4775 3350 4775 3250
+Connection ~ 4775 3250
+Wire Wire Line
+	4775 3250 5600 3250
+Wire Wire Line
+	5125 3350 5175 3350
+Wire Wire Line
+	5175 3350 5175 3450
+Connection ~ 5175 3450
+Wire Wire Line
+	5175 3450 5600 3450
+$Comp
+L Device:R_US R?
+U 1 1 5EB3F7EC
+P 4975 3750
+AR Path="/5DFF6C0D/5EB3F7EC" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EB3F7EC" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5EB3F7EC" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5EB3F7EC" Ref="R?"  Part="1" 
+AR Path="/5EB3F7EC" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5EB3F7EC" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5EB3F7EC" Ref="R38"  Part="1" 
+F 0 "R38" V 5125 3950 50  0000 C CNN
+F 1 "100" V 5125 3750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5015 3740 50  0001 C CNN
+F 3 "~" H 4975 3750 50  0001 C CNN
+F 4 "P100DBCT-ND" H 4975 3750 50  0001 C CNN "Digikey"
+F 5 "51" H 4975 3750 50  0001 C CNN "DK line"
+F 6 "100 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 4975 3750 50  0001 C CNN "Description"
+	1    4975 3750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4825 3750 4775 3750
+Wire Wire Line
+	4775 3750 4775 3650
+Connection ~ 4775 3650
+Wire Wire Line
+	5125 3750 5175 3750
+Wire Wire Line
+	5175 3750 5175 3850
+Connection ~ 5175 3850
+Wire Wire Line
+	4775 3650 5600 3650
+Wire Wire Line
+	5175 3850 5600 3850
+$Comp
+L Device:R_US R?
+U 1 1 5EB3F7FD
+P 4975 4150
+AR Path="/5DFF6C0D/5EB3F7FD" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EB3F7FD" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5EB3F7FD" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5EB3F7FD" Ref="R?"  Part="1" 
+AR Path="/5EB3F7FD" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5EB3F7FD" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5EB3F7FD" Ref="R39"  Part="1" 
+F 0 "R39" V 5125 4350 50  0000 C CNN
+F 1 "100" V 5125 4150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5015 4140 50  0001 C CNN
+F 3 "~" H 4975 4150 50  0001 C CNN
+F 4 "P100DBCT-ND" H 4975 4150 50  0001 C CNN "Digikey"
+F 5 "51" H 4975 4150 50  0001 C CNN "DK line"
+F 6 "100 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 4975 4150 50  0001 C CNN "Description"
+	1    4975 4150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4825 4150 4775 4150
+Wire Wire Line
+	4775 4150 4775 4050
+Connection ~ 4775 4050
+Wire Wire Line
+	5125 4150 5175 4150
+Wire Wire Line
+	5175 4150 5175 4250
+Connection ~ 5175 4250
+Wire Wire Line
+	4775 4050 5600 4050
+Wire Wire Line
+	5175 4250 5600 4250
+$Comp
+L Device:C_Small C?
+U 1 1 5EB3F80E
+P 5850 2400
+AR Path="/5DFCF14D/5DA78AA2/5EB3F80E" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5EB3F80E" Ref="C?"  Part="1" 
+AR Path="/5EB3F80E" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5EB3F80E" Ref="C?"  Part="1" 
+AR Path="/5E525F87/5EB3F80E" Ref="C47"  Part="1" 
+F 0 "C47" V 5975 2325 50  0000 L CNN
+F 1 "100nF" V 5725 2300 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5850 2400 50  0001 C CNN
+F 3 "~" H 5850 2400 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 5850 2400 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 5850 2400 50  0001 C CNN "Digikey"
+F 6 "2" H 5850 2400 50  0001 C CNN "DK line"
+	1    5850 2400
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR056
+U 1 1 5EB3F814
+P 5650 2400
+F 0 "#PWR056" H 5650 2150 50  0001 C CNN
+F 1 "GND" V 5750 2325 50  0000 C CNN
+F 2 "" H 5650 2400 50  0001 C CNN
+F 3 "" H 5650 2400 50  0001 C CNN
+	1    5650 2400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5650 2400 5750 2400
+Wire Wire Line
+	5950 2400 6100 2400
+Connection ~ 6100 2400
+Wire Wire Line
+	6100 2400 6100 2550
+Wire Wire Line
+	4550 3250 4775 3250
+Wire Wire Line
+	4550 3450 5175 3450
+Wire Wire Line
+	4550 3650 4775 3650
+Wire Wire Line
+	4550 3850 5175 3850
+Wire Wire Line
+	4550 4050 4775 4050
+Wire Wire Line
+	4550 4250 5175 4250
+$Comp
+L ilemt_input:OVDD #PWR057
+U 1 1 5EB3F827
+P 6100 2250
+F 0 "#PWR057" H 6100 2100 50  0001 C CNN
+F 1 "OVDD" V 6100 2500 50  0000 C CNN
+F 2 "" H 6100 2250 50  0001 C CNN
+F 3 "" H 6100 2250 50  0001 C CNN
+	1    6100 2250
+	1    0    0    -1  
+$EndComp
+Text GLabel 4550 3250 0    50   Input ~ 0
+FPGA_MCLK_ENA+
+Text GLabel 4550 3450 0    50   Input ~ 0
+FPGA_MCLK_ENA-
+$Comp
+L Device:R_Pack04 RN?
+U 1 1 5EB3F836
+P 7450 3750
+AR Path="/5E525F2C/5EB3F836" Ref="RN?"  Part="1" 
+AR Path="/5E525F87/5EB3F836" Ref="RN3"  Part="1" 
+F 0 "RN3" V 7050 3750 50  0000 C CNN
+F 1 "33" V 7150 3750 50  0000 C CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x0603" V 7725 3750 50  0001 C CNN
+F 3 "https://www.bourns.com/docs/Product-Datasheets/CATCAY.pdf" H 7450 3750 50  0001 C CNN
+F 4 "13" H 7450 3750 50  0001 C CNN "DK line"
+F 5 "RES ARRAY 4 RES 33 OHM 1206" H 7450 3750 50  0001 C CNN "Description"
+F 6 "CAY16-330J4LFCT-ND" H 7450 3750 50  0001 C CNN "Digikey"
+	1    7450 3750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7250 3750 6600 3750
+Wire Wire Line
+	7250 3850 7250 4150
+Wire Wire Line
+	7250 4150 6600 4150
+Wire Wire Line
+	7250 3650 6950 3650
+Wire Wire Line
+	6950 3650 6950 3350
+Wire Wire Line
+	6950 3350 6600 3350
+Wire Wire Line
+	7250 3550 7250 2950
+Wire Wire Line
+	7250 2950 6600 2950
+Text GLabel 8300 3750 2    50   Output ~ 0
+SCKA
+Text GLabel 7750 3850 2    50   Output ~ 0
+SCKB
+Text GLabel 7750 3650 2    50   Output ~ 0
+MCLK_ENA
+Wire Wire Line
+	7750 3650 7650 3650
+Wire Wire Line
+	7650 3750 8300 3750
+Wire Wire Line
+	7750 3850 7650 3850
 $EndSCHEMATC

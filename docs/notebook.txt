@@ -1,23 +1,37 @@
- -- 10V TVS is bidirectional??
- -- 2mm jumper shunts
+ -- Order box
+ -- Order sample components: edge connector, reference.
 
-Input board design/capture tasks
- -- 3-5 mil paste stencil for DFN
+
+Main board:
+ -- Mechanical layout: mounting holes
+ -- Microzed connectors
+ -- Microzed symbol generation
+     - Preliminary pin mapping for layout
+ -- Reference schematic: pre-regulator, reference/driver
+ -- BIST schematic
+ -- Power:
+     - How much current do we need on the various rails? +10, -6, +5
+     - input power connector, TVS, filtering
+     - supplies for Microzed (I/O supply, 5V w/ LC decoupling)
+     - Supply for LVDS driver/receiver (separate 3.3V)
+ -- Test points
+
+
+DAC output:
+ -- Breakout board for output slot
+ -- +/-12 supplies for DACs
+ -- DAC output filter and perhaps buffer
+
+
+Input board revisions?
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
  -- Switch to different LVDS parts with more sources, standard footprint
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
     distortion, PSRR, CMRR.
 
-[Review schematic for blunders]
-
 BOM tasks:
- -- DOUBLE CHECK footprints on all components
  -- Add Manufacturer/MPN to all parts
 
-
-Hardware todo:
- -- Need at least a preliminary main board in order to test input
-    board: power filters, microzed breakout, reference and clock generator.
 
 Calibration todo:
  -- Linearity tests
@@ -28,9 +42,6 @@ Calibration todo:
     also unfavorable coupling configuration.
 
 
-Eval box issues:
- -- Set up for 3 DAC outputs with LPF.
- -- Test for EMI issues, power adapters coupling into signal wiring.
 
 Other hardware issues:
  -- Re-wind Z source coil
@@ -114,6 +125,384 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[27 March 20]
+
+What do we need at the digital output slot?
+
+Though less than ideal for digital to analog noise coupling, it is
+attractive to drive the output slot directly from the FPGA so that we
+can keep the same main board with the digital driver.  It would be
+possible to add buffers or filters on the output card, which is in
+either case just a breakout to cables.
+
+For the DACs we need:
+ -- Bit clock
+ -- Word clock
+ -- System clock
+ -- Two serial out lines (one per dual DAC)
+
+These are low speed lines, and can continue to operate as low drive
+single ended.
+
+For direct digital, we need something like:
+ -- 3 LVDS serial out to channel drivers
+ -- VREF +/-
+ -- Clocks and data for ADC readbacks, LVDS  ??? TBD based on ADC. If
+    we just route diff pairs then we can be agnostic on direction or
+    even diff/single ended.  With SPI and single ADCs we would need
+    something like 3 inputs (SCK, SDI, MCLK) and 3 outputs (SDO per
+    channel).
+ -- Possibly we would want both current and voltage feedback?
+ -- I2C, because why not.  Might use this to set/read supply rails at
+    low speed.  BIST, etc.
+
+There are plenty of pins in the slot for all this stuff, and we seem
+good on FPGA pins also.  What we actually want is quite unclear until
+the digital driver design is farther along, but that is OK.
+
+We may want clock generation or buffer logic on the digital out
+breakout card.  Route the main (clean) clock to the card so that the
+breakout card can use it or not, as we see fit.  I guess we would
+latch the channel out bits using the clean clock so that the
+transition is not affected by the FPGA clock jitter.
+
+
+
+
+[4 March 20]
+
+After placing the edge connectors and the MicroZed outline on a 3U full width
+(84HP) backplane, starting to more seriously consider moving to a higher box.
+Not just the routing issue, everything always takes more space than you were
+thinking.  The MicroZed takes up a lot of area, full height on the board if
+you orient it vertically.
+
+Thing is, this is just not leaving a lot of room inside the box for the
+supplies and driver.  If we use a deeper box then there is volume behind the
+backplane. Stylebox 15 is available in up to 500mm depth, while we only need
+the 305mm depth just to hold the input cards.  So that is a bunch of volume.
+
+Of course laying the microzed flat on the backplane is wasting volume because
+the volume in front is (probably) not used for anything.
+
+(1U = 1.75")
+
+6U seems awful tall, but likely we would need to go to at least 5U in order to
+fit the microzed above the connectors.  This would save a bunch of width
+because not only would the microzed not add to the width, we could also put
+the plugin cards closer together because we don't have to worry about running
+the digital lines past the analog pins.  4U might be just barely possible.
+Need to figure out where the card connectors are located on the main board.
+
+Because of the 33mm overhead between the board height and the nominal U
+outside height, going from 3U to 5U almost doubles the usable board height,
+from 100 to ~190.  This is for the plugin rather than the backplane (which has
+a little bit more usable height).  It is common to put two rows of 3U cards in
+a 6U rack, though; this is a standard enclosure configuration.
+
+It's mostly convenient packaging-wise to have a flat-ish pizza-box because you
+then have room to lay out boards flat.  This is how I was imagining the driver
+and supplies would mount, spread out on a chassis.  For one thing, coupling
+between boards is less if they are mounted edge-to-edge rather than stacked in
+a sandwich.  You need enough height for the largest components, but beyond
+that the height is wasted unless you stack boards or mount them on edge (as in
+the card rack).  So it makes rather more sense to spread out horizontally
+before vertically.
+
+I'm thinking it's kind of dumb to be optimizing the box size at this point,
+when we don't even have designs for the supplies and source driver.  One the
+first things I learned in electronics (when I was about 12) is that you always
+need a bigger box than you think.  If we have time we can go back and squeeze
+it.
+
+
+[3 March 20]
+
+Oops, realized that I sort of painted myself into a corner with the main board
+layout by where I ended up placing the connector on the input board and the
+choice of the eurocard form factor.  In my original "PC motherboard" style
+layout I had figured that there would be plenty of digital routing area above
+the connector so that we could route the digital signals there, with them
+placed at the top of the connector.  But then I went and placed the connector
+near the top of the input board, and also chose to have a skinny main card no
+wider than the input cards.
+
+Within the 100 mm card height, I only have 9mm above the connector vs 40mm
+below.  We will have some additional main board width.  3U is nominally
+133.5mm.  Stylebox 15 external dimensions is 1mm less.  The internal height
+clear between the extrusions is 112.5mm.
+
+The backplane mounts to the back of the rear extrusion, so the backplane board
+can be the full inside height of the box, but the area occupied by the
+extrusion is presumably mainly a mechanical area, where you would not want any
+traces (at least on the front).  The extrusion extends above and below the
+clear height by 8.75mm, so the total board height could be around 112.5 +
+8.75*2, or 130mm.  That allows 3.5mm for the two covers thickness, which seems
+plausible, but not generous.  We probably want about 128mm with 8mm keepout on
+the top and bottom edges of the front layer.  This leaves 112mm usable front
+height on the main board, or 6mm +/- of the 100mm plugin card height.
+ ==> Schroff design guide says backplane is 128.55 mm high, with mount holes
+     122.5 mm OC.
+
+So, the routing problem is that we seem to be stuck routing the digital
+signals below the connector on the main board, then running them up past the
+analog pins to get where they are going near the top of the connector.
+
+It would be possible to avoid this by not using the 3U eurocard subrack, and
+using a higher main board.  But this is kind of a nuisance, and I'm not
+sure that the crossover is going to be a big problem.  One thought is that we
+can route the analog signals and supplies on the back or L3.  If L3 is the
+analog ground, then the analog stuff is separated from the digital by two
+ground planes.  There would not be much direct coupling trace-to-trace, but
+there will be a good bit of capacitive coupling between the two planes.  Now,
+we are not keeping those grounds scrupulously separate anyway, they are all
+connected together at the edge of the input card.
+
+Another point is that the whole input section, analog and digital, is really
+in some sense pretty clean because the digital is held off when we are doing
+the ADC sampling.  But we are not entirely sure what effect the digital scruff
+could have on kHz range signals in our passband, which necessarily averages
+across all the high speed stuff.  The reference is the most obvious concern.
+
+I guess if we space the cards somewhat wide apart, then we can give a wider
+sideways clearance between the digital signals and the analog stuff.  It looks
+like the card spacing can be on pretty much any "HP" multiple, where a HP is
+1/5 inch or 5.08 mm.  4 HP seems more or less the minimum, while >=7 is
+supplied with mounts for two cards.
+
+The width of the PCIe connector footprint is 6.5mm (lead to lead), or say
+perhaps 8mm with pads.  This would give 17mm of routing area between cards
+with 6 HP centers, which seems like quite a lot.  One rule is that the pair
+spacing should be >4x the dilectric height (plane distance).  At 0.2mm that is
+0.8mm, let's say 1mm.  Our pair is 0.175mm width 0.2mm space, so that's 0.55mm
+width.  So each pair requires 1.55mm, then plus an extra 1mm for the outside.
+Each board has 7 LVDS pairs, so that is 12mm.  That leaves 5mm extra, or 2.5mm
+per side.  Plus the 1mm margin already there, we have 3.5mm between the
+digital trace and the analog pins.  That's not quite as much as I was hoping.
+If we went up to 8HP spacing then we would get a 34mm routing channel.  This
+would allow us to have 10mm space on each side.
+
+So, the plan is:
+ -- The low speed digital signals and supply are not a big problem.  They are
+    routed horizontally on the top layer, and except for CARDSEL are bussed.
+    There is enough room for the four CARDSEL lines.
+ -- Analog supplies, VREF and BIST are routed horizontally on the back layer.
+    These are also bussed.
+ -- The digital lines from the FPGA fan out horizontally across the backplane
+    below the connectors, then turn and run vertically up the routing channel
+    between cards.
+
+We assign FPGA pins so that the digital lines do not cross.  We especially
+want to keep the digital lines purely on the top in the horizontal routing
+area below the connectors.  Some vias and other layers are acceptable near the
+FPGA.  This will be necessary to get the clock lines correct inserted between
+the data lines.  Also, if necessary we can use other layers as digital in the
+digital section at the top of the connector.
+
+The digital ground plane on L2 covers pretty much the entire backplane.  The
+analog plane on L3 will only be present under the analog pins on the
+connectors, and perhaps a bit down from there.  There is no point in
+increasing the capacitive coupling between the two grounds.
+
+If we did use a SMT connector then this would significantly increase the
+amount of bottom horizontal routing area, allowing fatter traces for VREF,
+etc. SMT is not common, but there are some options.
+
+Hmmn, we are actually rather tight for horizontal digital routing area below
+the connectors.  We have ~40mm within the 100mm card height, and we want more
+like 45mm at the 1.55mm spacing.  But we do have a few more mm on the
+backplane, maybe about 8mm to still clear the mounting holes.  So this is
+possible.  Though not idea for either digital or analog, we could also run
+horizontal digital traces on the bottom layer.
+
+Other possibilities would be to add layers, or go to 4U or more and add
+backplane height.
+
+
+I need to think about what is going on with the ground currents on the main
+board with this plane setup.  It seems that the main concern is to keep
+digital hash from the processor out of the connector & analog area.  Some will
+come out on the digital lines, but I am not so concerned about that.  We are
+buffering the outputs.
+
+Ground noise is another thing.  We want to minimize the digital ground
+currents thru the analog area.  This will involve cuts and care in where to
+tie into chassis.  I think it's best to tie digital ground into chassis at the
+bottom, and to not connect to chassis in the analog area (only near the FPGA
+and supplies).
+
+For EMI it is usually recommended to keep high speed stuff away from the
+ground edge, though.  The ground edge is usually defined as the connector
+edge, but our outside connectors are not on the backplane at all.  Our primary
+chassis ground is at the input connectors.  The main reason to tie the
+backplane to chassis is to give digital noise a low impedance path to ground
+so that it doesn't go elsewhere.  But there is not really any other current
+path except the supplies and the ethernet cable.  We can put CM suppression on
+these.  So it should not be possible to get too much EMI flowing through the
+enclosure.  Passing EMI tests is not a current concern anyway.
+
+There are not a lot of circuit design issues on the main board, it's very
+layout driven.  So I'm starting on roughing in the board layout.  
+
+
+[27 Feb 20]
+
+Thinking a bit about what support for the output side to build into
+the initial spin of the main board.  Seems I should do something, at
+least the outputs to the DACs.
+
+In thinking about clock jitter, I realized that if the jitter of
+signals coming out of the FPGA is likely to be bad (for a clock), then
+this also applies to the switch control signals for the source
+driver.  I looked a bit at the idea of adding a latch on the main
+board which would hold the output bits for a cycle according to the
+main board "clean" clock.
+
+This would mean that we would want a clean clock at that frequency, >=
+100 MHz.  Because we only use an edge of the clock for MCLK, gating it
+from the FPGA, the clean clock can be way higher than the sample clock
+without needing any divider outside of the FPGA.  The eval board uses
+clocks in the 50-100 MHz range.  CMOS logic and the FPGA itself are
+starting to run out of gas above maybe 200 MHz.
+
+I'm unsure what sort of driver dynamic range we could get by
+controlling the driver using direct FPGA signals (even ignoring the
+jitter issue), and I can't divert to working on the driver now.  My
+plan was to stick with the current analog driver for now, using DACs.
+
+I guess I should do what I had earlier proposed, add an output card
+slot to the main board.  This will get various FPGA I/Os, supplies,
+reference voltage, and the clean clock.  Initially I can make a simple
+breakout card that connects to the DAC boards.
+
+I'm liking the Silicon Labs Si570, which is I2C programmable over a
+wide range and seems to have pretty good phase noise.  The flexibility
+seems useful since we are not sure what we want to be doing,
+eg. sampling on or off 60 Hz multiple.  On [31 July 19] I mention the
+Si549, which is roughly similar, but has perhaps 1/2 the integrated
+phase noise.  Unlike the Si570, the Si549 is characterized for
+close-in phase noise density, and it seems that this is rather worse
+than a good fixed-frequency quartz oscillator in this price range, but
+the comparison is indirect because AFAICT the 1/f corner scales down
+with output frequency, both for simple oscillators and for
+synthesizers. 
+
+https://www.planetanalog.com/phase-noise-cancellation-in-high-speed-data-converter-systems/
+talks about how when you use the same clock for both DAC and ADC, then
+the phase noise cancels.  This points out that (at least one) limit on
+the bandwidth over which cancellation is effective is imposed by the
+system delay between DAC and ADC, which in our case is going to be
+mainly due to the driver output filter and input antialias filter.
+
+I had been thinking about how delay in the distribution of VREF would
+cause the ADC and DAC effects to be uncorrelated, but delay on the
+main signal path is probably more important.  The situation with the
+clock is similar; the big difference is that you can't lowpass filter
+the clock.  My guess that reference noise cancellation would only be
+effective below 50 Hz is probably over conservative.
+
+Given that the group delay of the antialias filter is only 10 us (with
+driver output filter perhaps similar), phase noise cancellation would
+start to kick in >> 1 kHz, but would not reach full effectiveness
+until lower frequencies.  The math is basically the same as for
+effectiveness of cancellation vs. latency in Micron.
+ ==> With the output filter resonant at the carrier, the group delay
+     will be a several times higher.
+
+For the reference, as long as the frequency response of the input and
+output reference buffers are matched, the rolloff does not in itself
+degrade the VREF noise cancellation.
+
+Hmmn, we can't sync up ADC and DAC by delaying the clock signal for
+microseconds, but would DSP phase-shifting the input or output signal
+help?  Probably not.  But what we really care about is below 100 Hz
+anyway.  IIRC the position 1/f noise corner is currently around 20 Hz.
+
+
+[26 Feb 20]
+
+The clock buffers are not looking so good for us.  In particular, the
+Si53306 has a minimum clock of 1 MHz, and is intended for continuous
+50% duty clocks.  It *might* work, but I don't feel good about it.
+And the other parts are just insanely fast compared to what we need.
+
+I'm thinking I should use a LVDS receiver per signal, then a driver
+for each slot output.  The receiver output can drive several drivers which
+are very nearby, probably without any termination.  Also, MCLK, which
+is the really critical one, is generated as LVCMOS on the main board,
+so is not LVDS coming in.
+
+I looked a bit at clock jitter effects.  It works fairly similarly to
+reference noise in that it is effectively multiplicative (rather than
+additive), so the effect of close-in phase noise is to spread
+(modulate) the received carrier.
+
+Ignoring the noise spectrum issue, it seems that we are in a ballpark
+where we want <10 ps RMS of total sampling jitter.  The LTC2512-24
+aperture jitter is spec'd at 4 ps typical.  See figure 1 in:
+    https://www.analog.com/en/analog-dialogue/articles/sigma-delta-adc-clocking-more-than-jitter.html
+
+Or for ballpark, if LTC2512 resolution is 117 dB, then our peak slew
+rate in LSB is:
+    10 kHz * 2*pi * 117 dB = 44e9 LSB/s
+
+Then the for 10 ps jitter we would have:
+    10e-12 * 44e9 = 0.4 lsb
+
+This probably has errors for RMS/peak conversion or something, but
+roughly agrees with their figures.
+
+This article has various interesting qualitative observations.
+Oversampling does not really help clock noise, and sigma-delta ADCs
+may have internal clocking and feedbacks that respond to the clock
+noise spectrum in unpredictable ways.  But with ideal sampling the
+sensitivity to clock noise is determined by the input signal, not the
+sampling rate.
+
+That is, increasing the sample rate and the decimating does not reduce
+the clock noise contribution.  But downsampling (bandwidth reduction)
+does reduce the contribution of broadband clock noise.  As long as the
+digital decimation filter is working we will be reducing the relevant
+bandwidth of the clock noise.  This takes us well out of the flat band
+of any clock source, and into the 1/f^n region.  This means that the
+jitter is not going to reduce anything like sqrt(bandwidth).  But
+since jitter is usually spec'd in a wide bandwidth, like 20 MHz,
+assuming there is the same jitter in our bandwidth would be
+conservative, were it not our potential sensitivity to low frequency
+jitter.
+
+I say "potential sensitivity", because as with the reference noise, if
+we take care to use a common clock for both input and output paths
+then we will be insensitive to noise that is at a sufficiently low
+frequency.
+
+I had been thinking of our oversampling as being "high", so that the
+input could be seen as fairly static.  But we only have ~100
+samples/cycle, which means the number of LSB change between samples is
+huge, ~50k.  So not at all static.  I had noted this before related to
+change during the S/H acquire period, but it hadn't quite sunk in I guess.
+
+
+
+
+[24 Feb 20]
+
+For the clock fanout buffer, it looks like almost everyone is using
+QFN packages.  The Silicon Labs Si53306 looks good because it is
+cheapest and not gratuitously fast.  There does not seem to be any
+kind of second sourcing with these parts.  There are similar 1:4
+buffers in the QFN16 from Microchip/Micrel.
+
+I guess we need 3, SCKA, SCKB and MCLK?  MCLK will be generated
+single-ended from a flip-flop, but these diff-in buffers can handle
+that by tying the negative input to mid-supply/
+
+These parts are interestingly much faster than most of the LVDS tx/rx
+chips I was looking at.  Most are > 2 GHz.  I guess this makes sense,
+partly because one of the easiest ways to get low skew is just to be
+fast.
 
 
 [21 Feb 20]
