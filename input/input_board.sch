@@ -185,6 +185,8 @@ F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3
 F 4 "39" H 2800 4650 50  0001 C CNN "DK line"
 F 5 "0/4 Receiver  LVDS 16-TSSOP" H 2800 4650 50  0001 C CNN "Description"
 F 6 "DS90LV048ATMTC/NOPB-ND" H 2800 4650 50  0001 C CNN "Digikey"
+F 7 "DS90LV048ATMTC/NOPB" H 2800 4650 50  0001 C CNN "MPN"
+F 8 "Texas Instruments" H 2800 4650 50  0001 C CNN "Manufacturer"
 	1    2800 4650
 	1    0    0    -1  
 $EndComp
@@ -199,6 +201,8 @@ F 3 "https://www.onsemi.com/pub/Collateral/FIN1047-D.pdf" H 9900 5250 50  0001 C
 F 4 "IC DRIVER 4/0 16TSSOP" H 9850 5250 50  0001 C CNN "Description"
 F 5 "FIN1047MTCXFSCT-ND" H 9850 5250 50  0001 C CNN "Digikey"
 F 6 "38" H 9850 5250 50  0001 C CNN "DK line"
+F 7 "FIN1047MTCX" H 9850 5250 50  0001 C CNN "MPN"
+F 8 "ON Semiconductor" H 9850 5250 50  0001 C CNN "Manufacturer"
 	1    9850 5250
 	1    0    0    -1  
 $EndComp
@@ -213,6 +217,8 @@ F 3 "https://www.bourns.com/docs/Product-Datasheets/CATCAY.pdf" H 6050 5100 50  
 F 4 "13" H 6050 5100 50  0001 C CNN "DK line"
 F 5 "RES ARRAY 4 RES 33 OHM 1206" H 6050 5100 50  0001 C CNN "Description"
 F 6 "CAY16-330J4LFCT-ND" H 6050 5100 50  0001 C CNN "Digikey"
+F 7 "CAY16-330J4LF" H 6050 5100 50  0001 C CNN "MPN"
+F 8 "Bourns Inc." H 6050 5100 50  0001 C CNN "Manufacturer"
 	1    6050 5100
 	0    1    1    0   
 $EndComp
@@ -227,6 +233,8 @@ F 3 "https://www.bourns.com/docs/Product-Datasheets/CATCAY.pdf" H 6050 4650 50  
 F 4 "13" H 6050 4650 50  0001 C CNN "DK line"
 F 5 "RES ARRAY 4 RES 33 OHM 1206" H 6050 4650 50  0001 C CNN "Description"
 F 6 "CAY16-330J4LFCT-ND" H 6050 4650 50  0001 C CNN "Digikey"
+F 7 "CAY16-330J4LF" H 6050 4650 50  0001 C CNN "MPN"
+F 8 "Bourns Inc." H 6050 4650 50  0001 C CNN "Manufacturer"
 	1    6050 4650
 	0    1    1    0   
 $EndComp
@@ -335,6 +343,8 @@ F 3 "~" H 1675 4450 50  0001 C CNN
 F 4 "P100DBCT-ND" H 1675 4450 50  0001 C CNN "Digikey"
 F 5 "51" H 1675 4450 50  0001 C CNN "DK line"
 F 6 "100 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 1675 4450 50  0001 C CNN "Description"
+F 7 "ERA-3AEB101V" H 1675 4450 50  0001 C CNN "MPN"
+F 8 "Panasonic Electronic Components" H 1675 4450 50  0001 C CNN "Manufacturer"
 	1    1675 4450
 	0    -1   -1   0   
 $EndComp
@@ -384,6 +394,8 @@ F 3 "~" H 1675 4850 50  0001 C CNN
 F 4 "P100DBCT-ND" H 1675 4850 50  0001 C CNN "Digikey"
 F 5 "51" H 1675 4850 50  0001 C CNN "DK line"
 F 6 "100 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 1675 4850 50  0001 C CNN "Description"
+F 7 "ERA-3AEB101V" H 1675 4850 50  0001 C CNN "MPN"
+F 8 "Panasonic Electronic Components" H 1675 4850 50  0001 C CNN "Manufacturer"
 	1    1675 4850
 	0    -1   -1   0   
 $EndComp
@@ -421,6 +433,8 @@ F 3 "~" H 1675 5250 50  0001 C CNN
 F 4 "P100DBCT-ND" H 1675 5250 50  0001 C CNN "Digikey"
 F 5 "51" H 1675 5250 50  0001 C CNN "DK line"
 F 6 "100 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 1675 5250 50  0001 C CNN "Description"
+F 7 "ERA-3AEB101V" H 1675 5250 50  0001 C CNN "MPN"
+F 8 "Panasonic Electronic Components" H 1675 5250 50  0001 C CNN "Manufacturer"
 	1    1675 5250
 	0    -1   -1   0   
 $EndComp
@@ -456,6 +470,8 @@ F 3 "~" H 2550 3900 50  0001 C CNN
 F 4 "CAP CER 0.1UF 25V X7R 0603" H 2550 3900 50  0001 C CNN "Description"
 F 5 "311-1341-1-ND" H 2550 3900 50  0001 C CNN "Digikey"
 F 6 "2" H 2550 3900 50  0001 C CNN "DK line"
+F 7 "CC0603KRX7R8BB104" H 2550 3900 50  0001 C CNN "MPN"
+F 8 "Yageo" H 2550 3900 50  0001 C CNN "Manufacturer"
 	1    2550 3900
 	0    1    1    0   
 $EndComp
@@ -491,6 +507,8 @@ F 3 "~" H 4650 3850 50  0001 C CNN
 F 4 "CAP CER 0.1UF 25V X7R 0603" H 4650 3850 50  0001 C CNN "Description"
 F 5 "311-1341-1-ND" H 4650 3850 50  0001 C CNN "Digikey"
 F 6 "2" H 4650 3850 50  0001 C CNN "DK line"
+F 7 "CC0603KRX7R8BB104" H 4650 3850 50  0001 C CNN "MPN"
+F 8 "Yageo" H 4650 3850 50  0001 C CNN "Manufacturer"
 	1    4650 3850
 	0    1    1    0   
 $EndComp
@@ -524,6 +542,8 @@ F 3 "~" H 10100 4200 50  0001 C CNN
 F 4 "CAP CER 0.1UF 25V X7R 0603" H 10100 4200 50  0001 C CNN "Description"
 F 5 "311-1341-1-ND" H 10100 4200 50  0001 C CNN "Digikey"
 F 6 "2" H 10100 4200 50  0001 C CNN "DK line"
+F 7 "CC0603KRX7R8BB104" H 10100 4200 50  0001 C CNN "MPN"
+F 8 "Yageo" H 10100 4200 50  0001 C CNN "Manufacturer"
 	1    10100 4200
 	0    -1   -1   0   
 $EndComp
@@ -559,6 +579,8 @@ F 3 "~" H 5150 3850 50  0001 C CNN
 F 4 "CAP CER 0.1UF 25V X7R 0603" H 5150 3850 50  0001 C CNN "Description"
 F 5 "311-1341-1-ND" H 5150 3850 50  0001 C CNN "Digikey"
 F 6 "2" H 5150 3850 50  0001 C CNN "DK line"
+F 7 "CC0603KRX7R8BB104" H 5150 3850 50  0001 C CNN "MPN"
+F 8 "Yageo" H 5150 3850 50  0001 C CNN "Manufacturer"
 	1    5150 3850
 	0    -1   -1   0   
 $EndComp
@@ -594,6 +616,8 @@ F 1 "SCKA" V 4065 7250 50  0000 C CNN
 F 2 "Connector_Coaxial:MMCX_Molex_73415-1471_Vertical" H 3950 7250 50  0001 C CNN
 F 3 " ~" H 3950 7250 50  0001 C CNN
 F 4 "35" H 3950 7250 50  0001 C CNN "DK line"
+F 5 "Do Not Populate" H 3950 7250 50  0001 C CNN "Description"
+F 6 "DNP" H 3950 7250 50  0001 C CNN "MPN"
 	1    3950 7250
 	0    1    1    0   
 $EndComp
@@ -613,6 +637,8 @@ F 3 "~" H 3950 6750 50  0001 C CNN
 F 4 "48" H 3950 6750 50  0001 C CNN "DK line"
 F 5 "RES SMD 1K OHM 0.1% 1/10W 0603" H 3950 6750 50  0001 C CNN "Description"
 F 6 "P1.0KDBCT-ND" H 3950 6750 50  0001 C CNN "Digikey"
+F 7 "ERA-3AEB102V" H 3950 6750 50  0001 C CNN "MPN"
+F 8 "Panasonic Electronic Components" H 3950 6750 50  0001 C CNN "Manufacturer"
 	1    3950 6750
 	1    0    0    -1  
 $EndComp
@@ -625,6 +651,8 @@ F 1 "MCLK" V 4565 7250 50  0000 C CNN
 F 2 "Connector_Coaxial:MMCX_Molex_73415-1471_Vertical" H 4450 7250 50  0001 C CNN
 F 3 " ~" H 4450 7250 50  0001 C CNN
 F 4 "35" H 4450 7250 50  0001 C CNN "DK line"
+F 5 "Do Not Populate" H 4450 7250 50  0001 C CNN "Description"
+F 6 "DNP" H 4450 7250 50  0001 C CNN "MPN"
 	1    4450 7250
 	0    1    1    0   
 $EndComp
@@ -648,6 +676,8 @@ F 1 "SDOB1" V 10265 3300 50  0000 C CNN
 F 2 "Connector_Coaxial:MMCX_Molex_73415-1471_Vertical" H 10150 3300 50  0001 C CNN
 F 3 " ~" H 10150 3300 50  0001 C CNN
 F 4 "35" H 10150 3300 50  0001 C CNN "DK line"
+F 5 "Do Not Populate" H 10150 3300 50  0001 C CNN "Description"
+F 6 "DNP" H 10150 3300 50  0001 C CNN "MPN"
 	1    10150 3300
 	1    0    0    -1  
 $EndComp
@@ -667,6 +697,8 @@ F 3 "~" H 9525 3300 50  0001 C CNN
 F 4 "48" H 9525 3300 50  0001 C CNN "DK line"
 F 5 "RES SMD 1K OHM 0.1% 1/10W 0603" H 9525 3300 50  0001 C CNN "Description"
 F 6 "P1.0KDBCT-ND" H 9525 3300 50  0001 C CNN "Digikey"
+F 7 "ERA-3AEB102V" H 9525 3300 50  0001 C CNN "MPN"
+F 8 "Panasonic Electronic Components" H 9525 3300 50  0001 C CNN "Manufacturer"
 	1    9525 3300
 	0    -1   -1   0   
 $EndComp
@@ -702,6 +734,8 @@ F 0 "TP3" H 6400 5550 50  0000 C CNN
 F 1 "SYNC" H 6400 5650 50  0000 C CNN
 F 2 "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" H 6600 5300 50  0001 C CNN
 F 3 "~" H 6600 5300 50  0001 C CNN
+F 4 "Do Not Populate" H 6400 5300 50  0001 C CNN "Description"
+F 5 "DNP" H 6400 5300 50  0001 C CNN "MPN"
 	1    6400 5300
 	-1   0    0    1   
 $EndComp
@@ -737,6 +771,8 @@ F 3 "http://www.ti.com/lit/gpn/sn74LS541" H 4900 4950 50  0001 C CNN
 F 4 "11" H 4900 4950 50  0001 C CNN "DK line"
 F 5 "IC BUF NON-INVERT 3.6V 20SSOP" H 4900 4950 50  0001 C CNN "Description"
 F 6 "296-8518-1-ND" H 4900 4950 50  0001 C CNN "Digikey"
+F 7 "SN74LVC541ADBR" H 4900 4950 50  0001 C CNN "MPN"
+F 8 "Texas Instruments" H 4900 4950 50  0001 C CNN "Manufacturer"
 	1    4900 4950
 	1    0    0    -1  
 $EndComp
@@ -758,6 +794,8 @@ F 3 "~" H 3450 6750 50  0001 C CNN
 F 4 "48" H 3450 6750 50  0001 C CNN "DK line"
 F 5 "RES SMD 1K OHM 0.1% 1/10W 0603" H 3450 6750 50  0001 C CNN "Description"
 F 6 "P1.0KDBCT-ND" H 3450 6750 50  0001 C CNN "Digikey"
+F 7 "ERA-3AEB102V" H 3450 6750 50  0001 C CNN "MPN"
+F 8 "Panasonic Electronic Components" H 3450 6750 50  0001 C CNN "Manufacturer"
 	1    3450 6750
 	1    0    0    -1  
 $EndComp
@@ -777,6 +815,8 @@ F 3 "~" H 4450 6750 50  0001 C CNN
 F 4 "48" H 4450 6750 50  0001 C CNN "DK line"
 F 5 "RES SMD 1K OHM 0.1% 1/10W 0603" H 4450 6750 50  0001 C CNN "Description"
 F 6 "P1.0KDBCT-ND" H 4450 6750 50  0001 C CNN "Digikey"
+F 7 "ERA-3AEB102V" H 4450 6750 50  0001 C CNN "MPN"
+F 8 "Panasonic Electronic Components" H 4450 6750 50  0001 C CNN "Manufacturer"
 	1    4450 6750
 	1    0    0    -1  
 $EndComp
@@ -789,6 +829,8 @@ F 1 "SCKB" V 3565 7250 50  0000 C CNN
 F 2 "Connector_Coaxial:MMCX_Molex_73415-1471_Vertical" H 3450 7250 50  0001 C CNN
 F 3 " ~" H 3450 7250 50  0001 C CNN
 F 4 "35" H 3450 7250 50  0001 C CNN "DK line"
+F 5 "Do Not Populate" H 3450 7250 50  0001 C CNN "Description"
+F 6 "DNP" H 3450 7250 50  0001 C CNN "MPN"
 	1    3450 7250
 	0    1    1    0   
 $EndComp

@@ -1,0 +1,5 @@
+#!/bin/bash
+rm circuithub_upload/*
+cp -p *.sch circuithub_upload/
+cp -p input_board-cache.lib circuithub_upload/
+cp -p input_board.kicad_pcb circuithub_upload/

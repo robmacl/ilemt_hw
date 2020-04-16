@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 21
+Sheet 7 13
 Title ""
 Date ""
 Rev ""
@@ -14,55 +14,25 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 Text Notes 7250 6800 0    50   ~ 0
-The connector to the main board, and other support circuitry that\nconnects by global labels
-Text Notes 9050 2100 0    50   ~ 0
-Connector is oriented with the low number pins toward\nthe back of the board.  Working forward, we have\n -- High speed LVDS signals\n -- Digital supply\n -- Low speed digital signals\n -- Analog supplies\n -- Analog signals\n\nThere are many grounds\n
-Text GLabel 3500 3850 2    50   Output ~ 0
-SCKA-
-Text GLabel 2350 3550 0    50   Output ~ 0
-SCKB+
-Text GLabel 2350 3650 0    50   Output ~ 0
-SCKB-
-Text GLabel 3500 3750 2    50   Output ~ 0
-SCKA+
-Text GLabel 2350 4400 0    50   Output ~ 0
-MCLK-
-Text GLabel 2350 4300 0    50   Output ~ 0
-MCLK+
-Text GLabel 3450 3450 2    50   Input ~ 0
-SDOA3-
-Text GLabel 3450 3350 2    50   Input ~ 0
-SDOA3+
-Text GLabel 2400 3250 0    50   Input ~ 0
-SDOA2-
-Text GLabel 2400 2800 0    50   Input ~ 0
-SDOA2+
-Text GLabel 5350 2900 0    50   Output ~ 0
+Connector for a single input board
+Text GLabel 5350 2900 0    50   Input ~ 0
 VREF+
-Text GLabel 5350 3350 0    50   Output ~ 0
+Text GLabel 5350 3350 0    50   Input ~ 0
 VREF-
-Text GLabel 3500 1400 2    50   Output ~ 0
-SYNC_IN
-Text GLabel 2475 6225 2    50   Output ~ 0
-SEL1
-Text GLabel 2475 6375 2    50   Output ~ 0
-SEL0
-Text GLabel 6650 2300 2    50   Output ~ 0
-RAW_+5VANA
-Text GLabel 6650 3550 2    50   Output ~ 0
+Text GLabel 6650 2300 2    50   Input ~ 0
++5VANA
+Text GLabel 6650 3550 2    50   Input ~ 0
 BIST++_IN
-Text GLabel 6650 3650 2    50   Output ~ 0
+Text GLabel 6650 3650 2    50   Input ~ 0
 BIST+-_IN
-Text GLabel 6650 2400 2    50   Output ~ 0
-RAW_+10V
-Text GLabel 6650 2600 2    50   Output ~ 0
-RAW_-6V
+Text GLabel 6650 2400 2    50   Input ~ 0
++10V
+Text GLabel 6650 2600 2    50   Input ~ 0
+-6V
 Text GLabel 2350 1600 0    50   BiDi ~ 0
 SCL
 Text GLabel 3500 1600 2    50   BiDi ~ 0
 SDA
-Text GLabel 2350 1400 0    50   Output ~ 0
-CARDSEL
 Text GLabel 2350 1800 0    50   BiDi ~ 0
 PROBE_CONFIG
 Text Notes 4150 4400 1    50   ~ 0
@@ -74,165 +44,18 @@ Text Notes 7550 2750 1    50   ~ 0
 Text Notes 7550 3800 1    50   ~ 0
 -- Analog signals --
 $Comp
-L Device:R_US R27
-U 1 1 5E71717B
-P 975 5925
-F 0 "R27" V 1075 5925 50  0000 C CNN
-F 1 "3.3K" V 875 5925 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 1015 5915 50  0001 C CNN
-F 3 "~" H 975 5925 50  0001 C CNN
-F 4 "53" H 975 5925 50  0001 C CNN "DK line"
-F 5 "3.3 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 975 5925 50  0001 C CNN "Description"
-F 6 "YAG3354CT-ND" H 975 5925 50  0001 C CNN "Digikey"
-F 7 "RT0603FRE073K3L" H 975 5925 50  0001 C CNN "MPN"
-F 8 "Yageo" H 975 5925 50  0001 C CNN "Manufacturer"
-	1    975  5925
-	1    0    0    -1  
-$EndComp
-$Comp
-L ilemt_input:OVDD #PWR011
-U 1 1 5E717806
-P 975 5675
-F 0 "#PWR011" H 975 5525 50  0001 C CNN
-F 1 "OVDD" H 975 5825 50  0000 C CNN
-F 2 "" H 975 5675 50  0001 C CNN
-F 3 "" H 975 5675 50  0001 C CNN
-	1    975  5675
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_US R28
-U 1 1 5E71A48C
-P 1375 5925
-F 0 "R28" V 1475 5925 50  0000 C CNN
-F 1 "3.3K" V 1275 5925 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 1415 5915 50  0001 C CNN
-F 3 "~" H 1375 5925 50  0001 C CNN
-F 4 "53" H 1375 5925 50  0001 C CNN "DK line"
-F 5 "3.3 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 1375 5925 50  0001 C CNN "Description"
-F 6 "YAG3354CT-ND" H 1375 5925 50  0001 C CNN "Digikey"
-F 7 "RT0603FRE073K3L" H 1375 5925 50  0001 C CNN "MPN"
-F 8 "Yageo" H 1375 5925 50  0001 C CNN "Manufacturer"
-	1    1375 5925
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	975  5675 975  5725
-Wire Wire Line
-	1375 5775 1375 5725
-Wire Wire Line
-	1375 5725 975  5725
-Connection ~ 975  5725
-Wire Wire Line
-	975  5725 975  5775
-Wire Wire Line
-	1375 6075 1375 6225
-Wire Wire Line
-	1375 6225 2375 6225
-$Comp
-L Connector_Generic:Conn_02x02_Odd_Even J?
-U 1 1 5E7266E8
-P 2275 6875
-AR Path="/5DFCF14D/5DA78BF5/5E7266E8" Ref="J?"  Part="1" 
-AR Path="/5DFCF14D/5E195558/5E7266E8" Ref="J?"  Part="1" 
-AR Path="/5E1D6729/5E7266E8" Ref="J3"  Part="1" 
-AR Path="/5E624B3C/5E1D6729/5E7266E8" Ref="J3"  Part="1" 
-F 0 "J3" V 2375 7075 50  0000 C CNN
-F 1 "Decimate" V 2275 7175 50  0000 C CNN
-F 2 "Connector_PinHeader_2.00mm:PinHeader_2x02_P2.00mm_Vertical_SMD" H 2275 6875 50  0001 C CNN
-F 3 "~" H 2275 6875 50  0001 C CNN
-F 4 "CONN HEADER SMD 4POS 2MM" H 2275 6875 50  0001 C CNN "Description"
-F 5 "S6009-02-ND" H 2275 6875 50  0001 C CNN "Digikey"
-F 6 "32" H 2275 6875 50  0001 C CNN "DK line"
-F 7 "NRPN022MAMS-RC" H 2275 6875 50  0001 C CNN "MPN"
-F 8 "Sullins Connector Solutions" H 2275 6875 50  0001 C CNN "Manufacturer"
-	1    2275 6875
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	2375 6575 2375 6225
-Wire Wire Line
-	2275 6575 2275 6375
-Wire Wire Line
-	2275 7075 2275 7175
-Wire Wire Line
-	2275 7175 2375 7175
-Wire Wire Line
-	2375 7175 2375 7275
-Wire Wire Line
-	2375 7075 2375 7175
-Connection ~ 2375 7175
-Text Notes 2675 7075 0    50   ~ 0
-Selects the down-sampling factor for the ADC digital filter. \nOn the LTC2512/24 down-sampling factors of 4, 8, 16 and 32 \nare selected for [SEL1 SEL0] combinations of \n00, 01, 10 and 11 respectively. 
-Connection ~ 2275 6375
-Wire Wire Line
-	2275 6375 2475 6375
-Connection ~ 2375 6225
-Wire Wire Line
-	2375 6225 2475 6225
-Wire Wire Line
-	975  6375 2275 6375
-$Comp
-L Device:C_Small C?
-U 1 1 5E7F2F55
-P 975 6825
-AR Path="/5DFCF14D/5DA78AA2/5E7F2F55" Ref="C?"  Part="1" 
-AR Path="/5E1D6729/5E7F2F55" Ref="C29"  Part="1" 
-AR Path="/5E624B3C/5E1D6729/5E7F2F55" Ref="C29"  Part="1" 
-F 0 "C29" H 985 6895 50  0000 L CNN
-F 1 "100nF" H 985 6745 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 975 6825 50  0001 C CNN
-F 3 "~" H 975 6825 50  0001 C CNN
-F 4 "CAP CER 0.1UF 25V X7R 0603" H 975 6825 50  0001 C CNN "Description"
-F 5 "311-1341-1-ND" H 975 6825 50  0001 C CNN "Digikey"
-F 6 "2" H 975 6825 50  0001 C CNN "DK line"
-F 7 "CC0603KRX7R8BB104" H 975 6825 50  0001 C CNN "MPN"
-F 8 "Yageo" H 975 6825 50  0001 C CNN "Manufacturer"
-	1    975  6825
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	975  6925 975  7175
-Connection ~ 2275 7175
-Wire Wire Line
-	975  6075 975  6375
-Connection ~ 975  6375
-Wire Wire Line
-	975  6375 975  6725
-Wire Wire Line
-	975  7175 1375 7175
-$Comp
-L Device:C_Small C?
-U 1 1 5E81AC8D
-P 1375 6825
-AR Path="/5DFCF14D/5DA78AA2/5E81AC8D" Ref="C?"  Part="1" 
-AR Path="/5E1D6729/5E81AC8D" Ref="C30"  Part="1" 
-AR Path="/5E624B3C/5E1D6729/5E81AC8D" Ref="C30"  Part="1" 
-F 0 "C30" H 1385 6895 50  0000 L CNN
-F 1 "100nF" H 1385 6745 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 1375 6825 50  0001 C CNN
-F 3 "~" H 1375 6825 50  0001 C CNN
-F 4 "CAP CER 0.1UF 25V X7R 0603" H 1375 6825 50  0001 C CNN "Description"
-F 5 "311-1341-1-ND" H 1375 6825 50  0001 C CNN "Digikey"
-F 6 "2" H 1375 6825 50  0001 C CNN "DK line"
-F 7 "CC0603KRX7R8BB104" H 1375 6825 50  0001 C CNN "MPN"
-F 8 "Yageo" H 1375 6825 50  0001 C CNN "Manufacturer"
-	1    1375 6825
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1375 6925 1375 7175
-Wire Wire Line
-	1375 6725 1375 6225
-Connection ~ 1375 6225
-Connection ~ 1375 7175
-Wire Wire Line
-	1375 7175 2275 7175
-$Comp
-L power:GND #PWR020
-U 1 1 5E625DDF
+L power:GND #PWR0148
+U 1 1 5EC152A4
 P 3300 5150
-F 0 "#PWR020" H 3300 4900 50  0001 C CNN
+AR Path="/5E525F2C/5E59D3A2/5EC152A4" Ref="#PWR0148"  Part="1" 
+AR Path="/5E525F2C/5E76A42A/5EC152A4" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E76E218/5EC152A4" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E7721D1/5EC152A4" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5EBAAEAF/5EC152A4" Ref="#PWR077"  Part="1" 
+AR Path="/5E525FFE/5EBAAF7D/5EC152A4" Ref="#PWR083"  Part="1" 
+AR Path="/5E525FFE/5EBAAF8F/5EC152A4" Ref="#PWR089"  Part="1" 
+AR Path="/5E525FFE/5EBAAFA1/5EC152A4" Ref="#PWR095"  Part="1" 
+F 0 "#PWR077" H 3300 4900 50  0001 C CNN
 F 1 "GND" H 3300 5000 50  0000 C CNN
 F 2 "" H 3300 5150 50  0001 C CNN
 F 3 "" H 3300 5150 50  0001 C CNN
@@ -240,97 +63,116 @@ F 3 "" H 3300 5150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR018
-U 1 1 5E3037B0
-P 2375 7275
-F 0 "#PWR018" H 2375 7025 50  0001 C CNN
-F 1 "GND" H 2375 7125 50  0000 C CNN
-F 2 "" H 2375 7275 50  0001 C CNN
-F 3 "" H 2375 7275 50  0001 C CNN
-	1    2375 7275
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GNDA #PWR034
-U 1 1 5E625DDE
+L power:GNDA #PWR0129
+U 1 1 5EC152A3
 P 6700 3750
-F 0 "#PWR034" H 6700 3500 50  0001 C CNN
+AR Path="/5E525F2C/5E59D3A2/5EC152A3" Ref="#PWR0129"  Part="1" 
+AR Path="/5E525F2C/5E76A42A/5EC152A3" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E76E218/5EC152A3" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E7721D1/5EC152A3" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5EBAAEAF/5EC152A3" Ref="#PWR081"  Part="1" 
+AR Path="/5E525FFE/5EBAAF7D/5EC152A3" Ref="#PWR087"  Part="1" 
+AR Path="/5E525FFE/5EBAAF8F/5EC152A3" Ref="#PWR093"  Part="1" 
+AR Path="/5E525FFE/5EBAAFA1/5EC152A3" Ref="#PWR099"  Part="1" 
+F 0 "#PWR081" H 6700 3500 50  0001 C CNN
 F 1 "GNDA" H 6850 3700 50  0000 C CNN
 F 2 "" H 6700 3750 50  0001 C CNN
 F 3 "" H 6700 3750 50  0001 C CNN
 	1    6700 3750
 	1    0    0    -1  
 $EndComp
-Text GLabel 3450 2700 2    50   Input ~ 0
-SDOB1-
-Text GLabel 3450 2600 2    50   Input ~ 0
-SDOB1+
-Text GLabel 2400 2400 0    50   Input ~ 0
-SDOA1+
-Text GLabel 2400 2500 0    50   Input ~ 0
-SDOA1-
 $Comp
 L ilemt_input:my_pcie_8x P1
-U 3 1 5E625DE4
+U 3 1 5E67C68B
 P 2900 3550
-F 0 "P1" H 2900 3550 50  0000 C CNN
+AR Path="/5E525F2C/5E59D3A2/5E67C68B" Ref="P1"  Part="3" 
+AR Path="/5E525F2C/5E76A42A/5E67C68B" Ref="P?"  Part="3" 
+AR Path="/5E525F2C/5E76E218/5E67C68B" Ref="P?"  Part="3" 
+AR Path="/5E525F2C/5E7721D1/5E67C68B" Ref="P?"  Part="3" 
+AR Path="/5E525FFE/5EBAAEAF/5E67C68B" Ref="P2"  Part="3" 
+AR Path="/5E525FFE/5EBAAF7D/5E67C68B" Ref="P3"  Part="3" 
+AR Path="/5E525FFE/5EBAAF8F/5E67C68B" Ref="P4"  Part="3" 
+AR Path="/5E525FFE/5EBAAFA1/5E67C68B" Ref="P5"  Part="3" 
+F 0 "P2" H 2900 3550 50  0000 C CNN
 F 1 "my_pcie_8x" H 2900 3050 50  0000 C CNN
-F 2 "input:BUS_PCIexpress_x8" H 2900 4050 50  0001 C CNN
+F 2 "input:PCIE_8x_female" H 2900 4050 50  0001 C CNN
 F 3 "" H 2900 3550 50  0001 C CNN
-F 4 "Do Not Populate" H 2900 3550 50  0001 C CNN "Description"
-F 5 "DNP" H 2900 3550 50  0001 C CNN "MPN"
 	3    2900 3550
 	1    0    0    -1  
 $EndComp
 $Comp
 L ilemt_input:my_pcie_8x P1
-U 5 1 5E625DE7
+U 5 1 5E682A6A
 P 6000 1550
-F 0 "P1" H 6000 1550 50  0000 C CNN
+AR Path="/5E525F2C/5E59D3A2/5E682A6A" Ref="P1"  Part="5" 
+AR Path="/5E525F2C/5E76A42A/5E682A6A" Ref="P?"  Part="5" 
+AR Path="/5E525F2C/5E76E218/5E682A6A" Ref="P?"  Part="5" 
+AR Path="/5E525F2C/5E7721D1/5E682A6A" Ref="P?"  Part="5" 
+AR Path="/5E525FFE/5EBAAEAF/5E682A6A" Ref="P2"  Part="5" 
+AR Path="/5E525FFE/5EBAAF7D/5E682A6A" Ref="P3"  Part="5" 
+AR Path="/5E525FFE/5EBAAF8F/5E682A6A" Ref="P4"  Part="5" 
+AR Path="/5E525FFE/5EBAAFA1/5E682A6A" Ref="P5"  Part="5" 
+F 0 "P2" H 6000 1550 50  0000 C CNN
 F 1 "my_pcie_8x" H 6000 1050 50  0000 C CNN
-F 2 "input:BUS_PCIexpress_x8" H 6000 2050 50  0001 C CNN
+F 2 "input:PCIE_8x_female" H 6000 2050 50  0001 C CNN
 F 3 "" H 6000 1550 50  0001 C CNN
-F 4 "Do Not Populate" H 6000 1550 50  0001 C CNN "Description"
-F 5 "DNP" H 6000 1550 50  0001 C CNN "MPN"
 	5    6000 1550
 	1    0    0    -1  
 $EndComp
 $Comp
 L ilemt_input:my_pcie_8x P1
-U 6 1 5E684385
+U 6 1 5E625DE8
 P 6000 2600
-F 0 "P1" H 6000 2600 50  0000 C CNN
+AR Path="/5E525F2C/5E59D3A2/5E625DE8" Ref="P1"  Part="6" 
+AR Path="/5E525F2C/5E76A42A/5E625DE8" Ref="P?"  Part="6" 
+AR Path="/5E525F2C/5E76E218/5E625DE8" Ref="P?"  Part="6" 
+AR Path="/5E525F2C/5E7721D1/5E625DE8" Ref="P?"  Part="6" 
+AR Path="/5E525FFE/5EBAAEAF/5E625DE8" Ref="P2"  Part="6" 
+AR Path="/5E525FFE/5EBAAF7D/5E625DE8" Ref="P3"  Part="6" 
+AR Path="/5E525FFE/5EBAAF8F/5E625DE8" Ref="P4"  Part="6" 
+AR Path="/5E525FFE/5EBAAFA1/5E625DE8" Ref="P5"  Part="6" 
+F 0 "P2" H 6000 2600 50  0000 C CNN
 F 1 "my_pcie_8x" H 6000 2100 50  0000 C CNN
-F 2 "input:BUS_PCIexpress_x8" H 6000 3100 50  0001 C CNN
+F 2 "input:PCIE_8x_female" H 6000 3100 50  0001 C CNN
 F 3 "" H 6000 2600 50  0001 C CNN
-F 4 "Do Not Populate" H 6000 2600 50  0001 C CNN "Description"
-F 5 "DNP" H 6000 2600 50  0001 C CNN "MPN"
 	6    6000 2600
 	1    0    0    -1  
 $EndComp
 $Comp
 L ilemt_input:my_pcie_8x P1
-U 7 1 5E686C6C
+U 7 1 5E625DE9
 P 6000 3650
-F 0 "P1" H 6000 3650 50  0000 C CNN
+AR Path="/5E525F2C/5E59D3A2/5E625DE9" Ref="P1"  Part="7" 
+AR Path="/5E525F2C/5E76A42A/5E625DE9" Ref="P?"  Part="7" 
+AR Path="/5E525F2C/5E76E218/5E625DE9" Ref="P?"  Part="7" 
+AR Path="/5E525F2C/5E7721D1/5E625DE9" Ref="P?"  Part="7" 
+AR Path="/5E525FFE/5EBAAEAF/5E625DE9" Ref="P2"  Part="7" 
+AR Path="/5E525FFE/5EBAAF7D/5E625DE9" Ref="P3"  Part="7" 
+AR Path="/5E525FFE/5EBAAF8F/5E625DE9" Ref="P4"  Part="7" 
+AR Path="/5E525FFE/5EBAAFA1/5E625DE9" Ref="P5"  Part="7" 
+F 0 "P2" H 6000 3650 50  0000 C CNN
 F 1 "my_pcie_8x" H 6000 3150 50  0000 C CNN
-F 2 "input:BUS_PCIexpress_x8" H 6000 4150 50  0001 C CNN
+F 2 "input:PCIE_8x_female" H 6000 4150 50  0001 C CNN
 F 3 "" H 6000 3650 50  0001 C CNN
-F 4 "Do Not Populate" H 6000 3650 50  0001 C CNN "Description"
-F 5 "DNP" H 6000 3650 50  0001 C CNN "MPN"
 	7    6000 3650
 	1    0    0    -1  
 $EndComp
 $Comp
 L ilemt_input:my_pcie_8x P1
-U 2 1 5E6785E8
+U 2 1 5EC152A6
 P 2900 2500
-F 0 "P1" H 2900 2500 50  0000 C CNN
+AR Path="/5E525F2C/5E59D3A2/5EC152A6" Ref="P1"  Part="2" 
+AR Path="/5E525F2C/5E76A42A/5EC152A6" Ref="P?"  Part="2" 
+AR Path="/5E525F2C/5E76E218/5EC152A6" Ref="P?"  Part="2" 
+AR Path="/5E525F2C/5E7721D1/5EC152A6" Ref="P?"  Part="2" 
+AR Path="/5E525FFE/5EBAAEAF/5EC152A6" Ref="P2"  Part="2" 
+AR Path="/5E525FFE/5EBAAF7D/5EC152A6" Ref="P3"  Part="2" 
+AR Path="/5E525FFE/5EBAAF8F/5EC152A6" Ref="P4"  Part="2" 
+AR Path="/5E525FFE/5EBAAFA1/5EC152A6" Ref="P5"  Part="2" 
+F 0 "P2" H 2900 2500 50  0000 C CNN
 F 1 "my_pcie_8x" H 2900 2000 50  0000 C CNN
-F 2 "input:BUS_PCIexpress_x8" H 2900 3000 50  0001 C CNN
+F 2 "input:PCIE_8x_female" H 2900 3000 50  0001 C CNN
 F 3 "" H 2900 2500 50  0001 C CNN
-F 4 "Do Not Populate" H 2900 2500 50  0001 C CNN "Description"
-F 5 "DNP" H 2900 2500 50  0001 C CNN "MPN"
 	2    2900 2500
 	1    0    0    -1  
 $EndComp
@@ -339,9 +181,9 @@ Wire Wire Line
 Wire Wire Line
 	2500 2300 2550 2300
 Wire Wire Line
-	2400 2400 2550 2400
+	2350 2400 2550 2400
 Wire Wire Line
-	2400 2500 2550 2500
+	2350 2500 2550 2500
 Wire Wire Line
 	3250 2500 3300 2500
 Connection ~ 3300 2500
@@ -367,7 +209,7 @@ Connection ~ 2500 2600
 Wire Wire Line
 	2500 2600 2500 2300
 Wire Wire Line
-	2550 2800 2400 2800
+	2550 2800 2350 2800
 Wire Wire Line
 	3250 2800 3300 2800
 Connection ~ 3300 2800
@@ -394,9 +236,9 @@ Wire Wire Line
 	3250 3650 3300 3650
 Connection ~ 3300 3650
 Wire Wire Line
-	3500 3750 3250 3750
+	3450 3750 3250 3750
 Wire Wire Line
-	3500 3850 3250 3850
+	3450 3850 3250 3850
 Wire Wire Line
 	2550 3750 2500 3750
 Connection ~ 2500 3750
@@ -425,7 +267,7 @@ Connection ~ 3300 4500
 Wire Wire Line
 	3300 4500 3300 4400
 Wire Wire Line
-	3500 1400 3250 1400
+	3450 1400 3250 1400
 Wire Wire Line
 	2350 1400 2550 1400
 Wire Wire Line
@@ -450,8 +292,8 @@ Wire Wire Line
 Wire Wire Line
 	2350 1800 2550 1800
 Connection ~ 3300 4900
-Text GLabel 2350 1200 0    50   Output ~ 0
-RAW_+5VDIG
+Text GLabel 2350 1200 0    50   Input ~ 0
++5VDIG
 Wire Wire Line
 	2350 1200 2450 1200
 Wire Wire Line
@@ -463,12 +305,19 @@ Wire Wire Line
 	2450 1200 2550 1200
 $Comp
 L power:Earth #PWR?
-U 1 1 5E748772
+U 1 1 5E625DEA
 P 6450 4150
-AR Path="/5E51E83D/5E748772" Ref="#PWR?"  Part="1" 
-AR Path="/5E1D6729/5E748772" Ref="#PWR0159"  Part="1" 
-AR Path="/5E624B3C/5E1D6729/5E748772" Ref="#PWR0159"  Part="1" 
-F 0 "#PWR0159" H 6450 3900 50  0001 C CNN
+AR Path="/5E51E83D/5E625DEA" Ref="#PWR?"  Part="1" 
+AR Path="/5E1D6729/5E625DEA" Ref="#PWR0159"  Part="1" 
+AR Path="/5E525F2C/5E59D3A2/5E625DEA" Ref="#PWR0159"  Part="1" 
+AR Path="/5E525F2C/5E76A42A/5E625DEA" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E76E218/5E625DEA" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E7721D1/5E625DEA" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5EBAAEAF/5E625DEA" Ref="#PWR080"  Part="1" 
+AR Path="/5E525FFE/5EBAAF7D/5E625DEA" Ref="#PWR086"  Part="1" 
+AR Path="/5E525FFE/5EBAAF8F/5E625DEA" Ref="#PWR092"  Part="1" 
+AR Path="/5E525FFE/5EBAAFA1/5E625DEA" Ref="#PWR098"  Part="1" 
+F 0 "#PWR080" H 6450 3900 50  0001 C CNN
 F 1 "Earth" H 6450 4000 50  0001 C CNN
 F 2 "" H 6450 4150 50  0001 C CNN
 F 3 "~" H 6450 4150 50  0001 C CNN
@@ -486,12 +335,19 @@ Wire Wire Line
 	6450 3950 6450 4150
 $Comp
 L power:Earth #PWR?
-U 1 1 5E750415
+U 1 1 5E625DEB
 P 5550 4150
-AR Path="/5E51E83D/5E750415" Ref="#PWR?"  Part="1" 
-AR Path="/5E1D6729/5E750415" Ref="#PWR0160"  Part="1" 
-AR Path="/5E624B3C/5E1D6729/5E750415" Ref="#PWR0160"  Part="1" 
-F 0 "#PWR0160" H 5550 3900 50  0001 C CNN
+AR Path="/5E51E83D/5E625DEB" Ref="#PWR?"  Part="1" 
+AR Path="/5E1D6729/5E625DEB" Ref="#PWR0160"  Part="1" 
+AR Path="/5E525F2C/5E59D3A2/5E625DEB" Ref="#PWR0160"  Part="1" 
+AR Path="/5E525F2C/5E76A42A/5E625DEB" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E76E218/5E625DEB" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E7721D1/5E625DEB" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5EBAAEAF/5E625DEB" Ref="#PWR079"  Part="1" 
+AR Path="/5E525FFE/5EBAAF7D/5E625DEB" Ref="#PWR085"  Part="1" 
+AR Path="/5E525FFE/5EBAAF8F/5E625DEB" Ref="#PWR091"  Part="1" 
+AR Path="/5E525FFE/5EBAAFA1/5E625DEB" Ref="#PWR097"  Part="1" 
+F 0 "#PWR079" H 5550 3900 50  0001 C CNN
 F 1 "Earth" H 5550 4000 50  0001 C CNN
 F 2 "" H 5550 4150 50  0001 C CNN
 F 3 "~" H 5550 4150 50  0001 C CNN
@@ -510,10 +366,18 @@ Connection ~ 5550 3950
 Wire Wire Line
 	6700 3750 6450 3750
 $Comp
-L power:GNDA #PWR021
-U 1 1 5E75A3A1
+L power:GNDA #PWR0161
+U 1 1 5E625DEC
 P 5300 3750
-F 0 "#PWR021" H 5300 3500 50  0001 C CNN
+AR Path="/5E525F2C/5E59D3A2/5E625DEC" Ref="#PWR0161"  Part="1" 
+AR Path="/5E525F2C/5E76A42A/5E625DEC" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E76E218/5E625DEC" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E7721D1/5E625DEC" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5EBAAEAF/5E625DEC" Ref="#PWR078"  Part="1" 
+AR Path="/5E525FFE/5EBAAF7D/5E625DEC" Ref="#PWR084"  Part="1" 
+AR Path="/5E525FFE/5EBAAF8F/5E625DEC" Ref="#PWR090"  Part="1" 
+AR Path="/5E525FFE/5EBAAFA1/5E625DEC" Ref="#PWR096"  Part="1" 
+F 0 "#PWR078" H 5300 3500 50  0001 C CNN
 F 1 "GNDA" H 5150 3700 50  0000 C CNN
 F 2 "" H 5300 3750 50  0001 C CNN
 F 3 "" H 5300 3750 50  0001 C CNN
@@ -526,9 +390,9 @@ Wire Wire Line
 	6350 3550 6650 3550
 Wire Wire Line
 	6650 3650 6350 3650
-Text GLabel 5350 3650 0    50   Output ~ 0
+Text GLabel 5350 3650 0    50   Input ~ 0
 BIST--_IN
-Text GLabel 5350 3550 0    50   Output ~ 0
+Text GLabel 5350 3550 0    50   Input ~ 0
 BIST-+_IN
 Wire Wire Line
 	5350 3550 5650 3550
@@ -581,8 +445,8 @@ Wire Wire Line
 Connection ~ 6550 2600
 Wire Wire Line
 	6550 2600 6350 2600
-Text GLabel 5350 2600 0    50   Output ~ 0
-RAW_-6V
+Text GLabel 5350 2600 0    50   Input ~ 0
+-6V
 Wire Wire Line
 	5350 2600 5450 2600
 Wire Wire Line
@@ -601,8 +465,8 @@ Wire Wire Line
 Connection ~ 6550 2400
 Wire Wire Line
 	6550 2400 6350 2400
-Text GLabel 5350 2400 0    50   Output ~ 0
-RAW_+10V
+Text GLabel 5350 2400 0    50   Input ~ 0
++10V
 Wire Wire Line
 	5350 2400 5450 2400
 Wire Wire Line
@@ -614,8 +478,8 @@ Wire Wire Line
 	5450 2400 5650 2400
 Wire Wire Line
 	6650 2300 6350 2300
-Text GLabel 5350 2300 0    50   Output ~ 0
-RAW_+5VANA
+Text GLabel 5350 2300 0    50   Input ~ 0
++5VANA
 Wire Wire Line
 	5650 2300 5350 2300
 Wire Wire Line
@@ -701,14 +565,20 @@ Wire Wire Line
 	3300 3550 3300 3650
 $Comp
 L ilemt_input:my_pcie_8x P1
-U 1 1 5E625DE6
+U 1 1 5E681104
 P 2900 1500
-F 0 "P1" H 2900 1500 50  0000 C CNN
+AR Path="/5E525F2C/5E59D3A2/5E681104" Ref="P1"  Part="1" 
+AR Path="/5E525F2C/5E76A42A/5E681104" Ref="P?"  Part="1" 
+AR Path="/5E525F2C/5E76E218/5E681104" Ref="P?"  Part="1" 
+AR Path="/5E525F2C/5E7721D1/5E681104" Ref="P?"  Part="1" 
+AR Path="/5E525FFE/5EBAAEAF/5E681104" Ref="P2"  Part="1" 
+AR Path="/5E525FFE/5EBAAF7D/5E681104" Ref="P3"  Part="1" 
+AR Path="/5E525FFE/5EBAAF8F/5E681104" Ref="P4"  Part="1" 
+AR Path="/5E525FFE/5EBAAFA1/5E681104" Ref="P5"  Part="1" 
+F 0 "P2" H 2900 1500 50  0000 C CNN
 F 1 "my_pcie_8x" H 2900 1000 50  0000 C CNN
-F 2 "input:BUS_PCIexpress_x8" H 2900 2000 50  0001 C CNN
+F 2 "input:PCIE_8x_female" H 2900 2000 50  0001 C CNN
 F 3 "" H 2900 1500 50  0001 C CNN
-F 4 "Do Not Populate" H 2900 1500 50  0001 C CNN "Description"
-F 5 "DNP" H 2900 1500 50  0001 C CNN "MPN"
 	1    2900 1500
 	1    0    0    -1  
 $EndComp
@@ -744,15 +614,12 @@ Wire Wire Line
 	3300 1700 3300 2300
 NoConn ~ 3250 1800
 NoConn ~ 3250 4600
-NoConn ~ 2550 1400
-NoConn ~ 2550 1600
-NoConn ~ 3250 1600
 NoConn ~ 2550 2200
 NoConn ~ 3250 2200
 Wire Wire Line
 	3300 2800 3300 3250
 Wire Wire Line
-	2400 3250 2550 3250
+	2350 3250 2550 3250
 Wire Wire Line
 	3250 3250 3300 3250
 Connection ~ 3300 3250
@@ -767,22 +634,36 @@ Wire Wire Line
 	3300 4300 3300 4400
 $Comp
 L ilemt_input:my_pcie_8x P1
-U 4 1 5E67F4DE
+U 4 1 5EC152A7
 P 2900 4600
-F 0 "P1" H 2900 4600 50  0000 C CNN
+AR Path="/5E525F2C/5E59D3A2/5EC152A7" Ref="P1"  Part="4" 
+AR Path="/5E525F2C/5E76A42A/5EC152A7" Ref="P?"  Part="4" 
+AR Path="/5E525F2C/5E76E218/5EC152A7" Ref="P?"  Part="4" 
+AR Path="/5E525F2C/5E7721D1/5EC152A7" Ref="P?"  Part="4" 
+AR Path="/5E525FFE/5EBAAEAF/5EC152A7" Ref="P2"  Part="4" 
+AR Path="/5E525FFE/5EBAAF7D/5EC152A7" Ref="P3"  Part="4" 
+AR Path="/5E525FFE/5EBAAF8F/5EC152A7" Ref="P4"  Part="4" 
+AR Path="/5E525FFE/5EBAAFA1/5EC152A7" Ref="P5"  Part="4" 
+F 0 "P2" H 2900 4600 50  0000 C CNN
 F 1 "my_pcie_8x" H 2900 4100 50  0000 C CNN
-F 2 "input:BUS_PCIexpress_x8" H 2900 5100 50  0001 C CNN
+F 2 "input:PCIE_8x_female" H 2900 5100 50  0001 C CNN
 F 3 "" H 2900 4600 50  0001 C CNN
-F 4 "Do Not Populate" H 2900 4600 50  0001 C CNN "Description"
-F 5 "DNP" H 2900 4600 50  0001 C CNN "MPN"
 	4    2900 4600
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR019
-U 1 1 5E441E38
+L power:GND #PWR0162
+U 1 1 5EC152A5
 P 2500 5150
-F 0 "#PWR019" H 2500 4900 50  0001 C CNN
+AR Path="/5E525F2C/5E59D3A2/5EC152A5" Ref="#PWR0162"  Part="1" 
+AR Path="/5E525F2C/5E76A42A/5EC152A5" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E76E218/5EC152A5" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5E7721D1/5EC152A5" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5EBAAEAF/5EC152A5" Ref="#PWR076"  Part="1" 
+AR Path="/5E525FFE/5EBAAF7D/5EC152A5" Ref="#PWR082"  Part="1" 
+AR Path="/5E525FFE/5EBAAF8F/5EC152A5" Ref="#PWR088"  Part="1" 
+AR Path="/5E525FFE/5EBAAFA1/5EC152A5" Ref="#PWR094"  Part="1" 
+F 0 "#PWR076" H 2500 4900 50  0001 C CNN
 F 1 "GND" H 2500 5000 50  0000 C CNN
 F 2 "" H 2500 5150 50  0001 C CNN
 F 3 "" H 2500 5150 50  0001 C CNN
@@ -795,4 +676,36 @@ Connection ~ 2500 4900
 Wire Wire Line
 	2500 4900 2500 5150
 Connection ~ 2500 4700
+Text HLabel 2350 1400 0    50   Input ~ 0
+CARDSEL
+Text HLabel 2350 2400 0    50   Output ~ 0
+SDOA1+
+Text HLabel 2350 2500 0    50   Output ~ 0
+SDOA1-
+Text HLabel 2350 2800 0    50   Output ~ 0
+SDOA2+
+Text HLabel 2350 3250 0    50   Output ~ 0
+SDOA2-
+Text HLabel 2350 3550 0    50   Input ~ 0
+SCKB+
+Text HLabel 2350 3650 0    50   Input ~ 0
+SCKB-
+Text HLabel 2350 4300 0    50   Input ~ 0
+MCLK+
+Text HLabel 2350 4400 0    50   Input ~ 0
+MCLK-
+Text HLabel 3450 1400 2    50   Input ~ 0
+SYNC
+Text HLabel 3450 2600 2    50   Output ~ 0
+SDOB1+
+Text HLabel 3450 2700 2    50   Output ~ 0
+SDOB1-
+Text HLabel 3450 3350 2    50   Output ~ 0
+SDOA3+
+Text HLabel 3450 3450 2    50   Output ~ 0
+SDOA3-
+Text HLabel 3450 3750 2    50   Input ~ 0
+SCKA+
+Text HLabel 3450 3850 2    50   Input ~ 0
+SCKA-
 $EndSCHEMATC

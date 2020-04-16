@@ -23,7 +23,19 @@ DAC output:
  -- DAC output filter and perhaps buffer
 
 
-Input board revisions?
+Input board revisions:
+ -- R5 class A bias in reference buffer should be smaller.  This is
+    only giving 4 mA, which is less than the expected 6 mA drain..
+    I think maybe I didn't update this when I changed the V+ voltage?
+    At 15V, we would have had 20 mA.
+ -- Poor ripple rejection because positive feedback from bootstrapping
+    the reference buffer supplies from V+/V-.  Supply is also maybe a
+    little skimpy with diode drops.
+ -- V- regulator + supply is too low, change to use +2.5 with ferrite
+    bead.
+ -- Q3E trace to fuse is narrow.
+ -- Input channel amps have wrong footprint.
+ -- +8 remote sense line is shorted to bus too early by large vias.
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
  -- Switch to different LVDS parts with more sources, standard footprint
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
@@ -125,6 +137,265 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[15 April 20]
+
+I tried sticking in a 2200 uF cap in various places, and it seems that
+there is not much positive feedback effect to the reference buffer
+thru V+.  Putting the cap at the U6 +in terminal reduces V+ ripple
+10x, but has very little effect on the VREF ripple.  Likewise, cap at
+the reference buffer U3 V+ has nil effect on anything.
+
+Trying to directly bootstrap the reference output may not work, since
+without power U3 will likely sink current on its output into V+,
+dragging down the VREF via Q1.
+
+But inspired by the scheme of filtering the reference input to V+
+regulator, and then deriving V- from V+, we could also bootstrap the
+reference at the V+ input, directly into U4 +IN.  Because of R8, R9, a
+low VREF will not be able to drag this down.  Then connect U3
+reference buffer supplies directly to V+/V-, getting rid of the diode
+drop and impedance.
+
+Back up a bit.  Why am I bootstrapping the VREF buffer from V+/V- ?
+Aside from being cool.  The idea is that it gives cleaner supplies to
+VREF buffer, which should make VREF cleaner.  I think I had orignally
+been thinking mainly noise, but also input ripple rejection.
+
+It now looks like the bootstrap is not actually causing the poor
+reference ripple rejection (especially near 2 kHz), though I don't
+know what *is*.  I'm now suspecting a ground reference problem.
+
+ ==> OK, yeah, with my test setup the ground for the external
+     reference was in common with the power path (with the ripple into
+     the input capacitor), so we had mV of common mode voltage, and
+     even according to the 7A22 there was 100's of uV of diff mode
+     signal.  While this signal is nominally added to the reference,
+     the power ground current was increasing with frequency due to the
+     capacitive input impedance, giving the typical pattern of worse
+     ripple rejection with increasing frequency
+
+Separating the reference return path is giving a *much* lower output
+ripple.  I now have:
+		Reference 	V+
+  330 Hz: 	-90 dB?		-86 dB	
+  1 kHz: 	-84 dB		-80 dB
+  2 kHz: 	-66 dB		-62 dB
+  10 kHz: 	-84 dB          -74 dB
+
+Note that if all V+ ripple is due to VREF ripple, then we expect V+ to
+have +4 dB wrt. VREF due to the 8/5 gain in the regulator.  This is
+what we see at 2 kHz and below.  At 10 kHz we are above the bandpass
+of the reference buffer, so it is rolling off.
+
+At 2 kHz the 7A22 is showing 20 uV of diff mode ripple on the
+reference input and 70 uV common mode.  The ripple at the reference
+is also about 20 uV, which is the best we could expect without
+significant onboard filtration.  There is also maybe 10 uV of ripple
+seen across different ground points.  At 10 kHz with 100 mV ripple
+there is up to 40 uV of ripple across the plane, but it is not too bad
+from the reference buffer to the reference bus caps, about 10 uV
+ripple plus 10 uV noise (?).  At the 10 uV level with 30 kHz bandwidth
+we are getting to a very fussy measurement, the probe leads need to be
+paired up well, etc.  But there may be noise voltages at the 10 uV
+level across the plane, I'd guess due to regulator noise being driven
+into the bus bypass caps.
+
+Note that 100 mV p-p input ripple is far more than we are expecting (a
+couple mV).  And generating this ripple at 10 kHz requires a good bit
+of current through the input bypass caps alone.  The reactance of the
+330 uF cap is 48 mOhm at 10 kHz.  The resistance becomes significant.
+With ESR 25 mOhm we expect a peak current of 0.66 A.  So ripple drops
+in the plane will be a lot less in practice, and are probably
+negligible. 
+
+With the current diode bootstrap on the VREF buffer we do still have
+2.5 mV of ripple on the + supply terminal of the VREF buffer.  This could
+be greatly improved by changing the bootstrap, but currently the
+output ripple is dominated by the coupling of ripple into the
+reference input, and perhaps secondarily issues with ground
+referencing across the plane.
+
+
+The problems with the VREF signal input is making me like the idea of
+having a strong onboard lowpass filter for VREF, and perhaps also
+revise the ground reference so that we aren't assuming the plane is a
+superconductor.  I could return the difference amp output reference to
+a ground island which is returned near the power busses, away from any
+power input ripple currents.  [The current layout doesn't look too
+bad, though.]
+
+If I looked at it before, I don't recall, but how much noise do we
+want on VREF?  I'd suppose in the ballpart of 1.5 uV to 3 uV RMS in
+the signal bandwidth, since the input noise is 9 uV RMS.  I think the
+gain of the reference input is effectively 2, since our input range is
+10V, while the reference is 5V.  So 9/3/2 = 1.5.  It seems we
+currently have a lot more noise than that?
+
+This is right around the noise floor of the 7A22.  I see about 6 uV
+p-p noise in 30 kHz BW (with probes, should double check inputs
+grounded).  This is about 1 uV RMS.  This is also about what I measure
+at the outputs of my reference box, so it seems it is indeed pretty
+low in broadband noise.  This is with a 1 kHz LF 3 dB point (to cut
+out hum).
+
+
+
+[14 April 20]
+
+The supply ripple rejection is pretty bad, which I think is being
+heavily contributed by how the reference buffer supplies are
+bootstrapped from its own output, creating positive feedback.
+
+Looking at just the reference output, there is ripple gain peaking
+around 2 kHz.  With 100 mV p-p ripple on V+:
+		Reference 	V+
+  330 Hz: 	-64 dB		-58 dB
+  1 kHz: 	-52 dB		-48 dB
+  2 kHz: 	-44 dB		-40 dB
+  10 kHz: 	-56 dB		-68 dB
+
+
+-60 dB is probably tolerable as long as we have only a couple mV
+ripple on the supplies, but I was hoping to do a lot better.
+
+Another thing I noticed is that the class-A bias resistor in the
+reference buffer is now way too big, I think I didn't change it when
+V+ went from 15V to 7V.  The OPA27 supplies are also kind of skimpy
+now, only about 10V total after the diode drops for supply
+bootstrapping.
+
+ ==> A huge problem seems to be the diode power steering in the supply
+     bootstrap.  At the reference buffer this is hugely magnifying the
+     noise and ripple on the V+ supply.  I guess this is due to the
+     nonlinearity in the diode conduction.  If we are going to use a
+     bootstrap then it needs to be hard switched.
+
+I haven't entirely been able to reproduce the diode effect in
+simulation.  The impedance after the diode is indeed a lot higher,
+maybe 10 Ohms, so possibly the crud is coming from varying 
+supply current in the buffer opamp?  At 2 kHz the ripple at opamp
+supply is 40 mV, vs. 1 mV on V+.  But if the Z is 10 Ohms that would
+only correspond to 4 mA supply variation.
+
+
+I'm thinking that it may be better to directly bootstrap the reference
+output rather than the supplies for the buffer.  I could use an
+emitter follower with the reference input and raw V+ to bring the
+reference within Vbe of the voltage.  Then U3 can be supplied directly
+from V+/V-.
+
+I could also put big caps on the U3 supplies, like the 330 uF, which
+would help considerably.
+
+The high bandwidth of the reference buffer is a bit of a nuisance here
+because we don't have any significant onboard lowpass filtration.
+This would require a separate difference amp and buffer.
+
+ ==> Related but more relevant thought is that I could LPF the
+     reference where it comes into the V+/V- regulators.
+
+This is easy for the V+ regulator, not so much for V-.  But I guess V-
+could use V+ for its reference, rather than directly using VREF.  Then
+if V+ is LPF at the input it will not pass reference ripple to the V-
+supply which could then in turn create positive feedback.
+
+
+[13 April 20]
+
+Changing the V- regulator to use the +2.5 supply as its positive rail
+fixed the noise and load rejection problem on V-.
+
+The square edged intermittent glitches I was seeing on the V+/V-
+supplies seem to be due to RFI from eg. wifi.  This doesn't seem to be
+an instability problem.
+
+One thing I tried which did not help was changing out the polymer fuse
+for the 0.068 ohm used on the reference buffer.  It is possible that
+polymer fuses may not be particularly low noise, but that doesn't seem
+to be the issue here.
+
+I also tried coupling in pulses from a pulse generator using a small
+foil e-field emitter.  Even at >200V from the HP214A, even with the
+foil right on top of the regulator, this did nothing.
+
+However, when I set up the HP 8015 in pulse burst mode, with 10K
+cycles of 25 MHz square wave at fastest rise/fall, then I was getting
+all sorts of interesting effects which were moderately similar to the
+glitching.  In this case, the sign of the step was opposite
+(negative), and it was also rather insensitive to whether the power
+supplies were on or not.  That is, the response was in the 7A22
+itself.
+
+However I think that the glitching I am seeing in the wild may be due
+to sensitivity of the regulator itself.  For one thing, it seems to be
+much more responsive to whether the immediate area of the regulator is
+shielded or not, and (unlike with the 25 MHz burst) largely
+insensitive to touching other parts of the setup.  It's also
+noteworthy that there is no glitching in the output of the VREF
+buffer, even though the test setup is the same.  It seems quite
+plausible that the 100 MHz OPA830 would be more sensitive to GHz EMI
+than the OPA27 is.
+ ==> It's unclear to what degree RFI sensitivity in the regulator
+     (were it shown to exist) would cause any actual problems.  
+
+
+
+[11 April 20]
+
+ -- Test input path
+ -- Test line ripple rejection
+ -- Noise test circuit, try on OPA830, etc
+ -- Other high speed RRO opamp?  Or any single RRO that I have?
+ 
+
+Have the input board together and starting to test and debug analog
+stuff.  So far it seems that the ADCs soldered OK, no shorts to ground
+and all of the pads seem to have wetted.
+
+The +8 regulator seems to work about as expected, with 20 uV p-p noise
+and 2 mOhm Zout at 10 kHz, dropping to undetectable at lower
+frequencies.
+ ==> According to spice, the Zout at 10 kHz should be 0.5 mOhm, but
+     whatevs. Ground reference location may be an issue, for one.
+
+
+The -4 regulator has rougly 10x higher noise and output impedance,
+including an apparent resistive component (down to DC).  I tried
+swapping the opamp for my spare, and this made no difference that I
+could detect.
+ ==> Oops, the OPA830 input range is only up to -2V wrt. plus rail,
+     which is ~1.4V, not including the 0V CM voltage.  While the input
+     range includes the negative rail...  Not sure why I decided 1.4V
+     was enough.
+
+I am exploring that there might be a connection problem due to solder,
+etc.  In looking at this using my DIY LCR meter I found that the V+
+sense resistance was too low, 300 mOhm rather than 700 mOhm.  Looking
+at the Gerber I found that the sense line got shorted to the bus in
+the wrong place by vias.  Does this explain why the V+ reg is working?
+Probably not.
+
+There is this erratic square glitching which comes and goes and is at
+about 59 Hz, is greatly improved by shielding.  This is also seen on
+the -4 V bus, at a much higher amplitude.
+ ==> My feel is that the squareness of the glitching is odd for an
+     interference issue.  Like something on the path is limiting it,
+     or something.  IDK  But the amplitude also goes up and down.
+     Possibly bad test connection issues?
+
+It sort of seems like the V- regulator is operating at a 10x higher
+noise gain, or something.  But the schematic is really not that
+complicated, and it is hard to see how this would come from the
+schematic-level design.  Simetrix says the noise gain is 5 dB, which
+seems about right.
+
+There are some ugly looking solder joints in the V- regulator which I
+will touch up.  The fillets on the bypass caps are fractured, but this
+may have happened during the opamp replacement.
+
+
 
 
 [27 March 20]
