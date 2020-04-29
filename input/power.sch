@@ -833,28 +833,6 @@ Wire Wire Line
 Connection ~ 2950 8350
 Text Notes 7500 4050 0    50   ~ 0
 R15/C7 and R16/C11 boost the 10 kHz supply rejection\nabove the U5, U6 PSRR (which will be low in a high speed type)
-$Comp
-L ilemt_input:BAS21S D?
-U 1 1 5E282E2C
-P 8950 4450
-AR Path="/5DFCF14D/5DE42731/5E282E2C" Ref="D?"  Part="2" 
-AR Path="/5E1D6729/5E1DA2AA/5E282E2C" Ref="D?"  Part="2" 
-AR Path="/5E2EB92B/5E282E2C" Ref="D?"  Part="2" 
-AR Path="/5E51E83D/5E282E2C" Ref="D3"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E282E2C" Ref="D3"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E282E2C" Ref="D?"  Part="1" 
-F 0 "D3" H 8950 4665 50  0000 C CNN
-F 1 "BAS21S" H 8950 4574 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 8950 4300 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 8950 4550 50  0001 C CNN
-F 4 "43" H 8950 4450 50  0001 C CNN "DK line"
-F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 8950 4450 50  0001 C CNN "Description"
-F 6 "BAS21SLT1GOSCT-ND" H 8950 4450 50  0001 C CNN "Digikey"
-F 7 "BAS21SLT1G" H 8950 4450 50  0001 C CNN "MPN"
-F 8 "ON Semiconductor" H 8950 4450 50  0001 C CNN "Manufacturer"
-	1    8950 4450
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	8600 1550 8600 1200
 Connection ~ 8600 1550
@@ -892,7 +870,7 @@ F 3 "" H 12950 2450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	8650 4850 8650 4450
+	8650 4850 8650 4600
 Connection ~ 8650 4850
 $Comp
 L power:PWR_FLAG #FLG010
@@ -945,8 +923,8 @@ F 3 "~" H 11950 2450 50  0001 C CNN
 	1    11950 2450
 	1    0    0    -1  
 $EndComp
-Text GLabel 7700 4450 0    50   Input ~ 0
-FILT_+10V
+Text GLabel 7700 4600 0    50   Input ~ 0
+VDD
 Text GLabel 8000 7550 0    50   Input ~ 0
 FILT_-6V
 Wire Wire Line
@@ -976,7 +954,7 @@ F 8 "Yageo" H 11100 5950 50  0001 C CNN "Manufacturer"
 	-1   0    0    1   
 $EndComp
 Text Notes 8050 9450 0    50   ~ 0
-These regulators for the V+, V- analog supplies operate at a lowish dropout of about 1.5V\nand clean up any crud on the incoming supplies. They also give a supply referenced\nto the local ground which is extremely stiff at our operating frequency near 10 kHz.\nThis prevents coupling between channels via the supply. \n\nThe outputs are derived from the VREF 5V reference, which has to be low noise, but \ngetting low ripple at 10 kHz in the presence of raw supply ripple and output disturbance\nrequires considerable loop bandwidth.  This is too low a frequency for reasonable\nsized bulk capacitors to be very effective, but also too high for a GBW of a few\nMHz to do much good.\n\nThis regulator is likely overkill w.r.t. noise and PSRR, but see docs/notebook.txt\nfor details.  The input channel stage 1 opamp may not have very high PSRR at\nat our 10 kHz operating frequency.\n\nU4, U6 need to have rail-to-rail output (but not input)To get the full AC performance, \nyou need a 100 MHz opamp, but with the total supply of about 10V most +/- 5V high \nspeed bipolar opamps are usable.  Aside from high gain at 10 kHz, noise should be\nreasonably low to get the achievable performance.  Pay attention to the 1/f corner frequency.\n
+These regulators for the V+, V- analog supplies operate at a lowish dropout of about 1.5V\nand clean up any crud on the incoming supplies. They also give a supply referenced\nto the local ground which is extremely stiff at our operating frequency near 10 kHz.\nThis prevents coupling between channels via the supply. \n\nThe outputs are derived from the VREF 5V reference, which has to be low noise, but \ngetting low ripple at 10 kHz in the presence of raw supply ripple and output disturbance\nrequires considerable loop bandwidth.  This is too low a frequency for reasonable\nsized bulk capacitors to be very effective, but also too high for a GBW of a few\nMHz to do much good.\n\nThis regulator is likely overkill w.r.t. noise and PSRR, but see docs/notebook.txt\nfor details.  The input channel stage 1 opamp may not have very high PSRR at\nat our 10 kHz operating frequency.\n\nU4, U6 need to have rail-to-rail output (but not input). To get the full AC performance, \nyou need a 100 MHz opamp, but with the total supply of about 10V most +/- 5V high \nspeed bipolar opamps are usable.  Aside from high gain at 10 kHz, noise should be\nreasonably low to get the achievable performance.  Pay attention to the 1/f corner frequency.\n
 Text Notes 10900 7200 0    75   ~ 0
 V- regulator, -4V
 Text Notes 10800 1550 0    75   ~ 0
@@ -1418,9 +1396,6 @@ F 9 "TE Connectivity Passive Product" H 7900 6450 50  0001 C CNN "Manufacturer"
 	1    7900 6450
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	8650 4450 8800 4450
-Connection ~ 8650 4450
 Connection ~ 8650 5150
 Wire Wire Line
 	8650 5150 8650 4850
@@ -1539,27 +1514,6 @@ F 8 "Stackpole Electronics Inc" H 9550 5550 50  0001 C CNN "Manufacturer"
 $EndComp
 Text GLabel 7950 900  0    50   Input ~ 0
 FILT_+10V
-Wire Wire Line
-	9500 4450 9550 4450
-$Comp
-L power:GNDA #PWR?
-U 1 1 5E53B840
-P 9550 4450
-AR Path="/5DFF6C0D/5E53B840" Ref="#PWR?"  Part="1" 
-AR Path="/5E1D6729/5E1DA2AA/5E53B840" Ref="#PWR?"  Part="1" 
-AR Path="/5E2EB92B/5E53B840" Ref="#PWR?"  Part="1" 
-AR Path="/5E51E83D/5E53B840" Ref="#PWR030"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E53B840" Ref="#PWR030"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E53B840" Ref="#PWR?"  Part="1" 
-F 0 "#PWR030" H 9550 4200 50  0001 C CNN
-F 1 "GNDA" V 9555 4322 50  0000 R CNN
-F 2 "" H 9550 4450 50  0001 C CNN
-F 3 "" H 9550 4450 50  0001 C CNN
-	1    9550 4450
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9100 4450 9200 4450
 $Comp
 L power:GNDA #PWR?
 U 1 1 5DEC962A
@@ -1576,28 +1530,6 @@ F 2 "" H 12400 5900 50  0001 C CNN
 F 3 "" H 12400 5900 50  0001 C CNN
 	1    12400 5900
 	1    0    0    -1  
-$EndComp
-$Comp
-L ilemt_input:BAS21S D?
-U 2 1 5E29E594
-P 9350 4450
-AR Path="/5DFCF14D/5DE42731/5E29E594" Ref="D?"  Part="2" 
-AR Path="/5E1D6729/5E1DA2AA/5E29E594" Ref="D?"  Part="2" 
-AR Path="/5E2EB92B/5E29E594" Ref="D?"  Part="2" 
-AR Path="/5E51E83D/5E29E594" Ref="D3"  Part="2" 
-AR Path="/5E624B3C/5E51E83D/5E29E594" Ref="D3"  Part="2" 
-AR Path="/5E62FD57/5E630FEC/5E29E594" Ref="D?"  Part="2" 
-F 0 "D3" H 9350 4665 50  0000 C CNN
-F 1 "BAS21S" H 9350 4574 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 9350 4300 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 9350 4550 50  0001 C CNN
-F 4 "43" H 9350 4450 50  0001 C CNN "DK line"
-F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 9350 4450 50  0001 C CNN "Description"
-F 6 "BAS21SLT1GOSCT-ND" H 9350 4450 50  0001 C CNN "Digikey"
-F 7 "BAS21SLT1G" H 9350 4450 50  0001 C CNN "MPN"
-F 8 "ON Semiconductor" H 9350 4450 50  0001 C CNN "Manufacturer"
-	2    9350 4450
-	-1   0    0    1   
 $EndComp
 Wire Wire Line
 	10250 5250 10250 5350
@@ -2224,58 +2156,6 @@ Connection ~ 13250 6450
 Wire Wire Line
 	11750 6450 13250 6450
 $Comp
-L Device:R_US R?
-U 1 1 5E5AF449
-P 8300 4450
-AR Path="/5DFF6C0D/5E5AF449" Ref="R?"  Part="1" 
-AR Path="/5E1D6729/5E1DA2AA/5E5AF449" Ref="R?"  Part="1" 
-AR Path="/5E2EB92B/5E5AF449" Ref="R?"  Part="1" 
-AR Path="/5E51E83D/5E5AF449" Ref="R14"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E5AF449" Ref="R14"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E5AF449" Ref="R?"  Part="1" 
-F 0 "R14" V 8400 4450 50  0000 C CNN
-F 1 "499" V 8200 4450 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 8340 4440 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 8300 4450 50  0001 C CNN
-F 4 "0.1%" V 8300 4450 50  0001 C CNN "Notes"
-F 5 "RES SMD 499 OHM 0.1% 1/4W 0805" H 8300 4450 50  0001 C CNN "Description"
-F 6 "A110514CT-ND" H 8300 4450 50  0001 C CNN "Digikey"
-F 7 "30" H 8300 4450 50  0001 C CNN "DK line"
-F 8 "8-2176091-9" H 8300 4450 50  0001 C CNN "MPN"
-F 9 "TE Connectivity Passive Product" H 8300 4450 50  0001 C CNN "Manufacturer"
-	1    8300 4450
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	8450 4450 8650 4450
-$Comp
-L Device:R_US R?
-U 1 1 5E5C1A96
-P 7950 4450
-AR Path="/5DFF6C0D/5E5C1A96" Ref="R?"  Part="1" 
-AR Path="/5E1D6729/5E1DA2AA/5E5C1A96" Ref="R?"  Part="1" 
-AR Path="/5E2EB92B/5E5C1A96" Ref="R?"  Part="1" 
-AR Path="/5E51E83D/5E5C1A96" Ref="R36"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E5C1A96" Ref="R36"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E5C1A96" Ref="R?"  Part="1" 
-F 0 "R36" V 8050 4450 50  0000 C CNN
-F 1 "499" V 7850 4450 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 7990 4440 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 7950 4450 50  0001 C CNN
-F 4 "0.1%" V 7950 4450 50  0001 C CNN "Notes"
-F 5 "RES SMD 499 OHM 0.1% 1/4W 0805" H 7950 4450 50  0001 C CNN "Description"
-F 6 "A110514CT-ND" H 7950 4450 50  0001 C CNN "Digikey"
-F 7 "30" H 7950 4450 50  0001 C CNN "DK line"
-F 8 "8-2176091-9" H 7950 4450 50  0001 C CNN "MPN"
-F 9 "TE Connectivity Passive Product" H 7950 4450 50  0001 C CNN "Manufacturer"
-	1    7950 4450
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	8100 4450 8150 4450
-Wire Wire Line
-	7700 4450 7800 4450
-$Comp
 L Device:C_Small C?
 U 1 1 5E3DBA02
 P 7600 6700
@@ -2395,4 +2275,41 @@ Text Label 3500 5000 0    50   ~ 0
 U7IN
 Text Label 3500 6150 0    50   ~ 0
 U8IN
+$Comp
+L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
+U 1 1 5EA5609A
+P 8100 4600
+AR Path="/5DFCF14D/5DE42731/5EA5609A" Ref="FB?"  Part="1" 
+AR Path="/5E448095/5DE42731/5EA5609A" Ref="FB?"  Part="1" 
+AR Path="/5E45936E/5DE42731/5EA5609A" Ref="FB?"  Part="1" 
+AR Path="/5E525F2C/5E6427A0/5DE42731/5EA5609A" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5DFCF14D/5DE42731/5EA5609A" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5E448095/5DE42731/5EA5609A" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5E45936E/5DE42731/5EA5609A" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5DFCF14D/5DE42731/5EA5609A" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5E448095/5DE42731/5EA5609A" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5E45936E/5DE42731/5EA5609A" Ref="FB?"  Part="1" 
+AR Path="/5E51E83D/5EA5609A" Ref="FB7"  Part="1" 
+F 0 "FB7" H 8100 4887 60  0000 C CNN
+F 1 "2K Ohm" H 8100 4781 60  0000 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 8300 4800 60  0001 L CNN
+F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 8300 4900 60  0001 L CNN
+F 4 " 240-2396-1-ND" H 8300 5000 60  0001 L CNN "Digi-Key_PN"
+F 5 "HZ0805C202R-10" H 8300 5100 60  0001 L CNN "MPN"
+F 6 "Filters" H 8300 5200 60  0001 L CNN "Category"
+F 7 "Ferrite Beads and Chips" H 8300 5300 60  0001 L CNN "Family"
+F 8 "https://product.tdk.com/info/en/catalog/datasheets/beads_commercial_power_mpz2012_en.pdf" H 8300 5400 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H 8300 5500 60  0001 L CNN "DK_Detail_Page"
+F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 8300 5600 60  0001 L CNN "Description"
+F 11 "Laird-Signal Integrity Products" H 8300 5700 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 8300 5800 60  0001 L CNN "Status"
+F 13 "5" H 8100 4600 50  0001 C CNN "DK line"
+F 14 "240-2396-1-ND" H 8100 4600 50  0001 C CNN "Digikey"
+	1    8100 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7700 4600 7900 4600
+Wire Wire Line
+	8300 4600 8650 4600
 $EndSCHEMATC

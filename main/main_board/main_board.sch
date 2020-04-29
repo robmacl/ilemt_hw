@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 13
+Sheet 1 12
 Title ""
 Date ""
 Rev ""
@@ -56,11 +56,5 @@ S 2800 2650 1100 450
 U 5EC4BDFA
 F0 "BIST_DAC" 50
 F1 "BIST.sch" 50
-$EndSheet
-$Sheet
-S 2950 4500 1100 450 
-U 5E9C9ED4
-F0 "sheet5E9C9ED2" 50
-F1 "../../input/power.sch" 50
 $EndSheet
 $EndSCHEMATC

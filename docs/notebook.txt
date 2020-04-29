@@ -1,8 +1,13 @@
- -- Order box
- -- Order sample components: edge connector, reference.
 
+Evaluation tasks:
+ -- Input CMR test.
+ -- Preliminary RFI and ESD testing on input board.
+ -- BIST injection test
 
 Main board:
+ -- Prototype reference
+ -- Order box
+ -- Order sample components: edge connector.
  -- Mechanical layout: mounting holes
  -- Microzed connectors
  -- Microzed symbol generation
@@ -16,33 +21,41 @@ Main board:
      - Supply for LVDS driver/receiver (separate 3.3V)
  -- Test points
 
-
 DAC output:
  -- Breakout board for output slot
  -- +/-12 supplies for DACs
  -- DAC output filter and perhaps buffer
 
-
 Input board revisions:
- -- R5 class A bias in reference buffer should be smaller.  This is
-    only giving 4 mA, which is less than the expected 6 mA drain..
-    I think maybe I didn't update this when I changed the V+ voltage?
-    At 15V, we would have had 20 mA.
- -- Poor ripple rejection because positive feedback from bootstrapping
-    the reference buffer supplies from V+/V-.  Supply is also maybe a
-    little skimpy with diode drops.
- -- V- regulator + supply is too low, change to use +2.5 with ferrite
-    bead.
+ -- Change to how supplies boostrap from reference. Probably
+    not affecting current performance. Noise and ripple on the
+    reference buffer supply just looks ugly.  Supply is also 
+    skimpy with diode drops.
+ -- Use dual opamp rather than 2 OPA27?
  -- Q3E trace to fuse is narrow.
  -- Input channel amps have wrong footprint.
  -- +8 remote sense line is shorted to bus too early by large vias.
+ -- Change testpoint style, turret or at least larger hole.
+ -- More ground TPs.
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
  -- Switch to different LVDS parts with more sources, standard footprint
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
     distortion, PSRR, CMRR.
+ -- Board select logic, mux for one-wire and I2C, onboard eeprom and
+    IO expander.
 
-BOM tasks:
- -- Add Manufacturer/MPN to all parts
+Input board bodges still needed:
+ -- Replace C129, etc. filter caps in YZ channels with 10 nF.
+ -- R326 missing
+ -- D15, D4, D8 missing
+
+Input board changes made (bodged on board and in schematic):
+ -- Reference lowpass filter.
+ -- Change V- regulator + supply to use +2.5 with ferrite bead.
+ -- Fix filter frequency response by changing C129, C130, C111 (and
+    corresponding on other channels) to 10 nF. 
+ -- Increase class A bias in reference buffer from 4 to 20 mA by
+    changing R5 from 499 to 100 (by paralleling two 200s). 
 
 
 Calibration todo:
@@ -52,7 +65,6 @@ Calibration todo:
     the source field strength.  Wondering if the reason we have poor
     accuracy at -Y extreme is just low signal strength, and perhaps
     also unfavorable coupling configuration.
-
 
 
 Other hardware issues:
@@ -139,7 +151,599 @@ password BogPickle
 ________________
 
 
+[28 April 20]
+
+Summary:
+ -- The supply ripple rejection on +10V is now at the limits of an
+    improved measurement, far better than necessary.  The rejection
+    from -6V to V- seems worse, though I suspect that at least part of
+    this is a test setup issue.  But at 10 kHz this is -56 dB, which
+    seems acceptable.  I could not figure out any reason for the
+    difference between +10V and -6V ripple rejection measurements.
+
+
+Back to the ripple rejection test again.  After detecting and
+resolving some ground loop issues with how I was probing the input
+voltage (way across the bench using 10x probe), with ground clip, I am
+getting much lower numbers.  
+
+Compare [15 April 20].  The max ripple I can create at 10 kHz is also
+measuring lower, 50 mV vs 100 mV.  Getting 1-3 uV of hum in common mode
+test, also seen in measurements. 
+
+		BW Hz	p-p in	Vref	LPF in	V+
+    330 Hz:	1k	400 mV	nil	4 uV	nil
+    1 kHz:	10k	400 mV	nil	20 uV	3 uV
+    10 kHz:	30k	50 mV	2 uV(?)	22 uV	3 uV(?)
+
+So the rejection at 330 Hz and 1 kHz is > 100 dB, while at 10 kHz is
+-84 dB.  We can see that there is considerable attenuation of HF
+ripple by the reference lowpass filter, which allows the ripple to be
+this low.  Improvements in the test setup were surely crucial also.
+
+
+But when I inject ripple on the -6V supply, there seems to be much
+more effect:
+		BW Hz	p-p in	Vref	LPF in	V+	V-
+    330 Hz:	1k	400 mV	1 uV(?)	12 uV	nil	50 uV
+    1 kHz:	3k	400 mV	2 uV	40 uV	5 uV	75 uV
+    10 kHz:	30k	50 mV	12 uV	200 uV	20 uV	75 uV
+
+Hum.  Probably still fine, and certainly makes sense that the -6V to
+V- coupling is biggest.  Why do we have so much at LPF input, though?
+The injection setup is basically the same, but the KEPCO + and -
+supplies are different models, might have different capcitance to
+ground or something.  At 1 kHz I am now showing 20 uV of ripple right
+at the reference input.  So once again the injection is creeping in
+there, but the LPF is largely removing it.  This does suggest that we
+have some sort of test problem, but the V- effect is probably at least
+partly real.
+
+At 10 kHz the measured rejection -6 to V- is 56 dB, which is still not
+terrible.  I had aimed for >60 dB so that mV in gives uV out.  At a
+more realistic ripple level of say 5 mV at input we would still have <
+10 uV on the supplies.
+
+The supply ripple on the reference buffer rails is 40-60 uV, so
+minimal.  At 1 kHz the regulator opamp rails have about 40 mV of
+ripple (on whichever rail is injected).  It makes no difference in the
+-6V/V- ripple when I jumper in a 2200 uF cap on the V- regulator opamp
+negative supply, even though it reduces the ripple to maybe 10 mV.
+
+I tried loading down V- with 220 Ohms to ground, and this did not make
+any difference in the ripple (perhaps reduced the noise a bit).  We do
+not have much load on V- currently.
+
+ ==> I can't see any reason why the V- regulator rejection seems to be
+     worse.  Maybe there is still an issue with the common mode
+     voltage being so close to the + supply.  But the increase in the
+     ripple on the reference input also suggests that the setup is
+     behaving differently.  Even though the reference ripple can't
+     explain why the negative is worse, it suggests there might be a
+     spurious effect.
+
+
+Because it took so much time to get the ripple test setup worked out,
+I documented it on pages 102-104 of my notebook #1.  The main idea is
+that there is a series ground path from scope to board GND TP (via
+7A24 volt monitor coax ground).  The 7A22 diff probing also relies on
+this single ground connection.
+
+All the supplies are floated from ground.  There is a ground return
+from the volt box to the board on the (temporary) DB9 cable.  This is
+separate from the power return back to the supplies, but does not
+create a loop because the volt box runs off of batteries.
+
+
+Anyway, I am feeling done with the Vref and regulator testing, though
+may want to reexamine reference noise at some point.  I'm curious what
+the reference noise is on the LTC2500-32 eval board.
+
+
+[27 April 20]
+
+The current steering diodes in the reference bootstrap keep dying. One
+time (D14, IIRC) it was triggered by jumpering in a capacitor.  But
+just now both D5 and D7 blew at the same time for no clear reason.  So
+maybe I shorted the supplies and the capacitors blew it.  But possibly
+there is some sort of startup issue?  IDK  I am planning to get rid of
+these diodes anyway, but not wise to ignore recurring problems.
+
+I don't feel like setting up to measure high speed startup transients,
+but I did look at the currents with various supplies (+10, -6, Vref,
++5) off, and no currents went up when one was shut off.  Also, the
+only case where a supply voltage increased was with V- and +5, where
+V- regulation is lost, so we go down from -4 to to -5.3.  That doesn't
+seem too bad.
+
+
+Now, using just 7A22 (on 10 uV/div), showing 560 nV in 100-1000 Hz.
+With 7A22 inputs grounded at plugin, I have 280 nV.  Hum seems a lot
+less?  I did add a separate reference return wire on my temporary DB9
+connector.  And we do expect some suppression of even 60 Hz.  But hard
+too read much in 1/3 of a division.  With the prototype preamp and 60
+Hz notch filter I am getting 320 nV RMS, but there is definite hum
+harmonics visible, about the same amplitude as the noise.  In a common
+mode test with the preamp I got 200 nV of hum (very little noise),
+which I could affect a lot by turning the preamp in different
+orientations.   But connected to the reference, although the
+sensitivity to orientation is somewhat visible, the effect on RMS
+seems to be very little.  If these added as noise we would expect the
+ref noise to be about 250 nV, but the hum crest factor is lower so I
+think the noise is more dominant than in a noise+noise situation.
+
+The noise p-p amplitude (trying to ignore hum) seems to be about 30-40
+uV p-p on the scope, which is 500-600 nV after /20/6, in good
+agreement with the RMS measurement.  This is not a huge improvement in
+the 100-1000 Hz noise, but hum seems significantly better, because hum
+is no longer having a big effect, and and minimizing interference
+pickup was a big part of the motivation.  Note that we are neglecting
+current noise and other effects.
+
+If we go 0.1 Hz to 1 kHz then the p-p amplitude is about 3.8 uV.
+
+There is sporadic much larger line synched crap.  It is not clear
+whether this is actually there in the reference or has to do with the
+probing.  I rather suspect the measurement setup.
+
+At the volt box I am showing 125 nV RMS, a bunch of which is hum.  The
+noise part seems to be about 50 nV RMS based on visual p-p. (This
+seems to be around the noise floor of the preamp.)
+
+Hmmn, I'm showing 560 nV RMS at the *input* to the LPF also.
+
+I redid my AC coupling setup for the preamp to use a 4.7 uF film
+rather than two large back-to-back electrolytics.  This should give a
+1.7 Hz highpass corner, and avoids the problem I was having with
+needing to manually "reset" the capacitor.  Also the loop area is
+reduced.  With the leads clipped together and floating I get 80 nV RMS
+mostly noise, but I have to turn the clip arrangement to null the hum,
+which is otherwise up to 150 nV RMS.
+
+OK, now at LPF input I am seeing 540 nV RMS at the LPF input, with
+very little hum.  Across the LPF cap I see 120 nV, mostly hum
+harmonics.  This is pretty much at the measurement floor.  With the
+-in clipped to the LPF cap ground and the +in at the Vref testpoint I
+am getting 310 nV.  Measuring between the cap low side and the main
+group testpoint I have 145 nV RMS (with hum), with about 80 nV noise
+only. And still 310 nV at the Vref test point.
+
+150 Hz to 10 kHz I have 850 nV RMS at Vref.  At LPF input I have 1.7
+uV rms.
+
+ ==> The LPF has not helped noise as much as I expected, but it is
+     reducing it 42%.  This is almost certainly good enough,
+     especially if the reference noise rejection turns out to cover
+     the entire baseband.  And reduction in noise pickup is also
+     good.
+
+On V+ I am getting 4.6 uV RMS in 100 Hz to 10 kHz (still with the RFI
+noise bursting).  I did not make a RMS measurement, but this is
+roughly consistent with my note of 20 uV p-p (3.3 uV RMS) in the same
+bandwidth.
+[It does seem that reference noise was making some contribution to V+
+noise.  Currently we expect that Vref noise is only contributing 0.2
+uV RMS to the 4.6 uV total.  But if the LPF input was being passed to
+the regulator then we have 1.7 uV * 8/5 or 2.7 uV noise, which would
+give a best guess of the previous noise as being 5.2 uV RMS.  So, ~10%
+reduction.  Since it was already unnecessarily good, this is of no
+significance.]
+
+On V- I am getting 4.4 uV RMS.  This is consistent the extrapolated no
+ref noise value for V+, which is plausible, since the V- regulator
+gain is 1/2 of V+.  If I did make V+ the reference for V- (for
+bootstrapping), then the reference noise effect would become easily
+measurable.
+
+
+Maybe try the ripple rejection test again?
+
+
+[26 April 20]
+
+We want to do at least preliminary RFI and ESD testing on the input
+board sometime soonish (before we make the revised board).  Final RFI
+testing requires a functioning system, and real ESD testing needs the
+real enclosure, etc.  But we want to do some testing of all functions
+before we respin the board since we hope to get boards fabricated
+which won't need changes.
+
+What I'm thinking is just injecting some RFI and zaps into the inputs.
+Really we should have the ADC working for the RFI, although most of
+the effect could presumably seen at the ADC inputs.  Anyway, I need a
+modulated signal generator with range up into the low GHz.
+
+For ESD what I would be looking for is measured overstress on
+components, especially current into the stage 1 amp.  It's better to
+do this with the input board not plugged into the rest of the system,
+since we don't want to zap other stuff.  I thought there might be
+cheap Chinese ESD guns, but that doesn't seem to be the case.  Even
+used the prices are pretty appalling.  I will probably hack something
+together.  I also want a fairly fast DSO for this, > 100 MHz, since at
+higher zaps I don't want to do thousands of repetitions, and my HV
+hacks may require manual trigger.
+
+
+[24 April 20]
+
+Summary:
+ -- Measured reference noise is about 700 nV (based on visual p-p) in
+    100 Hz - 1 kHz (1.4 kHz with single-pole correction).  This is 18
+    nV/rtHz, which is 3x the 6 nV/rtHz I was hoping for.  But this
+    value is only about 20% high wrt a simple noise model based on
+    typical OPA27 noise and resistor noise.
+ -- A LPF and unity gain buffer could help considerably, letting us
+    reach the 200 nV RMS goal.
+ -- Rough analysis suggests that rejection of reference noise common
+    to input and output may be > 90% through our entire 500 Hz
+    measurement bandwidth.  Rejection is limited mainly by system
+    group delay, which is pretty small.
+ -- LF noise in the measurement should be almost entirely due to
+    non-common 1/f noise in the reference distribution.  LF noise in
+    the AC paths does not matter.
+ -- Adding a LPF seems like a good idea even if the broadband noise is
+    getting rejected because it reduces risk for as yet unknown system
+    level interference pickup.
+ -- Noise in buffer output transistor is probably not a problem,
+    mainly because of loop gain.
+
+
+
+With a slightly better setup reducing hum, I am now getting 320 nV RMS
+at the volt box in 100 Hz - 1 kHz bandwidth, using 20x preamp on
+7A22.  This is a bit lower than the 400 nV I measured yesterday.  With
+2200 uF at the box output terminals this drops to 100 nV.  But this is
+pretty dominated by hum.  Eyeballing the p-p noise, it looks like
+about 3 uV/20 p-p, or 25 nV RMS.  But if we start at 10 Hz, then low
+frequency noise dominates.  For some reason this seems to be peaking
+at around 17 Hz, maybe interaction between box and big load cap.
+
+With the volt box + cap, I am now showing 900 nV RMS at the Vref
+terminal.  This is only 60 nV lower than yesterday, which more or less
+makes sense, since the input ref noise was making a minor
+contribution.  There is still a fair amount of hum, though.
+Eyeballing p-p noise it looks like 700 nV.  (Of course, if there is
+truly hum on the reference, then that is also bad.)
+
+Looking at noise analysis.  While the noise is well above what I
+would like, it is not crazy high wrt. what we might expect.
+    BW = 900 * 1.6 = 1.44 kHz
+where 1.6 is the single pole noise BW.  So noise density:
+    700 nV / sqrt(BW) = 18 nV/rtHz
+
+But our noise gain is 2x, so the opamp RTI noise is only 9 nV/rtHz.
+From specs we might expect about 4 nV/rtHz.  Then there is the Johnson
+noise of the input resistances.  The diff input impedance is 2 kOhm,
+which is about 5.7 nV/rtHz.  Adding to amp noise, we get 7 nV/rtHz,
+which is getting pretty close to the measured noise RTI.
+
+Also, our supplies are really skimpy, especially on the + side.  We
+only have 3.8V of headroom between the 2.5V common mode and the 6.3V
+supply.  The datasheet says common mode range headroom is 2.7V typ, 4V
+max.  And our total supplies are 9.6V, which is just less than the
+lowest charactized supplies, +/- 5.  This part is really meant to run
+on >= 24V.  (Tho noise vs. supply is plotted, and low supply mainly
+increases the 1/f noise.)
+
+I considered whether having a low Zout buffer was a bad idea, and we
+should rely on passive filter.  But, as before, this still does not
+seem like such a good idea because with reasonable values of output
+capacitance the buffer Zout would need to be maybe 100 Ohms in order
+for the capacitance to take over at 100 Hz.
+
+Another point is that electrolytic capacitors are not going to be
+nearly as well matched as a film cap in the LPF would be.
+ ==> Should do a more detailed look at the tradeoff between
+     suppressing ref HF noise via LPF vs. the loss of 1/f suppression
+     due to frequency response mismatch.
+
+My hunch is that we want a LPF corner in the 10's of Hz to give
+significant suppression of hum.  Also, the corner can't be too low
+with any practical film cap size and a low-noise resistor value.  If
+we want 20 Hz with 10 uF then that's 795 Ohms, which gives ~3.6
+nV/rtHz.
+
+Having a separate LPF/buffer stage will also help significantly simply
+by having a noise gain of 1 rather than 2.  eg. our current estimate
+of RTO output noise is 14 nV/rtHz, whereas using another OPA27 buffer
+with 1K/10 uF we could get down to 5.6 nV/rtHz RTO.  [Ignoring that
+output buffer itself sees higher bandwidth, see below.]
+
+But with LPF our noise is non-flat (which happens anyway due to 1/f).
+So how do we understand LF reference noise?  Well:
+ -- 1/f noise in common across input and output conversion is rejected
+    (to first order).
+ -- We want to introduce minimal additional 1/f noise in the
+    distribution.  With the noise gain of 2 in the diff amp this stage
+    will be moderately dominant in added 1/f noise.  Noise due to
+    thermals in the distribution may also be significant, though the
+    differential input should help here.
+ -- End-to-end added noise will at best be >1.4x the reference noise
+    because there will also be distribution noise on the output side.
+ -- For handheld use there is a low corner below which we really do
+    not care about noise.  This is in the ballpark of 0.1 Hz.  I have
+    used 0.2 Hz mainly because this gave more stable results over
+    convenient measurement times.  Because of the rejection of common
+    1/f noise this mainly concerns the reference distribution.  This
+    is why I moved away from the chopper amp idea, because we do not
+    care about very low frequency (DC) performance.
+ -- LF noise <20 Hz is more problematic than broadband because this
+    falls in the control system bandwidth, and is also creates visible
+    motion. 
+ -- Mismatch in the distribution frequency response (eg. LPF) will
+    reduce rejection of 1/f common noise.  Simple matching of the
+    LPF will minimize this.  There is also a tradeoff on LPF pole
+    freq, where a (very) low freq degrades common rejection, while a
+    high freq degrades buffer broadband reference noise.
+
+I want to understand the possible issue with frequency response
+mismatch in the reference distribution (LPF).  My hunch is that this
+is minor, especially given the lowest practical bandwith we can attain
+with film cap and low noise resistor.  But how to trade 1/f vs. broadband
+is not obvious.  Well, most recently we evaluated using RMS noise
+above a low corner, say 0.2 Hz.
+
+[You could use use p-p noise, but this is not a robust measure.  p-p
+does not converge over time, value depends on the time window, and is
+very noisy from window to window.  I'd think you would need to look at
+eg. the mean of values across many windows.  This would be very slow.
+p-p noise does have intuitive appeal as a "worst case" value, but
+arguably this appeal is due to misunderstanding of random noise.]
+
+So, given a metric, RMS noise from 0.2 Hz to 500 Hz, with known levels
+of 1/f and broadband noise, we could find the LPF corner that
+minimizes this metric.  For 1/f this has to take into account the
+mismatch of LPF.
+
+I'm thinking that I don't need to actually do this though, since a
+practical film capacitor LPF is not going to be low enough to cause a
+problem.  Not only will the mismatch be fairly modest, like 10%, the
+mismatch will also contribute mainly at the higher end of 1/f, which
+contains a small fraction of the 1/f noise power.
+
+Is noise upstream from the LFP/buffer negligible?  What is the
+upstream noise?  There is the noise from the reference receiver diff
+amp, plus whatever comes from the master reference itself.  But the
+master ref broadband noise can be made arbitrarily small by using
+multiple poles.  And lower frequency broadband noise will see some
+rejection due to common input/output effect.  Let's assume the master
+ref noise is negligible.
+
+Then we have noise from the receiver (17 nV/rtHz) plus noise from the
+LPF resistor (4 nV/rtHz).  The receiver noise dominates at the output
+buffer's input.  Using the single pole noise bandwidth 1.6 factor, we
+get that the noise bandwidth is 25 Hz with 1K/10 uF.  With noise at
+the LPF input of 17 nV/rtHz, we get noise at the output buffer input
+of 86 nV.
+
+This sums with the buffer intrinsic noise, 4 nV/rtHz in 500 Hz
+bandwidth, giving 89 nV RMS due to the buffer, and a total of 120 nV
+RMS for the sum.  500 Hz is a reasonable number to use for the (brick
+wall) reference bandwidth at the output, since the demodulator will
+likely have a first order response, and 500/1.6 = 312 Hz, which is in
+the ballpark of the 3 dB bandwidth we have been getting.
+
+This meets the 200 nV goal.  There would be room to increase the LPF
+resistor and reduce the LPF cap, since the contribution from LPF alone
+is negligible with 1K.  The actual noise will be worse than this ideal
+model, so 120 nV vs. 200 nV is not a very convincing argument to relax
+by much.  But say 3.3 uF and 3.3K would only increase noise ~6%, and
+would be smaller/cheaper.
+
+At how high a frequency should we expect common reference noise
+rejection to work? I've already mentioned matching, but a problem that
+becomes arbitrarily bad as the frequency goes up is the delay from
+output to input.  Contributors to delay are:
+ 1] Group delay in the driver, especially the output filter (4th
+    order, lowish corner).  This is surprisingly low according to
+    out_filter.sxsch (oddly negative at some freqs, which seems
+    impossible).  But the low corner of the output filter has minimal
+    effect because the vast majority of the inductance is in the
+    source coil itself, so there is not much voltage lag.  And voltage
+    is what we observe at the sensor.
+ 2] Group delay in the input channel (3rd order 30 kHz). From spice,
+    12 us @ 13.5 kHz in the antialias filter.
+ 3] ADC (and DAC) latency.  The delay between the reference input and
+    signal input is quite minimal, due to the oversampling.  The delay
+    due to decimation does not matter.
+
+If the total latency is say 20 us, then it seems that common reference
+rejection might extend to quite a high frequency, perhaps even our
+entire 500 Hz bandwidth.  See
+~/Documents/Work/6dof_old/research/tools/micron/delay_only.m
+to do this properly, but based on scaling of the old Micron figure, we
+could expect 90% rejection at 1 kHz.
+
+If true, this would mean that broadband ref noise is not so important.
+But having a LPF seems like a good idea because it will reject crud
+picked up during distribution, such as hum and driver RFI.  We have
+already seen that these can be large wrt the intrinsic noise.
+
+
+I looked at whether noise in the reference buffer output transistor
+was relevant to the unexpectedly high noise.  Using shot noise into
+200 Ohms we do get noise of 100 nV or so, but the actual open loop
+output impedance is much lower due to capacitors, and also this is
+inside the feedback loop, which still has considerable gain at 1 kHz.
+
+
+[23 April 20]
+
+Summary:
+ -- Frequency response of input channel was wrong.  Now fixed on X
+    channel.  YZ still need capacitor swap.
+ -- Input channel noise bandwidth is more like 90 kHz than 30?  Maybe
+    this is due to filter Q? I don't expect that this matters much
+    since this is out of band.
+ -- At gain 16 the 30 kHz BW noise at the ADC is 7 uV, with input
+    shorted. This is about right.
+ -- I updated the schematic to track bodges that I have made.  See
+    "input board changes made" above.
+
+
+The frequency response of the input channel was *totally* wrong.
+Somehow I had got the wrong values for caps for the stage 1 pole
+(should have been 30 kHz, was more like 100 kHz), and also in the
+antialias/driver, I had multiplied C111 2x rather than dividing 2x
+when going from single-ended design to differential.  This meant that
+the Q was *way* too high.
+
+Changing all these caps to 10 nF is much better.  I think the Q is a
+little higher than Butterworth becase C111 should be more like 8 nF,
+but really it should be fine since we do not care too much about the
+exact frequency response.  As long as the response is pretty flat near
+the carrier center we can roll this into the gain calibration.
+Usually almost all the energy is concentrated in a very narrow
+bandwidth around the channel center.
+
+Based on 7A22 p-p noise measurement, the noise at ADC input is about 8
+uV RMS in 30 kHz bandwidth, with channel gain of 16 (the maximum),
+input shorted but common mode floating.  With 323 on output, I get 7
+uV RMS, though there is some intermittent glitching up.  Probably a
+low cut of 10-100 Hz makes sense.  Noise in full 1 MHz bandwidth is
+only 12 uV, whereas it would be ~40 uV if noise was white out to that
+bandwidth. This is 3x larger, which is a larger increase than we would
+expect given that the input channel bandwidth is 30 kHz. 
+
+7A22 noise alone is a noticeable 3.6 uV in 1 MHz, but this
+is enough smaller to not contribute significantly.
+
+This is in the ballpark of the ADC noise, which is IIRC about what we
+were aiming for at max gain.  Shorting the CM makes no difference that
+I can see (which is expected).  Floating is the actual situation in
+operation.
+
+
+Reference noise:
+
+Using 7A22 with bandwidth 10 Hz to 1 kHz I am getting about 860 nV
+RMS.  7A22 alone is about 220 nV RMS, which should be negligible
+wrt. this measurement.  This is using external volt box.  At the box I
+am showing about 1 uV RMS, but this is dominated by 1/f and hum.
+ ==> Need a better hookup for this.  Use the prototype input amp and
+     some special cables?  Need AC coupling.
+
+Using prototype amp (gain of 20) with electrolytic AC block on one
+side.  With 60 Hz notch filter at 7A22 input, from 100 Hz to 1 kHz.
+With the inputs shorted (thru cap) I am getting 88 nV RMS (about 3
+nV/rtHz, pretending white).  On the reference I am getting 960 nV,
+fair agreement with using 7A22 alone.
+ ==> This is pretty bad, similar to the ADC noise level.
+
+Directly at reference box, using amp, I am getting 400 nV RMS (with a
+fair amount of 120 Hz etc.)
+
+
+[20 April 20]
+
+Started simulating a reference buffer lowpass filter.  One issue I
+realized is that if we push the pole down into the 1/f noise zone then
+we can start to compromise the 1/f noise cancellation with the common
+reference due to mismatch in the frequency response of the different
+buffers.  But if we move the corner up to say 10 Hz then we really
+start to reduce the benefit in the < 1kHz band that we particularly
+care about (and the ripple rejection keeps improving with frequency).
+
+The 1/f rejection above the pole will be just the capacitor matching,
+but the p-p contribution of the 1/f is always loaded toward the bottom
+of our band.  eg. if we start our measurement at 0.2 Hz then we have 7
+octaves up to the 1/f corner at maybe 10 Hz. (??? Not sure what the
+corner for the reference is) but only 2 of these are above 3 Hz.
+
+Each stage does also add noise, of course.
+
+The most likely stuff to get coupled into the reference feed would be
+at the carrier frequencies, or HF hash modulated at these frequencies
+(which would appear mainly at the carrier). Modulation by the high
+carrier seems not such a problem because the spurs would fall outside
+our passband.  But at the low carrier this can create sidebands of the
+high carrier.  This already happens due to IMD, so we have distortion
+filter in place to suppress it.  So this coupling would not be
+terrible.
+
+ ==> What I am thinking is let's skip doing a lowpass in the reference
+     buffer until we know that we need it.
+
+
+[18 April 20]
+
+Summary:
+ -- To contribute negligibly, reference noise (from maybe 10 Hz to 1
+    kHz) should be something like 200 nV RMS. This comes from comparing
+    to channel bandwidth noise, rather than full ADC bandwidth.
+    Ignoring 1/f noise, this is a noise density of 6 nV/rtHz.  As long
+    as reference noise is rolling off, noise above 500 Hz or so will
+    contribute very little.
+
+
+re. how much reference noise we would like.
+
+On [25 Nov 19] I said:
+    It seems that if the 0.1 Hz to 1 kHz p-p reference mismatch between
+    source and sensor is less than 6 uV p-p then we are good. 
+
+Hmmn, not exactly sure where 6 uV comes from.  IIRC I got that from
+the 2500-32 datasheet, which is not the part we are using.  I guess
+that's SINC1 filter with 16x oversample?  But when I switched I also
+convinced myself that with the higher clock rate on the -24 part, it
+was a wash.
+
+FWIW, in the 2500-32 table you can convert the dynamic range to uV by
+using a full scale voltage of 3.69 V.  I don't see how to get there
+from 10V p-p, which I reckon is 3.53 VRMS.  But at any rate, using
+this magic number we can convert the datasheet dynamic range values
+for 2512-24:
+
+DF	s/s	F -3dB		Dynamic range	uV
+16	100k	33k		114 dB		7.36
+32	50k	17k		117 dB		5.21
+
+So we are in the ballpark of 6 uV for the full bandwidth.
+
+But what reference bandwidth do we actually care about? I argue on [25
+Nov 19] that what really matters is the baseband range rather than at
+the carrier.  It's the reference noise in the baseband that causes
+amplitude modulation (or frequency domain base broadening).  This is
+where I hit on the idea that we don't need to consider the full
+reference noise bandwidth, only that in the baseband.
+
+But it seems screwy comparing the full bandwidth noise (6 uV etc.,
+table above) with a narrowband noise.  Shouldn't we compare the
+baseband ref noise to the channel bandwidth noise, not full BW?  This
+is 4x-6x smaller.  At DF=32 the noise in 1 kHz BW should be 1.3 uV
+RMS.  Then /6 to contribute negligibly.  Given 2x gain from reference
+input, we get 0.2 uV RMS reference noise from maybe 10 Hz to 1 kHz.
+
+Broadband reference noise gets frequency shifted by modulating with
+the carrier, and then could possibly end in our passband, such as by
+aliasing.  Each carrier modulates with the reference noise, and since
+(out of the baseband) this is white, it creates a rise in the
+broadband noise floor proportional to the carrier amplitude.  These
+noises then sum across carriers.  Since the noise is broadband, most
+of it ends up somewhere other than in a carrier passband, whereas 100%
+of the low frequency noise appears in every carrier passband.  One
+effect of this is to create spurious carrier cross coupling, though
+this is by definition at the noise floor, so this is not a problem as
+such.
+ ==> The DSP decimation filter should prevent any aliasing of the
+     broadband reference noise.  HF reference noise can indeed
+     increase the broadband noise floor, but as noted, this mostly
+     ends up outside of our channel passbands.  eg. we have 3 kHz
+     bandwidth across channels, but ADC bandwidth is about 20 kHz, so
+     about 1/7 of broadband reference noise ends in a passband (wave
+     hands).  So it seems reasonable to consider only baseband
+     reference noise (especially given that reference noise is rolling
+     off rapidly).
+
+
 [15 April 20]
+
+Summary:
+ -- The poor results in ripple rejection test were mainly due to the
+    ripple signal coupling into the reference input, rather than any
+    sort of onboard supply rejection problem.
+ -- This suggests we may want an onboard lowpass filter on the
+    reference input.
 
 I tried sticking in a 2200 uF cap in various places, and it seems that
 there is not much positive feedback effect to the reference buffer
@@ -244,6 +848,10 @@ out hum).
 
 [14 April 20]
 
+Summary:
+ -- Poor ripple rejection test results, but see above.
+
+
 The supply ripple rejection is pretty bad, which I think is being
 heavily contributed by how the reference buffer supplies are
 bootstrapped from its own output, creating positive feedback.
@@ -304,6 +912,11 @@ supply which could then in turn create positive feedback.
 
 [13 April 20]
 
+Summary:
+ -- Rectangular glitching I am seeing on V+/V- seems to be due to RFI,
+    eg. wifi.  TBD whether this is an actual problem.
+    
+
 Changing the V- regulator to use the +2.5 supply as its positive rail
 fixed the noise and load rejection problem on V-.
 
@@ -344,11 +957,9 @@ than the OPA27 is.
 
 [11 April 20]
 
- -- Test input path
- -- Test line ripple rejection
- -- Noise test circuit, try on OPA830, etc
- -- Other high speed RRO opamp?  Or any single RRO that I have?
- 
+Summary:
+ -- Start of input board supply load rejection testing.
+
 
 Have the input board together and starting to test and debug analog
 stuff.  So far it seems that the ADCs soldered OK, no shorts to ground
@@ -394,8 +1005,6 @@ seems about right.
 There are some ugly looking solder joints in the V- regulator which I
 will touch up.  The fillets on the bypass caps are fractured, but this
 may have happened during the opamp replacement.
-
-
 
 
 [27 March 20]

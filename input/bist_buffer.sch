@@ -401,28 +401,6 @@ F 3 "" H 4350 5575 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4350 5575 4350 5500
-$Comp
-L Device:C_Small C?
-U 1 1 5ED06F32
-P 7300 3450
-AR Path="/5DFF6C0D/5ED06F32" Ref="C?"  Part="1" 
-AR Path="/5E1D6729/5E1DA2AA/5ED06F32" Ref="C?"  Part="1" 
-AR Path="/5E2EB92B/5ED06F32" Ref="C?"  Part="1" 
-AR Path="/5E5A51EB/5ED06F32" Ref="C37"  Part="1" 
-AR Path="/5E624B3C/5E5A51EB/5ED06F32" Ref="C37"  Part="1" 
-F 0 "C37" V 7071 3450 50  0000 C CNN
-F 1 "10nF" V 7162 3450 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 7300 3450 50  0001 C CNN
-F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 7300 3450 50  0001 C CNN
-F 4 "2% C0G" H 7300 3450 50  0001 C CNN "Notes"
-F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 7300 3450 50  0001 C CNN "Description"
-F 6 "490-8296-1-ND" H 7300 3450 50  0001 C CNN "Digikey"
-F 7 "GRM2195C1H103GA01D" H 7300 3450 50  0001 C CNN "MPN"
-F 8 "14" H 7300 3450 50  0001 C CNN "DK line"
-F 9 "Murata Electronics" H 7300 3450 50  0001 C CNN "Manufacturer"
-	1    7300 3450
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	7300 3350 7300 3200
 $Comp
@@ -510,4 +488,26 @@ Text Label 4400 5150 0    50   ~ 0
 U9C+
 Text Label 7350 5150 0    50   ~ 0
 U9D+
+$Comp
+L Device:C_Small C?
+U 1 1 5ED06F32
+P 7300 3450
+AR Path="/5DFF6C0D/5ED06F32" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED06F32" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED06F32" Ref="C?"  Part="1" 
+AR Path="/5E5A51EB/5ED06F32" Ref="C37"  Part="1" 
+AR Path="/5E624B3C/5E5A51EB/5ED06F32" Ref="C37"  Part="1" 
+F 0 "C37" V 7071 3450 50  0000 C CNN
+F 1 "10nF" V 7162 3450 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7300 3450 50  0001 C CNN
+F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 7300 3450 50  0001 C CNN
+F 4 "2% C0G" H 7300 3450 50  0001 C CNN "Notes"
+F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 7300 3450 50  0001 C CNN "Description"
+F 6 "490-8296-1-ND" H 7300 3450 50  0001 C CNN "Digikey"
+F 7 "GRM2195C1H103GA01D" H 7300 3450 50  0001 C CNN "MPN"
+F 8 "14" H 7300 3450 50  0001 C CNN "DK line"
+F 9 "Murata Electronics" H 7300 3450 50  0001 C CNN "Manufacturer"
+	1    7300 3450
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC

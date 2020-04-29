@@ -1426,10 +1426,10 @@ Netnames
 Text value=".simulator SIMETRIX\n.AC DEC 100 1k 200000000\n.simulator DEFAULT\n"
 LicenseInfo version="8.20k" feats=Basic|AD|Micron|Mcore2|Schematic|Advanced|Sim|Demo|Rtn|SIMPLIS_IF|beta serial=unknown user="unknown" code=unknown product="Elements" binarch=x86 system="WINNT/10.0/x64/34260295680/4/1/8/1215923956"
 SimulatorMode value="SIMetrix"
-View x=0 y=-1406 zoomlevel=31 zoom=8 snapgrid=120 offsetX=0 offsetY=0
+View x=-827 y=-1946 zoomlevel=32 zoom=9 snapgrid=120 offsetX=827 offsetY=442
 Property name="CreateProduct" value="Elements" type=value
 Property name="GUID" value="{8d084f3a-63bb-460e-9508-8088554d6b39}" type=value
-Property name="UserVersion" value="39" type=value
-Property name="WriteLog" value="39/39/563219/563219" type=value
+Property name="UserVersion" value="44" type=value
+Property name="WriteLog" value="44/44/827125/827125" type=value
 .EndSchematic
 .EndComponent

@@ -151,4 +151,5 @@
   (lib (name dk_USB-DVI-HDMI-Connectors)(type Legacy)(uri C:/Users/robma/Documents/electro/kicad/lib/digikey-kicad-library/digikey-symbols/dk_USB-DVI-HDMI-Connectors.lib)(options "")(descr ""))
   (lib (name ilemt_input)(type Legacy)(uri C:/Users/robma/Documents/Work/ilemt_hw/kicad/ilemt_input.lib)(options "")(descr ""))
   (lib (name 2019-12-27_12-25-19)(type Legacy)(uri C:/Users/robma/Documents/electro/kicad/lib/ul_SN65LVDS33PWR/KiCAD/2019-12-27_12-25-19/2019-12-27_12-25-19.lib)(options "")(descr ""))
+  (lib (name input_board-cache)(type Legacy)(uri ${KIPRJMOD}/input_board-cache.lib)(options "")(descr ""))
 )
