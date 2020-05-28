@@ -1,24 +1,24 @@
-
 Evaluation tasks:
- -- Input CMR test.
- -- Preliminary RFI and ESD testing on input board.
  -- BIST injection test
+ -- Prototype reference
+ -- Preliminary RFI and ESD testing on input board.
+ -- Measure supply current, in saturation and otherwise.
+
 
 Main board:
- -- Prototype reference
  -- Order box
  -- Order sample components: edge connector.
  -- Mechanical layout: mounting holes
  -- Microzed connectors
  -- Microzed symbol generation
      - Preliminary pin mapping for layout
- -- Reference schematic: pre-regulator, reference/driver
  -- BIST schematic
  -- Power:
-     - How much current do we need on the various rails? +10, -6, +5
-     - input power connector, TVS, filtering
-     - supplies for Microzed (I/O supply, 5V w/ LC decoupling)
+     - Input power connector, TVS, filtering
+     - Supplies for Microzed (I/O supply, 5V w/ LC decoupling)
      - Supply for LVDS driver/receiver (separate 3.3V)
+     - Wurth WE-MPSB beads characterized for DC current. 0805 180 Ohm
+ -- Regulator daughtercard footprint.
  -- Test points
 
 DAC output:
@@ -31,12 +31,22 @@ Input board revisions:
     not affecting current performance. Noise and ripple on the
     reference buffer supply just looks ugly.  Supply is also 
     skimpy with diode drops.
- -- Use dual opamp rather than 2 OPA27?
- -- Q3E trace to fuse is narrow.
+ -- Use OPA2227 dual opamp rather than 2 OPA27
+ -- Q3E fuse trace is narrow.
+ -- Reconsider bead selection on the power inputs.  Higher Z?
+    Consider DC current effect.
  -- Input channel amps have wrong footprint.
  -- +8 remote sense line is shorted to bus too early by large vias.
  -- Change testpoint style, turret or at least larger hole.
- -- More ground TPs.
+ -- More ground TPs.  More exposed top ground pour.
+ -- Rework input filter to use dual planes for dirty cavity to
+    shield input leads before the filter.  Move bead close to input,
+    change 10 Ohm to bead, etc.
+ -- Add more exposed chassis ground on input edge for bonding.
+ -- Beef up input clamp and TVS diodes?  Experience with BAS21S in the
+    regulators makes it seem a little delicate, but TVS is getting hit
+    way harder.  In simulation was having difficulty with getting the
+    diodes to conduct even when the TVS stress was super huge.
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
  -- Switch to different LVDS parts with more sources, standard footprint
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
@@ -69,8 +79,8 @@ Calibration todo:
 
 Other hardware issues:
  -- Re-wind Z source coil
- -- Buy spare amp and supply for driver box?  Parts express has driver
-    still , but Q(@#*&$*( tax exemption needed.
+ -- Buy spare amp and supply for driver box?  Parts express still has
+    driver? 
  -- Stage mount reinforcement
     - Bolt/glue/mortar
  -- Stage refinements: Ry axis, slider mod for Rx axis.
@@ -149,6 +159,1563 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+[19-20 May 20]
+
+Summary: exploring the sweet spot of available power supply and
+distribution components.  Some convergence on a plan, not entirely
+clearly articulated below, but see pages 108-113 in notebook 1 for
+schematic fragements and spatial arrangement schemes.
+
+Basic plan is: 24V SMPS bulk supply, grounded distribution board with
+LC ripple filter and CM choke decoupling between driver and the rest
+of the box.  Regulator card for the +10, -6, +5V rails, daughter card
+for main board, or remote.  This has LC ripple ripple filters per rail
+and beads on each output to main board.  The 5V rails are split at
+this point.  Main board has bulk capacitors and cap/bead HF noise
+filters.
+
+ -- Ferrite beads are mostly small, not many larger than 1206.  0805
+    seems like a good package.  This limits the available combinations
+    of current and impedance.
+ -- Bead impedance drops *rapidly* with DC bias, and is usually not
+    specified.  At rated current (thermal), the 100 MHz impedance may
+    be 1/4 of the no-DC value, inductance 1/10.  Beads in the high-Z
+    low DCR corner are particulary deceptive in this regard.
+ -- POL regulator modules would be reasonable for the +10, +5
+    supplies.  Far fewer options for -6, may want to build our own.
+    But found one part which would cover all three.
+ -- For ripple filter, ceramic caps are a solid option.  Main downside
+    is that you end up with a higher output impedance at LF.
+ -- Electrolytic caps will usually be past their ESR zero at the
+    ripple freq, so we have an LR filter.  Aluminum poly electrolytics
+    bottom out around 7 mOhm, with perhaps 15-20 mOhm more common.
+    Parts are mostly thru-hole, with 16V as the highest common
+    voltage.
+ -- There are lots of cheap ferrite inductors in the 5-15 uH 2A range,
+    small SMD parts.
+ -- Single-part bead+cap LC filters, T or Pi configuration, do not
+    seem to be very relevant.  Somewhat pricy, and seem to be aimed at
+    RF and signal line use.
+
+
+
+Looking at ferrite beads for power distribution, and it seems that the
+most popular sizes are 0805 and smaller, and this has implications for
+how far you can go in the low DCR high impedance direction.  Then you
+head out into the land of wirewound parts, which have higher impedance
+at LF, but also much more pronounced self-resonance.  For 1206 and
+smaller it is easy to switch between bead, resistor and zero ohm.
+
+The standard size chip beads are really cheap, but if you want a
+"bigger" suppression inductor (higher current X impedance), then you
+have to start looking at a qualitatively different solution.  Series
+and possibly parallel combinations may make sense, especially to
+reduce BOM uniques.
+
+Bead impedance drops *rapidly* with DC bias, and is usually not
+specified.  At rated current (thermal), the 100 MHz impedance may
+be 1/4 of the no-DC value, inductance 1/10.  Beads in the high-Z
+low DCR corner are particulary deceptive in this regard.  Since the
+main use is for HF suppression this is not entirely evil as a spec,
+but if you are relying on the (rather ill-defined inductance) at LF,
+then this can be a big surprise.
+
+This is a good resource:
+https://www.analog.com/en/analog-dialogue/articles/ferrite-beads-demystified.html 
+Discusses beads for power filter, suggests running at 1/3 of rated
+(thermal) current.  As with ceramic caps, have to accept that the
+value is reduced under bias.
+
+Wurth has some large beads with a more stable inductive character,
+with online visualization of DC current effect.  eg. 732-3428-1-ND in
+2220 package.  These beads are a lot more expensive, getting into
+inductor territory, but still have much better RF suppression than a
+wire wound inductor.
+
+A fancy bead might make sense on high current paths like the bulk
+supply, Zedboard, and V+/V-.
+
+
+Murata NFZ5BBW520LN10L, 490-12186-1-ND is in the bead category, but is
+characterized at 1 MHz and is wire-wound.  FWIW this is sold as an
+output RFI filter for class D amps, and is really more of a linear
+inductor, though it is characterized by impedance.
+
+[Leaded beads, especially the multi-hole type, also push quite a bit
+farther into this region, while keeping bead-like Q, and are still
+fairly cheap.  But not being SMT they are basically obsolete.  The
+common-mode bead was cool, but did not survive the transition to SMT.]
+
+
+I guess the least-effort way to do the regulator card would be POL
+regulator modules.
+
+There are a few positive-to-negative options, 296-20501-ND for one.
+This is in the old Power Trends line.  In this space options all
+support 24V input (some pricy ones from Linear Tech in BGA).  But
+there can be additional limits, eg. PTN78000A has max input/output
+differential of 32V, so +24 to -6 only gives us 2V of headroom at the
+input.  I think this is not a catastrophic limit, though, just the
+edge of reasonable usage.
+
+For +5 output, there are 633 parts, but only 268 at 24V or greater
+input.  Still not bad.  Then for 2-4A output, there are still 101.
+Cheapest options are too aggressive packaging, require lots of
+external components, and perhaps marginal for voltage.  I pick
+OKI-T/3-W40N-C, which is characterized at 24V.  Many POLs aim at 12V.
+
+Though 555-1245-1-ND would cover both 5V and 10V needs.
+3A and 5A seem to be popular output current points.  There are 77
+parts covering both 5V and 10V at >= 3A.  But most are in QFN or BGA,
+which is unpleasant.  12 remain.  Most of these are in the TI PTN or
+LMZ lines.
+
+It seems the norm these days is to integrate the regulator on your
+card, using one of the manufacturer design tools and stock inductors.
+This is not too hard, gets a lower price.  Might want to do this just
+for the V- rail because the POL coverage is more sketchy.
+
+
+Started thinking about auxiliary ripple filter for SMPS output, and it
+seems that you tend to end up with more of a LR or LL filter than LC
+because your shunt impedance (notially capacitance) pretty quickly
+gets dominated by ESR and ESL as the frequency goes up.  I've read
+that this is the case for the basic output filter in SMPS, that the
+capacitor complement is chosen more for ESR than capacitance.  This is
+particularly true if you choose a small inductor value based on a LC
+corner frequency at say 10 kHz with 220 uF, which gives you 1 uH.  But
+at 100 kHz, inductive Z is only 0.6 Ohms.  With say 565-4285-1-ND
+that I used on input board, 330 uF, 22 mOhm, the ESR zero is at 22
+kHz.  Above that you've got a resistor, and your attenuation is single
+pole, and only -29 dB @ 100 kHz (which isn't terrible).
+
+Looking at the full aluminum poly line.  For ESR <= 11 mOhm, >50% are
+thru-hole. This includes 3/4 of the parts > 6.3V, and almost all of
+the low cost ones.  I guess that makes sense because these are mainly
+used in power boards, which are often (usually?) still thru-hole.  If
+aiming for this spec we would want thru-hole.  The vast majority of
+the parts meeting this spec are 470-820 uF.  Almost all are >= 7 mOhm.
+6.3V is the most common rating, followed by 16V.  Let's say 16V.
+
+So, 493-3716-ND, 100 uF @ 7 mOhm is capacitive to 227 kHz, while
+565-APXJ160ARA271MF80JCT-ND, 220 uF @ 10 mOhm is capacitive to 72
+kHz.  But most of the change in zero frequency is due to the
+capacitance difference, and what matters is the impedance at the
+ripple frequency.  Since ripple of a POL module is almost certainly >=
+200 kHz (for power density and cost), the difference would be mainly
+due to ESR.
+
+Ceramic caps are also a solid option for ripple filter.  Smaller and
+cheaper at the same ESR.  Downside is that there is higher output
+impedance at LF because the capacitance is typically ~10x smaller.
+After 1206, 1210 is most common largeish chip capacitor.  At 10 uF/16V
+you are fine at 1206.  X5R has better capacitance under bias.  Going
+to 1210 allows larger values like 47 uF.  Loss of capacitance under
+bias is bigger for the denser parts, but you still come out ahead for
+impedance below 1 MHz SRF.  SRF is 1-2 MHz for these parts, at which
+point you are inductive limited and the capacitance doesn't matter
+anymore.  This is based on just the capacitor internal ESL, so with
+realistic external parasitic L the gain of 47 uF vs. 10 uF is probably
+not that big.  You may do better with two 10's than one 47.
+
+re. filter output impedance, with 10 uF ceramic you are 2 Ohms @ 10
+kHz, vs maybe 0.06 Ohms w/ 330 uF (eg. aluminum poly).  47 uF ceramic
+1210 gives 0.6 Ohms and is cheaper than the poly.  At 10 kHz you are
+below the ESR zero, so larger capacitance is better.  The benefit of
+the larger capacitor is mainly in the 1 kHz - 10 kHz range.
+
+Note that the inductor ESR pole is also in this range.  This points to
+another advantage of the electrolytic cap, which is that with say 330
+uF 22 mOhm and 15 uH 65 mOhm, Z0 is 213 mOhm, so Q is only 2.5 @ 2.3
+kHz.  But with 10 uF Z0 is 1.2 Ohm, so Q would be more like 17 @ 13
+kHz.  PSRR would also be several times worse at 13 kHz.  If you use
+the ceramic then it would be good to parallel it with a higher ESR
+electrolytic for damping, which may be cheaper, but is upping the
+component count and BOM uniques.  In the kHz range offboard capacitors
+will lump with onboard caps on the same node.
+
+
+For inductors, let's look at 10-40 uH, load and saturation current 1-3
+A, DCR < 100 mOhm, shielded.  We might parallel 2 for the +5V rail.
+The cheapest parts are all SMD wire-wound ferrite 50 mOhm <= DCR <=
+100 mOhm.  There are very few parts < 50 mOhm, while lots > 100 mOhm.
+SRF (when specified) is mostly 10-20 MHz.
+
+For example, 587-2973-1-ND, FIXED IND 15UH 2.4A 65 MOHM SMD, $0.44 in
+quantity 10.  Spec'd at 100 kHz.
+
+These parts are likely mainly used for boost/buck inductors rather
+than a separate LC filter.  Ferrite means they are not very lossy.
+This are only a few metal core parts in this spec, which are more
+expensive.  High Q is in itself undesirable for the filter resonance.
+The capacitor ESR damps this to some degree, but in the corner we have
+chosen the inductor is much more lossy.  With 493-3716-ND and 587-2973-1-ND
+our total ESR is 72 mOhm (ignoring AC core loss).  Our resonant
+frequency is only 4 kHz.  Z0 is 390 mOhm, so Q is about 5.  A bit
+nervous-making, but there shouldn't be much going on at 4 kHz, right?
+
+So, we should be nicely inductive over the SMPS ripple range.  At 200
+kHz inductive reactance is 19 Ohms, so with 7 mOhm we have 69 dB
+attenuation.  This seems like major overkill, 40 dB should be more
+than enough.
+
+As capacitor ESR gets very low, parasitics in the ground network could
+become important.  To get 7 mOhm @ 200 kHz, we'd need 5.6 nH, which is
+an entirely plausible parasitic inductance, even at the board level.
+So at a minimum, attenuation will be reduced somewhat, but also we
+have the problem that it is hard to achieve our objective of sticking
+the negative rail to "ground".  You can see the attenuation at the
+negative terminal of the capacitor, but it may not make it out into
+the larger world very well.
+
+Aside from my unease about lifetime, it might make more sense to use a
+conventional aluminum electrolytic with much higher ESR.  This would
+be cheaper and damp the filter resonance.  Or at least, don't pay
+extra for super-low ESR.
+
+FWIW the PTN78000A datasheet suggests (optional) auxiliary filter
+inductors in the 1-5 uH range.  100 uF bulk capacitance is also
+required at input and output.  Output ESR must be > 17 mOhm.
+Switching freg is spec'd as 550 kHz.
+
+
+My feels are that we are better with a higher value inductor and not
+leaning too heavily on the low capacitor impedance.  The inductor
+swamps the stray inductance in the shunt path, and more generally, in
+the ground net.
+
+For the bulk supply distribution ripple filter we are trying to stick
+the negative rail to ground, which is going to be easier if we don't
+have a lot of ripple current in the capacitor.  I guess it isn't
+necessarily the case that the ripple current is going to go into
+ground (as opposed to the bulk supply return), but the less current
+there is, the better.
+
+Perhaps this is even more true for the low volt regulator outputs?  We
+are not referencing chassis ground at that point, but what we are
+trying to do is get all of the rails cleanly referenced to main board
+ground.  For the bulk distribution there is a CM choke at the output
+which covers for ground path problems, whereas we don't have that at
+the regulator board output.
+
+
+Where should filter components be placed?  Ripple suppression always
+goes at the regulator output.  Mains input filter is in the entry
+module.  RFI filter at the regulator output is perhaps not so
+important.  We want to filter RFI at entry to the regulator board,
+and the main board also.  Especially for regulator board, this reduces
+EMI conduction back up into the bulk supply.  Ceramic, electrolytic
+and ferrite, in some arrangement like bead, HF cap, bead, LF cap.
+
+A little fuzzy on where to locate decoupling on the boundary between
+main board and regulator.  There is a bead on each rail beween the
+two, but where it goes is not clear, and becomes quite unimportant if
+the regulator is a daughter card.  HF cap should be on each rail where
+it comes onto the main board; this is part of establishing the common
+ground reference.
+
+Should the decoupling between the 5V supplies be on the regulator card
+or main board?  Certainly for Zed its LC moat should be right at the
+Zedboard socket because the main concern is keeping crud in.  It is
+good to have multiple lines out from the regulator card to avoid
+common impedance between the 5V loads.  This is especially true if the
+regulator is located remotely or has a bead at the output.
+
+The rails for the card slots should have decoupling near the sockets.
+We want these lines particularly clean wrt analog ground in that area.
+
+If we have more 5V lines this increases the number of bulk caps and
+TVS.  We could omit these (or leave unpopulated) if the regulator card
+is at the main board.  If we don't use the bulk cap as the ripple
+filter then it can be off of the regulator card.  eg. ripple L ->
+ripple C -> (split for rails) bead -> (main board) HF cap || bulk cap.
+Having separate bulk caps will improve kHz decoupling between the
+rails.
+
+The bead should keep too much ripple current from going thru the bulk
+cap, but the bulk cap will still damp the LF resonance of the ripple
+filter.  Bead impedance at 500 kHz is not on the chart, but you can
+infer inductance of 330 Ohm 0805 as about 1.5 uH, which would be 5
+Ohms at 500 kHz.  Compare 1.2 Ohms for 10 uF @ 500 kHz.  Hmmn, that's
+a help, but not huge.  Maybe we want more capacitance in the ripple
+filter. 
+
+Loop back to what is our requirement for ripple rejection.  For
+APXW003A0X3-SRZ we would expect about 20 mV RMS ripple @ 10V (300 kHz
+switching freq).  (This part can all our LV rails including V-, and
+otherwise looks nice.)  This is with just 10 uF ceramic output
+capacitor, and could be improved with a larger cap, Z of 10 uF is 52
+mOhm @ 300 kHz.  But a small inductor is not very expensive, and we
+are not too concerned about the LF output impedance (and voltage
+drop), so a second LC stage should easily finish off the ripple.  With
+15 uH/10uF resonance is at 13 kHz, so at 300 kHz we expect about 54 dB
+attenuation, or 37 uV RMS.  That much attenuation is probably dubious,
+but even with 40 dB, and ignoring the effect of the bead, we would get
+maybe 9 mA of ripple current in the main board bulk cap.  That is
+fine, and total overkill for the digital supplies.  In contrast, the
+ripple current in the output capacitor is in the ballpark of 400 mA.
+(Note that the bulk cap forces the actual LC resonance down much
+lower, where the Q is lower, but the effect at 300 kHz is not so much
+because of the bulk ESR zero.)
+
+
+
+[15-18 May 20]
+
+Summary of RFI and grounding issues.
+ -- Risk minimization.  Use fancy box, be liberal with RFI filtering,
+    both at connectors and interally.  
+ -- RFI enclosure should minimize external pickup concerns.  Will be
+    somewhat effective for magnetic coupling at carrier freqency,
+    highly effective by 100 kHz.
+ -- Internal magnetic coupling from driver and SMPS are biggest
+    concern.  ADC internal filter gives rejection of at least the
+    fundamental, perhaps a harmonic or two.
+ -- Radiated EMI from digital is a possible issue.
+ -- My feels are that I have been too worried about the possible
+    ground loop through the input cards via chassis ground.
+    Especially in the carrier band, I have already taken good measures
+    with differential signalling and grounding on the input card.
+    Possibly there could be issues with digital noise going to ground
+    through the input cards, but this is routed around the input
+    channels.
+ -- But anyway, for ground loops: use front panel as ground tie
+    point.  Do not bond to chassis anywhere else.  Add a liberal
+    ground bond area on each board.  Intially only bulk distribution
+    is bonded (near front panel).  Power chassis is bonded only to
+    front panel.  Do not ground to any other part of enclosure.  If
+    necessary, main board can be bonded to front panel via a (deep)
+    bracket.
+ -- Bulk supply feeds a power distribution board which ties to
+    chassis, filters ripple, then has two output paths, one to driver
+    and the other to low-volt regulator card.  Each has a CM choke and
+    diff mode tee RFI filters (beads + small capacitance to ground).
+ -- Design main board to allow regulator card to attach to the back
+    (or remotely).
+
+
+
+Some work on the box-level grounding issues, power distribution and
+potential ground loops.  See Page 108 in notebook 1.
+
+Vis ground loops, it is perhaps not so hard to anticipate where a
+problem could possibly happen just by looking at where the connections
+are.  What is much harder to anticipate is whether any loop current or
+voltage would cause a performance problem, both because the EM
+environment is unknown, and also because the sensitivity is unknown.
+
+
+What exactly is the threat model?
+
+External pickup: let's look at the box:
+ -- Assume our metal box, and filters at the
+    interfaces, keeps out any external RFI.  If it doesn't, then this is a
+    box and filter problem.
+ -- The box should also keep out E-field (capacitive) coupling from
+    the near field.
+ -- 0.75mm steel should also be a fairly effective magnetic shield.  A
+    full steel enclosure 1.6mm seems to be effective even starting at
+    1 kHz or so, becoming extremely effective by 100 kHz.  However the
+    Stylebox is not that thick (0.75mm) and not complete steel,
+    having 2mm aluminum extrusion sides.  But we might expect decent
+    magnetic shielding (40 dB) above 20 kHz.
+ -- EMI gasket is important even at ELF.  Go for this option if not
+    too expensive.  Risk minimization.
+
+So for external pickup, we would be mainly concerned with magnetic
+pickup at carrier frequency and below.
+ ==> Uh, also we have a magnetic sensor outside the box which is
+     highly sensitive in this band.  So as long as the external
+     coupling is weak wrt this (strong) coupling, we are good.
+
+EM effects should be minimal (either external or internal) until the
+box size is a significant fraction of a wavelength.  There is not any
+significant coupling of E and H fields, so we are mainly in near field
+(especially for internal sources).  EM fields within the box are
+attenuated as we go longer than the waveguide cutoff wavelength,
+size/2.  Say the box is 1m, then 10-50 wavelengths is 20-100m, or 15
+MHz - 3 MHz.  Above this frequency fields can be more effectively
+radiated into victim circuits from internal sources or external leads.
+[External leads are longer and can serve as antennas, so must be
+filtered.]
+
+Vulnerability:
+ -- Since our inputs are differential, and our reference is both
+    differential and heavily lowpass filtered, we expect a good bit of
+    immunity at carrier frequency and below, both to E and H.
+ -- At carrier frequency the 10 nF coupling capacitor between analog
+    and chassis ground is 1K reactance, so there is not much of a
+    loop, and also the loop does not go through the input channels,
+    just across the main ground of the input board.
+ -- At wavelengths approaching the internal lead lengths there may be
+    significant EM pickup.  The longest leads are power leads, which
+    might be 0.5m long.  At 5 wavelengths, 5m is 60 MHz, so this is
+    mainly a VHF and above thing.  Below this we do not expect
+    much pickup or radiation on the internal leads.
+
+Internal pickup: possible emitters:
+ -- Driver: 300 Hz to 20 MHz.  Synchronous with the signal, so we are
+    extra sensitive.  Mainly magnetic coupling.  If driver noise is
+    conducted to analog victim, then most likely via supplies, so
+    power distribution decoupling should handle that.  (Though
+    DAC->driver connection is also a concern.)
+ -- Power supplies: 60 Hz harmonics, 100 kHz to 20 MHz.  Biggest
+    concern for conducted EMI.  
+ -- Both driver and supplies are likely to be biggest offenders in the
+    few octaves above their switching frequency, mostly below 2 MHz.
+ -- Logic: 10 MHz - 1 GHz.  Some signal synchrony.  Ethernet may be an
+    issue, especially because of external connection and internal
+    connection directly to Microzed.  (Shielded cable with ferrite on
+    it.)
+
+Taking vulnerability vs. threat:
+ -- External intererence does not seem like a big deal as long as we
+    have an EMI enclosure and good RFI filtering on the external
+    connections (signal, power and ethernet).
+ -- Internal radiative coupling of logic into analog.  Bead or RC
+    directly at sensitive device inputs.
+ -- Inductive coupling from source or supplies into analog.  Source
+    and DIY switching regulators are a particular concern.
+ -- For SMPS and driver, the fundamental should be <900 kHz, so well
+    suppressed by the ADC itself, even if it does sneak into the
+    analog front end, but the harmonics could be a problem.  For DIY
+    SMPS we should aim for lower frequency and soft switching.
+ -- Magnetic coupling from driver is the biggest concern.  Keep big
+    distance, use shielded or toroidal inductors, orient power PCBs
+    at right angle to input boards.
+ -- Leave room to add steel shielding around the driver.
+
+
+I think the basic strategy has to be to leave options open.  Place
+beads, caps and CM chokes where they might be useful.  Just put all
+them in at first as long as this seems least risk.  If we get that
+far, we can look at removing unnecessary components.  The box-level
+packaging would very likely want to be changed if we ever make more
+than 10-100 units.  Also put a fat ground bond area on one edge of
+pretty much all of the boards.
+
+The LV regulator card seems like a good idea because:
+ 1] I can test things without it.
+ 2] We can locate it wherever seems to be best, at the main board or
+    nearer the bulk supply.
+
+The main board should have a footprint where the regulator card could
+be attached, with a backside connector.  Then the card can be mounted
+there or farther away.  Plan A is that the regulator card is located
+at the main board, and any CM isolation happens there or upstream.  CM
+isolation is simpler on the bulk supply because there are many fewer
+wires.
+
+I am thinking that there should *not* be CM chokes at the main card
+power input.  If we end up locating the regulator card remotely, then
+we can put a ferrite on the cable.
+
+
+[14 May 20]
+
+Summary:
+ -- Musing about box-level grounding and supply distribution.
+ -- Use a single 24V bulk supply for line isolation.  Driver card
+    steps this up (and splits rails), logic/analog steps this down
+    (and splits rails).  Non-split bulk supply is easier
+    off-the-shelf, simplifies CM filtering.  Tending toward enclosed
+    SMPS for this.
+
+
+Interesting idea from chip PI filter app note is that you can
+basically get rid of the characteristic V-shape loss of attenuation at
+HF by adding a Faraday shield between input and output.  But also,
+this doesn't even have to be a can, you can do it by making one side
+of the board the dirty compartment and the other side clean, diving
+thru the ground plane on the clean side of the filter.  The effect is
+pretty dramatic.  I guess this would be even better if the clean (or
+dirty) area is between ground planes.
+
+
+Digikey doesn't have much in the way of 3-line common-mode chokes with
+current ratings > 500 mA.  You are out of the small signal parts and
+into the big power-line toroids, and even those are few, bulky and 
+expensive thru-hole parts.  The only realistic way to get the common
+mode seems be turns on a toroid in the cable, or other similar
+"custom" inductor.  This can be fairly easily added on to the cable if
+necessary, even using a split core.
+
+(LF ground loops thru the analog supply could be broken by transformer
+isolation on those supplies, but that requires either custom magnetics
+or expensive DC-DC converters.)
+
+I have a pretty vague idea of what my threat model is with the main
+board power distribution.
+ -- We want to keep digital crap from the Zedboard contained, and
+    especially out of the +5V analog.  Baseband coupling on +5V analog
+    could be a concern.
+ -- The analog supplies may conduct or pick up switching crud from the
+    regulators and driver board in the 100 kHz - 10 MHz range.  We
+    have big ripple rejection in the baseband, so no worries there.
+ -- TVS protection for reverse polarity, etc.
+ -- External RFI may sneak in by various paths, but once it's in it
+    seems more likely to hit signal paths rather than be distributed
+    on DC busses.  Conducted RFI seems more like an issue with
+    internal digital noise.
+
+I guess we could have a separate supply for +5V analog vs. digital.
+If so, probably clock should run off of the analog supply.  Another
+take is that the Zedboard alone should have the separate supply, since
+it is going to be the main source of asynchronous crud.
+
+The regulator board should largely suppress any diff mode switching
+crud at the output.  Outputs to the driver vs. to the main board
+should be separate, with an inductive CM output impedance (such as
+from ferrite in cable).  Diff mode stuff may get picked up on the
+supply cable or on the main board.  This can be minimized by twisting
+and otherwise keeping the loop area small.
+
+
+
+Thinking about main board layout.  I guess the main board doesn't
+really need chassis ground at all except for the card slot connectors?
+There will be some common mode current because of the supplies and
+microzed connections (ethernet, etc).  If we don't give it any other
+path, then some of this is going to find a return path through the
+input card and then into chassis ground.  One idea is to tie to
+chassis ground at the power input to the main board.  This will create
+a low impedance loop that various chassis currents might go through,
+but will also bypass most of the current around the input boards.
+
+We are more or less stuck with the inputs being (somewhat) tied to
+earth because of the incoming common mode EMI and ESD are earth
+referenced.  But other stuff also needs to be tied to earth,
+especially the mains input.  And the chassis may be incidentally
+grounded to other conductors.
+
+Unfortunately the loop area is pretty big between the input board
+chassis ground and any main-board common mode currents.  What we can
+do is make the CM impedance high for the main board connections (power
+and ethernet).  But if we try to shunt the residual current to chassis
+then we have created a low-Z loop between the front panel chassis
+ground and the main board power entry chassis ground.  It is not
+entirely clear that this will result in a net reduction of chassis
+currents through the input board.  The problem will be minimized if
+the main board connection is to the front panel, rather than running
+to chassis through mounting rails, etc.
+
+I guess the thing to do is to make a chassis pad near the power entry
+on the side of the main board, with 2 or 3 mounting holes, where, if
+we need it, we can mount an aluminum bracket bonded to the front
+panel.  Then at first we try floating the main board ground from
+chassis.  There are also the chassis ground connections to the cards,
+but they go direct to chassis without connecting to any other main
+board nets.
+
+Another idea is to create a good single point ground between the power
+board and the main board, and then move the filtering to the power
+board.  The power board would then be capacitive at the output, with
+the capacitors referenced to the common ground.  So the main board is
+connected to the power board there, but not directly to chassis.  One
+way to package this would be to put the power board behind the main
+board, perhaps plugging directly onto the main board.  Then the ground
+can go via several connector pins rather than via a custom bracket.
+There could be issues with coupling into the main board, especially
+magnetic, but the power card could likely fit behind the upper digital
+part. And we could use reasonably generous stacking height and ground
+planes for shielding.
+
+In this scheme we would want just the low voltage regulators for the
+main board and plugin cards on the main board power card.  The bulk
+supply would be routed seperately to the driver and main board.  Any
+SMPS for the driver could be on the driver board.  This also
+modularizes the design better, since we don't need to anticipate the
+supply needs of the driver board.
+
+With the supply tightly tied to the main board we don't need CM chokes
+at the interface to the main board.  Where we would need it is in the
+connection to the bulk supply.  This is simpler if we have only a
+single bulk supply, not +/- split supplies.  It's still the case that
+CM voltage at the bulk supply input will create currents through the
+card chassis ground.  This is a big loop, but it is also high
+impedance in the baseband, since the chassis ground on the card is not
+directly tied to analog ground, there is only a small coupling
+capacitor (10 nF currently).
+
+What we should do is minimize the common mode voltage at the bulk
+supply, once again moving the filtering upstream.  CM choke at the
+supply, followed by small CM capacitors to chassis which are
+effectively open circuit at LF.  Then ferrite beads on the supply
+board input (on both supply and return separately) can impede HF CM
+and diff mode noise.
+
+Where is the main chassis ground, though?  Is it just through the
+input card chassis ground connections?  This seems like a bad idea.
+Instead we would ground the bulk supply return to chassis.  The supply
+ground should be tied to the front panel rather than to some other
+random point on the enclosure (such as via a chassis cantilevered from
+the front panel).  If the driver needs RFI filters on the output then
+these would be at the front panel and returned to chassis there.  The
+power entry module should also be on the front panel.  Then the front
+panel serves as a chassis ground plane for the entire box.
+
+Possibly it would be better to locate the bulk supply near the front
+of the box, with the driver behind.  This ties the bulk supply more
+tightly to chassis, avoiding possible issues with the driver being in
+between the bulk supply and the front panel, and coupling currents
+into the loop chassis->supply->main board->input board->chassis.  The
+driver does not need to be particulary closely grounded except to
+intercept RFI emission at the outputs.  We could locate an output
+filter card at the front panel source connector.  Perhaps this could
+have the second stage of the main output filter as well as RFI
+bypassing.
+
+Another way to put it is that the bulk supply should be physically
+between the driver and main board, in the front middle rather than on
+the side or back.  The line entry module can still be on the left side
+of the front panel, with wires running sideways to the bulk supply.  A
+stock enclosed SMPS can be mounted on its edge in the center.  For
+example, Mean Well MSP-100-24, 1866-3479-ND.  This is 100W and tiny,
+6x4x1.5".  We would want a small power distribution board with filter
+chokes, etc., for the ripple, and CM choke for the ground loop
+impedance.  Separate filters for the main board and driver board.
+
+
+I was thinking a bit about the power supply again.  I don't want to
+make an offline supply, so we need some sort of isolated bulk supply,
+either a SMPS or iron transformer.  I was thinking that maybe 24V
+would be a good bulk supply to aim for, since this is sort of midway
+between the driver rails at perhaps 70V and our other rails at 5-10V.
+Stepping down from 70V to 5V is going to be kind of unpleasant without
+using a transformer, and we want to avoid custom magnetics.  We need
+similar power (~20W) at low voltage as for the driver, so it doesn't
+make sense to overly favor the driver demand.
+
+Boost/buck ratios of 3 or 5 don't seem terrible, and 24V is within the
+range of more SMPS chips.  This is going to be inefficient, which is
+ok, but probably also rather noisy because of high currents and hard
+switching.  This seems especially likely for the 70V boost converters.
+Not sure what resonant converter options there are with stock
+magnetics, should check that out.
+
+I guess I could also stick with the mystery Chinese audio amp supply
+for the driver, having completely separate line supplies for driver
+vs. everything else.  This would surely help input/output isolation.
+Then the input bulk supply could be more like +/- 12V.  But this is
+risky from both sourcing and regulatory/safety perspective.
+
+
+[13 May 20]
+
+Supply demand for main board + three input (driver TBD):
+ +5:
+    300 mA for input boards, sum of digital and analog +5.  The
+    Zedboard requires up to 1.2A at 5V (or more for the large part,
+    and dependent on FPGA usage).  The clock generator requires 100 mA
+    @ 3.3V.  We also have a bunch of LVDS drivers, 22 mA max for
+    FIN1047, x4 is 88 mA.  The receiver is 15 mA.
+    Total is 1.7 A, so let's say 2A @ 5V.  This should be filtered
+    into three rails: Zedboard, digital and analog.
+ +10/-6:
+    Input boards require up to 800 mA in saturation, but
+    non-saturation current is <300 mA.
+
+Main board is mainly going have filtering, so we only need to worry
+current capacity of inductors.  We need around 200 mA @ 3.3V, which
+can be supplied via LDOs.  Clock wants a separate LDO anyway, so there
+is not any power dissipation issue there.
+
+Driver board supply should not be routed through main board, possibly
+the supply would be coming from there, or more likely a separate
+supply board.
+
+Conducted EMI from the mains should be largely handled by the supply
+board, offline supply and line entry filter.  We are probably mainly
+concerned with decoupling the analog and digital supplies and keeping
+out interference from the driver and switching hash from the
+regulators.
+
+There is still value in common-mode decoupling on the main board
+inputs because this blocks the ground loop between chassis ground at
+the inputs and chassis ground at the supply.
+
+There is also some reason for concern with keeping noise from the
+Microzed from leaking out via its supply.
+
+
+[12 May 20]
+
+Summary:
+ -- Rambling about LPF for master reference, and reconsidering LPF for
+    reference buffer.  We do not need a super big capacitor for the
+    master reference, 2x 3.3 uF is fine.  In the master reference the
+    R can be fairly big: 40K.  With this filter the remaining master
+    reference broadband noise should be swamped by the reference
+    buffer diff amp stage, so there is no issue with preserving common
+    broadband noise (and the 1/f will get thru the 15 Hz buffer LPF).
+ -- Examination of some improved OP27 opamps.  Probably no reason to
+    use OPA27 anymore.  Noise is the same, but input bias current is
+    greatly improved (probably better cancellation).
+
+The REF6250 is really not a good fit for the master reference.  As
+well as the unpleasantly tight supply range, it is only recommended
+for 3 mA output, whereas we want 1.25 mA per board, so say 5 mA for
+three input boards and one output.  I could use it with an additional
+pole and output buffer, but that kind of defeats the purpose of the
+part.
+
+The MAX6220 is a low noise zener reference which operates ok on 10V.
+It has a noise reduction pin, which can bring the broadband noise down
+to 20 nV/rtHz.  We do have the 15 Hz pole in the input board now, so
+the broadband noise is not so critical.  But I am inclined to drive
+the reference noise down lower than that.
+
+I want to analyze how big an R is reasonable for the reference RC
+filter.  Main issues:
+ -- LF noise and drift due to buffer bias current.
+ -- Broadband noise from resistor.
+
+The resistor noise is more straightforward.  If, for the first filter
+after the reference, the resistor noise is small WRT the reference
+noise, then it does not contribute much voltage noise.  We can see
+this even without considering the capacitive load.  With 20 nV/rtHz,
+2.8K would contribute negligibly, or 25K would increase 1.4x (holding
+the pole frequency constant).
+
+[Aside of issues with R and C which are practical, we don't want the
+time constant to be too long simply because we don't want startup to
+be more than a second or so.  A time constant of 100ms-200ms seems
+reasonable.  This puts us in the 10K-20K range for a 10 uF capacitor.]
+
+This entirely depends on our requirements wrt. the noise spectrum.
+Analysis would be complicated down in the 1/f region, which is the
+ballpark of where we would be putting our poles.  For larger resistors
+>10k it may not make sense to use OP27 or similar because the current
+noise will dominate.  We do not even have a spec for the opamp 1/f
+current noise.  But wrt discussion of the input board reference
+buffer, I had argued that 100 Hz to 1 kHz was the region of interest,
+which gets us out of the 1/f range.  See [24 April 20].
+
+So, if we are really only concerned about noise >100 Hz, then this
+lets us generate some bounds to constrain the space.  As long as the
+impedance from C is low wrt. amp noise resistance at 100 Hz we don't
+care about current noise.  And the resistor can be as big as you
+please, because larger values linearly reduce input voltage noise at
+100 Hz.  But there is also no point in reducing the noise at the
+buffer input down below 1/3 the buffer En.  So with 2.5 nV/rtHz in the
+buffer we don't care about more 3 * (20/2.5) or 24x noise reduction.
+This would be achieved with a pole at 4 Hz.
+
+With current noise 0.5 pA/rtHz, we want the effect of current noise to
+be small at 100 Hz.  This means that the induced voltage noise should
+be < 0.8 nV/rtHz.  This is achieved at Xc = 1.6 kOhm, or 1 uF @ 100
+Hz.  So this gives 40 kOhm & 1 uF.  So I was all psyched to use a big
+film capacitor, but there doesn't really seem to be any point.
+
+Let's reexamine the input board reference LPF from this perspective.
+I was guessing that that (because of the reference buffer filtering)
+the master reference broadband noise does not matter all that much.
+Since the buffer diff amp RTI noise is 17 nV/rtHz, any master
+reference noise below 5.7 nV/rtHz would be negligible.
+
+On [24 April 20] I seem to have missed that a larger resistor
+*improves* the noise because it pushes the pole down.  This is a
+1/sqrt() effect because the resistor noise is increasing as sqrt().
+As the resistor becomes large, it also swamps any upstream broadband
+noise with its internal noise (even as it reduces the output noise).
+This added noise is non-common, which is nominally bad, but as long as
+the master reference broadband noise is low (as above) then this noise
+has already been swamped by the buffer diff amp.  There is no common
+broadband noise left to preserve.  The reference buffer LPF design is
+not trying to reduce the master reference broadband noise (which is
+anyway swamped by the diff amp noise).  What we are reducing is the
+diff amp noise, hum and interference.
+
+But in the input board reference buffer we are more concerned about
+introducing drift and 1/f noise, which could be an issue with 1/f
+current noise interacting with a large resistor.  Probably we could
+switch to 1 uF/10K to save on the capacitor.
+
+Under the theory of promoting matching in the reference distribution
+it does make sense for the master reference pole to be lower than
+reference buffer pole.  This way any noise which would be susceptible
+to mismatched response is attenuated at master reference.  If we don't
+want to reduce the buffer pole any lower than the 16 Hz we have with
+3.3 uF/3.3K, then it does make sense to regard R as a Johnson noise
+source, as I did on [24 April 20], and the analysis applies, that we
+would want < 2KOhm to contribute negligibly wrt. 17 nV/rtHz at the
+diff amp output.
+
+BUUT, looping around again, if there is not any common broadband noise
+left to preserve, then we really don't care that much about the
+matching, so we could use a larger R, move the buffer pole down lower
+and suppress more of the diff amp noise.  This is assuming that we
+are not creating non-common 1/f noise by doing this.  Eh, so the 3.3
+uF/3.3K seems pretty good.  FWIW, leaded film capacitors in this range
+are still way way cheaper than SMT.
+
+
+[An interesting aside: the frequency response of all the LC filters
+does of course behave nicely linear, so that it would not affect the
+frequency response if the various stages were reordered.  But noise
+addition is nonlinear, and the noise sources are placed along the
+signal path.  So, right after the reference, which has relatively high
+noise, a high value resistor is not a problem, whereas later on it may
+be.]
+
+
+Comparing OPA209 vs. OPA27, the OPA209 has modestly lower En, 2.2
+vs. 3, and the bias current is considerably improved, ~10x.  The
+current noise 1/f corner is reduced from 200 Hz to 20 Hz.  The En 1/f
+corner increases from ~10 Hz to ~100 Hz, which does seem to reflect
+some increase in 1/f noise, but perhaps mostly the lower broadband
+noise floor.  However the OPA209 does not seem to be noise tested, and
+only has a typical spec.  The OPA209 is noticeably faster, 16 MHz
+vs. 8 Mhz, and slew rate improved even more.  Also, available in dual
+and quad.  It is RR out, which may be mixed wrt. capacitive load
+drive, but curve suggests that the overshoot may level off at 50% for
+large capacitance, whereas OPA27 is not characterized.
+
+The OPA227 is sold as an OP27 upgrade, and is a very close match for
+noise and dynamics.  Like the OPA209 it also has significantly
+improved bias current (tho not quite as good as the OPA209).
+
+All three parts are ~$2.70 each in quantity 10 from Digikey.  There
+does not seem to be much reason to use the OPA27 anymore unless the
+guaranteed noise max is important.
+
+
+[11 May 20]
+
+I updated in_filter.sxsch simulation to cover ESD.  I had some issues
+with multi-GHz ringing related to parasitic inductances, which I
+decided to damp at 2 GHz.  Everything is becoming pretty lossy in that
+range, I'd think, and this stuff was really driving the response.
+
+As I guess I'd supposed, the behavior is largely driven by the ferrite
+bead and TVS, with the diode clamp effectively keeping the opamp
+simulation diodes from conducting even at TVS currents in the 10's
+amps, which would likely blow it.  The only current we are showing is
+due to the input capacitance caused by these diodes.
+
+I'm skeptical of the huge inductive effect shown by the bead model at
+10's of amps, though the model does supposedly include some saturation
+effects.  Convergence is really fragile to reasonable variation in the
+source resistance, pulse length, etc., which likely has to do with the
+bead model.  The model is likely aimed at the small signal metrics in
+the datasheet, rather than large signal performance.
+
+The only way to validate it is to do some testing.
+
+
+[5 May 20]
+
+Eh, I hope I have reined myself in about taking a deep dive on the ESD
+testing.  However interesting a measurement problem it is, this is at
+best a side quest.
+
+I'm thinking I should:
+ 1] Develop a spice model,
+ 2] Make a test board for the input circuits.
+ 3] Do testing using the HP214A with 50 Ohm connection
+ 4] Use avalanche pulser to test fast rise time?  We don't really need
+    a lot of current to get a sense of inductive parasitics, it should
+    be roughly linear with current.
+ 5] Possibly do some testing with capacitive discharge.
+
+The 214A is showing a risetime of about 13 ns, which corresponds to 30
+MHz according to the 0.35/rise rule.  The current probe with passive
+termination is not showing any slowdown WRT this.
+
+The business of trying to have a high-Zout from TLP seems more trouble
+than it's worth, since I don't really need the square pulse.  But I
+can still aim for a setup directly coupled to a ground plane which
+maintains a microstrip-like geometry to minimize parasitics.
+
+
+[4 May 20]
+
+I've started thinking about what sort of ESD testing I could do.  The
+most relevant common tests are the regulatory ESD tests which are
+usually done on complete packaged products.  To some degree testing is
+done on boards, and there are some practices for this.  One of the
+tricky things for ESD testing is that the fast spike behavior is all
+driven by capacitive coupling, which means that the capacitances to
+ground need to be controlled.
+
+For regulatory ESD testing these things are standardized, but I sort
+of get the feeling that ESD testing labs and ESD equipment companies
+are highly involved in the standardization (which makes sense), but
+this has caused the practice of ESD testing to get divorced from
+physical reality.  The emphasis is more on getting consistent results
+across repeated ESD tests than it is on meeting particular issues that
+arise in the field.
+
+For example, "ESD: waveform calculation, field and current of human
+and simulator ESD", by David Pommerenke in 1995 made actual
+measurements of ESD from humans and found that the delayed hump in the
+standard ESD stimulus was invariably missing, and that it was a
+consequence of the ground lead on the ESD gun.  Now, probably this
+isn't terrible because it seems that in most cases ESD problems are
+driven by the initial spike, and any desired level of insult can be
+achieved by just dialing up the voltage.  But it is odd that 25 year
+old concerns about ESD testing (such as derivative of current) are
+only now starting to be addressed, and that apparently efforts to
+change or tighten the specs on ESD guns are being stymied by the gun
+manufacturers.  The testing establishment is opposed to change, and
+product manufacturers, when they interact with the standards process,
+seem more concerned about being able to duplicate the regulatory tests
+so as to avoid late-stage problems development problems than they are
+about improving real-world product performance.
+
+Any board-level testing that does happen is lumped under "system
+level", and is done with the system level testing framework, with
+adaptations such as adding a ground plane (attached to board ground)
+under the board.
+
+Something that is in particular very rarely done is what I was
+envisioning doing, subjecting the board to transients and then doing
+measurements to assess where there was risk of overstress.  Some
+guesses to why this is not done:
+ 1] It is hard to make these measurements.  They are very fast,
+    requiring a fast scope and careful measurement to get meaningful
+    results.  Also it is difficult to make measurements without
+    disturbing the thing measured (eg. measuring currents).
+ 2] It is hard to figure out from specifications what is in fact a
+    problematic level of overstress.  If you keep inside of the
+    datasheet max values then this is *way* *way* conservative.  There
+    is some effort to get component manufacturers to specify relevant
+    transient behavior such as the IV curves of the protection and
+    presumably something about the current tolerance, but this is not
+    a thing in any of the parts I am using.
+ 
+It does seem that perhaps people are testing out there at board level,
+but they are looking for the same things that are in the system-level
+test: hard and soft malfunctions.  They are not looking for whether
+the design has margin, whether it can reasonably be expected to be
+durable.  It would seem that what ppl do to be safe is increase the
+level to where you get failures, and then judge where that is enough
+margin.
+
+But my main concern is with hard faults, and I don't want to
+destructively test my board.  I thought about assembling just the ESD
+structure and first stage, and testing that.
+
+What does seem to be a best practice, but is practiced far more at the
+chip level than the board level, is simulating the response to ESD.
+This is also something I had considered.  At the very least I would
+want to get a vendor model for the TVS I am using, and it would also
+be necessary to model parasitic inductances.  This avoids the whole
+problem with difficult measurement [1], but does not help with [2],
+that we can only guess at what excessive overstress is.
+
+A simulation is extra useful here because you can make the hard
+measurements and also use it to minimize costly and time-consuming
+destructive testing.
+
+Another thought, is that from eg. Henry Ott, and other sources, is
+that ESD is generally a bigger problem for digital (where soft upsets
+can happen at very low levels), whereas RFI is usually a bigger
+problem for analog.  So whatever ESD vulnerabilities there are, they
+can't be assessed without the running digital system, and in many
+cases involve electromagnetic coupling of conducted transients into
+other sensitive nets.  So it is in any case difficult to evaluate
+anywhere other than the full assembled system, since the enclosure
+creates a particular EM environment.
+
+As to what hardware I could use, I had been assuming I could get an
+ESD gun for a few hundred bucks, but this is 10x too low.  The cheap
+Chinese ones are $2k.  So I slapped together some high voltage stuff
+and am making zaps using a spark gap an lumped RC.
+
+But another approach that might make sense is Transmission Line
+Pulsing.  This is evidently commonly used for chip level development,
+despite not being a customer-visible standard.  For the level, TLP
+provides a tractable solution for measuring the VI response of
+protection devices.
+
+In comparison, the classic lumped RC tests and especially the system
+test procedures, try to more closely mimic actual ESD events, but the
+spike waveforms, high voltages and impedances, mean that the
+measurements are difficult to make and are very sensitive to the
+effects of distributed capacitance and inductance in the setup.
+Transmission line does not mimic the fast spike, but does make it
+tractable to get good measurements of clamp performance, how long it
+takes to turn on, and the VI response.  These measurements extend over
+10's of ns, and are considered a "quasi-static response".  Of course,
+at the chip level, external wiring parasitics (which are important for
+system level) are unwanted.
+
+But TPL is very much an emperical measurement-oriented approach,
+characterizing the electrical response with repeatable dimensioned
+measurements.  So it is along the lines of what I was envisioning.
+
+In contrast, the system level ESD measurements, which started in
+air-discharge tests back in the 60s-70's attempting to mimic actual
+ESD.  These were and are useful, but perhaps more because a wide range
+of rapid HV spikes can usefully approximate ESD, rather than because
+the simulation is particuarly accurate or controllable.  Air discharge
+has a lot of problems with sensitivity to the test setup, humidity,
+etc., and also with directing the discharge to where you want it to
+go.
+
+Also, as Pommerenke95 noted, adding the air discharge creates effects
+that may be surprising.  In particular, higher voltages involve longer
+arcs, and longer arcs slow the rise time.  This means that sometimes a
+lower voltage will cause a failure when a higher voltage does not.
+Contact discharge testing does resemble "looking for your keys where
+the light is better", but re. the discussion of TLP above, a less
+realistic but more controllable test may be more useful from an
+engineering perspective.
+
+Anyway, air discharge is significantly easier to DIY since you don't
+need a vacuum relay to switch the discharge.  But as I was exploring,
+you can also use a spark gap.  This does not accurately simulate a
+standard compliant ESD gun, but the ESD gun is anyway not accurately
+simulating real-world ESD, so this is not necessarily a problem.
+
+One issue is that the fast rise of ESD is very much a consequence of
+distributed capacitance between the gun, the DUT and "ground", some
+sort of metal reference plane in the case of system ESD tests.
+
+I have measured the current from my spark gap into 30 Ohms using P6019
+current probe, and am getting a hump rather similar to the ESD
+standards, but the fast spike is absent.  This may be partly due to
+bandwidth limits, and inductance introduced by the current probe, but
+I think is also because I am in effectively measuring the metallic
+current (which in an ESD gun goes through the ground strap).  But the
+fast spike is capacitively coupled, and can't be measured in this way.
+In effect your need a "high side" measurement of the current between
+the generator and the DUT, but this is challenging.  You pretty much
+have to use a current transformer, but this has to shield capacitive
+coupling, and also not introduce much impedance to the discharge.
+
+The thing is, ESD guns are tested in certain ways, primarily the short
+circuit test into a 2 Ohm resistive load, and are supposed to show a
+certain waveform.  It is more or less understood that the actual
+waveform during a system ESD test may be significantly different, but
+whatever is actually going on is quite difficult to measure.  One
+would expect that the coupling is pretty high impedance, so the
+transient current does not vary too much from the short-circuit test
+to the actual setup.  This is a consequence of the high discharge
+voltage vs. the low voltage tolerated by the DUT.  But insofar as this
+is a concern, ppl mainly seem to focus on simulating the gun so that
+you can do ESD simulations.  Google shows lots of spice models for ESD
+gun outputs which mimic the standard waveforms, but there is nearly
+zero information on what is actually inside ESD guns.  They are simply
+supposed to satisfy the gun characterization tests, as a black box.
+
+So there is some risk that the high voltage ESD tests are sacrificing
+both realisim and measurability.  There is a tradeoff here, and given
+the history, regulatory and market pressures, it is unlikely that the
+chosen point is optimal from a technical sense.  TLP lets go realisim
+to gain measurability.
+
+But you do need the <1 ns risetime to exercise the system failure
+modes, and board-level DUT may have moderately high impedance for fast
+spikes due to ferrites, so you do still need a bunch of voltage to
+simulate this.  Possibly directly connected transmission-line
+avalanche pulser could achieve this, but you do have the problem that
+if you put a transmission line at the output then your impedance is
+limited to the line characteristic impedance.  50 Ohms probably won't
+do it.
+
+There has been some work 500 Ohm TLP, but this seems to be done using
+a 50 Ohm line with a 50 Ohm termination as a voltage source, converted
+to current using a 500 Ohm resistor at the DUT, which of course dumps
+90% of the power.
+
+Using Saturn PCB, approximating my spark gap setup as a microstrip 8mm
+conductor at 70mm height (which is quite rough given that the explicit
+ground plane is narrower), it says that Z0 is 165 Ohms.  Calculated as
+a twin line, Z0 is 343 Ohms.  So we could aim for somewhere in that
+range.  Creating a useful pulse length would require a pretty
+physically bulky line if you make a straight rigid line.  Twin line is
+typically 0.83 velocity factor, and the line is traversed twice
+because the reflection from the open end has to come back. so to get
+20 ns you need 2.5m or 8 feet.  The appeal of 50 Ohm coax is obvious.
+Also, twin line has lots of external field, which is going to
+interfere with the measurement.  And twin-line needs to operate
+balanced, whereas the ESD test seems pretty intrinsically unbalanced.
+
+It does seem possible to use transmission line transformers in this
+range.  It is feasible to make 100 Ohm coaxial line, or perhaps even
+200 Ohms.
+
+Well, this is an interesting rabbit hole, but it seems that even in
+TLP testing people usually measure the current with a high-side
+current transformer, so there is the same measurement problem.
+
+The basic idea with TLP us to use a longer more measurable pulse and
+then figure that (for the purposes of chip ESD testing) that what
+matters is mainly the pulse energy.  Also, the fault test is usually
+by leakage current (which indicates degradation of the ESD structure),
+rather than loss of the normal function.  My concern with the analog
+input protection is actually pretty similar to the chip level test
+because I am concerned with hard failures rather than function upsets.
+The fast rise would still be nice, because it makes possible (somewhat
+difficult) measurement of board-level parasitics, but it is plausible
+that a rough equivalence of delivered energy might hold.
+
+RG213 is 101 pF/m, at 66% propagation velocity. So say 3m would give a
+30 ns pulse, with 303 pF.  But if most of the energy is being dumped
+into a termination, then you would need a pretty high voltage to get
+the same energy at the output.  eg. 150 pF @ 10 kV is 7.5 mJ.  But
+adding the L-pad 50/500 Ohm termination only divides the current (into
+a matched load), not the voltage, so the power (and energy) is only
+reduced say 10x when the load is matched.  TLP testing standardly
+operates at 100 ns, say 9m, with capacitance  0.9 nF.
+  E = (C * V^2)/2
+  75 mJ = (0.9 nF * V^2)/2
+  150e-3/0.9e-9 = V^2
+  V = sqrt(150e-3/0.9e-9) = 13 kV
+
+So that is quite doable.
+
+The lumped discharge models also always have various series
+resistance, eg. IEC has 150 pF/330 Ohm.  This will also end up
+absorbing a lot of the energy if the DUT impedance is low.
+
+Note that the only reason that you need the 50 Ohm termination on the
+front is to clean up the trailing edge, absorbing the reflected wave
+so that it doesn't bounce back and forth, creating negative excursions
+and taking a long time to damp.  You would get the same leading edge
+with or without the termination. So in one way of reckoning, where the
+energy is being lost is that it is being reflected from the load, and
+this reflection is what the termination is absorbing.
+
+Perhaps it would make sense to use 330 Ohm rather than 500?  I think
+we are in any case probably not making a matched line to the DUT,
+though we could.  Eg. a "wire microstrip" with 1mm wire 65mm over
+ground has Z0 334 Ohms.  But you an get nearly as high impedance with
+more much shorter standoff distances, eg. 1mm/25mm gives 277 ohms.
+This makes a lot more sense for board coupling.  You can mount the DUT
+board on the ground plane at this height, tied into ground at the
+front chassis ground connector interface.
+
+With 277 Ohms we can pass as much as 18% of the energy to the load,
+rather than only 10%.  The termination for the 50 Ohm pulse line can
+increase somewhat as the Zout drops, as long as the output line is
+well terminated.  eg. for 277 Ohms it could be 61 Ohms.  But the spark
+gap also has impedance, so will affect the termination behavior.
+
+So, the advantage of the matched output line is that the series
+resistor acts as a back termination, absorbing reflections from the
+load.  But unless the output line is pretty long you would have to
+make high speed measurements to see this effect.  I expect that the
+wire microstrip also gives a clean EM environment for the coupling to
+the DUT, where there won't be a lot of ringing due inductances in the
+return path, and where we aren't dependent on engineering particular
+capacitive coupling with the DUT (unlike an ESD gun).  This also gives
+a convenient place to insert a current transformer.
+
+Note that the nonzero impedance of the current transformer is not much
+of a problem because we are mainly concerned with the current
+delivered to the DUT.  This is reduced by the CT, but the CT is always
+present, so is simply part of the test jig.  This is also to some
+degree true of power lost in the CT due to capacitive coupling and
+core losses.  This is one of many effects that reduces the accuracy of
+the measurement, but it is a stable effect, so allows at least
+relative measurements.  It is also possible to characterize the gain
+and frequency response of the CT by running it with a known resistive
+load.  This can be done by AC measurement rather than impulse
+
+We really want to preserve coaxial geometry in the pulse line -> spark
+gap -> terminator path, since this will minimize the external fields
+created by the ~5x larger terminator current. Maintaining the
+symmetrical current flow is much more important than constant
+impedance.
+  
+In the case of ESD to the cable far end, it is coming in over a
+transmission line which is meaningfully long at the 1ns time scale.
+ESD directly to the connector seems like a worse case.  When coming
+over the cable the ESD can't show a high source impedance, so it is
+more effectively suppressed by the ferrite beads at the input.
+
+
+[1 May 20]
+
+The CM injection capacitor creates a somewhat arbitrary capacitive
+divider.  The 100 pF in the model is unrealistically high given the
+expected sensor lead length (and electrostatic shielding).  But what
+matters for the location of the poles is the effective source
+capacitance, which is a parallel combination of the (tiny) coupling
+capacitance and the shield capacitance.  Based on my calibration
+breakout CAT5 cable, the pair-to-shield capacitance is about 130 pF/m,
+or 400 pF for a 3m cable.  That would be 200 pF each side of the
+input.
+
+Diff mode pickup is another story.  Likely this would be magnetic
+dominated, via the sensor up into the HF, and at some level also via
+residual loop area in sensor wiring, twisted pairs.  The diff mode
+source impedance is going to be determined mainly by the sensor.  It
+matters whether we are modelling pickup in the sensor or through the
+cable, because the sensor pickup is shunted by its self-capacitance.
+The sensor pickup is far larger than cable pickup at low frequencies,
+but the this response will drop off rapidly above the SRF, and at some
+point other effects will dominate.  
+
+The Sumida CAS143-47 3-axis 125 kHz RFID I used is spec'd with SRF of
+500-800 kHz.  This corresponds to a shunt capacitance of about 8.5 pF.
+I haven't tried, but the SRF of the dipole-approximating coil must be
+a good bit lower.
+
+With the RFID thru-sensor model we expect an additional 2 pole rolloff
+at around 1 MHz.  It is unclear how far this would actually extend
+(to where other effects take over).  In the current model this continues
+out to VHF.
+
+But even under the cable injection model, the diff mode attenuation is
+13 dB better than the CM at 13.5 Mhz.  So I expect that our RFI
+performance will be dominated by CM.  [Also, to an unknown degree,
+rectification at the input (either CM or diff) will result in a common
+mode signal which should be largely rejected.]  I am hoping that the
+stage 1 opamp will be incapable of rectifying GHz interference.
+
+I just ordered a Marconi 2024 signal generator (2.4 GHz) and the HP
+89410A 10 MHz vector signal analyzer, so I'm going to hold off on more
+RF charactization until these show up.
+
+Unfortunately, the readouts on the 7904 just conked out, so you have
+to look at the knobs, and also the frequency counter is useless.
+
+
+[30 April 20]
+
+Summary:
+ -- The CM performance of the input filter agrees pretty well with the
+    spice model at 1 Mhz and 10 MHz, after I fixed the model and
+    allowed for source impedance effects.
+ -- The source impedance and injection model are crucial.  CM
+    injection through a small capacitor is the only thing that makes
+    any physical sense in the HF region.  This also implies that our
+    threat model is electrostatic rather than magnetic.
+
+
+Comparing CMRR test results to in_filter.sxsch simulation.
+
+I use a capacitive coupling model in the sim, which results in a -32
+dB capacitive divider above 400 Hz.  This gives a flat CM response
+until other filter elements kick in (around 70 kHz).
+
+If we use a large injection capacitor then we see the same flat
+response, but at unity gain.  Then there is a single pole rolloff at
+the filter input near 2 MHz because of the 100 Ohm series capacitor in
+the injection model and the shunt capacitance.  We don't see this with
+a small coupling capacitor because the source impedance is then set by
+the coupling capacitor.
+
+Injecting through a small capacitor is the only thing that makes any
+physical sense in the HF region.  This also implies that our threat
+model is electrostatic rather than magnetic.  The sensor is ungrounded
+so there is no loop to create CM inductive pickup.  We don't get EM
+effects until the lead length is a significant fraction of a
+wavelength, which doesn't happen until VHF
+
+
+The measured common mode attenuation at 300 kHz is a lot higher than
+the simulation.  I measured 28 dB, vs the simulation shows only -5 dB
+re. the LF effect.  So the CM choke model seems pretty wrong.
+ ==> After reducing the inductance to 2.5 mH and increasing the shunt
+     resistance 10x, dropping shunt capacitance ~5x, I roughly
+     reproduce the insertion loss curve in the datasheet.  The 1.6k
+     was just an error, I think.
+
+With CM choke model, I get:
+    Freq	Simulated	Measured
+    300 khz	-24		-28
+    1 Mhz	-40		-46
+
+This is pretty OK agreement.  Simulation claims there is 14 dB of
+peaking at 70 kHz.  That is kind of a lot, if true, but likely the
+coil Q is not actually that high.
+
+
+Then there is another 2 pole rolloff around 13 Mhz from the ferrite
+beads at the input.  The frequency and Q is dependent on the injection
+capacitance, ranging from 2 MHz at large capacitance, out to an
+underdamped 12 MHz with 50 pF.  This is because the injection
+capacitance is in series with the filter input capacitance, so the
+resonance with the inductance is determined by the input capacitance
+when it is much less than 1 nF.  [Once again, the Q of the bead is
+surely poorly modelled.]  The large capacitance more closely matches
+the test situation.
+
+The effect of 50 pF vs large CM injection capacitor size washes out by
+10 Mhz.  This is because the LC resonance of 50pf with the ferrite
+bead is at 13 MHz.  Then the source impedance is swamped by the bead
+impedance, and no longer matters.
+
+The loss of the CM filter goes flat at about -60 dB near 6 MHz (due to
+shunt capacitance in the model), and this benefit is supposed to
+continue out > 100 MHz.
+
+All those times I've looked at the insertion loss plot for a bead or
+other filter inductor, I guess I always thought "Oh, it stops working
+above the resonant frequency, performance degrades".  But that is what
+you see looking into a resistive load.  As long as the load stays
+capacitive the loss just stops improving, remains flat, because it's a
+capacitive divider.  The bead is still doing good work because it's
+replaced a small inductance with a small capacitance, and having a
+small capacitance in series with the input is still much better than
+having a wire.
+
+The resonance the model is showing at 112 MHz is the self-resonance of
+the 1 nF capacitor.  Above there, the attenuation really does degrade
+pretty dramatically.  But as we head into UHF the lumped model is
+going to start to break down anyway.
+
+
+Anyway, the model is predicting -76 dB @ 13.5 MHz.  We do not have any
+data in the 10 MHz frequency range to calibrate this against.  The
+expected attenuation is high enough that it can't be measured in the
+time domain.  I guess the HP 312A could do it?
+
+The 312A says that the spot noise at ADC input at 10 kHz is 1.1 uV in
+1 kHz BW.  Just now, with 7A22 and 1 kHz to 10 kHz, with 323 RMS meter
+I am seeing 5.4 uV RMS.  Correcting to 1 kHz bandwidth, and assuming
+that LF emphasis is negligible, we get:
+  sqrt(1 kHz / (9 kHz * 1.6)) * 5.4 uV = 1.4 uV RMS
+
+So this is pretty good agreement.  The 312A noise floor seems to be
+around 10 dB below this, so should not be contributing much (although
+this is the highest gain setting on the instrument.  It is also not
+true RMS reading.  Maybe I need a noise power correction?
+
+
+Problem with 312A gain calibration.  Maybe I messed it up?  Or someone
+else.  But the calibrator is supposed to work in 75 Ohm bridged, but I
+had set the input according to 50 Ohm bridged, I believe.  The front
+panel trim can't bring the gain in.
+
+The into 75 Ohms, the calibrator output is basically a square wave, at
+2.9 mV RMS.  For square wave, average = peak.  For sine, the RMS is
+1.11x the average.  So we would expect the 2.9 mV RMS square wave to
+read as 1.11 this on an average-reading instrument calibrated to read
+RMS sine, or 3.2 mV RMS.
+
+At 75 Ohms, 0 dBm is 274 mV. [V = sqrt(P*R)] So -40 dBm is 2.74 mV.
+So the calibrator RMS voltage into 75 Ohms should be 2.5 mV.  This is
+not too far from the measured 2.9 mV, +1.3 dB.  But the calibrator
+being a bit high does not at all help our discrepancy. (But for such a
+low level broadband measurement 400 uV is fairly small.)
+ ==> I guess my reasoning is wrong, because the block diagram says it
+     should be 5.6 mV p-p, or 2.8 mV RMS, which is super close to the
+     measurement.
+
+There is a calibrator adjust A26 R30.  This is on page 5-14, which is
+after I gave up during my calibration.  Right before is a procedure
+which seems like it must be calibrating the 312A gain, since we set
+the calibrator from the 312A.
+
+Anyway, for now I am adjusting the front-panel cal 10 dB low [changed
+to 6 dB later, see below] under the intended 75 Ohm/terminated
+condition.  This results in -2 dB at 50 Ohm bridged, which is about
+1.3 dB lower than we were.
+
+So actually we should be reading volts 10 dB low in the 50 Ohm.  I
+double checked this using a 100 kHz 200 mV p-p sine from the 209A,
+comparing to the 323 meter also.  This is in good agreement on the
+absolute volts calibration in 50 Ohm bridged mode, -10 dB.
+
+ ==> So, anyway, the near agreement of the 312A on spot noise is
+     spurious?  The 312A should disagree much more than it does.
+
+Not what is going on with the noise measurement, but it is pretty low
+level, so might tend to read high.  But we are basically 10 dB too
+high.  It is possible there is front-end overload, but we can't
+increase the input attenuation because we are maxed out.
+
+The expected difference between noise and sine for a sine-calibrated
+average reading meter is that the meter will read 1.05 dB low
+wrt. noise RMS. FWIW the manual's discussion of spot noise measurement
+(page 3-5) does not discuss any sine/noise correction.
+
+Hmmn, OK, so now I am getting 0.6 uV 1kHz spot noise @ 10 kHz.  This
+is 1/2 what I had before, and this gives not too bad agreement with
+the RMS measurement.  -10 dB re. 1.4 uV is 0.44 uV, and or 0.49 uV
+with sine/noise correction.  That is not too bad.  10 dB is a factor
+of 3.16.
+ ==> changing 312A to read -6 dB, which is 2x in volt land.  So now I
+     am reading 0.75 uV, which x2 is 1.5 uV.  This Is Fine
+
+
+Measuring input filter using 312A:
+
+dB re. +6 dBm CM voltage (reads 0 dB due to 312A calibration)
+    Freq	CM dB	diff dB
+    1 MHz	-46 	-55
+    10 MHz	-50	-57
+
+The 312A 1 MHz CM dB agrees precisely with my measured value
+above. And the -54 dB diff mode (CM-to-diff conversion) also matches
+my 312A measurement quite well.
+
+The 10 MHz measurement is a bit tetchy, not quite sure what to
+believe.  This is the top of the function generator range, and it is
+running out of gas.  The spice model predicts -80 dB CM @ 10
+MHz.
+ ==> Ah, except that I adjusted the input voltage back to 0 dB, which 
+     is cancelling out the first order rolloff that starts at 2 Mhz
+     due to the source impedance and the input capacitance.  The
+     attenuation across the CM filter in the model is 55 dB, which
+     lines up pretty well.
+
+Simulating a zero source impedance does not make any sense for
+predicting system performance.
+
+Given the 20 dB source boost, the diff dB -77 dB, or 23 dB worse than
+the -100 predicted by the model.  But it is not surprising that the
+mismatch model is way out at 10 MHz.  This is not a very precise
+measurement.  I tried removing the volt monitor probe at the input and
+this increased the diff measurement 6 dB or so, which is the opposite
+of what you would expect if the sides were well matched.  But anyway,
+20 pF has a significant effect.  At this frequency we really don't
+care about the diff signal anymore.
+
+
+ ==> Would be interesting to see if there is peaking in the filter
+     response at around 70 kHz (as spice predicts).
+     
+
+[29 April 20]
+
+Summary:
+ -- Rejection of common-mode signals is pretty good.  CMR is 110 dB at
+    LF, and is 3 dB down at 2 kHz, 53 db @ 10 kHz, with lowest value
+    of 40 dB @ 30 kHz (where the antialias filter kicks in).
+ -- I got 110 dB CMRR @ 300 kHz and 121 dB @ 1 MHz.  The input filter
+    is taking over at this point, and at HF we are mainly concerned
+    with rectification anyway.  Checked the antialias response earlier,
+    but haven't looked at diff mode response >>30 Khz.
+
+I just checked, and FWIW the VREF noise on the LTC2500-32 eval board
+is 3.4 uV RMS in 100 Hz to 1 kHz bandwidth, which is ~10x higher than
+the 0.31 uV I now have on the input board.  Allowing for the 2x gain
+from the reference input, this is approximately the full bandwidth RMS
+noise at 16x oversampling.  So, I'd expect that this does degrade the
+performance for full-scale signals, even if they are DC or broadband.
+It will be interesting to see what we get, but I do not expect a huge
+effect, maybe 3-6 dB?  If the reference was having such a big effect,
+then they would have tried harder there, wouldn't they?
+
+My current theory is that we need to consider the baseband reference
+noise modulation of every channel, then we need to compare the ref
+noise to the noise in a single channel, which is significantly
+narrower that the converter output bandwidth, so has less noise.
+ ==> This effect is partly offset by how the full scale value reduces
+     when we have a superposition of carriers.  We have to reduce the
+     level so that the sum of signals fits in the full-scale range,
+     which reduces the dynamic range of any single channel.  This
+     lower level reduces how far the reference noise can "stick up" in
+     any given channel
+
+I don't recall thinking about this before, but it doesn't
+seem that the LF reference noise benefits at all from oversampling,
+since it all falls inside the decimation filter bandwidth.
+ ==> Or, more precisely, decimation makes the reference noise worse,
+     since the conversion noise decreases while the reference noise
+     remains the same (until the decimation filter bandwidth is
+     smaller than the reference noise bandwidth).
+
+This is another way to understand the above effect of reference noise
+on a narrowband measurement.  A DC signal is a special case where the
+bandwidth is centered at zero.  If we look at the total noise in a
+wide ADC output bandwidth, then we may see that the conversion noise
+dominates the reference noise, but as we continue to lowpass filter
+the data (further decimation), then the reference noise can become
+dominant because it has greater LF emphasis such as 1/f noise and LPF
+rolloff.  Decimation does not help much with reference noise because
+the reference noise is concentrated inside the the signal bandwidth.
+
+At DC we will also see the input path 1/f noise in the result, which
+might still dominate.  But for AC signals we are well out of the 1/f
+noise on the input path (and ADC itself), so the reference LF noise
+stands alone.  For us, however, we expect that we will get
+considerable rejection of LF reference noise because of the
+ratiometric operation of the tracker.
+
+
+CMRR test:
+
+Using Wavetek 144 function generator.  You need a DC block capacitor
+because the CM voltage is 2.5V.
+
+With gain 16 (both jumpers in), and CM input: 330 mV RMS (~1V p-p), at
+LF CMR output is 140 uV RMS, or -67 dB.  CMR degrades 3 dB at 2 kHz,
+to -53 dB @ 10 kHz.  The peak CM response is -41 dB @ 30 kHz (where
+the antialias filter takes over).
+
+
+Lets go down the chain, 300 kHz, p-p voltage:
+
+		diff	diff dB re.	CM V	CM dB re.
+			input CM		input CM
+ Sensor input:				1V 	0
+ Stage 1 input:	100 uV	-80		40 mV	-28
+ Stage 2 input: 160 uV	-100		40 mV	-28
+ ADC input:	50 uV	-110		50 uV	-86
+ 
+The diff mode signal at the stage 1 input (-80 dB) is the
+CM-to-differential conversion caused by the filter.
+[True value may be 1/2 this because the 7A22 CMR is not much better.
+So without any external impedance mismatch, the input filter should
+not cause any measurable degradation in CMRR.  In practice we expect
+LF interference rejection to be limited by interference which is not
+coupled purely in CM, or by impedance mismatch.]
+
+Diff mode at the stage 2 input incorporates the 16x diff gain (and
+unity CM gain).  The 20 dB CMR added by stage 1 mainly reflects that
+the diff gain has been rolled off to unity.
+
+The only 10 dB improvement from the antialias filter seems
+disappointing given that we are way into the LPF stopband.  But note
+that the CM signal has been almost entirely eliminated (-58 dB).  The
+driver feedthru may mainly reflect finite CMRR rather than stopband
+leakage.  We only expect 35-40 dB CMRR in the antialias/driver
+stopband due to capacitor mismatch. (This CM signal reduction in the
+driver likely is unimportant because the ADC CMR is supposed to be
+quite high, > 100 dB.)
+
+[The measurement at the ADC input is a bit tricky.  When I used
+mismatched BNC cables to extend the MMCX cable whips I was getting a
+larger signal which was oddly triangular and was very sensitive to the
+cable dress.  With the matched cables I am getting the same result as
+using the 1x probes.  (These cables are creating some capacitive load,
+but the ADC already has 6.8 nF at each input, so this should not
+matter much.)]
+
+110 dB is in the same ballpark as the input channel dynamic range, so
+the CMR seems quite adequate at 300 kHz.  But this is in the stopband
+of the decimation filter so we anyway don't really care what is going
+on.  But this is a plausible datapoint on what we can expect to CM
+signals in the stopband.
+
+I'm not sure how I could extend to higher frequencies because the 7A22
+only has 1 MHz bandwidth, and the signals would presumably keep
+getting smaller.  A spectrum analyzer would help here.  Also, as we
+get into the RF range what we expect is AM demodulation rather than RF
+feedthru, so we need a modulated source.
+
+
+1 MHz, using 7A24 diff mode with 1x probes, 20 MHz BW.  We have about
+2 mV diff signal at the first stage input [-54 dB] and at the output
+also.  So this can be counted as -54 dB for the filter and -24 dB for
+the first stage, or -78 dB.  This is ~20 dB worse than 300 kHz,
+probably mainly because the CM-to-diff conversion is 22 dB worse.  It
+is hard to tell what is going on with the CM voltage because it is
+swamped by ~8 mV hum, but it looks like about 5 mV.  This is about 8x
+better than the 40 mV we had at 300 kHz.  So at 1 MHz the diff mode
+signal at stage 1 input (and output) is basically the same as the CM
+signal, because the input filter CMR is really kicking in.
+
+[The CM hum was partly hidden by the 7A22 highpass, but also the CM
+rolloff in the filter is making the 1 MHz passthrough small compared
+to the hum from the (simple-minded) function generator hookup.]
+
+By looping 7904 "sig out" thru a 60 Hz notch filter and then into
+another 7A24 I can get gain of around 25 uV/div.  It seems that the
+diff mode input at the ADC is about 10 uV, or -100 dB, but allowing
+for the diff mode gain in the passband this could be reckoned as -124 dB.
+This is sketchy AF, but really the most likely error is overestimating
+the actual signal.
 
 
 [28 April 20]
@@ -261,7 +1828,7 @@ Now, using just 7A22 (on 10 uV/div), showing 560 nV in 100-1000 Hz.
 With 7A22 inputs grounded at plugin, I have 280 nV.  Hum seems a lot
 less?  I did add a separate reference return wire on my temporary DB9
 connector.  And we do expect some suppression of even 60 Hz.  But hard
-too read much in 1/3 of a division.  With the prototype preamp and 60
+to read much in 1/3 of a division.  With the prototype preamp and 60
 Hz notch filter I am getting 320 nV RMS, but there is definite hum
 harmonics visible, about the same amplitude as the noise.  In a common
 mode test with the preamp I got 200 nV of hum (very little noise),
@@ -276,9 +1843,9 @@ The noise p-p amplitude (trying to ignore hum) seems to be about 30-40
 uV p-p on the scope, which is 500-600 nV after /20/6, in good
 agreement with the RMS measurement.  This is not a huge improvement in
 the 100-1000 Hz noise, but hum seems significantly better, because hum
-is no longer having a big effect, and and minimizing interference
-pickup was a big part of the motivation.  Note that we are neglecting
-current noise and other effects.
+is no longer having a big effect, and minimizing interference pickup
+was a big part of the motivation.  Note that we are neglecting current
+noise and other effects.
 
 If we go 0.1 Hz to 1 kHz then the p-p amplitude is about 3.8 uV.
 
@@ -1437,9 +3004,6 @@ about a 6x higher buffer noise floor.  But it seems that the LTC6655
 does genuinely seem to have lower 1/f noise. Adding a big filter cap
 on the REF6250 might reveal 1/f noise, which may be why they don't
 characterize it with large caps.
-
-
-
 
 
 [15 Feb 20]

@@ -13,4 +13,876 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+$Comp
+L Device:CP1_Small C?
+U 1 1 5ECEC915
+P 9050 1450
+AR Path="/5DFF6C0D/5ECEC915" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ECEC915" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ECEC915" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5ECEC915" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5ECEC915" Ref="C?"  Part="1" 
+AR Path="/5E62FD57/5E630FEC/5ECEC915" Ref="C?"  Part="1" 
+AR Path="/5ECEC915" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5ECEC915" Ref="C?"  Part="1" 
+F 0 "C?" V 9200 1450 50  0000 C CNN
+F 1 "330uF" V 8912 1450 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 9050 1450 50  0001 C CNN
+F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 9050 1450 50  0001 C CNN
+F 4 "565-4285-1-ND" V 9050 1450 50  0001 C CNN "Digikey"
+F 5 "APXG160ARA331MH70G" V 9050 1450 50  0001 C CNN "MPN"
+F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 9050 1450 50  0001 C CNN "Description"
+F 7 "19" H 9050 1450 50  0001 C CNN "DK line"
+F 8 "United Chemi-Con" H 9050 1450 50  0001 C CNN "Manufacturer"
+	1    9050 1450
+	1    0    0    -1  
+$EndComp
+Text GLabel 9450 1200 2    50   Output ~ 0
++5_Zedboard
+$Comp
+L power:GNDD #PWR?
+U 1 1 5ECED2BC
+P 9050 1600
+F 0 "#PWR?" H 9050 1350 50  0001 C CNN
+F 1 "GNDD" H 9050 1475 50  0000 C CNN
+F 2 "" H 9050 1600 50  0001 C CNN
+F 3 "" H 9050 1600 50  0001 C CNN
+	1    9050 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
+U 1 1 5ECF08D2
+P 8550 1200
+AR Path="/5DFCF14D/5DE42731/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E448095/5DE42731/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E45936E/5DE42731/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E525F2C/5E6427A0/5DE42731/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5DFCF14D/5DE42731/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5E448095/5DE42731/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5E45936E/5DE42731/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5DFCF14D/5DE42731/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5E448095/5DE42731/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5E45936E/5DE42731/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E525EB8/5ECF08D2" Ref="FB?"  Part="1" 
+AR Path="/5E525FC9/5ECF08D2" Ref="FB?"  Part="1" 
+F 0 "FB?" H 8550 1487 60  0000 C CNN
+F 1 "1.2 A" H 8550 1381 60  0000 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 8750 1400 60  0001 L CNN
+F 3 "?" H 8750 1500 60  0001 L CNN
+	1    8550 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9050 1550 9050 1600
+Wire Wire Line
+	8750 1200 9050 1200
+Wire Wire Line
+	9050 1200 9050 1350
+Wire Wire Line
+	9050 1200 9450 1200
+Connection ~ 9050 1200
+$Comp
+L Connector_Generic:Conn_02x08_Odd_Even J?
+U 1 1 5ECF1CF8
+P 1900 2900
+F 0 "J?" H 1950 3300 50  0000 C CNN
+F 1 "Conn_02x08_Odd_Even" H 1900 3450 50  0000 C CNN
+F 2 "" H 1900 2900 50  0001 C CNN
+F 3 "~" H 1900 2900 50  0001 C CNN
+	1    1900 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5ECF57A2
+P 1500 3450
+F 0 "#PWR?" H 1500 3200 50  0001 C CNN
+F 1 "GND" H 1500 3300 50  0000 C CNN
+F 2 "" H 1500 3450 50  0001 C CNN
+F 3 "" H 1500 3450 50  0001 C CNN
+	1    1500 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 2600 1500 2600
+Wire Wire Line
+	1500 2600 1500 2700
+Wire Wire Line
+	1700 2700 1500 2700
+Connection ~ 1500 2700
+Wire Wire Line
+	1500 2700 1500 2800
+Wire Wire Line
+	1700 2800 1500 2800
+Connection ~ 1500 2800
+Wire Wire Line
+	1500 2800 1500 2900
+Wire Wire Line
+	1700 2900 1500 2900
+Connection ~ 1500 2900
+Wire Wire Line
+	1700 3000 1500 3000
+Wire Wire Line
+	1500 2900 1500 3000
+Connection ~ 1500 3000
+Wire Wire Line
+	1500 3000 1500 3100
+Wire Wire Line
+	1700 3100 1500 3100
+Connection ~ 1500 3100
+Wire Wire Line
+	1500 3100 1500 3200
+Wire Wire Line
+	1700 3200 1500 3200
+Connection ~ 1500 3200
+Wire Wire Line
+	1500 3200 1500 3300
+Wire Wire Line
+	1700 3300 1500 3300
+Connection ~ 1500 3300
+Wire Wire Line
+	1500 3300 1500 3450
+$Comp
+L Regulator_Linear:MCP1703A-1202_SOT223 U?
+U 1 1 5ED000A0
+P 8700 2350
+AR Path="/5E624B3C/5E51E83D/5ED000A0" Ref="U?"  Part="1" 
+AR Path="/5E525F2C/5ED000A0" Ref="U?"  Part="1" 
+AR Path="/5E525FC9/5ED000A0" Ref="U?"  Part="1" 
+F 0 "U?" H 8700 2600 50  0000 C CNN
+F 1 "MCP1755S-3302E/DB" H 8300 2500 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 8700 2550 50  0001 C CNN
+F 3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en560605" H 8700 2300 50  0001 C CNN
+F 4 "MCP1755S-3302E/DB-ND" H 8700 2350 50  0001 C CNN "Digikey"
+F 5 "IC REG LIN 3.3V 300MA SOT223-3" H 8700 2350 50  0001 C CNN "Description"
+F 6 "25" H 8700 2350 50  0001 C CNN "DK line"
+	1    8700 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 5ED000B5
+P 8100 2550
+AR Path="/5DFF6C0D/5ED000B5" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED000B5" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED000B5" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5ED000B5" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5ED000B5" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5ED000B5" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5ED000B5" Ref="C?"  Part="1" 
+F 0 "C?" V 7871 2550 50  0000 C CNN
+F 1 "1uF" V 7962 2550 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 8100 2550 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8100 2550 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 8100 2550 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 8100 2550 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 8100 2550 50  0001 C CNN "MPN"
+F 7 "27" H 8100 2550 50  0001 C CNN "DK line"
+	1    8100 2550
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8100 2450 8100 2350
+Connection ~ 8100 2350
+Wire Wire Line
+	8100 2350 8400 2350
+Wire Wire Line
+	8100 2650 8100 2750
+Wire Wire Line
+	9450 2350 9450 2400
+Wire Wire Line
+	9450 2350 9000 2350
+Wire Wire Line
+	9450 2600 9450 2700
+Wire Wire Line
+	9450 2700 8700 2700
+Connection ~ 9450 2700
+Wire Wire Line
+	9450 2700 9450 2750
+Wire Wire Line
+	8700 2700 8700 2650
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 5ED000C7
+P 7900 2350
+AR Path="/5E624B3C/5E51E83D/5ED000C7" Ref="#FLG?"  Part="1" 
+AR Path="/5E525F2C/5ED000C7" Ref="#FLG?"  Part="1" 
+AR Path="/5E525FC9/5ED000C7" Ref="#FLG?"  Part="1" 
+F 0 "#FLG?" H 7900 2425 50  0001 C CNN
+F 1 "PWR_FLAG" H 7900 2500 50  0000 C CNN
+F 2 "" H 7900 2350 50  0001 C CNN
+F 3 "~" H 7900 2350 50  0001 C CNN
+	1    7900 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 2350 8100 2350
+$Comp
+L power:GND #PWR?
+U 1 1 5ED000CF
+P 9450 2750
+AR Path="/5E624B3C/5E51E83D/5ED000CF" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5ED000CF" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5ED000CF" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9450 2500 50  0001 C CNN
+F 1 "GND" H 9450 2600 50  0000 C CNN
+F 2 "" H 9450 2750 50  0001 C CNN
+F 3 "" H 9450 2750 50  0001 C CNN
+	1    9450 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5ED000D5
+P 8100 2750
+AR Path="/5E624B3C/5E51E83D/5ED000D5" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5ED000D5" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5ED000D5" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8100 2500 50  0001 C CNN
+F 1 "GND" H 8100 2600 50  0000 C CNN
+F 2 "" H 8100 2750 50  0001 C CNN
+F 3 "" H 8100 2750 50  0001 C CNN
+	1    8100 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 5ED000E0
+P 9450 2500
+AR Path="/5DFCF14D/5DA78AA2/5ED000E0" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5ED000E0" Ref="C?"  Part="1" 
+AR Path="/5E448095/5DA78AA2/5ED000E0" Ref="C?"  Part="1" 
+AR Path="/5E45936E/5DA78AA2/5ED000E0" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5E6427A0/5DA78AA2/5ED000E0" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5DFCF14D/5DA78AA2/5ED000E0" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E448095/5DA78AA2/5ED000E0" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E45936E/5DA78AA2/5ED000E0" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5ED000E0" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5ED000E0" Ref="C?"  Part="1" 
+F 0 "C?" H 9460 2570 50  0000 L CNN
+F 1 "10uF" H 9460 2420 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9450 2500 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 9450 2500 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 9450 2500 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 9450 2500 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 9450 2500 50  0001 C CNN "MPN"
+F 7 "29" H 9450 2500 50  0001 C CNN "DK line"
+	1    9450 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7650 2350 7900 2350
+Connection ~ 7900 2350
+Text GLabel 9900 2350 2    50   Output ~ 0
++3V3_CLOCK
+Wire Wire Line
+	9900 2350 9450 2350
+Connection ~ 9450 2350
+Text GLabel 2400 2600 2    50   Output ~ 0
++5_Zedboard_IN
+Text GLabel 2400 2700 2    50   Output ~ 0
++5_CLOCK_IN
+Text GLabel 7750 1200 0    50   Input ~ 0
++5_Zedboard_IN
+Text GLabel 7650 2350 0    50   Input ~ 0
++5_CLOCK_IN
+Wire Wire Line
+	2400 2700 2200 2700
+Wire Wire Line
+	7900 1200 8100 1200
+Connection ~ 7900 1200
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 5ED16865
+P 7900 1200
+AR Path="/5E624B3C/5E51E83D/5ED16865" Ref="#FLG?"  Part="1" 
+AR Path="/5E525F2C/5ED16865" Ref="#FLG?"  Part="1" 
+AR Path="/5E525FC9/5ED16865" Ref="#FLG?"  Part="1" 
+F 0 "#FLG?" H 7900 1275 50  0001 C CNN
+F 1 "PWR_FLAG" H 7900 1350 50  0000 C CNN
+F 2 "" H 7900 1200 50  0001 C CNN
+F 3 "~" H 7900 1200 50  0001 C CNN
+	1    7900 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8100 1200 8100 1350
+Wire Wire Line
+	8100 1550 8100 1600
+$Comp
+L power:GNDD #PWR?
+U 1 1 5ECF1209
+P 8100 1600
+F 0 "#PWR?" H 8100 1350 50  0001 C CNN
+F 1 "GNDD" H 8100 1475 50  0000 C CNN
+F 2 "" H 8100 1600 50  0001 C CNN
+F 3 "" H 8100 1600 50  0001 C CNN
+	1    8100 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 5ECEF1CE
+P 8100 1450
+AR Path="/5DFF6C0D/5ECEF1CE" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ECEF1CE" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ECEF1CE" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5ECEF1CE" Ref="C?"  Part="1" 
+AR Path="/5EBEDCCA/5ECEF1CE" Ref="C?"  Part="1" 
+AR Path="/5E525EB8/5ECEF1CE" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5ECEF1CE" Ref="C?"  Part="1" 
+F 0 "C?" V 7871 1450 50  0000 C CNN
+F 1 "1uF" V 7962 1450 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 8100 1450 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8100 1450 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 8100 1450 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 8100 1450 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 8100 1450 50  0001 C CNN "MPN"
+F 7 "27" H 8100 1450 50  0001 C CNN "DK line"
+F 8 "Samsung Electro-Mechanics" H 8100 1450 50  0001 C CNN "Manufacturer"
+	1    8100 1450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7750 1200 7900 1200
+Wire Wire Line
+	8100 1200 8350 1200
+Connection ~ 8100 1200
+Text GLabel 2400 2800 2    50   Output ~ 0
++5_DRIVERS_IN
+Wire Wire Line
+	2400 2800 2200 2800
+$Comp
+L Regulator_Linear:MCP1703A-1202_SOT223 U?
+U 1 1 5ED2561D
+P 8700 3450
+AR Path="/5E624B3C/5E51E83D/5ED2561D" Ref="U?"  Part="1" 
+AR Path="/5E525F2C/5ED2561D" Ref="U?"  Part="1" 
+AR Path="/5E525FC9/5ED2561D" Ref="U?"  Part="1" 
+F 0 "U?" H 8700 3700 50  0000 C CNN
+F 1 "MCP1755S-3302E/DB" H 8300 3600 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 8700 3650 50  0001 C CNN
+F 3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en560605" H 8700 3400 50  0001 C CNN
+F 4 "MCP1755S-3302E/DB-ND" H 8700 3450 50  0001 C CNN "Digikey"
+F 5 "IC REG LIN 3.3V 300MA SOT223-3" H 8700 3450 50  0001 C CNN "Description"
+F 6 "25" H 8700 3450 50  0001 C CNN "DK line"
+	1    8700 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 5ED25627
+P 8100 3650
+AR Path="/5DFF6C0D/5ED25627" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED25627" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED25627" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5ED25627" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5ED25627" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5ED25627" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5ED25627" Ref="C?"  Part="1" 
+F 0 "C?" V 7871 3650 50  0000 C CNN
+F 1 "1uF" V 7962 3650 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 8100 3650 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8100 3650 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 8100 3650 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 8100 3650 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 8100 3650 50  0001 C CNN "MPN"
+F 7 "27" H 8100 3650 50  0001 C CNN "DK line"
+	1    8100 3650
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8100 3550 8100 3450
+Connection ~ 8100 3450
+Wire Wire Line
+	8100 3450 8400 3450
+Wire Wire Line
+	8100 3750 8100 3850
+Wire Wire Line
+	9450 3450 9450 3500
+Wire Wire Line
+	9450 3450 9000 3450
+Wire Wire Line
+	9450 3700 9450 3800
+Wire Wire Line
+	9450 3800 8700 3800
+Connection ~ 9450 3800
+Wire Wire Line
+	9450 3800 9450 3850
+Wire Wire Line
+	8700 3800 8700 3750
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 5ED25638
+P 7900 3450
+AR Path="/5E624B3C/5E51E83D/5ED25638" Ref="#FLG?"  Part="1" 
+AR Path="/5E525F2C/5ED25638" Ref="#FLG?"  Part="1" 
+AR Path="/5E525FC9/5ED25638" Ref="#FLG?"  Part="1" 
+F 0 "#FLG?" H 7900 3525 50  0001 C CNN
+F 1 "PWR_FLAG" H 7900 3600 50  0000 C CNN
+F 2 "" H 7900 3450 50  0001 C CNN
+F 3 "~" H 7900 3450 50  0001 C CNN
+	1    7900 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 3450 8100 3450
+$Comp
+L power:GND #PWR?
+U 1 1 5ED2563F
+P 9450 3850
+AR Path="/5E624B3C/5E51E83D/5ED2563F" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5ED2563F" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5ED2563F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9450 3600 50  0001 C CNN
+F 1 "GND" H 9450 3700 50  0000 C CNN
+F 2 "" H 9450 3850 50  0001 C CNN
+F 3 "" H 9450 3850 50  0001 C CNN
+	1    9450 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5ED25645
+P 8100 3850
+AR Path="/5E624B3C/5E51E83D/5ED25645" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5ED25645" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5ED25645" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8100 3600 50  0001 C CNN
+F 1 "GND" H 8100 3700 50  0000 C CNN
+F 2 "" H 8100 3850 50  0001 C CNN
+F 3 "" H 8100 3850 50  0001 C CNN
+	1    8100 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 5ED2564F
+P 9450 3600
+AR Path="/5DFCF14D/5DA78AA2/5ED2564F" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5ED2564F" Ref="C?"  Part="1" 
+AR Path="/5E448095/5DA78AA2/5ED2564F" Ref="C?"  Part="1" 
+AR Path="/5E45936E/5DA78AA2/5ED2564F" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5E6427A0/5DA78AA2/5ED2564F" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5DFCF14D/5DA78AA2/5ED2564F" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E448095/5DA78AA2/5ED2564F" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E45936E/5DA78AA2/5ED2564F" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5ED2564F" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5ED2564F" Ref="C?"  Part="1" 
+F 0 "C?" H 9460 3670 50  0000 L CNN
+F 1 "10uF" H 9460 3520 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9450 3600 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 9450 3600 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 9450 3600 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 9450 3600 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 9450 3600 50  0001 C CNN "MPN"
+F 7 "29" H 9450 3600 50  0001 C CNN "DK line"
+	1    9450 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7650 3450 7900 3450
+Connection ~ 7900 3450
+Text GLabel 9900 3450 2    50   Output ~ 0
+OVDD
+Wire Wire Line
+	9900 3450 9450 3450
+Connection ~ 9450 3450
+Text GLabel 7650 3450 0    50   Input ~ 0
++5_DRIVERS_IN
+Wire Wire Line
+	2400 2900 2200 2900
+Wire Wire Line
+	2400 3000 2200 3000
+Text GLabel 7600 4600 0    50   Input ~ 0
++5VDIG_IN
+$Comp
+L Device:C_Small C?
+U 1 1 5ED2FFCF
+P 8100 4800
+AR Path="/5DFF6C0D/5ED2FFCF" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED2FFCF" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED2FFCF" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5ED2FFCF" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5ED2FFCF" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5ED2FFCF" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5ED2FFCF" Ref="C?"  Part="1" 
+F 0 "C?" V 7871 4800 50  0000 C CNN
+F 1 "1uF" V 7962 4800 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 8100 4800 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8100 4800 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 8100 4800 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 8100 4800 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 8100 4800 50  0001 C CNN "MPN"
+F 7 "27" H 8100 4800 50  0001 C CNN "DK line"
+	1    8100 4800
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8100 4900 8100 5000
+$Comp
+L power:GND #PWR?
+U 1 1 5ED2FFD6
+P 8100 5000
+AR Path="/5E624B3C/5E51E83D/5ED2FFD6" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5ED2FFD6" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5ED2FFD6" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8100 4750 50  0001 C CNN
+F 1 "GND" H 8100 4850 50  0000 C CNN
+F 2 "" H 8100 5000 50  0001 C CNN
+F 3 "" H 8100 5000 50  0001 C CNN
+	1    8100 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP1_Small C?
+U 1 1 5ED319C4
+P 9100 4800
+AR Path="/5DFF6C0D/5ED319C4" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED319C4" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED319C4" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5ED319C4" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5ED319C4" Ref="C?"  Part="1" 
+AR Path="/5E62FD57/5E630FEC/5ED319C4" Ref="C?"  Part="1" 
+AR Path="/5ED319C4" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5ED319C4" Ref="C?"  Part="1" 
+F 0 "C?" V 9250 4800 50  0000 C CNN
+F 1 "330uF" V 8962 4800 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 9100 4800 50  0001 C CNN
+F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 9100 4800 50  0001 C CNN
+F 4 "565-4285-1-ND" V 9100 4800 50  0001 C CNN "Digikey"
+F 5 "APXG160ARA331MH70G" V 9100 4800 50  0001 C CNN "MPN"
+F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 9100 4800 50  0001 C CNN "Description"
+F 7 "19" H 9100 4800 50  0001 C CNN "DK line"
+F 8 "United Chemi-Con" H 9100 4800 50  0001 C CNN "Manufacturer"
+	1    9100 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5ED32AC8
+P 9100 5000
+AR Path="/5E624B3C/5E51E83D/5ED32AC8" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5ED32AC8" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5ED32AC8" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9100 4750 50  0001 C CNN
+F 1 "GND" H 9100 4850 50  0000 C CNN
+F 2 "" H 9100 5000 50  0001 C CNN
+F 3 "" H 9100 5000 50  0001 C CNN
+	1    9100 5000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 5000 9100 4900
+Wire Wire Line
+	7600 4600 8100 4600
+Wire Wire Line
+	9100 4600 9100 4700
+Wire Wire Line
+	8100 4700 8100 4600
+Connection ~ 8100 4600
+Wire Wire Line
+	8100 4600 9100 4600
+Text GLabel 9900 4600 2    50   Output ~ 0
++5VDIG
+Wire Wire Line
+	9900 4600 9100 4600
+Connection ~ 9100 4600
+Text GLabel 7600 5550 0    50   Input ~ 0
++5VANA_IN
+$Comp
+L Device:C_Small C?
+U 1 1 5ED48C5C
+P 8100 5750
+AR Path="/5DFF6C0D/5ED48C5C" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED48C5C" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED48C5C" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5ED48C5C" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5ED48C5C" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5ED48C5C" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5ED48C5C" Ref="C?"  Part="1" 
+F 0 "C?" V 7871 5750 50  0000 C CNN
+F 1 "1uF" V 7962 5750 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 8100 5750 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8100 5750 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 8100 5750 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 8100 5750 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 8100 5750 50  0001 C CNN "MPN"
+F 7 "27" H 8100 5750 50  0001 C CNN "DK line"
+	1    8100 5750
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8100 5850 8100 5950
+$Comp
+L power:GND #PWR?
+U 1 1 5ED48C63
+P 8100 5950
+AR Path="/5E624B3C/5E51E83D/5ED48C63" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5ED48C63" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5ED48C63" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8100 5700 50  0001 C CNN
+F 1 "GND" H 8100 5800 50  0000 C CNN
+F 2 "" H 8100 5950 50  0001 C CNN
+F 3 "" H 8100 5950 50  0001 C CNN
+	1    8100 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP1_Small C?
+U 1 1 5ED48C6E
+P 9100 5750
+AR Path="/5DFF6C0D/5ED48C6E" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED48C6E" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED48C6E" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5ED48C6E" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5ED48C6E" Ref="C?"  Part="1" 
+AR Path="/5E62FD57/5E630FEC/5ED48C6E" Ref="C?"  Part="1" 
+AR Path="/5ED48C6E" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5ED48C6E" Ref="C?"  Part="1" 
+F 0 "C?" V 9250 5750 50  0000 C CNN
+F 1 "330uF" V 8962 5750 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 9100 5750 50  0001 C CNN
+F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 9100 5750 50  0001 C CNN
+F 4 "565-4285-1-ND" V 9100 5750 50  0001 C CNN "Digikey"
+F 5 "APXG160ARA331MH70G" V 9100 5750 50  0001 C CNN "MPN"
+F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 9100 5750 50  0001 C CNN "Description"
+F 7 "19" H 9100 5750 50  0001 C CNN "DK line"
+F 8 "United Chemi-Con" H 9100 5750 50  0001 C CNN "Manufacturer"
+	1    9100 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5ED48C74
+P 9100 5950
+AR Path="/5E624B3C/5E51E83D/5ED48C74" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5ED48C74" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5ED48C74" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9100 5700 50  0001 C CNN
+F 1 "GND" H 9100 5800 50  0000 C CNN
+F 2 "" H 9100 5950 50  0001 C CNN
+F 3 "" H 9100 5950 50  0001 C CNN
+	1    9100 5950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 5950 9100 5850
+Wire Wire Line
+	7600 5550 8100 5550
+Wire Wire Line
+	9100 5550 9100 5650
+Wire Wire Line
+	8100 5650 8100 5550
+Connection ~ 8100 5550
+Wire Wire Line
+	8100 5550 9100 5550
+Text GLabel 9900 5550 2    50   Output ~ 0
++5VANA
+Wire Wire Line
+	9900 5550 9100 5550
+Connection ~ 9100 5550
+Text GLabel 2400 2900 2    50   Output ~ 0
++5VDIG_IN
+Text GLabel 2400 3000 2    50   Output ~ 0
++5VANA_IN
+Wire Wire Line
+	2200 2600 2400 2600
+Text GLabel 2400 3100 2    50   Output ~ 0
++10V_IN
+Text GLabel 2400 3200 2    50   Output ~ 0
+-6V_IN
+Wire Wire Line
+	2400 3200 2200 3200
+Wire Wire Line
+	2400 3100 2200 3100
+Text GLabel 2800 4600 0    50   Input ~ 0
++10V_IN
+$Comp
+L Device:C_Small C?
+U 1 1 5EE23B76
+P 3300 4800
+AR Path="/5DFF6C0D/5EE23B76" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EE23B76" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5EE23B76" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5EE23B76" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5EE23B76" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5EE23B76" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5EE23B76" Ref="C?"  Part="1" 
+F 0 "C?" V 3071 4800 50  0000 C CNN
+F 1 "1uF" V 3162 4800 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 3300 4800 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 3300 4800 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 3300 4800 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 3300 4800 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 3300 4800 50  0001 C CNN "MPN"
+F 7 "27" H 3300 4800 50  0001 C CNN "DK line"
+	1    3300 4800
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3300 4900 3300 5000
+$Comp
+L power:GND #PWR?
+U 1 1 5EE23B7D
+P 3300 5000
+AR Path="/5E624B3C/5E51E83D/5EE23B7D" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5EE23B7D" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5EE23B7D" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 3300 4750 50  0001 C CNN
+F 1 "GND" H 3300 4850 50  0000 C CNN
+F 2 "" H 3300 5000 50  0001 C CNN
+F 3 "" H 3300 5000 50  0001 C CNN
+	1    3300 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP1_Small C?
+U 1 1 5EE23B88
+P 4300 4800
+AR Path="/5DFF6C0D/5EE23B88" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EE23B88" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5EE23B88" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5EE23B88" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5EE23B88" Ref="C?"  Part="1" 
+AR Path="/5E62FD57/5E630FEC/5EE23B88" Ref="C?"  Part="1" 
+AR Path="/5EE23B88" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5EE23B88" Ref="C?"  Part="1" 
+F 0 "C?" V 4450 4800 50  0000 C CNN
+F 1 "330uF" V 4162 4800 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 4300 4800 50  0001 C CNN
+F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 4300 4800 50  0001 C CNN
+F 4 "565-4285-1-ND" V 4300 4800 50  0001 C CNN "Digikey"
+F 5 "APXG160ARA331MH70G" V 4300 4800 50  0001 C CNN "MPN"
+F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 4300 4800 50  0001 C CNN "Description"
+F 7 "19" H 4300 4800 50  0001 C CNN "DK line"
+F 8 "United Chemi-Con" H 4300 4800 50  0001 C CNN "Manufacturer"
+	1    4300 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5EE23B8E
+P 4300 5000
+AR Path="/5E624B3C/5E51E83D/5EE23B8E" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5EE23B8E" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5EE23B8E" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4300 4750 50  0001 C CNN
+F 1 "GND" H 4300 4850 50  0000 C CNN
+F 2 "" H 4300 5000 50  0001 C CNN
+F 3 "" H 4300 5000 50  0001 C CNN
+	1    4300 5000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 5000 4300 4900
+Wire Wire Line
+	2800 4600 3300 4600
+Wire Wire Line
+	4300 4600 4300 4700
+Wire Wire Line
+	3300 4700 3300 4600
+Connection ~ 3300 4600
+Wire Wire Line
+	3300 4600 4300 4600
+Text GLabel 5100 4600 2    50   Output ~ 0
++10V
+Wire Wire Line
+	5100 4600 4300 4600
+Connection ~ 4300 4600
+Text GLabel 2800 5550 0    50   Input ~ 0
+-6V_IN
+$Comp
+L Device:C_Small C?
+U 1 1 5EE23BA2
+P 3300 5750
+AR Path="/5DFF6C0D/5EE23BA2" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EE23BA2" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5EE23BA2" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5EE23BA2" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5EE23BA2" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5EE23BA2" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5EE23BA2" Ref="C?"  Part="1" 
+F 0 "C?" V 3071 5750 50  0000 C CNN
+F 1 "1uF" V 3162 5750 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 3300 5750 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 3300 5750 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 3300 5750 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 3300 5750 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 3300 5750 50  0001 C CNN "MPN"
+F 7 "27" H 3300 5750 50  0001 C CNN "DK line"
+	1    3300 5750
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3300 5850 3300 5950
+$Comp
+L power:GND #PWR?
+U 1 1 5EE23BA9
+P 3300 5950
+AR Path="/5E624B3C/5E51E83D/5EE23BA9" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5EE23BA9" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5EE23BA9" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 3300 5700 50  0001 C CNN
+F 1 "GND" H 3300 5800 50  0000 C CNN
+F 2 "" H 3300 5950 50  0001 C CNN
+F 3 "" H 3300 5950 50  0001 C CNN
+	1    3300 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP1_Small C?
+U 1 1 5EE23BB4
+P 4300 5750
+AR Path="/5DFF6C0D/5EE23BB4" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EE23BB4" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5EE23BB4" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5EE23BB4" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5EE23BB4" Ref="C?"  Part="1" 
+AR Path="/5E62FD57/5E630FEC/5EE23BB4" Ref="C?"  Part="1" 
+AR Path="/5EE23BB4" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5EE23BB4" Ref="C?"  Part="1" 
+F 0 "C?" V 4450 5750 50  0000 C CNN
+F 1 "330uF" V 4162 5750 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 4300 5750 50  0001 C CNN
+F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 4300 5750 50  0001 C CNN
+F 4 "565-4285-1-ND" V 4300 5750 50  0001 C CNN "Digikey"
+F 5 "APXG160ARA331MH70G" V 4300 5750 50  0001 C CNN "MPN"
+F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 4300 5750 50  0001 C CNN "Description"
+F 7 "19" H 4300 5750 50  0001 C CNN "DK line"
+F 8 "United Chemi-Con" H 4300 5750 50  0001 C CNN "Manufacturer"
+	1    4300 5750
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5EE23BBA
+P 4300 5950
+AR Path="/5E624B3C/5E51E83D/5EE23BBA" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5EE23BBA" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5EE23BBA" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4300 5700 50  0001 C CNN
+F 1 "GND" H 4300 5800 50  0000 C CNN
+F 2 "" H 4300 5950 50  0001 C CNN
+F 3 "" H 4300 5950 50  0001 C CNN
+	1    4300 5950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 5950 4300 5850
+Wire Wire Line
+	2800 5550 3300 5550
+Wire Wire Line
+	4300 5550 4300 5650
+Wire Wire Line
+	3300 5650 3300 5550
+Connection ~ 3300 5550
+Wire Wire Line
+	3300 5550 4300 5550
+Text GLabel 5100 5550 2    50   Output ~ 0
+-6V
+Wire Wire Line
+	5100 5550 4300 5550
+Connection ~ 4300 5550
 $EndSCHEMATC

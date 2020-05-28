@@ -5,3 +5,6 @@
 fp-info-cache
 *.kicad_pcb-bak
 *.sch-bak
+/input/in_amp_bak.sch
+/simetrix/netlist.out
+/simetrix/netlist.net

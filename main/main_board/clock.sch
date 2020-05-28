@@ -345,158 +345,8 @@ Wire Wire Line
 Wire Wire Line
 	4500 5100 4500 5250
 Connection ~ 4500 5250
-Text GLabel 3200 2150 0    50   Input ~ 0
-FILT_+5VDIG
-$Comp
-L Regulator_Linear:MCP1703A-1202_SOT223 U?
-U 1 1 5EC36C64
-P 4900 2150
-AR Path="/5E624B3C/5E51E83D/5EC36C64" Ref="U?"  Part="1" 
-AR Path="/5E525F2C/5EC36C64" Ref="U11"  Part="1" 
-F 0 "U11" H 4900 2400 50  0000 C CNN
-F 1 "MCP1755S-3302E/DB" H 4500 2300 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 4900 2350 50  0001 C CNN
-F 3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en560605" H 4900 2100 50  0001 C CNN
-F 4 "MCP1755S-3302E/DB-ND" H 4900 2150 50  0001 C CNN "Digikey"
-F 5 "IC REG LIN 3.3V 300MA SOT223-3" H 4900 2150 50  0001 C CNN "Description"
-F 6 "25" H 4900 2150 50  0001 C CNN "DK line"
-	1    4900 2150
-	1    0    0    -1  
-$EndComp
-$Comp
-L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
-U 1 1 5EC36C6F
-P 3600 2150
-AR Path="/5DFCF14D/5DE42731/5EC36C6F" Ref="FB?"  Part="1" 
-AR Path="/5DFCF14D/5EC36C6F" Ref="FB?"  Part="1" 
-AR Path="/5DFCF14D/5DA78AA2/5EC36C6F" Ref="FB?"  Part="1" 
-AR Path="/5E51E83D/5EC36C6F" Ref="FB?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5EC36C6F" Ref="FB?"  Part="1" 
-AR Path="/5E525F2C/5EC36C6F" Ref="FB8"  Part="1" 
-F 0 "FB8" H 3600 2437 60  0000 C CNN
-F 1 "21 Ohm" H 3600 2331 60  0000 C CNN
-F 2 "Inductor_SMD:L_0805_2012Metric" H 3800 2350 60  0001 L CNN
-F 3 "https://www.yuden.co.jp/productdata/catalog/chipbeads01_e.pdf" H 3800 2450 60  0001 L CNN
-F 4 "HZ0805C202R-10" H 3800 2650 60  0001 L CNN "MPN"
-F 5 "Ferrite Beads and Chips" H 3800 2850 60  0001 L CNN "Family"
-F 6 "FERRITE BEAD 21 OHM 0805, 100 nH, 5 mOhm" H 3800 3150 60  0001 L CNN "Description"
-F 7 "587-1765-1-ND" H 3600 2150 50  0001 C CNN "Digikey"
-F 8 "24" H 3600 2150 50  0001 C CNN "DK line"
-	1    3600 2150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C?
-U 1 1 5EC36C79
-P 4300 2350
-AR Path="/5DFF6C0D/5EC36C79" Ref="C?"  Part="1" 
-AR Path="/5E1D6729/5E1DA2AA/5EC36C79" Ref="C?"  Part="1" 
-AR Path="/5E2EB92B/5EC36C79" Ref="C?"  Part="1" 
-AR Path="/5E51E83D/5EC36C79" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5EC36C79" Ref="C?"  Part="1" 
-AR Path="/5E525F2C/5EC36C79" Ref="C43"  Part="1" 
-F 0 "C43" V 4071 2350 50  0000 C CNN
-F 1 "1uF" V 4162 2350 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 4300 2350 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 4300 2350 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 4300 2350 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 4300 2350 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 4300 2350 50  0001 C CNN "MPN"
-F 7 "27" H 4300 2350 50  0001 C CNN "DK line"
-	1    4300 2350
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	4300 2250 4300 2150
-Connection ~ 4300 2150
-Wire Wire Line
-	4300 2150 4600 2150
-Wire Wire Line
-	4300 2450 4300 2550
-Wire Wire Line
-	5650 2150 5650 2200
-Connection ~ 5650 2150
-Wire Wire Line
-	5650 2150 5200 2150
-Wire Wire Line
-	5650 2400 5650 2500
-Wire Wire Line
-	5650 2500 4900 2500
-Connection ~ 5650 2500
-Wire Wire Line
-	5650 2500 5650 2550
-Wire Wire Line
-	4900 2500 4900 2450
-Wire Wire Line
-	3200 2150 3400 2150
-$Comp
-L power:PWR_FLAG #FLG?
-U 1 1 5EC36CA7
-P 4100 2150
-AR Path="/5E624B3C/5E51E83D/5EC36CA7" Ref="#FLG?"  Part="1" 
-AR Path="/5E525F2C/5EC36CA7" Ref="#FLG01"  Part="1" 
-F 0 "#FLG01" H 4100 2225 50  0001 C CNN
-F 1 "PWR_FLAG" H 4100 2300 50  0000 C CNN
-F 2 "" H 4100 2150 50  0001 C CNN
-F 3 "~" H 4100 2150 50  0001 C CNN
-	1    4100 2150
-	1    0    0    -1  
-$EndComp
-Connection ~ 4100 2150
-Wire Wire Line
-	4100 2150 4300 2150
-$Comp
-L power:GND #PWR?
-U 1 1 5EC36CB5
-P 5650 2550
-AR Path="/5E624B3C/5E51E83D/5EC36CB5" Ref="#PWR?"  Part="1" 
-AR Path="/5E525F2C/5EC36CB5" Ref="#PWR051"  Part="1" 
-F 0 "#PWR051" H 5650 2300 50  0001 C CNN
-F 1 "GND" H 5650 2400 50  0000 C CNN
-F 2 "" H 5650 2550 50  0001 C CNN
-F 3 "" H 5650 2550 50  0001 C CNN
-	1    5650 2550
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5EC36CBB
-P 4300 2550
-AR Path="/5E624B3C/5E51E83D/5EC36CBB" Ref="#PWR?"  Part="1" 
-AR Path="/5E525F2C/5EC36CBB" Ref="#PWR048"  Part="1" 
-F 0 "#PWR048" H 4300 2300 50  0001 C CNN
-F 1 "GND" H 4300 2400 50  0000 C CNN
-F 2 "" H 4300 2550 50  0001 C CNN
-F 3 "" H 4300 2550 50  0001 C CNN
-	1    4300 2550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3800 2150 4100 2150
-$Comp
-L Device:C_Small C?
-U 1 1 5EC40A92
-P 5650 2300
-AR Path="/5DFCF14D/5DA78AA2/5EC40A92" Ref="C?"  Part="1" 
-AR Path="/5DFCF14D/5E295469/5EC40A92" Ref="C?"  Part="1" 
-AR Path="/5E448095/5DA78AA2/5EC40A92" Ref="C?"  Part="1" 
-AR Path="/5E45936E/5DA78AA2/5EC40A92" Ref="C?"  Part="1" 
-AR Path="/5E525F2C/5E6427A0/5DA78AA2/5EC40A92" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5DFCF14D/5DA78AA2/5EC40A92" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5E448095/5DA78AA2/5EC40A92" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5E45936E/5DA78AA2/5EC40A92" Ref="C?"  Part="1" 
-AR Path="/5E525F2C/5EC40A92" Ref="C45"  Part="1" 
-F 0 "C45" H 5660 2370 50  0000 L CNN
-F 1 "10uF" H 5660 2220 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 5650 2300 50  0001 C CNN
-F 3 "http://datasheets.avx.com/cx5r.pdf" H 5650 2300 50  0001 C CNN
-F 4 "CAP CER 10UF 6.3V X5R 0603" H 5650 2300 50  0001 C CNN "Description"
-F 5 "478-5318-1-ND" H 5650 2300 50  0001 C CNN "Digikey"
-F 6 "06036D106MAT2A" H 5650 2300 50  0001 C CNN "MPN"
-F 7 "29" H 5650 2300 50  0001 C CNN "DK line"
-	1    5650 2300
-	1    0    0    -1  
-$EndComp
+Text GLabel 2550 3300 0    50   Input ~ 0
++3V3_CLOCK
 $Comp
 L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
 U 1 1 5EC43544
@@ -520,13 +370,9 @@ F 8 "24" H 2950 3600 50  0001 C CNN "DK line"
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	7450 2150 7450 3300
-Wire Wire Line
 	7450 3300 4500 3300
 Wire Wire Line
 	2950 3300 2950 3400
-Wire Wire Line
-	5650 2150 7450 2150
 Wire Wire Line
 	4500 3300 4500 5100
 Connection ~ 4500 3300
@@ -534,7 +380,6 @@ Wire Wire Line
 	4500 3300 2950 3300
 Wire Wire Line
 	7450 3300 7450 3650
-Connection ~ 7450 3300
 Text Notes 8800 4800 0    50   ~ 0
 To FPGA
 Text Notes 8800 5100 0    50   ~ 0
@@ -556,4 +401,7 @@ Wire Wire Line
 Connection ~ 4350 5250
 Wire Wire Line
 	4350 5250 4500 5250
+Wire Wire Line
+	2550 3300 2950 3300
+Connection ~ 2950 3300
 $EndSCHEMATC

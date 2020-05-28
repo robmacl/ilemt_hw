@@ -13,289 +13,598 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text GLabel 1600 2800 0    50   Input ~ 0
+Text GLabel 1400 1850 0    50   Input ~ 0
 +10V
+Wire Wire Line
+	3700 2000 3700 1850
+Wire Wire Line
+	3700 2200 3700 2300
+Wire Wire Line
+	1550 1850 1400 1850
 $Comp
-L dk_PMIC-Voltage-Regulators-Linear:NCP1117ST33T3G U?
-U 1 1 5E646BE2
-P 3350 2800
-AR Path="/5E62FD57/5E630FEC/5E646BE2" Ref="U?"  Part="1" 
-AR Path="/5E525EB8/5E646BE2" Ref="U?"  Part="1" 
-F 0 "U?" H 3400 3100 60  0000 C CNN
-F 1 "NCP1117STAT3G" H 3450 3000 60  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-223" H 3550 3000 60  0001 L CNN
-F 3 "https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF" H 3550 3100 60  0001 L CNN
-F 4 "NCP1117STAT3G" H 3550 3300 60  0001 L CNN "MPN"
-F 5 "ON Semiconductor" H 3550 3900 60  0001 L CNN "Manufacturer"
-F 6 "NCP1117STAT3GOSCT-ND" H 3350 2800 50  0001 C CNN "Digikey"
-F 7 "IC REG LINEAR POS ADJ 1A SOT223" H 3350 2800 50  0001 C CNN "Description"
-F 8 "26" H 3350 2800 50  0001 C CNN "DK line"
-	1    3350 2800
+L power:GNDA #PWR?
+U 1 1 5E646C1A
+P 3700 2300
+AR Path="/5E62FD57/5E630FEC/5E646C1A" Ref="#PWR?"  Part="1" 
+AR Path="/5E525EB8/5E646C1A" Ref="#PWR0102"  Part="1" 
+F 0 "#PWR0102" H 3700 2050 50  0001 C CNN
+F 1 "GNDA" H 3700 2150 50  0000 C CNN
+F 2 "" H 3700 2300 50  0001 C CNN
+F 3 "" H 3700 2300 50  0001 C CNN
+	1    3700 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 5E646C49
+P 3150 1850
+AR Path="/5E62FD57/5E630FEC/5E646C49" Ref="#FLG?"  Part="1" 
+AR Path="/5E525EB8/5E646C49" Ref="#FLG0101"  Part="1" 
+F 0 "#FLG0101" H 3150 1925 50  0001 C CNN
+F 1 "PWR_FLAG" H 3150 2000 50  0000 C CNN
+F 2 "" H 3150 1850 50  0001 C CNN
+F 3 "~" H 3150 1850 50  0001 C CNN
+	1    3150 1850
+	1    0    0    -1  
+$EndComp
+Text GLabel 10400 2950 2    50   Output ~ 0
+VREF+
+Text GLabel 10400 4200 2    50   Output ~ 0
+VREF-
+$Comp
+L Device:C_Small C?
+U 1 1 5EBF30D8
+P 7050 3350
+AR Path="/5DFF6C0D/5EBF30D8" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EBF30D8" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5EBF30D8" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5EBF30D8" Ref="C?"  Part="1" 
+AR Path="/5EBEDCCA/5EBF30D8" Ref="C?"  Part="1" 
+AR Path="/5E525EB8/5EBF30D8" Ref="C?"  Part="1" 
+F 0 "C?" V 6821 3350 50  0000 C CNN
+F 1 "3.3 uF" V 6912 3350 50  0000 C CNN
+F 2 "Capacitor_THT:C_Rect_L13.0mm_W6.0mm_P10.00mm_FKS3_FKP3_MKS4" H 7050 3350 50  0001 C CNN
+F 3 "https://api.kemet.com/component-edge/download/datasheet/R60DF4330506AJ.pdf" H 7050 3350 50  0001 C CNN
+F 4 "399-9672-ND" V 7050 3350 50  0001 C CNN "Digikey"
+F 5 "R60DF4330506AJ" V 7050 3350 50  0001 C CNN "MPN"
+F 6 "KEMET" V 7050 3350 50  0001 C CNN "Manufacturer"
+	1    7050 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9300 2950 9500 2950
+$Comp
+L Device:C_Small C?
+U 1 1 5EBF5333
+P 8200 2550
+AR Path="/5DFF6C0D/5EBF5333" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EBF5333" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5EBF5333" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5EBF5333" Ref="C?"  Part="1" 
+AR Path="/5EBEDCCA/5EBF5333" Ref="C?"  Part="1" 
+AR Path="/5E525EB8/5EBF5333" Ref="C?"  Part="1" 
+F 0 "C?" V 7971 2550 50  0000 C CNN
+F 1 "1uF" V 8062 2550 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 8200 2550 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8200 2550 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 8200 2550 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 8200 2550 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 8200 2550 50  0001 C CNN "MPN"
+F 7 "27" H 8200 2550 50  0001 C CNN "DK line"
+F 8 "Samsung Electro-Mechanics" H 8200 2550 50  0001 C CNN "Manufacturer"
+	1    8200 2550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7850 2550 7850 2650
+$Comp
+L power:GNDA #PWR?
+U 1 1 5EBF533B
+P 8450 2550
+AR Path="/5DFF6C0D/5EBF533B" Ref="#PWR?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EBF533B" Ref="#PWR?"  Part="1" 
+AR Path="/5E2EB92B/5EBF533B" Ref="#PWR?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5EBF533B" Ref="#PWR?"  Part="1" 
+AR Path="/5EBEDCCA/5EBF533B" Ref="#PWR?"  Part="1" 
+AR Path="/5E525EB8/5EBF533B" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8450 2300 50  0001 C CNN
+F 1 "GNDA" V 8455 2422 50  0000 R CNN
+F 2 "" H 8450 2550 50  0001 C CNN
+F 3 "" H 8450 2550 50  0001 C CNN
+	1    8450 2550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8300 2550 8450 2550
+$Comp
+L ilemt_input:opamp_single U?
+U 1 1 5EBF5359
+P 7800 2950
+AR Path="/5DFF6C0D/5EBF5359" Ref="U?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EBF5359" Ref="U?"  Part="1" 
+AR Path="/5E2EB92B/5EBF5359" Ref="U?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5EBF5359" Ref="U?"  Part="1" 
+AR Path="/5EBEDCCA/5EBF5359" Ref="U?"  Part="1" 
+AR Path="/5E525EB8/5EBF5359" Ref="U?"  Part="1" 
+F 0 "U?" H 7950 3200 50  0000 L CNN
+F 1 "OPA209" H 7950 3100 50  0000 L CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 7850 3000 50  0001 C CNN
+F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa209" H 7850 3100 50  0001 C CNN
+F 4 "IC OPAMP GP 1 CIRCUIT 8SOIC" H 7800 2950 50  0001 C CNN "Description"
+F 5 "296-28030-5-ND" H 7800 2950 50  0001 C CNN "Digikey"
+F 6 "OPA209AID" H 7800 2950 50  0001 C CNN "MPN"
+F 7 "Texas Instruments" H 7800 2950 50  0001 C CNN "Manufacturer"
+	1    7800 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7850 2550 8100 2550
+$Comp
+L Device:C_Small C?
+U 1 1 5EBF6E5A
+P 3700 2100
+AR Path="/5DFF6C0D/5EBF6E5A" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EBF6E5A" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5EBF6E5A" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5EBF6E5A" Ref="C?"  Part="1" 
+AR Path="/5EBEDCCA/5EBF6E5A" Ref="C?"  Part="1" 
+AR Path="/5E525EB8/5EBF6E5A" Ref="C?"  Part="1" 
+F 0 "C?" V 3850 2100 50  0000 C CNN
+F 1 "bulk >=16V" V 3562 2100 50  0000 C CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 3700 2100 50  0001 C CNN
+F 3 "?" H 3700 2100 50  0001 C CNN
+	1    3700 2100
+	1    0    0    -1  
+$EndComp
+Text GLabel 1400 4800 0    50   Input ~ 0
+-6V
+Wire Wire Line
+	7850 5150 7850 5250
+Wire Wire Line
+	1550 4800 1400 4800
+$Comp
+L power:GNDA #PWR?
+U 1 1 5EBF8C9C
+P 7850 5250
+AR Path="/5E62FD57/5E630FEC/5EBF8C9C" Ref="#PWR?"  Part="1" 
+AR Path="/5E525EB8/5EBF8C9C" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7850 5000 50  0001 C CNN
+F 1 "GNDA" H 7850 5100 50  0000 C CNN
+F 2 "" H 7850 5250 50  0001 C CNN
+F 3 "" H 7850 5250 50  0001 C CNN
+	1    7850 5250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 5EBF8CA2
+P 3150 4800
+AR Path="/5E62FD57/5E630FEC/5EBF8CA2" Ref="#FLG?"  Part="1" 
+AR Path="/5E525EB8/5EBF8CA2" Ref="#FLG?"  Part="1" 
+F 0 "#FLG?" H 3150 4875 50  0001 C CNN
+F 1 "PWR_FLAG" H 3150 4950 50  0000 C CNN
+F 2 "" H 3150 4800 50  0001 C CNN
+F 3 "~" H 3150 4800 50  0001 C CNN
+	1    3150 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 5EBF8CB0
+P 7850 5050
+AR Path="/5DFF6C0D/5EBF8CB0" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EBF8CB0" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5EBF8CB0" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5EBF8CB0" Ref="C?"  Part="1" 
+AR Path="/5EBEDCCA/5EBF8CB0" Ref="C?"  Part="1" 
+AR Path="/5E525EB8/5EBF8CB0" Ref="C?"  Part="1" 
+F 0 "C?" V 8000 5050 50  0000 C CNN
+F 1 "47uF" V 7712 5050 50  0000 C CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 7850 5050 50  0001 C CNN
+F 3 "https://api.kemet.com/component-edge/download/datasheet/C1210C476M9RACTU.pdf" H 7850 5050 50  0001 C CNN
+F 4 "CAP CER 47UF 6.3V X7R 1210" H 7850 5050 50  0001 C CNN "Description"
+F 5 "399-5516-1-ND" H 7850 5050 50  0001 C CNN "Digikey"
+F 6 "C1210C476M9RACTU" H 7850 5050 50  0001 C CNN "MPN"
+F 7 "28" H 7850 5050 50  0001 C CNN "DK line"
+F 8 "KEMET" H 7850 5050 50  0001 C CNN "Manufacturer"
+	1    7850 5050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7050 3250 7050 2850
+Wire Wire Line
+	7050 4200 7050 3450
+$Comp
+L power:GNDA #PWR?
+U 1 1 5EC01D7F
+P 4350 4300
+AR Path="/5E62FD57/5E630FEC/5EC01D7F" Ref="#PWR?"  Part="1" 
+AR Path="/5E525EB8/5EC01D7F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4350 4050 50  0001 C CNN
+F 1 "GNDA" H 4350 4150 50  0000 C CNN
+F 2 "" H 4350 4300 50  0001 C CNN
+F 3 "" H 4350 4300 50  0001 C CNN
+	1    4350 4300
 	1    0    0    -1  
 $EndComp
 $Comp
 L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
-U 1 1 5E646BED
-P 1950 2800
-AR Path="/5DFCF14D/5DE42731/5E646BED" Ref="FB?"  Part="1" 
-AR Path="/5DFCF14D/5E646BED" Ref="FB?"  Part="1" 
-AR Path="/5DFCF14D/5DA78AA2/5E646BED" Ref="FB?"  Part="1" 
-AR Path="/5E51E83D/5E646BED" Ref="FB?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E646BED" Ref="FB?"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E646BED" Ref="FB?"  Part="1" 
-AR Path="/5E525EB8/5E646BED" Ref="FB?"  Part="1" 
-F 0 "FB?" H 1950 3087 60  0000 C CNN
-F 1 "21 Ohm" H 1950 2981 60  0000 C CNN
-F 2 "Inductor_SMD:L_0805_2012Metric" H 2150 3000 60  0001 L CNN
-F 3 "https://www.yuden.co.jp/productdata/catalog/chipbeads01_e.pdf" H 2150 3100 60  0001 L CNN
-F 4 "HZ0805C202R-10" H 2150 3300 60  0001 L CNN "MPN"
-F 5 "Ferrite Beads and Chips" H 2150 3500 60  0001 L CNN "Family"
-F 6 "FERRITE BEAD 21 OHM 0805, 100 nH, 5 mOhm" H 2150 3800 60  0001 L CNN "Description"
-F 7 "587-1765-1-ND" H 1950 2800 50  0001 C CNN "Digikey"
-F 8 "24" H 1950 2800 50  0001 C CNN "DK line"
-	1    1950 2800
+U 1 1 5EBC8F1D
+P 1750 1850
+AR Path="/5DFCF14D/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
+AR Path="/5E448095/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
+AR Path="/5E45936E/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
+AR Path="/5E525F2C/5E6427A0/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5DFCF14D/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5E448095/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5E45936E/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5DFCF14D/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5E448095/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5E45936E/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
+AR Path="/5E525EB8/5EBC8F1D" Ref="FB?"  Part="1" 
+F 0 "FB?" H 1750 2137 60  0000 C CNN
+F 1 "2K Ohm" H 1750 2031 60  0000 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 1950 2050 60  0001 L CNN
+F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 1950 2150 60  0001 L CNN
+F 4 " 240-2396-1-ND" H 1950 2250 60  0001 L CNN "Digi-Key_PN"
+F 5 "HZ0805C202R-10" H 1950 2350 60  0001 L CNN "MPN"
+F 6 "Filters" H 1950 2450 60  0001 L CNN "Category"
+F 7 "Ferrite Beads and Chips" H 1950 2550 60  0001 L CNN "Family"
+F 8 "https://product.tdk.com/info/en/catalog/datasheets/beads_commercial_power_mpz2012_en.pdf" H 1950 2650 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H 1950 2750 60  0001 L CNN "DK_Detail_Page"
+F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 1950 2850 60  0001 L CNN "Description"
+F 11 "Laird-Signal Integrity Products" H 1950 2950 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 1950 3050 60  0001 L CNN "Status"
+F 13 "5" H 1750 1850 50  0001 C CNN "DK line"
+F 14 "240-2396-1-ND" H 1750 1850 50  0001 C CNN "Digikey"
+	1    1750 1850
 	1    0    0    -1  
 $EndComp
+$Comp
+L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
+U 1 1 5EBC5800
+P 1750 4800
+AR Path="/5DFCF14D/5DE42731/5EBC5800" Ref="FB?"  Part="1" 
+AR Path="/5E448095/5DE42731/5EBC5800" Ref="FB?"  Part="1" 
+AR Path="/5E45936E/5DE42731/5EBC5800" Ref="FB?"  Part="1" 
+AR Path="/5E525F2C/5E6427A0/5DE42731/5EBC5800" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5DFCF14D/5DE42731/5EBC5800" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5E448095/5DE42731/5EBC5800" Ref="FB?"  Part="1" 
+AR Path="/5E624B3C/5E45936E/5DE42731/5EBC5800" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5DFCF14D/5DE42731/5EBC5800" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5E448095/5DE42731/5EBC5800" Ref="FB?"  Part="1" 
+AR Path="/5E62FD57/5E45936E/5DE42731/5EBC5800" Ref="FB?"  Part="1" 
+AR Path="/5E525EB8/5EBC5800" Ref="FB?"  Part="1" 
+F 0 "FB?" H 1750 5087 60  0000 C CNN
+F 1 "2K Ohm" H 1750 4981 60  0000 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 1950 5000 60  0001 L CNN
+F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 1950 5100 60  0001 L CNN
+F 4 " 240-2396-1-ND" H 1950 5200 60  0001 L CNN "Digi-Key_PN"
+F 5 "HZ0805C202R-10" H 1950 5300 60  0001 L CNN "MPN"
+F 6 "Filters" H 1950 5400 60  0001 L CNN "Category"
+F 7 "Ferrite Beads and Chips" H 1950 5500 60  0001 L CNN "Family"
+F 8 "https://product.tdk.com/info/en/catalog/datasheets/beads_commercial_power_mpz2012_en.pdf" H 1950 5600 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H 1950 5700 60  0001 L CNN "DK_Detail_Page"
+F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 1950 5800 60  0001 L CNN "Description"
+F 11 "Laird-Signal Integrity Products" H 1950 5900 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 1950 6000 60  0001 L CNN "Status"
+F 13 "5" H 1750 4800 50  0001 C CNN "DK line"
+F 14 "240-2396-1-ND" H 1750 4800 50  0001 C CNN "Digikey"
+	1    1750 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L ilemt_input:MAX6220ASA-5.0+ U?
+U 1 1 5EBCA843
+P 4650 2650
+F 0 "U?" H 5750 3050 60  0000 C CNN
+F 1 "MAX6220ASA-5.0+" H 5600 2950 60  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 5600 2050 60  0001 C CNN
+F 3 "https://datasheets.maximintegrated.com/en/ds/MAX6220.pdf" H 4650 2650 60  0001 C CNN
+F 4 "MAX6220ASA-5.0+-ND" H 5100 1900 50  0001 C CNN "Digikey"
+F 5 "MAX6220ASA-5.0+" H 5000 1800 50  0001 C CNN "MPN"
+F 6 "Maxim Integrated" H 4950 1700 50  0001 C CNN "Manufacturer"
+	1    4650 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4650 2950 4650 4200
 $Comp
 L Device:C_Small C?
-U 1 1 5E646BF7
-P 2750 3000
-AR Path="/5DFF6C0D/5E646BF7" Ref="C?"  Part="1" 
-AR Path="/5E1D6729/5E1DA2AA/5E646BF7" Ref="C?"  Part="1" 
-AR Path="/5E2EB92B/5E646BF7" Ref="C?"  Part="1" 
-AR Path="/5E51E83D/5E646BF7" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E646BF7" Ref="C?"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E646BF7" Ref="C?"  Part="1" 
-AR Path="/5E525EB8/5E646BF7" Ref="C?"  Part="1" 
-F 0 "C?" V 2521 3000 50  0000 C CNN
-F 1 "1uF" V 2612 3000 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 2750 3000 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 2750 3000 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 2750 3000 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 2750 3000 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 2750 3000 50  0001 C CNN "MPN"
-F 7 "27" H 2750 3000 50  0001 C CNN "DK line"
-	1    2750 3000
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	2750 2900 2750 2800
-Connection ~ 2750 2800
-Wire Wire Line
-	2750 2800 3050 2800
-Wire Wire Line
-	2750 3100 2750 3200
-Wire Wire Line
-	1750 2800 1600 2800
-Wire Wire Line
-	3750 2800 3850 2800
-Wire Wire Line
-	3750 2900 3850 2900
-Wire Wire Line
-	3850 2900 3850 2800
-$Comp
-L power:GNDA #PWR?
-U 1 1 5E646C14
-P 4000 3800
-AR Path="/5E62FD57/5E630FEC/5E646C14" Ref="#PWR?"  Part="1" 
-AR Path="/5E525EB8/5E646C14" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 4000 3550 50  0001 C CNN
-F 1 "GNDA" H 4000 3650 50  0000 C CNN
-F 2 "" H 4000 3800 50  0001 C CNN
-F 3 "" H 4000 3800 50  0001 C CNN
-	1    4000 3800
+U 1 1 5EBCDE6E
+P 4350 3350
+AR Path="/5DFF6C0D/5EBCDE6E" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EBCDE6E" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5EBCDE6E" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5EBCDE6E" Ref="C?"  Part="1" 
+AR Path="/5EBEDCCA/5EBCDE6E" Ref="C?"  Part="1" 
+AR Path="/5E525EB8/5EBCDE6E" Ref="C?"  Part="1" 
+F 0 "C?" V 4121 3350 50  0000 C CNN
+F 1 "3.3 uF" V 4212 3350 50  0000 C CNN
+F 2 "Capacitor_THT:C_Rect_L13.0mm_W6.0mm_P10.00mm_FKS3_FKP3_MKS4" H 4350 3350 50  0001 C CNN
+F 3 "https://api.kemet.com/component-edge/download/datasheet/R60DF4330506AJ.pdf" H 4350 3350 50  0001 C CNN
+F 4 "399-9672-ND" V 4350 3350 50  0001 C CNN "Digikey"
+F 5 "R60DF4330506AJ" V 4350 3350 50  0001 C CNN "MPN"
+F 6 "KEMET" V 4350 3350 50  0001 C CNN "Manufacturer"
+	1    4350 3350
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	4650 2850 4350 2850
+Wire Wire Line
+	4350 3450 4350 4200
+Wire Wire Line
+	4350 4200 4650 4200
+Wire Wire Line
+	4350 4300 4350 4200
+Connection ~ 4350 4200
 $Comp
-L power:GNDA #PWR?
-U 1 1 5E646C1A
-P 2750 3200
-AR Path="/5E62FD57/5E630FEC/5E646C1A" Ref="#PWR?"  Part="1" 
-AR Path="/5E525EB8/5E646C1A" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 2750 2950 50  0001 C CNN
-F 1 "GNDA" H 2750 3050 50  0000 C CNN
-F 2 "" H 2750 3200 50  0001 C CNN
-F 3 "" H 2750 3200 50  0001 C CNN
-	1    2750 3200
+L Device:R_US R?
+U 1 1 5EBD4520
+P 6700 2850
+F 0 "R?" V 6800 2850 50  0000 C CNN
+F 1 "40K" V 6600 2850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 6740 2840 50  0001 C CNN
+F 3 "~" H 6700 2850 50  0001 C CNN
+	1    6700 2850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6550 2850 6400 2850
+$Comp
+L Device:C_Small C?
+U 1 1 5EBD73F5
+P 9950 3500
+AR Path="/5DFF6C0D/5EBD73F5" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5EBD73F5" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5EBD73F5" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5EBD73F5" Ref="C?"  Part="1" 
+AR Path="/5EBEDCCA/5EBD73F5" Ref="C?"  Part="1" 
+AR Path="/5E525EB8/5EBD73F5" Ref="C?"  Part="1" 
+F 0 "C?" V 10100 3500 50  0000 C CNN
+F 1 "47uF" V 9812 3500 50  0000 C CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 9950 3500 50  0001 C CNN
+F 3 "https://api.kemet.com/component-edge/download/datasheet/C1210C476M9RACTU.pdf" H 9950 3500 50  0001 C CNN
+F 4 "CAP CER 47UF 6.3V X7R 1210" H 9950 3500 50  0001 C CNN "Description"
+F 5 "399-5516-1-ND" H 9950 3500 50  0001 C CNN "Digikey"
+F 6 "C1210C476M9RACTU" H 9950 3500 50  0001 C CNN "MPN"
+F 7 "28" H 9950 3500 50  0001 C CNN "DK line"
+F 8 "KEMET" H 9950 3500 50  0001 C CNN "Manufacturer"
+	1    9950 3500
 	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9950 2950 9950 3400
+Wire Wire Line
+	9950 3600 9950 4200
+Wire Wire Line
+	4350 3250 4350 2850
+Wire Wire Line
+	6850 2850 7050 2850
+Connection ~ 7050 2850
+Wire Wire Line
+	7050 2850 7550 2850
+Connection ~ 4650 4200
+$Comp
+L Device:R_US R?
+U 1 1 5EBF0C26
+P 9150 2950
+F 0 "R?" V 9250 2950 50  0000 C CNN
+F 1 "0" V 9050 2950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9190 2940 50  0001 C CNN
+F 3 "~" H 9150 2950 50  0001 C CNN
+	1    9150 2950
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:R_US R?
-U 1 1 5E646C29
-P 4300 3250
-AR Path="/5DFF6C0D/5E646C29" Ref="R?"  Part="1" 
-AR Path="/5E1D6729/5E1DA2AA/5E646C29" Ref="R?"  Part="1" 
-AR Path="/5E2EB92B/5E646C29" Ref="R?"  Part="1" 
-AR Path="/5E51E83D/5E646C29" Ref="R?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E646C29" Ref="R?"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E646C29" Ref="R?"  Part="1" 
-AR Path="/5E525EB8/5E646C29" Ref="R?"  Part="1" 
-F 0 "R?" V 4400 3250 50  0000 C CNN
-F 1 "200" V 4200 3250 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 4340 3240 50  0001 C CNN
-F 3 "~" H 4300 3250 50  0001 C CNN
-F 4 "55" H 4300 3250 50  0001 C CNN "DK line"
-F 5 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 4300 3250 50  0001 C CNN "Description"
-F 6 "RNCP0603FTD200RCT-ND" H 4300 3250 50  0001 C CNN "Digikey"
-	1    4300 3250
+U 1 1 5EBF1733
+P 8500 3850
+F 0 "R?" V 8600 3850 50  0000 C CNN
+F 1 "0" V 8400 3850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 8540 3840 50  0001 C CNN
+F 3 "~" H 8500 3850 50  0001 C CNN
+	1    8500 3850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8650 3850 9500 3850
+Wire Wire Line
+	9500 2950 9500 3850
+Wire Wire Line
+	8350 3850 7550 3850
+Wire Wire Line
+	7550 3050 7550 3450
+$Comp
+L Device:C_Small C?
+U 1 1 5EBF55C3
+P 8450 3450
+F 0 "C?" V 8600 3400 50  0000 L CNN
+F 1 "OPT" V 8300 3400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8450 3450 50  0001 C CNN
+F 3 "~" H 8450 3450 50  0001 C CNN
+	1    8450 3450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8350 3450 7550 3450
+Connection ~ 7550 3450
+Wire Wire Line
+	7550 3450 7550 3850
+Wire Wire Line
+	8550 3450 8800 3450
+Wire Wire Line
+	8800 3450 8800 2950
+Wire Wire Line
+	8800 2950 9000 2950
+Connection ~ 7050 4200
+Connection ~ 9500 2950
+Wire Wire Line
+	9500 2950 9950 2950
+Wire Wire Line
+	8200 2950 8800 2950
+Connection ~ 8800 2950
+Wire Wire Line
+	7050 4200 9950 4200
+Wire Wire Line
+	4650 4200 7050 4200
+Text Notes 7100 6750 0    50   ~ 0
+Master voltage reference and output buffer
+$Comp
+L Device:R_US R?
+U 1 1 5EC081C5
+P 2750 1850
+F 0 "R?" V 2850 1850 50  0000 C CNN
+F 1 "10" V 2650 1850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2790 1840 50  0001 C CNN
+F 3 "~" H 2750 1850 50  0001 C CNN
+	1    2750 1850
 	0    -1   -1   0   
 $EndComp
-Connection ~ 3850 2800
 $Comp
 L Device:R_US R?
-U 1 1 5E646C33
-P 4000 3500
-AR Path="/5DFF6C0D/5E646C33" Ref="R?"  Part="1" 
-AR Path="/5E1D6729/5E1DA2AA/5E646C33" Ref="R?"  Part="1" 
-AR Path="/5E2EB92B/5E646C33" Ref="R?"  Part="1" 
-AR Path="/5E51E83D/5E646C33" Ref="R?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E646C33" Ref="R?"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E646C33" Ref="R?"  Part="1" 
-AR Path="/5E525EB8/5E646C33" Ref="R?"  Part="1" 
-F 0 "R?" V 4100 3500 50  0000 C CNN
-F 1 "1K" V 3900 3500 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 4040 3490 50  0001 C CNN
-F 3 "~" H 4000 3500 50  0001 C CNN
-F 4 "55" H 4000 3500 50  0001 C CNN "DK line"
-F 5 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 4000 3500 50  0001 C CNN "Description"
-F 6 "RNCP0603FTD200RCT-ND" H 4000 3500 50  0001 C CNN "Digikey"
-	1    4000 3500
+U 1 1 5EC08908
+P 2750 4800
+F 0 "R?" V 2850 4800 50  0000 C CNN
+F 1 "10" V 2650 4800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2790 4790 50  0001 C CNN
+F 3 "~" H 2750 4800 50  0001 C CNN
+	1    2750 4800
+	0    1    1    0   
+$EndComp
+Connection ~ 3150 1850
+Wire Wire Line
+	4350 1850 7850 1850
+$Comp
+L Device:R_US R?
+U 1 1 5EC237F8
+P 7850 2200
+F 0 "R?" V 7950 2200 50  0000 C CNN
+F 1 "10" V 7750 2200 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7890 2190 50  0001 C CNN
+F 3 "~" H 7850 2200 50  0001 C CNN
+	1    7850 2200
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	4000 3350 4000 3250
+	7850 1850 7850 2050
 Wire Wire Line
-	4000 3650 4000 3700
+	7850 2350 7850 2550
+Connection ~ 7850 2550
+Connection ~ 9950 2950
+Connection ~ 9950 4200
 Wire Wire Line
-	4000 3700 4000 3800
-$Comp
-L Device:C_Small C?
-U 1 1 5E646C40
-P 3350 3500
-AR Path="/5DFCF14D/5DA78AA2/5E646C40" Ref="C?"  Part="1" 
-AR Path="/5E51E83D/5E646C40" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E646C40" Ref="C?"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E646C40" Ref="C?"  Part="1" 
-AR Path="/5E525EB8/5E646C40" Ref="C?"  Part="1" 
-F 0 "C?" H 3360 3570 50  0000 L CNN
-F 1 "10uF" H 3360 3420 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 3350 3500 50  0001 C CNN
-F 3 "http://datasheets.avx.com/cx5r.pdf" H 3350 3500 50  0001 C CNN
-F 4 "CAP CER 10UF 6.3V X5R 0603" H 3350 3500 50  0001 C CNN "Description"
-F 5 "478-5318-1-ND" H 3350 3500 50  0001 C CNN "Digikey"
-F 6 "06036D106MAT2A" H 3350 3500 50  0001 C CNN "MPN"
-F 7 "29" H 3350 3500 50  0001 C CNN "DK line"
-	1    3350 3500
-	1    0    0    -1  
-$EndComp
+	9950 2950 10400 2950
 Wire Wire Line
-	3350 3600 3350 3700
+	9950 4200 10400 4200
 Wire Wire Line
-	3350 3400 3350 3250
-Connection ~ 4000 3700
-$Comp
-L power:PWR_FLAG #FLG?
-U 1 1 5E646C49
-P 2500 2800
-AR Path="/5E62FD57/5E630FEC/5E646C49" Ref="#FLG?"  Part="1" 
-AR Path="/5E525EB8/5E646C49" Ref="#FLG?"  Part="1" 
-F 0 "#FLG?" H 2500 2875 50  0001 C CNN
-F 1 "PWR_FLAG" H 2500 2950 50  0000 C CNN
-F 2 "" H 2500 2800 50  0001 C CNN
-F 3 "~" H 2500 2800 50  0001 C CNN
-	1    2500 2800
-	1    0    0    -1  
-$EndComp
-Connection ~ 2500 2800
+	3150 1850 3700 1850
 Wire Wire Line
-	2500 2800 2750 2800
+	2900 1850 3150 1850
 Wire Wire Line
-	3350 3700 4000 3700
+	4350 2750 4650 2750
 Wire Wire Line
-	3350 3250 4000 3250
+	4350 1850 4350 2750
 Wire Wire Line
-	4150 3250 4000 3250
-Connection ~ 4000 3250
+	2900 4800 3150 4800
 Wire Wire Line
-	4650 3700 4650 3800
+	2350 2200 2350 2300
 $Comp
 L power:GNDA #PWR?
-U 1 1 5E646C56
-P 4650 3800
-AR Path="/5E62FD57/5E630FEC/5E646C56" Ref="#PWR?"  Part="1" 
-AR Path="/5E525EB8/5E646C56" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 4650 3550 50  0001 C CNN
-F 1 "GNDA" H 4650 3650 50  0000 C CNN
-F 2 "" H 4650 3800 50  0001 C CNN
-F 3 "" H 4650 3800 50  0001 C CNN
-	1    4650 3800
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:CP1_Small C?
-U 1 1 5E646C60
-P 4650 3600
-AR Path="/5DFF6C0D/5E646C60" Ref="C?"  Part="1" 
-AR Path="/5E1D6729/5E1DA2AA/5E646C60" Ref="C?"  Part="1" 
-AR Path="/5E2EB92B/5E646C60" Ref="C?"  Part="1" 
-AR Path="/5E51E83D/5E646C60" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E646C60" Ref="C?"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E646C60" Ref="C?"  Part="1" 
-AR Path="/5E525EB8/5E646C60" Ref="C?"  Part="1" 
-F 0 "C?" V 4800 3600 50  0000 C CNN
-F 1 "330uF" V 4512 3600 50  0000 C CNN
-F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 4650 3600 50  0001 C CNN
-F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 4650 3600 50  0001 C CNN
-F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 4650 3600 50  0001 C CNN "Description"
-F 5 "565-4285-1-ND" H 4650 3600 50  0001 C CNN "Digikey"
-F 6 "APXG160ARA331MH70G" H 4650 3600 50  0001 C CNN "MPN"
-F 7 "19" H 4650 3600 50  0001 C CNN "DK line"
-	1    4650 3600
+U 1 1 5ED0636E
+P 2350 2300
+AR Path="/5E62FD57/5E630FEC/5ED0636E" Ref="#PWR?"  Part="1" 
+AR Path="/5E525EB8/5ED0636E" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2350 2050 50  0001 C CNN
+F 1 "GNDA" H 2350 2150 50  0000 C CNN
+F 2 "" H 2350 2300 50  0001 C CNN
+F 3 "" H 2350 2300 50  0001 C CNN
+	1    2350 2300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3350 3200 3350 3250
-Connection ~ 3350 3250
+	1950 1850 2350 1850
 Wire Wire Line
-	3850 2800 4550 2800
+	2350 2000 2350 1850
+Connection ~ 2350 1850
 Wire Wire Line
-	4450 3250 4550 3250
-Wire Wire Line
-	4650 2800 4650 3500
-Connection ~ 4650 2800
-Wire Wire Line
-	4650 2800 4850 2800
-Wire Wire Line
-	2150 2800 2500 2800
-Wire Wire Line
-	4550 3250 4550 2800
-Connection ~ 4550 2800
-Wire Wire Line
-	4550 2800 4650 2800
-Text GLabel 9300 2800 2    50   Output ~ 0
-VREF+
-Text GLabel 9300 3250 2    50   Output ~ 0
-VREF-
-Text Notes 4500 2650 0    50   ~ 0
-+7.5V
+	2350 1850 2600 1850
 $Comp
 L Device:C_Small C?
-U 1 1 5E64DE1C
-P 5950 3050
-AR Path="/5DFCF14D/5DA78AA2/5E64DE1C" Ref="C?"  Part="1" 
-AR Path="/5E51E83D/5E64DE1C" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E64DE1C" Ref="C?"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E64DE1C" Ref="C?"  Part="1" 
-AR Path="/5E525EB8/5E64DE1C" Ref="C?"  Part="1" 
-F 0 "C?" H 5960 3120 50  0000 L CNN
-F 1 "22 uF" H 5960 2970 50  0000 L CNN
-F 2 "Capacitor_THT:C_Rect_L26.5mm_W11.5mm_P22.50mm_MKS4" H 5950 3050 50  0001 C CNN
-F 3 "https://www.tdk-electronics.tdk.com/inf/20/20/db/fc_2009/B32520_529.pdf" H 5950 3050 50  0001 C CNN
-F 4 "CAP FILM 22UF 10% 63VDC RADIAL" H 5950 3050 50  0001 C CNN "Description"
-F 5 "495-75695-ND" H 5950 3050 50  0001 C CNN "Digikey"
-F 6 "B32523R0226K000" H 5950 3050 50  0001 C CNN "MPN"
-F 7 "" H 5950 3050 50  0001 C CNN "DK line"
-	1    5950 3050
+U 1 1 5ED08B32
+P 2350 2100
+AR Path="/5DFF6C0D/5ED08B32" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED08B32" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED08B32" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5ED08B32" Ref="C?"  Part="1" 
+AR Path="/5EBEDCCA/5ED08B32" Ref="C?"  Part="1" 
+AR Path="/5E525EB8/5ED08B32" Ref="C?"  Part="1" 
+F 0 "C?" V 2121 2100 50  0000 C CNN
+F 1 "1uF" V 2212 2100 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 2350 2100 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 2350 2100 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 2350 2100 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 2350 2100 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 2350 2100 50  0001 C CNN "MPN"
+F 7 "27" H 2350 2100 50  0001 C CNN "DK line"
+F 8 "Samsung Electro-Mechanics" H 2350 2100 50  0001 C CNN "Manufacturer"
+	1    2350 2100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2350 5150 2350 5250
+$Comp
+L power:GNDA #PWR?
+U 1 1 5ED0A96F
+P 2350 5250
+AR Path="/5E62FD57/5E630FEC/5ED0A96F" Ref="#PWR?"  Part="1" 
+AR Path="/5E525EB8/5ED0A96F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2350 5000 50  0001 C CNN
+F 1 "GNDA" H 2350 5100 50  0000 C CNN
+F 2 "" H 2350 5250 50  0001 C CNN
+F 3 "" H 2350 5250 50  0001 C CNN
+	1    2350 5250
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	2350 4950 2350 4800
+$Comp
+L Device:C_Small C?
+U 1 1 5ED0A97B
+P 2350 5050
+AR Path="/5DFF6C0D/5ED0A97B" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5ED0A97B" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5ED0A97B" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5ED0A97B" Ref="C?"  Part="1" 
+AR Path="/5EBEDCCA/5ED0A97B" Ref="C?"  Part="1" 
+AR Path="/5E525EB8/5ED0A97B" Ref="C?"  Part="1" 
+F 0 "C?" V 2121 5050 50  0000 C CNN
+F 1 "1uF" V 2212 5050 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 2350 5050 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 2350 5050 50  0001 C CNN
+F 4 "CAP CER 1UF 16V X7R 0805 " H 2350 5050 50  0001 C CNN "Description"
+F 5 "1276-6471-1-ND" H 2350 5050 50  0001 C CNN "Digikey"
+F 6 "CL21B105KOFNNNG" H 2350 5050 50  0001 C CNN "MPN"
+F 7 "27" H 2350 5050 50  0001 C CNN "DK line"
+F 8 "Samsung Electro-Mechanics" H 2350 5050 50  0001 C CNN "Manufacturer"
+	1    2350 5050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7850 3250 7850 4800
+Wire Wire Line
+	1950 4800 2350 4800
+Wire Wire Line
+	2350 4800 2600 4800
+Connection ~ 2350 4800
+Wire Wire Line
+	3150 4800 7850 4800
+Connection ~ 3150 4800
+Connection ~ 7850 4800
+Wire Wire Line
+	7850 4800 7850 4950
+Wire Wire Line
+	3700 1850 4350 1850
+Connection ~ 3700 1850
+Connection ~ 4350 1850
 $EndSCHEMATC

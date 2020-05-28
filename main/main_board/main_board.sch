@@ -57,4 +57,12 @@ U 5EC4BDFA
 F0 "BIST_DAC" 50
 F1 "BIST.sch" 50
 $EndSheet
+Text Notes 850  2100 0    50   ~ 0
+Complete
+Text Notes 4000 1250 0    50   ~ 0
+Need FPGA hookup
+Text Notes 4000 2150 0    50   ~ 0
+Need FPGA hookup
+Text Notes 850  1350 0    50   ~ 0
+Complete
 $EndSCHEMATC
