@@ -1,9 +1,10 @@
+Move Vivado/verilog stuff into github.
+
 Evaluation tasks:
  -- BIST injection test
  -- Prototype reference
  -- Preliminary RFI and ESD testing on input board.
  -- Measure supply current, in saturation and otherwise.
-
 
 Main board:
  -- Order box
@@ -28,7 +29,7 @@ DAC output:
 
 Input board revisions:
  -- Change to how supplies boostrap from reference. Probably
-    not affecting current performance. Noise and ripple on the
+    not affecting performance, but noise and ripple on the
     reference buffer supply just looks ugly.  Supply is also 
     skimpy with diode drops.
  -- Use OPA2227 dual opamp rather than 2 OPA27
@@ -159,6 +160,165 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+________________
+kipart kicad schematic symbol generator
+
+kipart is a python program for generating Kicad schematic symbols from
+CSV files.  This is used to generate the symbols for the Microzed.
+
+I run this via the anaconda shell under windows.
+
+pip install --upgrade kipart
+kipart bla blah
+________________
+
+
+[28 May 20]
+
+OK, need to tackle the Microzed pin mapping problem.  Plan is to use
+the Kipart tool to generate symbols from CSV file.
+
+Kipart can generate symbols according to the Xilinx pin definitions,
+but this does not seem to make much sense because we are connecting to
+the Microzed, not directly to the FPGA.
+
+Origanizing principles:
+ -- The Verilog pin name should be the same as schematic net name.
+    This makes clear the semantic connection.
+ -- Minimize the number of different connection databases that need to
+    be kept consistent.
+
+What connection levels do we have?
+ -- Verilog pin to package pin (defined by Vivado .xdc constriants
+    file).
+ -- Package pin to Microzed pin (a fixed mapping)
+ -- Microzed pin to schematic net, somehow embedded in the Kicad
+    schematic.
+
+So, there are only two variable mappings: Verilog and Kicad.  We want
+to change these somewhat fluidly to aid routing.  It would be really
+really nice if we could somehow automate the mapping so that we don't
+have to keep manually editing the schematic and constraints file to
+keep things consistent.
+
+What I'm thinking, is what if we defined the partition info schematic
+symbols *semantically* so that with remapping the schematic symbol
+does not change, only its pin assignment.  I'm not certain how well
+Kicad will deal with this remapping, but it seems promising.
+
+This is an alternative to what seems to be common practice, that you
+have a symbol that represents each FPGA IO bank, and these are mostly
+wired to global labels.  To remap a pin, you change the label that it
+is wired to.  Then you have a schematic sheet which is basically a
+database describing a permutation.  This seems somewhat tiresome and
+error prone.
+
+So the idea is that we make a schematic symbol (a "unit") for each
+main place on the schematic that we connect to IO.  The pin name in
+the symbol is precisely the Verilog pin name, and the pin number
+corresponds to the current pin mapping.  For example, each input card
+slot would have a unit.
+
+One complexity is that the Microzed has two connectors.  I was
+wondering if these should be two "parts".  This would make the
+footprint definition simpler, since the footprint would be just the
+connector footprint.  But the semantic pin mapping works better if we
+can assign a signal to either connector.  And supplies (ground) which
+are in common can be mapped to a single schematic pin.
+
+It also seems perhaps a bit better for placement and reuse if we embed
+the knowledge about the arrangement of the two connectors into the
+footprint, since the correct location is automatically enforced.  The
+footprint can include drawing layers calling out the ethernet
+connector location, mounting holes, etc.
+
+
+Main Microzed pin mapping resource seems to be:
+C:\Users\robma\Desktop\tracker\MicroZed\MicroZed JX pinout tables 151110.xlsx
+
+There is pretty much every possible combination of mapping/non-mapping
+between the Zynq pins and the Zedboard pins:
+ -- Some Zynq pins are not brought out (some of these are used
+    internally for eg. DRAM, or are supply pins, etc.)
+ -- Some Zedboard pins do not directly correspond to a Zynq pin, such
+    as external supplies.
+ -- Many Zynq pins are directly brought out.  In any given design,
+    some of these may not be used (no connect), so are not hooked to
+    the schematic design.
+
+Bank 34 is all on JX1 and bank 35 on JX2.  (It seems that for general
+IOs the number in the "MicroZed Net Name" is one less than the number
+in the "Zynq Name".)  Mostly we don't care about either the MicroZed
+or Zynq name on IOs, but when there are special functions the Zynq
+name can be a clue.
+
+All we need from the MicroZed documentation is the mapping from
+package pin number (eg. N19) to the pin numbering that I choose to use
+in the Kicad footprint for the MicroZed.  Because I am combining both
+connectors in a single footprint the connector pin numbers need to be
+distinct.  I am thinking of prefixing the JX1 pins with 'a' and the JX2
+pins with 'b'.  So JX1 pin 84 (Zynq pin P16, IO_L24N_T3_34) becomes
+'a84'.  The lower case should help to avoid confusion with the Zynq
+pin grid.  Will have to see what naming convention plays best with
+Kicad.  Maybe 1JX84?
+
+
+So what do we need?
+ -- Kicad footprint with appropriate pin numbers. (mapping is fixed)
+ -- CSV or xlsx file that generates the Kicad symbols using Kipart.
+    This is the variable mapping between signals and pins.  This is
+    specified using the signal name and footprint pin number.
+ -- Fixed mapping between Zynq pin and Kicad footprint pin.  This is
+    used to compute the Zynq pin from the footprint pin when we need
+    that info.  This is an Excel file edited from the Avnet supplied
+    JX pinout tables, and can include the MicroZed and Zynq names for
+    documentation.  It might as well include all of the MicroZed pins,
+    although we really only need the ones that are directly connected
+    to Zynq IOs.
+ -- A tool for exporting the signal name -> Zynq pin mapping to
+    Vivado.  Likely this can be done using Excel magic.
+
+There is some support for importing CSV files into
+Vivado in the PinPlanning mode.
+
+Kipart allows any columns in any order because it keys off of certain
+column names.  So the Kipart file can be the master file.  This will
+only represent pins brought out to the MicroZed connectors.  The
+Kipart columns are ‘Pin’ and ‘Name’. Optional columns are ‘Unit’,
+‘Side’, ‘Type’, ‘Style’, and ‘Hidden’.
+
+Something like:
+  Pin: the Kicad footprint pin name, eg. a84
+  Name: the signal name, eg. adc_mclk
+  Side: for asethetics, probably mainly input left, output right
+  Type: electrical type (for ERC)
+
+ ==> For documentation, would be nice to have the FPGA pad number as a
+     computed column.
+
+Once things are set up we will remap pins by editing the master
+spreadsheet to change the pin number (without changing anything else).
+Then we regenerate symbols with Kipart, update the schematic for the
+new pin numbers.  The hope is that Kicad will cleanly change the pin
+mapping without breaking schematic wires.  Then we also import the new
+pin mapping into vivado.
+
+May want a tool or procedure for keeping track of which pins are
+available but unused.  Vivado can tell us what it thinks are unused
+pins, but it doesn't know the MicroZed pinout, which would be helpful
+for guessing initial assignments.  We might want to create dummy
+symbols to hold the unused pins.  These lines can then be moved into a
+symbol when we want to map them.
+
+One of the things I am unclear on is how to even get the initial pin
+assignment.  Maybe the thing is for each signal, route over to the
+MicroZed pin, then update the pin mapping table.  PCB won't know the
+connection is supposed to exist until the symbols are updated, but you
+can still route a trace to nowhere.  Then when we do update the
+schematic the ratsnest should show a short direct connection.
+
 
 
 [19-20 May 20]
@@ -4829,7 +4989,7 @@ inductor.  But we don't need too much loss to damp the LC resonance,
 since inductor chips in this range are designed for high Q and 10's of
 MHz.  For example, Bourns CS160808-R27K,
     Inductance uH	Q	Test Freq. 	SRF MHz	 DCR mOhm	I rms mA
-    0.27 �10		30	25 		190	 500 (max)	200
+    0.27 ±10		30	25 		190	 500 (max)	200
 
 But Z0 for 300 nH/100 uF is 55 mOhm, so 500 mOhm ESR is well more than
 enough to damp this.  This part maintains impedance > 100 Ohm out past
@@ -10854,7 +11014,7 @@ it's so big.)
 [18 Apr 19]
 
 This is a varnish resin that looks like it would be good for the
-source coil impregnation. Dolph DOLPHON� CC-1105 HTC.  High thermal
+source coil impregnation. Dolph DOLPHON® CC-1105 HTC.  High thermal
 conductivity and good accoustic noise suppression, suitable for vacuum
 impregnation. 
     https://www.eis-inc.com/polyester-resin/p-dolcc1105htcg
