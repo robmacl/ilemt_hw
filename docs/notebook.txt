@@ -9,18 +9,18 @@ Evaluation tasks:
 Main board:
  -- Order box
  -- Order sample components: edge connector.
- -- Mechanical layout: mounting holes
- -- Microzed connectors
- -- Microzed symbol generation
-     - Preliminary pin mapping for layout
- -- BIST schematic
- -- Power:
-     - Input power connector, TVS, filtering
-     - Supplies for Microzed (I/O supply, 5V w/ LC decoupling)
-     - Supply for LVDS driver/receiver (separate 3.3V)
-     - Wurth WE-MPSB beads characterized for DC current. 0805 180 Ohm
- -- Regulator daughtercard footprint.
+ -- Hook up output slot to FPGA
+ -- Mechanical layout:
+     - mounting holes
+     - check connector locations
+     - decide board width
+ -- Regulator daughtercard footprint. Mount holes, connector
+    selection. 
  -- Test points
+ -- BIST DACs
+ -- Part selection:
+      - Wurth WE-MPSB beads characterized for DC current. 0805 180 Ohm
+
 
 DAC output:
  -- Breakout board for output slot
@@ -96,6 +96,13 @@ Don't forget:
  -- What effect does placing the output filter resonance at the
     carrier frequency have on driver noise?  Does this help or hurt?
 
+
+
+Procedures:
+
+This page is documentation on current procedures, including specific commands
+to do certain tasks.
+
 ________________
 Levels, etc:
 
@@ -162,17 +169,298 @@ password BogPickle
 ________________
 
 
-________________
+----------------------------------------------------------------
 kipart kicad schematic symbol generator
 
 kipart is a python program for generating Kicad schematic symbols from
 CSV files.  This is used to generate the symbols for the Microzed.
+See [1-4 June 20] for more discussion.
 
-I run this via the anaconda shell under windows.
+ilemt_hw/main/kipart_microzed.csv:
+    In kipart "generic" format.  Does not include the Zynq pad number, etc.,
+    since this is implied by the MicroZed pin.  Edit this file to change the
+    pin mapping.  Add new units (new chunks of mapped pins) at the end so that
+    the unit ordering will not be affected.  In the kipart file the unit has a
+    sensible name, but this is lost in the Kicad library, we only have units
+    A, B, C etc.
 
-pip install --upgrade kipart
-kipart bla blah
-________________
+ilemt_fpga/docs/microzed_pinout.csv:
+    This has information about each microzed pin, including 'Zynq Pin'. By
+    some method (TBD) this (together with kipart_microzed.csv) is used to
+    generate the signal to pin mapping within Vivado.  See [4 June 20].
+
+
+I run kipart via the anaconda shell under windows.
+
+----------------
+pip install --upgrade
+----------------
+
+This generates kipart_microzed.lib, which should be included in the
+Kicad symbol path (using Preferences/Manage Symbol Paths)
+Exit kicad before doing this!! See below.
+
+----------------
+cd C:\Users\robma\Documents\Work\ilemt_hw\main
+kipart -b -w kipart_microzed.csv
+----------------
+
+Restart Kicad.  It will likely offer to "rescue" the old symbols, but don't!
+This copies the old symbols from the library cache into a new "rescue"
+library, so the schematic continues to reference the old symbols.  This is
+quite bad because you now have references to the wrong symbols (with wrong pin
+mapping).  Just restart Kicad, and decline to rescue.  If Kicad is running
+when you change the library, and it notices (such as when you place a new
+unit) it will show all of the references to the old symbol as "broken".  Just
+restart.  Maybe if a symbol is truly broken then you will have to re-place and
+re-wire it, IDK.
+----------------------------------------------------------------
+
+
+
+[5 June 20]
+
+Looked at the startup and power sequencing issues.  The breakout card MBCC-BK0
+has more stuff there than I was expecting, with more discrete components and
+analog.
+
+A non-obvious issue that they are trying to deal with (added in revision) is
+that the Microzed is power by diodes either from the USB serial console or the
+micro headers (or the non-populated power jack).  So the microzed could
+(probably accidentally) powered by USB when the carrier board isn't.
+
+But what's implemented is a little weird since it's making use of the off pole
+of the power switch.  At best this helps in a situation when the breakout has
+been forced off using the switch, but does nothing in the case of external
+power fail.  And likely you get a power fail as the switch is between
+positions.  Just out of curiosity, I checked if the switch was a special
+make-before-break unit, and no it isn't.  So this makes the attempted
+sequencing in the shutdown pretty spurious.  Maybe if you don't flick too
+slowly, the bulk capacitors hold up the bus until the switch is fully closed?
+Or maybe they didn't even test what happens during the shutdown?
+
+Q1, Q2 will definitely hold off PWR_EN once the switch is fully off, but it
+would also seem that the passive pulldowns are probably adequate.  Not really
+had to deal with this before, but it does seem somewhat awkward to generate a
+signal when you have no power.  And with PWR_EN, VCCIO_EN, you are looking 10K
+or 1.5K pullup.  For VCCIO_EN they use a 120 Ohm pulldown, which should give
+0.13V, fairly well below the 0.3V regulator threshold.  But then they use 13
+mA continuously when operating to swamp this pulldown.  Not only is this a
+(small) power waste, 13 mA is above the 10 mA absolute max rating for the
+regulator power-good sink current, in the case where the carrier is powered
+but the microzed power is not good.
+
+I'm not clear on what actual problem it would cause if the Microzed was powered
+via USB when the carrier was off.  There would be no VCCIO, so the Microzed
+could not try drive anything on the carrier, and it can't be too bad to run
+with no VCCIO since this is what happens already if you run the Microzed
+standalone. 
+
+They are also using a surprisingly complicated reference + comparator circuit
+to sense the VCCIO_EN signal.  This seems to be because of the interaction
+with the VCCIO_EN pulldown. Some level shift would be necessary even so,
+because the microzed pullup is only to 1.8V, which is the min turnon voltage
+for the regulator.  Let me see, threshold is set at 1V.  Then we will switch
+if VCCIO_EN goes above 1.27V.  This should happen when "5V" goes above about
+3.9V. Interestingly, the U2 level shift is powered even when the power switch
+is off.  This is about what the MBCC-BK0 user guide says (4V).  So this is
+what happens, but not clear there is any reason for this particular
+threshold.  I guess it does mean that the VCCIO regulator doesn't get turned
+on until our +5V is high enough to ensure it can generate 3.3V out.  But FWIW
+there is no power-good to see that we actually have VCCIO before we allow the
+Microzed to complete power on, but then again, it doesn't seem there is any
+particular problem with not having VCCIO.
+
+Eh, so mainly I was analyzing this to see if they were doing some clever
+subtle thing I need to worry about, and it seems not so much.  I just need
+some way to turn on the +2.5V with a moderately high impedance input that
+switches around 0.9V or so.  And then don't try to drive PWR_EN and VCCIO_EN
+at all.  This could be achieved with eg. AP7361C-25SP-13DICT-ND.
+
+
+
+
+
+
+[4 June 20]
+
+I got the Kicad side of the FPGA mapping more or less working, and have the
+Microzed partly hooked up.  See "kipart schematic symbol generator" in shell
+snips section.  I tried some remapping, and Kicad does not deal with this
+entirely smoothly, but it seems manageable.
+
+I haven't tackled it yet, but how we generate the Vivado pad mapping has to
+include a procedure for checking whether the mapping is sane: are diff pairs
+actually mapped to paired pads with the right +/- sense?  Possibly we goof,
+and that pin is not PL IO at all?  Are there pins mapped to more than one
+signal?
+
+So, in particular, the Vivado pad mapping has to know about diff pairs,
+because in Verilog each pair becomes a single signal.  eg. IN2_SDOA1+ and
+IN2_SDOA1- becomes just IN2_SDOA1.  This is making me think that I will want
+some sort of programmed script rather than just Excel.  I suppose it could be
+in TCL, or Python, or whatever.
+
+I see that I already have this messed up because when I was making up the
+initial pin mapping I did not have the pairing information.
+
+I think that getting the microzed footprint created should help in creating a
+non-silly initial mapping.
+
+
+
+[1 June 20]
+
+Summary:
+ -- Seem to have a handle on special pin functions and IO bank
+    features.  Complexity is not as bad as it seemed.  Only identified
+    pin concern is that the master clock should come in on a MRCC/SRCC
+    clock capable pin pair
+ -- We have to use VCCIO 2.5V to use LVDS.  Possibly this could create
+    problems for single-ended IO, but for outputs 2.5V should be fine,
+    even if the input on the other end is 3.3V.  All we currently have
+    is the SYNC output.  BIST DACs and card select would presumably be
+    single-ended.
+ -- Processor MIO pins are needed for the card configuration I2C,
+    one-wire.  Also need I2C for clock generator config.  This could
+    be the same bus as card config.  (Card config is anyway not currently
+    implemented in the input card.)
+ -- Unsure on whether to bother implementing BIST on first spin of the
+    main card.  We don't really need it now, but if it isn't on the
+    card then BIST feature can't be tested.
+
+
+I have ilemt_hw/docs/kipart_pinmap.csv in reasonable shape.
+ilemt_fpga/docs/microzed_pinout.csv is currently the same file, but really
+the kipart_pinmap should have only the Kicad pin number, and the Zynq
+pin, etc., should be only in microzed_pinout.csv.  This way we can
+remap pins with minimal risk of inconsistency.  Probably these would
+also have different sort orders, because the kicad_pinmap would be
+ordered by units, which is a changable mapping.
+
+  ==> FWIW, 'ilemt_fpga\docs\microzed\MicroZed JX pinout tables 151110.xlsx'
+      is not completely accurate, seems to be an earlier revision.  A
+      few special pins were changed.
+
+
+Reading Xilinx datasheets to see how IO features might affect our
+usage.
+
+We have HR (High Range voltage) IO banks.  This does not have the
+fancy tuned termination resistance of the HP IO banks (DC).  You can
+choose 40, 50 or 60 Ohm termination in HR banks, but the tolerace is
+quite broad.
+
+But there is also 100 Ohm DIFF_TERM, which is different from DCI, and
+maybe also from the HR termination.  In UG741:
+________________________________________________________________
+Page 49:
+The V CCO of the I/O bank must be connected to 1.8V for LVDS, and 2.5V for the other
+differential I/O standards to provide 100Ω of effective differential termination.
+DIFF_TERM is only available for inputs and can only be used the appropriate V CCO
+voltage.
+
+Page 91:
+The LVDS_25 I/O standard is only available in the HR I/O banks. It requires a V CCO to be
+powered at 2.5V for outputs and for inputs when the optional internal differential
+termination is implemented (DIFF_TERM = TRUE).
+_______________________________________________________________
+
+
+So we need to figure out the right options for our LVDS interface, and
+it seems this may force VCCO of 2.5V.  Offhand, this would mainly
+require lower voltage on the single-ended outputs, which are few.  I
+think we need LVDS in both banks, so we may need level translators for
+3.3V single-ended lines.  IIRC there is only the ADC SYNC.  We are
+also using single-ended outputs to talk to the DAC, but there can be a
+level translator.  We are using 3.3V LVDS tx/rx on input board, so I
+think we are more or less stuck with 3.3V at that end.  But 2.5V
+outputs are probably acceptable for a 3.3V input, and we don't have
+any single-ended inputs.
+
+You can use a different VCCIO with LVDS under some conditions, but
+this doesn't cover 3.3V VCCIO (the driver shuts down above 2.85V).
+
+LVDS doesn't support slew rate or drive control.  Maybe it has
+speed/power switch, but the default is low speed.
+
+
+There are pullup/pulldown features on outputs, and you can also
+globally select a pullup on all IOs at powerup while configuration is
+happening to keep IOs well-defined during startup.  This is via the
+PUDC pin, which is configured by a jumped on up on the Microzed
+(pullups off in usual provided jumper config).
+
+
+
+We are going to skip out on most of the IO features because they are
+irrelevant, or we don't need that level of performance because of low
+data rates.
+
+One thing that might be relevant is IBUFGDS for the input from the
+master clock oscillator, which would route this onto a global clock
+line.  But IBUFDS is the same as IBUFGDS, so maybe clock pins are not
+magical with differential?  See also SRCC, MRCC.  Either one can drive
+BUFGs for the global clock nets.  MMCM PLLs can read SRCC/MRCC and
+drive (any?) output buffers in the same clock region.
+
+This says that you should use MRCC/SRCC pins for bring in a diff clock.
+https://forums.xilinx.com/t5/Other-FPGA-Architecture/LVDS-CLK-P-N-be-routed-to-MRCC-SRCC-or-regular-differential-IOs/td-p/913220
+
+It seems that the diff pairing is the same as for non-clock mode.  For
+a SE clock you should use only the P side.
+
+There are only 4 clock regions because our part is small.
+
+
+There are really not that many special functions on the Zynq PL pins
+if you are not using DDR.  There are the analog pins, but I'm not
+planning to use those either.
+
+
+This is a reference for Zedboard Zynq pins specifically:
+    http://zedboard.org/content/zynq-pins-deep-dive
+
+As I guess makes sense, the Microzed onboard memories interface to PS
+(processor) pins, not to PL (programmable logic).  The 8 PMOD signals
+are the only PS pins brought out.  These can be configured for lots of
+processor peripherals.  Also known as MIO, Muxable IO.  We would use
+these pins for the card configuration I2C (so it can be controlled by
+standard Linux interface).  I think that we would want to drive the
+BIST DACs from the FPGA so that we get precise timing.
+
+Perhaps MIO also for the card select lines.  We could also do this via
+the FPGA, such as by the Xillybus memory register interface.  MIO is a
+somewhat scarce resource, but in any given spin of the main board
+these lines are either used or not.  Unused lines can be accessed from
+the PMOD headers, which could be useful for hacks.
+
+UG865 is the official Zynq pinout datasheet.  We have the CLG400
+package.
+
+
+I guess another thing to think about is if any clocking resources are
+relevant to the direct digital source driver interface.  But AFAICT
+this is asynchronous.  But the output to the driver is registered, so
+maybe we would want to make sure we are using the register in the IO
+bank, and High Perormance Clock (HPC)?  This doesn't seem to have any
+big implications for pinout, though.  You have to use the MMCM for the
+IO bank, but the pins themselves are not special.  I think I had
+considered using an external latch on the driver control lines to
+synch them to the clean master clock, but it seems that you can also
+do this using the IOB latch.
+
+The SERDES could be used to clock the output really fast, which is a
+better idea than my earlier one of somehow gating asynchronous delay
+networks, but is still not a first resort.  We do not in any case want
+to actually modulate faster than 1 MHz, but the higher clock allows
+higher resolution on the edge (higher PWM DAC resolution).  It is
+plausible that you would not get much benefit because of the jitter
+intrinisic in the relatively slow modulator.  These parts do have
+OSERDES2, but not GTP or GTX, which are the gigabit transceivers.  It
+is not clear how many OSERDES there are, but proably there is 1 per
+IOB, so 50 per bank, IDK.  The gain would also be fairly moderate,
+since it only supports a clock up to maybe 500 MHz or so.
 
 
 [28 May 20]
@@ -186,7 +474,8 @@ the Microzed, not directly to the FPGA.
 
 Origanizing principles:
  -- The Verilog pin name should be the same as schematic net name.
-    This makes clear the semantic connection.
+    This makes clear the semantic connection. (But this isn't exactly true for
+    differential signals.)
  -- Minimize the number of different connection databases that need to
     be kept consistent.
 
@@ -237,6 +526,7 @@ connector location, mounting holes, etc.
 
 Main Microzed pin mapping resource seems to be:
 C:\Users\robma\Desktop\tracker\MicroZed\MicroZed JX pinout tables 151110.xlsx
+ ==> This has a few errors, fixed in my microzed_pinout.csv
 
 There is pretty much every possible combination of mapping/non-mapping
 between the Zynq pins and the Zedboard pins:

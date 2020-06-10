@@ -13,4 +13,12 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text GLabel 5750 3000 2    50   Input ~ 0
+BIST++_IN
+Text GLabel 5750 3100 2    50   Input ~ 0
+BIST+-_IN
+Text GLabel 5750 3250 2    50   Input ~ 0
+BIST--_IN
+Text GLabel 5750 3350 2    50   Input ~ 0
+BIST-+_IN
 $EndSCHEMATC
