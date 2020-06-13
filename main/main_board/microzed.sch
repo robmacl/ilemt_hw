@@ -13,20 +13,7 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L microzed:MicroZed X1
-U 9 1 5F30DCC7
-P 5350 1750
-AR Path="/5F30DCC7" Ref="X1"  Part="9" 
-AR Path="/5E525F87/5F30DCC7" Ref="X1"  Part="9" 
-F 0 "X1" H 5550 2000 60  0000 L CNN
-F 1 "MicroZed" H 5550 1900 60  0000 L CNN
-F 2 "main_board:Microzed" H 5550 1800 60  0001 L CNN
-F 3 "" H 5550 1600 60  0001 L CNN
-	9    5350 1750
-	1    0    0    -1  
-$EndComp
-NoConn ~ 5350 1750
+NoConn ~ 5350 2050
 $Comp
 L power:GNDD #PWR044
 U 1 1 5F3154DE
@@ -54,14 +41,16 @@ Connection ~ 5300 2250
 Wire Wire Line
 	5300 2250 5300 2350
 $Comp
-L microzed:MicroZed X1
-U 10 1 5EDF12A5
+L microzed:microzed X1
+U 12 1 5EDF12A5
 P 7950 1750
-F 0 "X1" H 8150 2000 60  0000 L CNN
-F 1 "MicroZed" H 8150 1900 60  0000 L CNN
+AR Path="/5EDF12A5" Ref="X1"  Part="10" 
+AR Path="/5E525F87/5EDF12A5" Ref="M1"  Part="12" 
+F 0 "M1" H 8150 2000 60  0000 L CNN
+F 1 "microzed" H 8150 1900 60  0000 L CNN
 F 2 "main_board:Microzed" H 8150 1800 60  0001 L CNN
 F 3 "" H 8150 1600 60  0001 L CNN
-	10   7950 1750
+	12   7950 1750
 	1    0    0    -1  
 $EndComp
 Text GLabel 9150 1750 2    50   BiDi ~ 0
@@ -170,10 +159,6 @@ Wire Wire Line
 Wire Wire Line
 	2200 3100 3000 3100
 Wire Wire Line
-	5250 1850 5250 2050
-Wire Wire Line
-	5250 2050 5350 2050
-Wire Wire Line
 	3950 3200 3950 3100
 Connection ~ 3950 3100
 Wire Wire Line
@@ -186,7 +171,7 @@ Connection ~ 2200 2250
 Wire Wire Line
 	2200 2250 2200 2700
 Wire Wire Line
-	6850 2050 7050 2050
+	6850 2150 7050 2150
 Wire Wire Line
 	1800 2350 2400 2350
 Wire Wire Line
@@ -194,12 +179,29 @@ Wire Wire Line
 Connection ~ 3950 2350
 Connection ~ 5300 2350
 Wire Wire Line
-	5250 1850 2200 1850
+	4850 1850 2200 1850
 Connection ~ 2200 1850
 Wire Wire Line
 	1800 3550 7050 3550
 Wire Wire Line
-	7050 2050 7050 3550
-Wire Wire Line
 	1800 3550 1800 2350
+$Comp
+L microzed:microzed X1
+U 11 1 5F30DCC7
+P 5350 1850
+AR Path="/5F30DCC7" Ref="X1"  Part="9" 
+AR Path="/5E525F87/5F30DCC7" Ref="M1"  Part="11" 
+F 0 "M1" H 5550 2100 60  0000 L CNN
+F 1 "microzed" H 5550 2000 60  0000 L CNN
+F 2 "main_board:Microzed" H 5550 1900 60  0001 L CNN
+F 3 "" H 5550 1700 60  0001 L CNN
+	11   5350 1850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4850 1850 4850 2450
+Wire Wire Line
+	4850 2450 5350 2450
+Wire Wire Line
+	7050 2150 7050 3550
 $EndSCHEMATC

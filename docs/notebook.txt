@@ -168,53 +168,14 @@ vncserver -compatiblekbd
 password BogPickle
 ________________
 
+
+[13 June 20]
 
-----------------------------------------------------------------
-kipart kicad schematic symbol generator
-
-kipart is a python program for generating Kicad schematic symbols from
-CSV files.  This is used to generate the symbols for the Microzed.
-See [1-4 June 20] for more discussion.
-
-ilemt_hw/main/kipart_microzed.csv:
-    In kipart "generic" format.  Does not include the Zynq pad number, etc.,
-    since this is implied by the MicroZed pin.  Edit this file to change the
-    pin mapping.  Add new units (new chunks of mapped pins) at the end so that
-    the unit ordering will not be affected.  In the kipart file the unit has a
-    sensible name, but this is lost in the Kicad library, we only have units
-    A, B, C etc.
-
-ilemt_fpga/docs/microzed_pinout.csv:
-    This has information about each microzed pin, including 'Zynq Pin'. By
-    some method (TBD) this (together with kipart_microzed.csv) is used to
-    generate the signal to pin mapping within Vivado.  See [4 June 20].
-
-
-I run kipart via the anaconda shell under windows.
-
-----------------
-pip install --upgrade
-----------------
-
-This generates kipart_microzed.lib, which should be included in the
-Kicad symbol path (using Preferences/Manage Symbol Paths)
-Exit kicad before doing this!! See below.
-
-----------------
-cd C:\Users\robma\Documents\Work\ilemt_hw\main
-kipart -b -w kipart_microzed.csv
-----------------
-
-Restart Kicad.  It will likely offer to "rescue" the old symbols, but don't!
-This copies the old symbols from the library cache into a new "rescue"
-library, so the schematic continues to reference the old symbols.  This is
-quite bad because you now have references to the wrong symbols (with wrong pin
-mapping).  Just restart Kicad, and decline to rescue.  If Kicad is running
-when you change the library, and it notices (such as when you place a new
-unit) it will show all of the references to the old symbol as "broken".  Just
-restart.  Maybe if a symbol is truly broken then you will have to re-place and
-re-wire it, IDK.
-----------------------------------------------------------------
+After beating my head against it a bit, I decided I needed a script to
+generate the pin mapping table for kipart.  I wrote this in Matlab,
+ilemt_fpga/mapping/gen_mapping.m.  This should also be able to
+generate the Vivado constraints files to define the IO pins.  See
+ilemt_fpga/mapping/README.md.
 
 
 
@@ -276,10 +237,6 @@ subtle thing I need to worry about, and it seems not so much.  I just need
 some way to turn on the +2.5V with a moderately high impedance input that
 switches around 0.9V or so.  And then don't try to drive PWR_EN and VCCIO_EN
 at all.  This could be achieved with eg. AP7361C-25SP-13DICT-ND.
-
-
-
-
 
 
 [4 June 20]

@@ -1200,13 +1200,13 @@ Wire Wire Line
 Wire Wire Line
 	4600 12550 5875 12550
 $Comp
-L microzed:MicroZed X1
+L microzed:microzed X1
 U 2 1 5F0A97DA
 P 17800 1950
 AR Path="/5F0A97DA" Ref="X1"  Part="2" 
-AR Path="/5E525FFE/5F0A97DA" Ref="X1"  Part="2" 
-F 0 "X1" H 18000 2200 60  0000 L CNN
-F 1 "MicroZed" H 18000 2100 60  0000 L CNN
+AR Path="/5E525FFE/5F0A97DA" Ref="M1"  Part="2" 
+F 0 "M1" H 18000 2200 60  0000 L CNN
+F 1 "microzed" H 18000 2100 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 2000 60  0001 L CNN
 F 3 "" H 18000 1800 60  0001 L CNN
 	2    17800 1950
@@ -1257,13 +1257,13 @@ Wire Wire Line
 Wire Wire Line
 	15750 1350 15750 1900
 $Comp
-L microzed:MicroZed X1
+L microzed:microzed X1
 U 1 1 5F1431B2
 P 2700 11450
 AR Path="/5F1431B2" Ref="X1"  Part="1" 
-AR Path="/5E525FFE/5F1431B2" Ref="X1"  Part="1" 
-F 0 "X1" H 2900 11700 60  0000 L CNN
-F 1 "MicroZed" H 2900 11600 60  0000 L CNN
+AR Path="/5E525FFE/5F1431B2" Ref="M1"  Part="1" 
+F 0 "M1" H 2900 11700 60  0000 L CNN
+F 1 "microzed" H 2900 11600 60  0000 L CNN
 F 2 "main_board:Microzed" H 2900 11500 60  0001 L CNN
 F 3 "" H 2900 11300 60  0001 L CNN
 	1    2700 11450
@@ -1274,13 +1274,13 @@ Wire Wire Line
 Wire Wire Line
 	4400 7900 6350 7900
 $Comp
-L microzed:MicroZed X1
+L microzed:microzed X1
 U 3 1 5F159E9E
 P 17800 3600
 AR Path="/5F159E9E" Ref="X1"  Part="3" 
-AR Path="/5E525FFE/5F159E9E" Ref="X1"  Part="3" 
-F 0 "X1" H 18000 3850 60  0000 L CNN
-F 1 "MicroZed" H 18000 3750 60  0000 L CNN
+AR Path="/5E525FFE/5F159E9E" Ref="M1"  Part="3" 
+F 0 "M1" H 18000 3850 60  0000 L CNN
+F 1 "microzed" H 18000 3750 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 3650 60  0001 L CNN
 F 3 "" H 18000 3450 60  0001 L CNN
 	3    17800 3600
@@ -1325,13 +1325,13 @@ Wire Wire Line
 Wire Wire Line
 	17750 3500 17750 3600
 $Comp
-L microzed:MicroZed X1
+L microzed:microzed X1
 U 4 1 5F1854CB
 P 17800 5300
 AR Path="/5F1854CB" Ref="X1"  Part="4" 
-AR Path="/5E525FFE/5F1854CB" Ref="X1"  Part="4" 
-F 0 "X1" H 18000 5550 60  0000 L CNN
-F 1 "MicroZed" H 18000 5450 60  0000 L CNN
+AR Path="/5E525FFE/5F1854CB" Ref="M1"  Part="4" 
+F 0 "M1" H 18000 5550 60  0000 L CNN
+F 1 "microzed" H 18000 5450 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 5350 60  0001 L CNN
 F 3 "" H 18000 5150 60  0001 L CNN
 	4    17800 5300
@@ -1380,13 +1380,13 @@ Wire Wire Line
 Wire Wire Line
 	17750 5300 17800 5300
 $Comp
-L microzed:MicroZed X1
+L microzed:microzed X1
 U 5 1 5F209C7E
 P 17800 7050
 AR Path="/5F209C7E" Ref="X1"  Part="5" 
-AR Path="/5E525FFE/5F209C7E" Ref="X1"  Part="5" 
-F 0 "X1" H 18000 7300 60  0000 L CNN
-F 1 "MicroZed" H 18000 7200 60  0000 L CNN
+AR Path="/5E525FFE/5F209C7E" Ref="M1"  Part="5" 
+F 0 "M1" H 18000 7300 60  0000 L CNN
+F 1 "microzed" H 18000 7200 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 7100 60  0001 L CNN
 F 3 "" H 18000 6900 60  0001 L CNN
 	5    17800 7050
@@ -1458,6 +1458,4 @@ Wire Wire Line
 	2600 11750 2700 11750
 Wire Wire Line
 	2600 11650 2700 11650
-Text Notes 19600 5400 0    50   ~ 0
-B038\nB041
 $EndSCHEMATC
