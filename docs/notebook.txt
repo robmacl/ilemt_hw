@@ -169,6 +169,46 @@ password BogPickle
 ________________
 
 
+[14 June 10]
+
+I have the main board schematic kind of complete (except for BIST
+DACs), passing ERC, and I have roughly sorted out the component placement.
+
+It looks like we want a layer stackup:
+    horizontal routing
+    mostly ground, with power and ground islands as needed
+    ground
+    vertical routing
+
+We sort of have a 3 layer board so that we can run high speed traces
+on both front and back.
+
+The main routes are vertical, from the Microzed to the slots.  These
+pretty much need to be flipped to the back so that they can pass under
+top mounted components.  We have sort of a free back to front
+transition at the card slots because of thru-hole connectors.  The
+fan-out from the Microzed will give some opportunity for minor
+reorganizations, and likewise at the connectors.  One notable need for
+swapping is + and - signals in pairs.  (I've considered allowing the
+lines to swap, and negating in the FPGA, but this seems like
+unnecessary complexity.)
+
+Worst case, we could go to 6 layers, but I don't think this will be
+necessary unless there just isn't enough routing room on the bottom
+layer.  Dealing with L2 will be somewhat fiddly, with lots of
+stitching to L3, but it seems doable.
+
+The power busses across the card slots would likely mostly run on the
+top layer, going with the preferred routing direction.  This also gets
+us heavier copper.  This could likely be doubled on L2.  Likewise, the
+analog signals VREF and BIST are also bussed and can go horizontally
+on the front.
+
+
+
+
+
+
 [13 June 20]
 
 After beating my head against it a bit, I decided I needed a script to

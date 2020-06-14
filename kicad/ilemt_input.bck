@@ -84,6 +84,11 @@ K single opamp
 F https://www.analog.com/media/en/technical-documentation/data-sheets/lt1012.pdf
 $ENDCMP
 #
+$CMP MAX6220ASA-5.0+
+D Voltage reference
+F https://datasheets.maximintegrated.com/en/ds/MAX6220.pdf
+$ENDCMP
+#
 $CMP OPAMP_DUAL
 D IC OPAMP  2 CIRCUIT
 F http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Flm358

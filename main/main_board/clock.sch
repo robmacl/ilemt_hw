@@ -25,7 +25,7 @@ F 3 "https://www.silabs.com/documents/public/data-sheets/si570.pdf" H 2900 3750 
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2900 2700 2900 2950
+	2900 2700 2900 2750
 $Comp
 L Device:C_Small C?
 U 1 1 5EBED5A4
@@ -249,7 +249,7 @@ P 7400 3600
 AR Path="/5E525F2C/5EBFB7CD" Ref="U12"  Part="1" 
 AR Path="/5E525FFE/5EBFB7CD" Ref="U?"  Part="1" 
 F 0 "U12" H 7450 2750 50  0000 L CNN
-F 1 "FIN1047" H 7600 2750 50  0000 L CNN
+F 1 "FIN1047" H 7450 2650 50  0000 L CNN
 F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 7300 2650 50  0001 C CNN
 F 3 "https://www.onsemi.com/pub/Collateral/FIN1047-D.pdf" H 7450 3600 50  0001 C CNN
 F 4 "IC DRIVER 4/0 16TSSOP" H 7400 3600 50  0001 C CNN "Description"
@@ -486,4 +486,31 @@ Wire Wire Line
 Connection ~ 5600 5000
 Wire Wire Line
 	5600 5000 5600 5150
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 5EE734B2
+P 3550 2750
+AR Path="/5E624B3C/5E51E83D/5EE734B2" Ref="#FLG?"  Part="1" 
+AR Path="/5E525F2C/5EE734B2" Ref="#FLG0103"  Part="1" 
+AR Path="/5E525FC9/5EE734B2" Ref="#FLG?"  Part="1" 
+F 0 "#FLG0103" H 3550 2825 50  0001 C CNN
+F 1 "PWR_FLAG" H 3550 2900 50  0000 C CNN
+F 2 "" H 3550 2750 50  0001 C CNN
+F 3 "~" H 3550 2750 50  0001 C CNN
+	1    3550 2750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3550 2750 2900 2750
+Connection ~ 2900 2750
+Wire Wire Line
+	2900 2750 2900 2950
+NoConn ~ 3350 3900
+NoConn ~ 4700 4550
+NoConn ~ 8000 3400
+NoConn ~ 8000 3300
+NoConn ~ 8000 3100
+NoConn ~ 8000 3000
+NoConn ~ 6750 3000
+NoConn ~ 6750 3300
 $EndSCHEMATC
