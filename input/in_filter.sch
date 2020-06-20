@@ -494,7 +494,7 @@ Wire Wire Line
 	4250 1750 4250 1600
 Text Notes 4800 1200 0    50   ~ 0
 Placed at amp input, on \nper-channel analog ground\n===>>
-Text Notes 2200 4450 0    50   ~ 0
+Text Notes 2300 4200 0    50   ~ 0
 Capacitance matching between + and - inputs is critical for \ncommon mode rejection.  1 nF capacitors are 1% C0G, and\ndiodes are chosen for low capacitance to minimize\nincidental capacitance mismatch.
 $Comp
 L Device:R_US R119
@@ -1056,8 +1056,8 @@ Text GLabel 9250 5450 2    50   Input ~ 0
 BIST++
 Text GLabel 9300 6000 2    50   Output ~ 0
 BIST+-
-Text Notes 3550 5900 0    50   ~ 0
-Built In Self Test is normally disconnected by driving the BIST?- lines to V+\nand the BIST?+ lines to V-.  The reverse-biased diodes have low capacitance,\nabout 1.1 pF each.  Only one diode in each package is used because we need \nindependent access to both ends of the diode.\n\nThe BIST?? lines are global, so all channels are driven at the same levels.\nThe feedback connection allows us to cancel the diode Vf when on, but \nthis is connected only on the first channel, so others only track as well \nas the diodes are matched.  When a low impedance differential load \n(such as the sensor) is present then R123-4 cause the injection to be \nroughly a current source, which attenuates any diode mismatch effect.
+Text Notes 3400 7350 0    50   ~ 0
+Built In Self Test is normally disconnected by driving the BIST?- lines to V+\nand the BIST?+ lines to V-.  The reverse-biased diodes have low capacitance,\nabout 1.1 pF each.  Only one diode in each package is used because we need \nindependent access to both ends of the diode.\n\nThe BIST?? lines are global, so all channels are driven at the same levels.\nThe feedback connection allows us to cancel the diode Vf when on, but \nthis is connected only on the first channel, so others only track as well \nas the diodes are matched.  \n\nThe frequency response from the BIST input is affected both by the\nfilter capacitance and the sensor impedance, and considerable \nfrequency dependent attenuation is expected. From the injection\nresistor and capactiance we expect a lowpass pole at 3 kHz, \nand there will also be shunting by the sensor when it is present.\nThis is not really a problem since we can model the expected \nfrequency response, and measure deviations from that.\n\nWith a low impedance differential source impedance\n(such as the sensor), then R120-R123 cause the injection to be \nroughly a current source, which attenuates any diode mismatch effect.\nUnless there is a fault the common mode input impedance should\nbe set at 50K by the R113 etc. bias resistors, so the CM voltage\nshould be fairly easily driven (at low frequencies) even when the \nsensor is present.\n\n
 $Comp
 L Device:R_US R121
 U 1 1 5E1955D3
