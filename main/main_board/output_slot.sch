@@ -19,11 +19,9 @@ Text GLabel 8650 3400 0    50   Input ~ 0
 VREF+
 Text GLabel 8650 3500 0    50   Input ~ 0
 VREF-
-Text GLabel 9950 2650 2    50   Input ~ 0
-+5VANA
 Text GLabel 9950 2750 2    50   Input ~ 0
 +10V
-Text GLabel 9950 3200 2    50   Input ~ 0
+Text GLabel 8650 2750 0    50   Input ~ 0
 -6V
 Text GLabel 7050 1500 2    50   BiDi ~ 0
 SDA
@@ -344,14 +342,12 @@ Connection ~ 9750 3300
 Connection ~ 8850 3300
 Text GLabel 8650 3200 0    50   Input ~ 0
 -6V
-Text GLabel 8650 2750 0    50   Input ~ 0
+Text GLabel 9950 3200 2    50   Input ~ 0
 +10V
-Wire Wire Line
-	9950 2650 9650 2650
 Text GLabel 8650 2650 0    50   Input ~ 0
 +5VANA
 Wire Wire Line
-	8950 2650 8650 2650
+	8950 2650 8900 2650
 Wire Wire Line
 	9650 1700 9750 1700
 Connection ~ 9750 1700
@@ -633,13 +629,6 @@ Wire Wire Line
 	8950 2450 8850 2450
 Connection ~ 8850 2450
 Wire Wire Line
-	8850 2450 8850 2550
-Wire Wire Line
-	8950 2550 8850 2550
-Connection ~ 8850 2550
-Wire Wire Line
-	8850 2550 8850 3300
-Wire Wire Line
 	9650 2350 9750 2350
 Connection ~ 9750 2350
 Wire Wire Line
@@ -653,7 +642,7 @@ Wire Wire Line
 	9650 2550 9750 2550
 Connection ~ 9750 2550
 Wire Wire Line
-	9750 2550 9750 3300
+	9750 2550 9750 2650
 Text Notes 10750 2300 1    50   ~ 0
 -- High speed LDVS digital --
 Text GLabel 2150 6750 1    50   Input ~ 0
@@ -1059,4 +1048,18 @@ F 3 "" H 10000 3600 50  0001 C CNN
 	1    10000 3600
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	8850 2450 8850 3300
+Wire Wire Line
+	8950 2550 8900 2550
+Wire Wire Line
+	8900 2550 8900 2650
+Connection ~ 8900 2650
+Wire Wire Line
+	8900 2650 8650 2650
+Wire Wire Line
+	9650 2650 9750 2650
+Connection ~ 9750 2650
+Wire Wire Line
+	9750 2650 9750 3300
 $EndSCHEMATC

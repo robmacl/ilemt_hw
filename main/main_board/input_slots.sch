@@ -1337,8 +1337,6 @@ Wire Wire Line
 Wire Wire Line
 	2600 11550 2700 11550
 NoConn ~ 9000 11850
-NoConn ~ 6300 11350
-NoConn ~ 6300 11150
 NoConn ~ 6650 6300
 Wire Wire Line
 	14650 2550 15850 2550
@@ -1453,8 +1451,6 @@ Wire Wire Line
 Wire Wire Line
 	8500 2800 8500 8200
 Wire Wire Line
-	4500 11250 4400 11250
-Wire Wire Line
 	6350 8500 4600 8500
 Wire Wire Line
 	4600 11350 4400 11350
@@ -1505,8 +1501,6 @@ Wire Wire Line
 Wire Wire Line
 	4400 8300 4400 11150
 Wire Wire Line
-	4500 8400 4500 11250
-Wire Wire Line
 	4600 8500 4600 11350
 Wire Wire Line
 	4700 8200 4700 11450
@@ -1522,4 +1516,16 @@ Wire Wire Line
 	4400 8300 6350 8300
 Wire Wire Line
 	4500 8400 6350 8400
+Text Label 4700 10900 1    50   ~ 0
+ICLK_SYNC
+Text Label 4600 10900 1    50   ~ 0
+BIST_SCLK_DIST
+Text Label 4400 10900 1    50   ~ 0
+BIST_SYNC_DIST
+Wire Wire Line
+	4500 11250 4400 11250
+Text Label 4500 10900 1    50   ~ 0
+BIST_MOSI_DIST
+Wire Wire Line
+	4500 8400 4500 11250
 $EndSCHEMATC

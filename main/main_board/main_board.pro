@@ -1,4 +1,4 @@
-update=3/3/2020 5:43:42 PM
+update=7/1/2020 2:47:23 PM
 version=1
 last_client=kicad
 [general]
@@ -253,7 +253,7 @@ Enabled=0
 [pcbnew/Netclasses]
 [pcbnew/Netclasses/Default]
 Name=Default
-Clearance=0.2
+Clearance=0.15
 TrackWidth=0.25
 ViaDiameter=0.6
 ViaDrill=0.3
@@ -286,7 +286,7 @@ dPairGap=0.2
 dPairViaGap=0.25
 [pcbnew/Netclasses/3]
 Name=Ground
-Clearance=0.2
+Clearance=0.15
 TrackWidth=0.5
 ViaDiameter=0.6
 ViaDrill=0.3
@@ -308,7 +308,7 @@ dPairGap=0.2
 dPairViaGap=0.25
 [pcbnew/Netclasses/5]
 Name=LVDS
-Clearance=0.0889
+Clearance=0.15
 TrackWidth=0.175
 ViaDiameter=0.4572
 ViaDrill=0.254
@@ -319,7 +319,7 @@ dPairGap=0.2
 dPairViaGap=0.25
 [pcbnew/Netclasses/6]
 Name=Power
-Clearance=0.2
+Clearance=0.15
 TrackWidth=0.5
 ViaDiameter=0.6
 ViaDrill=0.3
@@ -341,7 +341,7 @@ dPairGap=0.2
 dPairViaGap=0.25
 [pcbnew/Netclasses/8]
 Name=Slow
-Clearance=0.2
+Clearance=0.15
 TrackWidth=0.15
 ViaDiameter=0.4572
 ViaDrill=0.254

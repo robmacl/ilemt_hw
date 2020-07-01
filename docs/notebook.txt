@@ -5,32 +5,20 @@ Evaluation tasks:
  -- Measure supply current, in saturation and otherwise.
 
 Main board:
- -- The input board PCIE edge pattern is flipped top/bottom?  A is
-    supposed to be on the bottom layer.  Not sure if it is going to be
-    possible to get the pin names to match unless I make a footprint
-    for the main board connector with swapped pin names.  I think I
-    did this on purpose to get the digital lines at the top while
-    keeping the existing pin assignment, but perhaps did not think
-    about the consequences.  Maybe it would work just rotate the
-    connector?  I don't know.
  -- Order box
      - Double check that 395 mm is enough depth for input cards
  -- Order sample components: edge connector.
- -- Mechanical layout:
-     - mounting holes
-     - keepouts for backplane support rails
-     - check connector locations
-     - decide board width
  -- Regulator daughtercard footprint. Mount holes, connector
     selection. 
- -- Test points
+ -- Test points, debug IOs on FPGA.  One 50 Ohm MMCX output for
+    trigger, etc.
  -- Part selection:
       - Wurth WE-MPSB beads characterized for DC current. 0805 180 Ohm
 
 DAC output:
  -- Breakout board for output slot
  -- +/-12 supplies for DACs
- -- DAC output filter and perhaps buffer
+ -- DAC output filter and perhaps buffer12 October
 
 Input board revisions:
  -- Change to how supplies boostrap from reference. Probably
@@ -174,13 +162,113 @@ password BogPickle
 ________________
 
 
+[1 July 20]
+
+Planning strategy for making routing less of a pain in the ass,
+especially for the majority of lines which run directly from the
+Microzed to an edge connector.  I have slightly relocated everything
+in Y so that the edge connectors fall on a 1mm Y grid (X is still
+aligned on 0.1" grid).  Then the Microzed has been placed on 1mm
+grid.  Now we can easily route pin-to-pin on a 0.2mm grid.  Diff pairs
+can be at 1.6mm spacing on this grid.
+
+The Zedboard connectors are on 0.8mm pitch, which is much larger than
+the 0.375mm center-to-center pitch of a single diff pair, so there is
+plenty of room to fan out.  It so happens that the Zedboard has diff
+pairs brought out with the + of the pair at the lower pin number (to
+the left in our orientation).  So we should fan out the lines from the
+edge connector in this way.  (You can freely switch the left/right
+order by which side of the outer pin you pass when bringing out the
+inner pin in the pair.)
+
+We can copy/paste the fanout patterns for the input slots, up to above
+the crossbar.  Then these are brought into the microzed by running
+across and up (staying on the back layer).  This violating of the back
+vertical routing direction should not be a problem in that area
+because we can clear it of other stuff.  Then we only flip to the
+top layer right at the microzed connector.  We do then have two
+front/back transitions in each line, but they are right at the
+connectors, where some discontinuity is unavoidable.
+
+The clock pairs and buffered single-ended lines run horizontally on
+the front where they can drop down into the fanout pattern coming up
+from the slot
+
+The Zedboard to input slot lines are placed in the middle of JX2, with
+the buffered signals at the end nearest the buffer.
+
+Routing JX1 to output slot would be about the same, we just need to
+get the pin mapping right and keep power supply stuff out of the way.
+We need to make sure we have enough vertical routing area
+above/under/below the Microzed to fan out horizontally.  There is
+about 35mm of vertical routing area between JX1 and JX2.  This seems
+adequate, since we would have just barely enough room if we routed out
+all of the inside pairs across the two connections away to a single
+side.  But other than vias we are not planning to run the JX2 signals
+on the top layer at all, or to route above JX2.  So, except for
+perhaps a few stray signals, basically all of the area above JX2 is
+available for JX1/output routing, either top or bottom layer as
+appropriate.
+
+Anyway, I guess we would try to route all the JX1/output signals on
+the bottom also, so the top under the Microzed would be basically
+free.  Mostly this requires keeping vias and thru-hole components out
+of the 
+
+Aside from fixing the pin mapping, the big missing thing is power
+distribution.  The main zones are:
+ -- Zedboard:
+ -- clock: straightforward, it is all localized
+ -- drivers (OVDD): these parts are rather scattered, especially U12
+    and U14.  Ideally there would be a large OVDD pour on L2 in this
+    area, but if there are topside high speed signals it may be
+    necessary to split this up.
+ -- card slots: If we daisy-chain the power through the connectors
+    then we don't have much width where we pass through, 2mm at most.
+    Trace could be fatter between slots, but seems better to have fat
+    busses above/below the card connector, then run in vertically for
+    each slot.  This reduces the common impedance between slots and
+    gives lower Z overall.  This may make sense for analog signals,
+    especially VREF, which has some load on it.  Power busses will be
+    at least on the top layer, and often L2.  The up/down feeder stubs
+    would be mainly on L2 and/or bottom.
+
+
+
+
+[30 June 20]
+
+Thinking more about routing area to the card slots and fan-out from
+the connectors.  We really need to fan out each connector to both
+sides because there is very limited room to sneak traces between the
+connector pads on top and bottom.  I've spread out the connectors more
+to give more routing area.  Now the input connectors are 7HP apart,
+the output is 8HP from the others, and also there is room on the right
+of the rightmost input connector for fanout and routing on that side.
+So we now have maybe 26.6mm of horizontal space pad-to-pad, or say
+24mm of routing area, after allowing some spacing.  That is 15 diff
+pairs, vs. the 7 pairs we actually have.  But there is also
+single-ended signals, power, etc.  I don't see much downside to using
+the extra space.
+
+Maybe we want to have both L2 dedicated to ground only above the board
+mid mount rail?  (L3 will always be ground.)  The rail forces
+everything off the top layer there, and all the high speed signal
+lines are supposed to be on the back below there.  This would make L2
+available for power and low-speed routing.  This may also be useful in
+a band along the top left, where there is power routing.
+
+I'm leaving more room on the left of the left connector than on the
+right of the right so that there is room to run power down the left
+side.
+
+
 [20 June 20]
 
 Using adaptation kit for Elma 12K949-2 or 12K949-3 we get 42 HP in the
 2x 3U side, and 40 HP on the full height side.  So the division itself
 takes up 2 HP (out of 84).  The backplane would be 41 HP at most to
 give side clearance.  This is 208.28mm.
-
 
 
 [18 June 20]

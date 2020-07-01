@@ -228,21 +228,6 @@ Connection ~ 7400 4550
 Wire Wire Line
 	7400 4550 7400 4600
 $Comp
-L ilemt_input:OVDD #PWR052
-U 1 1 5EBFB7C3
-P 6650 4200
-AR Path="/5E525F2C/5EBFB7C3" Ref="#PWR052"  Part="1" 
-AR Path="/5E525FFE/5EBFB7C3" Ref="#PWR?"  Part="1" 
-F 0 "#PWR052" H 6650 4050 50  0001 C CNN
-F 1 "OVDD" H 6650 4350 50  0000 C CNN
-F 2 "" H 6650 4200 50  0001 C CNN
-F 3 "" H 6650 4200 50  0001 C CNN
-	1    6650 4200
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6650 4200 6800 4200
-$Comp
 L Interface:SN65LVDS047PW U12
 U 1 1 5EBFB7CD
 P 7400 3600
@@ -368,7 +353,7 @@ F 8 "24" H 2900 2500 50  0001 C CNN "DK line"
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	7400 2200 4450 2200
+	7400 2200 6350 2200
 Wire Wire Line
 	2900 2200 2900 2300
 Wire Wire Line
@@ -511,6 +496,17 @@ NoConn ~ 8000 3400
 NoConn ~ 8000 3300
 NoConn ~ 8000 3100
 NoConn ~ 8000 3000
-NoConn ~ 6750 3000
-NoConn ~ 6750 3300
+Text Label 2500 3250 0    50   ~ 0
+VDD_CLK
+Text Label 4800 3600 0    50   ~ 0
+CLK_DIST
+Text Label 5200 4350 0    50   ~ 0
+MCLK_DIST
+Wire Wire Line
+	6350 4200 6350 2200
+Wire Wire Line
+	6350 4200 6800 4200
+Connection ~ 6350 2200
+Wire Wire Line
+	6350 2200 4450 2200
 $EndSCHEMATC
