@@ -162,6 +162,276 @@ password BogPickle
 ________________
 
 
+[3 July 20]
+
+More layout thoughts.
+
+We can't use a an L2 pour for OVDD because the clock signal routing is
+on top.  We can the OVDD bus cross over on the top layer.  Could
+possibly use a bottom or L3 pour under the LVDS clock drivers
+
+With insulating backplane mount kit we can have copper on the top
+layer where it crosses the mid-rail, but it won't be controlled
+impedance.
+
+Route VREF- and VREF+ face coupled on TOP, L2.  Both VREF- and L3 are
+grounded, so pretty good shielding.  VREF buffer and bulk cap are in
+the middle of the input slots to minimize V drop and shared impedance
+effect. 
+
+Not sure how to route the BIST lines.  Not much current or DC accuracy
+issues, so don't need to be wide.  Could snake them through the
+connector pattern on L2, with ground copper on top, so they are
+shielded on top and bottom.
+
+
+[2 July 20]
+
+Summary:
+    A bunch of things I could say about TPL for board-level ESD
+    testing.  What's missing is the actual techniques and results.  I
+    would needs examples of what you can do and how, but I don't
+    actually know that yet because I haven't done it.  Further work
+    would require a >= 1 GHz DSO, and development of a better setup
+    with current transformers, and probably a relay.
+
+
+Some thoughts on my ESD testing project, and specifically using
+Transmission Line Pulsing, and how this could be a publishable
+research contribution.
+
+This would need to established (and absence is harder to establish
+than presence), but it seems that it is not a common practice in
+board level design to evaluate board level ESD protection structures
+from the viewpoint of understanding the performance and how this
+performance is a consequence of the chosen structure.
+
+My current concern is hard failures due to ESD.  TLP seems mainly
+relevant to hard failures, since it lacks the large fast edge seen in
+actual ESD events, and EMI from this edge is a major cause of digital
+soft failures.
+
+Currently board-level ESD protection is evaluated mainly using system
+tests which test for hard and soft failures in the presence of
+simulated ESD events (IEC whatever, ...).  Such testing can reveal
+problems, and survival throuh a methodical system level testing plan
+can give some confidence that the system will not often fail in the
+field due to ESD.
+
+But system-level ESD testing is very ill-suited to quantifying the
+performance of ESD protection circuit, determining what the protection
+margin may be under various conditions, and more broadly,
+understanding how the circuit works.  Such an understanding would
+enable informed refinement of the design.
+
+Major reasons why we use system level tests:
+ -- System performance is what actually matters for controlling field
+    failures.  A single system test can also probe the two very
+    different failure modes: hard (device damage) and soft (digital
+    upset).
+ -- System performance is hugely affected by non-circuit factors such
+    as the enclosure construction, and how the ESD is applied.
+ -- Because of the system level factors, the connection is often
+    tenuous between the V/I behavior of the ESD protection and the
+    system level performance.
+ -- Working engineers do not have the time to understand in detail how
+    the ESD circuit works, so they rely on experience, application
+    guides, and iterating through system test failures.
+
+It is fairly common to use system test procedures on bare boards.
+This makes it possible to evaluate protection circuits when the
+enclosure is not yet available, and also makes it much easier to probe
+the propagation of ESD within the board, leading to understanding of
+failure modes and possible remedies.  For board level testing, ESD is
+usually only applied to connector pins and other conductors that are
+expected to be exposed in the final product.
+
+System level tests are poorly suited to making quantitative
+measurements such as voltage or current:
+ -- The simulated ESD pulse is very fast; accurately measuring fast
+    signals is always harder than measuring not-so-fast signals.
+ -- Parasitic capacitances and inductances in the ESD test setup are
+    hugely important in determining what is actually conducted into
+    the DUT.  It is difficult to measure the current in parasitic
+    capacitances and inductances.  Any attempt to do so usually
+    disturbs the effect.  Also, there are multiple parasitic paths,
+    resulting in a complex coupling network.
+ -- The simulated ESD pulse is complex, and not well characterized.
+    The output of an ESD gun may vary in potentially important ways
+    between gun designs, and also across minor variations in the test
+    setup.  Because of the difficulty in measuring the actual EM field
+    of the ESD gun during a test, guns are characterized primarily by
+    short-circuit current waveform, which may not correlate well with
+    the output under varying use conditions.
+
+
+A big reason why we are forced to use testing to failure (as in the
+system tests) is that we do not know the actual pulse tolerance of
+either the protection components or the protected component.
+
+Componenents specifically sold for pulse protection are characterized
+as enduring some particular pulse, but it is not clear how this will
+generalize to other pulses.  The pulse actually seen by the protection
+componenent in-circuit may be quite different from the standard test
+condition.  This is especially likely when there are multiple RFI/ESD
+protection components.
+
+Frequently, components without any relevant pulse characterization are
+used in protection circuits, such as diodes, resistors, capacitors
+and ferrite beads.  Realistically, these devices must be used at peak
+powers way beyond their DC ratings.
+
+The unknown pulse tolerance of the protected component is a
+particuarly intractable problem.  Aside from component-level ESD
+tests, integrated circuits are not specified for behavior or damage in
+transient conditions.  If we aim to protect so that we never exceed
+the datasheet absolute maximum ratings, then we will get a grossly
+over-designed protection circuit.  Component-level ESD tests do not
+accurately predict in-circuit behavior.  It is common for an
+aggressive on-chip protection clamp to actually degrade the overall
+performance by causing a larger fraction of the energy to be deposited
+in the protected device. [cite]
+
+
+One possible alternative to measuring pulse behavior is to simulate
+the response, such as using Spice.  Simulation can certainly give
+insight into the behavior of complex protection networks, but:
+ -- Simulation accuracy is entirely dependent on the model
+    accuracy. Sometimes protection component vendors provide SPICE
+    models, and it is likely that these models are reasonably accurate
+    under the device characterization conditions.  For non-pulse-rated
+    components such as ferrite beads and other inductive filters,
+    vendor models are aimed at small signal and DC measures, and may
+    fail badly under pulse conditions.
+ -- Parasitic impedances, especially in the ground net, are often a
+    one of the main limits on protection circuit performance.  In
+    Spice these parasitics can only be roughly approximated by lumped
+    LCR networks.
+ -- In common with nondestructive in-circuit measurement, simulation
+    can't predict failure, because we do not know the actual pulse
+    tolerance of many components, and of the protected device in
+    particular.
+ -- But simulation can't simulate failure at all.
+
+So all we can get from simulation is a (possibly inaccurate)
+qualitative understanding of how the DUT may function under pulse
+conditions. 
+
+
+TLP is a tool for gaining insight into the response of a circuit
+to short high power pulses.  Explain blah blah, rectangular pulse,
+fixed source impedance.  This can be seen as "looking where the light
+is good".  We lose the realisim of the pulse waveform, and of the very
+high impedance capacitive coupling.  But we gain measurement.  It is
+much easier to make accurate high speed measurements in a transmission
+line environment.  We can also exploit the known resistive source
+impedance to infer the DUT impedance.
+
+DUT = the protection structure and protected device together
+
+The transmission line charging voltage, and so pulse energy, can be
+varied over a wide range.  At the lower non-destructive levels, we
+can measure:
+ -- The quasi-static V/I behavior of a circuit.  In the simplest case
+    of clamp protection, we can measure the V/I curve of the clamp
+    during the period after it has turned on, but before thermal or
+    other degradation effects become significant.  This is done by
+    measuring the pulse plateau voltage as we inject a series of
+    pulses at progressively increasing currents.
+ -- Current into the protected device, which is correlated with hard
+    and soft failures of the protected device.
+ -- The turnon and turnoff behavior of protection circuits.
+
+TLP typically uses pulses of 50-100 ns.  This is long enough for ESD
+protection to turn on, but not so long that excessive energy is
+deposited.  The pulse can have a fast rise time, which allows
+measurement of active device turnon and parasitic inductive effects.
+
+At pulse energies approaching the DUT capacity:
+ -- We can measure how may pulses of particular energies can be
+    tolerated before unacceptable degradation occurs.
+ -- We can measure device degradation at a much finer resolution than
+    than overt system malfunction (such as is detected during a system
+    level test).  Typically we measure the leakage current during off
+    periods, as well as the clamping behavior during the pulse.  But
+    it is also possible to do any sort of functional test after each
+    pulse.  eg. that an analog input is still acceptably accurate.
+
+Limititations of TLP:
+ -- Measurement of quasistatic V/I behavior does not directly tell us
+    about ESD tolerance of the DUT, but high current into the
+    protected component should clearly be avoided.
+ -- TLP is informative mainly about conductive effects.  Since the TLP
+    pulse spectrum is very different from ESD (with much larger
+    low-frequency power) EM coupling between circuits is not well
+    modelled.
+ -- Destructive (hard fault) testing has to assume that damage is
+    primarily due to the pulse energy, and so is not particularly
+    sensitive to the exact waveform (which is quite unlike the ESD
+    waveform).
+
+With any test method, it is difficult to make the critical measurement
+of the current into the protected device, since this connection is the
+onboard PCB trace between the protection circuit and the protected
+component.  Accurate measurement is much easier using a special test
+board that includes 50 Ohm coaxial connections probing a series
+resistor or current transformer.
+
+
+For the actual content in the paper I would need to show what you can
+do and how, drawing on examples from my testing project.  Need some
+refinements to the TLP setup.
+
+Need a way to switch the output beteen pulse and test mode so what we
+can automatically test leakage, etc., between pulses.
+
+There is of course the problem most relays are not designed for KV
+operation, and those that are are bulky, not really really compatible
+with a fast rise pulse.  It would be nice to combine the pulse switch
+and the measure switch into a single part, but that might not be the
+best way to go.
+
+One observation is that the pulse switch does not need to break HV,
+which is the hardest problem in a HV DC switch.  It only needs to hold
+off HV and then "make" cleanly at ~10A current.  So that makes things
+easier.  One thing worth testing is whether random coax relays can do
+this. 
+
+But if we implement the pulse switch using spark gap, etc., then the
+pulse/test switching can be done with much less demanding
+requirements.
+
+As long as the pulse switch is cleanly open between pulses, the main
+thing interfering with testing is the shunt termination at the pulse
+switch output.  A relay used to float the ground end of this
+termination would not have any high demands on it.  It does not need
+to hold off HV, it does not need to make or break any current.  The
+main challenge would be getting low inductance so that the termination
+impedance is preserved.  Multiple compact PCB relays in parallel might
+be the best approach.  It would also be possible to shunt the
+termination relay with capacitance to bypass the inductance (at the
+cost of output capacitance in test mode).
+
+A 1:2 coax switch could sort of combine the pulse switch and the test
+switch, but I don't see how to fit in a shunt termination at the
+output without shunting the test mode also.
+
+
+
+
+
+
+I have
+two ideas here:
+ -- Put the switchover relay at the TLP output, after 
+
+If this
+is after the 
+
+to switch between
+    pulse and test mode, perhaps for pulsing also.
+
+
 [1 July 20]
 
 Planning strategy for making routing less of a pain in the ass,
@@ -232,8 +502,6 @@ distribution.  The main zones are:
     especially VREF, which has some load on it.  Power busses will be
     at least on the top layer, and often L2.  The up/down feeder stubs
     would be mainly on L2 and/or bottom.
-
-
 
 
 [30 June 20]

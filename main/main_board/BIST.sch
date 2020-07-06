@@ -526,6 +526,266 @@ Wire Wire Line
 Connection ~ 4900 3300
 Wire Wire Line
 	4900 3300 5250 3300
-Text Notes 4950 2850 0    50   ~ 0
+Text Notes 3300 7600 0    50   ~ 0
 R14-17 help the DAC output to drive to the rail in the BIST-off\ndirection, and also improve the C load drive stability.  \n\nThe BIST buffer in the input board presents a 200 Ohm + 10 nF\nRC lowpass (80 kHz), so with 4 cards it would be 50 Ohm + 40 nF.  I don't\nexpect this to destabilize the DAC output buffer because of the\nseries resistance on the input board.  There is no DC load,\nso driving to the rail should not be a problem.\n\nDon't know if we really need the FB4/C61 combination, but it may\nbe useful.  There is some degree of digital crud in the DAC output.\nWe don't have a reconstruction filter for the DAC itself, but (as well\nas the 80 kHz LPF) there is also a rolloff pole at around 3 kHz when\nthere is no sensor because of the input capacitance.\n\nWe are not expecting BIST to evaluate the full performance of the \ninput path, just verify the gain, input impedance and frequency response.\n\n
+$Comp
+L Device:R_Pack04 RN?
+U 1 1 5F2DEAD7
+P 3900 1900
+AR Path="/5E525F2C/5F2DEAD7" Ref="RN?"  Part="1" 
+AR Path="/5E525FFE/5F2DEAD7" Ref="RN?"  Part="1" 
+AR Path="/5EC4BDFA/5F2DEAD7" Ref="RN3"  Part="1" 
+F 0 "RN3" V 3500 1900 50  0000 C CNN
+F 1 "33" V 3600 1900 50  0000 C CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x0603" V 4175 1900 50  0001 C CNN
+F 3 "https://www.bourns.com/docs/Product-Datasheets/CATCAY.pdf" H 3900 1900 50  0001 C CNN
+F 4 "13" H 3900 1900 50  0001 C CNN "DK line"
+F 5 "RES ARRAY 4 RES 33 OHM 1206" H 3900 1900 50  0001 C CNN "Description"
+F 6 "CAY16-330J4LFCT-ND" H 3900 1900 50  0001 C CNN "Digikey"
+	1    3900 1900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3100 3200 3100 3050
+Wire Wire Line
+	2600 2700 2550 2700
+Wire Wire Line
+	2550 3050 3100 3050
+Wire Wire Line
+	3100 3050 3100 3000
+$Comp
+L ilemt_input:OVDD #PWR?
+U 1 1 5F2DEAE1
+P 3100 1000
+AR Path="/5E624B3C/5F2DEAE1" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5F2DEAE1" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F2DEAE1" Ref="#PWR?"  Part="1" 
+AR Path="/5EC4BDFA/5F2DEAE1" Ref="#PWR0127"  Part="1" 
+F 0 "#PWR0127" H 3100 850 50  0001 C CNN
+F 1 "OVDD" H 3100 1150 50  0000 C CNN
+F 2 "" H 3100 1000 50  0001 C CNN
+F 3 "" H 3100 1000 50  0001 C CNN
+	1    3100 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F2DEAE7
+P 3100 3200
+AR Path="/5E624B3C/5F2DEAE7" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5F2DEAE7" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F2DEAE7" Ref="#PWR?"  Part="1" 
+AR Path="/5EC4BDFA/5F2DEAE7" Ref="#PWR0128"  Part="1" 
+F 0 "#PWR0128" H 3100 2950 50  0001 C CNN
+F 1 "GND" H 3100 3050 50  0000 C CNN
+F 2 "" H 3100 3200 50  0001 C CNN
+F 3 "" H 3100 3200 50  0001 C CNN
+	1    3100 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 1000 3100 1100
+$Comp
+L Device:C_Small C?
+U 1 1 5F2DEAF1
+P 2850 1100
+AR Path="/5DFCF14D/5DA78AA2/5F2DEAF1" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F2DEAF1" Ref="C?"  Part="1" 
+AR Path="/5F2DEAF1" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5F2DEAF1" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5F2DEAF1" Ref="C?"  Part="1" 
+AR Path="/5E525FFE/5F2DEAF1" Ref="C?"  Part="1" 
+AR Path="/5EC4BDFA/5F2DEAF1" Ref="C70"  Part="1" 
+F 0 "C70" V 2975 1025 50  0000 L CNN
+F 1 "100nF" V 2725 1000 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2850 1100 50  0001 C CNN
+F 3 "~" H 2850 1100 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 2850 1100 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 2850 1100 50  0001 C CNN "Digikey"
+F 6 "2" H 2850 1100 50  0001 C CNN "DK line"
+	1    2850 1100
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F2DEAF7
+P 2650 1100
+AR Path="/5E624B3C/5F2DEAF7" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5F2DEAF7" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F2DEAF7" Ref="#PWR?"  Part="1" 
+AR Path="/5EC4BDFA/5F2DEAF7" Ref="#PWR0129"  Part="1" 
+F 0 "#PWR0129" H 2650 850 50  0001 C CNN
+F 1 "GND" V 2775 1025 50  0000 C CNN
+F 2 "" H 2650 1100 50  0001 C CNN
+F 3 "" H 2650 1100 50  0001 C CNN
+	1    2650 1100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2650 1100 2750 1100
+Wire Wire Line
+	2950 1100 3100 1100
+Connection ~ 3100 1100
+$Comp
+L Device:C_Small C?
+U 1 1 5F2DEB03
+P 3350 1100
+AR Path="/5DFCF14D/5DA78AA2/5F2DEB03" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F2DEB03" Ref="C?"  Part="1" 
+AR Path="/5F2DEB03" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5F2DEB03" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5F2DEB03" Ref="C?"  Part="1" 
+AR Path="/5E525FFE/5F2DEB03" Ref="C?"  Part="1" 
+AR Path="/5EC4BDFA/5F2DEB03" Ref="C71"  Part="1" 
+F 0 "C71" V 3225 1025 50  0000 L CNN
+F 1 "100nF" V 3475 975 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3350 1100 50  0001 C CNN
+F 3 "~" H 3350 1100 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 3350 1100 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 3350 1100 50  0001 C CNN "Digikey"
+F 6 "2" H 3350 1100 50  0001 C CNN "DK line"
+	1    3350 1100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F2DEB09
+P 3500 1100
+AR Path="/5E624B3C/5F2DEB09" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5F2DEB09" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F2DEB09" Ref="#PWR?"  Part="1" 
+AR Path="/5EC4BDFA/5F2DEB09" Ref="#PWR0130"  Part="1" 
+F 0 "#PWR0130" H 3500 850 50  0001 C CNN
+F 1 "GND" V 3375 1025 50  0000 C CNN
+F 2 "" H 3500 1100 50  0001 C CNN
+F 3 "" H 3500 1100 50  0001 C CNN
+	1    3500 1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3500 1100 3450 1100
+Wire Wire Line
+	3250 1100 3100 1100
+Wire Wire Line
+	3100 1400 3100 1100
+$Comp
+L 74xx:74LS541 U?
+U 1 1 5F2DEB15
+P 3100 2200
+AR Path="/5DA78AA2/5F2DEB15" Ref="U?"  Part="1" 
+AR Path="/5F2DEB15" Ref="U?"  Part="1" 
+AR Path="/5E624B3C/5F2DEB15" Ref="U?"  Part="1" 
+AR Path="/5E525F2C/5F2DEB15" Ref="U?"  Part="1" 
+AR Path="/5E525FFE/5F2DEB15" Ref="U?"  Part="1" 
+AR Path="/5EC4BDFA/5F2DEB15" Ref="U9"  Part="1" 
+F 0 "U9" H 3250 1500 50  0000 C CNN
+F 1 "74LVC541A" H 3400 1400 50  0000 C CNN
+F 2 "input:my-SSOP-20_5.3x7.2mm_P0.65mm" H 3100 2200 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS541" H 3100 2200 50  0001 C CNN
+F 4 "11" H 3100 2200 50  0001 C CNN "DK line"
+F 5 "IC BUF NON-INVERT 3.6V 20SSOP" H 3100 2200 50  0001 C CNN "Description"
+F 6 "296-8518-1-ND" H 3100 2200 50  0001 C CNN "Digikey"
+	1    3100 2200
+	1    0    0    -1  
+$EndComp
+Connection ~ 3100 3050
+Wire Wire Line
+	2600 1700 2550 1700
+Wire Wire Line
+	2600 1800 2550 1800
+Wire Wire Line
+	2600 1900 2550 1900
+Wire Wire Line
+	2550 2700 2550 3050
+Wire Wire Line
+	2600 2600 2550 2600
+Wire Wire Line
+	2550 2600 2550 2700
+Connection ~ 2550 2700
+Wire Wire Line
+	3600 1700 3700 1700
+Wire Wire Line
+	3600 1800 3700 1800
+Wire Wire Line
+	3600 1900 3700 1900
+Wire Wire Line
+	3600 2000 3700 2000
+$Comp
+L Device:R_Pack04 RN?
+U 1 1 5F2DEB33
+P 3900 2300
+AR Path="/5E525F2C/5F2DEB33" Ref="RN?"  Part="1" 
+AR Path="/5E525FFE/5F2DEB33" Ref="RN?"  Part="1" 
+AR Path="/5EC4BDFA/5F2DEB33" Ref="RN5"  Part="1" 
+F 0 "RN5" V 4100 2300 50  0000 C CNN
+F 1 "33" V 4200 2300 50  0000 C CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x0603" V 4175 2300 50  0001 C CNN
+F 3 "https://www.bourns.com/docs/Product-Datasheets/CATCAY.pdf" H 3900 2300 50  0001 C CNN
+F 4 "13" H 3900 2300 50  0001 C CNN "DK line"
+F 5 "RES ARRAY 4 RES 33 OHM 1206" H 3900 2300 50  0001 C CNN "Description"
+F 6 "CAY16-330J4LFCT-ND" H 3900 2300 50  0001 C CNN "Digikey"
+	1    3900 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3700 2100 3600 2100
+Wire Wire Line
+	3700 2200 3600 2200
+Wire Wire Line
+	3700 2300 3600 2300
+Wire Wire Line
+	3700 2400 3600 2400
+NoConn ~ 4100 2400
+Wire Wire Line
+	2600 2400 2550 2400
+Wire Wire Line
+	2550 2400 2550 2600
+Connection ~ 2550 2600
+Text GLabel 4250 2100 2    50   Output ~ 0
+BIST_SYNC
+Text GLabel 4250 2200 2    50   Output ~ 0
+BIST_MOSI
+Text GLabel 4250 2300 2    50   Output ~ 0
+BIST_SCLK
+Wire Wire Line
+	4250 2100 4100 2100
+Wire Wire Line
+	4250 2200 4100 2200
+Wire Wire Line
+	4250 2300 4100 2300
+$Comp
+L microzed:microzed M1
+U 1 1 5F19C344
+P 1200 2100
+F 0 "M1" H 1400 2350 60  0000 L CNN
+F 1 "microzed" H 1400 2250 60  0000 L CNN
+F 2 "main_board:Microzed" H 1400 2150 60  0001 L CNN
+F 3 "" H 1400 1950 60  0001 L CNN
+	1    1200 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2200 2100 2600 2100
+Wire Wire Line
+	2200 2200 2600 2200
+Wire Wire Line
+	2200 2300 2600 2300
+Wire Wire Line
+	2550 2400 2550 2000
+Connection ~ 2550 2400
+Connection ~ 2550 2000
+Wire Wire Line
+	2550 2000 2600 2000
+Wire Wire Line
+	2550 2000 2550 1900
+Connection ~ 2550 1900
+Wire Wire Line
+	2550 1900 2550 1800
+Connection ~ 2550 1800
+Wire Wire Line
+	2550 1800 2550 1700
+NoConn ~ 4100 2000
+NoConn ~ 4100 1900
+NoConn ~ 4100 1800
+NoConn ~ 4100 1700
 $EndSCHEMATC

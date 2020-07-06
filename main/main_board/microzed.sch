@@ -43,14 +43,14 @@ Wire Wire Line
 $Comp
 L microzed:microzed X1
 U 12 1 5EDF12A5
-P 7950 1750
+P 5350 1850
 AR Path="/5EDF12A5" Ref="X1"  Part="10" 
 AR Path="/5E525F87/5EDF12A5" Ref="M1"  Part="12" 
-F 0 "M1" H 8150 2000 60  0000 L CNN
-F 1 "microzed" H 8150 1900 60  0000 L CNN
-F 2 "main_board:Microzed" H 8150 1800 60  0001 L CNN
-F 3 "" H 8150 1600 60  0001 L CNN
-	12   7950 1750
+F 0 "M1" H 5550 2100 60  0000 L CNN
+F 1 "microzed" H 5550 2000 60  0000 L CNN
+F 2 "main_board:Microzed" H 5550 1900 60  0001 L CNN
+F 3 "" H 5550 1700 60  0001 L CNN
+	12   5350 1850
 	1    0    0    -1  
 $EndComp
 Text GLabel 9150 1750 2    50   BiDi ~ 0
@@ -159,19 +159,6 @@ Wire Wire Line
 	1800 3550 7050 3550
 Wire Wire Line
 	1800 3550 1800 2350
-$Comp
-L microzed:microzed X1
-U 11 1 5F30DCC7
-P 5350 1850
-AR Path="/5F30DCC7" Ref="X1"  Part="9" 
-AR Path="/5E525F87/5F30DCC7" Ref="M1"  Part="11" 
-F 0 "M1" H 5550 2100 60  0000 L CNN
-F 1 "microzed" H 5550 2000 60  0000 L CNN
-F 2 "main_board:Microzed" H 5550 1900 60  0001 L CNN
-F 3 "" H 5550 1700 60  0001 L CNN
-	11   5350 1850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4850 1850 4850 2450
 Wire Wire Line
@@ -301,4 +288,15 @@ Wire Wire Line
 Connection ~ 4650 2350
 Wire Wire Line
 	4650 2350 5050 2350
+$Comp
+L microzed:microzed M1
+U 13 1 5F181B21
+P 7950 1750
+F 0 "M1" H 8150 2000 60  0000 L CNN
+F 1 "microzed" H 8150 1900 60  0000 L CNN
+F 2 "main_board:Microzed" H 8150 1800 60  0001 L CNN
+F 3 "" H 8150 1600 60  0001 L CNN
+	13   7950 1750
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

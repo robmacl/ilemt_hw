@@ -57,6 +57,4 @@ U 5EC4BDFA
 F0 "BIST_DAC" 50
 F1 "BIST.sch" 50
 $EndSheet
-Text Notes 4600 3050 0    50   ~ 0
-Not done
 $EndSCHEMATC

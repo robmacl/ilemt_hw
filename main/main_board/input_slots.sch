@@ -34,6 +34,7 @@ F14 "SDOA3+" O R 17000 2600 50
 F15 "SDOA3-" O R 17000 2700 50 
 F16 "SCKA+" I L 15850 2050 50 
 F17 "SCKA-" I L 15850 2150 50 
+F18 "SDI" I L 15850 2900 50 
 $EndSheet
 Wire Wire Line
 	11450 9900 11500 9900
@@ -427,6 +428,7 @@ F14 "SDOA3+" O R 17000 4250 50
 F15 "SDOA3-" O R 17000 4350 50 
 F16 "SCKA-" I L 15850 3800 50 
 F17 "SCKA+" I L 15850 3700 50 
+F18 "SDI" I L 15850 4550 50 
 $EndSheet
 $Sheet
 S 15850 5050 1150 1300
@@ -449,6 +451,7 @@ F14 "SDOA3+" O R 17000 5950 50
 F15 "SDOA3-" O R 17000 6050 50 
 F16 "SCKA+" I L 15850 5400 50 
 F17 "SCKA-" I L 15850 5500 50 
+F18 "SDI" I L 15850 6250 50 
 $EndSheet
 $Sheet
 S 15850 6800 1150 1300
@@ -471,6 +474,7 @@ F14 "SDOA3+" O R 17000 7700 50
 F15 "SDOA3-" O R 17000 7800 50 
 F16 "SCKA+" I L 15850 7150 50 
 F17 "SCKA-" I L 15850 7250 50 
+F18 "SDI" I L 15850 8000 50 
 $EndSheet
 $Comp
 L Interface:SN65LVDS047PW U?
@@ -1083,15 +1087,15 @@ Wire Wire Line
 	4600 12550 5875 12550
 $Comp
 L microzed:microzed X1
-U 2 1 5F0A97DA
+U 3 1 5F0A97DA
 P 17800 1950
 AR Path="/5F0A97DA" Ref="X1"  Part="2" 
-AR Path="/5E525FFE/5F0A97DA" Ref="M1"  Part="2" 
+AR Path="/5E525FFE/5F0A97DA" Ref="M1"  Part="3" 
 F 0 "M1" H 18000 2200 60  0000 L CNN
 F 1 "microzed" H 18000 2100 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 2000 60  0001 L CNN
 F 3 "" H 18000 1800 60  0001 L CNN
-	2    17800 1950
+	3    17800 1950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1140,28 +1144,15 @@ Wire Wire Line
 	15750 1350 15750 1900
 $Comp
 L microzed:microzed X1
-U 1 1 5F1431B2
-P 2700 11150
-AR Path="/5F1431B2" Ref="X1"  Part="1" 
-AR Path="/5E525FFE/5F1431B2" Ref="M1"  Part="1" 
-F 0 "M1" H 2900 11400 60  0000 L CNN
-F 1 "microzed" H 2900 11300 60  0000 L CNN
-F 2 "main_board:Microzed" H 2900 11200 60  0001 L CNN
-F 3 "" H 2900 11000 60  0001 L CNN
-	1    2700 11150
-	1    0    0    -1  
-$EndComp
-$Comp
-L microzed:microzed X1
-U 3 1 5F159E9E
+U 4 1 5F159E9E
 P 17800 3600
 AR Path="/5F159E9E" Ref="X1"  Part="3" 
-AR Path="/5E525FFE/5F159E9E" Ref="M1"  Part="3" 
+AR Path="/5E525FFE/5F159E9E" Ref="M1"  Part="4" 
 F 0 "M1" H 18000 3850 60  0000 L CNN
 F 1 "microzed" H 18000 3750 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 3650 60  0001 L CNN
 F 3 "" H 18000 3450 60  0001 L CNN
-	3    17800 3600
+	4    17800 3600
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1204,15 +1195,15 @@ Wire Wire Line
 	17750 3500 17750 3600
 $Comp
 L microzed:microzed X1
-U 4 1 5F1854CB
+U 5 1 5F1854CB
 P 17800 5300
 AR Path="/5F1854CB" Ref="X1"  Part="4" 
-AR Path="/5E525FFE/5F1854CB" Ref="M1"  Part="4" 
+AR Path="/5E525FFE/5F1854CB" Ref="M1"  Part="5" 
 F 0 "M1" H 18000 5550 60  0000 L CNN
 F 1 "microzed" H 18000 5450 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 5350 60  0001 L CNN
 F 3 "" H 18000 5150 60  0001 L CNN
-	4    17800 5300
+	5    17800 5300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1259,15 +1250,15 @@ Wire Wire Line
 	17750 5300 17800 5300
 $Comp
 L microzed:microzed X1
-U 5 1 5F209C7E
+U 6 1 5F209C7E
 P 17800 7050
 AR Path="/5F209C7E" Ref="X1"  Part="5" 
-AR Path="/5E525FFE/5F209C7E" Ref="M1"  Part="5" 
+AR Path="/5E525FFE/5F209C7E" Ref="M1"  Part="6" 
 F 0 "M1" H 18000 7300 60  0000 L CNN
 F 1 "microzed" H 18000 7200 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 7100 60  0001 L CNN
 F 3 "" H 18000 6900 60  0001 L CNN
-	5    17800 7050
+	6    17800 7050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1328,14 +1319,14 @@ Wire Wire Line
 	19500 3200 15750 3200
 Wire Wire Line
 	15750 3200 15750 3550
-Text GLabel 2600 11550 0    50   Input ~ 0
-FPGA_SYSCLK+
 Text GLabel 2600 11650 0    50   Input ~ 0
+FPGA_SYSCLK+
+Text GLabel 2600 11750 0    50   Input ~ 0
 FPGA_SYSCLK-
 Wire Wire Line
-	2600 11650 2700 11650
+	2600 11750 2700 11750
 Wire Wire Line
-	2600 11550 2700 11550
+	2600 11650 2700 11650
 NoConn ~ 9000 11850
 NoConn ~ 6650 6300
 Wire Wire Line
@@ -1450,12 +1441,6 @@ Wire Wire Line
 	8400 4450 8400 8100
 Wire Wire Line
 	8500 2800 8500 8200
-Wire Wire Line
-	6350 8500 4600 8500
-Wire Wire Line
-	4600 11350 4400 11350
-Wire Wire Line
-	4700 11450 4400 11450
 $Comp
 L Device:R_Pack04 RN?
 U 1 1 5EFBBB26
@@ -1480,52 +1465,94 @@ Wire Wire Line
 	7450 8500 7350 8500
 Wire Wire Line
 	7450 8600 7350 8600
-NoConn ~ 7850 8600
 Wire Wire Line
-	6350 8600 6300 8600
-Wire Wire Line
-	6300 8600 6300 8800
-Connection ~ 6300 8800
-Text GLabel 8000 8300 2    50   Output ~ 0
-BIST_SYNC
-Text GLabel 8000 8400 2    50   Output ~ 0
-BIST_MOSI
-Text GLabel 8000 8500 2    50   Output ~ 0
-BIST_SCLK
-Wire Wire Line
-	8000 8300 7850 8300
-Wire Wire Line
-	8000 8400 7850 8400
-Wire Wire Line
-	8000 8500 7850 8500
-Wire Wire Line
-	4400 8300 4400 11150
-Wire Wire Line
-	4600 8500 4600 11350
-Wire Wire Line
-	4700 8200 4700 11450
-Wire Wire Line
-	4700 8200 6250 8200
+	4550 8200 6250 8200
 Wire Wire Line
 	6250 8100 6250 8200
 Connection ~ 6250 8100
 Connection ~ 6250 8200
 Wire Wire Line
 	6250 8200 6350 8200
-Wire Wire Line
-	4400 8300 6350 8300
-Wire Wire Line
-	4500 8400 6350 8400
-Text Label 4700 10900 1    50   ~ 0
+Text Label 4550 10900 1    50   ~ 0
 ICLK_SYNC
-Text Label 4600 10900 1    50   ~ 0
-BIST_SCLK_DIST
-Text Label 4400 10900 1    50   ~ 0
-BIST_SYNC_DIST
 Wire Wire Line
-	4500 11250 4400 11250
-Text Label 4500 10900 1    50   ~ 0
-BIST_MOSI_DIST
+	7850 8300 8600 8300
 Wire Wire Line
-	4500 8400 4500 11250
+	8600 8300 8600 2900
+Wire Wire Line
+	8600 2900 15850 2900
+Wire Wire Line
+	7850 8400 8700 8400
+Wire Wire Line
+	8700 8400 8700 4550
+Wire Wire Line
+	8700 4550 15850 4550
+Wire Wire Line
+	7850 8500 8800 8500
+Wire Wire Line
+	8800 8500 8800 6250
+Wire Wire Line
+	8800 6250 15850 6250
+Wire Wire Line
+	7850 8600 8900 8600
+Wire Wire Line
+	8900 8600 8900 8000
+Wire Wire Line
+	8900 8000 15850 8000
+Text Label 5850 11550 0    50   ~ 0
+MCLK_ENA+
+Text Label 5900 11750 0    50   ~ 0
+MCLK_ENA-
+Text Label 6000 11950 0    50   ~ 0
+SCKA+
+Text Label 6000 12150 0    50   ~ 0
+SCKA-
+Text Label 6000 12350 0    50   ~ 0
+SCKB+
+Text Label 6000 12550 0    50   ~ 0
+SCKB-
+Text Label 9750 12050 0    50   ~ 0
+SCKA_DIST
+Text Label 9750 12150 0    50   ~ 0
+SCKB_DIST
+$Comp
+L microzed:microzed M1
+U 2 1 5F079106
+P 2700 11350
+F 0 "M1" H 2900 11600 60  0000 L CNN
+F 1 "microzed" H 2900 11500 60  0000 L CNN
+F 2 "main_board:Microzed" H 2900 11400 60  0001 L CNN
+F 3 "" H 2900 11200 60  0001 L CNN
+	2    2700 11350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 11350 4550 11350
+Wire Wire Line
+	4550 8200 4550 11350
+Wire Wire Line
+	4400 11450 4700 11450
+Wire Wire Line
+	4700 11450 4700 8600
+Wire Wire Line
+	4700 8600 6250 8600
+Text Label 4700 10900 1    50   ~ 0
+ICLK_SDI
+Wire Wire Line
+	6350 8300 6250 8300
+Wire Wire Line
+	6250 8300 6250 8400
+Connection ~ 6250 8600
+Wire Wire Line
+	6250 8600 6350 8600
+Wire Wire Line
+	6350 8400 6250 8400
+Connection ~ 6250 8400
+Wire Wire Line
+	6250 8400 6250 8500
+Wire Wire Line
+	6350 8500 6250 8500
+Connection ~ 6250 8500
+Wire Wire Line
+	6250 8500 6250 8600
 $EndSCHEMATC
