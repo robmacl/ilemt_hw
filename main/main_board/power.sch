@@ -32,7 +32,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "565-4285-1-ND" V 9050 1450 50  0001 C CNN "Digikey"
 F 5 "APXG160ARA331MH70G" V 9050 1450 50  0001 C CNN "MPN"
 F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 9050 1450 50  0001 C CNN "Description"
-F 7 "19" H 9050 1450 50  0001 C CNN "DK line"
+F 7 "21" H 9050 1450 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 9050 1450 50  0001 C CNN "Manufacturer"
 	1    9050 1450
 	1    0    0    -1  
@@ -67,9 +67,14 @@ AR Path="/5E62FD57/5E45936E/5DE42731/5ECF08D2" Ref="FB?"  Part="1"
 AR Path="/5E525EB8/5ECF08D2" Ref="FB?"  Part="1" 
 AR Path="/5E525FC9/5ECF08D2" Ref="FB3"  Part="1" 
 F 0 "FB3" H 8550 1487 60  0000 C CNN
-F 1 "1.2 A" H 8550 1381 60  0000 C CNN
-F 2 "Inductor_SMD:L_0805_2012Metric" H 8750 1400 60  0001 L CNN
-F 3 "?" H 8750 1500 60  0001 L CNN
+F 1 "300 Ohm" H 8550 1381 60  0000 C CNN
+F 2 "Capacitor_SMD:C_2220_5650Metric" H 8750 1400 60  0001 L CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Laird%20Technologies/Ferrite_EMI_Catalog.pdf" H 8750 1500 60  0001 L CNN
+F 4 "FERRITE BEAD 300 OHM 2220 1LN" H 8550 1200 50  0001 C CNN "Description"
+F 5 "240-2430-1-ND" H 8550 1200 50  0001 C CNN "Digikey"
+F 6 "HI2220R301R-10" H 8550 1200 50  0001 C CNN "MPN"
+F 7 "Laird-Signal Integrity Products" H 8550 1200 50  0001 C CNN "Manufacturer"
+F 8 "13" H 8550 1200 50  0001 C CNN "DK line"
 	1    8550 1200
 	1    0    0    -1  
 $EndComp
@@ -85,13 +90,13 @@ Connection ~ 9050 1200
 $Comp
 L Connector_Generic:Conn_02x08_Odd_Even J1
 U 1 1 5ECF1CF8
-P 1750 1550
-F 0 "J1" H 1800 1950 50  0000 C CNN
-F 1 "Conn_02x08_Odd_Even" H 1750 2100 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical" H 1750 1550 50  0001 C CNN
-F 3 "~" H 1750 1550 50  0001 C CNN
-	1    1750 1550
-	1    0    0    -1  
+P 1850 1550
+F 0 "J1" H 1900 1950 50  0000 C CNN
+F 1 "Power" H 1850 2100 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical" H 1850 1550 50  0001 C CNN
+F 3 "~" H 1850 1550 50  0001 C CNN
+	1    1850 1550
+	-1   0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR06
@@ -149,7 +154,9 @@ F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 8750 2550 50  0001 C CNN
 F 3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en560605" H 8750 2300 50  0001 C CNN
 F 4 "MCP1755S-3302E/DB-ND" H 8750 2350 50  0001 C CNN "Digikey"
 F 5 "IC REG LIN 3.3V 300MA SOT223-3" H 8750 2350 50  0001 C CNN "Description"
-F 6 "25" H 8750 2350 50  0001 C CNN "DK line"
+F 6 "28" H 8750 2350 50  0001 C CNN "DK line"
+F 7 "MCP1755S-3302E/DB" H 8750 2350 50  0001 C CNN "MPN"
+F 8 "Microchip Technology" H 8750 2350 50  0001 C CNN "Manufacturer"
 	1    8750 2350
 	1    0    0    -1  
 $EndComp
@@ -165,13 +172,14 @@ AR Path="/5E624B3C/5E51E83D/5ED000B5" Ref="C?"  Part="1"
 AR Path="/5E525F2C/5ED000B5" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5ED000B5" Ref="C15"  Part="1" 
 F 0 "C15" V 7421 2550 50  0000 C CNN
-F 1 "1uF" V 7512 2550 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 7650 2550 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 7650 2550 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 7650 2550 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 7650 2550 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 7650 2550 50  0001 C CNN "MPN"
-F 7 "27" H 7650 2550 50  0001 C CNN "DK line"
+F 1 "10uF" V 7512 2550 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7650 2550 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 7650 2550 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 7650 2550 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 7650 2550 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 7650 2550 50  0001 C CNN "MPN"
+F 7 "20" H 7650 2550 50  0001 C CNN "DK line"
+F 8 "AVX" H 7650 2550 50  0001 C CNN "Manufacturer"
 	1    7650 2550
 	-1   0    0    1   
 $EndComp
@@ -258,7 +266,8 @@ F 3 "http://datasheets.avx.com/cx5r.pdf" H 9500 2500 50  0001 C CNN
 F 4 "CAP CER 10UF 6.3V X5R 0603" H 9500 2500 50  0001 C CNN "Description"
 F 5 "478-5318-1-ND" H 9500 2500 50  0001 C CNN "Digikey"
 F 6 "06036D106MAT2A" H 9500 2500 50  0001 C CNN "MPN"
-F 7 "29" H 9500 2500 50  0001 C CNN "DK line"
+F 7 "20" H 9500 2500 50  0001 C CNN "DK line"
+F 8 "AVX" H 9500 2500 50  0001 C CNN "Manufacturer"
 	1    9500 2500
 	1    0    0    -1  
 $EndComp
@@ -327,7 +336,9 @@ F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 8800 3650 50  0001 C CNN
 F 3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en560605" H 8800 3400 50  0001 C CNN
 F 4 "MCP1755S-3302E/DB-ND" H 8800 3450 50  0001 C CNN "Digikey"
 F 5 "IC REG LIN 3.3V 300MA SOT223-3" H 8800 3450 50  0001 C CNN "Description"
-F 6 "25" H 8800 3450 50  0001 C CNN "DK line"
+F 6 "28" H 8800 3450 50  0001 C CNN "DK line"
+F 7 "MCP1755S-3302E/DB" H 8800 3450 50  0001 C CNN "MPN"
+F 8 "Microchip Technology" H 8800 3450 50  0001 C CNN "Manufacturer"
 	1    8800 3450
 	1    0    0    -1  
 $EndComp
@@ -343,13 +354,14 @@ AR Path="/5E624B3C/5E51E83D/5ED25627" Ref="C?"  Part="1"
 AR Path="/5E525F2C/5ED25627" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5ED25627" Ref="C16"  Part="1" 
 F 0 "C16" V 7471 3650 50  0000 C CNN
-F 1 "1uF" V 7562 3650 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 7700 3650 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 7700 3650 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 7700 3650 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 7700 3650 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 7700 3650 50  0001 C CNN "MPN"
-F 7 "27" H 7700 3650 50  0001 C CNN "DK line"
+F 1 "10uF" V 7562 3650 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7700 3650 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 7700 3650 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 7700 3650 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 7700 3650 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 7700 3650 50  0001 C CNN "MPN"
+F 7 "20" H 7700 3650 50  0001 C CNN "DK line"
+F 8 "AVX" H 7700 3650 50  0001 C CNN "Manufacturer"
 	1    7700 3650
 	-1   0    0    1   
 $EndComp
@@ -436,7 +448,8 @@ F 3 "http://datasheets.avx.com/cx5r.pdf" H 9550 3600 50  0001 C CNN
 F 4 "CAP CER 10UF 6.3V X5R 0603" H 9550 3600 50  0001 C CNN "Description"
 F 5 "478-5318-1-ND" H 9550 3600 50  0001 C CNN "Digikey"
 F 6 "06036D106MAT2A" H 9550 3600 50  0001 C CNN "MPN"
-F 7 "29" H 9550 3600 50  0001 C CNN "DK line"
+F 7 "20" H 9550 3600 50  0001 C CNN "DK line"
+F 8 "AVX" H 9550 3600 50  0001 C CNN "Manufacturer"
 	1    9550 3600
 	1    0    0    -1  
 $EndComp
@@ -464,13 +477,14 @@ AR Path="/5E624B3C/5E51E83D/5ED2FFCF" Ref="C?"  Part="1"
 AR Path="/5E525F2C/5ED2FFCF" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5ED2FFCF" Ref="C17"  Part="1" 
 F 0 "C17" V 7871 4800 50  0000 C CNN
-F 1 "1uF" V 7962 4800 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 8100 4800 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8100 4800 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 8100 4800 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 8100 4800 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 8100 4800 50  0001 C CNN "MPN"
-F 7 "27" H 8100 4800 50  0001 C CNN "DK line"
+F 1 "10uF" V 7962 4800 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8100 4800 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 8100 4800 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 8100 4800 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 8100 4800 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 8100 4800 50  0001 C CNN "MPN"
+F 7 "20" H 8100 4800 50  0001 C CNN "DK line"
+F 8 "AVX" H 8100 4800 50  0001 C CNN "Manufacturer"
 	1    8100 4800
 	-1   0    0    1   
 $EndComp
@@ -509,7 +523,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "565-4285-1-ND" V 9100 4800 50  0001 C CNN "Digikey"
 F 5 "APXG160ARA331MH70G" V 9100 4800 50  0001 C CNN "MPN"
 F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 9100 4800 50  0001 C CNN "Description"
-F 7 "19" H 9100 4800 50  0001 C CNN "DK line"
+F 7 "21" H 9100 4800 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 9100 4800 50  0001 C CNN "Manufacturer"
 	1    9100 4800
 	1    0    0    -1  
@@ -558,13 +572,14 @@ AR Path="/5E624B3C/5E51E83D/5ED48C5C" Ref="C?"  Part="1"
 AR Path="/5E525F2C/5ED48C5C" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5ED48C5C" Ref="C18"  Part="1" 
 F 0 "C18" V 7871 5750 50  0000 C CNN
-F 1 "1uF" V 7962 5750 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 8100 5750 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8100 5750 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 8100 5750 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 8100 5750 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 8100 5750 50  0001 C CNN "MPN"
-F 7 "27" H 8100 5750 50  0001 C CNN "DK line"
+F 1 "10uF" V 7962 5750 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8100 5750 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 8100 5750 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 8100 5750 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 8100 5750 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 8100 5750 50  0001 C CNN "MPN"
+F 7 "20" H 8100 5750 50  0001 C CNN "DK line"
+F 8 "AVX" H 8100 5750 50  0001 C CNN "Manufacturer"
 	1    8100 5750
 	-1   0    0    1   
 $EndComp
@@ -603,7 +618,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "565-4285-1-ND" V 9100 5750 50  0001 C CNN "Digikey"
 F 5 "APXG160ARA331MH70G" V 9100 5750 50  0001 C CNN "MPN"
 F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 9100 5750 50  0001 C CNN "Description"
-F 7 "19" H 9100 5750 50  0001 C CNN "DK line"
+F 7 "21" H 9100 5750 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 9100 5750 50  0001 C CNN "Manufacturer"
 	1    9100 5750
 	1    0    0    -1  
@@ -678,13 +693,14 @@ AR Path="/5E624B3C/5E51E83D/5EE30578" Ref="C?"  Part="1"
 AR Path="/5E525F2C/5EE30578" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5EE30578" Ref="C47"  Part="1" 
 F 0 "C47" V 7871 1400 50  0000 C CNN
-F 1 "1uF" V 7962 1400 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 8100 1400 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8100 1400 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 8100 1400 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 8100 1400 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 8100 1400 50  0001 C CNN "MPN"
-F 7 "27" H 8100 1400 50  0001 C CNN "DK line"
+F 1 "10uF" V 7962 1400 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8100 1400 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 8100 1400 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 8100 1400 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 8100 1400 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 8100 1400 50  0001 C CNN "MPN"
+F 7 "20" H 8100 1400 50  0001 C CNN "DK line"
+F 8 "AVX" H 8100 1400 50  0001 C CNN "Manufacturer"
 	1    8100 1400
 	-1   0    0    1   
 $EndComp
@@ -717,7 +733,7 @@ F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 7600 1450 50  0
 F 4 "824500500" H 7600 1450 50  0001 C CNN "MPN"
 F 5 "TVS DIODE 5V 9.2V DO214AC" H 7600 1450 50  0001 C CNN "Description"
 F 6 "732-9974-1-ND" H 7600 1450 50  0001 C CNN "Digikey"
-F 7 "40" H 7600 1450 50  0001 C CNN "DK line"
+F 7 "23" H 7600 1450 50  0001 C CNN "DK line"
 F 8 "Würth Elektronik" H 7600 1450 50  0001 C CNN "Manufacturer"
 	1    7600 1450
 	0    1    1    0   
@@ -738,7 +754,7 @@ F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 1700 3700 50  0
 F 4 "824500500" H 1700 3700 50  0001 C CNN "MPN"
 F 5 "TVS DIODE 10V 17V DO214AC" H 1700 3700 50  0001 C CNN "Description"
 F 6 "732-9947-1-ND" H 1700 3700 50  0001 C CNN "Digikey"
-F 7 "41" H 1700 3700 50  0001 C CNN "DK line"
+F 7 "22" H 1700 3700 50  0001 C CNN "DK line"
 F 8 "Würth Elektronik" H 1700 3700 50  0001 C CNN "Manufacturer"
 	1    1700 3700
 	0    1    1    0   
@@ -787,7 +803,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "565-4285-1-ND" V 3150 5250 50  0001 C CNN "Digikey"
 F 5 "APXG160ARA331MH70G" V 3150 5250 50  0001 C CNN "MPN"
 F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 3150 5250 50  0001 C CNN "Description"
-F 7 "19" H 3150 5250 50  0001 C CNN "DK line"
+F 7 "21" H 3150 5250 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 3150 5250 50  0001 C CNN "Manufacturer"
 	1    3150 5250
 	-1   0    0    1   
@@ -820,13 +836,15 @@ AR Path="/5E624B3C/5E51E83D/5EE23BA2" Ref="C?"  Part="1"
 AR Path="/5E525F2C/5EE23BA2" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5EE23BA2" Ref="C11"  Part="1" 
 F 0 "C11" V 1921 5250 50  0000 C CNN
-F 1 "1uF" V 2012 5250 50  0000 C CNN
+F 1 "10uF 16V" V 2012 5250 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 2150 5250 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 2150 5250 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 2150 5250 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 2150 5250 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 2150 5250 50  0001 C CNN "MPN"
-F 7 "27" H 2150 5250 50  0001 C CNN "DK line"
+F 3 "https://api.kemet.com/component-edge/download/datasheet/C0805C106K4PACTU.pdf" H 2150 5250 50  0001 C CNN
+F 4 "CAP CER 10UF 16V X5R 0805" H 2150 5250 50  0001 C CNN "Description"
+F 5 "399-8012-1-ND" H 2150 5250 50  0001 C CNN "Digikey"
+F 6 "C0805C106K4PACTU" H 2150 5250 50  0001 C CNN "MPN"
+F 7 "10" H 2150 5250 50  0001 C CNN "DK line"
+F 8 "" H 2150 5250 50  0001 C CNN "MFG"
+F 9 "KEMET" H 2150 5250 50  0001 C CNN "Manufacturer"
 	1    2150 5250
 	-1   0    0    1   
 $EndComp
@@ -870,7 +888,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "565-4285-1-ND" V 3100 3600 50  0001 C CNN "Digikey"
 F 5 "APXG160ARA331MH70G" V 3100 3600 50  0001 C CNN "MPN"
 F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 3100 3600 50  0001 C CNN "Description"
-F 7 "19" H 3100 3600 50  0001 C CNN "DK line"
+F 7 "21" H 3100 3600 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 3100 3600 50  0001 C CNN "Manufacturer"
 	1    3100 3600
 	1    0    0    -1  
@@ -903,13 +921,15 @@ AR Path="/5E624B3C/5E51E83D/5EE23B76" Ref="C?"  Part="1"
 AR Path="/5E525F2C/5EE23B76" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5EE23B76" Ref="C10"  Part="1" 
 F 0 "C10" V 2021 3600 50  0000 C CNN
-F 1 "1uF" V 2112 3600 50  0000 C CNN
+F 1 "10uF 16V" V 2112 3600 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 2250 3600 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 2250 3600 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 2250 3600 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 2250 3600 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 2250 3600 50  0001 C CNN "MPN"
-F 7 "27" H 2250 3600 50  0001 C CNN "DK line"
+F 3 "https://api.kemet.com/component-edge/download/datasheet/C0805C106K4PACTU.pdf" H 2250 3600 50  0001 C CNN
+F 4 "CAP CER 10UF 16V X5R 0805" H 2250 3600 50  0001 C CNN "Description"
+F 5 "399-8012-1-ND" H 2250 3600 50  0001 C CNN "Digikey"
+F 6 "C0805C106K4PACTU" H 2250 3600 50  0001 C CNN "MPN"
+F 7 "10" H 2250 3600 50  0001 C CNN "DK line"
+F 8 "" H 2250 3600 50  0001 C CNN "MFG"
+F 9 "KEMET" H 2250 3600 50  0001 C CNN "Manufacturer"
 	1    2250 3600
 	-1   0    0    1   
 $EndComp
@@ -950,7 +970,7 @@ F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 1650 5350 50  0
 F 4 "824500500" H 1650 5350 50  0001 C CNN "MPN"
 F 5 "TVS DIODE 10V 17V DO214AC" H 1650 5350 50  0001 C CNN "Description"
 F 6 "732-9947-1-ND" H 1650 5350 50  0001 C CNN "Digikey"
-F 7 "41" H 1650 5350 50  0001 C CNN "DK line"
+F 7 "22" H 1650 5350 50  0001 C CNN "DK line"
 F 8 "Würth Elektronik" H 1650 5350 50  0001 C CNN "Manufacturer"
 	1    1650 5350
 	0    -1   -1   0   
@@ -1195,13 +1215,14 @@ AR Path="/5E624B3C/5E51E83D/5F6B6EB9" Ref="C?"  Part="1"
 AR Path="/5E525F2C/5F6B6EB9" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5F6B6EB9" Ref="C57"  Part="1" 
 F 0 "C57" V 7921 2550 50  0000 C CNN
-F 1 "1uF" V 8012 2550 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 8150 2550 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8150 2550 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 8150 2550 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 8150 2550 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 8150 2550 50  0001 C CNN "MPN"
-F 7 "27" H 8150 2550 50  0001 C CNN "DK line"
+F 1 "10uF" V 8012 2550 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8150 2550 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 8150 2550 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 8150 2550 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 8150 2550 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 8150 2550 50  0001 C CNN "MPN"
+F 7 "20" H 8150 2550 50  0001 C CNN "DK line"
+F 8 "AVX" H 8150 2550 50  0001 C CNN "Manufacturer"
 	1    8150 2550
 	-1   0    0    1   
 $EndComp
@@ -1240,13 +1261,14 @@ AR Path="/5E624B3C/5E51E83D/5F6BE7EC" Ref="C?"  Part="1"
 AR Path="/5E525F2C/5F6BE7EC" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5F6BE7EC" Ref="C58"  Part="1" 
 F 0 "C58" V 7971 3650 50  0000 C CNN
-F 1 "1uF" V 8062 3650 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 8200 3650 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 8200 3650 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 8200 3650 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 8200 3650 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 8200 3650 50  0001 C CNN "MPN"
-F 7 "27" H 8200 3650 50  0001 C CNN "DK line"
+F 1 "10uF" V 8062 3650 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8200 3650 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 8200 3650 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 8200 3650 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 8200 3650 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 8200 3650 50  0001 C CNN "MPN"
+F 7 "20" H 8200 3650 50  0001 C CNN "DK line"
+F 8 "AVX" H 8200 3650 50  0001 C CNN "Manufacturer"
 	1    8200 3650
 	-1   0    0    1   
 $EndComp
@@ -1284,9 +1306,11 @@ F 0 "U7" H 4100 4100 50  0000 C CNN
 F 1 "MCP1755S-5002E/DB" H 3700 4000 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 4100 4050 50  0001 C CNN
 F 3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en560605" H 4100 3800 50  0001 C CNN
-F 4 "MCP1755S-3302E/DB-ND" H 4100 3850 50  0001 C CNN "Digikey"
-F 5 "IC REG LIN 3.3V 300MA SOT223-3" H 4100 3850 50  0001 C CNN "Description"
-F 6 "25" H 4100 3850 50  0001 C CNN "DK line"
+F 4 "MCP1755S-5002E/DB-ND" H 4100 3850 50  0001 C CNN "Digikey"
+F 5 "IC REG LINEAR 5V 300MA SOT223-3" H 4100 3850 50  0001 C CNN "Description"
+F 6 "9" H 4100 3850 50  0001 C CNN "DK line"
+F 7 "MCP1755S-5002E/DB" H 4100 3850 50  0001 C CNN "MPN"
+F 8 "Microchip Technology" H 4100 3850 50  0001 C CNN "Manufacturer"
 	1    4100 3850
 	1    0    0    -1  
 $EndComp
@@ -1338,7 +1362,8 @@ F 3 "http://datasheets.avx.com/cx5r.pdf" H 4650 4000 50  0001 C CNN
 F 4 "CAP CER 10UF 6.3V X5R 0603" H 4650 4000 50  0001 C CNN "Description"
 F 5 "478-5318-1-ND" H 4650 4000 50  0001 C CNN "Digikey"
 F 6 "06036D106MAT2A" H 4650 4000 50  0001 C CNN "MPN"
-F 7 "29" H 4650 4000 50  0001 C CNN "DK line"
+F 7 "20" H 4650 4000 50  0001 C CNN "DK line"
+F 8 "AVX" H 4650 4000 50  0001 C CNN "Manufacturer"
 	1    4650 4000
 	1    0    0    -1  
 $EndComp
@@ -1355,13 +1380,15 @@ AR Path="/5E624B3C/5E51E83D/5F233ABA" Ref="C?"  Part="1"
 AR Path="/5E525F2C/5F233ABA" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5F233ABA" Ref="C59"  Part="1" 
 F 0 "C59" V 3271 4050 50  0000 C CNN
-F 1 "1uF" V 3362 4050 50  0000 C CNN
+F 1 "10uF 16V" V 3362 4050 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 3500 4050 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 3500 4050 50  0001 C CNN
-F 4 "CAP CER 1UF 16V X7R 0805 " H 3500 4050 50  0001 C CNN "Description"
-F 5 "1276-6471-1-ND" H 3500 4050 50  0001 C CNN "Digikey"
-F 6 "CL21B105KOFNNNG" H 3500 4050 50  0001 C CNN "MPN"
-F 7 "27" H 3500 4050 50  0001 C CNN "DK line"
+F 3 "https://api.kemet.com/component-edge/download/datasheet/C0805C106K4PACTU.pdf" H 3500 4050 50  0001 C CNN
+F 4 "CAP CER 10UF 16V X5R 0805" H 3500 4050 50  0001 C CNN "Description"
+F 5 "399-8012-1-ND" H 3500 4050 50  0001 C CNN "Digikey"
+F 6 "C0805C106K4PACTU" H 3500 4050 50  0001 C CNN "MPN"
+F 7 "10" H 3500 4050 50  0001 C CNN "DK line"
+F 8 "" H 3500 4050 50  0001 C CNN "MFG"
+F 9 "KEMET" H 3500 4050 50  0001 C CNN "Manufacturer"
 	1    3500 4050
 	-1   0    0    1   
 $EndComp
@@ -1445,6 +1472,8 @@ F 0 "C66" V 4400 2000 50  0000 L CNN
 F 1 "OPT" V 4100 2000 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 4250 2050 50  0001 C CNN
 F 3 "~" H 4250 2050 50  0001 C CNN
+F 4 "DNP" H 4250 2050 50  0001 C CNN "MPN"
+F 5 "DNP" H 4250 2050 50  0001 C CNN "Manufacturer"
 	1    4250 2050
 	0    1    1    0   
 $EndComp
@@ -1467,31 +1496,6 @@ $EndComp
 Wire Wire Line
 	3950 2000 3950 2050
 Connection ~ 3950 2050
-$Comp
-L Device:C_Small C?
-U 1 1 5F0D2030
-P 9550 1450
-AR Path="/5DFCF14D/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
-AR Path="/5DFCF14D/5E295469/5F0D2030" Ref="C?"  Part="1" 
-AR Path="/5E448095/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
-AR Path="/5E45936E/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
-AR Path="/5E525F2C/5E6427A0/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5DFCF14D/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5E448095/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
-AR Path="/5E624B3C/5E45936E/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
-AR Path="/5E525F2C/5F0D2030" Ref="C?"  Part="1" 
-AR Path="/5E525FC9/5F0D2030" Ref="C14"  Part="1" 
-F 0 "C14" H 9560 1520 50  0000 L CNN
-F 1 "10uF" H 9560 1370 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 9550 1450 50  0001 C CNN
-F 3 "http://datasheets.avx.com/cx5r.pdf" H 9550 1450 50  0001 C CNN
-F 4 "CAP CER 10UF 6.3V X5R 0603" H 9550 1450 50  0001 C CNN "Description"
-F 5 "478-5318-1-ND" H 9550 1450 50  0001 C CNN "Digikey"
-F 6 "06036D106MAT2A" H 9550 1450 50  0001 C CNN "MPN"
-F 7 "29" H 9550 1450 50  0001 C CNN "DK line"
-	1    9550 1450
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	9950 1550 9950 1600
 $Comp
@@ -1505,6 +1509,16 @@ F 3 "" H 9950 1600 50  0001 C CNN
 	1    9950 1600
 	1    0    0    -1  
 $EndComp
+Connection ~ 9550 1200
+Wire Wire Line
+	9550 1200 9950 1200
+Wire Wire Line
+	9300 1200 9550 1200
+Wire Wire Line
+	9950 1350 9950 1200
+Connection ~ 9950 1200
+Wire Wire Line
+	9950 1200 10200 1200
 $Comp
 L Device:C_Small C?
 U 1 1 5F0DBAE2
@@ -1526,18 +1540,35 @@ F 3 "http://datasheets.avx.com/cx5r.pdf" H 9950 1450 50  0001 C CNN
 F 4 "CAP CER 10UF 6.3V X5R 0603" H 9950 1450 50  0001 C CNN "Description"
 F 5 "478-5318-1-ND" H 9950 1450 50  0001 C CNN "Digikey"
 F 6 "06036D106MAT2A" H 9950 1450 50  0001 C CNN "MPN"
-F 7 "29" H 9950 1450 50  0001 C CNN "DK line"
+F 7 "20" H 9950 1450 50  0001 C CNN "DK line"
+F 8 "AVX" H 9950 1450 50  0001 C CNN "Manufacturer"
 	1    9950 1450
 	1    0    0    -1  
 $EndComp
-Connection ~ 9550 1200
-Wire Wire Line
-	9550 1200 9950 1200
-Wire Wire Line
-	9300 1200 9550 1200
-Wire Wire Line
-	9950 1350 9950 1200
-Connection ~ 9950 1200
-Wire Wire Line
-	9950 1200 10200 1200
+$Comp
+L Device:C_Small C?
+U 1 1 5F0D2030
+P 9550 1450
+AR Path="/5DFCF14D/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F0D2030" Ref="C?"  Part="1" 
+AR Path="/5E448095/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
+AR Path="/5E45936E/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5E6427A0/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5DFCF14D/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E448095/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E45936E/5DA78AA2/5F0D2030" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5F0D2030" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5F0D2030" Ref="C14"  Part="1" 
+F 0 "C14" H 9560 1520 50  0000 L CNN
+F 1 "10uF" H 9560 1370 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9550 1450 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 9550 1450 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 9550 1450 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 9550 1450 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 9550 1450 50  0001 C CNN "MPN"
+F 7 "20" H 9550 1450 50  0001 C CNN "DK line"
+F 8 "AVX" H 9550 1450 50  0001 C CNN "Manufacturer"
+	1    9550 1450
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

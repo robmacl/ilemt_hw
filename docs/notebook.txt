@@ -5,20 +5,23 @@ Evaluation tasks:
  -- Measure supply current, in saturation and otherwise.
 
 Main board:
+ -- Check that 2.5V VCCO is going to work with I2C, one-wire.  Can we
+    use different VCCIO on processor pins?  Or do we need level
+    translation?
  -- Order box
-     - Double check that 395 mm is enough depth for input cards
  -- Order sample components: edge connector.
- -- Regulator daughtercard footprint. Mount holes, connector
-    selection. 
- -- Test points, debug IOs on FPGA.  One 50 Ohm MMCX output for
-    trigger, etc.
+ -- Regulator daughtercard connector selection. 
+ -- Test points, debug IOs on FPGA.
  -- Part selection:
       - Wurth WE-MPSB beads characterized for DC current. 0805 180 Ohm
+
+LV regulator board:
+ -- do it
 
 DAC output:
  -- Breakout board for output slot
  -- +/-12 supplies for DACs
- -- DAC output filter and perhaps buffer12 October
+ -- DAC output filter and perhaps buffer
 
 Input board revisions:
  -- Change to how supplies boostrap from reference. Probably

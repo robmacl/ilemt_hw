@@ -18,9 +18,14 @@ L ilemt_input:Si570 X2
 U 1 1 5EBE14B1
 P 2900 3750
 F 0 "X2" H 2400 3300 50  0000 C CNN
-F 1 "Si570" H 2350 3400 50  0000 C CNN
+F 1 "570CAC000121DG" H 2350 3400 50  0000 C CNN
 F 2 "input:QFN-8_5x7_Pitch2.54mm" H 2900 3750 50  0001 C CNN
 F 3 "https://www.silabs.com/documents/public/data-sheets/si570.pdf" H 2900 3750 50  0001 C CNN
+F 4 "XTAL OSC XO 100.0000MHZ CMOS SMD" H 2900 3750 50  0001 C CNN "Description"
+F 5 "336-2519-ND" H 2900 3750 50  0001 C CNN "Digikey"
+F 6 "570CAC000121DG" H 2900 3750 50  0001 C CNN "MPN"
+F 7 "Silicon Labs" H 2900 3750 50  0001 C CNN "Manufacturer"
+F 8 "19" H 2900 3750 50  0001 C CNN "DK line"
 	1    2900 3750
 	1    0    0    -1  
 $EndComp
@@ -39,10 +44,13 @@ AR Path="/5E525FFE/5EBED5A4" Ref="C?"  Part="1"
 F 0 "C41" V 2775 2875 50  0000 L CNN
 F 1 "100nF" V 2525 2850 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 2650 2950 50  0001 C CNN
-F 3 "~" H 2650 2950 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_X7R_6.3V-to-50V_18.pdf" H 2650 2950 50  0001 C CNN
 F 4 "CAP CER 0.1UF 25V X7R 0603" H 2650 2950 50  0001 C CNN "Description"
 F 5 "311-1341-1-ND" H 2650 2950 50  0001 C CNN "Digikey"
-F 6 "2" H 2650 2950 50  0001 C CNN "DK line"
+F 6 "18" H 2650 2950 50  0001 C CNN "DK line"
+F 7 "" H 2650 2950 50  0001 C CNN "MFG"
+F 8 "CC0603KRX7R8BB104" H 2650 2950 50  0001 C CNN "MPN"
+F 9 "Yageo" H 2650 2950 50  0001 C CNN "Manufacturer"
 	1    2650 2950
 	0    1    1    0   
 $EndComp
@@ -78,10 +86,13 @@ AR Path="/5E525FFE/5EBED5B6" Ref="C?"  Part="1"
 F 0 "C44" V 4625 3925 50  0000 L CNN
 F 1 "100nF" V 4875 3875 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 4750 4000 50  0001 C CNN
-F 3 "~" H 4750 4000 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_X7R_6.3V-to-50V_18.pdf" H 4750 4000 50  0001 C CNN
 F 4 "CAP CER 0.1UF 25V X7R 0603" H 4750 4000 50  0001 C CNN "Description"
 F 5 "311-1341-1-ND" H 4750 4000 50  0001 C CNN "Digikey"
-F 6 "2" H 4750 4000 50  0001 C CNN "DK line"
+F 6 "18" H 4750 4000 50  0001 C CNN "DK line"
+F 7 "" H 4750 4000 50  0001 C CNN "MFG"
+F 8 "CC0603KRX7R8BB104" H 4750 4000 50  0001 C CNN "MPN"
+F 9 "Yageo" H 4750 4000 50  0001 C CNN "Manufacturer"
 	1    4750 4000
 	0    -1   -1   0   
 $EndComp
@@ -148,8 +159,10 @@ F 2 "Package_SO:VSSOP-8_2.3x2mm_P0.5mm" H 4450 4450 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/74AUP1G74.pdf" H 4450 4450 50  0001 C CNN
 F 4 "1727-6029-1-ND" H 4450 4450 50  0001 C CNN "Digikey"
 F 5 "74AUP1G74DC,125" H 4450 4450 50  0001 C CNN "MPN"
-F 6 "Nexperia USA Inc." H 4450 4450 50  0001 C CNN "MFG"
+F 6 "" H 4450 4450 50  0001 C CNN "MFG"
 F 7 "IC FF D-TYPE SNGL 1BIT 8VSSOP" H 4450 4450 50  0001 C CNN "Description"
+F 8 "Nexperia USA Inc." H 4450 4450 50  0001 C CNN "Manufacturer"
+F 9 "3" H 4450 4450 50  0001 C CNN "DK line"
 	1    4450 4450
 	1    0    0    -1  
 $EndComp
@@ -170,10 +183,13 @@ AR Path="/5E525FFE/5EBF2F9A" Ref="C?"  Part="1"
 F 0 "C42" V 3025 2875 50  0000 L CNN
 F 1 "100nF" V 3275 2825 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 3150 2950 50  0001 C CNN
-F 3 "~" H 3150 2950 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_X7R_6.3V-to-50V_18.pdf" H 3150 2950 50  0001 C CNN
 F 4 "CAP CER 0.1UF 25V X7R 0603" H 3150 2950 50  0001 C CNN "Description"
 F 5 "311-1341-1-ND" H 3150 2950 50  0001 C CNN "Digikey"
-F 6 "2" H 3150 2950 50  0001 C CNN "DK line"
+F 6 "18" H 3150 2950 50  0001 C CNN "DK line"
+F 7 "" H 3150 2950 50  0001 C CNN "MFG"
+F 8 "CC0603KRX7R8BB104" H 3150 2950 50  0001 C CNN "MPN"
+F 9 "Yageo" H 3150 2950 50  0001 C CNN "Manufacturer"
 	1    3150 2950
 	0    -1   -1   0   
 $EndComp
@@ -239,7 +255,9 @@ F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 7300 2650 50  0001 C CNN
 F 3 "https://www.onsemi.com/pub/Collateral/FIN1047-D.pdf" H 7450 3600 50  0001 C CNN
 F 4 "IC DRIVER 4/0 16TSSOP" H 7400 3600 50  0001 C CNN "Description"
 F 5 "FIN1047MTCXFSCT-ND" H 7400 3600 50  0001 C CNN "Digikey"
-F 6 "38" H 7400 3600 50  0001 C CNN "DK line"
+F 6 "27" H 7400 3600 50  0001 C CNN "DK line"
+F 7 "FIN1047MTCX" H 7400 3600 50  0001 C CNN "MPN"
+F 8 "ON Semiconductor" H 7400 3600 50  0001 C CNN "Manufacturer"
 	1    7400 3600
 	1    0    0    -1  
 $EndComp
@@ -268,10 +286,13 @@ AR Path="/5E525FFE/5EBFB7DC" Ref="C?"  Part="1"
 F 0 "C46" V 7775 2475 50  0000 L CNN
 F 1 "100nF" V 7525 2425 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 7650 2550 50  0001 C CNN
-F 3 "~" H 7650 2550 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_X7R_6.3V-to-50V_18.pdf" H 7650 2550 50  0001 C CNN
 F 4 "CAP CER 0.1UF 25V X7R 0603" H 7650 2550 50  0001 C CNN "Description"
 F 5 "311-1341-1-ND" H 7650 2550 50  0001 C CNN "Digikey"
-F 6 "2" H 7650 2550 50  0001 C CNN "DK line"
+F 6 "18" H 7650 2550 50  0001 C CNN "DK line"
+F 7 "" H 7650 2550 50  0001 C CNN "MFG"
+F 8 "CC0603KRX7R8BB104" H 7650 2550 50  0001 C CNN "MPN"
+F 9 "Yageo" H 7650 2550 50  0001 C CNN "Manufacturer"
 	1    7650 2550
 	0    -1   -1   0   
 $EndComp
@@ -295,10 +316,6 @@ Wire Wire Line
 Connection ~ 7400 2550
 Wire Wire Line
 	7400 2550 7400 2700
-Wire Wire Line
-	6800 3300 6750 3300
-Wire Wire Line
-	6800 3000 6750 3000
 Connection ~ 3550 3600
 Wire Wire Line
 	6600 3900 6600 3600
@@ -341,14 +358,15 @@ AR Path="/5E51E83D/5EC43544" Ref="FB?"  Part="1"
 AR Path="/5E624B3C/5E51E83D/5EC43544" Ref="FB?"  Part="1" 
 AR Path="/5E525F2C/5EC43544" Ref="FB7"  Part="1" 
 F 0 "FB7" V 2750 2750 60  0000 C CNN
-F 1 "21 Ohm" V 2850 2850 60  0000 C CNN
-F 2 "Inductor_SMD:L_0805_2012Metric" H 3100 2700 60  0001 L CNN
-F 3 "https://www.yuden.co.jp/productdata/catalog/chipbeads01_e.pdf" H 3100 2800 60  0001 L CNN
-F 4 "HZ0805C202R-10" H 3100 3000 60  0001 L CNN "MPN"
-F 5 "Ferrite Beads and Chips" H 3100 3200 60  0001 L CNN "Family"
-F 6 "FERRITE BEAD 21 OHM 0805, 100 nH, 5 mOhm" H 3100 3500 60  0001 L CNN "Description"
-F 7 "587-1765-1-ND" H 2900 2500 50  0001 C CNN "Digikey"
-F 8 "24" H 2900 2500 50  0001 C CNN "DK line"
+F 1 "300 Ohm" V 2850 2850 60  0000 C CNN
+F 2 "Capacitor_SMD:C_2220_5650Metric" H 3100 2700 60  0001 L CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Laird%20Technologies/Ferrite_EMI_Catalog.pdf" H 3100 2800 60  0001 L CNN
+F 4 "HI2220R301R-10" H 3100 3000 60  0001 L CNN "MPN"
+F 5 "" H 3100 3200 60  0001 L CNN "Family"
+F 6 "FERRITE BEAD 300 OHM 2220 1LN" H 3100 3500 60  0001 L CNN "Description"
+F 7 "240-2430-1-ND" H 2900 2500 50  0001 C CNN "Digikey"
+F 8 "13" H 2900 2500 50  0001 C CNN "DK line"
+F 9 "Laird-Signal Integrity Products" H 2900 2500 50  0001 C CNN "Manufacturer"
 	1    2900 2500
 	0    1    1    0   
 $EndComp
@@ -401,7 +419,12 @@ AR Path="/5E525FFE/5EF87636" Ref="R?"  Part="1"
 F 0 "R8" V 6100 4925 50  0000 C CNN
 F 1 "33" V 6100 5075 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 6040 4990 50  0001 C CNN
-F 3 "~" H 6000 5000 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 6000 5000 50  0001 C CNN
+F 4 "RES 33.2 OHM 1% 1/8W 0603" H 6000 5000 50  0001 C CNN "Description"
+F 5 "RNCP0603FTD33R2CT-ND" H 6000 5000 50  0001 C CNN "Digikey"
+F 6 "RNCP0603FTD33R2" H 6000 5000 50  0001 C CNN "MPN"
+F 7 "Stackpole Electronics Inc" H 6000 5000 50  0001 C CNN "Manufacturer"
+F 8 "33" H 6000 5000 50  0001 C CNN "DK line"
 	1    6000 5000
 	0    -1   -1   0   
 $EndComp
@@ -416,8 +439,12 @@ AR Path="/5E525FFE/5EF9F487" Ref="J?"  Part="1"
 F 0 "J2" H 5610 5920 50  0000 C CNN
 F 1 "MCLK" V 5715 5800 50  0000 C CNN
 F 2 "Connector_Coaxial:MMCX_Molex_73415-1471_Vertical" H 5600 5800 50  0001 C CNN
-F 3 " ~" H 5600 5800 50  0001 C CNN
-F 4 "35" H 5600 5800 50  0001 C CNN "DK line"
+F 3 "https://www.molex.com/pdm_docs/sd/734151471_sd.pdf" H 5600 5800 50  0001 C CNN
+F 4 "" H 5600 5800 50  0001 C CNN "DK line"
+F 5 "CONN MMCX JACK STR 50 OHM PCB" H 5600 5800 50  0001 C CNN "Description"
+F 6 "WM5557-ND" H 5600 5800 50  0001 C CNN "Digikey"
+F 7 "0734151471" H 5600 5800 50  0001 C CNN "MPN"
+F 8 "Molex" H 5600 5800 50  0001 C CNN "Manufacturer"
 	1    5600 5800
 	0    1    1    0   
 $EndComp
@@ -435,10 +462,12 @@ AR Path="/5E525FFE/5EF9F490" Ref="R?"  Part="1"
 F 0 "R7" V 5700 5225 50  0000 C CNN
 F 1 "1K" V 5700 5375 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 5640 5290 50  0001 C CNN
-F 3 "~" H 5600 5300 50  0001 C CNN
-F 4 "48" H 5600 5300 50  0001 C CNN "DK line"
-F 5 "RES SMD 1K OHM 0.1% 1/10W 0603" H 5600 5300 50  0001 C CNN "Description"
-F 6 "P1.0KDBCT-ND" H 5600 5300 50  0001 C CNN "Digikey"
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 5600 5300 50  0001 C CNN
+F 4 "31" H 5600 5300 50  0001 C CNN "DK line"
+F 5 "RES 1K OHM 1% 1/8W 0603" H 5600 5300 50  0001 C CNN "Description"
+F 6 "RNCP0603FTD1K00CT-ND" H 5600 5300 50  0001 C CNN "Digikey"
+F 7 "RNCP0603FTD1K00" H 5600 5300 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 5600 5300 50  0001 C CNN "Manufacturer"
 	1    5600 5300
 	1    0    0    -1  
 $EndComp
@@ -509,4 +538,6 @@ Wire Wire Line
 Connection ~ 6350 2200
 Wire Wire Line
 	6350 2200 4450 2200
+NoConn ~ 6800 3000
+NoConn ~ 6800 3300
 $EndSCHEMATC
