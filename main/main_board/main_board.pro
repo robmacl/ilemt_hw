@@ -1,4 +1,4 @@
-update=7/8/2020 2:38:11 PM
+update=7/14/2020 2:04:19 PM
 version=1
 last_client=kicad
 [general]
@@ -46,6 +46,7 @@ TrackWidth5=0.3
 TrackWidth6=0.5
 TrackWidth7=1
 TrackWidth8=2
+TrackWidth9=3
 ViaDiameter1=0.6
 ViaDrill1=0.3
 ViaDiameter2=0.4572
@@ -90,11 +91,11 @@ Type=0
 Enabled=1
 [pcbnew/Layer.In1.Cu]
 Name=In1.Cu
-Type=1
+Type=2
 Enabled=1
 [pcbnew/Layer.In2.Cu]
 Name=In2.Cu
-Type=2
+Type=1
 Enabled=1
 [pcbnew/Layer.In3.Cu]
 Name=In3.Cu

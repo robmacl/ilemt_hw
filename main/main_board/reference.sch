@@ -13,26 +13,24 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text GLabel 1400 1850 0    50   Input ~ 0
+Text GLabel 1950 1350 0    50   Input ~ 0
 +10V
 Wire Wire Line
-	3700 2000 3700 1850
+	4150 2450 4300 2450
 Wire Wire Line
-	3700 2200 3700 2300
-Wire Wire Line
-	1550 1850 1400 1850
+	2100 1350 1950 1350
 $Comp
 L power:PWR_FLAG #FLG?
 U 1 1 5E646C49
-P 3150 1850
+P 3450 2350
 AR Path="/5E62FD57/5E630FEC/5E646C49" Ref="#FLG?"  Part="1" 
 AR Path="/5E525EB8/5E646C49" Ref="#FLG0101"  Part="1" 
-F 0 "#FLG0101" H 3150 1925 50  0001 C CNN
-F 1 "PWR_FLAG" H 3150 2000 50  0000 C CNN
-F 2 "" H 3150 1850 50  0001 C CNN
-F 3 "~" H 3150 1850 50  0001 C CNN
-	1    3150 1850
-	1    0    0    -1  
+F 0 "#FLG0101" H 3450 2425 50  0001 C CNN
+F 1 "PWR_FLAG" V 3550 2400 50  0000 C CNN
+F 2 "" H 3450 2350 50  0001 C CNN
+F 3 "~" H 3450 2350 50  0001 C CNN
+	1    3450 2350
+	0    -1   -1   0   
 $EndComp
 Text GLabel 10400 2950 2    50   Output ~ 0
 VREF+
@@ -114,23 +112,23 @@ Wire Wire Line
 $Comp
 L Device:C_Small C?
 U 1 1 5EBF6E5A
-P 3700 2100
+P 2900 1600
 AR Path="/5DFF6C0D/5EBF6E5A" Ref="C?"  Part="1" 
 AR Path="/5E1D6729/5E1DA2AA/5EBF6E5A" Ref="C?"  Part="1" 
 AR Path="/5E2EB92B/5EBF6E5A" Ref="C?"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EBF6E5A" Ref="C?"  Part="1" 
 AR Path="/5EBEDCCA/5EBF6E5A" Ref="C?"  Part="1" 
 AR Path="/5E525EB8/5EBF6E5A" Ref="C3"  Part="1" 
-F 0 "C3" V 3850 2100 50  0000 C CNN
-F 1 "47uF" V 3562 2100 50  0000 C CNN
-F 2 "Capacitor_SMD:C_1210_3225Metric" H 3700 2100 50  0001 C CNN
-F 3 "https://api.kemet.com/component-edge/download/datasheet/C1210C476M4PACTU.pdf" H 3700 2100 50  0001 C CNN
-F 4 "CAP CER 47UF 16V X5R 1210" H 3700 2100 50  0001 C CNN "Description"
-F 5 "399-5514-1-ND" H 3700 2100 50  0001 C CNN "Digikey"
-F 6 "C1210C476M4PACTU" H 3700 2100 50  0001 C CNN "MPN"
-F 7 "KEMET" H 3700 2100 50  0001 C CNN "Manufacturer"
-F 8 "11" H 3700 2100 50  0001 C CNN "DK line"
-	1    3700 2100
+F 0 "C3" V 3050 1600 50  0000 C CNN
+F 1 "47uF" V 2762 1600 50  0000 C CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 2900 1600 50  0001 C CNN
+F 3 "https://api.kemet.com/component-edge/download/datasheet/C1210C476M4PACTU.pdf" H 2900 1600 50  0001 C CNN
+F 4 "CAP CER 47UF 16V X5R 1210" H 2900 1600 50  0001 C CNN "Description"
+F 5 "399-5514-1-ND" H 2900 1600 50  0001 C CNN "Digikey"
+F 6 "C1210C476M4PACTU" H 2900 1600 50  0001 C CNN "MPN"
+F 7 "KEMET" H 2900 1600 50  0001 C CNN "Manufacturer"
+F 8 "11" H 2900 1600 50  0001 C CNN "DK line"
+	1    2900 1600
 	1    0    0    -1  
 $EndComp
 Text GLabel 1400 4800 0    50   Input ~ 0
@@ -159,7 +157,7 @@ Wire Wire Line
 $Comp
 L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
 U 1 1 5EBC8F1D
-P 1750 1850
+P 2300 1350
 AR Path="/5DFCF14D/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
 AR Path="/5E448095/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
 AR Path="/5E45936E/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
@@ -171,22 +169,22 @@ AR Path="/5E62FD57/5DFCF14D/5DE42731/5EBC8F1D" Ref="FB?"  Part="1"
 AR Path="/5E62FD57/5E448095/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
 AR Path="/5E62FD57/5E45936E/5DE42731/5EBC8F1D" Ref="FB?"  Part="1" 
 AR Path="/5E525EB8/5EBC8F1D" Ref="FB1"  Part="1" 
-F 0 "FB1" H 1750 2137 60  0000 C CNN
-F 1 "2K Ohm" H 1750 2031 60  0000 C CNN
-F 2 "Inductor_SMD:L_0805_2012Metric" H 1950 2050 60  0001 L CNN
-F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 1950 2150 60  0001 L CNN
-F 4 "" H 1950 2250 60  0001 L CNN "Digi-Key_PN"
-F 5 "HZ0805C202R-10" H 1950 2350 60  0001 L CNN "MPN"
-F 6 "" H 1950 2450 60  0001 L CNN "Category"
-F 7 "Ferrite Beads and Chips" H 1950 2550 60  0001 L CNN "Family"
-F 8 "" H 1950 2650 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "" H 1950 2750 60  0001 L CNN "DK_Detail_Page"
-F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 1950 2850 60  0001 L CNN "Description"
-F 11 "Laird-Signal Integrity Products" H 1950 2950 60  0001 L CNN "Manufacturer"
-F 12 "" H 1950 3050 60  0001 L CNN "Status"
-F 13 "16" H 1750 1850 50  0001 C CNN "DK line"
-F 14 "240-2396-1-ND" H 1750 1850 50  0001 C CNN "Digikey"
-	1    1750 1850
+F 0 "FB1" H 2300 1637 60  0000 C CNN
+F 1 "2K Ohm" H 2300 1531 60  0000 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 2500 1550 60  0001 L CNN
+F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 2500 1650 60  0001 L CNN
+F 4 "" H 2500 1750 60  0001 L CNN "Digi-Key_PN"
+F 5 "HZ0805C202R-10" H 2500 1850 60  0001 L CNN "MPN"
+F 6 "" H 2500 1950 60  0001 L CNN "Category"
+F 7 "Ferrite Beads and Chips" H 2500 2050 60  0001 L CNN "Family"
+F 8 "" H 2500 2150 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "" H 2500 2250 60  0001 L CNN "DK_Detail_Page"
+F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 2500 2350 60  0001 L CNN "Description"
+F 11 "Laird-Signal Integrity Products" H 2500 2450 60  0001 L CNN "Manufacturer"
+F 12 "" H 2500 2550 60  0001 L CNN "Status"
+F 13 "16" H 2300 1350 50  0001 C CNN "DK line"
+F 14 "240-2396-1-ND" H 2300 1350 50  0001 C CNN "Digikey"
+	1    2300 1350
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -400,18 +398,18 @@ Master voltage reference and output buffer
 $Comp
 L Device:R_US R1
 U 1 1 5EC081C5
-P 2750 1850
-F 0 "R1" V 2850 1850 50  0000 C CNN
-F 1 "10" V 2650 1850 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 2790 1840 50  0001 C CNN
-F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 2750 1850 50  0001 C CNN
-F 4 "RES 10 OHM 1% 1/8W 0603" H 2750 1850 50  0001 C CNN "Description"
-F 5 "RNCP0603FTD10R0CT-ND" H 2750 1850 50  0001 C CNN "Digikey"
-F 6 "RNCP0603FTD10R0" H 2750 1850 50  0001 C CNN "MPN"
-F 7 "Stackpole Electronics Inc" H 2750 1850 50  0001 C CNN "Manufacturer"
-F 8 "30" H 2750 1850 50  0001 C CNN "DK line"
-	1    2750 1850
-	0    -1   -1   0   
+P 3700 2100
+F 0 "R1" V 3600 2100 50  0000 C CNN
+F 1 "10" V 3800 2100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 3740 2090 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 3700 2100 50  0001 C CNN
+F 4 "RES 10 OHM 1% 1/8W 0603" H 3700 2100 50  0001 C CNN "Description"
+F 5 "RNCP0603FTD10R0CT-ND" H 3700 2100 50  0001 C CNN "Digikey"
+F 6 "RNCP0603FTD10R0" H 3700 2100 50  0001 C CNN "MPN"
+F 7 "Stackpole Electronics Inc" H 3700 2100 50  0001 C CNN "Manufacturer"
+F 8 "30" H 3700 2100 50  0001 C CNN "DK line"
+	1    3700 2100
+	1    0    0    -1  
 $EndComp
 $Comp
 L Device:R_US R2
@@ -429,9 +427,6 @@ F 8 "30" H 2750 4800 50  0001 C CNN "DK line"
 	1    2750 4800
 	0    1    1    0   
 $EndComp
-Connection ~ 3150 1850
-Wire Wire Line
-	4350 1850 7850 1850
 $Comp
 L Device:R_US R4
 U 1 1 5EC237F8
@@ -455,46 +450,36 @@ Connection ~ 9950 2950
 Wire Wire Line
 	9950 2950 10400 2950
 Wire Wire Line
-	3150 1850 3700 1850
-Wire Wire Line
-	2900 1850 3150 1850
-Wire Wire Line
-	4350 2750 4650 2750
-Wire Wire Line
-	4350 1850 4350 2750
-Wire Wire Line
 	2900 4800 3150 4800
 Wire Wire Line
-	2350 2200 2350 2300
+	2900 1700 2900 1800
 Wire Wire Line
-	1950 1850 2350 1850
+	2500 1350 2900 1350
 Wire Wire Line
-	2350 2000 2350 1850
-Connection ~ 2350 1850
-Wire Wire Line
-	2350 1850 2600 1850
+	2900 1500 2900 1350
+Connection ~ 2900 1350
 $Comp
 L Device:C_Small C?
 U 1 1 5ED08B32
-P 2350 2100
+P 4050 2450
 AR Path="/5DFF6C0D/5ED08B32" Ref="C?"  Part="1" 
 AR Path="/5E1D6729/5E1DA2AA/5ED08B32" Ref="C?"  Part="1" 
 AR Path="/5E2EB92B/5ED08B32" Ref="C?"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5ED08B32" Ref="C?"  Part="1" 
 AR Path="/5EBEDCCA/5ED08B32" Ref="C?"  Part="1" 
 AR Path="/5E525EB8/5ED08B32" Ref="C1"  Part="1" 
-F 0 "C1" V 2121 2100 50  0000 C CNN
-F 1 "10uF 16V" V 2212 2100 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 2350 2100 50  0001 C CNN
-F 3 "https://api.kemet.com/component-edge/download/datasheet/C0805C106K4PACTU.pdf" H 2350 2100 50  0001 C CNN
-F 4 "CAP CER 10UF 16V X5R 0805" H 2350 2100 50  0001 C CNN "Description"
-F 5 "399-8012-1-ND" H 2350 2100 50  0001 C CNN "Digikey"
-F 6 "C0805C106K4PACTU" H 2350 2100 50  0001 C CNN "MPN"
-F 7 "10" H 2350 2100 50  0001 C CNN "DK line"
-F 8 "KEMET" H 2350 2100 50  0001 C CNN "Manufacturer"
-F 9 "" H 2350 2100 50  0001 C CNN "MFG"
-	1    2350 2100
-	-1   0    0    1   
+F 0 "C1" V 3821 2450 50  0000 C CNN
+F 1 "10uF 16V" V 3912 2450 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4050 2450 50  0001 C CNN
+F 3 "https://api.kemet.com/component-edge/download/datasheet/C0805C106K4PACTU.pdf" H 4050 2450 50  0001 C CNN
+F 4 "CAP CER 10UF 16V X5R 0805" H 4050 2450 50  0001 C CNN "Description"
+F 5 "399-8012-1-ND" H 4050 2450 50  0001 C CNN "Digikey"
+F 6 "C0805C106K4PACTU" H 4050 2450 50  0001 C CNN "MPN"
+F 7 "10" H 4050 2450 50  0001 C CNN "DK line"
+F 8 "KEMET" H 4050 2450 50  0001 C CNN "Manufacturer"
+F 9 "" H 4050 2450 50  0001 C CNN "MFG"
+	1    4050 2450
+	0    1    1    0   
 $EndComp
 Wire Wire Line
 	2350 5150 2350 5250
@@ -536,10 +521,6 @@ Connection ~ 3150 4800
 Connection ~ 7850 4800
 Wire Wire Line
 	7850 4800 7850 4950
-Wire Wire Line
-	3700 1850 4350 1850
-Connection ~ 3700 1850
-Connection ~ 4350 1850
 $Comp
 L power:PWR_FLAG #FLG?
 U 1 1 5EE6B039
@@ -564,24 +545,19 @@ NoConn ~ 6400 2950
 $Comp
 L Device:R_US R12
 U 1 1 5F668E16
-P 10150 4200
-F 0 "R12" V 10250 4200 50  0000 C CNN
-F 1 "0" V 10050 4200 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 10190 4190 50  0001 C CNN
-F 3 "https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf" H 10150 4200 50  0001 C CNN
-F 4 "RES 0 OHM JUMPER 1/10W 0603" H 10150 4200 50  0001 C CNN "Description"
-F 5 "RMCF0603ZT0R00CT-ND" H 10150 4200 50  0001 C CNN "Digikey"
-F 6 "RMCF0603ZT0R00" H 10150 4200 50  0001 C CNN "MPN"
-F 7 "Stackpole Electronics Inc" H 10150 4200 50  0001 C CNN "Manufacturer"
-F 8 "12" H 10150 4200 50  0001 C CNN "DK line"
-	1    10150 4200
-	0    1    1    0   
+P 9350 4450
+F 0 "R12" V 9450 4450 50  0000 C CNN
+F 1 "0" V 9250 4450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9390 4440 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf" H 9350 4450 50  0001 C CNN
+F 4 "RES 0 OHM JUMPER 1/10W 0603" H 9350 4450 50  0001 C CNN "Description"
+F 5 "RMCF0603ZT0R00CT-ND" H 9350 4450 50  0001 C CNN "Digikey"
+F 6 "RMCF0603ZT0R00" H 9350 4450 50  0001 C CNN "MPN"
+F 7 "Stackpole Electronics Inc" H 9350 4450 50  0001 C CNN "Manufacturer"
+F 8 "12" H 9350 4450 50  0001 C CNN "DK line"
+	1    9350 4450
+	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	10000 4200 9950 4200
-Connection ~ 9950 4200
-Wire Wire Line
-	10300 4200 10400 4200
 $Comp
 L power:GND #PWR02
 U 1 1 5F69F5B9
@@ -607,35 +583,35 @@ $EndComp
 $Comp
 L power:GND #PWR04
 U 1 1 5F69FE7B
-P 9350 4300
-F 0 "#PWR04" H 9350 4050 50  0001 C CNN
-F 1 "GND" H 9350 4150 50  0000 C CNN
-F 2 "" H 9350 4300 50  0001 C CNN
-F 3 "" H 9350 4300 50  0001 C CNN
-	1    9350 4300
+P 9350 4600
+F 0 "#PWR04" H 9350 4350 50  0001 C CNN
+F 1 "GND" H 9350 4450 50  0000 C CNN
+F 2 "" H 9350 4600 50  0001 C CNN
+F 3 "" H 9350 4600 50  0001 C CNN
+	1    9350 4600
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR01
 U 1 1 5F6A0363
-P 2350 2300
-F 0 "#PWR01" H 2350 2050 50  0001 C CNN
-F 1 "GND" H 2350 2150 50  0000 C CNN
-F 2 "" H 2350 2300 50  0001 C CNN
-F 3 "" H 2350 2300 50  0001 C CNN
-	1    2350 2300
+P 2900 1800
+F 0 "#PWR01" H 2900 1550 50  0001 C CNN
+F 1 "GND" H 2900 1650 50  0000 C CNN
+F 2 "" H 2900 1800 50  0001 C CNN
+F 3 "" H 2900 1800 50  0001 C CNN
+	1    2900 1800
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR03
 U 1 1 5F6A0811
-P 3700 2300
-F 0 "#PWR03" H 3700 2050 50  0001 C CNN
-F 1 "GND" H 3700 2150 50  0000 C CNN
-F 2 "" H 3700 2300 50  0001 C CNN
-F 3 "" H 3700 2300 50  0001 C CNN
-	1    3700 2300
-	1    0    0    -1  
+P 4300 2450
+F 0 "#PWR03" H 4300 2200 50  0001 C CNN
+F 1 "GND" H 4300 2300 50  0000 C CNN
+F 2 "" H 4300 2450 50  0001 C CNN
+F 3 "" H 4300 2450 50  0001 C CNN
+	1    4300 2450
+	0    -1   -1   0   
 $EndComp
 $Comp
 L power:GND #PWR0102
@@ -650,13 +626,8 @@ F 3 "" H 8450 2450 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	9350 4300 9350 4200
-Connection ~ 9350 4200
-Wire Wire Line
-	9350 4200 9950 4200
-Text Label 5500 1850 0    50   ~ 0
+Text Label 3100 1350 0    50   ~ 0
 +10V_REF
-Wire Wire Line
-	7850 1850 7850 1950
 Wire Wire Line
 	7850 2450 7850 2650
 Text Label 7850 2600 0    50   ~ 0
@@ -671,8 +642,6 @@ Text Label 7200 2850 0    50   ~ 0
 U2_IN
 Text Label 4350 3000 0    50   ~ 0
 U1_NR
-Text Label 2100 1850 0    50   ~ 0
-+10V_REF_1
 Text Label 2100 4800 0    50   ~ 0
 -6V_REF_1
 Text Label 6400 2850 1    50   ~ 0
@@ -699,4 +668,77 @@ F 8 "11" H 7850 5050 50  0001 C CNN "DK line"
 	1    7850 5050
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	3700 1350 3700 1950
+Wire Wire Line
+	2900 1350 3700 1350
+Wire Wire Line
+	3700 2250 3700 2350
+Wire Wire Line
+	3700 2350 3450 2350
+Wire Wire Line
+	3950 2450 3700 2450
+Wire Wire Line
+	3700 2450 3700 2350
+Connection ~ 3700 2350
+Wire Wire Line
+	3700 2450 3700 2750
+Connection ~ 3700 2450
+Connection ~ 3700 1350
+Wire Wire Line
+	3700 1350 7850 1350
+Wire Wire Line
+	7850 1350 7850 1950
+Wire Wire Line
+	3700 2750 4650 2750
+Text Label 4350 2750 0    50   ~ 0
+U1_IN
+Wire Wire Line
+	9350 4200 9950 4200
+Connection ~ 9350 4200
+Connection ~ 9950 4200
+Wire Wire Line
+	9950 4200 10400 4200
+$Comp
+L Device:C_Small C?
+U 1 1 5F2E2F94
+P 4350 4350
+AR Path="/5DFCF14D/5DA78AA2/5F2E2F94" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F2E2F94" Ref="C?"  Part="1" 
+AR Path="/5F2E2F94" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5F2E2F94" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5F2E2F94" Ref="C?"  Part="1" 
+AR Path="/5E525FFE/5F2E2F94" Ref="C?"  Part="1" 
+AR Path="/5E525EB8/5F2E2F94" Ref="C75"  Part="1" 
+F 0 "C75" V 4225 4275 50  0000 L CNN
+F 1 "100nF" V 4475 4225 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4350 4350 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_X7R_6.3V-to-50V_18.pdf" H 4350 4350 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 4350 4350 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 4350 4350 50  0001 C CNN "Digikey"
+F 6 "18" H 4350 4350 50  0001 C CNN "DK line"
+F 7 "" H 4350 4350 50  0001 C CNN "MFG"
+F 8 "CC0603KRX7R8BB104" H 4350 4350 50  0001 C CNN "MPN"
+F 9 "Yageo" H 4350 4350 50  0001 C CNN "Manufacturer"
+	1    4350 4350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 4250 4350 4200
+Connection ~ 4350 4200
+$Comp
+L power:GND #PWR0134
+U 1 1 5F2E531B
+P 4350 4500
+F 0 "#PWR0134" H 4350 4250 50  0001 C CNN
+F 1 "GND" H 4350 4350 50  0000 C CNN
+F 2 "" H 4350 4500 50  0001 C CNN
+F 3 "" H 4350 4500 50  0001 C CNN
+	1    4350 4500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 4450 4350 4500
+Text Notes 4850 4150 0    50   ~ 0
+VREF- is floated from GND by R12 so that it can \nbe routed as the reference potential for the output.
 $EndSCHEMATC

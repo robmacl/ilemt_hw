@@ -358,15 +358,15 @@ AR Path="/5E51E83D/5EC43544" Ref="FB?"  Part="1"
 AR Path="/5E624B3C/5E51E83D/5EC43544" Ref="FB?"  Part="1" 
 AR Path="/5E525F2C/5EC43544" Ref="FB7"  Part="1" 
 F 0 "FB7" V 2750 2750 60  0000 C CNN
-F 1 "300 Ohm" V 2850 2850 60  0000 C CNN
-F 2 "Capacitor_SMD:C_2220_5650Metric" H 3100 2700 60  0001 L CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Laird%20Technologies/Ferrite_EMI_Catalog.pdf" H 3100 2800 60  0001 L CNN
-F 4 "HI2220R301R-10" H 3100 3000 60  0001 L CNN "MPN"
+F 1 "180 Ohm" V 2850 2850 60  0000 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 3100 2700 60  0001 L CNN
+F 3 "https://katalog.we-online.de/pbs/datasheet/74279220181.pdf" H 3100 2800 60  0001 L CNN
+F 4 "74279220181" H 3100 3000 60  0001 L CNN "MPN"
 F 5 "" H 3100 3200 60  0001 L CNN "Family"
-F 6 "FERRITE BEAD 300 OHM 2220 1LN" H 3100 3500 60  0001 L CNN "Description"
-F 7 "240-2430-1-ND" H 2900 2500 50  0001 C CNN "Digikey"
-F 8 "13" H 2900 2500 50  0001 C CNN "DK line"
-F 9 "Laird-Signal Integrity Products" H 2900 2500 50  0001 C CNN "Manufacturer"
+F 6 "FERRITE BEAD 180 OHM 0805 1LN" H 3100 3500 60  0001 L CNN "Description"
+F 7 "732-6123-1-ND" H 2900 2500 50  0001 C CNN "Digikey"
+F 8 "36" H 2900 2500 50  0001 C CNN "DK line"
+F 9 "Würth Elektronik" H 2900 2500 50  0001 C CNN "Manufacturer"
 	1    2900 2500
 	0    1    1    0   
 $EndComp

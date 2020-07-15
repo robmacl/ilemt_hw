@@ -5,9 +5,6 @@ Evaluation tasks:
  -- Measure supply current, in saturation and otherwise.
 
 Main board:
- -- Check that 2.5V VCCO is going to work with I2C, one-wire.  Can we
-    use different VCCIO on processor pins?  Or do we need level
-    translation?
  -- Order box
  -- Order sample components: edge connector.
  -- Regulator daughtercard connector selection. 
@@ -24,6 +21,7 @@ DAC output:
  -- DAC output filter and perhaps buffer
 
 Input board revisions:
+ -- Add diode clamp beween chassis and main ground for ESD currents.
  -- Change to how supplies boostrap from reference. Probably
     not affecting performance, but noise and ripple on the
     reference buffer supply just looks ugly.  Supply is also 
@@ -165,6 +163,82 @@ password BogPickle
 ________________
 
 
+[9 July 20]
+
+Trace clearances:
+  Fast: 1mm OC
+  LVDS: 1.6mm OC
+  Slow: 0.8mm OC??
+
+I've gone for the 2.5V VCCIO, and that does not work with one-wire,
+and probably I2C.  Ah, but the PMOD is on bank 0, a 3.3V bank on the
+PS side.
+
+I've been dithering on whether to pick a smaller bead suitable for
+<200 mA lines.  There is only the clock decoupling on the main board
+mA lines (2220 bead is as big as the clock chip), but there could be 5
+on the regulator card.  OK, I'm doing it.  The 2K bead is fine on the
+reference supplies, though, since there is not much change even at 50
+mA.
+
+
+Interesting for the low-volt supply filtering:
+https://www.we-online.com/catalog/media/o109026v410%20AppNotes_ANP044_ImpactOfTheLayoutComponentsAndFiltersOnTheEMCOfModernDCDCSwitchingControllers_EN.pdf
+
+Resonance in the filters can be a problem. They suggest adding an
+explicit subber on the input filter in some cases, where there is an
+input instability. And also shunting secondary output filter inductor
+with a resistor set at Z0. This is suggested if the secondary filter
+is inside the regulator loop, but converts it to an RC filter where
+the inductor is just avoiding DC loss in the shunt resistor.
+
+The recommend against using X7R/X5R MLCCS for input/output filters,
+suggest small conventional aluminum caps, like 10 uF/90 mOhm.  That
+seems kind of futile, though, if the input or output is being
+paralleled with larger lower ESR caps.
+
+Another note mentioned that >100MHz conductive EMU suppression can be
+limited by capacitive paths, and that it can be preferable to locate
+beads away from the regulator to minimize this.  That the ground plane
+can be involved in this coupling.  This exists in a tradeoff with
+reducing radiated EMI from the regulator.  This observation is related
+the idea of using planes to create a clean cavity, but not as clever.
+
+Thinking about this, because:
+ 1] Thinking ahead to LV regulator board design,
+ 2] Wondering about possible resonance issues in the main board
+    decoupling, or in interaction with the LV regulator.
+
+re. [2], eg. is it a cood idea changing all the 1 uF caps to 10 uF?
+well I could always swap out those caps if there is a problem.  This
+just a component choice.
+
+It does seem like my preference to use large inductors and high-Z
+beads may create resonance problems, eg. in notebook page 110, where I
+have 15uH/10uF output filters on the LV regulator.  But see
+[19-20 May 20], where I got into this.  I argue for the larger
+inductors to reduce ripple currents.  But this does tend to go along
+with de-Q'ing by using a bigger higher ESR electrolytic cap.
+
+Note that the bypass caps at the slots add a bunch of MLCC
+capacitance.  I have mostly tried to put on as much filtering and
+bypassing as seems resonably possible, rather than getting
+quantitative.
+
+In my sketch for the low-volt regulators, it does seem gratuitous to
+have both the inductor and bead filters, by some reckoning 4'th order.
+But the point is to prevent ripple current from going onto the main
+board.  The LC filter intercepts most of this, and then the bead
+suppresses VHF and also decouples from the main board.  This is to
+prevent ground path issues (common mode).  The beads also prevent
+stuff from being back-coupled between the 5V supplies, especially for
+the Zedboard.
+
+It would be interesting to simulate this whole power distribution
+structure, and I guess I should do some of that when I go to do the LV
+regulator card.
+
+
 [3 July 20]
 
 More layout thoughts.
@@ -175,7 +249,7 @@ possibly use a bottom or L3 pour under the LVDS clock drivers
 
 With insulating backplane mount kit we can have copper on the top
 layer where it crosses the mid-rail, but it won't be controlled
-impedance.
+impedance.   
 
 Route VREF- and VREF+ face coupled on TOP, L2.  Both VREF- and L3 are
 grounded, so pretty good shielding.  VREF buffer and bulk cap are in

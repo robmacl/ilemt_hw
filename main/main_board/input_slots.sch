@@ -1035,28 +1035,21 @@ $EndComp
 Wire Wire Line
 	8300 11950 8300 11650
 Wire Wire Line
-	8300 11650 7300 11650
+	8300 11650 7600 11650
 Wire Wire Line
 	8600 11850 8600 11250
 Wire Wire Line
 	8600 11250 7300 11250
-Text GLabel 9250 11950 2    50   Output ~ 0
+Text GLabel 9250 11850 2    50   Output ~ 0
 MCLK_ENA
 Wire Wire Line
-	9250 11950 9150 11950
-Wire Wire Line
-	7600 13600 7600 12450
+	9250 11850 9150 11850
 Wire Wire Line
 	8100 13600 8100 12050
 Wire Wire Line
 	12250 12150 12550 12150
 Wire Wire Line
 	10400 10550 10400 12050
-Wire Wire Line
-	9150 12050 10400 12050
-Wire Wire Line
-	9150 12150 11950 12150
-Connection ~ 11950 12150
 Wire Wire Line
 	4400 11550 5450 11550
 Wire Wire Line
@@ -1305,7 +1298,6 @@ Wire Wire Line
 	2600 11650 2700 11650
 Wire Wire Line
 	2600 11550 2700 11550
-NoConn ~ 9150 11850
 NoConn ~ 6650 6300
 Wire Wire Line
 	14650 2550 15850 2550
@@ -1452,22 +1444,8 @@ Wire Wire Line
 	8800 6250 15850 6250
 Wire Wire Line
 	8900 8000 15850 8000
-Text Label 5850 11550 0    50   ~ 0
-MCLK_ENA+
-Text Label 5875 11750 0    50   ~ 0
-MCLK_ENA-
-Text Label 6000 11950 0    50   ~ 0
-SCKA+
-Text Label 6000 12150 0    50   ~ 0
-SCKA-
-Text Label 6000 12350 0    50   ~ 0
-SCKB+
-Text Label 6000 12550 0    50   ~ 0
-SCKB-
-Text Label 9750 12050 0    50   ~ 0
+Text Label 9900 12050 0    50   ~ 0
 SCKA_DIST
-Text Label 9750 12150 0    50   ~ 0
-SCKB_DIST
 $Comp
 L microzed:microzed M1
 U 2 1 5F079106
@@ -1499,13 +1477,13 @@ Wire Wire Line
 Connection ~ 5500 8500
 Wire Wire Line
 	5500 8500 5500 8600
-Text Label 7600 12050 0    50   ~ 0
+Text Label 7700 12050 0    50   ~ 0
 SCKA_RX
-Text Label 7600 12450 0    50   ~ 0
+Text Label 7700 11650 0    50   ~ 0
 SCKB_RX
-Text Label 7600 11650 0    50   ~ 0
+Text Label 7700 11250 0    50   ~ 0
 MCLK_ENA_RX
-Text Label 7600 11250 0    50   ~ 0
+Text Label 7650 12450 0    50   ~ 0
 DEBUG_RX
 Wire Wire Line
 	4700 8600 5500 8600
@@ -1597,47 +1575,15 @@ Wire Wire Line
 Connection ~ 7900 14450
 Wire Wire Line
 	8300 11950 8750 11950
-Wire Wire Line
-	7600 12450 7300 12450
 Connection ~ 8100 12050
-Wire Wire Line
-	8100 12050 7300 12050
-Connection ~ 8600 11850
 Wire Wire Line
 	8100 12050 8750 12050
 Wire Wire Line
 	8600 11850 8750 11850
 Wire Wire Line
-	8600 11850 8600 13600
-Wire Wire Line
-	7600 12450 8750 12450
-Wire Wire Line
 	8750 12450 8750 12150
-Connection ~ 7600 12450
-Text Label 5900 11150 0    50   ~ 0
-DEBUG+
-Text Label 5900 11350 0    50   ~ 0
-DEBUG-
 Wire Wire Line
 	5250 11350 5850 11350
-Connection ~ 5450 11550
-Connection ~ 5850 11750
-Wire Wire Line
-	5450 11550 6300 11550
-Wire Wire Line
-	5850 11750 6300 11750
-Connection ~ 5450 11950
-Connection ~ 5850 12150
-Wire Wire Line
-	5450 11950 6300 11950
-Wire Wire Line
-	5850 12150 6300 12150
-Connection ~ 5450 12350
-Connection ~ 5850 12550
-Wire Wire Line
-	5450 12350 6300 12350
-Wire Wire Line
-	5850 12550 6300 12550
 Wire Wire Line
 	4400 11150 4550 11150
 Wire Wire Line
@@ -1686,12 +1632,6 @@ Wire Wire Line
 	5800 11250 5850 11250
 Wire Wire Line
 	5850 11250 5850 11350
-Connection ~ 5450 11150
-Wire Wire Line
-	5450 11150 6300 11150
-Connection ~ 5850 11350
-Wire Wire Line
-	5850 11350 6300 11350
 Text GLabel 15700 3550 0    50   Input ~ 0
 IN1_CARDSEL
 Text GLabel 15700 5250 0    50   Input ~ 0
@@ -1724,4 +1664,70 @@ Wire Wire Line
 	7850 8300 8900 8300
 Wire Wire Line
 	8900 8000 8900 8300
+Connection ~ 5850 11350
+Wire Wire Line
+	5850 11350 6300 11350
+Connection ~ 5450 11150
+Wire Wire Line
+	5450 11150 6300 11150
+Connection ~ 5850 12550
+Wire Wire Line
+	5850 12550 6300 12550
+Connection ~ 5450 12350
+Wire Wire Line
+	5450 12350 6300 12350
+Connection ~ 5850 12150
+Wire Wire Line
+	5850 12150 6300 12150
+Connection ~ 5450 11950
+Wire Wire Line
+	5450 11950 6300 11950
+Connection ~ 5850 11750
+Wire Wire Line
+	5850 11750 6300 11750
+Connection ~ 5450 11550
+Wire Wire Line
+	5450 11550 6300 11550
+Text Label 5950 12350 0    50   ~ 0
+DEBUG+
+Text Label 5950 12550 0    50   ~ 0
+DEBUG-
+Text Label 5950 11950 0    50   ~ 0
+SCKA+
+Text Label 5950 12150 0    50   ~ 0
+SCKA-
+Text Label 5950 11550 0    50   ~ 0
+SCKB+
+Text Label 5950 11750 0    50   ~ 0
+SCKB-
+Text Label 5900 11150 0    50   ~ 0
+MCLK_ENA+
+Text Label 5900 11350 0    50   ~ 0
+MCLK_ENA-
+Wire Wire Line
+	8600 13600 8600 12450
+Wire Wire Line
+	7300 12450 8600 12450
+Connection ~ 8600 12450
+Wire Wire Line
+	8600 12450 8750 12450
+Connection ~ 7600 11650
+Wire Wire Line
+	7600 11650 7300 11650
+Wire Wire Line
+	7300 12050 8100 12050
+Wire Wire Line
+	7600 11650 7600 13600
+Text Label 10550 12150 0    50   ~ 0
+SCKB_DIST
+Wire Wire Line
+	9300 12150 11950 12150
+Connection ~ 11950 12150
+Wire Wire Line
+	9300 11950 9300 12150
+Wire Wire Line
+	9150 11950 9300 11950
+Wire Wire Line
+	9150 12050 10400 12050
+NoConn ~ 9150 12150
 $EndSCHEMATC

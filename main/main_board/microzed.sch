@@ -145,7 +145,7 @@ Connection ~ 2200 2250
 Wire Wire Line
 	2200 2250 2200 2700
 Wire Wire Line
-	6850 2150 7050 2150
+	6850 2250 7050 2250
 Wire Wire Line
 	1800 2350 2400 2350
 Connection ~ 3950 2350
@@ -161,8 +161,6 @@ Wire Wire Line
 	4850 1850 4850 2450
 Wire Wire Line
 	4850 2450 5350 2450
-Wire Wire Line
-	7050 2150 7050 3550
 NoConn ~ 3000 5550
 NoConn ~ 3000 5650
 NoConn ~ 3000 5750
@@ -545,11 +543,6 @@ Wire Wire Line
 Wire Wire Line
 	3550 4500 3550 4700
 Wire Wire Line
-	3950 2350 4200 2350
-Connection ~ 4200 2350
-Wire Wire Line
-	4200 2350 4650 2350
-Wire Wire Line
 	3900 4700 3900 4500
 Wire Wire Line
 	3900 4500 3550 4500
@@ -579,8 +572,6 @@ F 8 "32" H 4200 4800 50  0001 C CNN "DK line"
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	4200 2350 4200 4500
-Wire Wire Line
 	4200 5750 4550 5750
 Wire Wire Line
 	4200 4950 4200 5750
@@ -594,7 +585,29 @@ PROBE_CONFIG_ZED
 Wire Wire Line
 	3900 4500 4200 4500
 Connection ~ 3900 4500
-Connection ~ 4200 4500
 Wire Wire Line
 	4200 4500 4200 4650
+Wire Wire Line
+	3950 2350 4650 2350
+$Comp
+L ilemt_input:OVDD #PWR0133
+U 1 1 5F0D8254
+P 3550 4350
+AR Path="/5E525F87/5F0D8254" Ref="#PWR0133"  Part="1" 
+AR Path="/5E525FFE/5F0D8254" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5F0D8254" Ref="#PWR?"  Part="1" 
+F 0 "#PWR0133" H 3550 4200 50  0001 C CNN
+F 1 "OVDD" H 3550 4500 50  0000 C CNN
+F 2 "" H 3550 4350 50  0001 C CNN
+F 3 "" H 3550 4350 50  0001 C CNN
+	1    3550 4350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3550 4350 3550 4500
+Connection ~ 3550 4500
+Text Notes 3700 4450 0    50   ~ 0
++3.3V
+Wire Wire Line
+	7050 2250 7050 3550
 $EndSCHEMATC
