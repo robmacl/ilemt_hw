@@ -385,12 +385,12 @@ Wire Wire Line
 Connection ~ 7050 4200
 Connection ~ 9500 2950
 Wire Wire Line
-	9500 2950 9950 2950
+	9500 2950 9750 2950
 Wire Wire Line
 	8200 2950 8800 2950
 Connection ~ 8800 2950
 Wire Wire Line
-	7050 4200 9350 4200
+	7050 4200 9000 4200
 Wire Wire Line
 	4650 4200 7050 4200
 Text Notes 7100 6750 0    50   ~ 0
@@ -515,8 +515,6 @@ Wire Wire Line
 Wire Wire Line
 	2350 4800 2600 4800
 Connection ~ 2350 4800
-Wire Wire Line
-	3150 4800 7850 4800
 Connection ~ 3150 4800
 Connection ~ 7850 4800
 Wire Wire Line
@@ -694,7 +692,7 @@ Wire Wire Line
 Text Label 4350 2750 0    50   ~ 0
 U1_IN
 Wire Wire Line
-	9350 4200 9950 4200
+	9350 4200 9750 4200
 Connection ~ 9350 4200
 Connection ~ 9950 4200
 Wire Wire Line
@@ -741,4 +739,72 @@ Wire Wire Line
 	4350 4450 4350 4500
 Text Notes 4850 4150 0    50   ~ 0
 VREF- is floated from GND by R12 so that it can \nbe routed as the reference potential for the output.
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F15CA95
+P 9750 2900
+AR Path="/5DFCF14D/5DA78AA2/5F15CA95" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F15CA95" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F15CA95" Ref="TP?"  Part="1" 
+AR Path="/5F15CA95" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F15CA95" Ref="TP?"  Part="1" 
+AR Path="/5E525EB8/5F15CA95" Ref="TP1"  Part="1" 
+F 0 "TP1" H 9750 3150 50  0000 C CNN
+F 1 "VREF+" H 9750 3250 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 9950 2900 50  0001 C CNN
+F 3 "~" H 9950 2900 50  0001 C CNN
+F 4 "Do Not Populate" H 9750 2900 50  0001 C CNN "Description"
+F 5 "DNP" H 9750 2900 50  0001 C CNN "MPN"
+	1    9750 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F15E224
+P 9750 4300
+AR Path="/5DFCF14D/5DA78AA2/5F15E224" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F15E224" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F15E224" Ref="TP?"  Part="1" 
+AR Path="/5F15E224" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F15E224" Ref="TP?"  Part="1" 
+AR Path="/5E525EB8/5F15E224" Ref="TP2"  Part="1" 
+F 0 "TP2" H 9750 4550 50  0000 C CNN
+F 1 "VREF-" H 9750 4650 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 9950 4300 50  0001 C CNN
+F 3 "~" H 9950 4300 50  0001 C CNN
+F 4 "Do Not Populate" H 9750 4300 50  0001 C CNN "Description"
+F 5 "DNP" H 9750 4300 50  0001 C CNN "MPN"
+	1    9750 4300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9750 4300 9750 4200
+Wire Wire Line
+	9750 2900 9750 2950
+Connection ~ 9750 2950
+Wire Wire Line
+	9750 2950 9950 2950
+Connection ~ 9750 4200
+Wire Wire Line
+	9750 4200 9950 4200
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 5F2F69F5
+P 9000 4150
+AR Path="/5E62FD57/5E630FEC/5F2F69F5" Ref="#FLG?"  Part="1" 
+AR Path="/5E525EB8/5F2F69F5" Ref="#FLG0107"  Part="1" 
+F 0 "#FLG0107" H 9000 4225 50  0001 C CNN
+F 1 "PWR_FLAG" H 9000 4300 50  0000 C CNN
+F 2 "" H 9000 4150 50  0001 C CNN
+F 3 "~" H 9000 4150 50  0001 C CNN
+	1    9000 4150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 4150 9000 4200
+Connection ~ 9000 4200
+Wire Wire Line
+	9000 4200 9350 4200
+Wire Wire Line
+	3150 4800 7850 4800
 $EndSCHEMATC

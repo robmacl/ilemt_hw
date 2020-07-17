@@ -42,15 +42,15 @@ Wire Wire Line
 	5300 2250 5300 2350
 $Comp
 L microzed:microzed X1
-U 12 1 5EDF12A5
+U 13 1 5EDF12A5
 P 5350 1850
 AR Path="/5EDF12A5" Ref="X1"  Part="10" 
-AR Path="/5E525F87/5EDF12A5" Ref="M1"  Part="12" 
+AR Path="/5E525F87/5EDF12A5" Ref="M1"  Part="13" 
 F 0 "M1" H 5550 2100 60  0000 L CNN
 F 1 "microzed" H 5550 2000 60  0000 L CNN
 F 2 "main_board:Microzed" H 5550 1900 60  0001 L CNN
 F 3 "" H 5550 1700 60  0001 L CNN
-	12   5350 1850
+	13   5350 1850
 	1    0    0    -1  
 $EndComp
 Text GLabel 6200 5250 2    50   BiDi ~ 0
@@ -73,7 +73,7 @@ F 4 "IC REG LINEAR 2.5V 1A 8SO" H 2400 2250 50  0001 C CNN "Description"
 F 5 "AP7361C-33SP-13DICT-ND" H 2400 2250 50  0001 C CNN "Digikey"
 F 6 "AP7361C-25SP-13" H 2400 2250 50  0001 C CNN "MPN"
 F 7 "Diodes Incorporated" H 2400 2250 50  0001 C CNN "Manufacturer"
-F 8 "24" H 2400 2250 50  0001 C CNN "DK line"
+F 8 "7" H 2400 2250 50  0001 C CNN "DK line"
 	1    2400 2250
 	1    0    0    -1  
 $EndComp
@@ -153,8 +153,6 @@ Connection ~ 5300 2350
 Wire Wire Line
 	4850 1850 2200 1850
 Connection ~ 2200 1850
-Wire Wire Line
-	1800 3550 7050 3550
 Wire Wire Line
 	1800 3550 1800 2350
 Wire Wire Line
@@ -289,13 +287,13 @@ Wire Wire Line
 	4650 2350 5050 2350
 $Comp
 L microzed:microzed M1
-U 13 1 5F181B21
+U 14 1 5F181B21
 P 2100 5250
 F 0 "M1" H 2300 5500 60  0000 L CNN
 F 1 "microzed" H 2300 5400 60  0000 L CNN
 F 2 "main_board:Microzed" H 2300 5300 60  0001 L CNN
 F 3 "" H 2300 5100 60  0001 L CNN
-	13   2100 5250
+	14   2100 5250
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -407,13 +405,13 @@ Wire Wire Line
 	4950 5900 4950 5750
 Connection ~ 4950 5750
 Wire Wire Line
-	4850 5500 5350 5500
+	4850 5500 5300 5500
 Wire Wire Line
 	5350 5500 5350 5900
 Wire Wire Line
 	5750 5250 5750 5900
 Wire Wire Line
-	4950 5750 6200 5750
+	4950 5750 5600 5750
 Wire Wire Line
 	5350 5500 6200 5500
 Connection ~ 5350 5500
@@ -537,7 +535,7 @@ Connection ~ 5750 5250
 Wire Wire Line
 	5750 5250 6200 5250
 Wire Wire Line
-	4850 5250 5750 5250
+	4850 5250 5000 5250
 Wire Wire Line
 	3300 5750 4200 5750
 Wire Wire Line
@@ -588,7 +586,7 @@ Connection ~ 3900 4500
 Wire Wire Line
 	4200 4500 4200 4650
 Wire Wire Line
-	3950 2350 4650 2350
+	3950 2350 4100 2350
 $Comp
 L ilemt_input:OVDD #PWR0133
 U 1 1 5F0D8254
@@ -610,4 +608,413 @@ Text Notes 3700 4450 0    50   ~ 0
 +3.3V
 Wire Wire Line
 	7050 2250 7050 3550
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F19705D
+P 5000 5200
+AR Path="/5DFCF14D/5DA78AA2/5F19705D" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F19705D" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F19705D" Ref="TP?"  Part="1" 
+AR Path="/5F19705D" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F19705D" Ref="TP?"  Part="1" 
+AR Path="/5E525F87/5F19705D" Ref="TP8"  Part="1" 
+F 0 "TP8" H 5000 5450 50  0000 C CNN
+F 1 "SCL" H 5000 5550 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 5200 5200 50  0001 C CNN
+F 3 "~" H 5200 5200 50  0001 C CNN
+F 4 "Do Not Populate" H 5000 5200 50  0001 C CNN "Description"
+F 5 "DNP" H 5000 5200 50  0001 C CNN "MPN"
+	1    5000 5200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F19845A
+P 5300 5200
+AR Path="/5DFCF14D/5DA78AA2/5F19845A" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F19845A" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F19845A" Ref="TP?"  Part="1" 
+AR Path="/5F19845A" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F19845A" Ref="TP?"  Part="1" 
+AR Path="/5E525F87/5F19845A" Ref="TP9"  Part="1" 
+F 0 "TP9" H 5300 5450 50  0000 C CNN
+F 1 "SDA" H 5300 5550 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 5500 5200 50  0001 C CNN
+F 3 "~" H 5500 5200 50  0001 C CNN
+F 4 "Do Not Populate" H 5300 5200 50  0001 C CNN "Description"
+F 5 "DNP" H 5300 5200 50  0001 C CNN "MPN"
+	1    5300 5200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F199754
+P 5600 5200
+AR Path="/5DFCF14D/5DA78AA2/5F199754" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F199754" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F199754" Ref="TP?"  Part="1" 
+AR Path="/5F199754" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F199754" Ref="TP?"  Part="1" 
+AR Path="/5E525F87/5F199754" Ref="TP10"  Part="1" 
+F 0 "TP10" H 5600 5450 50  0000 C CNN
+F 1 "PROBE_CONFIG" H 5800 5550 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 5800 5200 50  0001 C CNN
+F 3 "~" H 5800 5200 50  0001 C CNN
+F 4 "Do Not Populate" H 5600 5200 50  0001 C CNN "Description"
+F 5 "DNP" H 5600 5200 50  0001 C CNN "MPN"
+	1    5600 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 5200 5000 5250
+Connection ~ 5000 5250
+Wire Wire Line
+	5000 5250 5750 5250
+Wire Wire Line
+	5300 5200 5300 5500
+Connection ~ 5300 5500
+Wire Wire Line
+	5300 5500 5350 5500
+Wire Wire Line
+	5600 5200 5600 5750
+Connection ~ 5600 5750
+Wire Wire Line
+	5600 5750 6200 5750
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F1A0FC6
+P 4100 2300
+AR Path="/5DFCF14D/5DA78AA2/5F1A0FC6" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F1A0FC6" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F1A0FC6" Ref="TP?"  Part="1" 
+AR Path="/5F1A0FC6" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F1A0FC6" Ref="TP?"  Part="1" 
+AR Path="/5E525F87/5F1A0FC6" Ref="TP7"  Part="1" 
+F 0 "TP7" H 4100 2550 50  0000 C CNN
+F 1 "VCCO" H 4100 2650 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 4300 2300 50  0001 C CNN
+F 3 "~" H 4300 2300 50  0001 C CNN
+F 4 "Do Not Populate" H 4100 2300 50  0001 C CNN "Description"
+F 5 "DNP" H 4100 2300 50  0001 C CNN "MPN"
+	1    4100 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 2300 4100 2350
+Connection ~ 4100 2350
+Wire Wire Line
+	4100 2350 4650 2350
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F2AA3AC
+P 1800 2300
+AR Path="/5DFCF14D/5DA78AA2/5F2AA3AC" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F2AA3AC" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F2AA3AC" Ref="TP?"  Part="1" 
+AR Path="/5F2AA3AC" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F2AA3AC" Ref="TP?"  Part="1" 
+AR Path="/5E525F87/5F2AA3AC" Ref="TP6"  Part="1" 
+F 0 "TP6" H 1650 2450 50  0000 C CNN
+F 1 "VCCIO_EN" H 1550 2550 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 2000 2300 50  0001 C CNN
+F 3 "~" H 2000 2300 50  0001 C CNN
+F 4 "Do Not Populate" H 1800 2300 50  0001 C CNN "Description"
+F 5 "DNP" H 1800 2300 50  0001 C CNN "MPN"
+	1    1800 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1800 2300 1800 2350
+Connection ~ 1800 2350
+Wire Wire Line
+	1800 3550 7050 3550
+$Comp
+L Connector_Generic:Conn_02x08_Odd_Even J5
+U 1 1 5F301CF9
+P 9150 1800
+F 0 "J5" H 9200 2200 50  0000 C CNN
+F 1 "Debug" H 9200 2300 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical" H 9150 1800 50  0001 C CNN
+F 3 "~" H 9150 1800 50  0001 C CNN
+	1    9150 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L microzed:microzed M?
+U 2 1 5F17E393
+P 7750 1500
+AR Path="/5E525FFE/5F17E393" Ref="M?"  Part="2" 
+AR Path="/5E525F87/5F17E393" Ref="M1"  Part="2" 
+F 0 "M1" H 7950 1750 60  0000 L CNN
+F 1 "microzed" H 7950 1650 60  0000 L CNN
+F 2 "main_board:Microzed" H 7950 1550 60  0001 L CNN
+F 3 "" H 7950 1350 60  0001 L CNN
+	2    7750 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 1500 8950 1500
+Wire Wire Line
+	8550 1600 8950 1600
+Wire Wire Line
+	8550 1700 8950 1700
+Wire Wire Line
+	8550 1800 8950 1800
+Wire Wire Line
+	8550 1900 8950 1900
+Wire Wire Line
+	8550 2000 8950 2000
+Wire Wire Line
+	8550 2100 8950 2100
+Wire Wire Line
+	8550 2200 8950 2200
+$Comp
+L power:GNDD #PWR?
+U 1 1 5F194374
+P 9650 2200
+AR Path="/5E525FFE/5EBAAEAF/5F194374" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F87/5F194374" Ref="#PWR0136"  Part="1" 
+F 0 "#PWR0136" H 9650 1950 50  0001 C CNN
+F 1 "GNDD" H 9650 2075 50  0000 C CNN
+F 2 "" H 9650 2200 50  0001 C CNN
+F 3 "" H 9650 2200 50  0001 C CNN
+	1    9650 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9450 2200 9650 2200
+Wire Wire Line
+	9450 1500 9450 1600
+Wire Wire Line
+	9450 1600 9450 1700
+Connection ~ 9450 1600
+Wire Wire Line
+	9450 1700 9450 1800
+Connection ~ 9450 1700
+Wire Wire Line
+	9450 1800 9450 1900
+Connection ~ 9450 1800
+Wire Wire Line
+	9450 1900 9450 2000
+Connection ~ 9450 1900
+Wire Wire Line
+	9450 2000 9450 2100
+Connection ~ 9450 2000
+Wire Wire Line
+	9450 2100 9450 2200
+Connection ~ 9450 2100
+Connection ~ 9450 2200
+$Comp
+L Device:LED D4
+U 1 1 5F1AABD5
+P 9300 2700
+F 0 "D4" H 9300 2800 50  0000 C CNN
+F 1 "LED1" H 9300 2600 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 9300 2700 50  0001 C CNN
+F 3 "https://katalog.we-online.de/pbs/datasheet/150060VS55040.pdf" H 9300 2700 50  0001 C CNN
+F 4 "37" H 9300 2700 50  0001 C CNN "DK line"
+F 5 "LED GREEN DIFFUSED 0603 SMD" H 9300 2700 50  0001 C CNN "Description"
+F 6 "732-12017-1-ND" H 9300 2700 50  0001 C CNN "Digikey"
+F 7 "150060VS55040" H 9300 2700 50  0001 C CNN "MPN"
+F 8 "Würth Elektronik" H 9300 2700 50  0001 C CNN "Manufacturer"
+	1    9300 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 5F2151B9
+P 9700 2700
+AR Path="/5DFF6C0D/5F2151B9" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F2151B9" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F2151B9" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F2151B9" Ref="R?"  Part="1" 
+AR Path="/5F2151B9" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F2151B9" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5F2151B9" Ref="R25"  Part="1" 
+AR Path="/5E525FFE/5F2151B9" Ref="R?"  Part="1" 
+F 0 "R25" V 9800 2800 50  0000 C CNN
+F 1 "100" V 9800 2600 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9740 2690 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 9700 2700 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 9700 2700 50  0001 C CNN "Digikey"
+F 5 "29" H 9700 2700 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 9700 2700 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 9700 2700 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 9700 2700 50  0001 C CNN "Manufacturer"
+	1    9700 2700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9450 2700 9550 2700
+Wire Wire Line
+	9850 2700 10000 2700
+Text Label 10100 2700 0    50   ~ 0
+VCCO
+$Comp
+L Device:LED D5
+U 1 1 5F2203E7
+P 9300 3050
+F 0 "D5" H 9300 3150 50  0000 C CNN
+F 1 "LED2" H 9300 2950 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 9300 3050 50  0001 C CNN
+F 3 "https://katalog.we-online.de/pbs/datasheet/150060VS55040.pdf" H 9300 3050 50  0001 C CNN
+F 4 "37" H 9300 3050 50  0001 C CNN "DK line"
+F 5 "LED GREEN DIFFUSED 0603 SMD" H 9300 3050 50  0001 C CNN "Description"
+F 6 "732-12017-1-ND" H 9300 3050 50  0001 C CNN "Digikey"
+F 7 "150060VS55040" H 9300 3050 50  0001 C CNN "MPN"
+F 8 "Würth Elektronik" H 9300 3050 50  0001 C CNN "Manufacturer"
+	1    9300 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 5F2203F2
+P 9700 3050
+AR Path="/5DFF6C0D/5F2203F2" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F2203F2" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F2203F2" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F2203F2" Ref="R?"  Part="1" 
+AR Path="/5F2203F2" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F2203F2" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5F2203F2" Ref="R28"  Part="1" 
+AR Path="/5E525FFE/5F2203F2" Ref="R?"  Part="1" 
+F 0 "R28" V 9800 3150 50  0000 C CNN
+F 1 "100" V 9800 2950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9740 3040 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 9700 3050 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 9700 3050 50  0001 C CNN "Digikey"
+F 5 "29" H 9700 3050 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 9700 3050 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 9700 3050 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 9700 3050 50  0001 C CNN "Manufacturer"
+	1    9700 3050
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9450 3050 9550 3050
+$Comp
+L Device:LED D6
+U 1 1 5F22277D
+P 9300 3400
+F 0 "D6" H 9300 3500 50  0000 C CNN
+F 1 "LED3" H 9300 3300 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 9300 3400 50  0001 C CNN
+F 3 "https://katalog.we-online.de/pbs/datasheet/150060VS55040.pdf" H 9300 3400 50  0001 C CNN
+F 4 "37" H 9300 3400 50  0001 C CNN "DK line"
+F 5 "LED GREEN DIFFUSED 0603 SMD" H 9300 3400 50  0001 C CNN "Description"
+F 6 "732-12017-1-ND" H 9300 3400 50  0001 C CNN "Digikey"
+F 7 "150060VS55040" H 9300 3400 50  0001 C CNN "MPN"
+F 8 "Würth Elektronik" H 9300 3400 50  0001 C CNN "Manufacturer"
+	1    9300 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 5F222788
+P 9700 3400
+AR Path="/5DFF6C0D/5F222788" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F222788" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F222788" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F222788" Ref="R?"  Part="1" 
+AR Path="/5F222788" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F222788" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5F222788" Ref="R29"  Part="1" 
+AR Path="/5E525FFE/5F222788" Ref="R?"  Part="1" 
+F 0 "R29" V 9800 3500 50  0000 C CNN
+F 1 "100" V 9800 3300 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9740 3390 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 9700 3400 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 9700 3400 50  0001 C CNN "Digikey"
+F 5 "29" H 9700 3400 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 9700 3400 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 9700 3400 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 9700 3400 50  0001 C CNN "Manufacturer"
+	1    9700 3400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9450 3400 9550 3400
+$Comp
+L Device:LED D7
+U 1 1 5F224FE7
+P 9300 3750
+F 0 "D7" H 9300 3850 50  0000 C CNN
+F 1 "LED4" H 9300 3650 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 9300 3750 50  0001 C CNN
+F 3 "https://katalog.we-online.de/pbs/datasheet/150060VS55040.pdf" H 9300 3750 50  0001 C CNN
+F 4 "37" H 9300 3750 50  0001 C CNN "DK line"
+F 5 "LED GREEN DIFFUSED 0603 SMD" H 9300 3750 50  0001 C CNN "Description"
+F 6 "732-12017-1-ND" H 9300 3750 50  0001 C CNN "Digikey"
+F 7 "150060VS55040" H 9300 3750 50  0001 C CNN "MPN"
+F 8 "Würth Elektronik" H 9300 3750 50  0001 C CNN "Manufacturer"
+	1    9300 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 5F224FF2
+P 9700 3750
+AR Path="/5DFF6C0D/5F224FF2" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F224FF2" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F224FF2" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F224FF2" Ref="R?"  Part="1" 
+AR Path="/5F224FF2" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F224FF2" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5F224FF2" Ref="R30"  Part="1" 
+AR Path="/5E525FFE/5F224FF2" Ref="R?"  Part="1" 
+F 0 "R30" V 9800 3850 50  0000 C CNN
+F 1 "100" V 9800 3650 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9740 3740 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 9700 3750 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 9700 3750 50  0001 C CNN "Digikey"
+F 5 "29" H 9700 3750 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 9700 3750 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 9700 3750 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 9700 3750 50  0001 C CNN "Manufacturer"
+	1    9700 3750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9450 3750 9550 3750
+Wire Wire Line
+	9850 3750 10000 3750
+Wire Wire Line
+	10000 3750 10000 3400
+Connection ~ 10000 2700
+Wire Wire Line
+	10000 2700 10350 2700
+Wire Wire Line
+	9850 3050 10000 3050
+Connection ~ 10000 3050
+Wire Wire Line
+	10000 3050 10000 2700
+Wire Wire Line
+	9850 3400 10000 3400
+Connection ~ 10000 3400
+Wire Wire Line
+	10000 3400 10000 3050
+Wire Wire Line
+	9150 2700 9100 2700
+Wire Wire Line
+	9100 2700 9100 2300
+Wire Wire Line
+	9100 2300 8550 2300
+Wire Wire Line
+	9150 3050 9050 3050
+Wire Wire Line
+	9050 3050 9050 2400
+Wire Wire Line
+	9050 2400 8550 2400
+Wire Wire Line
+	9150 3400 9000 3400
+Wire Wire Line
+	9000 3400 9000 2500
+Wire Wire Line
+	9000 2500 8550 2500
+Wire Wire Line
+	9150 3750 8950 3750
+Wire Wire Line
+	8950 3750 8950 2600
+Wire Wire Line
+	8950 2600 8550 2600
 $EndSCHEMATC

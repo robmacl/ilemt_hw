@@ -698,7 +698,7 @@ F 0 "J8" H 8110 14370 50  0000 C CNN
 F 1 "SCKA" V 8215 14250 50  0000 C CNN
 F 2 "Connector_Coaxial:MMCX_Molex_73415-1471_Vertical" H 8100 14250 50  0001 C CNN
 F 3 "https://www.molex.com/pdm_docs/sd/734151471_sd.pdf" H 8100 14250 50  0001 C CNN
-F 4 "" H 8100 14250 50  0001 C CNN "DK line"
+F 4 "35" H 8100 14250 50  0001 C CNN "DK line"
 F 5 "CONN MMCX JACK STR 50 OHM PCB" H 8100 14250 50  0001 C CNN "Description"
 F 6 "WM5557-ND" H 8100 14250 50  0001 C CNN "Digikey"
 F 7 "0734151471" H 8100 14250 50  0001 C CNN "MPN"
@@ -775,7 +775,7 @@ F 0 "J7" H 7610 14370 50  0000 C CNN
 F 1 "SCKB" V 7715 14250 50  0000 C CNN
 F 2 "Connector_Coaxial:MMCX_Molex_73415-1471_Vertical" H 7600 14250 50  0001 C CNN
 F 3 "https://www.molex.com/pdm_docs/sd/734151471_sd.pdf" H 7600 14250 50  0001 C CNN
-F 4 "" H 7600 14250 50  0001 C CNN "DK line"
+F 4 "35" H 7600 14250 50  0001 C CNN "DK line"
 F 5 "CONN MMCX JACK STR 50 OHM PCB" H 7600 14250 50  0001 C CNN "Description"
 F 6 "WM5557-ND" H 7600 14250 50  0001 C CNN "Digikey"
 F 7 "0734151471" H 7600 14250 50  0001 C CNN "MPN"
@@ -1080,19 +1080,6 @@ Wire Wire Line
 	4600 12050 4600 12550
 Wire Wire Line
 	4600 12550 5850 12550
-$Comp
-L microzed:microzed X1
-U 3 1 5F0A97DA
-P 17800 1950
-AR Path="/5F0A97DA" Ref="X1"  Part="2" 
-AR Path="/5E525FFE/5F0A97DA" Ref="M1"  Part="3" 
-F 0 "M1" H 18000 2200 60  0000 L CNN
-F 1 "microzed" H 18000 2100 60  0000 L CNN
-F 2 "main_board:Microzed" H 18000 2000 60  0001 L CNN
-F 3 "" H 18000 1800 60  0001 L CNN
-	3    17800 1950
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	17000 1850 17800 1850
 Wire Wire Line
@@ -1133,15 +1120,15 @@ Wire Wire Line
 	17700 2650 17800 2650
 $Comp
 L microzed:microzed X1
-U 4 1 5F159E9E
+U 5 1 5F159E9E
 P 17800 3600
 AR Path="/5F159E9E" Ref="X1"  Part="3" 
-AR Path="/5E525FFE/5F159E9E" Ref="M1"  Part="4" 
+AR Path="/5E525FFE/5F159E9E" Ref="M1"  Part="5" 
 F 0 "M1" H 18000 3850 60  0000 L CNN
 F 1 "microzed" H 18000 3750 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 3650 60  0001 L CNN
 F 3 "" H 18000 3450 60  0001 L CNN
-	4    17800 3600
+	5    17800 3600
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1184,15 +1171,15 @@ Wire Wire Line
 	17750 3500 17750 3600
 $Comp
 L microzed:microzed X1
-U 5 1 5F1854CB
+U 6 1 5F1854CB
 P 17800 5300
 AR Path="/5F1854CB" Ref="X1"  Part="4" 
-AR Path="/5E525FFE/5F1854CB" Ref="M1"  Part="5" 
+AR Path="/5E525FFE/5F1854CB" Ref="M1"  Part="6" 
 F 0 "M1" H 18000 5550 60  0000 L CNN
 F 1 "microzed" H 18000 5450 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 5350 60  0001 L CNN
 F 3 "" H 18000 5150 60  0001 L CNN
-	5    17800 5300
+	6    17800 5300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1239,15 +1226,15 @@ Wire Wire Line
 	17750 5300 17800 5300
 $Comp
 L microzed:microzed X1
-U 6 1 5F209C7E
+U 7 1 5F209C7E
 P 17800 7050
 AR Path="/5F209C7E" Ref="X1"  Part="5" 
-AR Path="/5E525FFE/5F209C7E" Ref="M1"  Part="6" 
+AR Path="/5E525FFE/5F209C7E" Ref="M1"  Part="7" 
 F 0 "M1" H 18000 7300 60  0000 L CNN
 F 1 "microzed" H 18000 7200 60  0000 L CNN
 F 2 "main_board:Microzed" H 18000 7100 60  0001 L CNN
 F 3 "" H 18000 6900 60  0001 L CNN
-	6    17800 7050
+	7    17800 7050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1446,17 +1433,6 @@ Wire Wire Line
 	8900 8000 15850 8000
 Text Label 9900 12050 0    50   ~ 0
 SCKA_DIST
-$Comp
-L microzed:microzed M1
-U 2 1 5F079106
-P 2700 11150
-F 0 "M1" H 2900 11400 60  0000 L CNN
-F 1 "microzed" H 2900 11300 60  0000 L CNN
-F 2 "main_board:Microzed" H 2900 11200 60  0001 L CNN
-F 3 "" H 2900 11000 60  0001 L CNN
-	2    2700 11150
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4550 8200 4550 11150
 Text Label 4700 10900 1    50   ~ 0
@@ -1533,7 +1509,7 @@ F 0 "J3" H 8610 14370 50  0000 C CNN
 F 1 "DEBUG" V 8715 14250 50  0000 C CNN
 F 2 "Connector_Coaxial:MMCX_Molex_73415-1471_Vertical" H 8600 14250 50  0001 C CNN
 F 3 "https://www.molex.com/pdm_docs/sd/734151471_sd.pdf" H 8600 14250 50  0001 C CNN
-F 4 "" H 8600 14250 50  0001 C CNN "DK line"
+F 4 "35" H 8600 14250 50  0001 C CNN "DK line"
 F 5 "CONN MMCX JACK STR 50 OHM PCB" H 8600 14250 50  0001 C CNN "Description"
 F 6 "WM5557-ND" H 8600 14250 50  0001 C CNN "Digikey"
 F 7 "0734151471" H 8600 14250 50  0001 C CNN "MPN"
@@ -1634,8 +1610,6 @@ Wire Wire Line
 	5850 11250 5850 11350
 Text GLabel 15700 3550 0    50   Input ~ 0
 IN1_CARDSEL
-Text GLabel 15700 5250 0    50   Input ~ 0
-IN2_CARDSEL
 Text GLabel 15700 7000 0    50   Input ~ 0
 IN3_CARDSEL
 Text GLabel 15700 1900 0    50   Input ~ 0
@@ -1730,4 +1704,28 @@ Wire Wire Line
 Wire Wire Line
 	9150 12050 10400 12050
 NoConn ~ 9150 12150
+$Comp
+L microzed:microzed M1
+U 4 1 5F1486B6
+P 17800 1950
+F 0 "M1" H 18000 2200 60  0000 L CNN
+F 1 "microzed" H 18000 2100 60  0000 L CNN
+F 2 "main_board:Microzed" H 18000 2000 60  0001 L CNN
+F 3 "" H 18000 1800 60  0001 L CNN
+	4    17800 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L microzed:microzed M1
+U 3 1 5F151D97
+P 2700 11150
+F 0 "M1" H 2900 11400 60  0000 L CNN
+F 1 "microzed" H 2900 11300 60  0000 L CNN
+F 2 "main_board:Microzed" H 2900 11200 60  0001 L CNN
+F 3 "" H 2900 11000 60  0001 L CNN
+	3    2700 11150
+	1    0    0    -1  
+$EndComp
+Text GLabel 15700 5250 0    50   Input ~ 0
+IN2_CARDSEL
 $EndSCHEMATC

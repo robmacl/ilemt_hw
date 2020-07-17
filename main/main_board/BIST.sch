@@ -777,18 +777,12 @@ Wire Wire Line
 Wire Wire Line
 	2550 2400 2550 2600
 Connection ~ 2550 2600
-Text GLabel 5000 2100 2    50   Output ~ 0
+Text GLabel 6000 2100 2    50   Output ~ 0
 BIST_SYNC
-Text GLabel 5000 2200 2    50   Output ~ 0
+Text GLabel 6000 2200 2    50   Output ~ 0
 BIST_MOSI
-Text GLabel 5000 2300 2    50   Output ~ 0
+Text GLabel 6000 2300 2    50   Output ~ 0
 BIST_SCLK
-Wire Wire Line
-	5000 2100 4850 2100
-Wire Wire Line
-	5000 2200 4850 2200
-Wire Wire Line
-	5000 2300 4850 2300
 $Comp
 L microzed:microzed M1
 U 1 1 5F19C344
@@ -884,4 +878,82 @@ Text GLabel 5000 1800 2    50   Output ~ 0
 IN2_CARDSEL
 Text GLabel 5000 1900 2    50   Output ~ 0
 IN1_CARDSEL
+Wire Wire Line
+	4850 2100 5750 2100
+Wire Wire Line
+	4850 2200 5450 2200
+Wire Wire Line
+	4850 2300 5150 2300
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F17567E
+P 5150 2350
+AR Path="/5DFCF14D/5DA78AA2/5F17567E" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F17567E" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F17567E" Ref="TP?"  Part="1" 
+AR Path="/5F17567E" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F17567E" Ref="TP?"  Part="1" 
+AR Path="/5EC4BDFA/5F17567E" Ref="TP21"  Part="1" 
+F 0 "TP21" H 5150 2600 50  0000 C CNN
+F 1 "SCLK" H 5150 2700 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 5350 2350 50  0001 C CNN
+F 3 "~" H 5350 2350 50  0001 C CNN
+F 4 "Do Not Populate" H 5150 2350 50  0001 C CNN "Description"
+F 5 "DNP" H 5150 2350 50  0001 C CNN "MPN"
+	1    5150 2350
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F178BFC
+P 5450 2350
+AR Path="/5DFCF14D/5DA78AA2/5F178BFC" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F178BFC" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F178BFC" Ref="TP?"  Part="1" 
+AR Path="/5F178BFC" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F178BFC" Ref="TP?"  Part="1" 
+AR Path="/5EC4BDFA/5F178BFC" Ref="TP22"  Part="1" 
+F 0 "TP22" H 5450 2600 50  0000 C CNN
+F 1 "MOSI" H 5450 2700 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 5650 2350 50  0001 C CNN
+F 3 "~" H 5650 2350 50  0001 C CNN
+F 4 "Do Not Populate" H 5450 2350 50  0001 C CNN "Description"
+F 5 "DNP" H 5450 2350 50  0001 C CNN "MPN"
+	1    5450 2350
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F17C309
+P 5750 2350
+AR Path="/5DFCF14D/5DA78AA2/5F17C309" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F17C309" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F17C309" Ref="TP?"  Part="1" 
+AR Path="/5F17C309" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F17C309" Ref="TP?"  Part="1" 
+AR Path="/5EC4BDFA/5F17C309" Ref="TP23"  Part="1" 
+F 0 "TP23" H 5750 2600 50  0000 C CNN
+F 1 "SYNC" H 5750 2700 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 5950 2350 50  0001 C CNN
+F 3 "~" H 5950 2350 50  0001 C CNN
+F 4 "Do Not Populate" H 5750 2350 50  0001 C CNN "Description"
+F 5 "DNP" H 5750 2350 50  0001 C CNN "MPN"
+	1    5750 2350
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5150 2350 5150 2300
+Connection ~ 5150 2300
+Wire Wire Line
+	5150 2300 6000 2300
+Wire Wire Line
+	5450 2350 5450 2200
+Connection ~ 5450 2200
+Wire Wire Line
+	5450 2200 6000 2200
+Wire Wire Line
+	5750 2350 5750 2100
+Connection ~ 5750 2100
+Wire Wire Line
+	5750 2100 6000 2100
 $EndSCHEMATC

@@ -1,4 +1,4 @@
-(module TestPoint_THTPad_D5.0mm_Drill2.41mm (layer F.Cu) (tedit 5E32CBD9)
+(module TestPoint_THTPad_D5.0mm_Drill2.41mm (layer F.Cu) (tedit 5F10AE4D)
   (descr "THT pad as test Point, diameter 4.0mm, hole diameter 2.0mm")
   (tags "test point THT pad")
   (attr virtual)
@@ -12,6 +12,6 @@
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (fp_circle (center 0 0) (end 2.5 0) (layer F.CrtYd) (width 0.05))
-  (fp_circle (center 0 0) (end 0 2.25) (layer F.SilkS) (width 0.12))
+  (fp_circle (center 0 0) (end 2.75 0) (layer F.SilkS) (width 0.12))
   (pad 1 thru_hole circle (at 0 0) (size 5 5) (drill 2.41) (layers *.Cu *.Mask))
 )

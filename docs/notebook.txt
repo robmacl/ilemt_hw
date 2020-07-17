@@ -1,16 +1,16 @@
+Main board:
+ -- Order box
+ -- Will C21 clear plugin card?
+ -- Stitching vias
+ -- Order BOM
+ -- Regulator daughtercard connector selection.
+
 Evaluation tasks:
  -- BIST injection test
  -- Prototype reference
  -- Preliminary RFI and ESD testing on input board.
  -- Measure supply current, in saturation and otherwise.
 
-Main board:
- -- Order box
- -- Order sample components: edge connector.
- -- Regulator daughtercard connector selection. 
- -- Test points, debug IOs on FPGA.
- -- Part selection:
-      - Wurth WE-MPSB beads characterized for DC current. 0805 180 Ohm
 
 LV regulator board:
  -- do it

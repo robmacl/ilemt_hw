@@ -556,14 +556,14 @@ Wire Wire Line
 Text GLabel 9900 4600 2    50   Output ~ 0
 +5VDIG
 Wire Wire Line
-	9900 4600 9100 4600
+	9900 4600 9600 4600
 Connection ~ 9100 4600
-Text GLabel 7600 5550 0    50   Input ~ 0
+Text GLabel 7600 5750 0    50   Input ~ 0
 +5VANA_IN
 $Comp
 L Device:C_Small C?
 U 1 1 5ED48C5C
-P 8100 5750
+P 8100 5950
 AR Path="/5DFF6C0D/5ED48C5C" Ref="C?"  Part="1" 
 AR Path="/5E1D6729/5E1DA2AA/5ED48C5C" Ref="C?"  Part="1" 
 AR Path="/5E2EB92B/5ED48C5C" Ref="C?"  Part="1" 
@@ -571,38 +571,38 @@ AR Path="/5E51E83D/5ED48C5C" Ref="C?"  Part="1"
 AR Path="/5E624B3C/5E51E83D/5ED48C5C" Ref="C?"  Part="1" 
 AR Path="/5E525F2C/5ED48C5C" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5ED48C5C" Ref="C18"  Part="1" 
-F 0 "C18" V 7871 5750 50  0000 C CNN
-F 1 "10uF" V 7962 5750 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 8100 5750 50  0001 C CNN
-F 3 "http://datasheets.avx.com/cx5r.pdf" H 8100 5750 50  0001 C CNN
-F 4 "CAP CER 10UF 6.3V X5R 0603" H 8100 5750 50  0001 C CNN "Description"
-F 5 "478-5318-1-ND" H 8100 5750 50  0001 C CNN "Digikey"
-F 6 "06036D106MAT2A" H 8100 5750 50  0001 C CNN "MPN"
-F 7 "20" H 8100 5750 50  0001 C CNN "DK line"
-F 8 "AVX" H 8100 5750 50  0001 C CNN "Manufacturer"
-	1    8100 5750
+F 0 "C18" V 7871 5950 50  0000 C CNN
+F 1 "10uF" V 7962 5950 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8100 5950 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 8100 5950 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 8100 5950 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 8100 5950 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 8100 5950 50  0001 C CNN "MPN"
+F 7 "20" H 8100 5950 50  0001 C CNN "DK line"
+F 8 "AVX" H 8100 5950 50  0001 C CNN "Manufacturer"
+	1    8100 5950
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	8100 5850 8100 5950
+	8100 6050 8100 6150
 $Comp
 L power:GND #PWR?
 U 1 1 5ED48C63
-P 8100 5950
+P 8100 6150
 AR Path="/5E624B3C/5E51E83D/5ED48C63" Ref="#PWR?"  Part="1" 
 AR Path="/5E525F2C/5ED48C63" Ref="#PWR?"  Part="1" 
 AR Path="/5E525FC9/5ED48C63" Ref="#PWR015"  Part="1" 
-F 0 "#PWR015" H 8100 5700 50  0001 C CNN
-F 1 "GND" H 8100 5800 50  0000 C CNN
-F 2 "" H 8100 5950 50  0001 C CNN
-F 3 "" H 8100 5950 50  0001 C CNN
-	1    8100 5950
+F 0 "#PWR015" H 8100 5900 50  0001 C CNN
+F 1 "GND" H 8100 6000 50  0000 C CNN
+F 2 "" H 8100 6150 50  0001 C CNN
+F 3 "" H 8100 6150 50  0001 C CNN
+	1    8100 6150
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:CP1_Small C?
 U 1 1 5ED48C6E
-P 9100 5750
+P 9100 5950
 AR Path="/5DFF6C0D/5ED48C6E" Ref="C?"  Part="1" 
 AR Path="/5E1D6729/5E1DA2AA/5ED48C6E" Ref="C?"  Part="1" 
 AR Path="/5E2EB92B/5ED48C6E" Ref="C?"  Part="1" 
@@ -611,48 +611,48 @@ AR Path="/5E624B3C/5E51E83D/5ED48C6E" Ref="C?"  Part="1"
 AR Path="/5E62FD57/5E630FEC/5ED48C6E" Ref="C?"  Part="1" 
 AR Path="/5ED48C6E" Ref="C?"  Part="1" 
 AR Path="/5E525FC9/5ED48C6E" Ref="C21"  Part="1" 
-F 0 "C21" V 9250 5750 50  0000 C CNN
-F 1 "330uF" V 8962 5750 50  0000 C CNN
-F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 9100 5750 50  0001 C CNN
-F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 9100 5750 50  0001 C CNN
-F 4 "565-4285-1-ND" V 9100 5750 50  0001 C CNN "Digikey"
-F 5 "APXG160ARA331MH70G" V 9100 5750 50  0001 C CNN "MPN"
-F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 9100 5750 50  0001 C CNN "Description"
-F 7 "21" H 9100 5750 50  0001 C CNN "DK line"
-F 8 "United Chemi-Con" H 9100 5750 50  0001 C CNN "Manufacturer"
-	1    9100 5750
+F 0 "C21" V 9250 5950 50  0000 C CNN
+F 1 "330uF" V 8962 5950 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 9100 5950 50  0001 C CNN
+F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 9100 5950 50  0001 C CNN
+F 4 "565-4285-1-ND" V 9100 5950 50  0001 C CNN "Digikey"
+F 5 "APXG160ARA331MH70G" V 9100 5950 50  0001 C CNN "MPN"
+F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 9100 5950 50  0001 C CNN "Description"
+F 7 "21" H 9100 5950 50  0001 C CNN "DK line"
+F 8 "United Chemi-Con" H 9100 5950 50  0001 C CNN "Manufacturer"
+	1    9100 5950
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 5ED48C74
-P 9100 5950
+P 9100 6150
 AR Path="/5E624B3C/5E51E83D/5ED48C74" Ref="#PWR?"  Part="1" 
 AR Path="/5E525F2C/5ED48C74" Ref="#PWR?"  Part="1" 
 AR Path="/5E525FC9/5ED48C74" Ref="#PWR018"  Part="1" 
-F 0 "#PWR018" H 9100 5700 50  0001 C CNN
-F 1 "GND" H 9100 5800 50  0000 C CNN
-F 2 "" H 9100 5950 50  0001 C CNN
-F 3 "" H 9100 5950 50  0001 C CNN
-	1    9100 5950
+F 0 "#PWR018" H 9100 5900 50  0001 C CNN
+F 1 "GND" H 9100 6000 50  0000 C CNN
+F 2 "" H 9100 6150 50  0001 C CNN
+F 3 "" H 9100 6150 50  0001 C CNN
+	1    9100 6150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9100 5950 9100 5850
+	9100 6150 9100 6050
 Wire Wire Line
-	7600 5550 7900 5550
+	7600 5750 7900 5750
 Wire Wire Line
-	9100 5550 9100 5650
+	9100 5750 9100 5850
 Wire Wire Line
-	8100 5650 8100 5550
-Connection ~ 8100 5550
+	8100 5850 8100 5750
+Connection ~ 8100 5750
 Wire Wire Line
-	8100 5550 9100 5550
-Text GLabel 9900 5550 2    50   Output ~ 0
+	8100 5750 9100 5750
+Text GLabel 9900 5750 2    50   Output ~ 0
 +5VANA
 Wire Wire Line
-	9900 5550 9100 5550
-Connection ~ 9100 5550
+	9900 5750 9600 5750
+Connection ~ 9100 5750
 Text GLabel 2250 1550 2    50   Output ~ 0
 +5VDIG_IN
 Text GLabel 2250 1650 2    50   Output ~ 0
@@ -760,7 +760,7 @@ F 8 "Würth Elektronik" H 1700 3700 50  0001 C CNN "Manufacturer"
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	2150 5050 3150 5050
+	2150 5050 2900 5050
 Connection ~ 2150 5050
 Wire Wire Line
 	2150 5150 2150 5050
@@ -1033,20 +1033,20 @@ Wire Wire Line
 $Comp
 L power:PWR_FLAG #FLG?
 U 1 1 5ED243FE
-P 7900 5550
+P 7900 5750
 AR Path="/5E624B3C/5E51E83D/5ED243FE" Ref="#FLG?"  Part="1" 
 AR Path="/5E525F2C/5ED243FE" Ref="#FLG?"  Part="1" 
 AR Path="/5E525FC9/5ED243FE" Ref="#FLG08"  Part="1" 
-F 0 "#FLG08" H 7900 5625 50  0001 C CNN
-F 1 "PWR_FLAG" H 7900 5700 50  0000 C CNN
-F 2 "" H 7900 5550 50  0001 C CNN
-F 3 "~" H 7900 5550 50  0001 C CNN
-	1    7900 5550
+F 0 "#FLG08" H 7900 5825 50  0001 C CNN
+F 1 "PWR_FLAG" H 7900 5900 50  0000 C CNN
+F 2 "" H 7900 5750 50  0001 C CNN
+F 3 "~" H 7900 5750 50  0001 C CNN
+	1    7900 5750
 	1    0    0    -1  
 $EndComp
-Connection ~ 7900 5550
+Connection ~ 7900 5750
 Wire Wire Line
-	7900 5550 8100 5550
+	7900 5750 8100 5750
 $Comp
 L power:PWR_FLAG #FLG?
 U 1 1 5ED24891
@@ -1124,19 +1124,19 @@ $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 5EE89BB0
-P 5200 2200
+P 5100 2200
 AR Path="/5E624B3C/5E51E83D/5EE89BB0" Ref="#PWR?"  Part="1" 
 AR Path="/5E525F2C/5EE89BB0" Ref="#PWR?"  Part="1" 
 AR Path="/5E525FC9/5EE89BB0" Ref="#PWR0109"  Part="1" 
-F 0 "#PWR0109" H 5200 1950 50  0001 C CNN
-F 1 "GND" H 5200 2050 50  0000 C CNN
-F 2 "" H 5200 2200 50  0001 C CNN
-F 3 "" H 5200 2200 50  0001 C CNN
-	1    5200 2200
+F 0 "#PWR0109" H 5100 1950 50  0001 C CNN
+F 1 "GND" H 5100 2050 50  0000 C CNN
+F 2 "" H 5100 2200 50  0001 C CNN
+F 3 "" H 5100 2200 50  0001 C CNN
+	1    5100 2200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3950 2200 3950 2050
+	3500 2200 3500 2050
 Wire Wire Line
 	4550 2050 4550 2200
 $Comp
@@ -1154,7 +1154,7 @@ F 3 "" H 9950 3450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	9550 3450 9950 3450
+	9550 3450 9800 3450
 Wire Wire Line
 	4550 2050 4750 2050
 $Comp
@@ -1180,7 +1180,7 @@ F 3 "~" H 2150 2150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5200 2050 5200 2200
+	5100 2050 5100 2200
 $Comp
 L power:PWR_FLAG #FLG?
 U 1 1 5EEF4E7C
@@ -1198,11 +1198,11 @@ $EndComp
 Wire Wire Line
 	4750 2000 4750 2050
 Connection ~ 4750 2050
-Text Label 5050 2050 0    50   ~ 0
+Text Label 4900 2050 0    50   ~ 0
 GND
 Connection ~ 4550 2050
 Wire Wire Line
-	4750 2050 5200 2050
+	4750 2050 5100 2050
 $Comp
 L Device:C_Small C?
 U 1 1 5F6B6EB9
@@ -1422,7 +1422,7 @@ Wire Wire Line
 	3100 3400 3500 3400
 Connection ~ 3500 3400
 Wire Wire Line
-	3500 3400 5000 3400
+	3500 3400 4450 3400
 Text GLabel 5000 3850 2    50   Output ~ 0
 +5V_BIST
 Wire Wire Line
@@ -1441,7 +1441,7 @@ Wire Wire Line
 $Comp
 L power:Earth #PWR?
 U 1 1 5EEEFC43
-P 3950 2200
+P 3500 2200
 AR Path="/5E51E83D/5EEEFC43" Ref="#PWR?"  Part="1" 
 AR Path="/5E1D6729/5EEEFC43" Ref="#PWR?"  Part="1" 
 AR Path="/5E525F2C/5E59D3A2/5EEEFC43" Ref="#PWR?"  Part="1" 
@@ -1453,11 +1453,11 @@ AR Path="/5E525FFE/5EBAAF7D/5EEEFC43" Ref="#PWR?"  Part="1"
 AR Path="/5E525FFE/5EBAAF8F/5EEEFC43" Ref="#PWR?"  Part="1" 
 AR Path="/5E525FFE/5EBAAFA1/5EEEFC43" Ref="#PWR?"  Part="1" 
 AR Path="/5E525FC9/5EEEFC43" Ref="#PWR0123"  Part="1" 
-F 0 "#PWR0123" H 3950 1950 50  0001 C CNN
-F 1 "Earth" H 3950 2050 50  0001 C CNN
-F 2 "" H 3950 2200 50  0001 C CNN
-F 3 "~" H 3950 2200 50  0001 C CNN
-	1    3950 2200
+F 0 "#PWR0123" H 3500 1950 50  0001 C CNN
+F 1 "Earth" H 3500 2050 50  0001 C CNN
+F 2 "" H 3500 2200 50  0001 C CNN
+F 3 "~" H 3500 2200 50  0001 C CNN
+	1    3500 2200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1571,4 +1571,220 @@ F 8 "AVX" H 9550 1450 50  0001 C CNN "Manufacturer"
 	1    9550 1450
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F142D31
+P 5350 2050
+AR Path="/5DFCF14D/5DA78AA2/5F142D31" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F142D31" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F142D31" Ref="TP?"  Part="1" 
+AR Path="/5E51E83D/5F142D31" Ref="TP?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5F142D31" Ref="TP?"  Part="1" 
+AR Path="/5E62FD57/5E630FEC/5F142D31" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F142D31" Ref="TP15"  Part="1" 
+F 0 "TP15" H 5350 2300 50  0000 C CNN
+F 1 "GND" H 5350 2400 50  0000 C CNN
+F 2 "input:TestPoint_THTPad_D5.0mm_Drill2.41mm" H 5550 2050 50  0001 C CNN
+F 3 "~" H 5550 2050 50  0001 C CNN
+F 4 "33" H 5350 2050 50  0001 C CNN "DK line"
+F 5 "TERM TURRET HOLLOW L=6.75MM TIN" H 5350 2050 50  0001 C CNN "Description"
+F 6 "36-1540-2-ND" H 5350 2050 50  0001 C CNN "Digikey"
+F 7 "1540-2" H 5350 2050 50  0001 C CNN "MPN"
+F 8 "Keystone Electronics" H 5350 2050 50  0001 C CNN "Manufacturer"
+	1    5350 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F147AB3
+P 5550 2050
+AR Path="/5DFCF14D/5DA78AA2/5F147AB3" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F147AB3" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F147AB3" Ref="TP?"  Part="1" 
+AR Path="/5E51E83D/5F147AB3" Ref="TP?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5F147AB3" Ref="TP?"  Part="1" 
+AR Path="/5E62FD57/5E630FEC/5F147AB3" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F147AB3" Ref="TP16"  Part="1" 
+F 0 "TP16" H 5550 2300 50  0000 C CNN
+F 1 "GND" H 5550 2400 50  0000 C CNN
+F 2 "input:TestPoint_THTPad_D5.0mm_Drill2.41mm" H 5750 2050 50  0001 C CNN
+F 3 "~" H 5750 2050 50  0001 C CNN
+F 4 "33" H 5550 2050 50  0001 C CNN "DK line"
+F 5 "TERM TURRET HOLLOW L=6.75MM TIN" H 5550 2050 50  0001 C CNN "Description"
+F 6 "36-1540-2-ND" H 5550 2050 50  0001 C CNN "Digikey"
+F 7 "1540-2" H 5550 2050 50  0001 C CNN "MPN"
+F 8 "Keystone Electronics" H 5550 2050 50  0001 C CNN "Manufacturer"
+	1    5550 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F147D04
+P 5750 2050
+AR Path="/5DFCF14D/5DA78AA2/5F147D04" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F147D04" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F147D04" Ref="TP?"  Part="1" 
+AR Path="/5E51E83D/5F147D04" Ref="TP?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5F147D04" Ref="TP?"  Part="1" 
+AR Path="/5E62FD57/5E630FEC/5F147D04" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F147D04" Ref="TP17"  Part="1" 
+F 0 "TP17" H 5750 2300 50  0000 C CNN
+F 1 "GND" H 5750 2400 50  0000 C CNN
+F 2 "input:TestPoint_THTPad_D5.0mm_Drill2.41mm" H 5950 2050 50  0001 C CNN
+F 3 "~" H 5950 2050 50  0001 C CNN
+F 4 "33" H 5750 2050 50  0001 C CNN "DK line"
+F 5 "TERM TURRET HOLLOW L=6.75MM TIN" H 5750 2050 50  0001 C CNN "Description"
+F 6 "36-1540-2-ND" H 5750 2050 50  0001 C CNN "Digikey"
+F 7 "1540-2" H 5750 2050 50  0001 C CNN "MPN"
+F 8 "Keystone Electronics" H 5750 2050 50  0001 C CNN "Manufacturer"
+	1    5750 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5350 2050 5550 2050
+Connection ~ 5350 2050
+Connection ~ 5550 2050
+Wire Wire Line
+	5550 2050 5750 2050
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F11AA69
+P 9800 3400
+AR Path="/5DFCF14D/5DA78AA2/5F11AA69" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F11AA69" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F11AA69" Ref="TP?"  Part="1" 
+AR Path="/5F11AA69" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F11AA69" Ref="TP20"  Part="1" 
+F 0 "TP20" H 9800 3650 50  0000 C CNN
+F 1 "OVDD" H 9800 3750 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 10000 3400 50  0001 C CNN
+F 3 "~" H 10000 3400 50  0001 C CNN
+F 4 "Do Not Populate" H 9800 3400 50  0001 C CNN "Description"
+F 5 "DNP" H 9800 3400 50  0001 C CNN "MPN"
+	1    9800 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F11B45B
+P 4450 3350
+AR Path="/5DFCF14D/5DA78AA2/5F11B45B" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F11B45B" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F11B45B" Ref="TP?"  Part="1" 
+AR Path="/5F11B45B" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F11B45B" Ref="TP14"  Part="1" 
+F 0 "TP14" H 4450 3600 50  0000 C CNN
+F 1 "+10V" H 4450 3700 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 4650 3350 50  0001 C CNN
+F 3 "~" H 4650 3350 50  0001 C CNN
+F 4 "Do Not Populate" H 4450 3350 50  0001 C CNN "Description"
+F 5 "DNP" H 4450 3350 50  0001 C CNN "MPN"
+	1    4450 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F11BE9D
+P 2900 5000
+AR Path="/5DFCF14D/5DA78AA2/5F11BE9D" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F11BE9D" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F11BE9D" Ref="TP?"  Part="1" 
+AR Path="/5F11BE9D" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F11BE9D" Ref="TP12"  Part="1" 
+F 0 "TP12" H 2900 5250 50  0000 C CNN
+F 1 "-6V" H 2900 5350 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 3100 5000 50  0001 C CNN
+F 3 "~" H 3100 5000 50  0001 C CNN
+F 4 "Do Not Populate" H 2900 5000 50  0001 C CNN "Description"
+F 5 "DNP" H 2900 5000 50  0001 C CNN "MPN"
+	1    2900 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F11C2FE
+P 9600 5700
+AR Path="/5DFCF14D/5DA78AA2/5F11C2FE" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F11C2FE" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F11C2FE" Ref="TP?"  Part="1" 
+AR Path="/5F11C2FE" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F11C2FE" Ref="TP19"  Part="1" 
+F 0 "TP19" H 9600 5950 50  0000 C CNN
+F 1 "+5VANA" H 9600 6050 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 9800 5700 50  0001 C CNN
+F 3 "~" H 9800 5700 50  0001 C CNN
+F 4 "Do Not Populate" H 9600 5700 50  0001 C CNN "Description"
+F 5 "DNP" H 9600 5700 50  0001 C CNN "MPN"
+	1    9600 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F11C5A6
+P 9600 4550
+AR Path="/5DFCF14D/5DA78AA2/5F11C5A6" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F11C5A6" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F11C5A6" Ref="TP?"  Part="1" 
+AR Path="/5F11C5A6" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F11C5A6" Ref="TP18"  Part="1" 
+F 0 "TP18" H 9600 4800 50  0000 C CNN
+F 1 "+5VDIG" H 9600 4900 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 9800 4550 50  0001 C CNN
+F 3 "~" H 9800 4550 50  0001 C CNN
+F 4 "Do Not Populate" H 9600 4550 50  0001 C CNN "Description"
+F 5 "DNP" H 9600 4550 50  0001 C CNN "MPN"
+	1    9600 4550
+	1    0    0    -1  
+$EndComp
+Connection ~ 5100 2050
+Wire Wire Line
+	5100 2050 5350 2050
+Wire Wire Line
+	4450 3350 4450 3400
+Connection ~ 4450 3400
+Wire Wire Line
+	4450 3400 5000 3400
+Wire Wire Line
+	2900 5000 2900 5050
+Connection ~ 2900 5050
+Wire Wire Line
+	2900 5050 3150 5050
+Wire Wire Line
+	9600 4550 9600 4600
+Connection ~ 9600 4600
+Wire Wire Line
+	9600 4600 9100 4600
+Wire Wire Line
+	9600 5700 9600 5750
+Connection ~ 9600 5750
+Wire Wire Line
+	9600 5750 9100 5750
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5F1412FA
+P 3500 2000
+AR Path="/5DFCF14D/5DA78AA2/5F1412FA" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F1412FA" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F1412FA" Ref="TP?"  Part="1" 
+AR Path="/5F1412FA" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F1412FA" Ref="TP13"  Part="1" 
+F 0 "TP13" H 3500 2250 50  0000 C CNN
+F 1 "Earth" H 3500 2350 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 3700 2000 50  0001 C CNN
+F 3 "~" H 3700 2000 50  0001 C CNN
+F 4 "Do Not Populate" H 3500 2000 50  0001 C CNN "Description"
+F 5 "DNP" H 3500 2000 50  0001 C CNN "MPN"
+	1    3500 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 2000 3500 2050
+Wire Wire Line
+	3500 2050 3950 2050
+Connection ~ 3500 2050
+Wire Wire Line
+	9800 3400 9800 3450
+Connection ~ 9800 3450
+Wire Wire Line
+	9800 3450 9950 3450
 $EndSCHEMATC

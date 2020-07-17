@@ -153,8 +153,8 @@ $Comp
 L 74xGxx:74AUC1G74 U10
 U 1 1 5EBEEE85
 P 4450 4450
-F 0 "U10" H 4850 4300 50  0000 C CNN
-F 1 "74AUP1G74" H 4850 4200 50  0000 C CNN
+F 0 "U10" H 4000 4550 50  0000 C CNN
+F 1 "74AUP1G74" H 3850 4450 50  0000 C CNN
 F 2 "Package_SO:VSSOP-8_2.3x2mm_P0.5mm" H 4450 4450 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/74AUP1G74.pdf" H 4450 4450 50  0001 C CNN
 F 4 "1727-6029-1-ND" H 4450 4450 50  0001 C CNN "Digikey"
@@ -230,8 +230,8 @@ F 3 "" H 4300 4700 50  0001 C CNN
 $EndComp
 Text GLabel 4150 5000 0    50   Input ~ 0
 MCLK_ENA
-Text Notes 2450 5550 0    50   ~ 0
-To minimize MCLK jitter, we derive it directly from our clean clock, \nrather than running it rhough the FPGA.  When MCLK_ENA is asserted\nthe next clock edge causes MCLK to go high.
+Text Notes 2250 6250 0    50   ~ 0
+To minimize MCLK jitter, we derive it directly from our clean clock, \nrather than running it rhough the FPGA.  When MCLK_ENA is asserted\nthe next clock edge causes MCLK to go high.  \n\nNot sure what clock speed we will be operating at. This part\nis initially programmed for 100 MHz. At this speed, care\nmay be needed to assert MCLK_ENA far enough away from \nthe clock edge to insure a deterministic response. MCLK_ENA \nis delayed by U5 receiver, and FPGA_SYSCLK is delayed\nby U12 transmitter.
 Wire Wire Line
 	7400 4500 7400 4550
 Wire Wire Line
@@ -323,7 +323,7 @@ Wire Wire Line
 	6600 3900 6800 3900
 Connection ~ 6600 3600
 Wire Wire Line
-	6600 3600 6800 3600
+	6600 3600 6700 3600
 Text GLabel 8150 3600 2    50   Output ~ 0
 FPGA_SYSCLK+
 Wire Wire Line
@@ -370,8 +370,6 @@ F 9 "Würth Elektronik" H 2900 2500 50  0001 C CNN "Manufacturer"
 	1    2900 2500
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	7400 2200 6350 2200
 Wire Wire Line
 	2900 2200 2900 2300
 Wire Wire Line
@@ -440,7 +438,7 @@ F 0 "J2" H 5610 5920 50  0000 C CNN
 F 1 "MCLK" V 5715 5800 50  0000 C CNN
 F 2 "Connector_Coaxial:MMCX_Molex_73415-1471_Vertical" H 5600 5800 50  0001 C CNN
 F 3 "https://www.molex.com/pdm_docs/sd/734151471_sd.pdf" H 5600 5800 50  0001 C CNN
-F 4 "" H 5600 5800 50  0001 C CNN "DK line"
+F 4 "35" H 5600 5800 50  0001 C CNN "DK line"
 F 5 "CONN MMCX JACK STR 50 OHM PCB" H 5600 5800 50  0001 C CNN "Description"
 F 6 "WM5557-ND" H 5600 5800 50  0001 C CNN "Digikey"
 F 7 "0734151471" H 5600 5800 50  0001 C CNN "MPN"
@@ -523,11 +521,9 @@ NoConn ~ 3350 3900
 NoConn ~ 4700 4550
 NoConn ~ 8000 3400
 NoConn ~ 8000 3300
-NoConn ~ 8000 3100
-NoConn ~ 8000 3000
 Text Label 2500 3250 0    50   ~ 0
 VDD_CLK
-Text Label 4800 3600 0    50   ~ 0
+Text Label 4650 3600 0    50   ~ 0
 CLK_DIST
 Text Label 5200 4350 0    50   ~ 0
 MCLK_DIST
@@ -538,6 +534,139 @@ Wire Wire Line
 Connection ~ 6350 2200
 Wire Wire Line
 	6350 2200 4450 2200
-NoConn ~ 6800 3000
 NoConn ~ 6800 3300
+$Comp
+L Connector:TestPoint_Probe TP?
+U 1 1 5F1B0EE8
+P 4700 5000
+AR Path="/5DFCF14D/5DA78AA2/5F1B0EE8" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F1B0EE8" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5F1B0EE8" Ref="TP?"  Part="1" 
+AR Path="/5F1B0EE8" Ref="TP?"  Part="1" 
+AR Path="/5E525FC9/5F1B0EE8" Ref="TP?"  Part="1" 
+AR Path="/5E525F87/5F1B0EE8" Ref="TP?"  Part="1" 
+AR Path="/5E525F2C/5F1B0EE8" Ref="TP5"  Part="1" 
+F 0 "TP5" H 4700 5200 50  0000 C CNN
+F 1 "MCLK_ENA" H 4700 4850 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 4900 5000 50  0001 C CNN
+F 3 "~" H 4900 5000 50  0001 C CNN
+F 4 "Do Not Populate" H 4700 5000 50  0001 C CNN "Description"
+F 5 "DNP" H 4700 5000 50  0001 C CNN "MPN"
+	1    4700 5000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4450 5000 4700 5000
+Connection ~ 4450 5000
+$Comp
+L Connector:Conn_Coaxial J4
+U 1 1 5F1FA525
+P 10250 3000
+AR Path="/5E525F2C/5F1FA525" Ref="J4"  Part="1" 
+AR Path="/5E525FFE/5F1FA525" Ref="J?"  Part="1" 
+F 0 "J4" H 10260 3120 50  0000 C CNN
+F 1 "CLOCK" H 10250 3200 50  0000 C CNN
+F 2 "Connector_Coaxial:MMCX_Molex_73415-1471_Vertical" H 10250 3000 50  0001 C CNN
+F 3 "https://www.molex.com/pdm_docs/sd/734151471_sd.pdf" H 10250 3000 50  0001 C CNN
+F 4 "35" H 10250 3000 50  0001 C CNN "DK line"
+F 5 "CONN MMCX JACK STR 50 OHM PCB" H 10250 3000 50  0001 C CNN "Description"
+F 6 "WM5557-ND" H 10250 3000 50  0001 C CNN "Digikey"
+F 7 "0734151471" H 10250 3000 50  0001 C CNN "MPN"
+F 8 "Molex" H 10250 3000 50  0001 C CNN "Manufacturer"
+	1    10250 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F1FA52B
+P 10250 3250
+AR Path="/5E624B3C/5F1FA52B" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5F1FA52B" Ref="#PWR0135"  Part="1" 
+AR Path="/5E525FFE/5F1FA52B" Ref="#PWR?"  Part="1" 
+F 0 "#PWR0135" H 10250 3000 50  0001 C CNN
+F 1 "GND" H 10250 3100 50  0000 C CNN
+F 2 "" H 10250 3250 50  0001 C CNN
+F 3 "" H 10250 3250 50  0001 C CNN
+	1    10250 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10250 3250 10250 3200
+Wire Wire Line
+	6800 3000 6700 3000
+Wire Wire Line
+	6700 3000 6700 3600
+Connection ~ 6700 3600
+Wire Wire Line
+	6700 3600 6800 3600
+Wire Wire Line
+	8000 3000 8550 3000
+Wire Wire Line
+	6350 2200 7400 2200
+Text Notes 8200 2600 0    50   ~ 0
+J4 is purely for test and debug.  Buffering this seems\nlike a good idea to prevent any possible loading, reflections,\netc. on the critical CLK_DIST net.  Using LVDS output to \ndrive 50 Ohm line is unorthodox, but should work.  \n\nThe LVDS input is high-Z, so the driver provides the\nDC bias. R23 prevents the voltage from being dragged\ndown, and keeps a lot of current from going into\nthe (possibly unterminated) line.\n\nR24 load resistor is necessary to keep the output driver \nin the normal continuous current operating region. \nI expect that if it goes into cutoff then this will delay \nand otherwise mess with the edges.
+$Comp
+L Device:R_US R?
+U 1 1 5F262166
+P 8300 3100
+AR Path="/5DFF6C0D/5F262166" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F262166" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F262166" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F262166" Ref="R?"  Part="1" 
+AR Path="/5F262166" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F262166" Ref="R24"  Part="1" 
+AR Path="/5E525F87/5F262166" Ref="R?"  Part="1" 
+AR Path="/5E525FFE/5F262166" Ref="R?"  Part="1" 
+F 0 "R24" V 8200 3200 50  0000 C CNN
+F 1 "100" V 8200 3000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 8340 3090 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 8300 3100 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 8300 3100 50  0001 C CNN "Digikey"
+F 5 "29" H 8300 3100 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 8300 3100 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 8300 3100 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 8300 3100 50  0001 C CNN "Manufacturer"
+	1    8300 3100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8150 3100 8000 3100
+Wire Wire Line
+	8450 3100 8550 3100
+Wire Wire Line
+	8550 3100 8550 3000
+Connection ~ 8550 3000
+$Comp
+L Device:R_US R?
+U 1 1 5F268B4E
+P 9300 3000
+AR Path="/5DFF6C0D/5F268B4E" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F268B4E" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F268B4E" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F268B4E" Ref="R?"  Part="1" 
+AR Path="/5F268B4E" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F268B4E" Ref="R23"  Part="1" 
+AR Path="/5E525FFE/5F268B4E" Ref="R?"  Part="1" 
+F 0 "R23" V 9400 2925 50  0000 C CNN
+F 1 "1K" V 9400 3075 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9340 2990 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 9300 3000 50  0001 C CNN
+F 4 "31" H 9300 3000 50  0001 C CNN "DK line"
+F 5 "RES 1K OHM 1% 1/8W 0603" H 9300 3000 50  0001 C CNN "Description"
+F 6 "RNCP0603FTD1K00CT-ND" H 9300 3000 50  0001 C CNN "Digikey"
+F 7 "RNCP0603FTD1K00" H 9300 3000 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 9300 3000 50  0001 C CNN "Manufacturer"
+	1    9300 3000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8550 3000 9150 3000
+Text Notes 4650 3450 0    50   ~ 0
+CLK_DIST is very short, and should not\nneed back termination.
+Text Label 10000 3000 2    50   ~ 0
+CLOCK_JACK
+Wire Wire Line
+	9450 3000 10050 3000
+Text Label 9100 3000 2    50   ~ 0
+CLOCK_JACK1
 $EndSCHEMATC

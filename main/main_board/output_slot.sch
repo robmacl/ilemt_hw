@@ -1094,13 +1094,13 @@ Wire Wire Line
 	9750 2650 9750 3300
 $Comp
 L microzed:microzed M1
-U 7 1 5F1DB65F
+U 8 1 5F1DB65F
 P 2300 1550
 F 0 "M1" H 2500 1800 60  0000 L CNN
 F 1 "microzed" H 2500 1700 60  0000 L CNN
 F 2 "main_board:Microzed" H 2500 1600 60  0001 L CNN
 F 3 "" H 2500 1400 60  0001 L CNN
-	7    2300 1550
+	8    2300 1550
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
