@@ -417,8 +417,8 @@ AR Path="/5E525FFE/5EF87636" Ref="R?"  Part="1"
 F 0 "R8" V 6100 4925 50  0000 C CNN
 F 1 "33" V 6100 5075 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 6040 4990 50  0001 C CNN
-F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 6000 5000 50  0001 C CNN
-F 4 "RES 33.2 OHM 1% 1/8W 0603" H 6000 5000 50  0001 C CNN "Description"
+F 3 "https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf" H 6000 5000 50  0001 C CNN
+F 4 "RES 33 OHM 1% 1/10W 0603" H 6000 5000 50  0001 C CNN "Description"
 F 5 "RNCP0603FTD33R2CT-ND" H 6000 5000 50  0001 C CNN "Digikey"
 F 6 "RNCP0603FTD33R2" H 6000 5000 50  0001 C CNN "MPN"
 F 7 "Stackpole Electronics Inc" H 6000 5000 50  0001 C CNN "Manufacturer"

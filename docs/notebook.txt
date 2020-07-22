@@ -1,16 +1,8 @@
 Main board:
  -- Order box
- -- Will C21 clear plugin card?
+ -- Ground probe pads or pour+mask relief for ground bayonet, etc.
+    backside ground turrent for probing card connectors, etc.
  -- Stitching vias
- -- Order BOM
- -- Regulator daughtercard connector selection.
-
-Evaluation tasks:
- -- BIST injection test
- -- Prototype reference
- -- Preliminary RFI and ESD testing on input board.
- -- Measure supply current, in saturation and otherwise.
-
 
 LV regulator board:
  -- do it
@@ -19,6 +11,13 @@ DAC output:
  -- Breakout board for output slot
  -- +/-12 supplies for DACs
  -- DAC output filter and perhaps buffer
+
+
+Evaluation tasks:
+ -- BIST injection test
+ -- Prototype reference
+ -- Preliminary RFI and ESD testing on input board.
+ -- Measure supply current, in saturation and otherwise.
 
 Input board revisions:
  -- Add diode clamp beween chassis and main ground for ESD currents.

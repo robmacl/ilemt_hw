@@ -306,8 +306,8 @@ AR Path="/5E525F87/5F10AC89" Ref="R19"  Part="1"
 F 0 "R19" V 4600 5150 50  0000 C CNN
 F 1 "33" V 4600 5300 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4740 5240 50  0001 C CNN
-F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 4700 5250 50  0001 C CNN
-F 4 "RES 33.2 OHM 1% 1/8W 0603" H 4700 5250 50  0001 C CNN "Description"
+F 3 "https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf" H 4700 5250 50  0001 C CNN
+F 4 "RES 33 OHM 1% 1/10W 0603" H 4700 5250 50  0001 C CNN "Description"
 F 5 "RNCP0603FTD33R2CT-ND" H 4700 5250 50  0001 C CNN "Digikey"
 F 6 "RNCP0603FTD33R2" H 4700 5250 50  0001 C CNN "MPN"
 F 7 "Stackpole Electronics Inc" H 4700 5250 50  0001 C CNN "Manufacturer"
@@ -359,8 +359,8 @@ AR Path="/5E525F87/5F118D37" Ref="R20"  Part="1"
 F 0 "R20" V 4600 5400 50  0000 C CNN
 F 1 "33" V 4600 5550 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4740 5490 50  0001 C CNN
-F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 4700 5500 50  0001 C CNN
-F 4 "RES 33.2 OHM 1% 1/8W 0603" H 4700 5500 50  0001 C CNN "Description"
+F 3 "https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf" H 4700 5500 50  0001 C CNN
+F 4 "RES 33 OHM 1% 1/10W 0603" H 4700 5500 50  0001 C CNN "Description"
 F 5 "RNCP0603FTD33R2CT-ND" H 4700 5500 50  0001 C CNN "Digikey"
 F 6 "RNCP0603FTD33R2" H 4700 5500 50  0001 C CNN "MPN"
 F 7 "Stackpole Electronics Inc" H 4700 5500 50  0001 C CNN "Manufacturer"
@@ -380,8 +380,8 @@ AR Path="/5E525F87/5F119AF0" Ref="R21"  Part="1"
 F 0 "R21" V 4600 5650 50  0000 C CNN
 F 1 "33" V 4600 5800 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4740 5740 50  0001 C CNN
-F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 4700 5750 50  0001 C CNN
-F 4 "RES 33.2 OHM 1% 1/8W 0603" H 4700 5750 50  0001 C CNN "Description"
+F 3 "https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf" H 4700 5750 50  0001 C CNN
+F 4 "RES 33 OHM 1% 1/10W 0603" H 4700 5750 50  0001 C CNN "Description"
 F 5 "RNCP0603FTD33R2CT-ND" H 4700 5750 50  0001 C CNN "Digikey"
 F 6 "RNCP0603FTD33R2" H 4700 5750 50  0001 C CNN "MPN"
 F 7 "Stackpole Electronics Inc" H 4700 5750 50  0001 C CNN "Manufacturer"
@@ -427,8 +427,8 @@ F 1 "1.5K" V 3450 4950 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3590 4840 50  0001 C CNN
 F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 3550 4850 50  0001 C CNN
 F 4 "RES 1.5K OHM 1% 1/8W 0603" H 3550 4850 50  0001 C CNN "Description"
-F 5 "RNCP0603FTD1K50CT-ND" H 3550 4850 50  0001 C CNN "Digikey"
-F 6 "RNCP0603FTD1K50" H 3550 4850 50  0001 C CNN "MPN"
+F 5 "RMCF0603FT33R0CT-ND" H 3550 4850 50  0001 C CNN "Digikey"
+F 6 "RMCF0603FT33R0" H 3550 4850 50  0001 C CNN "MPN"
 F 7 "Stackpole Electronics Inc" H 3550 4850 50  0001 C CNN "Manufacturer"
 F 8 "32" H 3550 4850 50  0001 C CNN "DK line"
 	1    3550 4850
@@ -451,8 +451,8 @@ F 1 "1.5K" V 3800 4950 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3940 4840 50  0001 C CNN
 F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 3900 4850 50  0001 C CNN
 F 4 "RES 1.5K OHM 1% 1/8W 0603" H 3900 4850 50  0001 C CNN "Description"
-F 5 "RNCP0603FTD1K50CT-ND" H 3900 4850 50  0001 C CNN "Digikey"
-F 6 "RNCP0603FTD1K50" H 3900 4850 50  0001 C CNN "MPN"
+F 5 "RMCF0603FT33R0CT-ND" H 3900 4850 50  0001 C CNN "Digikey"
+F 6 "RMCF0603FT33R0" H 3900 4850 50  0001 C CNN "MPN"
 F 7 "Stackpole Electronics Inc" H 3900 4850 50  0001 C CNN "Manufacturer"
 F 8 "32" H 3900 4850 50  0001 C CNN "DK line"
 	1    3900 4850
@@ -562,8 +562,8 @@ F 1 "1.5K" V 4100 4950 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4240 4790 50  0001 C CNN
 F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 4200 4800 50  0001 C CNN
 F 4 "RES 1.5K OHM 1% 1/8W 0603" H 4200 4800 50  0001 C CNN "Description"
-F 5 "RNCP0603FTD1K50CT-ND" H 4200 4800 50  0001 C CNN "Digikey"
-F 6 "RNCP0603FTD1K50" H 4200 4800 50  0001 C CNN "MPN"
+F 5 "RMCF0603FT33R0CT-ND" H 4200 4800 50  0001 C CNN "Digikey"
+F 6 "RMCF0603FT33R0" H 4200 4800 50  0001 C CNN "MPN"
 F 7 "Stackpole Electronics Inc" H 4200 4800 50  0001 C CNN "Manufacturer"
 F 8 "32" H 4200 4800 50  0001 C CNN "DK line"
 	1    4200 4800
@@ -735,7 +735,12 @@ P 9150 1800
 F 0 "J5" H 9200 2200 50  0000 C CNN
 F 1 "Debug" H 9200 2300 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical" H 9150 1800 50  0001 C CNN
-F 3 "~" H 9150 1800 50  0001 C CNN
+F 3 "http://suddendocs.samtec.com/catalog_english/tsw_th.pdf" H 9150 1800 50  0001 C CNN
+F 4 "38" H 9150 1800 50  0001 C CNN "DK line"
+F 5 "Connector Header Through Hole 16 position 0.100\" (2.54mm)" H 9150 1800 50  0001 C CNN "Description"
+F 6 "SAM10854-ND" H 9150 1800 50  0001 C CNN "Digikey"
+F 7 "TSW-108-07-F-D" H 9150 1800 50  0001 C CNN "MPN"
+F 8 "Samtec Inc." H 9150 1800 50  0001 C CNN "Manufacturer"
 	1    9150 1800
 	1    0    0    -1  
 $EndComp
