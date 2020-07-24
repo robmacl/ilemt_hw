@@ -1,8 +1,8 @@
 Main board:
  -- Order box
- -- Ground probe pads or pour+mask relief for ground bayonet, etc.
-    backside ground turrent for probing card connectors, etc.
- -- Stitching vias
+ -- Check gerbers
+ -- Order board + stencil, paste
+ 
 
 LV regulator board:
  -- do it

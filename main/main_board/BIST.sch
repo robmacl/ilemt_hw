@@ -19,7 +19,7 @@ U 1 1 5EE7D483
 P 5400 3850
 F 0 "U8" H 6300 4250 60  0000 C CNN
 F 1 "DAC80004IPW" H 6300 4150 60  0000 C CNN
-F 2 "Package_SO:SSOP-14_5.3x6.2mm_P0.65mm" H 6300 4090 60  0001 C CNN
+F 2 "main_board:TI_R_PDSO_G14" H 6300 4090 60  0001 C CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fdac60004" H 5400 3850 60  0001 C CNN
 F 4 "IC DAC 16BIT V-OUT 14TSSOP" H 5400 3850 50  0001 C CNN "Description"
 F 5 "296-44598-5-ND" H 5400 3850 50  0001 C CNN "Digikey"
