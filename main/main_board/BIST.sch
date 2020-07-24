@@ -478,12 +478,8 @@ Wire Wire Line
 Connection ~ 3550 5700
 Wire Wire Line
 	3550 5700 3550 5750
-Text GLabel 5300 5600 0    50   Input ~ 0
+Text GLabel 5700 5050 2    50   Input ~ 0
 VREF+
-Wire Wire Line
-	5300 5600 5400 5600
-Wire Wire Line
-	5400 5600 5400 4450
 Text GLabel 5000 3950 0    50   Input ~ 0
 BIST_SYNC
 Text GLabel 7500 3950 2    50   Input ~ 0
@@ -1052,4 +1048,52 @@ F 5 "DNP" H 9850 4100 50  0001 C CNN "MPN"
 	1    9850 4100
 	1    0    0    -1  
 $EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F421C03
+P 5400 5450
+AR Path="/5E624B3C/5E51E83D/5F421C03" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5F421C03" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FC9/5F421C03" Ref="#PWR?"  Part="1" 
+AR Path="/5EC4BDFA/5F421C03" Ref="#PWR0137"  Part="1" 
+F 0 "#PWR0137" H 5400 5200 50  0001 C CNN
+F 1 "GND" H 5400 5300 50  0000 C CNN
+F 2 "" H 5400 5450 50  0001 C CNN
+F 3 "" H 5400 5450 50  0001 C CNN
+	1    5400 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 5400 5400 5450
+$Comp
+L Device:C_Small C?
+U 1 1 5F421C0F
+P 5400 5300
+AR Path="/5DFF6C0D/5F421C0F" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F421C0F" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5F421C0F" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5F421C0F" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5F421C0F" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5F421C0F" Ref="C?"  Part="1" 
+AR Path="/5E525FC9/5F421C0F" Ref="C?"  Part="1" 
+AR Path="/5EC4BDFA/5F421C0F" Ref="C76"  Part="1" 
+F 0 "C76" V 5171 5300 50  0000 C CNN
+F 1 "10uF" V 5262 5300 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5400 5300 50  0001 C CNN
+F 3 "http://datasheets.avx.com/cx5r.pdf" H 5400 5300 50  0001 C CNN
+F 4 "CAP CER 10UF 6.3V X5R 0603" H 5400 5300 50  0001 C CNN "Description"
+F 5 "478-5318-1-ND" H 5400 5300 50  0001 C CNN "Digikey"
+F 6 "06036D106MAT2A" H 5400 5300 50  0001 C CNN "MPN"
+F 7 "20" H 5400 5300 50  0001 C CNN "DK line"
+F 8 "AVX" H 5400 5300 50  0001 C CNN "Manufacturer"
+	1    5400 5300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5400 4450 5400 5050
+Wire Wire Line
+	5700 5050 5400 5050
+Connection ~ 5400 5050
+Wire Wire Line
+	5400 5050 5400 5200
 $EndSCHEMATC
