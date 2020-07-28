@@ -1,0 +1,8 @@
+﻿APXW003A0X3-SRZ,M,lv_regs:APXW003A0X3-SRZ,,
+Pin,Unit,Name,Side,Type
+2,1,Vin ,left,power
+1,1,ON/OFF,left,input
+3,1,GND,bottom,power
+5,1,VOUT,right,power_out
+6,1,VS+,right,input
+4,1,TRIM,right,passive

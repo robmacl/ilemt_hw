@@ -1,8 +1,5 @@
 Main board:
  -- Order box
- -- Check gerbers
- -- Order board + stencil, paste
- 
 
 LV regulator board:
  -- do it
@@ -12,12 +9,16 @@ DAC output:
  -- +/-12 supplies for DACs
  -- DAC output filter and perhaps buffer
 
+FPGA code for main board testing.
+
 
 Evaluation tasks:
  -- BIST injection test
  -- Prototype reference
  -- Preliminary RFI and ESD testing on input board.
  -- Measure supply current, in saturation and otherwise.
+
+Main board revisions:
 
 Input board revisions:
  -- Add diode clamp beween chassis and main ground for ESD currents.
@@ -162,6 +163,13 @@ password BogPickle
 ________________
 
 
+[27 July 20]
+
+I have the main board done and off to fabrication.
+
+
+
+
 [9 July 20]
 
 Trace clearances:
@@ -266,7 +274,7 @@ shielded on top and bottom.
 Summary:
     A bunch of things I could say about TPL for board-level ESD
     testing.  What's missing is the actual techniques and results.  I
-    would needs examples of what you can do and how, but I don't
+    would need examples of what you can do and how, but I don't
     actually know that yet because I haven't done it.  Further work
     would require a >= 1 GHz DSO, and development of a better setup
     with current transformers, and probably a relay.
@@ -462,10 +470,10 @@ Need a way to switch the output beteen pulse and test mode so what we
 can automatically test leakage, etc., between pulses.
 
 There is of course the problem most relays are not designed for KV
-operation, and those that are are bulky, not really really compatible
-with a fast rise pulse.  It would be nice to combine the pulse switch
-and the measure switch into a single part, but that might not be the
-best way to go.
+operation, and those that are are bulky, not really compatible with a
+fast rise pulse.  It would be nice to combine the pulse switch and the
+measure switch into a single part, but that might not be the best way
+to go.
 
 One observation is that the pulse switch does not need to break HV,
 which is the hardest problem in a HV DC switch.  It only needs to hold
@@ -491,21 +499,6 @@ cost of output capacitance in test mode).
 A 1:2 coax switch could sort of combine the pulse switch and the test
 switch, but I don't see how to fit in a shunt termination at the
 output without shunting the test mode also.
-
-
-
-
-
-
-I have
-two ideas here:
- -- Put the switchover relay at the TLP output, after 
-
-If this
-is after the 
-
-to switch between
-    pulse and test mode, perhaps for pulsing also.
 
 
 [1 July 20]

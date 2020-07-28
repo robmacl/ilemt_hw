@@ -1,0 +1,322 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L ge_prolynx:﻿APXW003A0X3-SRZ M?
+U 1 1 5F20EFB5
+P 5450 2800
+AR Path="/5F20EFB5" Ref="M?"  Part="1" 
+AR Path="/5F20EA50/5F20EFB5" Ref="M1"  Part="1" 
+AR Path="/5F238A75/5F20EFB5" Ref="M3"  Part="1" 
+F 0 "M3" H 5650 3050 60  0000 L CNN
+F 1 "﻿APXW003A0X3-SRZ" H 5650 2950 60  0000 L CNN
+F 2 "lv_regs:APXW003A0X3-SRZ" H 5650 2850 60  0001 L CNN
+F 3 "http://apps.geindustrial.com/publibrary/checkout/APXW003A0X?TNR=Data%20Sheets|APXW003A0X|generic" H 5650 2650 60  0001 L CNN
+F 4 "DC DC CONVERTER 3-18V 27W" H 5450 2800 50  0001 C CNN "Description"
+F 5 "555-1245-1-ND" H 5450 2800 50  0001 C CNN "Digikey"
+F 6 "APXW003A0X3-SRZ" H 5450 2800 50  0001 C CNN "MPN"
+F 7 "ABB Power Electronics Inc." H 5450 2800 50  0001 C CNN "Manufacturer"
+	1    5450 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5F20EFC1
+P 8100 3250
+AR Path="/5F20EFC1" Ref="C?"  Part="1" 
+AR Path="/5F20EA50/5F20EFC1" Ref="C5"  Part="1" 
+AR Path="/5F238A75/5F20EFC1" Ref="C28"  Part="1" 
+F 0 "C28" H 8125 3350 50  0000 L CNN
+F 1 "10nF 25V" H 8125 3150 50  0000 L CNN
+F 2 "lv_regs:cap_smd_0306" H 8138 3100 50  0001 C CNN
+F 3 "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/LLL185R71E103MA01-01.pdf" H 8100 3250 50  0001 C CNN
+F 4 "CAP CER 10000PF 25V X7R 0306" H 8100 3250 50  0001 C CNN "Description"
+F 5 "490-4315-1-ND" H 8100 3250 50  0001 C CNN "Digikey"
+F 6 "LLL185R71E103MA01L" H 8100 3250 50  0001 C CNN "MPN"
+F 7 "Murata Electronics" H 8100 3250 50  0001 C CNN "Manufacturer"
+	1    8100 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5F20EFC7
+P 5050 3250
+AR Path="/5F20EFC7" Ref="C?"  Part="1" 
+AR Path="/5F20EA50/5F20EFC7" Ref="C3"  Part="1" 
+AR Path="/5F238A75/5F20EFC7" Ref="C26"  Part="1" 
+F 0 "C26" H 5075 3350 50  0000 L CNN
+F 1 "10nF 50V" H 5075 3150 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5088 3100 50  0001 C CNN
+F 3 "https://api.kemet.com/component-edge/download/datasheet/C0603C103M5RACTU.pdf" H 5050 3250 50  0001 C CNN
+F 4 "CAP CER 10000PF 50V X7R 0603" H 5050 3250 50  0001 C CNN "Description"
+F 5 "399-7842-1-ND" H 5050 3250 50  0001 C CNN "Digikey"
+F 6 "C0603C103M5RACTU" H 5050 3250 50  0001 C CNN "MPN"
+F 7 "KEMET" H 5050 3250 50  0001 C CNN "Manufacturer"
+	1    5050 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5F20EFCD
+P 3700 3250
+AR Path="/5F20EFCD" Ref="C?"  Part="1" 
+AR Path="/5F20EA50/5F20EFCD" Ref="C1"  Part="1" 
+AR Path="/5F238A75/5F20EFCD" Ref="C24"  Part="1" 
+F 0 "C24" H 3725 3350 50  0000 L CNN
+F 1 "10uF 50V" H 3725 3150 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 3738 3100 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL32B106KBJNNNE_Spec.pdf" H 3700 3250 50  0001 C CNN
+F 4 "CAP CER 10UF 50V X7R 1210" H 3700 3250 50  0001 C CNN "Description"
+F 5 "1276-3387-1-ND" H 3700 3250 50  0001 C CNN "Digikey"
+F 6 "CL32B106KBJNNNE" H 3700 3250 50  0001 C CNN "MPN"
+F 7 "Samsung Electro-Mechanics" H 3700 3250 50  0001 C CNN "Manufacturer"
+	1    3700 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5F20EFD3
+P 4350 3250
+AR Path="/5F20EFD3" Ref="C?"  Part="1" 
+AR Path="/5F20EA50/5F20EFD3" Ref="C2"  Part="1" 
+AR Path="/5F238A75/5F20EFD3" Ref="C25"  Part="1" 
+F 0 "C25" H 4375 3350 50  0000 L CNN
+F 1 "10uF 50V" H 4375 3150 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 4388 3100 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL32B106KBJNNNE_Spec.pdf" H 4350 3250 50  0001 C CNN
+F 4 "CAP CER 10UF 50V X7R 1210" H 4350 3250 50  0001 C CNN "Description"
+F 5 "1276-3387-1-ND" H 4350 3250 50  0001 C CNN "Digikey"
+F 6 "CL32B106KBJNNNE" H 4350 3250 50  0001 C CNN "MPN"
+F 7 "Samsung Electro-Mechanics" H 4350 3250 50  0001 C CNN "Manufacturer"
+	1    4350 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5450 2800 5050 2800
+Wire Wire Line
+	6150 4200 5450 4200
+Connection ~ 6150 4200
+Wire Wire Line
+	6150 4200 7450 4200
+Wire Wire Line
+	8100 3400 8100 4200
+Wire Wire Line
+	8100 3100 8100 2800
+Wire Wire Line
+	5050 3400 5050 4200
+Wire Wire Line
+	5050 3100 5050 2800
+Connection ~ 5450 4200
+Wire Wire Line
+	5450 4200 5050 4200
+$Comp
+L Device:R_US R?
+U 1 1 5F20EFE6
+P 7450 3050
+AR Path="/5F20EFE6" Ref="R?"  Part="1" 
+AR Path="/5F20EA50/5F20EFE6" Ref="R1"  Part="1" 
+AR Path="/5F238A75/5F20EFE6" Ref="R5"  Part="1" 
+F 0 "R5" V 7550 3050 50  0000 C CNN
+F 1 "R comp" V 7350 3050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7490 3040 50  0001 C CNN
+F 3 "~" H 7450 3050 50  0001 C CNN
+	1    7450 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 5F20EFEC
+P 7450 3900
+AR Path="/5F20EFEC" Ref="R?"  Part="1" 
+AR Path="/5F20EA50/5F20EFEC" Ref="R2"  Part="1" 
+AR Path="/5F238A75/5F20EFEC" Ref="R6"  Part="1" 
+F 0 "R6" V 7550 3900 50  0000 C CNN
+F 1 "V set" V 7350 3900 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7490 3890 50  0001 C CNN
+F 3 "~" H 7450 3900 50  0001 C CNN
+	1    7450 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5F20EFF2
+P 7450 3400
+AR Path="/5F20EFF2" Ref="C?"  Part="1" 
+AR Path="/5F20EA50/5F20EFF2" Ref="C4"  Part="1" 
+AR Path="/5F238A75/5F20EFF2" Ref="C27"  Part="1" 
+F 0 "C27" H 7475 3500 50  0000 L CNN
+F 1 "C comp" H 7475 3300 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7488 3250 50  0001 C CNN
+F 3 "~" H 7450 3400 50  0001 C CNN
+	1    7450 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 2900 7450 2800
+Connection ~ 7450 2800
+Wire Wire Line
+	7450 3200 7450 3250
+Wire Wire Line
+	7450 3550 7450 3650
+Wire Wire Line
+	7450 4050 7450 4200
+Connection ~ 7450 4200
+Wire Wire Line
+	7450 4200 8100 4200
+Wire Wire Line
+	6900 3100 6900 3650
+Wire Wire Line
+	6900 3650 7450 3650
+Connection ~ 7450 3650
+Wire Wire Line
+	7450 3650 7450 3750
+Wire Wire Line
+	6850 3100 6900 3100
+Wire Wire Line
+	6150 3600 6150 4200
+Wire Wire Line
+	5450 3100 5450 4200
+Wire Wire Line
+	3500 2800 4050 2800
+Wire Wire Line
+	3700 3100 3700 3050
+Wire Wire Line
+	3700 3050 4050 3050
+Wire Wire Line
+	4350 3050 4350 3100
+Wire Wire Line
+	3700 3400 3700 3450
+Wire Wire Line
+	3700 3450 4050 3450
+Wire Wire Line
+	4350 3450 4350 3400
+Wire Wire Line
+	4050 3450 4050 4200
+Wire Wire Line
+	4050 3450 4350 3450
+Connection ~ 4050 4200
+Wire Wire Line
+	4050 4200 5050 4200
+Wire Wire Line
+	4050 3050 4050 2800
+Wire Wire Line
+	4050 3050 4350 3050
+Connection ~ 4050 2800
+Wire Wire Line
+	4050 2800 5050 2800
+$Comp
+L Device:C C?
+U 1 1 5F20F022
+P 9600 3250
+AR Path="/5F20F022" Ref="C?"  Part="1" 
+AR Path="/5F20EA50/5F20F022" Ref="C7"  Part="1" 
+AR Path="/5F238A75/5F20F022" Ref="C30"  Part="1" 
+F 0 "C30" H 9625 3350 50  0000 L CNN
+F 1 "10uF 50V" H 9625 3150 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 9638 3100 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL32B106KBJNNNE_Spec.pdf" H 9600 3250 50  0001 C CNN
+F 4 "CAP CER 10UF 50V X7R 1210" H 9600 3250 50  0001 C CNN "Description"
+F 5 "1276-3387-1-ND" H 9600 3250 50  0001 C CNN "Digikey"
+F 6 "CL32B106KBJNNNE" H 9600 3250 50  0001 C CNN "MPN"
+F 7 "Samsung Electro-Mechanics" H 9600 3250 50  0001 C CNN "Manufacturer"
+	1    9600 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8900 3100 8900 3050
+Wire Wire Line
+	9600 3050 9600 3100
+Wire Wire Line
+	8900 3400 8900 3450
+Wire Wire Line
+	9600 3450 9600 3400
+Wire Wire Line
+	6850 2800 6900 2800
+Wire Wire Line
+	6850 2900 6900 2900
+Wire Wire Line
+	6900 2900 6900 2800
+Connection ~ 6900 2800
+Wire Wire Line
+	6900 2800 7450 2800
+Wire Wire Line
+	9300 3050 9300 2800
+Wire Wire Line
+	9300 3450 9300 4200
+Wire Wire Line
+	8100 2800 7450 2800
+Connection ~ 9300 2800
+Wire Wire Line
+	8100 2800 9300 2800
+Wire Wire Line
+	8100 4200 9300 4200
+Wire Wire Line
+	9300 2800 9600 2800
+Text HLabel 9600 2800 2    50   Output ~ 0
+VOUT
+$Comp
+L power:GNDPWR #PWR01
+U 1 1 5F21128F
+P 3850 4250
+AR Path="/5F20EA50/5F21128F" Ref="#PWR01"  Part="1" 
+AR Path="/5F238A75/5F21128F" Ref="#PWR016"  Part="1" 
+F 0 "#PWR016" H 3850 4050 50  0001 C CNN
+F 1 "GNDPWR" H 3850 4120 50  0000 C CNN
+F 2 "" H 3850 4200 50  0001 C CNN
+F 3 "" H 3850 4200 50  0001 C CNN
+	1    3850 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3850 4250 3850 4200
+Wire Wire Line
+	3850 4200 4050 4200
+Text GLabel 3500 2800 0    50   Input ~ 0
++24V
+Connection ~ 8100 4200
+Connection ~ 8100 2800
+Wire Wire Line
+	8900 3050 9300 3050
+Wire Wire Line
+	9300 3050 9600 3050
+Connection ~ 9300 3050
+Wire Wire Line
+	9300 3450 9600 3450
+Wire Wire Line
+	8900 3450 9300 3450
+Connection ~ 9300 3450
+$Comp
+L Device:C C?
+U 1 1 5F20F01C
+P 8900 3250
+AR Path="/5F20F01C" Ref="C?"  Part="1" 
+AR Path="/5F20EA50/5F20F01C" Ref="C6"  Part="1" 
+AR Path="/5F238A75/5F20F01C" Ref="C29"  Part="1" 
+F 0 "C29" H 8925 3350 50  0000 L CNN
+F 1 "10uF 50V" H 8925 3150 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 8938 3100 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL32B106KBJNNNE_Spec.pdf" H 8900 3250 50  0001 C CNN
+F 4 "CAP CER 10UF 50V X7R 1210" H 8900 3250 50  0001 C CNN "Description"
+F 5 "1276-3387-1-ND" H 8900 3250 50  0001 C CNN "Digikey"
+F 6 "CL32B106KBJNNNE" H 8900 3250 50  0001 C CNN "MPN"
+F 7 "Samsung Electro-Mechanics" H 8900 3250 50  0001 C CNN "Manufacturer"
+	1    8900 3250
+	1    0    0    -1  
+$EndComp
+Connection ~ 5050 2800
+Connection ~ 5050 4200
+Connection ~ 4050 3450
+Connection ~ 4050 3050
+$EndSCHEMATC
