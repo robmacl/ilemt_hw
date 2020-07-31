@@ -1,16 +1,12 @@
 Main board:
  -- Order box
 
-LV regulator board:
- -- do it
-
 DAC output:
  -- Breakout board for output slot
  -- +/-12 supplies for DACs
  -- DAC output filter and perhaps buffer
 
 FPGA code for main board testing.
-
 
 Evaluation tasks:
  -- BIST injection test
@@ -162,8 +158,10 @@ vncserver -compatiblekbd
 password BogPickle
 ________________
 
+
 
 [27 July 20]
+
 
 I have the main board done and off to fabrication.
 
