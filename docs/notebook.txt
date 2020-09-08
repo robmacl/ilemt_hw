@@ -1,3 +1,4 @@
+
 Main board:
  -- Order box
 
@@ -160,12 +161,58 @@ ________________
 
 
 
-[27 July 20]
+[1 Sep 20]
+
+I'm going to go for the parallel shift register approach, rather than using
+block ram and transpose loop.  Though I still suspect the RAM approach would
+use less logic resources, I don't think we are really going to be that size
+limited, and can always go for the '20 device.  The RAM approach is more
+program-like and the register approach is more logic-like, so I think a more
+useful experience for Verilog noob.
+
+Also, we want double-buffering because there is not all that much time between
+the last bit transfer of one word and the first bit of the next, and also I
+don't want to introduce complexity from timing dependencies between the
+external IO side and the FIFO interface side.  I don't want to increase the
+SPI clock (or use multiple clocks) just to let more work get done in that
+short window.  This is hardware, so do big parallel.
+
+With the parallel shift registers approach, there is the problem of getting
+the data out efficiently (without a 12x32 mux and selector state machine).  My
+idea is to chain the registers in I guess what you might call a FIFO, but is
+more of a shift register of words.  The buffer registers are chained together,
+and each output word shuffles down the chain when it is clocked out into the
+FIFO.  The difference from an ordinary FIFO is that all the data words are
+loaded in parallel.  Eh, guess I don't know if this actually saves resources,
+since you then have 12 2x32 muxes, but these could perhaps be rolled into
+logic element features.  (One of the reasons why I guess you try to avoid
+many-way muxes in general is that these can be slow.)  I wondered about a
+tristate bus, but it seems that these days FPGAs don't actually support that,
+and it gets converted into a mux.
 
 
-I have the main board done and off to fabrication.
+
+[31 Aug 20]
 
+Main board is assembled, supplies are OK, microzed boots.  Now need FPGA
+firmware to actually test anything.
 
+I also have the parts and boards for the LV regulator card, but have not
+assembled that yet.
+
+Starting to think about how to replicate the ADC input.  Definitely don't want
+to replicate the entire current module, since we only need one state machine,
+and we don't want any chance for them to get out of synch.  Two ideas:
+ 1] Buffer up the input bits for each channel (3*4 = 12) in a memory, then make
+    an output state machine which runs 12*32 iteration across the buffer to
+    transpose it from 32 12-bit words to 12 32-bit words.
+ 2] Replicate the input shift register 12x to capture the data, then strobe
+    each in turn to push their output into the FIFO.
+
+No matter what we do, we need some sort of output sequencer because we can
+only add one word to the FIFO per cycle. [2] would use more resources, but is
+also more similar to the current code, so would probably be easier to get
+right.
 
 
 [9 July 20]

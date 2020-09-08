@@ -9,3 +9,4 @@ fp-info-cache
 /simetrix/netlist.out
 /simetrix/netlist.net
 /main/main_board/Transcode Report.txt
+/main/lv_regs/*.bck
