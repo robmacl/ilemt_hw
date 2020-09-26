@@ -1,13 +1,15 @@
-
-Main board:
- -- Order box
+FPGA code:
+ -- Figure out how to program clock oscillator. 
+ -- Increase FIFO sizes?  xillybus_fpga_api.pdf pg 6 says >2kb does
+    not help for asynchronous streams (which we use).
+ -- Add registers to control BIST DAC and status registers that count
+    read/write overruns, etc.  Just flag to say whether FIFO data goes
+    to output DAC or BIST DAC?
 
 DAC output:
  -- Breakout board for output slot
  -- +/-12 supplies for DACs
  -- DAC output filter and perhaps buffer
-
-FPGA code for main board testing.
 
 Evaluation tasks:
  -- BIST injection test
@@ -87,78 +89,85 @@ Don't forget:
  -- What effect does placing the output filter resonance at the
     carrier frequency have on driver noise?  Does this help or hurt?
 
+
+[14 Sep 20]
+
+Created doc.txt, which should eventually be migrated to github wiki or
+something.  This is intended to have the current state of relevant
+things, unlike this file which is chronological.
+
+
+[11 Sep 20]
+
+In the middle of generalizing multi_adc_interface.v.  The main new
+control features needed are:
+ -- Track were we are in the decimate cycle and stop shifting in data
+    when we have read all of the current word, but no new one is ready
+    yet.  In the old version I had set things up so that this case did
+    not happen (with the particular decimate 16 that I was then
+    using).
+ -- Clock out the FIFO-linked shifter output registers into the
+    Xillybus FIFO.
+
+
+[10 Sep 20]
+
+re. SYSCLK, It seems that seems that if you have an input mapped to a
+clock capable pin, it automatically goes on a clock net.
+
+Should program the oscillator.  For SYSCLK, 32MHz is better than 100,
+since we don't need that high, and this gives more timing slack for
+the MCLK_ENA path.  At 1.6 MHz MCLK rate and decimate of 32 we get
+exactly 50 ks/s output.
 
 
-Procedures:
+
+[9 Sep 20]
 
-This page is documentation on current procedures, including specific commands
-to do certain tasks.
+I got the Verilog source tree cleaned up so that we no longer have
+hidden file links to stuff from the old Xillybus tree, and also there
+are (almost) no generated files in git.  Though I thought it was
+peculiar at first, what Xillybus is doing seems to be best practice
+for source control, maintaining project info in a TCL script and then
+generating the project from this.  It took days to get this, and TCL
+itself, figured out.
 
-________________
-Levels, etc:
+Also, I am now generating a Vivado CSV file for the pin definitions in
+make_mapping.m, but we are going to need more boilerplate for the LVDS
+IBUFDS/OBUFDS buffer instantiation, and some other things.  It
+probably is less work to do some repetitive hand coding, rather than
+trying to automate as much as possible.  Aside from giving output slot
+signals meaningful names, it doesn't seem there can be much change in
+the pin mapping without a main board respin.  And anything other than
+simply relocating pins is an actual functional change, would require
+Verilog updates anyway.  The main point of importing into Vivado is to
+make sure that we have signals with the same name on both sides of
+each pin, so that we get a warning if something is out of synch.
 
-The present theory re. output levels is that the overall gain from digital
-code to coil voltage should be the same across channels, and also this level
-should be set by thermal limits (and near DAC full scale).  Turn off high
-carriers and then measure voltage at coil as 1.15 V RMS (with 0.05 peak low
-carrier amplitude).  See [26 Sep 19]
 
-I have been setting the UR44 DAW output levels at -6 dB, but with
-drivers set for this level the PCM1794A board doesn't have enough
-output.  So you have to readjust the gain pot on the driver board when
-you switch between.  To switch, you can just set the current readback
-to 3.275 A.
+wrt. FPGA resource usage, worth remembering that almost all of the
+usage is currently from the Xillybus core, which puts us at about 20%.
+So until we get into serious signal processing there is no risk of
+running out.
 
-Standardize noise floor measurements with carrier at -4 dBFS at 120mm.
-Set the X-X gain to get the -4 dB, then switch to the sensor loopback
-cable with HP353A attenuator to set all the gains equal.  Use the raw
-data time domain RMS because the spectral measurements are iffy due to
-unsynch issues.
+re. signal processing, some time ago I realized that doing FFT on the
+FPGA does not reduce the data rate all that much.   The only data
+reduction with FFT would be with not passing out channels we don't
+care about.  With block size of 64, we only need 3 channels + 4 guard
+channels + DC, or 8, out of 32.  So this gives us a 4x reduction.
+Also TBD is whether we actually need the speedup of offloading
+processing.  For the high rate, we would not want to implement
+anything after the FFT on the FPGA.  Possibly it would be useful to
+dive back into the FPGA to implement adaptive noise cancelling.
 
-To minimize unsynch errors in spectral measurement, set spectrum controls to
-flat-top order 1 blocking 2 averaging 0, and then show the levels for "Trace
-display", not "Carrier levels" (which uses fixed FFT parameters).
+If we want the full spectrum display for development then we still
+need all the data (raw time domain is easiest), but this could be on a
+different pipe or whatever.  We do not need to push out all of the
+channels for this.
 
-Because of time skew issues you really need to evaluate the test box
-in "TCP only" mode, otherwise you get gratuitous LF noise, wrong
-spectral peaks, etc.  This means you have to use "X X no-sense" mode,
-and re-calibrate the distance (which is different than in vector
-mode).  I am going to test the UR44 in this same mode for a
-head-to-head comparison.  The noise is somewhat lower in vector mode
-because of averaging across carriers.
-
-With UR44, set the YZ carriers to zero.  This better matches what "TCP
-only" mode is doing (and doesn't include any source channel
-interaction effects that might exist, but are not there in TCP only
-mode).
-
-Shell snips: 
-________________
-Send ADC data to labview:
-# Has laptop IP address wired in, may change
-~/labview_connect &
-________________
-Install new FPGA bit file:
-
-On windows:
-cd Documents/Work/microzed/verilog/vivado/xillydemo.runs/impl_1
-scp xillydemo.bit ilemt@192.168.1.15:/tmp/
-
-On ilemt:
-sudo mount /dev/mmcblk0p1 /mnt/card
-cd /mnt/card
-sudo cp /tmp/xillydemo.bit .
-sudo reboot
-________________
-VNC access:
-# ilemt.local works on home net
-ssh -L 5905:127.0.0.1:5901  ilemt@192.168.1.15
-
-on ilemt:
-vncserver -compatiblekbd
-password BogPickle
-________________
-
+The other FPGA usage would be the output side, with direct digital
+modulation.  Currently this doesn't seem terribly complex, but this
+feeling is based on blissful ignorance.
 
 
 [1 Sep 20]

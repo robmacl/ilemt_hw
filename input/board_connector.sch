@@ -15,8 +15,8 @@ Comment4 ""
 $EndDescr
 Text Notes 7250 6800 0    50   ~ 0
 The connector to the main board, and other support circuitry that\nconnects by global labels
-Text Notes 9050 2100 0    50   ~ 0
-Connector is oriented with the low number pins toward\nthe back of the board.  Working forward, we have\n -- High speed LVDS signals\n -- Digital supply\n -- Low speed digital signals\n -- Analog supplies\n -- Analog signals\n\nThere are many grounds\n
+Text Notes 8350 2100 0    50   ~ 0
+Connector is oriented with the low number pins toward\nthe microzed at the back (or top) of the main board.  \nWorking forward, we have:\n -- Digital supply\n -- Low speed digital signals\n -- High speed LVDS signals\n -- Analog supplies\n -- Analog signals\n\nThere are many grounds\n
 Text GLabel 3500 3850 2    50   Output ~ 0
 SCKA-
 Text GLabel 2350 3550 0    50   Output ~ 0

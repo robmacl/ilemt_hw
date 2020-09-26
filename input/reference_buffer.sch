@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 13 21
+Sheet 3 21
 Title ""
 Date ""
 Rev ""
@@ -22,7 +22,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E52A14B" Ref="C3"  Part="1"
 AR Path="/5E2EB92B/5E52A14B" Ref="C3"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E52A14B" Ref="C3"  Part="1" 
 AR Path="/5EBEDCCA/5E52A14B" Ref="C?"  Part="1" 
-F 0 "C?" V 4171 2850 50  0000 C CNN
+F 0 "C3" V 4171 2850 50  0000 C CNN
 F 1 "1uF" V 4262 2850 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 4400 2850 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 4400 2850 50  0001 C CNN
@@ -48,7 +48,7 @@ AR Path="/5E1D6729/5E1DA2AA/5DE6EE09" Ref="#PWR014"  Part="1"
 AR Path="/5E2EB92B/5DE6EE09" Ref="#PWR014"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5DE6EE09" Ref="#PWR014"  Part="1" 
 AR Path="/5EBEDCCA/5DE6EE09" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 4650 2600 50  0001 C CNN
+F 0 "#PWR014" H 4650 2600 50  0001 C CNN
 F 1 "GNDA" V 4655 2722 50  0000 R CNN
 F 2 "" H 4650 2850 50  0001 C CNN
 F 3 "" H 4650 2850 50  0001 C CNN
@@ -66,7 +66,7 @@ AR Path="/5E1D6729/5E1DA2AA/5DFFAD1B" Ref="C4"  Part="1"
 AR Path="/5E2EB92B/5DFFAD1B" Ref="C4"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5DFFAD1B" Ref="C4"  Part="1" 
 AR Path="/5EBEDCCA/5DFFAD1B" Ref="C?"  Part="1" 
-F 0 "C?" V 4171 3700 50  0000 C CNN
+F 0 "C4" V 4171 3700 50  0000 C CNN
 F 1 "1uF" V 4262 3700 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 4400 3700 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 4400 3700 50  0001 C CNN
@@ -87,7 +87,7 @@ AR Path="/5E1D6729/5E1DA2AA/5DFFAD1C" Ref="#PWR015"  Part="1"
 AR Path="/5E2EB92B/5DFFAD1C" Ref="#PWR015"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5DFFAD1C" Ref="#PWR015"  Part="1" 
 AR Path="/5EBEDCCA/5DFFAD1C" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 4650 3450 50  0001 C CNN
+F 0 "#PWR015" H 4650 3450 50  0001 C CNN
 F 1 "GNDA" V 4655 3572 50  0000 R CNN
 F 2 "" H 4650 3700 50  0001 C CNN
 F 3 "" H 4650 3700 50  0001 C CNN
@@ -105,7 +105,7 @@ AR Path="/5E1D6729/5E1DA2AA/5DE44053" Ref="U3"  Part="1"
 AR Path="/5E2EB92B/5DE44053" Ref="U3"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5DE44053" Ref="U3"  Part="1" 
 AR Path="/5EBEDCCA/5DE44053" Ref="U?"  Part="1" 
-F 0 "U?" H 4150 3500 50  0000 L CNN
+F 0 "U3" H 4150 3500 50  0000 L CNN
 F 1 "OP27" H 4150 3400 50  0000 L CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 4050 3300 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 4050 3400 50  0001 C CNN
@@ -126,7 +126,7 @@ AR Path="/5E1D6729/5E1DA2AA/5DE6107D" Ref="R4"  Part="1"
 AR Path="/5E2EB92B/5DE6107D" Ref="R4"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5DE6107D" Ref="R4"  Part="1" 
 AR Path="/5EBEDCCA/5DE6107D" Ref="R?"  Part="1" 
-F 0 "R?" V 10250 4150 50  0000 C CNN
+F 0 "R4" V 10250 4150 50  0000 C CNN
 F 1 "2K" V 10050 4150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 10190 4140 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 10150 4150 50  0001 C CNN
@@ -150,7 +150,7 @@ AR Path="/5E1D6729/5E1DA2AA/5DEB4146" Ref="C2"  Part="1"
 AR Path="/5E2EB92B/5DEB4146" Ref="C2"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5DEB4146" Ref="C2"  Part="1" 
 AR Path="/5EBEDCCA/5DEB4146" Ref="C?"  Part="1" 
-F 0 "C?" V 9471 2850 50  0000 C CNN
+F 0 "C2" V 9471 2850 50  0000 C CNN
 F 1 "10nF" V 9562 2850 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 9700 2850 50  0001 C CNN
 F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 9700 2850 50  0001 C CNN
@@ -172,7 +172,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E52A144" Ref="R8"  Part="1"
 AR Path="/5E2EB92B/5E52A144" Ref="R7"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E52A144" Ref="R7"  Part="1" 
 AR Path="/5EBEDCCA/5E52A144" Ref="R?"  Part="1" 
-F 0 "R?" V 10300 2500 50  0000 C CNN
+F 0 "R7" V 10300 2500 50  0000 C CNN
 F 1 "68m" V 10100 2500 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric" V 10240 2490 50  0001 C CNN
 F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RL_Group_521_RoHS_L_2.pdf" H 10200 2500 50  0001 C CNN
@@ -193,7 +193,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E52A146" Ref="R3"  Part="1"
 AR Path="/5E2EB92B/5E52A146" Ref="R3"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E52A146" Ref="R3"  Part="1" 
 AR Path="/5EBEDCCA/5E52A146" Ref="R?"  Part="1" 
-F 0 "R?" V 2400 3650 50  0000 C CNN
+F 0 "R3" V 2400 3650 50  0000 C CNN
 F 1 "2K" V 2200 3650 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 2340 3640 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 2300 3650 50  0001 C CNN
@@ -219,7 +219,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E52A145" Ref="R2"  Part="1"
 AR Path="/5E2EB92B/5E52A145" Ref="R2"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E52A145" Ref="R2"  Part="1" 
 AR Path="/5EBEDCCA/5E52A145" Ref="R?"  Part="1" 
-F 0 "R?" V 1850 4750 50  0000 C CNN
+F 0 "R2" V 1850 4750 50  0000 C CNN
 F 1 "2K" V 1650 4750 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 1790 4740 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 1750 4750 50  0001 C CNN
@@ -241,7 +241,7 @@ AR Path="/5E1D6729/5E1DA2AA/5DEB389F" Ref="R1"  Part="1"
 AR Path="/5E2EB92B/5DEB389F" Ref="R1"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5DEB389F" Ref="R1"  Part="1" 
 AR Path="/5EBEDCCA/5DEB389F" Ref="R?"  Part="1" 
-F 0 "R?" V 1900 3150 50  0000 C CNN
+F 0 "R1" V 1900 3150 50  0000 C CNN
 F 1 "2K" V 1700 3150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 1840 3140 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 1800 3150 50  0001 C CNN
@@ -263,7 +263,7 @@ AR Path="/5E1D6729/5E1DA2AA/5DEC64D2" Ref="#PWR013"  Part="1"
 AR Path="/5E2EB92B/5DEC64D2" Ref="#PWR013"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5DEC64D2" Ref="#PWR013"  Part="1" 
 AR Path="/5EBEDCCA/5DEC64D2" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 2800 3550 50  0001 C CNN
+F 0 "#PWR013" H 2800 3550 50  0001 C CNN
 F 1 "GNDA" H 2900 3600 50  0000 R CNN
 F 2 "" H 2800 3800 50  0001 C CNN
 F 3 "" H 2800 3800 50  0001 C CNN
@@ -271,7 +271,7 @@ F 3 "" H 2800 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 6250 5950 0    50   ~ 0
-The reference buffer receives the 5V reference from the edge connector\nand buffers it for the large capacitive load of the reference bypass caps. \nThe reference comes in differentially so as to re-reference the voltage to the gound\npresent on the input card, mimizing effect of DC and low-frequency ground shifts.\n\nThe bandwidth of the reference is approximately 4.5 kHz, which helps to reject\nLF disturbances on the reference, such as due to vibration inducing voltages\nin the ceramic reference bypass capacitors.
+The reference buffer receives the 5V reference from the edge connector\nand buffers it for the large capacitive load of the reference bypass caps. \nThe reference comes in differentially so as to re-reference the voltage to the gound\npresent on the input card, mimizing effect of DC and low-frequency ground shifts.\n\nThe loop bandwidth of the reference buffer is approximately 4.5 kHz, which \nhelps to reject LF disturbances on the reference, such as due to vibration \ninducing piezoelectric voltages in the ceramic reference bypass capacitors.
 $Comp
 L Device:C_Small C?
 U 1 1 5E286955
@@ -281,7 +281,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E286955" Ref="C1"  Part="1"
 AR Path="/5E2EB92B/5E286955" Ref="C1"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E286955" Ref="C1"  Part="1" 
 AR Path="/5EBEDCCA/5E286955" Ref="C?"  Part="1" 
-F 0 "C?" V 2571 3650 50  0000 C CNN
+F 0 "C1" V 2571 3650 50  0000 C CNN
 F 1 "10nF" V 2662 3650 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 2800 3650 50  0001 C CNN
 F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 2800 3650 50  0001 C CNN
@@ -303,7 +303,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E29BAC1" Ref="R6"  Part="1"
 AR Path="/5E2EB92B/5E29BAC1" Ref="R6"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E29BAC1" Ref="R6"  Part="1" 
 AR Path="/5EBEDCCA/5E29BAC1" Ref="R?"  Part="1" 
-F 0 "R?" V 9200 2900 50  0000 C CNN
+F 0 "R6" V 9200 2900 50  0000 C CNN
 F 1 "2.74" V 9000 2900 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric" V 9140 2890 50  0001 C CNN
 F 3 "http://www.koaspeer.com/catimages/Products/RK73H/RK73H.pdf" H 9100 2900 50  0001 C CNN
@@ -344,7 +344,7 @@ Connection ~ 9100 2500
 Text Notes 6250 6800 0    50   ~ 0
 The reference needs to be able to sink perhaps as much as 150 mA if all \nthree channels are driven into saturation, because the ADC driver output\nexceeds VREF, which is used as the clamp voltage for the analog inputs.  \nThen each driver is in current limit until the situation resolves.  Overdrive on\nall channels is easy to get in normal operation, just move the sensor close \nto the source.\n\nCurrent in sourcing is limited by the opamp, and Q1 cannot sink below\nground, so our ability to drive the reference above 5V or below \nground is minimal, which is a feature.
 Text Notes 9800 1850 0    50   ~ 0
-The buffer is normally biased into class-A operation by R5, which supplies\n20 mA.  The total draw expected on the reference bus is about 5 mA.  This\nbias keeps Q1 on so that it is ready to clamp overvoltage. D2 allows\nthe opamp to source extra current into the reference bus if needed,\nup to the opamp current limit.\n\nD2/R6 set a sink current limit of about 300 mA.  This prevents\n400 uF of low-ESR ceramic capacitors from being instantaneously\ndumped into Q1 in the event that the input from the master\nreference suddenly drops, such as from a short.
+The total draw expected on the reference bus is about 5 mA, but when\nthe ADC driver is in saturation it may source up to its current limit\ninto VREF, since this is the clamp potential for the ADC input.  So the\nreference buffer is set up as a current sink, and is normally biased into \nclass-A operation by R5||R14, which supplies 20 mA.   This bias keeps Q1\non so that it is ready to clamp overvoltage. D2 allows the opamp to \nsource extra current into the reference bus if needed, up to the \nU10 opamp current limit.\n\nD2/R6 set a sink current limit of about 300 mA.  This prevents\n400 uF of low-ESR ceramic capacitors from being instantaneously\ndumped into Q1 in the event that the input from the master\nreference suddenly drops, such as from a short.
 $Comp
 L ilemt_input:BAS21S D?
 U 2 1 5E52A154
@@ -354,7 +354,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E52A154" Ref="D2"  Part="2"
 AR Path="/5E2EB92B/5E52A154" Ref="D1"  Part="2" 
 AR Path="/5E624B3C/5E2EB92B/5E52A154" Ref="D1"  Part="2" 
 AR Path="/5EBEDCCA/5E52A154" Ref="D?"  Part="2" 
-F 0 "D?" H 8300 2950 50  0000 C CNN
+F 0 "D1" H 8300 2950 50  0000 C CNN
 F 1 "BAS21S" H 8300 3050 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8300 3000 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 8300 3250 50  0001 C CNN
@@ -371,7 +371,7 @@ Wire Wire Line
 Wire Wire Line
 	9100 1950 9100 2000
 Text Notes 11550 4150 0    50   ~ 0
-C5, C6 at the output (same part as at the ADCs)\nform a tee filter with the decoupling inductors at the \nADC on each channel to minimize cross-coupling\nof noise between the ADCs.  LTC documents that\nthis is a problem, though suggests buying one\nof their references per-ADC to solve it.
+C5, C6 at the output (same part type as at the ADCs)\nform a tee filter with the decoupling inductors at the \nADC on each channel to minimize cross-coupling\nof noise between the ADCs.  LTC documents that\nthis is a problem, though suggests buying one\nof their references per-ADC to solve it.
 Wire Wire Line
 	11600 2500 11350 2500
 Connection ~ 11600 2500
@@ -397,7 +397,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E52A14A" Ref="C6"  Part="1"
 AR Path="/5E2EB92B/5E52A14A" Ref="C6"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E52A14A" Ref="C6"  Part="1" 
 AR Path="/5EBEDCCA/5E52A14A" Ref="C?"  Part="1" 
-F 0 "C?" V 11750 2850 50  0000 C CNN
+F 0 "C6" V 11750 2850 50  0000 C CNN
 F 1 "47uF" V 11462 2850 50  0000 C CNN
 F 2 "Capacitor_SMD:C_1210_3225Metric" H 11600 2850 50  0001 C CNN
 F 3 "https://api.kemet.com/component-edge/download/datasheet/C1210C476M9RACTU.pdf" H 11600 2850 50  0001 C CNN
@@ -422,7 +422,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E52A149" Ref="#PWR017"  Part="1"
 AR Path="/5E2EB92B/5E52A149" Ref="#PWR017"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E52A149" Ref="#PWR017"  Part="1" 
 AR Path="/5EBEDCCA/5E52A149" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 11100 4250 50  0001 C CNN
+F 0 "#PWR017" H 11100 4250 50  0001 C CNN
 F 1 "GNDA" H 11200 4300 50  0000 R CNN
 F 2 "" H 11100 4500 50  0001 C CNN
 F 3 "" H 11100 4500 50  0001 C CNN
@@ -438,7 +438,7 @@ AR Path="/5E1D6729/5E1DA2AA/5DEC8871" Ref="C5"  Part="1"
 AR Path="/5E2EB92B/5DEC8871" Ref="C5"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5DEC8871" Ref="C5"  Part="1" 
 AR Path="/5EBEDCCA/5DEC8871" Ref="C?"  Part="1" 
-F 0 "C?" V 11250 2850 50  0000 C CNN
+F 0 "C5" V 11250 2850 50  0000 C CNN
 F 1 "47uF" V 10962 2850 50  0000 C CNN
 F 2 "Capacitor_SMD:C_1210_3225Metric" H 11100 2850 50  0001 C CNN
 F 3 "https://api.kemet.com/component-edge/download/datasheet/C1210C476M9RACTU.pdf" H 11100 2850 50  0001 C CNN
@@ -471,7 +471,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E52A150" Ref="#PWR016"  Part="1"
 AR Path="/5E2EB92B/5E52A150" Ref="#PWR016"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E52A150" Ref="#PWR016"  Part="1" 
 AR Path="/5EBEDCCA/5E52A150" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 9100 3350 50  0001 C CNN
+F 0 "#PWR016" H 9100 3350 50  0001 C CNN
 F 1 "GNDA" H 9200 3400 50  0000 R CNN
 F 2 "" H 9100 3600 50  0001 C CNN
 F 3 "" H 9100 3600 50  0001 C CNN
@@ -530,7 +530,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E29F9EE" Ref="D?"  Part="2"
 AR Path="/5E2EB92B/5E29F9EE" Ref="D5"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E29F9EE" Ref="D5"  Part="1" 
 AR Path="/5EBEDCCA/5E29F9EE" Ref="D?"  Part="1" 
-F 0 "D?" H 4300 2415 50  0000 C CNN
+F 0 "D5" H 4300 2415 50  0000 C CNN
 F 1 "BAS21S" H 4300 2324 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 4300 2050 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 4300 2300 50  0001 C CNN
@@ -566,7 +566,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E291915" Ref="D?"  Part="1"
 AR Path="/5E2EB92B/5E291915" Ref="D6"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E291915" Ref="D6"  Part="1" 
 AR Path="/5EBEDCCA/5E291915" Ref="D?"  Part="1" 
-F 0 "D?" H 3800 6315 50  0000 C CNN
+F 0 "D6" H 3800 6315 50  0000 C CNN
 F 1 "BAS21S" H 3800 6224 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 3800 5950 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 3800 6200 50  0001 C CNN
@@ -587,7 +587,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E293AAD" Ref="#PWR?"  Part="1"
 AR Path="/5E2EB92B/5E293AAD" Ref="#PWR033"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E293AAD" Ref="#PWR033"  Part="1" 
 AR Path="/5EBEDCCA/5E293AAD" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 3800 6050 50  0001 C CNN
+F 0 "#PWR033" H 3800 6050 50  0001 C CNN
 F 1 "GNDA" H 3900 6150 50  0000 R CNN
 F 2 "" H 3800 6300 50  0001 C CNN
 F 3 "" H 3800 6300 50  0001 C CNN
@@ -624,7 +624,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E52A153" Ref="D1"  Part="1"
 AR Path="/5E2EB92B/5E52A153" Ref="D2"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E52A153" Ref="D2"  Part="1" 
 AR Path="/5EBEDCCA/5E52A153" Ref="D?"  Part="1" 
-F 0 "D?" H 8750 3015 50  0000 C CNN
+F 0 "D2" H 8750 3015 50  0000 C CNN
 F 1 "BAS21S" H 8750 2924 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8750 2650 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 8750 2900 50  0001 C CNN
@@ -645,7 +645,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E52A152" Ref="D1"  Part="2"
 AR Path="/5E2EB92B/5E52A152" Ref="D2"  Part="2" 
 AR Path="/5E624B3C/5E2EB92B/5E52A152" Ref="D2"  Part="2" 
 AR Path="/5EBEDCCA/5E52A152" Ref="D?"  Part="2" 
-F 0 "D?" H 8750 3365 50  0000 C CNN
+F 0 "D2" H 8750 3365 50  0000 C CNN
 F 1 "BAS21S" H 8750 3274 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 8750 3000 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 8750 3250 50  0001 C CNN
@@ -669,7 +669,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E288B61" Ref="Q1"  Part="1"
 AR Path="/5E2EB92B/5E288B61" Ref="Q1"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E288B61" Ref="Q1"  Part="1" 
 AR Path="/5EBEDCCA/5E288B61" Ref="Q?"  Part="1" 
-F 0 "Q?" H 9200 3400 50  0000 L CNN
+F 0 "Q1" H 9200 3400 50  0000 L CNN
 F 1 "NSS1C300ET4G" H 8300 3450 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:TO-252-3_TabPin2" H 9200 3450 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/MJD31-D.PDF" H 9000 3350 50  0001 C CNN
@@ -690,7 +690,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E5E3816" Ref="D?"  Part="1"
 AR Path="/5E2EB92B/5E5E3816" Ref="D12"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E5E3816" Ref="D12"  Part="1" 
 AR Path="/5EBEDCCA/5E5E3816" Ref="D?"  Part="1" 
-F 0 "D?" H 1750 2665 50  0000 C CNN
+F 0 "D12" H 1750 2665 50  0000 C CNN
 F 1 "BAS21S" H 1750 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 1750 2300 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 1750 2550 50  0001 C CNN
@@ -711,7 +711,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E5E381C" Ref="D?"  Part="2"
 AR Path="/5E2EB92B/5E5E381C" Ref="D12"  Part="2" 
 AR Path="/5E624B3C/5E2EB92B/5E5E381C" Ref="D12"  Part="2" 
 AR Path="/5EBEDCCA/5E5E381C" Ref="D?"  Part="2" 
-F 0 "D?" H 2100 2665 50  0000 C CNN
+F 0 "D12" H 2100 2665 50  0000 C CNN
 F 1 "BAS21S" H 2100 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 2100 2300 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 2100 2550 50  0001 C CNN
@@ -734,7 +734,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E5E5222" Ref="D?"  Part="1"
 AR Path="/5E2EB92B/5E5E5222" Ref="D13"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E5E5222" Ref="D13"  Part="1" 
 AR Path="/5EBEDCCA/5E5E5222" Ref="D?"  Part="1" 
-F 0 "D?" H 2450 2665 50  0000 C CNN
+F 0 "D13" H 2450 2665 50  0000 C CNN
 F 1 "BAS21S" H 2450 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 2450 2300 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 2450 2550 50  0001 C CNN
@@ -755,7 +755,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E5E5228" Ref="D?"  Part="2"
 AR Path="/5E2EB92B/5E5E5228" Ref="D13"  Part="2" 
 AR Path="/5E624B3C/5E2EB92B/5E5E5228" Ref="D13"  Part="2" 
 AR Path="/5EBEDCCA/5E5E5228" Ref="D?"  Part="2" 
-F 0 "D?" H 2800 2665 50  0000 C CNN
+F 0 "D13" H 2800 2665 50  0000 C CNN
 F 1 "BAS21S" H 2800 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 2800 2300 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 2800 2550 50  0001 C CNN
@@ -782,7 +782,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E600273" Ref="D?"  Part="1"
 AR Path="/5E2EB92B/5E600273" Ref="D14"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E600273" Ref="D14"  Part="1" 
 AR Path="/5EBEDCCA/5E600273" Ref="D?"  Part="1" 
-F 0 "D?" H 3150 2665 50  0000 C CNN
+F 0 "D14" H 3150 2665 50  0000 C CNN
 F 1 "BAS21S" H 3150 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 3150 2300 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 3150 2550 50  0001 C CNN
@@ -803,7 +803,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E600279" Ref="D?"  Part="2"
 AR Path="/5E2EB92B/5E600279" Ref="D14"  Part="2" 
 AR Path="/5E624B3C/5E2EB92B/5E600279" Ref="D14"  Part="2" 
 AR Path="/5EBEDCCA/5E600279" Ref="D?"  Part="2" 
-F 0 "D?" H 3500 2665 50  0000 C CNN
+F 0 "D14" H 3500 2665 50  0000 C CNN
 F 1 "BAS21S" H 3500 2574 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 3500 2300 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 3500 2550 50  0001 C CNN
@@ -866,7 +866,7 @@ AR Path="/5E1D6729/5E1DA2AA/5E29190F" Ref="D?"  Part="2"
 AR Path="/5E2EB92B/5E29190F" Ref="D7"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E29190F" Ref="D7"  Part="1" 
 AR Path="/5EBEDCCA/5E29190F" Ref="D?"  Part="1" 
-F 0 "D?" H 4300 6315 50  0000 C CNN
+F 0 "D7" H 4300 6315 50  0000 C CNN
 F 1 "BAS21S" H 4300 6224 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 4300 5950 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/BAS21SLT1-D.PDF" H 4300 6200 50  0001 C CNN
@@ -888,7 +888,7 @@ AR Path="/5DFCF14D/5E195558/5E36BAB3" Ref="TP?"  Part="1"
 AR Path="/5E2EB92B/5E36BAB3" Ref="TP5"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5E36BAB3" Ref="TP5"  Part="1" 
 AR Path="/5EBEDCCA/5E36BAB3" Ref="TP?"  Part="1" 
-F 0 "TP?" H 11350 2700 50  0000 C CNN
+F 0 "TP5" H 11350 2700 50  0000 C CNN
 F 1 "VREF" H 11350 2800 50  0000 C CNN
 F 2 "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" H 11550 2450 50  0001 C CNN
 F 3 "~" H 11550 2450 50  0001 C CNN
@@ -921,7 +921,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EACDE4D" Ref="R?"  Part="1"
 AR Path="/5E2EB92B/5EACDE4D" Ref="R14"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EACDE4D" Ref="R?"  Part="1" 
 AR Path="/5EBEDCCA/5EACDE4D" Ref="R?"  Part="1" 
-F 0 "R?" V 8850 2200 50  0000 C CNN
+F 0 "R14" V 8850 2200 50  0000 C CNN
 F 1 "200" V 8650 2200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 8790 2190 50  0001 C CNN
 F 3 "" H 8750 2200 50  0001 C CNN
@@ -957,7 +957,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EAD4090" Ref="R?"  Part="1"
 AR Path="/5E2EB92B/5EAD4090" Ref="R5"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EAD4090" Ref="R?"  Part="1" 
 AR Path="/5EBEDCCA/5EAD4090" Ref="R?"  Part="1" 
-F 0 "R?" V 9200 2200 50  0000 C CNN
+F 0 "R5" V 9200 2200 50  0000 C CNN
 F 1 "200" V 9000 2200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 9140 2190 50  0001 C CNN
 F 3 "" H 9100 2200 50  0001 C CNN
@@ -979,7 +979,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EAFBE4D" Ref="R?"  Part="1"
 AR Path="/5E2EB92B/5EAFBE4D" Ref="R36"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EAFBE4D" Ref="R?"  Part="1" 
 AR Path="/5EBEDCCA/5EAFBE4D" Ref="R?"  Part="1" 
-F 0 "R?" V 4850 4750 50  0000 C CNN
+F 0 "R36" V 4850 4750 50  0000 C CNN
 F 1 "2K" V 4650 4750 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4790 4740 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 4750 4750 50  0001 C CNN
@@ -1001,7 +1001,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EAFBE5A" Ref="C?"  Part="1"
 AR Path="/5E2EB92B/5EAFBE5A" Ref="C41"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EAFBE5A" Ref="C?"  Part="1" 
 AR Path="/5EBEDCCA/5EAFBE5A" Ref="C?"  Part="1" 
-F 0 "C?" V 4521 5100 50  0000 C CNN
+F 0 "C41" V 4521 5100 50  0000 C CNN
 F 1 "10nF" V 4612 5100 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 4750 5100 50  0001 C CNN
 F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 4750 5100 50  0001 C CNN
@@ -1046,7 +1046,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EB163B5" Ref="C?"  Part="1"
 AR Path="/5E2EB92B/5EB163B5" Ref="C43"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EB163B5" Ref="C?"  Part="1" 
 AR Path="/5EBEDCCA/5EB163B5" Ref="C?"  Part="1" 
-F 0 "C?" V 7071 2950 50  0000 C CNN
+F 0 "C43" V 7071 2950 50  0000 C CNN
 F 1 "1uF" V 7162 2950 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 7300 2950 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 7300 2950 50  0001 C CNN
@@ -1070,7 +1070,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EB163BE" Ref="#PWR?"  Part="1"
 AR Path="/5E2EB92B/5EB163BE" Ref="#PWR030"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EB163BE" Ref="#PWR?"  Part="1" 
 AR Path="/5EBEDCCA/5EB163BE" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 7550 2700 50  0001 C CNN
+F 0 "#PWR030" H 7550 2700 50  0001 C CNN
 F 1 "GNDA" V 7555 2822 50  0000 R CNN
 F 2 "" H 7550 2950 50  0001 C CNN
 F 3 "" H 7550 2950 50  0001 C CNN
@@ -1088,7 +1088,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EB163CA" Ref="C?"  Part="1"
 AR Path="/5E2EB92B/5EB163CA" Ref="C44"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EB163CA" Ref="C?"  Part="1" 
 AR Path="/5EBEDCCA/5EB163CA" Ref="C?"  Part="1" 
-F 0 "C?" V 7071 3850 50  0000 C CNN
+F 0 "C44" V 7071 3850 50  0000 C CNN
 F 1 "1uF" V 7162 3850 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 7300 3850 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 7300 3850 50  0001 C CNN
@@ -1109,7 +1109,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EB163D0" Ref="#PWR?"  Part="1"
 AR Path="/5E2EB92B/5EB163D0" Ref="#PWR062"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EB163D0" Ref="#PWR?"  Part="1" 
 AR Path="/5EBEDCCA/5EB163D0" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 7550 3600 50  0001 C CNN
+F 0 "#PWR062" H 7550 3600 50  0001 C CNN
 F 1 "GNDA" V 7555 3722 50  0000 R CNN
 F 2 "" H 7550 3850 50  0001 C CNN
 F 3 "" H 7550 3850 50  0001 C CNN
@@ -1127,7 +1127,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EB163DC" Ref="U?"  Part="1"
 AR Path="/5E2EB92B/5EB163DC" Ref="U10"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EB163DC" Ref="U?"  Part="1" 
 AR Path="/5EBEDCCA/5EB163DC" Ref="U?"  Part="1" 
-F 0 "U?" H 7050 3600 50  0000 L CNN
+F 0 "U10" H 7050 3600 50  0000 L CNN
 F 1 "OP27" H 7050 3500 50  0000 L CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 6950 3400 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 6950 3500 50  0001 C CNN
@@ -1152,7 +1152,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EB18F31" Ref="R?"  Part="1"
 AR Path="/5E2EB92B/5EB18F31" Ref="R37"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EB18F31" Ref="R?"  Part="1" 
 AR Path="/5EBEDCCA/5EB18F31" Ref="R?"  Part="1" 
-F 0 "R?" V 5650 3250 50  0000 C CNN
+F 0 "R37" V 5650 3250 50  0000 C CNN
 F 1 "3.3K" V 5450 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 5590 3240 50  0001 C CNN
 F 3 "~" H 5550 3250 50  0001 C CNN
@@ -1173,7 +1173,7 @@ AR Path="/5E1D6729/5E1DA2AA/5EB1F7A2" Ref="C?"  Part="1"
 AR Path="/5E2EB92B/5EB1F7A2" Ref="C42"  Part="1" 
 AR Path="/5E624B3C/5E2EB92B/5EB1F7A2" Ref="C?"  Part="1" 
 AR Path="/5EBEDCCA/5EB1F7A2" Ref="C?"  Part="1" 
-F 0 "C?" V 5671 3550 50  0000 C CNN
+F 0 "C42" V 5671 3550 50  0000 C CNN
 F 1 "3.3 uF" V 5762 3550 50  0000 C CNN
 F 2 "Capacitor_THT:C_Rect_L13.0mm_W6.0mm_P10.00mm_FKS3_FKP3_MKS4" H 5900 3550 50  0001 C CNN
 F 3 "https://api.kemet.com/component-edge/download/datasheet/R60DF4330506AJ.pdf" H 5900 3550 50  0001 C CNN

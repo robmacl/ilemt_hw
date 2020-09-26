@@ -1101,4 +1101,6 @@ Wire Wire Line
 	8550 1150 8450 1150
 Wire Wire Line
 	8550 1000 8450 1000
+Text Notes 9200 1900 1    50   ~ 0
+--- to BIST buffer ---
 $EndSCHEMATC
