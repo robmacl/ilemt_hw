@@ -1,10 +1,13 @@
 FPGA code:
+ -- Check MCLK_ENA setup wrt. SYSCLK
+ -- Sample rate is not 60 Hz multiple, so hum filter can't work.
  -- Figure out how to program clock oscillator. 
  -- Increase FIFO sizes?  xillybus_fpga_api.pdf pg 6 says >2kb does
     not help for asynchronous streams (which we use).
  -- Add registers to control BIST DAC and status registers that count
     read/write overruns, etc.  Just flag to say whether FIFO data goes
     to output DAC or BIST DAC?
+ 
 
 DAC output:
  -- Breakout board for output slot
@@ -18,6 +21,8 @@ Evaluation tasks:
  -- Measure supply current, in saturation and otherwise.
 
 Main board revisions:
+ -- Is ADC reference buffer output stable with the C load?
+
 
 Input board revisions:
  -- Add diode clamp beween chassis and main ground for ESD currents.
@@ -51,7 +56,6 @@ Input board revisions:
 Input board bodges still needed:
  -- Replace C129, etc. filter caps in YZ channels with 10 nF.
  -- R326 missing
- -- D15, D4, D8 missing
 
 Input board changes made (bodged on board and in schematic):
  -- Reference lowpass filter.
@@ -88,6 +92,120 @@ Don't forget:
     rate to allow for actual phase shift.
  -- What effect does placing the output filter resonance at the
     carrier frequency have on driver noise?  Does this help or hurt?
+
+
+[2 Oct 20]
+
+Finished implementation of the ADC input, mainly the clocking scheme.
+At first glance, looking at the data in hex using 'od', it did not
+look good, but it's hard to tell looking at just a few samples, and
+the actually-implemented channels were buried in all the unimplemented
+ones.  I added a feature to grab just 3 channels, and adapted the
+labview code, and the input side seems to be working.  So this is
+almost first time success with the ADC FPGA code.
+
+So, hum, now what?
+
+I've been putting this off because the theory is that the DAC output
+to analog driver is a stopgap, but it's likely we will be operating
+this way for some time.  So dealing with the DAC side has come to the
+top.  I need to design the DAC board and get it sent off, and then can
+working on various other things while waiting.  So DAC first.
+
+I am planning to just mount the EBAY DAC boards on the DAC card.  Can
+always do something else later if it seems useful.  Would not want
+this in the final reference design because it would be a nuisance to
+source any particular DAC board.
+
+Main issue I need to explore is whether it is possible or useful to
+try to force an external reference into the PCM1794A.  I need a
+temporary setup where I can push signals thru and look at the effect
+on the output, thinking I should go back to the eval board setup.
+
+PCM1794A internal reference connections a bit odd wrt. what I have
+seen.  There is an external grounded *resistor* IREF which floats at
+about 2.5V (Vcc/2) on the high end.  And then there are 47 uF
+per-channel reference bypass caps (sitting at a slightly different
+voltage).  I'm thinking that the external resistor has to be there to
+get a better tempco than is easily acheived on-chip.  The DAC outputs
+current, and the IV gain is established by off-chip resistors.  So
+this resistor may help to get more stable gain.  To be useful, the
+impedance at that node must be much greater than the 10K resistor, so
+I should be able to force the voltage.
+
+Question is what effect forcing IREF that will have on the output
+amplitude and 1/f noise.  I wonder if this is a special compensation
+path, because using an external resistor is the *opposite* of what you
+do on a conventional current output DAC (where an onboard feedback
+resistor is often included).
+
+If IREF doesn't do the right thing, could also try forcing the
+reference bypass nodes, but these might be internally forced to a
+variable level.
+
+ ==> IREF doesn't seem to do the right thing. But the VCOM pins have a
+     fairly high output impedance, around 1K, and can be drive, and do
+     act as a reference.
+
+Using my volt box driving the VCOM pins I was able to considerably
+reduce the 1/f and RMS noise (no detectable effect on broadband
+noise).  But the reference voltage is negative wrt the VCC rail, with
+output dropping to zero at about VCC - 1V.  So the reference would
+need to be level shifted, negated and offset.
+
+I need to check the linearity, but we don't require any adjustment
+range to speak of, we just need the chip to tolerate a particular
+fixed voltage.  But we do need to model the offset voltage so that it
+can be added.  This could be a fixed analog trim, but the offset might
+have significant drift and temperature dependence.  If the offset is
+wrong then this sets a limit on the accuracy of the reference
+tracking.  We don't need to know the offset super-accurately, but
+given the approximately 1.75V reference voltage, it would be good to
+know the offset within 1% or 18 mV.  But only 10% accuracy could still
+give us 90% reference tracking, which would be quite beneficial.
+
+ ==> If we are hacking into the reference, then probably a good idea
+     reimplement the DAC layout, rather than using the EBAY boards.
+     Not only does it avoid a bigger bodge-pile, having the reference
+     input starts to make it a more desirable (less stopgap) solution,
+     so might be useful to be able to produce the DAC boards.  Even if
+     being so creative in off-datasheet use makes me a bit uneasy.
+ 
+
+Might want to spare some thought for the problem of channel
+cross-coupling due to the single-ended output to the driver cards.
+Could do a brute-force magnetic solution, a CM choke or the classic
+transformer.  Will add some distortion, are somewhat bulky, but there
+are options at $5-10 and we only need 3.  On the plus side for a
+transformer, it not going to add any significant thermal noise, which
+is an issue with a difference amp.  It can pick up hum and carrier
+fields, so might be best to put the transformer on the DAC board,
+which is is outside of the power section.  Plausible level of hum
+pickup is not a problem because we have hum suppression on the input
+side, but if we are trying to maximize channel isolation, then we
+don't want carrier pickup.
+
+But if we are doing predistortion of the carriers, then we can easily
+null the cross-coupling in the process.  And my suspicion is that the
+level of cross coupling that we have is not a big deal anway, though
+it has to have some effect on accuracy.
+ ==> I guess if there is room we can put transformer footprints on the
+     DAC board; this isn't a commitment to use them.
+
+I ordered some IRAUDAMP7 and power supply cards on EBAY.  These amps
+are single channel, which should help somewhat with the
+cross-coupling.  The class-D cards have mostly moved on to smarter
+chips, bluetooth, DSP, etc, but I really don't want any
+audio-optimized DSP in there.
+
+
+Other tasks to do while waiting for DAC board:
+ -- Assemble and test LV reg board
+ -- Populate YZ channels on input board to see if they work.
+ -- Input board revisions, send to assembly?  We really want at least
+    two boards to get going, since we need the reference inputs.  (And
+    the bodged input board won't fit in the card guide because of the
+    reference buffer bodge.)
 
 
 [14 Sep 20]

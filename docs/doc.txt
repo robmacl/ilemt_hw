@@ -1,0 +1,103 @@
+This file documents important bits current state of understanding
+about the ILEMT implementation.  So this differs from notebook.txt
+which is chronological, and contains lots of irrelevant and obsolete
+material.  I'll probably move this into the github wiki.
+
+
+LTC25xx ADCs:
+
+I don't know to what degree the LTC2512 is simply a crippled version
+of the LTC2500, but it seems that it is genuinely optimized for higher
+output rates (lower decimation).  Not only is the output data width
+reduced to 24 bits, the sampling rate increases from 1 MSPS to 1.6
+MSPS.  At the max sample rate (for each) the noise specs are similar.
+So probably the frontend is the same, but the data paths have reduced
+width, and the SAR takes fewer cycles.
+
+wrt. this architecture, I am a little puzzled what the benefit is of
+decimating from a SAR with many noise bits, vs. only having a few
+noise bits.  Maybe there is better linearity, especially at very high
+decimation?  But in any case, with the LTC2500-32, in my (limited) ADC
+evaluation, I had better luck getting a wide dynamic range from peak
+to noise floor in the presence of signal (in comparison to audio
+ADCs).  The noise floor rise I saw with signal may be due to reference
+noise, but the audio parts do not have an external reference input
+(which is a problem for other reasons).
+
+In LTC SAR ADC application info there is discussion of how the ADC
+driver and input caps at input affect settling of the input during the
+ADC sample period.  This does not apply in any straightforward way to
+our use on an AC signal.  See notebook [26 Feb 20], [3 Dec 19], but
+the signal slews ~50k LSB between conversions (with 32 bit ADC), so
+can never "settle".
+
+
+Procedures:
+
+This page is documentation on current procedures, including specific commands
+to do certain tasks.
+
+________________
+Levels, etc:
+
+The present theory re. output levels is that the overall gain from digital
+code to coil voltage should be the same across channels, and also this level
+should be set by thermal limits (and near DAC full scale).  Turn off high
+carriers and then measure voltage at coil as 1.15 V RMS (with 0.05 peak low
+carrier amplitude).  See [26 Sep 19]
+
+I have been setting the UR44 DAW output levels at -6 dB, but with
+drivers set for this level the PCM1794A board doesn't have enough
+output.  So you have to readjust the gain pot on the driver board when
+you switch between.  To switch, you can just set the current readback
+to 3.275 A.
+
+Standardize noise floor measurements with carrier at -4 dBFS at 120mm.
+Set the X-X gain to get the -4 dB, then switch to the sensor loopback
+cable with HP353A attenuator to set all the gains equal.  Use the raw
+data time domain RMS because the spectral measurements are iffy due to
+unsynch issues.
+
+To minimize unsynch errors in spectral measurement, set spectrum controls to
+flat-top order 1 blocking 2 averaging 0, and then show the levels for "Trace
+display", not "Carrier levels" (which uses fixed FFT parameters).
+
+Because of time skew issues you really need to evaluate the test box
+in "TCP only" mode, otherwise you get gratuitous LF noise, wrong
+spectral peaks, etc.  This means you have to use "X X no-sense" mode,
+and re-calibrate the distance (which is different than in vector
+mode).  I am going to test the UR44 in this same mode for a
+head-to-head comparison.  The noise is somewhat lower in vector mode
+because of averaging across carriers.
+
+With UR44, set the YZ carriers to zero.  This better matches what "TCP
+only" mode is doing (and doesn't include any source channel
+interaction effects that might exist, but are not there in TCP only
+mode).
+
+Shell snips: 
+________________
+Send ADC data to labview:
+# Has laptop IP address wired in, may change
+~/labview_connect &
+________________
+Install new FPGA bit file:
+
+On windows:
+cd ~/Documents/Work/ilemt_fpga/verilog/ilemt/vivado/ilemt.runs/impl_1/
+scp ilemt.bit ilemt@192.168.1.15:/tmp/xillydemo.bit
+
+On ilemt:
+sudo mount /dev/mmcblk0p1 /mnt/card
+cd /mnt/card
+sudo cp /tmp/xillydemo.bit .
+sudo reboot
+________________
+VNC access:
+# ilemt.local works on home net
+ssh -L 5905:127.0.0.1:5901  ilemt@192.168.1.15
+
+on ilemt:
+vncserver -compatiblekbd
+password BogPickle
+________________
