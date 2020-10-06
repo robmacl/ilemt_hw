@@ -271,7 +271,7 @@ F 3 "" H 2800 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 6250 5950 0    50   ~ 0
-The reference buffer receives the 5V reference from the edge connector\nand buffers it for the large capacitive load of the reference bypass caps. \nThe reference comes in differentially so as to re-reference the voltage to the gound\npresent on the input card, mimizing effect of DC and low-frequency ground shifts.\n\nThe loop bandwidth of the reference buffer is approximately 4.5 kHz, which \nhelps to reject LF disturbances on the reference, such as due to vibration \ninducing piezoelectric voltages in the ceramic reference bypass capacitors.
+The reference buffer receives the 5V reference from the edge connector\nand buffers it for the large capacitive load of the reference bypass caps. \nThe reference comes in differentially so as to re-reference the voltage to the gound\npresent on the input card, mimizing effect of DC and low-frequency ground shifts.\n\nThe loop bandwidth of the reference buffer is approximately 4.5 kHz. In rev 0\nthis gave loop gain for output disturbance rejection, but after addition of \nR37/C42/U10 this largeish bandwidth is no longer needed. C10, C41 could\nbe increased, but at some point capacitor rmismatch would risk compromising \nthe LF CMRR.
 $Comp
 L Device:C_Small C?
 U 1 1 5E286955

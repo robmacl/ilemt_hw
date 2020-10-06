@@ -31,6 +31,9 @@ Input board revisions:
     reference buffer supply just looks ugly.  Supply is also 
     skimpy with diode drops.
  -- Use OPA2227 dual opamp rather than 2 OPA27
+ -- Increase C41, C10 to reduce reference buffer diff amp bandwidth.
+    There is no reason to have so much bandwidth now that we no
+    longer need loop gain to reject output disturbances.
  -- Q3E fuse trace is narrow.
  -- Reconsider bead selection on the power inputs.  Higher Z?
     Consider DC current effect.
@@ -93,6 +96,201 @@ Don't forget:
  -- What effect does placing the output filter resonance at the
     carrier frequency have on driver noise?  Does this help or hurt?
 
+
+[6 Oct 20]
+
+Left it running, and was seeing more like 4u RMS re FS w/o VCOM drive
+for a while, but it settled down near 3 again.  But with VCOM drive
+the 1/f seems nearly gone, only 1.05u RMS.  Possibly this is a delayed
+consequence of closing the test box, or a change in the volt box.  The
+RMS did not drop all that much, but this is because the broadband
+noise dominates.
+
+So this is fairly encouraging wrt what we might get with VCOM drive.
+We don't have a common reference, but our DAC 1/f noise was so high
+that we would not have seen the VREF noise anyway.
+
+Low rate noise floor has improved, now pretty similar to the high
+rate.
+
+Looking at spectrum of chart display, our 1/f corner has dropped
+somewhat, though it is hard to read with no smoothing, but perhaps as
+low as 4 Hz, as opposed to around 20 Hz w/o VCOM drive.  There is a
+bit of a rise starting around 8-10 Hz, and a narrow spike at 5.8 Hz.
+But our largest spurs are 60 Hz and 70 Hz (???).  The 70 Hz goes up
+and down, otherwise the narrowband peaks are hum harmonics.  The hum
+filter is perhaps not working quite as well as we would like, but this
+hum is well submerged in the broadband noise.
+
+So I guess I have a plan for the DAC board, and am on to that.
+
+Looks like we need 40 mA on VCC per PCM1794A, so with two let's say
+100 mA.
+
+
+
+[5 Oct 20]
+
+Thinking about making something to measure 1/f noise in the region we
+care about, which we could approximate as the classic 0.1 Hz - 10 Hz
+band.
+
+I think what we would want is an AC coupled instrumentation amp with
+that corner, or lower.  The input caps would have to be film,
+presumably polyester to get high value, and the first stage amps need
+to have very low 1/f noise in that band.
+
+Chopper opamps might be useful, and another possibility would be a DIY
+chopper structure or special chopper diff amp chip, like the LT flying
+capacitor building block.  The flying cap gets CMRR, but you still
+need gain.  But with switching it would be possible to turn the LF
+signal into a measurable HF signal.  That's the classic chopper
+principle.
+
+	Part	0.1-10 uV	Bias nA		Drift uV/C	Notes
+	INA821	0.14		0.5		0.4
+	INA111	1		0.02		5		JFET
+	INA333	1		0.2		0.1		Chopper
+	
+For comparison, the MAX6220-5 which we are using for VREF has 2.5 uV
+typ noise 0.1-10 Hz.  What we see at VREF should be >= this because
+the LPF has no effect on this range, and the buffer will add some 1/f.
+The OPA209 buffer is 0.13 uV pp nom. Then we have two stages of buffer
+on the board side, with 2x gain in the diff amp.  This should still
+contribute only 0.5 uV or so, leaving the reference itself dominant.
+But the reference noise is not *way* bigger than the very-low-noise
+buffers, which leaves open the question of whether of reference
+tracking 1/f rejection is actually useful.
+
+Let's look at what 1/f we are seeing with the eval board setup.  With
+out the VCOM drive I am seeing about 3e-6 re FS RMS with 0.1 Hz
+highpass and 40 sec averaging.  Since the reference is 5V, this
+corresponds to about 15 uV at the ADC reference input, or 30 uV at the
+ADC input.  This is RMS; p-p would be at least 2x bigger.  So this is
+way more than the expected VREF noise, ~10x.
+
+Just eyeballing it, our p-p noise over 10 sec is about 15u re FS,
+which would be around 4x larger than the RMS (which is around 3.6u).
+Measuring over 10s does not precisely correspond to 0.1 Hz cut, of
+course.
+
+With the volt box on VCOM the 0.1-10 Hz at output is around 1.25u, but
+the broadband noise is no longer negligible.  By eyeball, p-p over 10s
+of the 1/f is around 5u, or 3x less.  This is entirely worthwhile, but
+does not bring it down to a level where reference tracking would
+matter.  But we don't know how much the ADC reference is contributing,
+and we are getting down to a level where that should matter somewhat.
+Likewise the volt box is also contributing, and its output effectively
+has 2x gain because of the VCOM offset.
+
+There seems to be a big thermal drift effect with the VCOM drive, I
+touched the chip for a while and the output decreased ~1m.  Now, with
+lid on the box, the output is drifting up.  There is some pressure
+effect using fiberglass probe, but it is smaller and fast responding.
+
+The lid-on effect is probably contributed to by the DAC reference
+drift.
+
+ ==> Remember we are planning to get driver feedback.  This should
+     compensate for DAC gain 1/f and drift quite well.  And
+     ratiometric measurement between the identical input cards should
+     work well.
+
+Worth looking at whether the DAC gain drift is worse with the VCOM
+drive, which is quite possible, eg. if the VCOM offset is temperature
+dependent.  But even if true, the VCOM drive is still probably a good
+idea because it seems to dramatically reduce some higher 1/f stuff,
+and our reference feedback path needs to have low bandwidth to avoid
+adding noise, so may have trouble tracking 10 Hz noise accurately.
+
+With box closed, 1/f has dropped somewhat, to be clearly at or below
+the broadband noise.
+
+ ==> Also, with distance display mode, the 0.1-10 Hz is ~75 nm RMS,
+     which is very small compared to our expected noise.  So this
+     level of noise doesn't matter?
+
+w/o the VCOM drive the RMS is more like 200n, and clearly dominated by
+1/f. 
+
+Would have to dig into to old noise tests, but this is is giving the
+-151 dB high carrier noise floor.  This is with -5 dB carrier.  We
+were not seeing this with the all-up system, there was driver noise
+and carrier related noise floor rise.  IIRC we were struggling to get
+-130 dB.  (The noise floor measure does not get at close-in noise.)
+
+Note also that for broadband noise, the DAC contribution is submerged
+in the driver noise, at any range.  The benefit of the lower noise
+input path is so far limited to longer range, where the driver noise
+comes down to the input noise floor.
+
+My current thinking is to implement the simple VCOM drive scheme.
+With this on the board we can also disconnect and go back to the
+normal mode if we want this for some reason.  It is not entirely
+proven, but it seems likely that the remaning 1/f noise and any
+thermal drifts do not matter when we have the driver reference
+feedback.
+
+
+[4 Oct 20]
+
+Summary:
+ -- DAC response is linear at the VCOM pins, but the X intercept is
+    1.3 V.
+ -- Using volt box significantly reduces 1/f noise, so driving off of
+    the master reference would be beneficial.
+ -- Simplest idea is to set the DAC +5 VCC from the master reference,
+    then set the VCOM voltage at a fraction of this. eg. 0.55 VREF for
+    VCOM=2.75V. 
+ -- Getting ratiometic reference tracking is complicated by the VCOM
+    offset.  
+ -- Probably 1/f noise associated with this offset.  Maybe residual
+    1/f multiplicative noise in DAC/ADC swamps the reference 1/f noise? 
+
+
+Linearity testing from DAC reference bypass.  Output amplitude
+0.7/0.05.  Adjust DAC pad level for -6 dB at input w/o reference
+attached.
+
+	Ref V		Demod re FS	Relative re FS
+	2.9226		0.559		0.06050
+	2.8654		0.538		0.04041
+	2.8070		0.518		0.01997
+	2.7494		0.498		0
+	2.6912		0.478		-0.02023
+	2.6338		0.458		-0.04007
+	2.5745		0.438		-0.06048
+
+	2.7495		0.498		-0.00003
+
+So it does seem quite linear, but the X intercept is around 1.32 V.
+Excel says y = 0.3475x - 0.4573, where X is Ref V and Y is demod
+amplitude.
+
+It does seem that any kind of fixed reference is going to improve the
+1/f noise, but it's going to be more tricky to get the ratiometric
+reference tracking because there is this ill-defined offset inside the
+DAC.  I would think offset must have its own 1/f noise.
+
+The thing is, the obvious idea of modelling the VCOM offset as a fixed
+voltage is circular.  Unless the offset reference 1/f is better than
+the master VREF then the offset reference is only going to introduce
+more 1/f noise than what we were trying to track.  And the reference
+*can't* be much better because we are already using a pretty good
+reference.
+
+This also raises the question of how the VCOM offset could be so
+free of 1/f noise as to make reference tracking have any value.
+
+I need to get some quantitative idea of how the 1/f noise I am seeing
+overall compares to the expected reference 1/f noise, and the 1/f on
+the volt box I am using.  In the eval board setup there is also the
+noise of the ADC board reference.
+ ==> I could prototype DAC reference buffer driven by ADC onboard
+     reference.  This would test reference tracking.  Can also strap
+     ADC to use external reference.  Can use volt box to test effect
+     of varying.
+ 
 
 [2 Oct 20]
 
