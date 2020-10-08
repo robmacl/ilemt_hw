@@ -127,6 +127,15 @@ So I guess I have a plan for the DAC board, and am on to that.
 Looks like we need 40 mA on VCC per PCM1794A, so with two let's say
 100 mA.
 
+I was hoping I could use the +10/-6 supplies for the DAC output, but
+this doesn't seem very practical because the I/V stages need to sit at
+a negative voltage.  Output current swings from 2 to 10 mA, and they
+have feedback resistors of 750 Ohm or so, giving a negative swing of
+7.5V.  We could reduce the I/V gain, but this would hurt noise.  So it
+seems that we want at least a boosted negative supply >= -10V from
+somewhere.  Getting enough swing at the output doesn't seem to be a
+problem with a +8V supply.
+
 
 
 [5 Oct 20]

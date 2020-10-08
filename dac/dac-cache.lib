@@ -78,26 +78,6 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device_Polyfuse
-#
-DEF Device_Polyfuse F 0 0 N Y 1 F N
-F0 "F" -100 0 50 V V C CNN
-F1 "Device_Polyfuse" 100 0 50 V V C CNN
-F2 "" 50 -200 50 H I L CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- *polyfuse*
- *PTC*
-$ENDFPLIST
-DRAW
-S -30 100 30 -100 0 1 10 N
-P 2 0 1 0 0 100 0 -100 N
-P 4 0 1 0 -60 100 -60 60 60 -60 60 -100 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # Device_Q_NPN_BCE
 #
 DEF Device_Q_NPN_BCE Q 0 0 Y N 1 F N
@@ -135,6 +115,24 @@ P 5 0 1 0 0 30 40 15 0 0 -40 -15 0 -30 N
 P 5 0 1 0 0 90 40 75 0 60 -40 45 0 30 N
 X ~ 1 0 150 50 D 50 50 1 1 P
 X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Regulator_Linear_LM337_SOT223
+#
+DEF Regulator_Linear_LM337_SOT223 U 0 10 Y Y 1 F N
+F0 "U" -150 -125 50 H V C CNN
+F1 "Regulator_Linear_LM337_SOT223" 0 -125 50 H V L CNN
+F2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" 0 -200 50 H I C CIN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ SOT?223*
+$ENDFPLIST
+DRAW
+S -200 200 200 -75 0 1 10 f
+X ADJ 1 0 300 100 D 50 50 1 1 I
+X VI 2 -300 0 100 R 50 50 1 1 W
+X VO 3 300 0 100 L 50 50 1 1 w
 ENDDRAW
 ENDDEF
 #
@@ -182,17 +180,55 @@ X ~ 2 200 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# ilemt_input_OVDD
+# dk_PMIC-Voltage-Regulators-Linear_NCP1117ST33T3G
 #
-DEF ilemt_input_OVDD #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -150 50 H I C CNN
-F1 "ilemt_input_OVDD" 0 150 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
+DEF dk_PMIC-Voltage-Regulators-Linear_NCP1117ST33T3G U 0 40 Y Y 1 F N
+F0 "U" 100 150 60 H V C CNN
+F1 "dk_PMIC-Voltage-Regulators-Linear_NCP1117ST33T3G" 100 250 60 H V C CNN
+F2 "digikey-footprints:SOT-223" 200 200 60 H I L CNN
+F3 "https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF" 200 300 60 H I L CNN
+F4 "NCP1117ST33T3GOSCT-ND" 200 400 60 H I L CNN "Digi-Key_PN"
+F5 "NCP1117ST33T3G" 200 500 60 H I L CNN "MPN"
+F6 "Integrated Circuits (ICs)" 200 600 60 H I L CNN "Category"
+F7 "PMIC - Voltage Regulators - Linear" 200 700 60 H I L CNN "Family"
+F8 "https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF" 200 800 60 H I L CNN "DK_Datasheet_Link"
+F9 "/product-detail/en/on-semiconductor/NCP1117ST33T3G/NCP1117ST33T3GOSCT-ND/660708" 200 900 60 H I L CNN "DK_Detail_Page"
+F10 "IC REG LINEAR 3.3V 1A SOT223" 200 1000 60 H I L CNN "Description"
+F11 "ON Semiconductor" 200 1100 60 H I L CNN "Manufacturer"
+F12 "Active" 200 1200 60 H I L CNN "Status"
 DRAW
-C 0 75 25 0 1 0 N
-P 2 0 1 0 0 0 0 50 N
-X OVDD 1 0 0 0 U 50 50 1 1 W N
+S -200 100 300 -300 0 1 0 f
+X ADJ/GND 1 0 -400 100 U 50 50 1 1 P
+X OUT 2 400 0 100 L 50 50 1 1 P
+X IN 3 -300 0 100 R 50 50 1 1 W
+X OUT 4 400 -100 100 L 50 50 1 1 w
+ENDDRAW
+ENDDEF
+#
+# dk_Rectangular-Connectors-Headers-Male-Pins.lib_640456-3
+#
+DEF dk_Rectangular-Connectors-Headers-Male-Pins.lib_640456-3 J 0 40 Y Y 1 F N
+F0 "J" -100 50 50 H V R CNN
+F1 "dk_Rectangular-Connectors-Headers-Male-Pins.lib_640456-3" 100 -150 50 H V C CNN
+F2 "digikey-footprints:PinHeader_1x3_P2.54_Drill1.1mm" 200 200 60 H I L CNN
+F3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=640456&DocType=Customer+Drawing&DocLang=English" 200 300 60 H I L CNN
+F4 "A19470-ND" 200 400 60 H I L CNN "Digi-Key_PN"
+F5 "640456-3" 200 500 60 H I L CNN "MPN"
+F6 "Connectors, Interconnects" 200 600 60 H I L CNN "Category"
+F7 "Rectangular Connectors - Headers, Male Pins" 200 700 60 H I L CNN "Family"
+F8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=640456&DocType=Customer+Drawing&DocLang=English" 200 800 60 H I L CNN "DK_Datasheet_Link"
+F9 "/product-detail/en/te-connectivity-amp-connectors/640456-3/A19470-ND/259010" 200 900 60 H I L CNN "DK_Detail_Page"
+F10 "CONN HEADER VERT 3POS 2.54MM" 200 1000 60 H I L CNN "Description"
+F11 "TE Connectivity AMP Connectors" 200 1100 60 H I L CNN "Manufacturer"
+F12 "Active" 200 1200 60 H I L CNN "Status"
+DRAW
+S -50 0 250 -100 1 1 0 f
+S -10 -45 10 -65 1 1 0 F
+S 90 -45 110 -65 1 1 0 F
+S 190 -45 210 -65 1 1 0 F
+X ~ 1 0 100 100 D 50 50 1 1 P
+X ~ 2 100 100 100 D 50 50 1 1 P
+X ~ 3 200 100 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
@@ -315,6 +351,20 @@ DRAW
 C 0 75 25 0 1 0 N
 P 2 0 1 0 0 0 0 50 N
 X VCC 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# power_VDD
+#
+DEF power_VDD #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -150 50 H I C CNN
+F1 "power_VDD" 0 150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 0 75 25 0 1 0 N
+P 2 0 1 0 0 0 0 50 N
+X VDD 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
