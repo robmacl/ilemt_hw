@@ -97,6 +97,260 @@ Don't forget:
     carrier frequency have on driver noise?  Does this help or hurt?
 
 
+[14 Oct 20]
+
+Summary:
+ -- The noise I'm expecting from the DAC output buffer is ~10 nV/rtHz. This
+    pretty low noise, well lower than the ADC noise.  It is unclear how much
+    noise comes from the DAC itself, but unless the applications info is
+    spurious it would seem that the contribution of the output buffer is
+    significant.  Also, in the reference IRAUDAMP7 configuration the RTI noise
+    is 
+    
+ -- I really do not know the magnitude of the contribution from analog
+    modulator vs. other sources, like switching jitter.  But with the
+    self-oscillating continuous-time architecture the "quantization noise" is
+    created by analog noise in the modulator rather than any actual digital
+    quantization from DAC or PWM.
+ -- Supply noise reduction is important even with the analog feedback.  As
+    well as the post-regulator idea, it could also help to use a brute-force
+    LC filter, eg. 1 mH, 10 mF.  But supply noise is multiplicative, just like
+    reference noise, so at some point the 1/f noise becomes a problem, and
+    lowpass filtering does not help.  Ideally the supplies are derived from
+    the master VREF.  (But can this give a delta-V squared effect due to
+    multiple stages of multiplication?)
+ -- Aside from the DAC issues, noise optimization should wait.
+
+
+Need to read up on this, but thinking about how an analog modulator works,
+there is going to be more analog noise contribution than you might think, on
+top of the sampling quantization noise.
+ -- The bandwidth of the modulator needs to be perhaps 5-10x the modulation
+    frequency.
+ -- This is a lot of bandwidth, and a lot of noise.  Most of this noise is
+    going to get removed by the output filter, but there are images of the
+    passband at multiples of the modulation frequency.  So the noise bandwidth
+    is perhaps 5x the signal bandwidth.
+ -- The voltage gain happens in the output switching stage. Or, depending on
+    how you structure the modulator input, the "gain" is rather arbitrary.
+    But this means that the modulator noise is gained up, so can be best
+    regarded as input referred.  The analog noise manifests as jitter in the
+    modulator output.
+ -- In either a PWM or sigma-delta modulator, we are comparing to a triangle
+    wave at the modulation frequency.  This has the slowest possible slew rate
+    for that frequency, which is the worst possible thing.  The higher the
+    slew rate the faster we go through the comparison window, and the less
+    jitter is created by analog noise.  With a digital input, the bandwidth is
+    extremely high, but so is the slew rate.
+
+Poked around a bit, and wasn't able to locate a clear prediction of the
+noise.  The problem is that we aren't oversampling with a well-defined number
+of bits in the IRS2092 (the pulse width resolution).  There doesn't seem to be
+much academic analysis of the self-oscillating amp.  Lots of interest on the
+direct digital output, which of course makes a lot of sense, given that audio
+sources are all digital now.  The "resolution" of the analog modulator
+(self-oscillating or PWM) is defined by the analog noise and switching jitter,
+rather than a definite digital process.
+
+Looking at a few papers, people generally think that SNR in the audio band of
+100 dB or so is good.  This is what the IRAUDAMP7 is supposed to get.
+
+See app note https://www.psemi.com/pdf/app_notes/an72.pdf.  It seems people
+are using GaN switch devices to reduce jitter in the output stage.
+
+Also that paper Mauerer18 "Noise Minimization for Ultra-High SNR Class-D Power
+Amplifiers".  They say
+ ==> Supply noise is critical even with feedback
+
+This makes sense, and is something to bear in mind even with the interim
+analog driver setup.  We definitely need a low-noise supply for the open-loop
+direct digital output, so any effort here is not wasted.
+ ==> Driver supply noise is another multiplicative noise source which will
+     show up directly in our passband.
+
+I've planned linear post-regulators since the beginning.  I was wondering
+about a brute-force LC filter, but this would only be effective at HF, so
+would only bring down broadband noise.  (With either approach it is a big help
+that we do not need very much supply current because of the high-Q load.)  We
+mainly care about SNR on the high carriers, and it would be feasible to LC
+filter noise in the high carrier range.  This will not help with 1/f noise,
+but it seems like the broadband noise is higher at the moment.
+
+To have any effect with a single carrier the supply noise reduction needs to
+be well below the channel bandwidth, but with the three carriers the noise
+farther out does corrupt all the other carrier channels.  A 1 mH L with 10 mF
+C gives 50 Hz cutoff.  This is entirely realizable, although somewhat bulky
+and expensive.  Digikey has lots of cheap inductors at 1 mH in the current
+range we would need.  Shielded inductors are scarce above 1 mH, but there are
+lots of unsheilded ones, including the classic iron-core, which would be fine
+here. I'd think the shielding is not too critical here because the inductor is
+looking into a huge capacitance.
+
+I am suspecting that sigma-delta is not actually a good idea for us when we go
+to direct digital modulation.  We have non-flat concern about the noise: we
+just want to eject it from near the carriers, and don't want to spread the
+noise all around.  It may work better to use straight PWM at a locked carrier
+frequency multiple, with a pulse pattern that repeats at the high-rate block
+size.  We really don't care about harmonics of the high rate carrier, but IMD
+is a problem.  Adaptive pre-distortion can surely help, but we can also do
+stuff on the input side (like the current distortion filter).
+
+As well as side-tone spurs there would perhaps be some broadening of the
+carrier?  This is definitely what you see with reference and clock 1/f noise.
+I guess if you have a repeated excitation pattern, then whatever is going on
+in there, it all has to fall on the harmonic series of the repeat rate.  So
+you don't get a continuum spectram, it's a comb.  But for the high-low IMD the
+repeat rate is somewhere below the low carriers, so pretty low.
+
+I don't understand the noise shaping issues yet, but it seems like having a
+definite and carefully chosen sampling frequency would be an advantage when
+you have narrowband signals.  An ill-defined frequency means that the location
+of the baseband images is going to get dithered in the frequency domain, which
+risks passing 1/f noise in the modulator into our passband.
+
+ ==> Playing around with reducing the driver noise, either analog or with the
+     direct digital, is something that should wait until later.  But might as
+     well try to get the DAC noise low and the DAC output high.  We do need an
+     attenuation arrangement at the driver, though.  I'm thinking a little
+     board at the input terminals.
+
+
+See dac_driver.sxsch.  I've tweaked for an output of 3V RMS @ 10 kHz and 30
+kHz bandwidth.  There is a slight rolloff already by 10 kHz.  I have doubled
+the diff amp input impedance from 180 Ohms to 360.  This should be a fairly
+small amount of noise WRT what is coming from the V-I stage.  These two
+changes more than halve the feedback currents, down to 19 mA.  The really low
+impedance would be plausible for audio, but we are operating near full scale
+all the time.
+
+
+[13 Oct 20]
+
+Summary:
+ -- Based on the residual noise spec, the RTI noise of the IRAUDAMP7 in the
+    gain 36 configuration is 40 nV/rtHz, which is huge compared to the DAC
+    noise.  If reducing the gain were to reduce this proportionally, then we
+    would win big.
+ -- We can reduce analog noise in the driver modulator by increasing the drive
+    level and reducing the gain.
+ -- Analog noise of the IRS2092 is unclear, but probably the 3.3K input resistor
+    noise is significant wrt. it, so it would be better to reduce the feedback
+    resistor (100K) than increase the input resistor.  I think this would not
+    cause problems with the modulator because the inverting node impedance is
+    much lower than even (say) 24K.
+ -- The 4.5V RMS DAC PCM1792A datasheet application places high drive demands
+    (> 20 mA), especially on the negative V-I converter.  Even if there is no
+    current limit this is likely to degrade distortion, including IMD (which
+    we care about).  So we want opamps with high drive capability (common in
+    audio amps).
+ -- It looks like the noise from the buffer is dominated by the V-I stage,
+    with both the feedback resistor and opamp voltage noise contributing about
+    4 nV/rtHz (7 nV in all).  Then noise from the two arms sums to get 10
+    nV/rtHz.  Current noise of the NE5534 is negligible.  Lower voltage noise
+    would help as long as the current noise does not increase too much.  With
+    this V-I noise, the LT1028 output amp voltage noise contributes
+    negligibly, even given the noise gain 2.
+
+
+Looking at the PCM1794A output buffer.
+ 1] Bandwidth caps on the datasheet application are oddly wrong (too small),
+    enough to explain why I was seeing all the output noise with the ebay
+    boards.
+ 2] The negative side I-V stage has to sink a bunch of current in the high
+    output configuration.  Not only the 10.1 mA from the DAC, but also the
+    feedback current of the output stage.  This is >20 mA.  Lots of opamps
+    can't do this at all, or are dragging badly.  Not clear about the NE5534.
+    This is audio, so they are not designing for full output all the time. But
+    we are.
+ 3] With NE5534 it appears that noise is mainly from the feedback resistor
+    (3.6 nV/rtHz) and the opamp (3.5 nV/rtHz @ 1 kHz).  We would expect about
+    4.6 nV/rtHz from these two.  The current noise of this part is only 0.4
+    pA/rtHz, which contributes negligibly.
+ 4] Output stage noise gain is 2, so the output stage voltage noise matters
+    somewhat more (root 2) than the V-I stage.
+
+Here it is proably a reasonable approximation that the transimpedance amp
+voltage noise sees only unity gain (unlike in cases like a photodiode where
+the source capacitance causes a noise gain increase).  You might think this
+would make current noise more critical, but here the current is so large it
+swamps the opamp current noise.  The feedback resistor noise is significant
+because it can't be made very large due to voltage limits.  The ideal thermal
+voltage noise at the output is simply the voltage noise of the feedback
+resistor.
+
+I really have no idea on how much of the output noise comes from the buffer,
+vs. the DAC itself, but they are acting like the buffer noise is significant.
+Shot noise appears to be orders of magnitude below the sources in the output
+buffer.
+
+It's hard to figure out what the input-referred noise of the IRS2092 is.
+There is a spec "OTA input voltage noise", but it's insanely high, 250 mV RMS
+in 20 kHz BW.  Maybe this has to do with the test circuit, because it's far
+from obvious what the figure 5 circuit is doing.
+
+Both the datasheet front page and IRAUDAMP7 has the same 200 uV "residual
+noise".  I think what this means output noise at no input, in this case at
+gain=37.  This would be 40 nV/rtHz RTI, which is huge compared to a low noise
+amp.  It may well be that the modulator quantization noise is entirely
+swamping the analog noise.  This is very likely at full scale inputs.  
+
+Anyway, with the current DAC/driver setup, driver noise is way dominant. The
+only question is whether it would help to reduce the driver gain rather than
+attenuating the DAC output.  Currently I'm doing something in-between with the
+gain trim at the driver.  Since the driver input is at an inverting node, we
+can arbitrarily reduce the gain by adding series resistance at the input.
+
+Hmmn, actually the driver feedback resistor is 100k.  Which is noise of 40
+nV/rtHz.  Is this divided by the closed loop gain or not?  I think it is,
+easier to see if you look at it as a current noise.  Or look at the impedance
+at the amp inverting input, which is lowish, 3K or so.  But even at 3K we are
+talking 7 nV/rtHz, which is well more than the DAC noise.  And if we add more
+series resistance to reduce gain, the input resistor noise only increases.
+Unless the input amp noise is way more than this we would at get a most a
+sqrt() improvement in noise by increasing DAC output and adding input
+resistance.  (It would be kind of a stretch to call a bipolar amp with > 7 nV
+noise "low noise", which they say they are.)
+
+Ideally we would reduce the gain by reducing the feedback resistor.  At first
+I was thinking that this might create problems due to the larger feedback
+current and lower impedance.  But if we reduce the feedback to 25K this hardly
+changes the impedance at the inverting node since the input resistor is much
+lower.  And if we leave that resistor as-is, then the integrator frequency
+response should not change.
+
+It may be that fiddling with the driver gain and the DAC level, driver
+resistors, etc., is not going to have any effect because the modulator
+sampling noise is way more.
+
+
+[8 Oct 20]
+
+I infer that the DAC system clock SCK is the noise-critical sampling
+clock.  The PCM1794A supports clocks of 128, 256, 512 * fs, and also
+the series based on 3*64 = 192.  I'd think we want one of the
+power-of-two multipliers.
+
+We are currently using adc_cycles=16 adc_decimate=32 which gives a
+rate of capture_clk/512.  But currently capture_clk=20 Mhz (SYSCLK/5).
+So we can't run directly off of SYSCLK (unless we reprogram it to
+equal capture_clk).  But we could do a flip-flop reclocking like with
+the ADC MCLK.  It doesn't seem that the DAC cares about the SCK duty
+cycle as long as it is high and low for at least 5.2 ns.  So being
+high for 10 ns and low for 40 ns should be fine.
+
+But also it looks like I can program the oscillator using an eval
+board.  So maybe skip this?  To get 48 ks/s we want 24.576 MHz, which
+is just under the 50 ks/s max.  But then we need to worry about the
+MCLK synchronization delay again.  Could also run at 4x this, or
+98.304 MHz.  Doing the synchronization flop does give us more
+flexibility for the SYSCLK frequency, since it can be any integer
+multiple of what we want (up to maybe 200 MHz).  Could also put a
+fixed 4x divider on the DAC board and make capture_clk be SYSCLK/4.
+Timing may be a little tight, but we can use any lower hum multiple,
+like 44.1 ks/s and 22.5792 MHz * 4 or 90.3168 MHz.
+
+
+
 [6 Oct 20]
 
 Left it running, and was seeing more like 4u RMS re FS w/o VCOM drive
@@ -7713,7 +7967,7 @@ Opamps:
  -- OPA2210 (dual), super beta, En=2.2 nV/rtHz
  -- OPA2209 similar to OPA2210 (super beta), seems maybe an older version.
  -- LT1037 (single) similar to OPA2210, En a bit higher, but only in a single.
- -- AD8559 (dual), low distortion, En=1 nV/rtHz, but current noise is
+ -- AD8599 (dual), low distortion, En=1 nV/rtHz, but current noise is
     about double LT1028. Less than 1/2 price of LT1028 per-amp.
  -- OPA1656 (dual), CMOS, En=2.9 nV/rtHz @ 10 kHz, 1/f corner ~2 kHz,
     OPA2156 similar.

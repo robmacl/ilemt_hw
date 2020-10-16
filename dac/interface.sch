@@ -1,0 +1,782 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 11 11
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	3600 4450 3600 4500
+Wire Wire Line
+	3100 4200 2925 4200
+Wire Wire Line
+	2925 4200 2925 4500
+Wire Wire Line
+	2925 4500 3600 4500
+Connection ~ 3600 4500
+Wire Wire Line
+	3600 4500 3600 4550
+$Comp
+L ilemt_input:FIN1048 U?
+U 1 1 5F916941
+P 3600 2700
+AR Path="/5E525F87/5F916941" Ref="U?"  Part="1" 
+AR Path="/5E525FFE/5F916941" Ref="U?"  Part="1" 
+AR Path="/5F916941" Ref="U?"  Part="1" 
+AR Path="/5F911A05/5F916941" Ref="U17"  Part="1" 
+F 0 "U17" H 3775 950 50  0000 L CNN
+F 1 "DS90LV048" H 3775 850 50  0000 L CNN
+F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 3600 950 50  0001 C CNN
+F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fds90lv048a" H 2900 1850 50  0001 C CNN
+F 4 "26" H 3600 2700 50  0001 C CNN "DK line"
+F 5 "0/4 Receiver  LVDS 16-TSSOP" H 3600 2700 50  0001 C CNN "Description"
+F 6 "DS90LV048ATMTC/NOPB-ND" H 3600 2700 50  0001 C CNN "Digikey"
+F 7 "DS90LV048ATMTC/NOPB" H 3600 2700 50  0001 C CNN "MPN"
+F 8 "Texas Instruments" H 3600 2700 50  0001 C CNN "Manufacturer"
+	1    3600 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F916947
+P 3600 4550
+AR Path="/5E525F87/5F916947" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F916947" Ref="#PWR?"  Part="1" 
+AR Path="/5F916947" Ref="#PWR?"  Part="1" 
+AR Path="/5F911A05/5F916947" Ref="#PWR0123"  Part="1" 
+F 0 "#PWR0123" H 3600 4300 50  0001 C CNN
+F 1 "GND" H 3600 4400 50  0000 C CNN
+F 2 "" H 3600 4550 50  0001 C CNN
+F 3 "" H 3600 4550 50  0001 C CNN
+	1    3600 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 5F916952
+P 2450 2900
+AR Path="/5DFF6C0D/5F916952" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F916952" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F916952" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F916952" Ref="R?"  Part="1" 
+AR Path="/5F916952" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F916952" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5F916952" Ref="R?"  Part="1" 
+AR Path="/5E525FFE/5F916952" Ref="R?"  Part="1" 
+AR Path="/5F911A05/5F916952" Ref="R62"  Part="1" 
+F 0 "R62" V 2600 3100 50  0000 C CNN
+F 1 "100" V 2600 2900 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2490 2890 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 2450 2900 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 2450 2900 50  0001 C CNN "Digikey"
+F 5 "29" H 2450 2900 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 2450 2900 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 2450 2900 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 2450 2900 50  0001 C CNN "Manufacturer"
+	1    2450 2900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2300 2900 2250 2900
+Wire Wire Line
+	2250 2900 2250 2800
+Wire Wire Line
+	2600 2900 2650 2900
+Wire Wire Line
+	2650 2900 2650 3000
+$Comp
+L Device:R_US R?
+U 1 1 5F916961
+P 2450 3300
+AR Path="/5DFF6C0D/5F916961" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F916961" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F916961" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F916961" Ref="R?"  Part="1" 
+AR Path="/5F916961" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F916961" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5F916961" Ref="R?"  Part="1" 
+AR Path="/5E525FFE/5F916961" Ref="R?"  Part="1" 
+AR Path="/5F911A05/5F916961" Ref="R63"  Part="1" 
+F 0 "R63" V 2600 3500 50  0000 C CNN
+F 1 "100" V 2600 3300 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2490 3290 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 2450 3300 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 2450 3300 50  0001 C CNN "Digikey"
+F 5 "29" H 2450 3300 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 2450 3300 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 2450 3300 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 2450 3300 50  0001 C CNN "Manufacturer"
+	1    2450 3300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2300 3300 2250 3300
+Wire Wire Line
+	2250 3300 2250 3200
+Wire Wire Line
+	2600 3300 2650 3300
+Wire Wire Line
+	2650 3300 2650 3400
+$Comp
+L Device:R_US R?
+U 1 1 5F916970
+P 2450 3700
+AR Path="/5DFF6C0D/5F916970" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F916970" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F916970" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F916970" Ref="R?"  Part="1" 
+AR Path="/5F916970" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F916970" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5F916970" Ref="R?"  Part="1" 
+AR Path="/5E525FFE/5F916970" Ref="R?"  Part="1" 
+AR Path="/5F911A05/5F916970" Ref="R64"  Part="1" 
+F 0 "R64" V 2600 3900 50  0000 C CNN
+F 1 "100" V 2600 3700 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2490 3690 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 2450 3700 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 2450 3700 50  0001 C CNN "Digikey"
+F 5 "29" H 2450 3700 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 2450 3700 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 2450 3700 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 2450 3700 50  0001 C CNN "Manufacturer"
+	1    2450 3700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2300 3700 2250 3700
+Wire Wire Line
+	2250 3700 2250 3600
+Wire Wire Line
+	2600 3700 2650 3700
+Wire Wire Line
+	2650 3700 2650 3800
+$Comp
+L Device:C_Small C?
+U 1 1 5F916980
+P 3350 1950
+AR Path="/5DFCF14D/5DA78AA2/5F916980" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F916980" Ref="C?"  Part="1" 
+AR Path="/5F916980" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5F916980" Ref="C?"  Part="1" 
+AR Path="/5E525F87/5F916980" Ref="C?"  Part="1" 
+AR Path="/5E525FFE/5F916980" Ref="C?"  Part="1" 
+AR Path="/5F911A05/5F916980" Ref="C75"  Part="1" 
+F 0 "C75" V 3475 1875 50  0000 L CNN
+F 1 "100nF" V 3225 1850 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3350 1950 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_X7R_6.3V-to-50V_18.pdf" H 3350 1950 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 3350 1950 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 3350 1950 50  0001 C CNN "Digikey"
+F 6 "18" H 3350 1950 50  0001 C CNN "DK line"
+F 7 "" H 3350 1950 50  0001 C CNN "MFG"
+F 8 "CC0603KRX7R8BB104" H 3350 1950 50  0001 C CNN "MPN"
+F 9 "Yageo" H 3350 1950 50  0001 C CNN "Manufacturer"
+	1    3350 1950
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F916986
+P 3150 1950
+AR Path="/5E525F87/5F916986" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F916986" Ref="#PWR?"  Part="1" 
+AR Path="/5F916986" Ref="#PWR?"  Part="1" 
+AR Path="/5F911A05/5F916986" Ref="#PWR0124"  Part="1" 
+F 0 "#PWR0124" H 3150 1700 50  0001 C CNN
+F 1 "GND" V 3250 1875 50  0000 C CNN
+F 2 "" H 3150 1950 50  0001 C CNN
+F 3 "" H 3150 1950 50  0001 C CNN
+	1    3150 1950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3150 1950 3250 1950
+Wire Wire Line
+	3450 1950 3600 1950
+Wire Wire Line
+	3600 1950 3600 2100
+$Comp
+L Device:R_US R?
+U 1 1 5F916995
+P 2450 2500
+AR Path="/5DFF6C0D/5F916995" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F916995" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F916995" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F916995" Ref="R?"  Part="1" 
+AR Path="/5F916995" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F916995" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5F916995" Ref="R?"  Part="1" 
+AR Path="/5E525FFE/5F916995" Ref="R?"  Part="1" 
+AR Path="/5F911A05/5F916995" Ref="R61"  Part="1" 
+F 0 "R61" V 2600 2700 50  0000 C CNN
+F 1 "100" V 2600 2500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2490 2490 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 2450 2500 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 2450 2500 50  0001 C CNN "Digikey"
+F 5 "29" H 2450 2500 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 2450 2500 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 2450 2500 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 2450 2500 50  0001 C CNN "Manufacturer"
+	1    2450 2500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2300 2500 2250 2500
+Wire Wire Line
+	2250 2500 2250 2400
+Wire Wire Line
+	2600 2500 2650 2500
+Wire Wire Line
+	2650 2500 2650 2600
+Wire Wire Line
+	2650 2600 3100 2600
+Wire Wire Line
+	2250 2400 3100 2400
+Wire Wire Line
+	2650 3800 3100 3800
+Wire Wire Line
+	2250 3600 3100 3600
+Wire Wire Line
+	2650 3400 3100 3400
+Wire Wire Line
+	2250 3200 3100 3200
+Wire Wire Line
+	2650 3000 3100 3000
+Wire Wire Line
+	2250 2800 3100 2800
+Text GLabel 2050 3200 0    50   Input ~ 0
+DOUT1+
+Text GLabel 2050 3300 0    50   Input ~ 0
+DOUT1-
+Text GLabel 2050 2400 0    50   Input ~ 0
+DOUT3+
+Text GLabel 2050 2500 0    50   Input ~ 0
+DOUT3-
+Text GLabel 2050 2800 0    50   Input ~ 0
+DOUT2+
+Text GLabel 2050 2900 0    50   Input ~ 0
+DOUT2-
+Text GLabel 2050 3600 0    50   Input ~ 0
+SYSCLK+
+Text GLabel 2050 3700 0    50   Input ~ 0
+SYSCLK-
+Text Label 4850 3700 0    50   ~ 0
+SYSCLK
+$Comp
+L Device:C_Small C?
+U 1 1 5F9169C6
+P 6150 3200
+AR Path="/5DFCF14D/5DA78AA2/5F9169C6" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F9169C6" Ref="C?"  Part="1" 
+AR Path="/5F9169C6" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5F9169C6" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5F9169C6" Ref="C?"  Part="1" 
+AR Path="/5E525FFE/5F9169C6" Ref="C?"  Part="1" 
+AR Path="/5F911A05/5F9169C6" Ref="C76"  Part="1" 
+F 0 "C76" V 6025 3125 50  0000 L CNN
+F 1 "100nF" V 6275 3075 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6150 3200 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_X7R_6.3V-to-50V_18.pdf" H 6150 3200 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 6150 3200 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 6150 3200 50  0001 C CNN "Digikey"
+F 6 "18" H 6150 3200 50  0001 C CNN "DK line"
+F 7 "" H 6150 3200 50  0001 C CNN "MFG"
+F 8 "CC0603KRX7R8BB104" H 6150 3200 50  0001 C CNN "MPN"
+F 9 "Yageo" H 6150 3200 50  0001 C CNN "Manufacturer"
+	1    6150 3200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F9169CC
+P 6300 3200
+AR Path="/5E624B3C/5F9169CC" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5F9169CC" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F9169CC" Ref="#PWR?"  Part="1" 
+AR Path="/5F9169CC" Ref="#PWR?"  Part="1" 
+AR Path="/5F911A05/5F9169CC" Ref="#PWR0114"  Part="1" 
+F 0 "#PWR0114" H 6300 2950 50  0001 C CNN
+F 1 "GND" V 6175 3125 50  0000 C CNN
+F 2 "" H 6300 3200 50  0001 C CNN
+F 3 "" H 6300 3200 50  0001 C CNN
+	1    6300 3200
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6300 3200 6250 3200
+Wire Wire Line
+	6050 3200 5850 3200
+Wire Wire Line
+	5850 3300 5850 3350
+$Comp
+L power:GND #PWR?
+U 1 1 5F9169E1
+P 5700 3950
+AR Path="/5E624B3C/5F9169E1" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5F9169E1" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F9169E1" Ref="#PWR?"  Part="1" 
+AR Path="/5F9169E1" Ref="#PWR?"  Part="1" 
+AR Path="/5F911A05/5F9169E1" Ref="#PWR0127"  Part="1" 
+F 0 "#PWR0127" H 5700 3700 50  0001 C CNN
+F 1 "GND" H 5700 3800 50  0000 C CNN
+F 2 "" H 5700 3950 50  0001 C CNN
+F 3 "" H 5700 3950 50  0001 C CNN
+	1    5700 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5850 3200 5850 3300
+Connection ~ 5850 3300
+Wire Wire Line
+	5700 3950 5700 3750
+Wire Wire Line
+	5700 3300 5850 3300
+Wire Wire Line
+	5850 3150 5850 3200
+Connection ~ 5850 3200
+Wire Wire Line
+	5600 3500 5500 3500
+Wire Wire Line
+	5500 3500 5500 3900
+Wire Wire Line
+	5500 3900 6100 3900
+Wire Wire Line
+	6100 3900 6100 3700
+Wire Wire Line
+	5850 3850 5850 3950
+$Comp
+L Device:C_Small C?
+U 1 1 5F916A05
+P 7250 3200
+AR Path="/5DFCF14D/5DA78AA2/5F916A05" Ref="C?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5F916A05" Ref="C?"  Part="1" 
+AR Path="/5F916A05" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5F916A05" Ref="C?"  Part="1" 
+AR Path="/5E525F2C/5F916A05" Ref="C?"  Part="1" 
+AR Path="/5E525FFE/5F916A05" Ref="C?"  Part="1" 
+AR Path="/5F911A05/5F916A05" Ref="C77"  Part="1" 
+F 0 "C77" V 7125 3125 50  0000 L CNN
+F 1 "100nF" V 7375 3075 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7250 3200 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_X7R_6.3V-to-50V_18.pdf" H 7250 3200 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 7250 3200 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 7250 3200 50  0001 C CNN "Digikey"
+F 6 "18" H 7250 3200 50  0001 C CNN "DK line"
+F 7 "" H 7250 3200 50  0001 C CNN "MFG"
+F 8 "CC0603KRX7R8BB104" H 7250 3200 50  0001 C CNN "MPN"
+F 9 "Yageo" H 7250 3200 50  0001 C CNN "Manufacturer"
+	1    7250 3200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F916A0B
+P 7400 3200
+AR Path="/5E624B3C/5F916A0B" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5F916A0B" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F916A0B" Ref="#PWR?"  Part="1" 
+AR Path="/5F916A0B" Ref="#PWR?"  Part="1" 
+AR Path="/5F911A05/5F916A0B" Ref="#PWR0118"  Part="1" 
+F 0 "#PWR0118" H 7400 2950 50  0001 C CNN
+F 1 "GND" V 7275 3125 50  0000 C CNN
+F 2 "" H 7400 3200 50  0001 C CNN
+F 3 "" H 7400 3200 50  0001 C CNN
+	1    7400 3200
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7400 3200 7350 3200
+$Comp
+L 74xGxx:74AUC1G74 U?
+U 1 1 5F916A18
+P 6950 3600
+AR Path="/5E525F2C/5F916A18" Ref="U?"  Part="1" 
+AR Path="/5F916A18" Ref="U?"  Part="1" 
+AR Path="/5F911A05/5F916A18" Ref="U19"  Part="1" 
+F 0 "U19" H 6800 4000 50  0000 C CNN
+F 1 "74AUP1G74" H 6650 4100 50  0000 C CNN
+F 2 "Package_SO:VSSOP-8_2.3x2mm_P0.5mm" H 6950 3600 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/74AUP1G74.pdf" H 6950 3600 50  0001 C CNN
+F 4 "1727-6029-1-ND" H 6950 3600 50  0001 C CNN "Digikey"
+F 5 "74AUP1G74DC,125" H 6950 3600 50  0001 C CNN "MPN"
+F 6 "" H 6950 3600 50  0001 C CNN "MFG"
+F 7 "IC FF D-TYPE SNGL 1BIT 8VSSOP" H 6950 3600 50  0001 C CNN "Description"
+F 8 "Nexperia USA Inc." H 6950 3600 50  0001 C CNN "Manufacturer"
+F 9 "3" H 6950 3600 50  0001 C CNN "DK line"
+	1    6950 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7150 3200 6950 3200
+Wire Wire Line
+	6950 3300 6950 3350
+$Comp
+L power:GND #PWR?
+U 1 1 5F916A20
+P 6800 3950
+AR Path="/5E624B3C/5F916A20" Ref="#PWR?"  Part="1" 
+AR Path="/5E525F2C/5F916A20" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F916A20" Ref="#PWR?"  Part="1" 
+AR Path="/5F916A20" Ref="#PWR?"  Part="1" 
+AR Path="/5F911A05/5F916A20" Ref="#PWR0115"  Part="1" 
+F 0 "#PWR0115" H 6800 3700 50  0001 C CNN
+F 1 "GND" H 6800 3800 50  0000 C CNN
+F 2 "" H 6800 3950 50  0001 C CNN
+F 3 "" H 6800 3950 50  0001 C CNN
+	1    6800 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6950 3200 6950 3300
+Connection ~ 6950 3300
+Wire Wire Line
+	6800 3950 6800 3750
+Wire Wire Line
+	6800 3300 6950 3300
+Wire Wire Line
+	6950 3150 6950 3200
+Connection ~ 6950 3200
+Wire Wire Line
+	6700 3500 6600 3500
+Wire Wire Line
+	6600 3500 6600 3900
+Wire Wire Line
+	6600 3900 7200 3900
+Wire Wire Line
+	7200 3900 7200 3700
+Wire Wire Line
+	6950 3850 6950 3950
+Wire Wire Line
+	6100 3500 6300 3500
+Wire Wire Line
+	6300 3500 6300 3700
+Wire Wire Line
+	6700 3700 6300 3700
+Wire Wire Line
+	2050 2400 2250 2400
+Connection ~ 2250 2400
+Wire Wire Line
+	2050 2500 2100 2500
+Wire Wire Line
+	2100 2500 2100 2600
+Wire Wire Line
+	2100 2600 2650 2600
+Connection ~ 2650 2600
+Wire Wire Line
+	2050 2800 2250 2800
+Connection ~ 2250 2800
+Wire Wire Line
+	2650 3000 2100 3000
+Wire Wire Line
+	2100 3000 2100 2900
+Wire Wire Line
+	2100 2900 2050 2900
+Connection ~ 2650 3000
+Wire Wire Line
+	2250 3200 2050 3200
+Connection ~ 2250 3200
+Wire Wire Line
+	2650 3400 2100 3400
+Wire Wire Line
+	2100 3400 2100 3300
+Wire Wire Line
+	2100 3300 2050 3300
+Connection ~ 2650 3400
+Wire Wire Line
+	2250 3600 2050 3600
+Connection ~ 2250 3600
+Wire Wire Line
+	2650 3800 2100 3800
+Wire Wire Line
+	2100 3800 2100 3700
+Wire Wire Line
+	2100 3700 2050 3700
+Connection ~ 2650 3800
+Text HLabel 7450 3500 2    50   Output ~ 0
+SCK
+Wire Wire Line
+	7200 3500 7450 3500
+Text HLabel 4200 3300 2    50   Output ~ 0
+BCK
+Wire Wire Line
+	4100 3300 4200 3300
+Text HLabel 4200 2900 2    50   Output ~ 0
+DATA1
+Text HLabel 4200 2500 2    50   Output ~ 0
+DATA2
+Wire Wire Line
+	4200 2900 4100 2900
+Wire Wire Line
+	4200 2500 4100 2500
+Wire Wire Line
+	4100 3700 5600 3700
+Text Notes 7450 3850 0    50   ~ 0
+SCK is the DAC System Clock, which is\nmain board SYSCLK divided by 4.\nThis is 24.576 MHz for 48 ks/s data rate.
+Text Notes 4200 3450 0    50   ~ 0
+Bit clock
+Text Notes 4200 3050 0    50   ~ 0
+Data for DAC 1
+Text Notes 4200 2650 0    50   ~ 0
+Data for DAC 2
+$Comp
+L Device:C_Small C?
+U 1 1 5F94F895
+P 2850 5800
+AR Path="/5DFF6C0D/5F94F895" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F94F895" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5F94F895" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5F94F895" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5F94F895" Ref="C?"  Part="1" 
+AR Path="/5E62FD57/5E630FEC/5F94F895" Ref="C?"  Part="1" 
+AR Path="/5F861F0B/5F94F895" Ref="C?"  Part="1" 
+AR Path="/5F911A05/5F94F895" Ref="C73"  Part="1" 
+F 0 "C73" H 2650 5850 50  0000 C CNN
+F 1 "220pF" H 2600 5750 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2850 5800 50  0001 C CNN
+F 3 "~" H 2850 5800 50  0001 C CNN
+F 4 "" H 2850 5800 50  0001 C CNN "Description"
+F 5 "" H 2850 5800 50  0001 C CNN "Digikey"
+F 6 "44" H 2850 5800 50  0001 C CNN "DK line"
+F 7 "" H 2850 5800 50  0001 C CNN "MPN"
+F 8 "" H 2850 5800 50  0001 C CNN "Manufacturer"
+	1    2850 5800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 5F951726
+P 2500 5550
+AR Path="/5DFF6C0D/5F951726" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F951726" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F951726" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F951726" Ref="R?"  Part="1" 
+AR Path="/5F951726" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F951726" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5F951726" Ref="R?"  Part="1" 
+AR Path="/5E525FFE/5F951726" Ref="R?"  Part="1" 
+AR Path="/5F911A05/5F951726" Ref="R65"  Part="1" 
+F 0 "R65" V 2650 5650 50  0000 C CNN
+F 1 "68" V 2650 5500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2540 5540 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 2500 5550 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 2500 5550 50  0001 C CNN "Digikey"
+F 5 "29" H 2500 5550 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 2500 5550 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 2500 5550 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 2500 5550 50  0001 C CNN "Manufacturer"
+	1    2500 5550
+	0    -1   -1   0   
+$EndComp
+Text HLabel 3250 5550 2    50   Output ~ 0
+~RST
+Text HLabel 3250 6450 2    50   Output ~ 0
+LRCK
+$Comp
+L power:GND #PWR?
+U 1 1 5F9523F9
+P 2850 5950
+AR Path="/5E525F87/5F9523F9" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F9523F9" Ref="#PWR?"  Part="1" 
+AR Path="/5F9523F9" Ref="#PWR?"  Part="1" 
+AR Path="/5F911A05/5F9523F9" Ref="#PWR0128"  Part="1" 
+F 0 "#PWR0128" H 2850 5700 50  0001 C CNN
+F 1 "GND" H 2850 5800 50  0000 C CNN
+F 2 "" H 2850 5950 50  0001 C CNN
+F 3 "" H 2850 5950 50  0001 C CNN
+	1    2850 5950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2650 5550 2850 5550
+Wire Wire Line
+	2850 5700 2850 5550
+Wire Wire Line
+	2850 5950 2850 5900
+Text GLabel 2100 5550 0    50   Input ~ 0
+DOUTL1
+Wire Wire Line
+	2100 5550 2350 5550
+Connection ~ 2850 5550
+Wire Wire Line
+	2850 5550 3250 5550
+$Comp
+L Device:C_Small C?
+U 1 1 5F96B324
+P 2850 6700
+AR Path="/5DFF6C0D/5F96B324" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F96B324" Ref="C?"  Part="1" 
+AR Path="/5E2EB92B/5F96B324" Ref="C?"  Part="1" 
+AR Path="/5E51E83D/5F96B324" Ref="C?"  Part="1" 
+AR Path="/5E624B3C/5E51E83D/5F96B324" Ref="C?"  Part="1" 
+AR Path="/5E62FD57/5E630FEC/5F96B324" Ref="C?"  Part="1" 
+AR Path="/5F861F0B/5F96B324" Ref="C?"  Part="1" 
+AR Path="/5F911A05/5F96B324" Ref="C74"  Part="1" 
+F 0 "C74" H 2650 6750 50  0000 C CNN
+F 1 "220pF" H 2600 6650 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2850 6700 50  0001 C CNN
+F 3 "~" H 2850 6700 50  0001 C CNN
+F 4 "" H 2850 6700 50  0001 C CNN "Description"
+F 5 "" H 2850 6700 50  0001 C CNN "Digikey"
+F 6 "44" H 2850 6700 50  0001 C CNN "DK line"
+F 7 "" H 2850 6700 50  0001 C CNN "MPN"
+F 8 "" H 2850 6700 50  0001 C CNN "Manufacturer"
+	1    2850 6700
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 5F96B32F
+P 2500 6450
+AR Path="/5DFF6C0D/5F96B32F" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5F96B32F" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5F96B32F" Ref="R?"  Part="1" 
+AR Path="/5E51E83D/5F96B32F" Ref="R?"  Part="1" 
+AR Path="/5F96B32F" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5F96B32F" Ref="R?"  Part="1" 
+AR Path="/5E525F87/5F96B32F" Ref="R?"  Part="1" 
+AR Path="/5E525FFE/5F96B32F" Ref="R?"  Part="1" 
+AR Path="/5F911A05/5F96B32F" Ref="R66"  Part="1" 
+F 0 "R66" V 2650 6550 50  0000 C CNN
+F 1 "68" V 2650 6400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2540 6440 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 2500 6450 50  0001 C CNN
+F 4 "RNCP0603FTD100RCT-ND" H 2500 6450 50  0001 C CNN "Digikey"
+F 5 "29" H 2500 6450 50  0001 C CNN "DK line"
+F 6 "RES 100 OHM 1% 1/8W 0603" H 2500 6450 50  0001 C CNN "Description"
+F 7 "RNCP0603FTD100R" H 2500 6450 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 2500 6450 50  0001 C CNN "Manufacturer"
+	1    2500 6450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F96B335
+P 2850 6850
+AR Path="/5E525F87/5F96B335" Ref="#PWR?"  Part="1" 
+AR Path="/5E525FFE/5F96B335" Ref="#PWR?"  Part="1" 
+AR Path="/5F96B335" Ref="#PWR?"  Part="1" 
+AR Path="/5F911A05/5F96B335" Ref="#PWR0129"  Part="1" 
+F 0 "#PWR0129" H 2850 6600 50  0001 C CNN
+F 1 "GND" H 2850 6700 50  0000 C CNN
+F 2 "" H 2850 6850 50  0001 C CNN
+F 3 "" H 2850 6850 50  0001 C CNN
+	1    2850 6850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2650 6450 2850 6450
+Wire Wire Line
+	2850 6600 2850 6450
+Wire Wire Line
+	2850 6850 2850 6800
+Text GLabel 2100 6450 0    50   Input ~ 0
+DOUTL2
+Wire Wire Line
+	2100 6450 2350 6450
+Connection ~ 2850 6450
+Wire Wire Line
+	2850 6450 3250 6450
+Wire Wire Line
+	2950 4000 3100 4000
+Connection ~ 3600 1950
+Wire Wire Line
+	3600 1800 3600 1950
+$Comp
+L 74xGxx:74AUC1G74 U?
+U 1 1 5F9169D9
+P 5850 3600
+AR Path="/5E525F2C/5F9169D9" Ref="U?"  Part="1" 
+AR Path="/5F9169D9" Ref="U?"  Part="1" 
+AR Path="/5F911A05/5F9169D9" Ref="U18"  Part="1" 
+F 0 "U18" H 5700 4000 50  0000 C CNN
+F 1 "74AUP1G74" H 5550 4100 50  0000 C CNN
+F 2 "Package_SO:VSSOP-8_2.3x2mm_P0.5mm" H 5850 3600 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/74AUP1G74.pdf" H 5850 3600 50  0001 C CNN
+F 4 "1727-6029-1-ND" H 5850 3600 50  0001 C CNN "Digikey"
+F 5 "74AUP1G74DC,125" H 5850 3600 50  0001 C CNN "MPN"
+F 6 "" H 5850 3600 50  0001 C CNN "MFG"
+F 7 "IC FF D-TYPE SNGL 1BIT 8VSSOP" H 5850 3600 50  0001 C CNN "Description"
+F 8 "Nexperia USA Inc." H 5850 3600 50  0001 C CNN "Manufacturer"
+F 9 "3" H 5850 3600 50  0001 C CNN "DK line"
+	1    5850 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 3450 6800 3300
+Wire Wire Line
+	5700 3450 5700 3300
+$Comp
+L power:VCC #PWR0126
+U 1 1 5F9E8065
+P 5850 3150
+F 0 "#PWR0126" H 5850 3000 50  0001 C CNN
+F 1 "VCC" H 5850 3300 50  0000 C CNN
+F 2 "" H 5850 3150 50  0001 C CNN
+F 3 "" H 5850 3150 50  0001 C CNN
+	1    5850 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0130
+U 1 1 5F9E8864
+P 6950 3150
+F 0 "#PWR0130" H 6950 3000 50  0001 C CNN
+F 1 "VCC" H 6950 3300 50  0000 C CNN
+F 2 "" H 6950 3150 50  0001 C CNN
+F 3 "" H 6950 3150 50  0001 C CNN
+	1    6950 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0131
+U 1 1 5F9E8B3C
+P 5850 3950
+F 0 "#PWR0131" H 5850 3800 50  0001 C CNN
+F 1 "VCC" H 5800 4100 50  0000 C CNN
+F 2 "" H 5850 3950 50  0001 C CNN
+F 3 "" H 5850 3950 50  0001 C CNN
+	1    5850 3950
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VCC #PWR0132
+U 1 1 5F9E926A
+P 6950 3950
+F 0 "#PWR0132" H 6950 3800 50  0001 C CNN
+F 1 "VCC" H 6900 4100 50  0000 C CNN
+F 2 "" H 6950 3950 50  0001 C CNN
+F 3 "" H 6950 3950 50  0001 C CNN
+	1    6950 3950
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VCC #PWR0133
+U 1 1 5F9E973B
+P 3600 1800
+F 0 "#PWR0133" H 3600 1650 50  0001 C CNN
+F 1 "VCC" H 3600 1950 50  0000 C CNN
+F 2 "" H 3600 1800 50  0001 C CNN
+F 3 "" H 3600 1800 50  0001 C CNN
+	1    3600 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0134
+U 1 1 5F9E9ABA
+P 2950 4000
+F 0 "#PWR0134" H 2950 3850 50  0001 C CNN
+F 1 "VCC" V 2950 4200 50  0000 C CNN
+F 2 "" H 2950 4000 50  0001 C CNN
+F 3 "" H 2950 4000 50  0001 C CNN
+	1    2950 4000
+	0    -1   -1   0   
+$EndComp
+$EndSCHEMATC
