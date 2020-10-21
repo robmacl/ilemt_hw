@@ -329,7 +329,7 @@ Connection ~ 2600 5200
 Wire Wire Line
 	2600 5200 2600 5450
 Text GLabel 3600 1700 2    50   Input ~ 0
-DOUTL2
+LRCK_IN
 Text GLabel 3600 2100 2    50   Input ~ 0
 DOUTL4
 Text GLabel 3600 2500 2    50   Input ~ 0
@@ -376,14 +376,6 @@ Text GLabel 3550 3650 2    50   Output ~ 0
 DFB4+
 Text GLabel 3550 3750 2    50   Output ~ 0
 DFB4-
-Text GLabel 3550 4050 2    50   Input ~ 0
-DOUT1+
-Text GLabel 3550 4150 2    50   Input ~ 0
-DOUT1-
-Text GLabel 3550 4800 2    50   Input ~ 0
-DOUT3+
-Text GLabel 3550 4900 2    50   Input ~ 0
-DOUT3-
 Wire Wire Line
 	5400 1500 5400 1800
 Text Notes 2450 4100 2    50   ~ 0
@@ -497,10 +489,6 @@ Wire Wire Line
 Connection ~ 6300 2950
 Wire Wire Line
 	6300 2950 6300 3050
-Text GLabel 2450 4600 0    50   Input ~ 0
-DOUT2+
-Text GLabel 2450 4700 0    50   Input ~ 0
-DOUT2-
 Text GLabel 2450 5000 0    50   Input ~ 0
 DOUT4+
 Text GLabel 2450 5100 0    50   Input ~ 0
@@ -518,7 +506,7 @@ DOUTL5
 Text GLabel 2450 2100 0    50   Input ~ 0
 DOUTL3
 Text GLabel 2450 1700 0    50   Input ~ 0
-DOUTL1
+~RST_IN
 Text GLabel 2450 1500 0    50   Input ~ 0
 +5VDIG
 Text GLabel 2450 1900 0    50   BiDi ~ 0
@@ -585,9 +573,9 @@ Wire Wire Line
 Connection ~ 6300 3050
 Wire Wire Line
 	6300 3050 6300 3700
-Text Notes 4250 5000 1    50   ~ 0
+Text Notes 1450 5100 1    50   ~ 0
 --------- High speed LDVS digital -----------
-Text Notes 4250 2600 1    50   ~ 0
+Text Notes 1450 2500 1    50   ~ 0
 - Low speed digital -
 Text Notes 7050 3600 1    50   ~ 0
 - Analog supplies -
@@ -708,4 +696,26 @@ NoConn ~ 5500 1600
 NoConn ~ 6200 2550
 NoConn ~ 6200 2650
 NoConn ~ 2650 3550
+Text GLabel 3550 4050 2    50   Input ~ 0
+BCK+
+Text GLabel 3550 4800 2    50   Input ~ 0
+DATA2+
+Text GLabel 3550 4900 2    50   Input ~ 0
+DATA2-
+Text GLabel 2450 4600 0    50   Input ~ 0
+DATA1+
+Text GLabel 2450 4700 0    50   Input ~ 0
+DATA1-
+Text GLabel 3550 4150 2    50   Input ~ 0
+BCK-
+Text Notes 4000 4150 0    50   ~ 0
+DOUT1
+Text Notes 1800 4700 0    50   ~ 0
+DOUT2
+Text Notes 4000 4900 0    50   ~ 0
+DOUT3
+Text Notes 1800 1750 0    50   ~ 0
+DOUTL1
+Text Notes 4000 1750 0    50   ~ 0
+DOUTL2
 $EndSCHEMATC

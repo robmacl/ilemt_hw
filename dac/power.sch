@@ -1716,4 +1716,6 @@ Text Label 2350 8350 0    50   ~ 0
 U3-
 Text Label 11250 5650 0    50   ~ 0
 U4_IN
+Text Label 3100 7950 0    50   ~ 0
+U3OUT
 $EndSCHEMATC

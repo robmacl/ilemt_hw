@@ -289,7 +289,7 @@ Wire Wire Line
 	4900 4750 5200 4750
 Connection ~ 5200 4750
 Wire Wire Line
-	5200 4750 5200 3250
+	5200 4750 5200 3800
 Wire Wire Line
 	4650 5100 4300 5100
 Wire Wire Line
@@ -517,4 +517,29 @@ F 4 "IC OPAMP 2 CIRCUIT" H 8350 4950 60  0001 L CNN "Description"
 $EndComp
 Text Label 7650 3850 0    50   ~ 0
 U1B+
+$Comp
+L Connector:TestPoint TP?
+U 1 1 5FA16C10
+P 5300 3800
+AR Path="/5DFCF14D/5DA78AA2/5FA16C10" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E295469/5FA16C10" Ref="TP?"  Part="1" 
+AR Path="/5DFCF14D/5E195558/5FA16C10" Ref="TP?"  Part="1" 
+AR Path="/5E2EB92B/5FA16C10" Ref="TP?"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5FA16C10" Ref="TP?"  Part="1" 
+AR Path="/5EBEDCCA/5FA16C10" Ref="TP?"  Part="1" 
+AR Path="/5F7CD5F5/5FA16C10" Ref="TP7"  Part="1" 
+F 0 "TP7" V 5200 3950 50  0000 C CNN
+F 1 "VREF" V 5100 3950 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 5500 3800 50  0001 C CNN
+F 3 "~" H 5500 3800 50  0001 C CNN
+F 4 "Do Not Populate" H 5300 3800 50  0001 C CNN "Description"
+F 5 "DNP" H 5300 3800 50  0001 C CNN "MPN"
+	1    5300 3800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5300 3800 5200 3800
+Connection ~ 5200 3800
+Wire Wire Line
+	5200 3800 5200 3250
 $EndSCHEMATC

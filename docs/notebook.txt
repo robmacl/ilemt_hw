@@ -104,9 +104,8 @@ Summary:
     pretty low noise, well lower than the ADC noise.  It is unclear how much
     noise comes from the DAC itself, but unless the applications info is
     spurious it would seem that the contribution of the output buffer is
-    significant.  Also, in the reference IRAUDAMP7 configuration the RTI noise
-    is 
-    
+    significant.  Compare to the apparent 40 nV/rtHz for the reference
+    IRAUDAMP7 configuration.
  -- I really do not know the magnitude of the contribution from analog
     modulator vs. other sources, like switching jitter.  But with the
     self-oscillating continuous-time architecture the "quantization noise" is
