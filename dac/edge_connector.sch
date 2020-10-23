@@ -13,8 +13,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 7100 6950 0    50   ~ 0
-This slot is for the interface to the analog output.  The pinout is different\nfrom the input slots, though the general ordering of signal types\nis the same.  We eliminate the some analog supply duplicate pins\nand the analog BIST lines to get more digital IOs.
+Text Notes 7100 6800 0    50   ~ 0
+Card edge connector to main board output slot.
 Text GLabel 5200 3800 0    50   Input ~ 0
 VREF+
 Text GLabel 5200 3900 0    50   Input ~ 0
@@ -149,70 +149,6 @@ Wire Wire Line
 Connection ~ 2550 1500
 Wire Wire Line
 	2550 1500 2650 1500
-$Comp
-L power:Earth #PWR?
-U 1 1 5EC152AA
-P 6300 4400
-AR Path="/5E51E83D/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5E1D6729/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5E525F2C/5E59D3A2/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5E525F2C/5E76A42A/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5E525F2C/5E76E218/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5E525F2C/5E7721D1/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5E525FFE/5EBAAEAF/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5E525FFE/5EBAAF7D/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5E525FFE/5EBAAF8F/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5E525FFE/5EBAAFA1/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5EC15224/5EC152AA" Ref="#PWR?"  Part="1" 
-AR Path="/5F801832/5EC152AA" Ref="#PWR0119"  Part="1" 
-F 0 "#PWR0119" H 6300 4150 50  0001 C CNN
-F 1 "Earth" H 6300 4250 50  0001 C CNN
-F 2 "" H 6300 4400 50  0001 C CNN
-F 3 "~" H 6300 4400 50  0001 C CNN
-	1    6300 4400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6200 4100 6300 4100
-Wire Wire Line
-	6300 4100 6300 4200
-Wire Wire Line
-	6200 4200 6300 4200
-Connection ~ 6300 4200
-Wire Wire Line
-	6300 4200 6300 4400
-$Comp
-L power:Earth #PWR?
-U 1 1 5EC152AB
-P 5400 4400
-AR Path="/5E51E83D/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5E1D6729/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5E525F2C/5E59D3A2/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5E525F2C/5E76A42A/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5E525F2C/5E76E218/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5E525F2C/5E7721D1/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5E525FFE/5EBAAEAF/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5E525FFE/5EBAAF7D/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5E525FFE/5EBAAF8F/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5E525FFE/5EBAAFA1/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5EC15224/5EC152AB" Ref="#PWR?"  Part="1" 
-AR Path="/5F801832/5EC152AB" Ref="#PWR0120"  Part="1" 
-F 0 "#PWR0120" H 5400 4150 50  0001 C CNN
-F 1 "Earth" H 5400 4250 50  0001 C CNN
-F 2 "" H 5400 4400 50  0001 C CNN
-F 3 "~" H 5400 4400 50  0001 C CNN
-	1    5400 4400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5400 4400 5400 4200
-Wire Wire Line
-	5400 4200 5500 4200
-Wire Wire Line
-	5500 4100 5400 4100
-Wire Wire Line
-	5400 4100 5400 4200
-Connection ~ 5400 4200
 Wire Wire Line
 	6550 4000 6300 4000
 Wire Wire Line
@@ -718,4 +654,10 @@ Text Notes 1800 1750 0    50   ~ 0
 DOUTL1
 Text Notes 4000 1750 0    50   ~ 0
 DOUTL2
+NoConn ~ 6200 4100
+NoConn ~ 6200 4200
+NoConn ~ 5500 4200
+NoConn ~ 5500 4100
+Text Notes 5000 4900 0    50   ~ 0
+I haven't connected Earth because we don't\nhave any IO protection that uses Earth.  So \nthere is no reason to introduce that noisy net\nonto this board.\n
 $EndSCHEMATC

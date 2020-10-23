@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 8 11
+Sheet 6 11
 Title ""
 Date ""
 Rev ""
@@ -34,14 +34,14 @@ AR Path="/5F7EFEA4/5F8AE34F/5F81F6F8" Ref="C103"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F81F6F8" Ref="C203"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F81F6F8" Ref="C303"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F81F6F8" Ref="C403"  Part="1" 
-F 0 "C403" V 2750 1800 50  0000 C CNN
+F 0 "C203" V 2750 1800 50  0000 C CNN
 F 1 "1uF" V 2850 1800 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 2600 1800 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 2600 1800 50  0001 C CNN
 F 4 "CAP CER 1UF 16V X7R 0805 " H 2600 1800 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 2600 1800 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 2600 1800 50  0001 C CNN "MPN"
-F 7 "27" H 2600 1800 50  0001 C CNN "DK line"
+F 7 "I.27" H 2600 1800 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 2600 1800 50  0001 C CNN "Manufacturer"
 	1    2600 1800
 	0    -1   -1   0   
@@ -56,7 +56,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F81F6FE" Ref="#PWR0103"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F81F6FE" Ref="#PWR0203"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F81F6FE" Ref="#PWR0303"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F81F6FE" Ref="#PWR0403"  Part="1" 
-F 0 "#PWR0403" H 2300 1550 50  0001 C CNN
+F 0 "#PWR0203" H 2300 1550 50  0001 C CNN
 F 1 "V+" H 2300 1840 50  0000 C CNN
 F 2 "" H 2300 1700 50  0001 C CNN
 F 3 "" H 2300 1700 50  0001 C CNN
@@ -73,7 +73,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F81F704" Ref="#PWR0104"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F81F704" Ref="#PWR0204"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F81F704" Ref="#PWR0304"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F81F704" Ref="#PWR0404"  Part="1" 
-F 0 "#PWR0404" H 2300 2700 50  0001 C CNN
+F 0 "#PWR0204" H 2300 2700 50  0001 C CNN
 F 1 "V-" H 2300 2800 50  0000 C CNN
 F 2 "" H 2300 2950 50  0001 C CNN
 F 3 "" H 2300 2950 50  0001 C CNN
@@ -98,7 +98,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F82D372" Ref="#PWR0105"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F82D372" Ref="#PWR0205"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F82D372" Ref="#PWR0305"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F82D372" Ref="#PWR0405"  Part="1" 
-F 0 "#PWR0405" H 2800 1550 50  0001 C CNN
+F 0 "#PWR0205" H 2800 1550 50  0001 C CNN
 F 1 "GND" V 2800 1600 50  0000 C CNN
 F 2 "" H 2800 1800 50  0001 C CNN
 F 3 "" H 2800 1800 50  0001 C CNN
@@ -113,11 +113,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F810F5B" Ref="U101"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F810F5B" Ref="U201"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F810F5B" Ref="U301"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F810F5B" Ref="U401"  Part="1" 
-F 0 "U401" H 2000 2500 60  0000 C CNN
+F 0 "U201" H 2000 2500 60  0000 C CNN
 F 1 "OPA2210" H 2400 2000 60  0000 L CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 2500 2400 60  0001 L CNN
-F 3 "" H 2500 2500 60  0001 L CNN
+F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa2210" H 2500 2500 60  0001 L CNN
 F 4 "IC OPAMP 2 CIRCUIT" H 2500 3200 60  0001 L CNN "Description"
+F 5 "D.1" H 2300 2200 50  0001 C CNN "DK line"
+F 6 "296-OPA2210IDGKRCT-ND" H 2300 2200 50  0001 C CNN "Digikey"
+F 7 "OPA2210IDGKR" H 2300 2200 50  0001 C CNN "MPN"
+F 8 "Texas Instruments" H 2300 2200 50  0001 C CNN "Manufacturer"
 	1    2300 2200
 	1    0    0    -1  
 $EndComp
@@ -145,14 +149,14 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8302ED" Ref="C104"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8302ED" Ref="C204"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8302ED" Ref="C304"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8302ED" Ref="C404"  Part="1" 
-F 0 "C404" V 2350 2650 50  0000 C CNN
+F 0 "C204" V 2350 2650 50  0000 C CNN
 F 1 "1uF" V 2450 2650 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 2600 2650 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 2600 2650 50  0001 C CNN
 F 4 "CAP CER 1UF 16V X7R 0805 " H 2600 2650 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 2600 2650 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 2600 2650 50  0001 C CNN "MPN"
-F 7 "27" H 2600 2650 50  0001 C CNN "DK line"
+F 7 "I.27" H 2600 2650 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 2600 2650 50  0001 C CNN "Manufacturer"
 	1    2600 2650
 	0    -1   -1   0   
@@ -175,7 +179,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8302F3" Ref="#PWR0106"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8302F3" Ref="#PWR0206"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8302F3" Ref="#PWR0306"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8302F3" Ref="#PWR0406"  Part="1" 
-F 0 "#PWR0406" H 2800 2400 50  0001 C CNN
+F 0 "#PWR0206" H 2800 2400 50  0001 C CNN
 F 1 "GND" V 2800 2450 50  0000 C CNN
 F 2 "" H 2800 2650 50  0001 C CNN
 F 3 "" H 2800 2650 50  0001 C CNN
@@ -208,13 +212,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F83413B" Ref="R101"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F83413B" Ref="R201"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F83413B" Ref="R301"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F83413B" Ref="R401"  Part="1" 
-F 0 "R401" V 2550 1200 50  0000 C CNN
+F 0 "R201" V 2550 1200 50  0000 C CNN
 F 1 "820" V 2350 1200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 2490 1190 50  0001 C CNN
-F 3 "~" H 2450 1200 50  0001 C CNN
-F 4 "" H 2450 1200 50  0001 C CNN "Description"
-F 5 "" H 2450 1200 50  0001 C CNN "MPN"
-F 6 "" H 2450 1200 50  0001 C CNN "Manufacturer"
+F 3 "https://www.vishay.com/docs/28705/mcx0x0xpro.pdf" H 2450 1200 50  0001 C CNN
+F 4 "RES SMD 820 OHM 1% 1/8W 0603" H 2450 1200 50  0001 C CNN "Description"
+F 5 "MCT06030C8200FP500" H 2450 1200 50  0001 C CNN "MPN"
+F 6 "Vishay Beyschlag/Draloric/BC Components" H 2450 1200 50  0001 C CNN "Manufacturer"
+F 7 "D.34" H 2450 1200 50  0001 C CNN "DK line"
+F 8 "749-1683-1-ND" H 2450 1200 50  0001 C CNN "Digikey"
 	1    2450 1200
 	0    1    1    0   
 $EndComp
@@ -233,14 +239,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8349E3" Ref="C101"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8349E3" Ref="C201"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8349E3" Ref="C301"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8349E3" Ref="C401"  Part="1" 
-F 0 "C401" V 2300 800 50  0000 C CNN
+F 0 "C201" V 2300 800 50  0000 C CNN
 F 1 "4.7nF" V 2600 800 50  0000 C CNN
 F 2 "Capacitor_THT:C_Rect_L7.2mm_W2.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2" H 2450 800 50  0001 C CNN
-F 3 "https://api.kemet.com/component-edge/download/datasheet/R82EC1470DQ50J.pdf" H 2450 800 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 2450 800 50  0001 C CNN
 F 4 "CAP FILM 4700PF 5% 100VDC RADIAL" H 2450 800 50  0001 C CNN "Description"
 F 5 "399-5449-1-ND" H 2450 800 50  0001 C CNN "Digikey"
 F 6 "R82EC1470DQ50J" H 2450 800 50  0001 C CNN "MPN"
 F 7 "KEMET" H 2450 800 50  0001 C CNN "Manufacturer"
+F 8 "D.3" H 2450 800 50  0001 C CNN "DK line"
 	1    2450 800 
 	0    -1   -1   0   
 $EndComp
@@ -282,7 +289,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F836C8F" Ref="#PWR0101"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F836C8F" Ref="#PWR0201"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F836C8F" Ref="#PWR0301"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F836C8F" Ref="#PWR0401"  Part="1" 
-F 0 "#PWR0401" H 1900 2200 50  0001 C CNN
+F 0 "#PWR0201" H 1900 2200 50  0001 C CNN
 F 1 "GND" H 1900 2300 50  0000 C CNN
 F 2 "" H 1900 2450 50  0001 C CNN
 F 3 "" H 1900 2450 50  0001 C CNN
@@ -313,13 +320,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F838F2A" Ref="R103"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F838F2A" Ref="R203"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F838F2A" Ref="R303"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F838F2A" Ref="R403"  Part="1" 
-F 0 "R403" V 4350 2200 50  0000 C CNN
+F 0 "R203" V 4350 2200 50  0000 C CNN
 F 1 "820" V 4150 2200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4290 2190 50  0001 C CNN
-F 3 "~" H 4250 2200 50  0001 C CNN
-F 4 "" H 4250 2200 50  0001 C CNN "Description"
-F 5 "" H 4250 2200 50  0001 C CNN "MPN"
-F 6 "" H 4250 2200 50  0001 C CNN "Manufacturer"
+F 3 "https://www.vishay.com/docs/28705/mcx0x0xpro.pdf" H 4250 2200 50  0001 C CNN
+F 4 "RES SMD 820 OHM 1% 1/8W 0603" H 4250 2200 50  0001 C CNN "Description"
+F 5 "MCT06030C8200FP500" H 4250 2200 50  0001 C CNN "MPN"
+F 6 "Vishay Beyschlag/Draloric/BC Components" H 4250 2200 50  0001 C CNN "Manufacturer"
+F 7 "D.34" H 4250 2200 50  0001 C CNN "DK line"
+F 8 "749-1683-1-ND" H 4250 2200 50  0001 C CNN "Digikey"
 	1    4250 2200
 	0    1    1    0   
 $EndComp
@@ -340,13 +349,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F83984D" Ref="R105"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F83984D" Ref="R205"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F83984D" Ref="R305"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F83984D" Ref="R405"  Part="1" 
-F 0 "R405" V 5600 2200 50  0000 C CNN
+F 0 "R205" V 5600 2200 50  0000 C CNN
 F 1 "620" V 5400 2200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 5540 2190 50  0001 C CNN
-F 3 "~" H 5500 2200 50  0001 C CNN
-F 4 "" H 5500 2200 50  0001 C CNN "Description"
-F 5 "" H 5500 2200 50  0001 C CNN "MPN"
-F 6 "" H 5500 2200 50  0001 C CNN "Manufacturer"
+F 3 "https://www.vishay.com/docs/28705/mcx0x0xpro.pdf" H 5500 2200 50  0001 C CNN
+F 4 "RES 620 OHM 1% 1/8W 0603" H 5500 2200 50  0001 C CNN "Description"
+F 5 "MCT06030C6200FP500" H 5500 2200 50  0001 C CNN "MPN"
+F 6 "Vishay Beyschlag/Draloric/BC Components" H 5500 2200 50  0001 C CNN "Manufacturer"
+F 7 "D.35" H 5500 2200 50  0001 C CNN "DK line"
+F 8 "749-1752-1-ND" H 5500 2200 50  0001 C CNN "Digikey"
 	1    5500 2200
 	0    1    1    0   
 $EndComp
@@ -358,10 +369,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F83B3FD" Ref="U102"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F83B3FD" Ref="U202"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F83B3FD" Ref="U302"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F83B3FD" Ref="U402"  Part="1" 
-F 0 "U402" H 5650 4550 50  0000 L CNN
+F 0 "U202" H 5650 4550 50  0000 L CNN
 F 1 "OPA1611" H 5650 4250 50  0000 L CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 5600 4425 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/ne5534.pdf" H 5600 4525 50  0001 C CNN
+F 4 "D.2" H 5500 4400 50  0001 C CNN "DK line"
+F 5 "IC AUDIO 1 CIRCUIT 8SOIC" H 5500 4400 50  0001 C CNN "Description"
+F 6 "296-47811-1-ND" H 5500 4400 50  0001 C CNN "Digikey"
+F 7 "OPA1611AIDR" H 5500 4400 50  0001 C CNN "MPN"
+F 8 "Texas Instruments" H 5500 4400 50  0001 C CNN "Manufacturer"
 	1    5500 4400
 	1    0    0    -1  
 $EndComp
@@ -386,7 +402,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8431A7" Ref="#PWR0108"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8431A7" Ref="#PWR0208"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8431A7" Ref="#PWR0308"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8431A7" Ref="#PWR0408"  Part="1" 
-F 0 "#PWR0408" H 5550 4900 50  0001 C CNN
+F 0 "#PWR0208" H 5550 4900 50  0001 C CNN
 F 1 "V-" H 5550 5000 50  0000 C CNN
 F 2 "" H 5550 5150 50  0001 C CNN
 F 3 "" H 5550 5150 50  0001 C CNN
@@ -408,14 +424,14 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8431B2" Ref="C108"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8431B2" Ref="C208"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8431B2" Ref="C308"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8431B2" Ref="C408"  Part="1" 
-F 0 "C408" V 5600 4850 50  0000 C CNN
+F 0 "C208" V 5600 4850 50  0000 C CNN
 F 1 "1uF" V 5700 4850 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 5850 4850 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 5850 4850 50  0001 C CNN
 F 4 "CAP CER 1UF 16V X7R 0805 " H 5850 4850 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 5850 4850 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 5850 4850 50  0001 C CNN "MPN"
-F 7 "27" H 5850 4850 50  0001 C CNN "DK line"
+F 7 "I.27" H 5850 4850 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 5850 4850 50  0001 C CNN "Manufacturer"
 	1    5850 4850
 	0    -1   -1   0   
@@ -438,7 +454,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8431B8" Ref="#PWR0110"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8431B8" Ref="#PWR0210"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8431B8" Ref="#PWR0310"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8431B8" Ref="#PWR0410"  Part="1" 
-F 0 "#PWR0410" H 6050 4600 50  0001 C CNN
+F 0 "#PWR0210" H 6050 4600 50  0001 C CNN
 F 1 "GND" V 6050 4650 50  0000 C CNN
 F 2 "" H 6050 4850 50  0001 C CNN
 F 3 "" H 6050 4850 50  0001 C CNN
@@ -469,14 +485,14 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8446C8" Ref="C107"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8446C8" Ref="C207"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8446C8" Ref="C307"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8446C8" Ref="C407"  Part="1" 
-F 0 "C407" V 6000 4000 50  0000 C CNN
+F 0 "C207" V 6000 4000 50  0000 C CNN
 F 1 "1uF" V 6100 4000 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 5850 4000 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" H 5850 4000 50  0001 C CNN
 F 4 "CAP CER 1UF 16V X7R 0805 " H 5850 4000 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 5850 4000 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 5850 4000 50  0001 C CNN "MPN"
-F 7 "27" H 5850 4000 50  0001 C CNN "DK line"
+F 7 "I.27" H 5850 4000 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 5850 4000 50  0001 C CNN "Manufacturer"
 	1    5850 4000
 	0    -1   -1   0   
@@ -491,7 +507,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8446CE" Ref="#PWR0107"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8446CE" Ref="#PWR0207"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8446CE" Ref="#PWR0307"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8446CE" Ref="#PWR0407"  Part="1" 
-F 0 "#PWR0407" H 5550 3750 50  0001 C CNN
+F 0 "#PWR0207" H 5550 3750 50  0001 C CNN
 F 1 "V+" H 5550 4040 50  0000 C CNN
 F 2 "" H 5550 3900 50  0001 C CNN
 F 3 "" H 5550 3900 50  0001 C CNN
@@ -516,7 +532,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8446D4" Ref="#PWR0109"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8446D4" Ref="#PWR0209"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8446D4" Ref="#PWR0309"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8446D4" Ref="#PWR0409"  Part="1" 
-F 0 "#PWR0409" H 6050 3750 50  0001 C CNN
+F 0 "#PWR0209" H 6050 3750 50  0001 C CNN
 F 1 "GND" V 6050 3800 50  0000 C CNN
 F 2 "" H 6050 4000 50  0001 C CNN
 F 3 "" H 6050 4000 50  0001 C CNN
@@ -549,13 +565,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8490E9" Ref="R104"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8490E9" Ref="R204"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8490E9" Ref="R304"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8490E9" Ref="R404"  Part="1" 
-F 0 "R404" V 4400 4500 50  0000 C CNN
+F 0 "R204" V 4400 4500 50  0000 C CNN
 F 1 "820" V 4200 4500 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4340 4490 50  0001 C CNN
-F 3 "~" H 4300 4500 50  0001 C CNN
-F 4 "" H 4300 4500 50  0001 C CNN "Description"
-F 5 "" H 4300 4500 50  0001 C CNN "MPN"
-F 6 "" H 4300 4500 50  0001 C CNN "Manufacturer"
+F 3 "https://www.vishay.com/docs/28705/mcx0x0xpro.pdf" H 4300 4500 50  0001 C CNN
+F 4 "RES SMD 820 OHM 1% 1/8W 0603" H 4300 4500 50  0001 C CNN "Description"
+F 5 "MCT06030C8200FP500" H 4300 4500 50  0001 C CNN "MPN"
+F 6 "Vishay Beyschlag/Draloric/BC Components" H 4300 4500 50  0001 C CNN "Manufacturer"
+F 7 "D.34" H 4300 4500 50  0001 C CNN "DK line"
+F 8 "749-1683-1-ND" H 4300 4500 50  0001 C CNN "Digikey"
 	1    4300 4500
 	0    1    1    0   
 $EndComp
@@ -576,13 +594,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8490F2" Ref="R106"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8490F2" Ref="R206"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8490F2" Ref="R306"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8490F2" Ref="R406"  Part="1" 
-F 0 "R406" V 5700 5550 50  0000 C CNN
+F 0 "R206" V 5700 5550 50  0000 C CNN
 F 1 "620" V 5900 5550 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 5840 5540 50  0001 C CNN
-F 3 "~" H 5800 5550 50  0001 C CNN
-F 4 "" H 5800 5550 50  0001 C CNN "Description"
-F 5 "" H 5800 5550 50  0001 C CNN "MPN"
-F 6 "" H 5800 5550 50  0001 C CNN "Manufacturer"
+F 3 "https://www.vishay.com/docs/28705/mcx0x0xpro.pdf" H 5800 5550 50  0001 C CNN
+F 4 "RES 620 OHM 1% 1/8W 0603" H 5800 5550 50  0001 C CNN "Description"
+F 5 "MCT06030C6200FP500" H 5800 5550 50  0001 C CNN "MPN"
+F 6 "Vishay Beyschlag/Draloric/BC Components" H 5800 5550 50  0001 C CNN "Manufacturer"
+F 7 "D.35" H 5800 5550 50  0001 C CNN "DK line"
+F 8 "749-1752-1-ND" H 5800 5550 50  0001 C CNN "Digikey"
 	1    5800 5550
 	0    -1   -1   0   
 $EndComp
@@ -601,14 +621,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8490F8" Ref="C106"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8490F8" Ref="C206"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8490F8" Ref="C306"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8490F8" Ref="C406"  Part="1" 
-F 0 "C406" V 5950 6000 50  0000 C CNN
+F 0 "C206" V 5950 6000 50  0000 C CNN
 F 1 "4.7nF" V 5650 6000 50  0000 C CNN
 F 2 "Capacitor_THT:C_Rect_L7.2mm_W2.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2" H 5800 6000 50  0001 C CNN
-F 3 "https://api.kemet.com/component-edge/download/datasheet/R82EC1470DQ50J.pdf" H 5800 6000 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 5800 6000 50  0001 C CNN
 F 4 "CAP FILM 4700PF 5% 100VDC RADIAL" H 5800 6000 50  0001 C CNN "Description"
 F 5 "399-5449-1-ND" H 5800 6000 50  0001 C CNN "Digikey"
 F 6 "R82EC1470DQ50J" H 5800 6000 50  0001 C CNN "MPN"
 F 7 "KEMET" H 5800 6000 50  0001 C CNN "Manufacturer"
+F 8 "D.3" H 5800 6000 50  0001 C CNN "DK line"
 	1    5800 6000
 	0    1    1    0   
 $EndComp
@@ -642,11 +663,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F85A53F" Ref="U101"  Part="2"
 AR Path="/5F7EFEA4/5F8B0DF1/5F85A53F" Ref="U201"  Part="2" 
 AR Path="/5F8C3863/5F8AE34F/5F85A53F" Ref="U301"  Part="2" 
 AR Path="/5F8C3863/5F8B0DF1/5F85A53F" Ref="U401"  Part="2" 
-F 0 "U401" H 2000 4800 60  0000 C CNN
+F 0 "U201" H 2000 4800 60  0000 C CNN
 F 1 "OPA2210" H 2400 4300 60  0000 L CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 2500 4700 60  0001 L CNN
-F 3 "" H 2500 4800 60  0001 L CNN
+F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa2210" H 2500 4800 60  0001 L CNN
 F 4 "IC OPAMP 2 CIRCUIT" H 2500 5500 60  0001 L CNN "Description"
+F 5 "D.1" H 2300 4500 50  0001 C CNN "DK line"
+F 6 "296-OPA2210IDGKRCT-ND" H 2300 4500 50  0001 C CNN "Digikey"
+F 7 "OPA2210IDGKR" H 2300 4500 50  0001 C CNN "MPN"
+F 8 "Texas Instruments" H 2300 4500 50  0001 C CNN "Manufacturer"
 	2    2300 4500
 	1    0    0    -1  
 $EndComp
@@ -667,13 +692,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F85A563" Ref="R102"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F85A563" Ref="R202"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F85A563" Ref="R302"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F85A563" Ref="R402"  Part="1" 
-F 0 "R402" V 2550 3850 50  0000 C CNN
+F 0 "R202" V 2550 3850 50  0000 C CNN
 F 1 "820" V 2350 3850 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 2490 3840 50  0001 C CNN
-F 3 "~" H 2450 3850 50  0001 C CNN
-F 4 "" H 2450 3850 50  0001 C CNN "Description"
-F 5 "" H 2450 3850 50  0001 C CNN "MPN"
-F 6 "" H 2450 3850 50  0001 C CNN "Manufacturer"
+F 3 "https://www.vishay.com/docs/28705/mcx0x0xpro.pdf" H 2450 3850 50  0001 C CNN
+F 4 "RES SMD 820 OHM 1% 1/8W 0603" H 2450 3850 50  0001 C CNN "Description"
+F 5 "MCT06030C8200FP500" H 2450 3850 50  0001 C CNN "MPN"
+F 6 "Vishay Beyschlag/Draloric/BC Components" H 2450 3850 50  0001 C CNN "Manufacturer"
+F 7 "D.34" H 2450 3850 50  0001 C CNN "DK line"
+F 8 "749-1683-1-ND" H 2450 3850 50  0001 C CNN "Digikey"
 	1    2450 3850
 	0    1    1    0   
 $EndComp
@@ -692,14 +719,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F85A569" Ref="C102"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F85A569" Ref="C202"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F85A569" Ref="C302"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F85A569" Ref="C402"  Part="1" 
-F 0 "C402" V 2300 3450 50  0000 C CNN
+F 0 "C202" V 2300 3450 50  0000 C CNN
 F 1 "4.7nF" V 2600 3450 50  0000 C CNN
 F 2 "Capacitor_THT:C_Rect_L7.2mm_W2.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2" H 2450 3450 50  0001 C CNN
-F 3 "https://api.kemet.com/component-edge/download/datasheet/R82EC1470DQ50J.pdf" H 2450 3450 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 2450 3450 50  0001 C CNN
 F 4 "CAP FILM 4700PF 5% 100VDC RADIAL" H 2450 3450 50  0001 C CNN "Description"
 F 5 "399-5449-1-ND" H 2450 3450 50  0001 C CNN "Digikey"
 F 6 "R82EC1470DQ50J" H 2450 3450 50  0001 C CNN "MPN"
 F 7 "KEMET" H 2450 3450 50  0001 C CNN "Manufacturer"
+F 8 "D.3" H 2450 3450 50  0001 C CNN "DK line"
 	1    2450 3450
 	0    -1   -1   0   
 $EndComp
@@ -741,7 +769,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F85A57A" Ref="#PWR0102"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F85A57A" Ref="#PWR0202"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F85A57A" Ref="#PWR0302"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F85A57A" Ref="#PWR0402"  Part="1" 
-F 0 "#PWR0402" H 1900 4500 50  0001 C CNN
+F 0 "#PWR0202" H 1900 4500 50  0001 C CNN
 F 1 "GND" H 1900 4600 50  0000 C CNN
 F 2 "" H 1900 4750 50  0001 C CNN
 F 3 "" H 1900 4750 50  0001 C CNN
@@ -777,7 +805,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F869EA8" Ref="R108"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F869EA8" Ref="R208"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F869EA8" Ref="R308"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F869EA8" Ref="R408"  Part="1" 
-F 0 "R408" V 7200 4400 50  0000 C CNN
+F 0 "R208" V 7200 4400 50  0000 C CNN
 F 1 "10" V 7000 4400 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 7140 4390 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 7100 4400 50  0001 C CNN
@@ -786,18 +814,19 @@ F 5 "CRCW080510R0JNEAHP" H 7100 4400 50  0001 C CNN "MPN"
 F 6 "Vishay Dale" H 7100 4400 50  0001 C CNN "Manufacturer"
 F 7 "541-10TACT-ND" H 7100 4400 50  0001 C CNN "Digikey"
 F 8 "Thick film surge resist" H 7100 4400 50  0001 C CNN "Notes"
+F 9 "I.52" H 7100 4400 50  0001 C CNN "DK line"
 	1    7100 4400
 	0    1    1    0   
 $EndComp
 Wire Wire Line
 	6950 4400 6750 4400
 Connection ~ 6750 4400
-Text Notes 7150 6900 0    50   ~ 0
-DAC output stage converts differential output current from DAC\ninto single ended output voltage
+Text Notes 7050 6950 0    50   ~ 0
+DAC output stage converts differential output current from DAC\ninto single ended output voltage.\n\nFour instances of this sheet in all.
 Text Notes 8050 4550 0    50   ~ 0
 3.2V RMS, +/- 4.5V peak
 Text Notes 950  6950 0    50   ~ 0
-The DAC always sources current on IOUT+, IOUT-.  The current ranges from 2.3 mA to 10.1\nmA.  This means that the outputs of the U12 V-I (transimpedance) amps always sit at a\nnegative voltage, from -1.9V to -8.3V (6.4V p-p).  We also need fairly high rails to\ngenerate the output voltage.  Maximizing the DAC output reduces the gain needed in the\ndriver, which reduces the noise introduced by the driver.\n\nIn a low noise transimpedance amp you always want to use the highest value possible for\nthe feedback resistor. This is because a higher value resistor has *less* thermal current\nnoise (the opposite as for voltage noise).  So adjustment for the output range is done\nmainly in the output difference amp stage.  For U13 the input impedance is low so we care\nmainly about voltage noise. But the gain (and the noise gain) of a difference amp is 2x\nmore than you might think because the inputs are summed, so U13 still has to be pretty low\nnoise to contribute negligibly.\n\nThe output drive requirements of these opamps is pretty high because of the low impedance\nand high amplitude.  U12B in particular, has to sink both the peak 10 mA DAC current and\nalso the U13 feedback current.  This is dialed back slightly from the 4.5V datasheet\napplication so as to keep the U12B current under 20 mA.\n\nBoth U12 and U13 should have low voltage noise << 4nV/rtHz, but current noise is more\ncritical for U12 because of the higher impedance.
+The DAC always sources current on IOUT+, IOUT-.  The current ranges from 2.3 mA to 10.1\nmA.  This means that the outputs of the U101 V-I (transimpedance) amps always sit at a\nnegative voltage, from -1.9V to -8.3V (6.4V p-p).  We also need fairly high rails to\ngenerate the output voltage.  Maximizing the DAC output reduces the gain needed in the\ndriver, which reduces the noise introduced by the driver.\n\nIn a low noise transimpedance amp you always want to use the highest value possible for\nthe feedback resistor. This is because a higher value resistor has *less* thermal current\nnoise (the opposite as for voltage noise).  So adjustment for the output range is done\nmainly in the output difference amp stage.  For U102 the input impedance is low so we care\nmainly about voltage noise. But the gain (and the noise gain) of a difference amp is 2x\nmore than you might think because the inputs are summed, so U102 still has to be pretty low\nnoise to contribute negligibly.\n\nThe output drive requirements of these opamps is pretty high because of the low impedance\nand high amplitude.  U101B in particular, has to sink both the peak 10 mA DAC current and\nalso the U102 feedback current.  This is dialed back slightly from the 4.5V datasheet\napplication so as to keep the U101B current under 20 mA.\n\nBoth U101 and U102 should have low voltage noise << 4nV/rtHz, but current noise is more\ncritical for U101 because of the higher impedance.
 Text Notes 3550 1700 0    50   ~ 0
 This has two first-order poles, and is configured for a -3 dB bandwidth of 30 kHz.\nFWIW, the capacitor values in the datasheet application circuit make no sense.\nThey don't generate the claimed bandwidth (which is anyway much wider than \nwe want).
 $Comp
@@ -815,14 +844,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F83C71D" Ref="C105"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F83C71D" Ref="C205"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F83C71D" Ref="C305"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F83C71D" Ref="C405"  Part="1" 
-F 0 "C405" V 5350 2650 50  0000 C CNN
+F 0 "C205" V 5350 2650 50  0000 C CNN
 F 1 "4.7nF" V 5650 2650 50  0000 C CNN
 F 2 "Capacitor_THT:C_Rect_L7.2mm_W2.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2" H 5500 2650 50  0001 C CNN
-F 3 "https://api.kemet.com/component-edge/download/datasheet/R82EC1470DQ50J.pdf" H 5500 2650 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 5500 2650 50  0001 C CNN
 F 4 "CAP FILM 4700PF 5% 100VDC RADIAL" H 5500 2650 50  0001 C CNN "Description"
 F 5 "399-5449-1-ND" H 5500 2650 50  0001 C CNN "Digikey"
 F 6 "R82EC1470DQ50J" H 5500 2650 50  0001 C CNN "MPN"
 F 7 "KEMET" H 5500 2650 50  0001 C CNN "Manufacturer"
+F 8 "D.3" H 5500 2650 50  0001 C CNN "DK line"
 	1    5500 2650
 	0    -1   -1   0   
 $EndComp
@@ -847,7 +877,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8A0285" Ref="R107"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8A0285" Ref="R207"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8A0285" Ref="R307"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8A0285" Ref="R407"  Part="1" 
-F 0 "R407" H 6150 2650 50  0000 C CNN
+F 0 "R207" H 6150 2650 50  0000 C CNN
 F 1 "10" H 6200 2550 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 6390 2590 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 6350 2600 50  0001 C CNN
@@ -856,6 +886,7 @@ F 5 "CRCW080510R0JNEAHP" H 6350 2600 50  0001 C CNN "MPN"
 F 6 "Vishay Dale" H 6350 2600 50  0001 C CNN "Manufacturer"
 F 7 "541-10TACT-ND" H 6350 2600 50  0001 C CNN "Digikey"
 F 8 "Thick film surge resist" H 6350 2600 50  0001 C CNN "Notes"
+F 9 "I.52" H 6350 2600 50  0001 C CNN "DK line"
 	1    6350 2600
 	-1   0    0    1   
 $EndComp
@@ -874,7 +905,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8A0AFB" Ref="C109"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8A0AFB" Ref="C209"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8A0AFB" Ref="C309"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8A0AFB" Ref="C409"  Part="1" 
-F 0 "C409" H 7000 2550 50  0000 C CNN
+F 0 "C209" H 7000 2550 50  0000 C CNN
 F 1 "10nF" H 7000 2650 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 6800 2600 50  0001 C CNN
 F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 6800 2600 50  0001 C CNN
@@ -883,6 +914,7 @@ F 5 "C0G, loose tolerence here" H 6800 2600 50  0001 C CNN "Notes"
 F 6 "490-8296-1-ND" H 6800 2600 50  0001 C CNN "Digikey"
 F 7 "GRM2195C1H103GA01D" H 6800 2600 50  0001 C CNN "MPN"
 F 8 "Murata Electronics" H 6800 2600 50  0001 C CNN "Manufacturer"
+F 9 "I.14" H 6800 2600 50  0001 C CNN "DK line"
 	1    6800 2600
 	1    0    0    -1  
 $EndComp
@@ -904,7 +936,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8A41D9" Ref="#PWR0111"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8A41D9" Ref="#PWR0211"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8A41D9" Ref="#PWR0311"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8A41D9" Ref="#PWR0411"  Part="1" 
-F 0 "#PWR0411" H 6350 2700 50  0001 C CNN
+F 0 "#PWR0211" H 6350 2700 50  0001 C CNN
 F 1 "GND" H 6350 2800 50  0000 C CNN
 F 2 "" H 6350 2950 50  0001 C CNN
 F 3 "" H 6350 2950 50  0001 C CNN
@@ -936,8 +968,8 @@ Wire Wire Line
 	5050 2650 5050 4300
 Connection ~ 5050 2200
 Connection ~ 5850 2200
-Text Notes 7050 1800 0    50   ~ 0
-This what you might call a quasi-differential output.  OUT_REF becomes the "ground" connection\nin the output cable. We hook it to the output sense for the difference amp, which allows us to \ntrack any variation between our ground and their ground.  So the shield is actually not an output\nat all, it is an input. The ground loop is broken. But if the load is high Z on the ground, either \ndifferential or floating, then R63/C74 give us a definite ground reference.
+Text Notes 7050 1850 0    50   ~ 0
+This what you might call a quasi-differential output.  OUT_REF becomes the "ground"\nconnection in the output cable. We hook it to the output sense for the difference amp,\nwhich allows us to track any variation between our ground and the driver ground.  So the\nshield is actually not an output at all, it is an input. The ground loop is broken. But\nif the load is high Z on the ground, either differential or floating, then R107/C109 give\nus a definite ground reference.
 Wire Wire Line
 	5850 2200 6350 2200
 Text Notes 8100 2350 0    50   ~ 0
@@ -958,15 +990,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F88E0D6" Ref="D101"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F88E0D6" Ref="D201"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F88E0D6" Ref="D301"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F88E0D6" Ref="D401"  Part="1" 
-F 0 "D401" V 7600 2800 50  0000 C CNN
+F 0 "D201" V 7600 2800 50  0000 C CNN
 F 1 "BAV99" V 7700 2800 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7500 2450 50  0001 C CNN
-F 3 "~" H 7500 2700 50  0001 C CNN
-F 4 "" H 7500 2600 50  0001 C CNN "DK line"
-F 5 "" H 7500 2600 50  0001 C CNN "Description"
-F 6 "" H 7500 2600 50  0001 C CNN "Digikey"
-F 7 "" H 7500 2600 50  0001 C CNN "MPN"
-F 8 "" H 7500 2600 50  0001 C CNN "Manufacturer"
+F 3 "https://www.diodes.com/assets/Datasheets/ds12007.pdf" H 7500 2700 50  0001 C CNN
+F 4 "D.30" H 7500 2600 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 75V 300MA SOT23-3" H 7500 2600 50  0001 C CNN "Description"
+F 6 "BAV99-FDICT-ND" H 7500 2600 50  0001 C CNN "Digikey"
+F 7 "BAV99-7-F" H 7500 2600 50  0001 C CNN "MPN"
+F 8 "Diodes Incorporated" H 7500 2600 50  0001 C CNN "Manufacturer"
 	1    7500 2600
 	0    -1   -1   0   
 $EndComp
@@ -984,15 +1016,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F88E0E1" Ref="D101"  Part="2"
 AR Path="/5F7EFEA4/5F8B0DF1/5F88E0E1" Ref="D201"  Part="2" 
 AR Path="/5F8C3863/5F8AE34F/5F88E0E1" Ref="D301"  Part="2" 
 AR Path="/5F8C3863/5F8B0DF1/5F88E0E1" Ref="D401"  Part="2" 
-F 0 "D401" V 7650 2750 50  0000 C CNN
+F 0 "D201" V 7650 2750 50  0000 C CNN
 F 1 "BAV99" V 7550 2750 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7750 2450 50  0001 C CNN
-F 3 "~" H 7750 2700 50  0001 C CNN
-F 4 "43" H 7750 2600 50  0001 C CNN "DK line"
-F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 7750 2600 50  0001 C CNN "Description"
-F 6 "BAS21SLT1GOSCT-ND" H 7750 2600 50  0001 C CNN "Digikey"
-F 7 "BAS21SLT1G" H 7750 2600 50  0001 C CNN "MPN"
-F 8 "ON Semiconductor" H 7750 2600 50  0001 C CNN "Manufacturer"
+F 3 "https://www.diodes.com/assets/Datasheets/ds12007.pdf" H 7750 2700 50  0001 C CNN
+F 4 "D.30" H 7750 2600 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 75V 300MA SOT23-3" H 7750 2600 50  0001 C CNN "Description"
+F 6 "BAV99-FDICT-ND" H 7750 2600 50  0001 C CNN "Digikey"
+F 7 "BAV99-7-F" H 7750 2600 50  0001 C CNN "MPN"
+F 8 "Diodes Incorporated" H 7750 2600 50  0001 C CNN "Manufacturer"
 	2    7750 2600
 	0    1    1    0   
 $EndComp
@@ -1033,15 +1065,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8AA1D2" Ref="D102"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8AA1D2" Ref="D202"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8AA1D2" Ref="D302"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8AA1D2" Ref="D402"  Part="1" 
-F 0 "D402" V 7600 4850 50  0000 C CNN
+F 0 "D202" V 7600 4850 50  0000 C CNN
 F 1 "BAV99" V 7700 4850 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7500 4500 50  0001 C CNN
-F 3 "~" H 7500 4750 50  0001 C CNN
-F 4 "" H 7500 4650 50  0001 C CNN "DK line"
-F 5 "" H 7500 4650 50  0001 C CNN "Description"
-F 6 "" H 7500 4650 50  0001 C CNN "Digikey"
-F 7 "" H 7500 4650 50  0001 C CNN "MPN"
-F 8 "" H 7500 4650 50  0001 C CNN "Manufacturer"
+F 3 "https://www.diodes.com/assets/Datasheets/ds12007.pdf" H 7500 4750 50  0001 C CNN
+F 4 "D.30" H 7500 4650 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 75V 300MA SOT23-3" H 7500 4650 50  0001 C CNN "Description"
+F 6 "BAV99-FDICT-ND" H 7500 4650 50  0001 C CNN "Digikey"
+F 7 "BAV99-7-F" H 7500 4650 50  0001 C CNN "MPN"
+F 8 "Diodes Incorporated" H 7500 4650 50  0001 C CNN "Manufacturer"
 	1    7500 4650
 	0    1    1    0   
 $EndComp
@@ -1059,15 +1091,15 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8AA1DD" Ref="D102"  Part="2"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8AA1DD" Ref="D202"  Part="2" 
 AR Path="/5F8C3863/5F8AE34F/5F8AA1DD" Ref="D302"  Part="2" 
 AR Path="/5F8C3863/5F8B0DF1/5F8AA1DD" Ref="D402"  Part="2" 
-F 0 "D402" V 7350 4300 50  0000 C CNN
+F 0 "D202" V 7350 4300 50  0000 C CNN
 F 1 "BAV99" V 7250 4300 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 7450 4000 50  0001 C CNN
-F 3 "~" H 7450 4250 50  0001 C CNN
-F 4 "43" H 7450 4150 50  0001 C CNN "DK line"
-F 5 "DIODE ARRAY GP 250V 225MA SOT23" H 7450 4150 50  0001 C CNN "Description"
-F 6 "BAS21SLT1GOSCT-ND" H 7450 4150 50  0001 C CNN "Digikey"
-F 7 "BAS21SLT1G" H 7450 4150 50  0001 C CNN "MPN"
-F 8 "ON Semiconductor" H 7450 4150 50  0001 C CNN "Manufacturer"
+F 3 "https://www.diodes.com/assets/Datasheets/ds12007.pdf" H 7450 4250 50  0001 C CNN
+F 4 "D.30" H 7450 4150 50  0001 C CNN "DK line"
+F 5 "DIODE ARRAY GP 75V 300MA SOT23-3" H 7450 4150 50  0001 C CNN "Description"
+F 6 "BAV99-FDICT-ND" H 7450 4150 50  0001 C CNN "Digikey"
+F 7 "BAV99-7-F" H 7450 4150 50  0001 C CNN "MPN"
+F 8 "Diodes Incorporated" H 7450 4150 50  0001 C CNN "Manufacturer"
 	2    7450 4150
 	0    1    1    0   
 $EndComp
@@ -1096,7 +1128,7 @@ AR Path="/5F7EFEA4/5F8AE34F/5F8BFA36" Ref="R109"  Part="1"
 AR Path="/5F7EFEA4/5F8B0DF1/5F8BFA36" Ref="R209"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F8BFA36" Ref="R309"  Part="1" 
 AR Path="/5F8C3863/5F8B0DF1/5F8BFA36" Ref="R409"  Part="1" 
-F 0 "R409" V 7950 4400 50  0000 C CNN
+F 0 "R209" V 7950 4400 50  0000 C CNN
 F 1 "10" V 7750 4400 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 7890 4390 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 7850 4400 50  0001 C CNN
@@ -1105,6 +1137,7 @@ F 5 "CRCW080510R0JNEAHP" H 7850 4400 50  0001 C CNN "MPN"
 F 6 "Vishay Dale" H 7850 4400 50  0001 C CNN "Manufacturer"
 F 7 "541-10TACT-ND" H 7850 4400 50  0001 C CNN "Digikey"
 F 8 "Thick film surge resist" H 7850 4400 50  0001 C CNN "Notes"
+F 9 "I.52" H 7850 4400 50  0001 C CNN "DK line"
 	1    7850 4400
 	0    1    1    0   
 $EndComp
@@ -1129,7 +1162,7 @@ AR Path="/5F8C3863/5F8B0DF1/5F88DC3C" Ref="#PWR038"  Part="1"
 AR Path="/5F7EFEA4/5F8AE34F/5F88DC3C" Ref="#PWR07"  Part="1" 
 AR Path="/5F7EFEA4/5F8B0DF1/5F88DC3C" Ref="#PWR025"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F88DC3C" Ref="#PWR036"  Part="1" 
-F 0 "#PWR038" H 7450 3800 50  0001 C CNN
+F 0 "#PWR025" H 7450 3800 50  0001 C CNN
 F 1 "V+" H 7450 4090 50  0000 C CNN
 F 2 "" H 7450 3950 50  0001 C CNN
 F 3 "" H 7450 3950 50  0001 C CNN
@@ -1144,7 +1177,7 @@ AR Path="/5F8C3863/5F8B0DF1/5F88E156" Ref="#PWR039"  Part="1"
 AR Path="/5F7EFEA4/5F8AE34F/5F88E156" Ref="#PWR021"  Part="1" 
 AR Path="/5F7EFEA4/5F8B0DF1/5F88E156" Ref="#PWR035"  Part="1" 
 AR Path="/5F8C3863/5F8AE34F/5F88E156" Ref="#PWR037"  Part="1" 
-F 0 "#PWR039" H 7500 4800 50  0001 C CNN
+F 0 "#PWR035" H 7500 4800 50  0001 C CNN
 F 1 "V-" H 7500 4910 50  0000 C CNN
 F 2 "" H 7500 5050 50  0001 C CNN
 F 3 "" H 7500 5050 50  0001 C CNN
@@ -1167,4 +1200,6 @@ Text Label 5050 4100 0    50   ~ 0
 Ux02+
 Text Label 5050 4800 0    50   ~ 0
 Ux02-
+Text Notes 8250 3150 0    50   ~ 0
+\nThere is some protection on the outputs,\nbut these are not intended to go outside the\nbox, so only have basic diode protection,\nno RFI or high level ESD.  Hooking to the\noutput driver can be considered a somewhat\nhostile environment.
 $EndSCHEMATC
