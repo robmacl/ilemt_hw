@@ -1258,12 +1258,12 @@ AR Path="/5F861F0B/5E58A4D2" Ref="R16"  Part="1"
 F 0 "R16" V 3600 7950 50  0000 C CNN
 F 1 "10" V 3400 7950 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 3540 7940 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 3500 7950 50  0001 C CNN
+F 3 "https://www.rohm.com/datasheet/ESR01MZPF/esr-e" H 3500 7950 50  0001 C CNN
 F 4 "541-10TACT-ND" H 3500 7950 50  0001 C CNN "Digikey"
-F 5 "I.52" H 3500 7950 50  0001 C CNN "DK line"
-F 6 "RES SMD 10 OHM 5% 1/2W 0805" H 3500 7950 50  0001 C CNN "Description"
-F 7 "CRCW080510R0JNEAHP" H 3500 7950 50  0001 C CNN "MPN"
-F 8 "Vishay Dale" H 3500 7950 50  0001 C CNN "Manufacturer"
+F 5 "I.9" H 3500 7950 50  0001 C CNN "DK line"
+F 6 "RES SMD 10 OHM 5% 0.4W 0805" H 3500 7950 50  0001 C CNN "Description"
+F 7 "ESR10EZPJ100" H 3500 7950 50  0001 C CNN "MPN"
+F 8 "Rohm Semiconductor" H 3500 7950 50  0001 C CNN "Manufacturer"
 F 9 "Thick film surge resist" H 3500 7950 50  0001 C CNN "Notes"
 	1    3500 7950
 	0    1    1    0   
