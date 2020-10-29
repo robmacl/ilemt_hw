@@ -812,7 +812,7 @@ F 3 "https://www.rohm.com/datasheet/ESR01MZPF/esr-e" H 7100 4400 50  0001 C CNN
 F 4 "RES SMD 10 OHM 5% 0.4W 0805" H 7100 4400 50  0001 C CNN "Description"
 F 5 "ESR10EZPJ100" H 7100 4400 50  0001 C CNN "MPN"
 F 6 "Rohm Semiconductor" H 7100 4400 50  0001 C CNN "Manufacturer"
-F 7 "541-10TACT-ND" H 7100 4400 50  0001 C CNN "Digikey"
+F 7 "RHM10KCT-ND" H 7100 4400 50  0001 C CNN "Digikey"
 F 8 "Thick film surge resist" H 7100 4400 50  0001 C CNN "Notes"
 F 9 "I.9" H 7100 4400 50  0001 C CNN "DK line"
 	1    7100 4400
@@ -884,7 +884,7 @@ F 3 "https://www.rohm.com/datasheet/ESR01MZPF/esr-e" H 6350 2600 50  0001 C CNN
 F 4 "RES SMD 10 OHM 5% 0.4W 0805" H 6350 2600 50  0001 C CNN "Description"
 F 5 "ESR10EZPJ100" H 6350 2600 50  0001 C CNN "MPN"
 F 6 "Rohm Semiconductor" H 6350 2600 50  0001 C CNN "Manufacturer"
-F 7 "541-10TACT-ND" H 6350 2600 50  0001 C CNN "Digikey"
+F 7 "RHM10KCT-ND" H 6350 2600 50  0001 C CNN "Digikey"
 F 8 "Thick film surge resist" H 6350 2600 50  0001 C CNN "Notes"
 F 9 "I.9" H 6350 2600 50  0001 C CNN "DK line"
 	1    6350 2600
@@ -1135,7 +1135,7 @@ F 3 "https://www.rohm.com/datasheet/ESR01MZPF/esr-e" H 7850 4400 50  0001 C CNN
 F 4 "RES SMD 10 OHM 5% 0.4W 0805" H 7850 4400 50  0001 C CNN "Description"
 F 5 "ESR10EZPJ100" H 7850 4400 50  0001 C CNN "MPN"
 F 6 "Rohm Semiconductor" H 7850 4400 50  0001 C CNN "Manufacturer"
-F 7 "541-10TACT-ND" H 7850 4400 50  0001 C CNN "Digikey"
+F 7 "RHM10KCT-ND" H 7850 4400 50  0001 C CNN "Digikey"
 F 8 "Thick film surge resist" H 7850 4400 50  0001 C CNN "Notes"
 F 9 "I.9" H 7850 4400 50  0001 C CNN "DK line"
 	1    7850 4400

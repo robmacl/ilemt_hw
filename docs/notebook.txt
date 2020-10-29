@@ -1,22 +1,20 @@
 FPGA code:
  -- Check MCLK_ENA setup wrt. SYSCLK
  -- Sample rate is not 60 Hz multiple, so hum filter can't work.
- -- Figure out how to program clock oscillator. 
- -- Increase FIFO sizes?  xillybus_fpga_api.pdf pg 6 says >2kb does
-    not help for asynchronous streams (which we use).
+ -- Figure out how to program clock oscillator. Get eval board.
  -- Add registers to control BIST DAC and status registers that count
     read/write overruns, etc.  Just flag to say whether FIFO data goes
     to output DAC or BIST DAC?
  
 
 DAC output:
- -- Breakout board for output slot
- -- +/-12 supplies for DACs
- -- DAC output filter and perhaps buffer
+ -- Order parts
+ -- -15V supply
+ -- Build and test
+
 
 Evaluation tasks:
  -- BIST injection test
- -- Prototype reference
  -- Preliminary RFI and ESD testing on input board.
  -- Measure supply current, in saturation and otherwise.
 
@@ -25,36 +23,29 @@ Main board revisions:
 
 
 Input board revisions:
- -- Add diode clamp beween chassis and main ground for ESD currents.
- -- Change to how supplies boostrap from reference. Probably
-    not affecting performance, but noise and ripple on the
-    reference buffer supply just looks ugly.  Supply is also 
-    skimpy with diode drops.
- -- Use OPA2227 dual opamp rather than 2 OPA27
- -- Increase C41, C10 to reduce reference buffer diff amp bandwidth.
-    There is no reason to have so much bandwidth now that we no
-    longer need loop gain to reject output disturbances.
- -- Q3E fuse trace is narrow.
- -- Reconsider bead selection on the power inputs.  Higher Z?
-    Consider DC current effect.
- -- Input channel amps have wrong footprint.
- -- +8 remote sense line is shorted to bus too early by large vias.
- -- Change testpoint style, turret or at least larger hole.
- -- More ground TPs.  More exposed top ground pour.
- -- Rework input filter to use dual planes for dirty cavity to
-    shield input leads before the filter.  Move bead close to input,
-    change 10 Ohm to bead, etc.
- -- Add more exposed chassis ground on input edge for bonding.
+ -- Board select logic, mux for one-wire and I2C, onboard eeprom and
+    IO expander.
  -- Beef up input clamp and TVS diodes?  Experience with BAS21S in the
     regulators makes it seem a little delicate, but TVS is getting hit
     way harder.  In simulation was having difficulty with getting the
     diodes to conduct even when the TVS stress was super huge.
+ -- Change testpoint style, turret or at least larger hole.
+ -- More ground TPs.  More exposed top ground pour.
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
- -- Switch to different LVDS parts with more sources, standard footprint
+ -- Make board longer to get the right panel position.
+ -- Q3E fuse trace is narrow.
+ -- +8 remote sense line is shorted to bus too early by large vias.
+ -- Change to high quality input connector, with external dongle
+    adapter for RJ45.  Or leave both footprints, if possible.
+ -- Or keep RJ45, recess the input board, and move chassis ground
+    components, CM choke, to a front panel board.  This board can have
+    either style connector. 
+ -- Rework input filter to use dual planes for dirty cavity to
+    shield input leads before the filter.  Move bead close to input,
+    change 10 Ohm to bead, etc.
+ -- Add more exposed chassis ground on input edge for bonding.
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
     distortion, PSRR, CMRR.
- -- Board select logic, mux for one-wire and I2C, onboard eeprom and
-    IO expander.
 
 Input board bodges still needed:
  -- Replace C129, etc. filter caps in YZ channels with 10 nF.
@@ -95,6 +86,26 @@ Don't forget:
     rate to allow for actual phase shift.
  -- What effect does placing the output filter resonance at the
     carrier frequency have on driver noise?  Does this help or hurt?
+
+
+[29 Oct 20]
+
+The DAC board is off to fab.
+
+Respin on the input board is coming up in priority.  I am considering
+ditching the whole idea of bootstrapping the supplies for the
+reference buffer, perhaps using the 10 Ohm/330 uF currently going into
+the regulator opamps.  There is currently a fairly high level of noise
+on the buffer supply (seemingly due to the high diode impedance), and
+yet it doesn't seem to have any effect on buffer noise.  The 10/330
+pole is at 48 Hz where a precision opamp will have loads of supply
+rejection.  This certainly makes things a good bit simpler.
+
+
+
+
+
+
 
 
 [14 Oct 20]

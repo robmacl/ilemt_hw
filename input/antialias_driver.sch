@@ -196,7 +196,7 @@ AR Path="/5E62FD57/5E448095/5DE6CDF8/5E1955AA" Ref="U?"  Part="1"
 AR Path="/5E62FD57/5E45936E/5DE6CDF8/5E1955AA" Ref="U?"  Part="1" 
 F 0 "U104" H 4850 3700 50  0000 C CNN
 F 1 "THS4131" H 4250 3850 50  0000 C CNN
-F 2 "Package_SO:SO-8_5.3x6.2mm_P1.27mm" H 4650 3100 50  0001 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 4650 3100 50  0001 C CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fths4131" H 2950 4700 50  0001 C CNN
 F 4 "42" H 4650 3500 50  0001 C CNN "DK line"
 F 5 "IC OPAMP DIFF 1 CIRCUIT 8SOIC" H 4650 3500 50  0001 C CNN "Description"
