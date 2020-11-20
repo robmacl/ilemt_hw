@@ -1137,8 +1137,8 @@ Text Label 10850 5700 0    50   ~ 0
 FILT_10V
 Text Label 10850 7000 0    50   ~ 0
 FILT_-6V
-Text Notes 11550 9100 0    50   ~ 0
-Note that each LC filter is looking into 330 uF/22 mOhm bulk\ncapacitance on the main board, and also 10's of uF of ceramic\ncapacitance. This significantly reduces the resonant frequency \nand Q of the LC filter, which reduces noise peaking that might\notherwise happen. The resonance will be around 4 kHz, where\nthe beads are not really doing anything, so C16, etc. are in \nparallel with the main board capacitors.\n\nAll this filtering is probably overkill, especially given that none\nof these rails are used without some subsequent regulation stage.\nExcept for the Zedboard these are all linear regulators down\nto 3.3V or 2.5V.
+Text Notes 11950 9250 0    50   ~ 0
+Note: to test this board seperately from the system you need to\nadd a bunch of capacitance at the output.  With the main board,\neach LC filter is looking into at least one 330 uF/22 mOhm bulk\ncapacitance on the main board, and also 10's of uF of ceramic\ncapacitance. This significantly reduces the resonant frequency\nand Q of the LC filter, which reduces noise peaking. The\nresonance is at 4 kHz or lower, where the beads are not really\ndoing anything, so C16, etc. are in parallel with the main board\ncapacitors.\n\nAll this filtering is probably overkill, especially given that\nnone of these rails are used without some subsequent regulation\nstage.  Except for the Zedboard these are all linear regulators\ndown to 3.3V or 2.5V.\n
 $Comp
 L Device:Fuse F1
 U 1 1 5F24800D
@@ -1163,5 +1163,5 @@ Wire Wire Line
 	3850 3100 5850 3100
 Connection ~ 3850 3100
 Text Notes 1700 4750 0    50   ~ 0
-VSET\n5V: R6, 16.2K\n10V: R2, 7.5K\n-6: R4, 13.3K\n\nRTUNE, CTUNE: 270 Ohm, 5.6 nF\n
+VSET\n5V: R6, 16.2K\n10V: R2, 7.5K\n-6: R4, 13.3K\n\nRTUNE, CTUNE:  \n13.3K, 5.6 nF, -6V only\nDNP on positive outputs\n\n
 $EndSCHEMATC

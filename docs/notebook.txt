@@ -1,14 +1,19 @@
 FPGA code:
  -- Check MCLK_ENA setup wrt. SYSCLK
- -- Sample rate is not 60 Hz multiple, so hum filter can't work.
- -- Figure out how to program clock oscillator. Get eval board.
+ -- Program oscillator for 48 ks/s
  -- Add registers to control BIST DAC and status registers that count
     read/write overruns, etc.  Just flag to say whether FIFO data goes
     to output DAC or BIST DAC?
- 
+ -- Some way for software to readback the FPGA firmware version
+
+LV supply card:
+ -- Add bulk cap on +5?  There is LF glitching on +5 ANA, though it
+    doesn't seem to make it through to eg. +2.5 on the input board.
+ -- In revision, add -15V for DAC?
+
+
 
 DAC output:
- -- Order parts
  -- -15V supply
  -- Build and test
 
@@ -23,6 +28,7 @@ Main board revisions:
 
 
 Input board revisions:
+ -- ~10 dB of noise peaking in reference buffer near 6 kHz.
  -- Board select logic, mux for one-wire and I2C, onboard eeprom and
     IO expander.
  -- Beef up input clamp and TVS diodes?  Experience with BAS21S in the
@@ -48,8 +54,7 @@ Input board revisions:
     distortion, PSRR, CMRR.
 
 Input board bodges still needed:
- -- Replace C129, etc. filter caps in YZ channels with 10 nF.
- -- R326 missing
+ -- Change to new reference buffer supply setup
 
 Input board changes made (bodged on board and in schematic):
  -- Reference lowpass filter.
@@ -87,6 +92,105 @@ Don't forget:
  -- What effect does placing the output filter resonance at the
     carrier frequency have on driver noise?  Does this help or hurt?
 
+
+Software & research tasks:
+ -- Resurrect calibration
+ -- Calibration tests, linearity, calibration paper
+ -- Pose solution development:
+     - matlab prototype, closed form?
+     - real-time implementation
+ -- Metal interference tests, high/low algorithm development (KF, etc)
+ -- Metal interference publication
+ -- In-vivo tests
+     - Setup for next bunny, in spring
+     - Bunny test publication
+     - Navio tests, phantom and cadaver
+     - Navio test publication
+ -- EMI testing, lab and onsite.
+ -- EMI publication
+ 
+
+
+[17 Nov 20]
+
+The LV reg board seems to be working OK in the full assembly.
+Yesterday I spent a while poking around with the HP 89410A looking at
+the supplies.  I was using the 7A22/7904 as the input conditioning.
+One discovery is that there seems to be noise peaking near 6 kHz in
+the input board reference buffer.  This is not present on the main
+board.
+
+I can see the 300 kHz series from the LV regs everywhere, but it is
+not clear how much of this is a probing issue, and also not clear how
+much it matters, since when we get to the post-regulated supplies on
+the input board, it is below the time-domain noise floor.  But even if
+we are picking it up in the probing it does mean that the signal is
+everywhere to some degree.  Some of this may be coming from the 24V
+input wiring.  There is also no common mode choke.  Not clear whether
+the probe coupling is common-mode or EM.
+
+Some time back I populated the YZ channels on the input board, and
+they seem to be working.  Picking up ambient noise nicely anyway.
+
+I guess I should build the DAC card next?  Then lash up a new source
+driver and give it a spin?  After than, input board revision time,
+because we want at least a second input board for feedback.
+
+
+
+[13 Nov 20]
+
+I made most schmatic changes in the input board, such as getting rid
+of the supply bootstrapping.  Have not tackled the board layout yet.
+Maybe move the chassis ground protection componenents to a separate
+multi-channel protection + connector board mounted on the front panel.
+
+I built the LV regulator board.  It was oscillating like crazy with
+the tuning RC values I had guess at.  For the positive outputs we seem
+to be fine with no RTUNE/CTUNE.  At least, the choice based on the
+type and amount of output capacitance was way wrong, probably because
+the 4.7 uH inductor dominates the impedance seen by the regulator
+output.
+
+For the -6 output, there is a noticeable improvement in the ripple
+near 1 kHz by using 5 nF and 10-15 K Ohms, using substitution box.
+Without this, the ripple really blows up when the input voltage is
+~15V.  I have left in 5.6 nF and 13.3K.  The output goes unstable
+somewhere between 6.8K and 10K.
+
+
+I did load transient tests and did not see any underdamped behavior in
+the response.  For the + rails I did not try adding back any
+compensation.  With the -6 rail, the compensation did not affect the
+(already well damped) load transient response.
+
+
+I am seeing something in the output which I did not expect, which is
+fairly coherent ripple tones in the roughly 0.5-2.5 kHz range.  So, LC
+filtering the 300 kHz ripple did indeed knock that way way down, but
+of course this exposed something else, something that isn't simply
+noise.
+
+On the + outputs there is clear and sensible noise peaking which is
+reduced ~15 dB by adding a 3300 uF/10V electrolytic at the output.
+With the -6 output, the picture is more confused.  The improvement
+from the 3300 uF is only ~6 dB.  On the -6 the residual output is
+pretty dominated by the 600 Hz tone, with noise making a less
+significant contribution than with the positive outputs.
+
+I am not planning to add any big electrolytic damping caps at this
+point.  I can always go back and do it later, and I think the level of
+noise we've got is acceptable, given that any sensitive uses of these
+rails are all either regulated or heavily filtered.
+
+Using TEK 7A22 1 MHz BW/ Ballantine 323, I am getting this RMS
+ripple + noise:
+
+	Rail	RMS
+	+5	380 uV
+	+10	500 uV
+	-6	320 uV
+
 
 [29 Oct 20]
 
@@ -100,12 +204,6 @@ on the buffer supply (seemingly due to the high diode impedance), and
 yet it doesn't seem to have any effect on buffer noise.  The 10/330
 pole is at 48 Hz where a precision opamp will have loads of supply
 rejection.  This certainly makes things a good bit simpler.
-
-
-
-
-
-
 
 
 [14 Oct 20]

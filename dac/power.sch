@@ -1292,8 +1292,8 @@ F 3 "~" H 6100 8200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 6100 8200
-Text Notes 650  9050 0    50   ~ 0
-C8/R13 is a low-effort 16 Hz lowpass\nto suppress HF crud that may come in on\nthe master VREF so that it does not go\ninto DAC_VCC.
+Text Notes 600  9050 0    50   ~ 0
+C8/R13 is a low-effort 16 Hz lowpass\nto suppress kHz crud that may come in on\nthe master VREF, so that it does not go\ninto DAC_VCC.
 $Comp
 L Device:C_Small C?
 U 1 1 5F8321A3
