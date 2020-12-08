@@ -17,12 +17,12 @@ width, and the SAR takes fewer cycles.
 wrt. this architecture, I am a little puzzled what the benefit is of
 decimating from a SAR with many noise bits, vs. only having a few
 noise bits.  Maybe there is better linearity, especially at very high
-decimation?  But in any case, with the LTC2500-32, in my (limited) ADC
-evaluation, I had better luck getting a wide dynamic range from peak
-to noise floor in the presence of signal (in comparison to audio
-ADCs).  The noise floor rise I saw with signal may be due to reference
-noise, but the audio parts do not have an external reference input
-(which is a problem for other reasons).
+decimation?  But in any case, with the LTC2500-32 (in comparison to
+audio ADCs), in my (limited) ADC evaluation, I had better luck getting
+a wide dynamic range from peak to noise floor in the presence of
+signal.  The noise floor rise I saw with signal may be due to
+reference noise, but the audio parts do not have an external reference
+input (which is a problem for other reasons).
 
 In LTC SAR ADC application info there is discussion of how the ADC
 driver and input caps at input affect settling of the input during the
@@ -55,12 +55,19 @@ to 3.275 A.
 Standardize noise floor measurements with carrier at -4 dBFS at 120mm.
 Set the X-X gain to get the -4 dB, then switch to the sensor loopback
 cable with HP353A attenuator to set all the gains equal.  Use the raw
-data time domain RMS because the spectral measurements are iffy due to
-unsynch issues.
+data time domain RMS because the spectral measurements can be subject
+to measurement problems (such as if ADC and DAC are not synchronized).
 
-To minimize unsynch errors in spectral measurement, set spectrum controls to
-flat-top order 1 blocking 2 averaging 0, and then show the levels for "Trace
-display", not "Carrier levels" (which uses fixed FFT parameters).
+________________
+Eval board issues:
+
+Unsynch between DAC and ADC, or between ADCs, is only a problem with
+the eval board setup when we are also using the UR44.
+
+To minimize unsynch errors in spectral measurement, set spectrum
+controls to flat-top order 1 blocking 2 averaging 0, and then show the
+levels for "Trace display", not "Carrier levels" (which uses fixed FFT
+parameters).  But this does not work all that well.
 
 Because of time skew issues you really need to evaluate the test box
 in "TCP only" mode, otherwise you get gratuitous LF noise, wrong
@@ -74,6 +81,8 @@ With UR44, set the YZ carriers to zero.  This better matches what "TCP
 only" mode is doing (and doesn't include any source channel
 interaction effects that might exist, but are not there in TCP only
 mode).
+________________
+
 
 Shell snips: 
 ________________
@@ -82,6 +91,8 @@ Send ADC data to labview:
 ~/labview_connect &
 ________________
 Install new FPGA bit file:
+
+In Vivado, Make sure to generate the bitstream file!
 
 On windows:
 cd ~/Documents/Work/ilemt_fpga/verilog/ilemt/vivado/ilemt.runs/impl_1/

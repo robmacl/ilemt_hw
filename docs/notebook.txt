@@ -6,16 +6,27 @@ FPGA code:
     to output DAC or BIST DAC?
  -- Some way for software to readback the FPGA firmware version
 
+
 LV supply card:
  -- Add bulk cap on +5?  There is LF glitching on +5 ANA, though it
     doesn't seem to make it through to eg. +2.5 on the input board.
  -- In revision, add -15V for DAC?
 
 
-
 DAC output:
  -- -15V supply
- -- Build and test
+
+Output board revisions:
+ -- Fix opamp footprint
+ -- Add digital outputs for front panel lights?  Maybe support for LCD
+    display?  This could also be added to main board.
+
+
+Driver:
+ -- Output filter and feedback sense board at front panel
+ -- SMA breakout boards for amp input with gain trim
+ -- Modify driver boards for lower gain and with bigger bypass caps.
+ -- Chassis shelf cantilever
 
 
 Evaluation tasks:
@@ -108,7 +119,245 @@ Software & research tasks:
      - Navio test publication
  -- EMI testing, lab and onsite.
  -- EMI publication
- 
+
+
+[8 Dec 20]
+
+Looking at the noise spectrum of the DAC output with DACs running putting out
+zeros.  Puzzling that the noise starts *increasing* at 30 kHz, precisely at
+the point where we start to roll off in the output buffers.  It peaks at at
+around 300 kHz.  One explanation is that this is the HF noise shaping, and
+that the noise is increasing faster than the 2 pole rolloff in the output
+stage.  There may also be a probing issue, or an actual bug.  The
+pseudo-differential output would be one thing to examine.
+
+But I don't think this relatively higher level of HF noise does any harm.  It
+is a pretty big difference though, 40 dB.  Also near the Nyquist freq, where
+there is a 18 dB spur.  Perhaps this is digital crud, which is likely
+exaggerated by the probing setup.  In the time domain there is noticeable
+spiking at 2x-3x amplitude.
+
+A lot of tones appear with 1 kHz end freq and 3 Hz RBW.  But this is mainly
+hum.
+
+
+OK, got the DAC outputs sorted.  After I fixed the testbench to not have
+dac_fifo_data one cycle ahead, and then believed what my test prints were
+telling me, then I reproduced the sample slip problem.  Then after quite a few
+iterations, I fixed dac_buffer_reg, which was reading data at the wrong time
+into the wrong index in new_data.  After this, all the channels are at the
+right output jack and are in-phase.
+
+
+[7 Dec 20]
+
+
+Yeah, so the output channels are swapped around, which is consistent with my
+theory that the mismatch between the channel bit sequences was due to samples
+getting mixed, due to startup problems.
+
+This is confusing because the frequencies are also wrong.
+ ==> OK, the modulation setup was still for 20 MHz.  
+[I was using the scope delta time feature to measure frequency, but wasn't
+confident this was working.  But comparing the the HP 89410A, it seems pretty
+much on.]
+
+	Channel		is actually
+	0		channel 0 (7629 Hz)
+	1		channel 3 (11.92 Hz square wave, the read rate)
+	2		channel 2 (13733 Hz)
+	3 		channel 1 (10681 Hz)
+
+So this is still confusing, because we aren't just shifted by one channel.
+Like maybe we are shifted a channel, and some channels are also swapped.  I
+guess I should try fixing the sample drop that I think is there, and then see
+what the pattern is.  In the testbench I have effectively implemented first
+sample drop-thru, but this is not how the FIFO actually is set up.
+
+OK, I stared at the code again, and ran the testbench, and don't see any
+problem.  I guess the quick and dirty fix is to just swap the output cables
+around.  ((Evil grin))  The sample mixing is not ideal, but will be absorbed
+into the reference phase calibration.  Not sure how to debug this since it
+isn't showing up in the simulation.  Well, I could dump out signals on my
+debug port, and it would also be possible to push data back into Linux.
+
+So, sending 6100 Hz signal to all channels, delay of output wrt. channel 0/
+output 0 (labeled output 1, OFC).  Fs = 20.48 us.
+
+	Output chan	Signal	Phase (samples)
+	0		0	(phase reference)
+	1		3  	-1 (delay)
+	2	  	2	in phase	
+	3	  	1	in phase
+
+So, signal 3 is coming from the next sample, which would make sense for an off
+by 1 in read alignment FIFO.  This in itself would cause a channel
+permutation:
+	Output	Signal
+	0	1
+	1	2
+	2	3
+	3	0
+
+Which isn't what we've got, so there are probably two bugs.  One way to get to
+this would be if the channels are also getting reversed, so, 0321 instead of
+1230.  This would have to happen after the one sample slip.
+
+Channel reverse could easily happen in the buffer indexing, but I just don't
+see it there.  Another possibility would be that we are (in two seperate
+errors) swapping both the chip data lines and the LR channels, which is
+conceivable.
+
+ ==> OK, I do have L and R reversed wrt. what I was thinking when coding the
+     FPGA.  "Out 1" is R channel, "Out 2" is L channel, etc.  This makes sense
+     for the board layout, because of the DAC chip orientation and desire to
+     have the channels in order from top to bottom of the card.
+
+I gave the chip data line representation the beady eye, but didn't see a
+swap.  This does go through the FPGA pin mapping though.
+
+re. the sample slip, there is some weirdness with FIFO display at simulation
+startup, which I was ignoring.
+
+
+BTW, the second harmonic of channel 1 is showing up at -87 dB.  I'm not sure
+what the instrument limit is, but this is a distortion of 0.004%, which seems
+pretty good.  I don't see any third or higher harmonic.  This is also going
+through the transformer in the HP 353A patch panel.  Also, if I am doing this
+right, phase noise is something like -77 dB @ 0.1 Hz.
+
+
+[4 Dec 20]
+
+Starting to think about what next, and in particular the driver setup, extra
+output filters, current sense feedback.
+
+I was scratching my head about how to electric shield the current
+transformers, but looking back in my notes, it isn't clear this is an actual
+problem.  I had been looking at it as a possible source for the cross-axis
+coupling seen in the current feedback, but this coupling is not so big in the
+current driver box, which does not completely shield the CTs, and also there
+is various evidence that the cross coupling may be mainly from the
+single-ended DAC outputs.  And there is also no particular reason to believe
+that whatever cross-coupling there is is causing any actual performance
+problem.
+
+See [11 Oct 19] for recent feedback sense discussion.
+
+However in the current driver box there is a good bit of separation and
+incidental E-field shielding against whatever high-side fields are floating
+around.  If the output sense is on a common board with the output filters,
+then we want at least a good bit of separation, and perhaps allow for a can to
+be added over top.  The wires can pass to the CT up from underneath the board,
+through holes.  We do not really have any good shield potential except for the
+front panel chassis ground.
+
+We can consider transimpedance amp signal conditioning for the CTs, which
+should help to reduce IMD between high and low carriers.  It would be nice to
+overkill the current feedback accuracy so that we have more confidence of what
+is going on.
+
+I dug back for my earlier CT search on digikey, [11 Oct 19].  In the CR
+magnetics 8300 series we would need something more like CR8348-2000-F, high
+frequency.  The -A series parts would also do, but are perhaps obsolete?  They
+aren't on digikey, and aren't featured on the manufacturer site.  The high
+frequency -F parts are similar cost, and perhaps supersede it.  This part is
+about 25mm square in side view, so kinda big.  This is not in stock at
+digikey, but they allow single unit purchase, and the manufacturer has a cart
+system.  Might be lead time.
+
+We don't really need to look for any official minimum frequency rating,
+though, since this has to do with the inductance, the load resistance, and
+whatever accuracy you are looking for.  The CR magnetics parts don't list
+inductance or volt-sec
+
+If our burden resistance (secondary resistance plus any sense resistance) is
+say 200 Ohms (100 Ohm Rsec + 100 Ohm sense), then ???  Forgot my current
+transformer theory, but it seems we would need 10 H inductance for the
+inductive reactance to be 100x the burden resistance.  This seems way out of
+whack wrt. what is available.  But with whatever random current transformers I
+chose, we seem to be doing kind of OK, right?  And I would think their
+inductance is way lower.  The current transformer I have in my bin which I
+used in the 1DOF setup has a 1 Ohm load resistor, and I marked it as 34 Hz,
+which is presumably the lower -3dB point.  
+
+We can get somewhat close to 1 Hy, like 500 mH, though.  Talema Group LLC,
+AS-104, is given a lower end of 20 kHz, but has an datasheet inductance of 560
+mH (digikey online value is higher).  This part is not in stock.
+
+The Triad CST206-3A is in stock, only 130 mH, but much lower DCR of 12.4 Ohms.
+ ==> Eh, it's really not worth optimizing the CT cost at this point.  But we
+     do want a good part that we can actually get.
+
+I don't know what I did for the feedback CTs in the current driver, but
+calibrate_ref.vi says that the ratio is 0.1V/A, or 0.1 Ohms. IIRC the CT ratio
+is lowish, like 20 or 50.  With 50, this would correspond to a load of 50 *
+0.1 Ohm = 5 Ohms.  The referred impedance goes as turns^2, so the primary side
+impedance (due to the load resistor) would be 2 mOhm.
+
+
+
+
+May want to add a voltage sense also.  Can be just a passive divider.
+
+We will want RJ45 outputs on the feedback sense.
+
+
+Driver tasks:
+ -- Mount driver and supply boards on ground plane shelf cantilevered
+    from front panel.
+ -- Input attenuation and SMA adapter for driver boards.
+ -- Feedback resistor change on driver boards for gain reduction.
+ -- Output board:
+     - LC filters
+     - EMI filters
+     - Output connector
+     - Current sense
+     - Voltage sense
+
+Seems like we should add some EMI filters on the output lines, both for
+emission and also incoming.  But we don't want to add distortion.  The output
+LC filter itself is not very effective for EMI because it does not have a HF
+ground, so is effectively a diff mode filter, and will only reduce the LF
+emission through the source coil.  We can add just capacitors to chassis
+ground, on both the output and return lines.  This will help with RF crud,
+both ingoing and outgoing.  I'm not crazy about the idea of adding any sort of
+series inductance, bead, etc., because of the high current and distortion
+concerns.  But it would be good to leave some room to add series components
+for testing.
+
+
+
+[3 Dec 20]
+
+Got DAC driver looking OK in simulation.
+
+On the hardware, had a few bad solder joints.  So far channel (2, 3) are
+stuck at 0, while (0, 1) output some garble that glitches around at
+the sample rate.  May still be a hardware problem with (2, 3).
+
+One anomaly is that the data line signal to chip1 is different from
+chip2, even though the data file has the same thing for all channels.
+This pretty much has to be a FPGA bug, though it wouldn't seem to
+explain the zero output on chip 2.
+
+When sending all zeros, both DACS are at a happy zero, and even assert
+their zero output flag.
+
+ ==> One possible test is using the digital streams with one of the
+     Ebay breakout boards and seeing what happens.
+
+random ideas:
+ -- Is the generated LRCK/SCK divisor not right?
+ -- The sample rate chopping thing seems like a bit/byte scrambling
+ -- Are pin straps wrong?
+
+ ==> Uh, OK, capture_clk was still master clock/5.  Fixing this and
+     the DAC outputs become reasonable.  But there is still mismatch
+     between DATA1 and DATA2.  Mismatch is more common in the LS bits
+     with full scale triangle wave.  Maybe a sample skew between
+     channels? 
+
 
 
 [17 Nov 20]
@@ -8984,6 +9233,9 @@ would be nice to use off-the-shelf components.
 Going off of the transformer frequency rating we do not have a huge
 number of choices at digikey.
  	582-1161-ND  CR Magnetics CR8348-1000
+[4 Dec 20: with no suffix this is the iron core LF version.  We would need
+something more like CR8348-2000-F, high frequency.  See this note from this
+date above.]
 
 This part says that it has a nanocrystalline amorphous core.  I guess
 metal, maybe tape wound?  The frequency range is given as 50 Hz - 50
@@ -9121,6 +9373,8 @@ bigger, which should exaggerate the drop at higher frequency rather than
 diminish it.  In the low carriers there is no current trend. We would expect
 less trend because of lower relative frequency difference, but this doesn't
 explain Y being low.  Possibly I just ended up with Y set low?
+[4 Dec 20, copper loss will increase with frequency, increasing real
+part of current.]
 
 Also, FWIW, with only high or only low, there is no audible whine from source.
 
@@ -9196,7 +9450,7 @@ inputs shorted at the preamp (and routed into box), I get:
     -154.5	-135.8	-137.1	
 
 So, basically no difference.  The preamp noise is now below the driver/ADC!
- ==> Eh, I was getting crud coupled into the setup from laptop power cord.
+ ==> Eh, nope, I was getting crud coupled into the setup from laptop power cord.
 
 Now with loopback cable shorted I am getting:
     -151.2	-137.0	-137.8	
