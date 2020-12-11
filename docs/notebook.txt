@@ -17,10 +17,11 @@ DAC output:
  -- -15V supply
 
 Output board revisions:
+ -- Do something about excess HF noise.
  -- Fix opamp footprint
+ -- Exposed probe ground near digital testpoints
  -- Add digital outputs for front panel lights?  Maybe support for LCD
     display?  This could also be added to main board.
-
 
 Driver:
  -- Output filter and feedback sense board at front panel
@@ -121,7 +122,81 @@ Software & research tasks:
  -- EMI publication
 
 
+[10 Dec 20]
+
+Starting work on output filter board.  Going back to [21-23 Jan 16] to recall
+the output filter design, and the snubbers.  This reminded that me that
+although the snubbers were important at the time for cleaning up the residue
+wrt. the predicted carrier, that was for the Kalman demodulator, which we are
+no longer using.  So the snubbers may not really matter anymore.  But might as
+well design them in, since it doesn't add much cost or complexity.
+
+
+
+
+
+
+
+
+
+[9 Dec 20]
+
+Summary:
+ -- HF DAC noise looks like it is coming directly from the DAC, and
+    not a circuit problem.
+ -- May want to revise output section to eg. include active filter,
+    but shelve this for a while until I can test the driver hookup to
+    see how much of a problem it is.
+
+Looking at the DAC HF noise.  At 150 kHz the noise increases 45 dB
+when I send zeros to the DAC, vs. when the processor is booted but the
+output is not open (so the DAC is in reset).  It makes no difference
+if I short the output jack shell to ground at the DAC board, so this
+doesn't seem to be an issue with the pseudo-differential output.
+
+Shunting the output with 0.5 uF or so does reduce the noise about 30
+dB (15-20 dB above output off).
+
+Note that the in-band noise at 10 kHz really does not change with
+output on vs. off.  Btw, at -123 dB/Vrms and 3 kHz RBW, this works out
+to 15 nV/rtHz.  However this seems to be pretty much the instrument
+noise floor, since it doesn't change when I disconnect the input and
+replace it with a terminator.
+
+It's looking like this really is noise coming through from the DAC
+noise shaping.  I was expecting the the two-pole rolloff would be more
+than enough to deal with it, but I guess not.  I poked around with the
+Tek P6046 diff probe hooked to the 89410A, it was telling the same
+story as direct connection, and also the rolloff in the output (diff
+amp) stage is about what would be expected.  I had wondered if this
+could be a layout error with eg. ground references (or the
+pseudo-differential output), but this noise is *so* big, 10's of mV,
+and I don't measure any potentials across the ground plane in this
+area.
+
+I'm a little surprised how rapidly the noise increases above the
+Nyquist frequency.  To prevent the noise from zooming up you would
+really need a sharpish high order filter, which I thought was what
+oversampling was to avoid.
+
+I had thought of adding a first order LPF at the driver input breakout
+board, but I was thinking of that more as a redundant measure.  I
+could change the DAC output to include an active filter, maybe the
+differential filter from the input board.  Then we could go to third
+order and get a more well-defined rolloff.  We do need a rev on the
+output board, but I was hoping to be done with it for now.
+ ==> I don't know whether this noise is an actual problem, which I
+     could determine by seeing how the driver output noise changes
+     with/without the input noise (such as by adding heavy LPF at the
+     amp input). 
+
+
 [8 Dec 20]
+
+Summary:
+ -- There is a noise hump in the DAC output when driven with zeros,
+    +40 dB at 300 kHz relative to 10 kHz.
+ -- FPGA DAC interface seems complete
 
 Looking at the noise spectrum of the DAC output with DACs running putting out
 zeros.  Puzzling that the noise starts *increasing* at 30 kHz, precisely at
@@ -130,12 +205,26 @@ around 300 kHz.  One explanation is that this is the HF noise shaping, and
 that the noise is increasing faster than the 2 pole rolloff in the output
 stage.  There may also be a probing issue, or an actual bug.  The
 pseudo-differential output would be one thing to examine.
+ ==> FWIW, we start to roll off the pseudo-differential at 1.6 MHz due to
+     R107/C109 10 Ohm/10 nF.  But, without thinking too hard, or running a
+     simulation, the effect may start rolling off sooner due to GBW limits,
+     etc.
+ ==> Connection from DAC output to 89410A is a little dodgy because there is
+     not any solid shared ground.
+ ==> Could try shorting R107 to see what that does.
+
 
 But I don't think this relatively higher level of HF noise does any harm.  It
 is a pretty big difference though, 40 dB.  Also near the Nyquist freq, where
 there is a 18 dB spur.  Perhaps this is digital crud, which is likely
 exaggerated by the probing setup.  In the time domain there is noticeable
 spiking at 2x-3x amplitude.
+ ==> On further thought, we *really* don't want noise here because
+     this is in a band where the class-D modulator may alias it into the
+     audio passband.  We want the noise to be rolling off, not
+     increasing.  I expect that aliasing of the modulator intrinsic
+     noise is a significant contributor to driver output noise even
+     when there is no excess input noise.
 
 A lot of tones appear with 1 kHz end freq and 3 Hz RBW.  But this is mainly
 hum.
@@ -146,11 +235,16 @@ dac_fifo_data one cycle ahead, and then believed what my test prints were
 telling me, then I reproduced the sample slip problem.  Then after quite a few
 iterations, I fixed dac_buffer_reg, which was reading data at the wrong time
 into the wrong index in new_data.  After this, all the channels are at the
-right output jack and are in-phase.
+     
+right output jack and are in-phase.  So there was no chip data line swap after
+all, the buffer was just a bit more weird.
 
 
 [7 Dec 20]
 
+Summary:
+ -- Debugging FPGA DAC interface
+ -- Second harmonic of 10 kHz is -77 dB, distortion of 0.004% (?)
 
 Yeah, so the output channels are swapped around, which is consistent with my
 theory that the mismatch between the channel bit sequences was due to samples
@@ -159,7 +253,7 @@ getting mixed, due to startup problems.
 This is confusing because the frequencies are also wrong.
  ==> OK, the modulation setup was still for 20 MHz.  
 [I was using the scope delta time feature to measure frequency, but wasn't
-confident this was working.  But comparing the the HP 89410A, it seems pretty
+confident this was working.  But comparing to the HP 89410A, it seems pretty
 much on.]
 
 	Channel		is actually
@@ -169,7 +263,7 @@ much on.]
 	3 		channel 1 (10681 Hz)
 
 So this is still confusing, because we aren't just shifted by one channel.
-Like maybe we are shifted a channel, and some channels are also swapped.  I
+vLike maybe we are shifted a channel, and some channels are also swapped.  I
 guess I should try fixing the sample drop that I think is there, and then see
 what the pattern is.  In the testbench I have effectively implemented first
 sample drop-thru, but this is not how the FIFO actually is set up.
@@ -228,6 +322,11 @@ right, phase noise is something like -77 dB @ 0.1 Hz.
 
 
 [4 Dec 20]
+
+Summary:
+ -- Looking at current transformers for feedback
+ -- Discussion of driver hookup, output filter board
+
 
 Starting to think about what next, and in particular the driver setup, extra
 output filters, current sense feedback.
@@ -2973,7 +3072,7 @@ source, as I did on [24 April 20], and the analysis applies, that we
 would want < 2KOhm to contribute negligibly wrt. 17 nV/rtHz at the
 diff amp output.
 
-BUUT, looping around again, if there is not any common broadband noise
+BUUUT, looping around again, if there is not any common broadband noise
 left to preserve, then we really don't care that much about the
 matching, so we could use a larger R, move the buffer pole down lower
 and suppress more of the diff amp noise.  This is assuming that we
@@ -3002,6 +3101,10 @@ vs. 8 Mhz, and slew rate improved even more.  Also, available in dual
 and quad.  It is RR out, which may be mixed wrt. capacitive load
 drive, but curve suggests that the overshoot may level off at 50% for
 large capacitance, whereas OPA27 is not characterized.
+ ==> OPA2210 is improved OPA209.  I used this part in the DAC board
+     reference buffer, but as of [10 Dec 20] haven't tested the
+     transient response.
+ 
 
 The OPA227 is sold as an OP27 upgrade, and is a very close match for
 noise and dynamics.  Like the OPA209 it also has significantly
@@ -15436,7 +15539,7 @@ too.]
  ==> With 4 Ohm, I measure 50 mA RMS, about 125 mA peak. Almost all of this is
      either at 7.5 kHz or 400 kHz (roughly equal amounts).  Reduction in noise
      hump is in line with theory.  I haven't changed the capacitor yet, but I see
-     15 dB reduction in the spur, and about the same reduction in the spur.
+     15 dB reduction in the spur, and about the same reduction in the hump.
      So it doesn't seem that the resonance is causing the spur, just
      increasing the amplitude.  The reduction is pretty considerable even with
      significantly higher damping resistance.  

@@ -2327,14 +2327,14 @@ Wire Wire Line
 Wire Wire Line
 	4350 1400 4500 1400
 $Comp
-L Device:D_Zener D?
+L Device:D_Zener D3
 U 1 1 5FA1D797
 P 3650 8900
-AR Path="/5E51E83D/5FA1D797" Ref="D?"  Part="1" 
+AR Path="/5E51E83D/5FA1D797" Ref="D3"  Part="1" 
 AR Path="/5E1D6729/5FA1D797" Ref="D?"  Part="1" 
 AR Path="/5E624B3C/5E51E83D/5FA1D797" Ref="D?"  Part="1" 
 AR Path="/5E62FD57/5E630FEC/5FA1D797" Ref="D?"  Part="1" 
-F 0 "D?" H 3650 8800 50  0000 C CNN
+F 0 "D3" H 3650 8800 50  0000 C CNN
 F 1 "10V (standoff)" H 3650 9000 50  0000 C CNN
 F 2 "Diode_SMD:D_SMA" H 3650 8900 50  0001 C CNN
 F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 3650 8900 50  0001 C CNN
@@ -2354,14 +2354,14 @@ Connection ~ 2500 8350
 Wire Wire Line
 	2500 8350 2750 8350
 $Comp
-L Device:D_Zener D?
+L Device:D_Zener D5
 U 1 1 5FA3410D
 P 3650 9250
-AR Path="/5E51E83D/5FA3410D" Ref="D?"  Part="1" 
+AR Path="/5E51E83D/5FA3410D" Ref="D5"  Part="1" 
 AR Path="/5E1D6729/5FA3410D" Ref="D?"  Part="1" 
 AR Path="/5E624B3C/5E51E83D/5FA3410D" Ref="D?"  Part="1" 
 AR Path="/5E62FD57/5E630FEC/5FA3410D" Ref="D?"  Part="1" 
-F 0 "D?" H 3650 9350 50  0000 C CNN
+F 0 "D5" H 3650 9350 50  0000 C CNN
 F 1 "10V (standoff)" H 3650 9150 50  0000 C CNN
 F 2 "Diode_SMD:D_SMA" H 3650 9250 50  0001 C CNN
 F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 3650 9250 50  0001 C CNN
