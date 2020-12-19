@@ -1,20 +1,11 @@
 FPGA code:
  -- Check MCLK_ENA setup wrt. SYSCLK
  -- Program oscillator for 48 ks/s
+ -- Interface BIST DAC
  -- Add registers to control BIST DAC and status registers that count
     read/write overruns, etc.  Just flag to say whether FIFO data goes
     to output DAC or BIST DAC?
  -- Some way for software to readback the FPGA firmware version
-
-
-LV supply card:
- -- Add bulk cap on +5?  There is LF glitching on +5 ANA, though it
-    doesn't seem to make it through to eg. +2.5 on the input board.
- -- In revision, add -15V for DAC?
-
-
-DAC output:
- -- -15V supply
 
 Output board revisions:
  -- Do something about excess HF noise.
@@ -22,6 +13,9 @@ Output board revisions:
  -- Exposed probe ground near digital testpoints
  -- Add digital outputs for front panel lights?  Maybe support for LCD
     display?  This could also be added to main board.
+ -- Temporary -15V supply
+
+
 
 Driver:
  -- Output filter and feedback sense board at front panel
@@ -29,6 +23,10 @@ Driver:
  -- Modify driver boards for lower gain and with bigger bypass caps.
  -- Chassis shelf cantilever
 
+LV supply card:
+ -- Add bulk cap on +5?  There is LF glitching on +5 ANA, though it
+    doesn't seem to make it through to eg. +2.5 on the input board.
+ -- In revision, add -15V for DAC?
 
 Evaluation tasks:
  -- BIST injection test
@@ -36,7 +34,8 @@ Evaluation tasks:
  -- Measure supply current, in saturation and otherwise.
 
 Main board revisions:
- -- Is ADC reference buffer output stable with the C load?
+ -- Is ADC reference buffer output stable with the C load?  Noise gain
+    peaking?  
 
 
 Input board revisions:
@@ -65,10 +64,10 @@ Input board revisions:
  -- Revisit stage 1 opamp selection, may want higher bandwidth for low
     distortion, PSRR, CMRR.
 
-Input board bodges still needed:
- -- Change to new reference buffer supply setup
+ ==> Double check reference buffer supply and C129 mods.
 
 Input board changes made (bodged on board and in schematic):
+ -- Change to new reference buffer supply setup (bodged, I think)
  -- Reference lowpass filter.
  -- Change V- regulator + supply to use +2.5 with ferrite bead.
  -- Fix filter frequency response by changing C129, C130, C111 (and
@@ -122,7 +121,153 @@ Software & research tasks:
  -- EMI publication
 
 
+[17 Dec 20]
+
+Filter board schmatic is pretty much done, and well along with the part
+selection of the easy parts.  So back to the current transformer.  My theory
+about current transformer low end improving with higher turns ratios does not
+hold that well in practice.
+
+With eg. the Murata 5600 series the picture is complicated because it seems
+they reduce the wire size in steps, and do not always fill the winding area.
+Or maybe even they are sticking to a single-layer winding.  100 and 200 seem
+to use the same wire, so 200 has 5.2 Hz while 100 is 10 Hz.  But 50 (with
+thicker wire) is 6 Hz and 300 (with thinner wire) is 7 Hz.  This is based on f
+= R/(2*pi*L), where R here is the secondary resistance (no burden resistor).
+With same size burden resistor the -3 dB frequency doubles.  Probably even 30
+Hz (1 decade below low carrier) would be OK.
+
+And the much larger Triad CST206-3A I mentioned before is worse, 15 Hz.
+Looking at the full CST series, the inductance (unsurpisingly) does go as
+turns^2 within a package size (and even across), but the resistance is more of
+a mess.  For the 100 turns ratio, the inductance is the same at 2 sizes, but
+the resistance goes down a lot in the larger size.  But more broadly, all of
+these "high frequency" 20kHz - 200kHz parts seem to have a low corner in the
+5-20 Hz range, which is probably actually a design goal.
+
+It seems that if anything there is a tendency for the corner to get worse as
+the turns ratio goes up, which may be due to use of a full single-layer
+winding.  This will help at the upper end, but we would likely benefit from a
+multi-layer winding.
+
+What would we expect to happen as the CT gets larger?  If we are using a
+single-layer winding, then the resistance should decrease.  The inductance
+might or might not decrease, but it seems they usually keep it fairly
+constant.  And the primary winding area gets larger, potentially allowing more
+primary turns.  It is not entirely clear how they reckon the current rating of
+the CT.  I'd think it has to do with saturation, but that would imply a
+particular load resistance.  For linearity we would want to work well below
+the current rating, though saturation might be pushed higher due to our
+relatively low load resistance.
+
+
+Another question is: what sense resistor would we want, and what gain do we
+want to run at?  The easiest take on this would be from a noise perspective.
+
+But perhaps we are more concerned about minimizing distortion?  Aside from
+whatever unknown incidental properties of the core, it seems the main thing we
+would want to do is minimize the flux in the core (keeping well away from
+saturation) so that it is more linear.  This would involve a lower (or zero)
+load resistance, which also helps the low corner.  But "low" is relative to
+the turns, going up proportional to the turns.  To keep the flux constant, the
+voltage can increase even as the current goes down, so the burden resistor
+would go as turns^2.  With this scaling, we (oddly) need less gain at higher
+turns ratio.
+
+So, back to noise.  It's not clear we really do care about noise that much,
+given that we are currently going to use the very low noise input card.  But
+if we have say 5A peak for the carrier high/low current superposition, then to
+get 5V peak at the ADC we want over all transimpedance of 1V/A.  If N is the
+CT ratio, R is the burden, and G is the gain, then:
+    1 V/A = G * R / N
+
+We have gains from 2-16, so eg. at 16, R/N = 0.062, and at N=100, this is 6.2
+Ohm.  This is from a thermal noise perspective, a quite low resistance.  But
+it is also much more than the secondary resistance of the CST 1.225" x100
+transformer I am looking at, and so we get a 77 Hz corner freq.  But with
+N=300, we get 18.6 Ohm, and 37 Hz corner.  So despite the worse intrinsic R/L
+with increasing turns, in this series, with our desired gain, we do better as
+the turns ratio increases.  All these resistances are well below our thermal
+noise floor, so from a purely noise perspective, a lower gain would be better,
+but if we reduce the gain, then the resistor gets larger and the corner
+increases (for any turns ratio).  [There may be thermal noise from the core
+too, IDK.]
+
+Note that if we hold the voltage (and gain) constant, then the flux decreases
+proportional to the turns, so higher turns is probably better for linearity.
+
+Going to a transimpedance input stage potentially gets us out of this box, but
+that is an additional complication I'd rather avoid.
+
+ ==> Oh, and I can use multiple turns on the primary.  This boosts the gain
+     while having no direct effect on the low corner.  But by allowing a
+     smaller resistor, this can improve the corner.  Or reducing the gain
+     would reduce the noise.
+
+
+[15 Dec 20]
+
+One nuisance is deciding what panel connector to use for the source coil.  The
+JRC connector I had been using is no longer available, although the
+thread-locking variant is.  But it is also a flange mount solder cup type,
+which is awkward for PCB mounting.  The solder cups themselves can be PCB
+soldered, but we want the board to be able to be dissembled from the front
+panel without desoldering.  I'm not sure how thick a panel could be tolerated.
+with the flange on the rear
+
+There's also the issue of what sort of cable to use.  The current cable seems
+grossly excessive in size, but given that our coil resistance is only 200-300
+mOhm, the wire resistance easily becomes a significant contributor to loss.
+But our concern with loss in the source is mainly related to source
+temperature rather than efficency per-se.  The cube coil is wired with 18 ga,
+I think I may have used 16 ga with the dipole-approximating coil, but that is
+just because I had it.
+
+With 20 ga and a 5 foot cable we have a 10 foot loop, or 100 mOhm.  At 3.5A
+this gives 1.2W power dissipation in the cable per-channel, or 3.6W in all.
+Because this is distributed over the length, it will not result in any
+significant heating.
+ ==> This is 0.7W/ft for all channels, which I expect would at least make the
+     cable noticeably warm. And the cable loss approaches the coil loss...
+
+We might want a cable longer than that.  Also, the cable assembly itself is
+likely to be somewhat bulky with the twisted pairs and so on, so cable
+diameter is a concern.  We don't want to find that our improvised cable
+assembly doesn't fit.  I'd rather avoid a connector that maxes out at 20 ga.
+
+And I'd like to not pay too much either...
+
+A plug with crimp contacts is also a plus, though there is already going to a
+bunch of hand assembly in the source.
+
+
+Parts I need to pick and add to library:
+ -- Source connector
+ -- Current transformed
+ -- Inductor
+
+Misc R and C need to be selected
+
+
+The Z axis snubber resistor can end up dissipating several watts, eg. 3W at 35
+VRMS with the 40 Ohm/100 nF.  We can increase to a higher impedance, reducing
+the damping.  We don't have any strong guidance from design constraints here.
+Even with the 40 Ohm snubber we have 20 dB (above the input) of peaking in the
+output voltage at the 44 kHz series resonance.  But we expect very little
+power at that frequency (just a bit of noise).
+
+In comparison, on the Y axis, with the shunt damper, we only get 10 dB of
+peaking.  With the shunt there is only a three-pole rolloff in the lowpass
+action, but the attenuation at 300 kHz is about the same on Y because the
+rolloff starts sooner.
+ ==> Eh, let's not reopen this design too much.  It works, and it is perhaps a
+     stopgap anyway.  So, design in big through-hole footprint, and we can
+     depopulate it if we feel like it.
+
+
+
 [10 Dec 20]
+[14 Dec 20]
 
 Starting work on output filter board.  Going back to [21-23 Jan 16] to recall
 the output filter design, and the snubbers.  This reminded that me that
@@ -131,12 +276,15 @@ wrt. the predicted carrier, that was for the Kalman demodulator, which we are
 no longer using.  So the snubbers may not really matter anymore.  But might as
 well design them in, since it doesn't add much cost or complexity.
 
+Possibly the output filter itself is not really needed.  It would mainly be an
+EMI issue, rather than tracker performance, since 300 kHz should be pretty
+well suppressed.  From the input board filters alone we'd expect in the
+ballpart of 60 dB for three poles and one decade.  And the ADC rejection
+extends up to the second or third harmonic.
 
-
-
-
-
-
+At some frequency the source coil will also stop being an effective emitter,
+like above the SRF.  I'm guessing that SRF is >300 kHz because for 210 uH we
+would need < 1.3 nF distributed capacitance, which is maybe a lot, IDK.
 
 
 [9 Dec 20]
@@ -393,8 +541,6 @@ calibrate_ref.vi says that the ratio is 0.1V/A, or 0.1 Ohms. IIRC the CT ratio
 is lowish, like 20 or 50.  With 50, this would correspond to a load of 50 *
 0.1 Ohm = 5 Ohms.  The referred impedance goes as turns^2, so the primary side
 impedance (due to the load resistor) would be 2 mOhm.
-
-
 
 
 May want to add a voltage sense also.  Can be just a passive divider.

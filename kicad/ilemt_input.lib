@@ -99,6 +99,49 @@ X 9B B9 -300 1500 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# CT_primary
+#
+DEF CT_primary W 0 0 N Y 1 F N
+F0 "W" 0 125 50 H V C CNN
+F1 "CT_primary" 0 -50 50 H V C CNN
+F2 "Transformer_SMD:Transformer_Coilcraft_CST2" -250 -150 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Transformer*Coilcraft*CST2*
+$ENDFPLIST
+DRAW
+A 0 0 50 1 1800 1 1 0 N 50 0 -50 0
+C -70 25 10 1 1 0 F
+P 2 1 1 0 -100 0 -50 0 N
+P 2 1 1 0 -50 75 50 75 N
+P 2 1 1 0 50 0 100 0 N
+X 1 1 -200 0 150 R 50 50 1 1 P
+X 2 2 200 0 150 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# CT_secondary
+#
+DEF CT_secondary T 0 0 N Y 1 F N
+F0 "T" 0 125 50 H V C CNN
+F1 "CT_secondary" 0 -50 50 H V C CNN
+F2 "Transformer_SMD:Transformer_Coilcraft_CST2" -300 -200 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Transformer*Coilcraft*CST2*
+$ENDFPLIST
+DRAW
+A -150 0 50 1 1800 1 1 0 N -100 0 -200 0
+A -50 0 50 1 1800 1 1 0 N 0 0 -100 0
+A 50 0 50 1 1800 1 1 0 N 100 0 0 0
+A 150 0 50 1 1800 1 1 0 N 200 0 100 0
+C -150 0 10 1 1 0 F
+P 2 1 1 0 -200 75 200 75 N
+X 1 1 -300 0 100 R 50 50 1 1 P
+X 2 2 300 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # EMI_Filter_CommonMode_3Line
 #
 DEF EMI_Filter_CommonMode_3Line FL 0 10 Y N 1 F N
