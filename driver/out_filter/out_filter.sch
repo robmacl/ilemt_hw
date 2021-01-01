@@ -18,14 +18,12 @@ S 3050 1900 1150 850
 U 5FD7C20A
 F0 "filter_chan_X" 50
 F1 "filter_chan.sch" 50
-F2 "IN_HOT" I L 3050 2050 50 
-F3 "IN_COM" I L 3050 2150 50 
-F4 "OUT_HOT" O R 4200 2050 50 
-F5 "OUT_COM" O R 4200 2150 50 
-F6 "I_SENSE+" O R 4200 2300 50 
-F7 "I_SENSE-" O R 4200 2400 50 
-F8 "V_SENSE+" O R 4200 2550 50 
-F9 "V_SENSE-" O R 4200 2650 50 
+F2 "OUT_HOT" O R 4200 2050 50 
+F3 "OUT_COM" O R 4200 2150 50 
+F4 "I_SENSE+" O R 4200 2300 50 
+F5 "I_SENSE-" O R 4200 2400 50 
+F6 "V_SENSE+" O R 4200 2550 50 
+F7 "V_SENSE-" O R 4200 2650 50 
 $EndSheet
 Wire Wire Line
 	8950 2150 8650 2150
@@ -45,8 +43,8 @@ Text Label 8700 2250 0    50   ~ 0
 IY-
 Text Label 8700 2150 0    50   ~ 0
 IY+
-Text Notes 9750 1850 2    50   ~ 0
-This pinout uses the pairs in \n T-568B RJ45 ethernet cable
+Text Notes 8750 1850 0    50   ~ 0
+This pinout uses the pairs in \nT-568B RJ45 ethernet cable,\nand is the same as used on \nthe input board.
 Wire Wire Line
 	8950 2450 8650 2450
 Wire Wire Line
@@ -77,28 +75,24 @@ S 3050 3100 1150 850
 U 5FD938D7
 F0 "filter_chan_Y" 50
 F1 "filter_chan.sch" 50
-F2 "IN_HOT" I L 3050 3250 50 
-F3 "IN_COM" I L 3050 3350 50 
-F4 "OUT_HOT" O R 4200 3250 50 
-F5 "OUT_COM" O R 4200 3350 50 
-F6 "I_SENSE+" O R 4200 3500 50 
-F7 "I_SENSE-" O R 4200 3600 50 
-F8 "V_SENSE+" O R 4200 3750 50 
-F9 "V_SENSE-" O R 4200 3850 50 
+F2 "OUT_HOT" O R 4200 3250 50 
+F3 "OUT_COM" O R 4200 3350 50 
+F4 "I_SENSE+" O R 4200 3500 50 
+F5 "I_SENSE-" O R 4200 3600 50 
+F6 "V_SENSE+" O R 4200 3750 50 
+F7 "V_SENSE-" O R 4200 3850 50 
 $EndSheet
 $Sheet
 S 3050 4300 1150 850 
 U 5FD93D92
 F0 "filter_chan_Z" 50
 F1 "filter_chan.sch" 50
-F2 "IN_HOT" I L 3050 4450 50 
-F3 "IN_COM" I L 3050 4550 50 
-F4 "OUT_HOT" O R 4200 4450 50 
-F5 "OUT_COM" O R 4200 4550 50 
-F6 "I_SENSE+" O R 4200 4700 50 
-F7 "I_SENSE-" O R 4200 4800 50 
-F8 "V_SENSE+" O R 4200 4950 50 
-F9 "V_SENSE-" O R 4200 5050 50 
+F2 "OUT_HOT" O R 4200 4450 50 
+F3 "OUT_COM" O R 4200 4550 50 
+F4 "I_SENSE+" O R 4200 4700 50 
+F5 "I_SENSE-" O R 4200 4800 50 
+F6 "V_SENSE+" O R 4200 4950 50 
+F7 "V_SENSE-" O R 4200 5050 50 
 $EndSheet
 Wire Wire Line
 	4500 3500 4200 3500
@@ -124,66 +118,6 @@ Wire Wire Line
 	4200 2400 4500 2400
 Wire Wire Line
 	4200 2300 4500 2300
-$Comp
-L Connector_Generic:Conn_01x02 J101
-U 1 1 5FD8D2E7
-P 2600 2050
-F 0 "J101" H 2600 2150 50  0000 C CNN
-F 1 "X driver" H 2600 1850 50  0000 C CNN
-F 2 "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical" H 2600 2050 50  0001 C CNN
-F 3 "https://www.molex.com/pdm_docs/ps/PS-5556-001.pdf" H 2600 2050 50  0001 C CNN
-F 4 "CONN HEADER VERT 2POS" H 2600 2050 50  0001 C CNN "Description"
-F 5 "WM23800-ND" H 2600 2050 50  0001 C CNN "Digikey"
-F 6 "0039288020" H 2600 2050 50  0001 C CNN "MPN"
-F 7 "Molex" H 2600 2050 50  0001 C CNN "Manufacturer"
-F 8 "OF.7" H 2600 2050 50  0001 C CNN "DK line"
-	1    2600 2050
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	2800 2050 3050 2050
-Wire Wire Line
-	2800 2150 3050 2150
-$Comp
-L Connector_Generic:Conn_01x02 J102
-U 1 1 5FD8F599
-P 2600 3250
-F 0 "J102" H 2600 3350 50  0000 C CNN
-F 1 "Y driver" H 2600 3050 50  0000 C CNN
-F 2 "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical" H 2600 3250 50  0001 C CNN
-F 3 "https://www.molex.com/pdm_docs/ps/PS-5556-001.pdf" H 2600 3250 50  0001 C CNN
-F 4 "CONN HEADER VERT 2POS" H 2600 3250 50  0001 C CNN "Description"
-F 5 "WM23800-ND" H 2600 3250 50  0001 C CNN "Digikey"
-F 6 "0039288020" H 2600 3250 50  0001 C CNN "MPN"
-F 7 "Molex" H 2600 3250 50  0001 C CNN "Manufacturer"
-F 8 "OF.7" H 2600 3250 50  0001 C CNN "DK line"
-	1    2600 3250
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	2800 3250 3050 3250
-Wire Wire Line
-	2800 3350 3050 3350
-$Comp
-L Connector_Generic:Conn_01x02 J103
-U 1 1 5FD8FC32
-P 2600 4450
-F 0 "J103" H 2600 4550 50  0000 C CNN
-F 1 "Z driver" H 2600 4250 50  0000 C CNN
-F 2 "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical" H 2600 4450 50  0001 C CNN
-F 3 "https://www.molex.com/pdm_docs/ps/PS-5556-001.pdf" H 2600 4450 50  0001 C CNN
-F 4 "CONN HEADER VERT 2POS" H 2600 4450 50  0001 C CNN "Description"
-F 5 "WM23800-ND" H 2600 4450 50  0001 C CNN "Digikey"
-F 6 "0039288020" H 2600 4450 50  0001 C CNN "MPN"
-F 7 "Molex" H 2600 4450 50  0001 C CNN "Manufacturer"
-F 8 "OF.7" H 2600 4450 50  0001 C CNN "DK line"
-	1    2600 4450
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	2800 4450 3050 4450
-Wire Wire Line
-	2800 4550 3050 4550
 Wire Wire Line
 	8950 3850 8650 3850
 Wire Wire Line
@@ -246,7 +180,11 @@ P 7350 2450
 F 0 "J104" H 7350 2850 50  0000 C CNN
 F 1 "Source" H 7350 2050 50  0000 C CNN
 F 2 "input:HIROSE_JR16RK-7S" H 7350 2450 50  0001 C CNN
-F 3 "~" H 7350 2450 50  0001 C CNN
+F 3 "https://www.hirose.com/product/document?clcode=CL0114-0541-1-00&productname=JR13JK-3S&series=JR&documenttype=Catalog&lang=en&documentid=D49414_en" H 7350 2450 50  0001 C CNN
+F 4 "CONN RCPT FMALE 7P SOLDER CUP" H 7350 2450 50  0001 C CNN "Description"
+F 5 "H124110-ND" H 7350 2450 50  0001 C CNN "Digikey"
+F 6 "JR16RK-7S" H 7350 2450 50  0001 C CNN "MPN"
+F 7 "Hirose Electric Co Ltd" H 7350 2450 50  0001 C CNN "Manufacturer"
 	1    7350 2450
 	1    0    0    -1  
 $EndComp
@@ -339,9 +277,9 @@ AR Path="/5FD93D92/5FE1584C" Ref="TP?"  Part="1"
 AR Path="/5FE1584C" Ref="TP101"  Part="1" 
 F 0 "TP101" H 7200 4520 50  0000 C CNN
 F 1 "Chassis" H 7200 4450 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 7400 4250 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5010-5014_Multipurpose" H 7400 4250 50  0001 C CNN
 F 3 "http://keyelco.com/userAssets/file/M65p56.pdf" H 7400 4250 50  0001 C CNN
-F 4 "Optional Keystone 5000-5004" H 7200 4250 50  0001 C CNN "Description"
+F 4 "Optional Keystone 5011" H 7200 4250 50  0001 C CNN "Description"
 F 5 "DNP" H 7200 4250 50  0001 C CNN "MPN"
 F 6 "Keystone Electronics" H 7200 4250 50  0001 C CNN "Manufacturer"
 	1    7200 4250

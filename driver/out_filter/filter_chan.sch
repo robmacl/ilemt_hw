@@ -33,10 +33,6 @@ F 8 "KEMET" H 3400 2800 50  0001 C CNN "Manufacturer"
 	1    3400 2800
 	1    0    0    -1  
 $EndComp
-Text HLabel 1350 1750 0    50   Input ~ 0
-IN_HOT
-Text HLabel 1350 3950 0    50   Input ~ 0
-IN_COM
 Text HLabel 7550 1750 2    50   Output ~ 0
 OUT_HOT
 Text HLabel 7500 3950 2    50   Output ~ 0
@@ -140,8 +136,6 @@ Wire Wire Line
 Connection ~ 3100 1750
 Wire Wire Line
 	3400 2700 3400 1750
-Wire Wire Line
-	1350 3950 1500 3950
 $Comp
 L ilemt_input:CT_primary W201
 U 1 1 5FD88A7E
@@ -153,12 +147,12 @@ AR Path="/5FD88A7E" Ref="T201"  Part="1"
 F 0 "W201" H 5600 4075 50  0000 C CNN
 F 1 "3 turns" H 5600 3800 50  0000 C CNN
 F 2 "input:CT_jumper" H 5600 3950 50  0001 C CNN
-F 3 "http://catalog.triadmagnetics.com/Asset/CST206-3A.pdf" H 5600 3950 50  0001 C CNN
-F 4 "OF.8" H 5600 3950 50  0001 C CNN "DK line"
-F 5 "CURR SENSE XFMR 70A T/H" H 5600 3950 50  0001 C CNN "Description"
-F 6 "237-1100-ND" H 5600 3950 50  0001 C CNN "Digikey"
-F 7 "CST206-3A" H 5600 3950 50  0001 C CNN "MPN"
-F 8 "Triad Magnetics" H 5600 3950 50  0001 C CNN "Manufacturer"
+F 3 "?" H 5600 3950 50  0001 C CNN
+F 4 "" H 5600 3950 50  0001 C CNN "DK line"
+F 5 "Current transformer primary" H 5600 3950 50  0001 C CNN "Description"
+F 6 "" H 5600 3950 50  0001 C CNN "Digikey"
+F 7 "" H 5600 3950 50  0001 C CNN "MPN"
+F 8 "" H 5600 3950 50  0001 C CNN "Manufacturer"
 	1    5600 3950
 	-1   0    0    1   
 $EndComp
@@ -185,8 +179,6 @@ $EndComp
 Wire Wire Line
 	4950 3950 5400 3950
 Connection ~ 4950 3950
-Wire Wire Line
-	5800 3950 5950 3950
 $Comp
 L power:Earth #PWR0202
 U 1 1 5FD8D9D7
@@ -358,8 +350,6 @@ Wire Wire Line
 	6250 1750 6250 2350
 Connection ~ 6250 1750
 Wire Wire Line
-	6250 1750 6700 1750
-Wire Wire Line
 	6250 2650 6250 2850
 Connection ~ 6250 3950
 Text HLabel 6800 2850 2    50   Output ~ 0
@@ -394,17 +384,8 @@ The 33 uH/470 nF output filter on the IRAUDAMP7 board leaves a 300 kHz PWM\nripp
 Text Notes 6600 3250 0    50   ~ 0
 V sense divide by 101
 Wire Wire Line
-	6700 1700 6700 1750
-Connection ~ 6700 1750
-Wire Wire Line
-	6700 1750 7100 1750
-Wire Wire Line
-	5950 3900 5950 3950
-Wire Wire Line
 	1500 1700 1500 1750
 Connection ~ 1500 1750
-Wire Wire Line
-	1500 1750 1350 1750
 Wire Wire Line
 	1500 3900 1500 3950
 Connection ~ 1500 3950
@@ -419,8 +400,6 @@ Text Notes 5700 2600 0    50   ~ 0
 250 mW \n@ 50 VRMS
 Text Notes 1450 2400 0    50   ~ 0
 Operating voltage is currently 35 VRMS\nor lower.  With +/-80VDC bus, 50 VRMS\nis about the max the driver can support, \nbut distortion increases at the high end.
-Text Notes 3700 2050 0    50   ~ 0
-C_out (Cx01 || Cx05) can have fairly high current, and should be\nlow-loss (polypropylene).  On X channel (7.5 kHz, 940 nF) this is 2A @\n50V RMS.  More realistic would be 35 VRMS, or 1.5A RMS.  Current is\nlower for the other channels.  Be careful with substitutions.  Having\ntwo caps in parallel allows flexibility in getting the right\ncapacitance for the channels.\n\n\n\n\n\n\n\n
 $Comp
 L Device:C_Small C205
 U 1 1 5FDAEB49
@@ -494,40 +473,6 @@ Wire Wire Line
 	3100 800  3100 1250
 Connection ~ 3100 1250
 $Comp
-L Connector:TestPoint TP204
-U 1 1 5FDC4E04
-P 6700 1700
-AR Path="/5FD7C20A/5FDC4E04" Ref="TP204"  Part="1" 
-AR Path="/5FD938D7/5FDC4E04" Ref="TP304"  Part="1" 
-AR Path="/5FD93D92/5FDC4E04" Ref="TP404"  Part="1" 
-F 0 "TP204" H 6700 1970 50  0000 C CNN
-F 1 "Out hot" H 6700 1900 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 6900 1700 50  0001 C CNN
-F 3 "http://keyelco.com/userAssets/file/M65p56.pdf" H 6900 1700 50  0001 C CNN
-F 4 "Optional Keystone 5000-5004" H 6700 1700 50  0001 C CNN "Description"
-F 5 "DNP" H 6700 1700 50  0001 C CNN "MPN"
-F 6 "Keystone Electronics" H 6700 1700 50  0001 C CNN "Manufacturer"
-	1    6700 1700
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:TestPoint TP205
-U 1 1 5FDC560F
-P 5950 3900
-AR Path="/5FD7C20A/5FDC560F" Ref="TP205"  Part="1" 
-AR Path="/5FD938D7/5FDC560F" Ref="TP305"  Part="1" 
-AR Path="/5FD93D92/5FDC560F" Ref="TP405"  Part="1" 
-F 0 "TP205" H 5950 4170 50  0000 C CNN
-F 1 "Out com" H 5950 4100 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Keystone_5000-5004_Miniature" H 6150 3900 50  0001 C CNN
-F 3 "http://keyelco.com/userAssets/file/M65p56.pdf" H 6150 3900 50  0001 C CNN
-F 4 "Optional Keystone 5000-5004" H 5950 3900 50  0001 C CNN "Description"
-F 5 "DNP" H 5950 3900 50  0001 C CNN "MPN"
-F 6 "Keystone Electronics" H 5950 3900 50  0001 C CNN "Manufacturer"
-	1    5950 3900
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector:TestPoint TP201
 U 1 1 5FDC6B44
 P 1500 1700
@@ -574,11 +519,11 @@ AR Path="/5FDFDDFC" Ref="R?"  Part="1"
 F 0 "R207" V 6650 3550 50  0000 C CNN
 F 1 "0" V 6450 3550 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 6590 3540 50  0001 C CNN
-F 3 "https://www.seielect.com/catalog/sei-rncp.pdf" H 6550 3550 50  0001 C CNN
-F 4 "M.29" H 6550 3550 50  0001 C CNN "DK line"
-F 5 "RES 100 OHM 1% 1/8W 0603" H 6550 3550 50  0001 C CNN "Description"
-F 6 "RNCP0603FTD100RCT-ND" H 6550 3550 50  0001 C CNN "Digikey"
-F 7 "RNCP0603FTD100R" H 6550 3550 50  0001 C CNN "MPN"
+F 3 "?" H 6550 3550 50  0001 C CNN
+F 4 "M.12" H 6550 3550 50  0001 C CNN "DK line"
+F 5 "RES 0 OHM JUMPER 1/10W 0603" H 6550 3550 50  0001 C CNN "Description"
+F 6 "RMCF0603ZT0R00CT-ND" H 6550 3550 50  0001 C CNN "Digikey"
+F 7 "RMCF0603ZT0R00" H 6550 3550 50  0001 C CNN "MPN"
 F 8 "Stackpole Electronics Inc" H 6550 3550 50  0001 C CNN "Manufacturer"
 	1    6550 3550
 	0    -1   -1   0   
@@ -587,9 +532,6 @@ Wire Wire Line
 	6800 3550 6700 3550
 Wire Wire Line
 	6250 3950 7100 3950
-Connection ~ 5950 3950
-Wire Wire Line
-	5950 3950 6250 3950
 Wire Wire Line
 	7100 3950 7500 3950
 Connection ~ 6250 3550
@@ -597,4 +539,42 @@ Wire Wire Line
 	6250 3550 6250 3950
 Wire Wire Line
 	6250 3350 6250 3550
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 5FE35CC0
+P 950 2750
+AR Path="/5FE35CC0" Ref="J?"  Part="1" 
+AR Path="/5FD7C20A/5FE35CC0" Ref="J201"  Part="1" 
+AR Path="/5FD938D7/5FE35CC0" Ref="J301"  Part="1" 
+AR Path="/5FD93D92/5FE35CC0" Ref="J401"  Part="1" 
+F 0 "J201" H 950 2850 50  0000 C CNN
+F 1 "Driver in" H 950 2550 50  0000 C CNN
+F 2 "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical" H 950 2750 50  0001 C CNN
+F 3 "https://www.molex.com/pdm_docs/ps/PS-5556-001.pdf" H 950 2750 50  0001 C CNN
+F 4 "CONN HEADER VERT 2POS" H 950 2750 50  0001 C CNN "Description"
+F 5 "WM23800-ND" H 950 2750 50  0001 C CNN "Digikey"
+F 6 "0039288020" H 950 2750 50  0001 C CNN "MPN"
+F 7 "Molex" H 950 2750 50  0001 C CNN "Manufacturer"
+F 8 "OF.7" H 950 2750 50  0001 C CNN "DK line"
+	1    950  2750
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1150 2750 1150 1750
+Wire Wire Line
+	1150 1750 1500 1750
+Wire Wire Line
+	1150 2850 1150 3950
+Wire Wire Line
+	1150 3950 1500 3950
+Text Label 1150 2500 0    50   ~ 0
+IN_HOT
+Text Label 1150 3200 0    50   ~ 0
+IN_COM
+Text Label 4950 2950 0    50   ~ 0
+SNUB_HOT
+Wire Wire Line
+	5800 3950 6250 3950
+Wire Wire Line
+	6250 1750 7100 1750
 $EndSCHEMATC
