@@ -121,7 +121,124 @@ Software & research tasks:
  -- EMI publication
 
 
+[4 Jan 21]
+
+The output filter board is finished and off to fab.  I got the parts and
+checked the fit on a printout.
+
+I chose to use the Triad CST206-3A with a 3 turn primary, giving a 100:1
+current ratio.  With 5.1 Ohm sense resistor, this gives 51 mV/A.  At gain of
+16 this gives a peak sense current of 6.1 A and an expected low corner of 23
+Hz.
+
+I decided to stick with the Hirose JRC connector for the source (in the
+still-available threaded version).  It's pretty good, and half the price of
+the alternatives.  The flange mount is a nuisance that it seems we can work
+around.  The connector can still mate when it is rear mounted on a panel up
+with 1/8" thick or so.  There are various ways to make this work mechanically
+while still allowing the board to be dismounted from the front panel.  Getting
+the chassis ground continuity adds an additional constraint though, and my
+current scheme uses a machined aluminum adapter plate with tapped holes.
+
+
+I looked at the driver boards sitting inside the box, and came up with a
+mechanical plan.  I'm giving up on the idea of cantilevering the driver
+chassis out from the front panel.  It seems that I can get the same electrical
+effect by having a chassis plate which is connected to the box only at the
+front.  This avoids the need to have some sort of mounting bracket, and also
+possible problems with the bracket taking up height on the front panel.
+
+I am thinking that I can put in a steel sheet as a partition between the input
+and output halves of the box, and this can also serve as the mechanical
+support for end of the mid-rail so that it doesn't have to extend all the way
+across the box.  Steel is for its magnetic shielding, perhaps a galvanneal
+zinc plating. 
+
+I'm thinking that I could put a fan on the rear of the box, then have airflow
+forward, over the drivers, then around the partition, toward the back across
+the plugin cards, then out at the right side rear panel.  Vents should be on
+the front or rear, not on top bottom or sides, so they don't get blocked.  We
+want to keep the steel partition magnetic shielding relatively intact near the
+plugin cards, so perhaps there could be a venting cutout near the top front of
+the partitition
+
+
+It does look like it would be pretty easy to use a 3U box rather than 6U, but
+this would require a complete re-layout of the main board, probably using SMT
+PCIe connectors and more than 4 layers, maybe blind vias.  Then we can switch
+from a 6U half-rack main board to a 3U full-rack, or even possibly 3U
+half-rack.  This is not something that I am going to get to on this grant, but
+it's nice to see that it is possible.
+
+
+What next?
+ -- SMA breakout boards w/ LPF
+ -- Assemble stuff in the box
+ -- Get drivers working
+ -- Driver board mods for lower gain, power cap upgrades. 
+ -- Test BIST function before getting input board produced.
+ -- Input board revision, get assembled
+
+
+After that, I think we are mostly done with the hardware design, and time to
+move on to getting things working, software, testing, etc.  Also figure out
+what source and sensor we want to be using, and prepare for a rabbit test.
+Real-time pose solution is not entirely necessary for the rabbit test, though
+of course we want it soonest.
+
+
+We do want some hardware revisions before we go to make duplicate trackers:
+ -- Output board revision
+ -- Digital IOs for front panel lights, configuration EEPROMs, etc
+ -- Revise LV regs to get the -15V supply for the DAC card.
+ -- Revise main board to route the -15V supply?
+
+
+I'm still unclear on how to handle the input board input connection.  Moving
+the protection stuff to a seperate front panel connector board seems like a
+good bit of possibly unproductive work.  But if the stuff is going to stay on
+the input card, then it really needs a solid chassis connection.  And I also
+don't like making the RJ45 the long-term front panel connector.  Recall also
+that right now the input board does not quite reach the front panel.
+
+It does seem like the technically best solution would be the front panel
+connector/protection board, since this allows use of a high reliability
+connector, and gets the chassis ground in the right place.  Then the plugin
+cards would have a recessed mount, and need some sort of mechanical retainer,
+perhaps latch/eject levers.
+
+
+For driver board mods and SMA breakout:
+
+Our DAC output is 3.2 VRMS, whereas we need maybe 35 VRMS at the output, so we
+want a driver gain of at least 11.  The L25D board seems to have a feedback
+resistor of 130K and an input resistor of 3K, giving gain 43.  For gain 15 we
+would want 45K.  The board does have the 1 nF / 300 Ohm RFI filter.  Possibly
+I modified this on the IRAUDAMP7 boards to lower the corner?
+
+Maybe I would want to set the input pole at even say 20 kHz because of the
+excess noise in the DAC output.  I guess it would be nice to minimize the
+modifications to the driver board, but reducing the gain seems like a very
+good idea.
+
+
+
+
 [17 Dec 20]
+
+Summary:
+ -- Notes on CT selection.  There is not any simple effect of either turns or
+    or core size on the R/L characteristics of the low corner.  I infer they
+    use a single-layer winding on these standard "high frequency" parts, and
+    that this layer is not full at all turns ratios because they adjust the
+    wire size in steps.  But also the R/L corner generally falls in the 5-20
+    Hz range regardless, which is probably a design aim.
+ -- Sense resistor/gain selection.  We seem to want to use max gain (16) with
+    smaller sense resistor, to push down the low corner and the voltage/flux.
+    Thermal noise in the CT doesn't really come up because all the relevant
+    resistances are "small".  So, FWIW we are limited by amp thermal noise.
+ -- Using multiple turns on the CT lets us tweak the transformer design a bit,
+    getting a higher gain without compromising the low corner.
 
 Filter board schmatic is pretty much done, and well along with the part
 selection of the easy parts.  So back to the current transformer.  My theory
