@@ -121,6 +121,25 @@ Software & research tasks:
  -- EMI publication
 
 
+[5 Jan 21]
+
+Was thinking about how to make things to minimize the number of hand-wired and
+otherwise crafted assemblies.
+
+We want to at least have an option where we use an off-the-shelf RFID coil as
+sensor.  Was thinking that we could solder this down to a little board with a
+RJ45 connector.  This can be potted, shrink-wrapped, or put in a printed
+enclosure.  The bare PCB can stick out and have holes to provide a mounting
+feature.
+
+Yesterday I did the SMA breakout for the driver input, and that was pretty
+easy.  Was thinking that I could make more of that sort of board to minimize
+point-to-point wiring, such as related to the driver supply and output.  But I
+think that can wait until I am making duplicates.
+
+BOM for SMA breakout and driver mods (supply caps).
+ 
+
 [4 Jan 21]
 
 The output filter board is finished and off to fab.  I got the parts and
