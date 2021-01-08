@@ -15,7 +15,7 @@ Comment4 ""
 $EndDescr
 Text Notes 7250 6800 0    50   ~ 0
 The connector to the main board, and other support circuitry that\nconnects by global labels
-Text Notes 8350 2100 0    50   ~ 0
+Text Notes 4100 5700 0    50   ~ 0
 Connector is oriented with the low number pins toward\nthe microzed at the back (or top) of the main board.  \nWorking forward, we have:\n -- Digital supply\n -- Low speed digital signals\n -- High speed LVDS signals\n -- Analog supplies\n -- Analog signals\n\nThere are many grounds\n
 Text GLabel 3500 3850 2    50   Output ~ 0
 SCKA-
@@ -57,13 +57,7 @@ Text GLabel 6650 2400 2    50   Output ~ 0
 RAW_+10V
 Text GLabel 6650 2600 2    50   Output ~ 0
 RAW_-6V
-Text GLabel 2350 1600 0    50   BiDi ~ 0
-SCL
-Text GLabel 3500 1600 2    50   BiDi ~ 0
-SDA
-Text GLabel 2350 1400 0    50   Output ~ 0
-CARDSEL
-Text GLabel 2350 1800 0    50   BiDi ~ 0
+Text GLabel 8250 4700 0    50   BiDi ~ 0
 PROBE_CONFIG
 Text Notes 4150 4400 1    50   ~ 0
 --------- High speed LDVS digital -----------
@@ -427,7 +421,7 @@ Wire Wire Line
 Wire Wire Line
 	3500 1400 3250 1400
 Wire Wire Line
-	2350 1400 2550 1400
+	1550 1400 2550 1400
 Wire Wire Line
 	2550 4700 2500 4700
 Wire Wire Line
@@ -438,17 +432,15 @@ Connection ~ 3300 4700
 Wire Wire Line
 	3300 4700 3300 4500
 Wire Wire Line
-	2350 1600 2550 1600
+	1550 1600 2550 1600
 Wire Wire Line
-	3500 1600 3250 1600
+	3850 1600 3250 1600
 Wire Wire Line
 	2550 4900 2500 4900
 Wire Wire Line
 	3250 4900 3300 4900
 Wire Wire Line
 	3300 4900 3300 4700
-Wire Wire Line
-	2350 1800 2550 1800
 Connection ~ 3300 4900
 Text GLabel 2350 1200 0    50   Output ~ 0
 RAW_+5VDIG
@@ -744,10 +736,6 @@ Wire Wire Line
 	3300 1700 3300 2300
 NoConn ~ 3250 1800
 NoConn ~ 3250 4600
-NoConn ~ 2550 1400
-NoConn ~ 2550 1600
-NoConn ~ 3250 1600
-NoConn ~ 2550 2200
 NoConn ~ 3250 2200
 Wire Wire Line
 	3300 2800 3300 3250
@@ -795,4 +783,281 @@ Connection ~ 2500 4900
 Wire Wire Line
 	2500 4900 2500 5150
 Connection ~ 2500 4700
+$Comp
+L Memory_EEPROM:24LC256 U?
+U 1 1 5FFC9438
+P 9450 2450
+AR Path="/5E448095/5DE6CDF8/5FFC9438" Ref="U?"  Part="1" 
+AR Path="/5E1D6729/5FFC9438" Ref="U10"  Part="1" 
+F 0 "U10" H 9200 2700 50  0000 C CNN
+F 1 "24LC256" H 9500 2700 50  0000 L CNN
+F 2 "Package_SO:MSOP-8_3x3mm_P0.65mm" H 9450 2450 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/devicedoc/21203m.pdf" H 9450 2450 50  0001 C CNN
+F 4 "I.59" H 9450 2450 50  0001 C CNN "DK line"
+F 5 "IC EEPROM 256KBIT I2C 8MSOP" H 9450 2450 50  0001 C CNN "Description"
+F 6 "24LC256T-I/MSCT-ND" H 9450 2450 50  0001 C CNN "Digikey"
+F 7 "24LC256T-I/MS" H 9450 2450 50  0001 C CNN "MPN"
+F 8 "Microchip Technology" H 9450 2450 50  0001 C CNN "Manufacturer"
+	1    9450 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L ilemt_input:74CBT1G384 U11
+U 1 1 5FFD5EC9
+P 9450 4800
+F 0 "U11" H 9650 5100 50  0000 C CNN
+F 1 "74LVC1G384" H 9800 4500 50  0000 C CNN
+F 2 "Package_SO:TSOP-5_1.65x3.05mm_P0.95mm" H 9450 4800 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/74LVC1G384.pdf" H 9450 4800 50  0001 C CNN
+F 4 "IC SWITCH SPST 5TSOP" H 9450 4800 50  0001 C CNN "Description"
+F 5 "74LVC1G384GV,125" H 9450 4800 50  0001 C CNN "MPN"
+F 6 "I.60" H 9450 4800 50  0001 C CNN "DK line"
+F 7 "1727-6075-1-ND" H 9450 4800 50  0001 C CNN "Digikey"
+F 8 "Nexperia USA Inc." H 9450 4800 50  0001 C CNN "Manufacturer"
+	1    9450 4800
+	1    0    0    -1  
+$EndComp
+Text Label 1600 1400 0    50   ~ 0
+~CARDSEL
+Text GLabel 2350 2200 0    50   Output ~ 0
+SDI
+Wire Wire Line
+	2350 2200 2550 2200
+Wire Wire Line
+	10250 2350 9850 2350
+Wire Wire Line
+	10250 2450 9850 2450
+Wire Wire Line
+	9850 2550 9900 2550
+Wire Wire Line
+	8350 2350 8800 2350
+Text Label 8350 2350 0    50   ~ 0
+~CARDSEL
+Wire Wire Line
+	9050 2350 8800 2350
+Wire Wire Line
+	8800 2350 8800 3100
+Wire Wire Line
+	8800 3100 9900 3100
+Connection ~ 8800 2350
+Wire Wire Line
+	9900 2550 9900 3100
+$Comp
+L power:GND #PWR026
+U 1 1 60067FF7
+P 8950 2650
+F 0 "#PWR026" H 8950 2400 50  0001 C CNN
+F 1 "GND" H 8950 2500 50  0000 C CNN
+F 2 "" H 8950 2650 50  0001 C CNN
+F 3 "" H 8950 2650 50  0001 C CNN
+	1    8950 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9050 2450 8950 2450
+Wire Wire Line
+	8950 2450 8950 2550
+Wire Wire Line
+	9050 2550 8950 2550
+Connection ~ 8950 2550
+Wire Wire Line
+	8950 2550 8950 2650
+$Comp
+L power:GND #PWR033
+U 1 1 6007B004
+P 9450 2800
+F 0 "#PWR033" H 9450 2550 50  0001 C CNN
+F 1 "GND" H 9450 2650 50  0000 C CNN
+F 2 "" H 9450 2800 50  0001 C CNN
+F 3 "" H 9450 2800 50  0001 C CNN
+	1    9450 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9450 2800 9450 2750
+$Comp
+L ilemt_input:OVDD #PWR030
+U 1 1 6008DDB7
+P 9450 1800
+F 0 "#PWR030" H 9450 1650 50  0001 C CNN
+F 1 "OVDD" H 9450 1950 50  0000 C CNN
+F 2 "" H 9450 1800 50  0001 C CNN
+F 3 "" H 9450 1800 50  0001 C CNN
+	1    9450 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9450 1800 9450 1950
+Wire Wire Line
+	8250 4700 8400 4700
+Wire Wire Line
+	9800 4700 10700 4700
+Text Label 9900 4700 0    50   ~ 0
+PROBE_CONFIG_BUS
+Text Label 1600 1800 0    50   ~ 0
+PROBE_CONFIG_BUS
+Wire Wire Line
+	1550 1800 2550 1800
+Text Label 8700 4900 0    50   ~ 0
+~CARDSEL
+Wire Wire Line
+	9100 4900 8650 4900
+$Comp
+L power:GND #PWR036
+U 1 1 600EFE4C
+P 9450 5150
+F 0 "#PWR036" H 9450 4900 50  0001 C CNN
+F 1 "GND" H 9450 5000 50  0000 C CNN
+F 2 "" H 9450 5150 50  0001 C CNN
+F 3 "" H 9450 5150 50  0001 C CNN
+	1    9450 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9450 5150 9450 5100
+$Comp
+L Device:C_Small C?
+U 1 1 600FA240
+P 9650 1950
+AR Path="/5DFCF14D/5DA78AA2/600FA240" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/600FA240" Ref="C43"  Part="1" 
+AR Path="/5E624B3C/5E1D6729/600FA240" Ref="C?"  Part="1" 
+F 0 "C43" V 9600 2000 50  0000 L CNN
+F 1 "100nF" V 9700 2000 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9650 1950 50  0001 C CNN
+F 3 "~" H 9650 1950 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 9650 1950 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 9650 1950 50  0001 C CNN "Digikey"
+F 6 "2" H 9650 1950 50  0001 C CNN "DK line"
+F 7 "CC0603KRX7R8BB104" H 9650 1950 50  0001 C CNN "MPN"
+F 8 "Yageo" H 9650 1950 50  0001 C CNN "Manufacturer"
+	1    9650 1950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9550 1950 9450 1950
+Connection ~ 9450 1950
+Wire Wire Line
+	9450 1950 9450 2150
+$Comp
+L power:GND #PWR037
+U 1 1 6010F52C
+P 10000 1950
+F 0 "#PWR037" H 10000 1700 50  0001 C CNN
+F 1 "GND" H 10000 1800 50  0000 C CNN
+F 2 "" H 10000 1950 50  0001 C CNN
+F 3 "" H 10000 1950 50  0001 C CNN
+	1    10000 1950
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9750 1950 10000 1950
+$Comp
+L ilemt_input:OVDD #PWR035
+U 1 1 6011CFFA
+P 9450 4150
+F 0 "#PWR035" H 9450 4000 50  0001 C CNN
+F 1 "OVDD" H 9450 4300 50  0000 C CNN
+F 2 "" H 9450 4150 50  0001 C CNN
+F 3 "" H 9450 4150 50  0001 C CNN
+	1    9450 4150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9450 4150 9450 4300
+$Comp
+L Device:C_Small C?
+U 1 1 6011D006
+P 9650 4300
+AR Path="/5DFCF14D/5DA78AA2/6011D006" Ref="C?"  Part="1" 
+AR Path="/5E1D6729/6011D006" Ref="C44"  Part="1" 
+AR Path="/5E624B3C/5E1D6729/6011D006" Ref="C?"  Part="1" 
+F 0 "C44" V 9600 4350 50  0000 L CNN
+F 1 "100nF" V 9700 4350 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9650 4300 50  0001 C CNN
+F 3 "~" H 9650 4300 50  0001 C CNN
+F 4 "CAP CER 0.1UF 25V X7R 0603" H 9650 4300 50  0001 C CNN "Description"
+F 5 "311-1341-1-ND" H 9650 4300 50  0001 C CNN "Digikey"
+F 6 "2" H 9650 4300 50  0001 C CNN "DK line"
+F 7 "CC0603KRX7R8BB104" H 9650 4300 50  0001 C CNN "MPN"
+F 8 "Yageo" H 9650 4300 50  0001 C CNN "Manufacturer"
+	1    9650 4300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9550 4300 9450 4300
+Connection ~ 9450 4300
+Wire Wire Line
+	9450 4300 9450 4500
+$Comp
+L power:GND #PWR062
+U 1 1 6011D00F
+P 10000 4300
+F 0 "#PWR062" H 10000 4050 50  0001 C CNN
+F 1 "GND" H 10000 4150 50  0000 C CNN
+F 2 "" H 10000 4300 50  0001 C CNN
+F 3 "" H 10000 4300 50  0001 C CNN
+	1    10000 4300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9750 4300 10000 4300
+Text Label 1600 1600 0    50   ~ 0
+SCL
+Text Label 3500 1600 0    50   ~ 0
+SDA
+Text Label 10050 2450 0    50   ~ 0
+SCL
+Text Label 10050 2350 0    50   ~ 0
+SDA
+Text Notes 8450 3600 0    50   ~ 0
+Config memory is selected by ~CARDSEL\nby using the address pins. Non-selected cards\nappear at address 1, the selected card at address 0.\nAlso, write is inhibited when not selected.
+Text Notes 8450 6150 0    50   ~ 0
+The PROBE_CONFIG one-wire interface is selected using \nan normally closed analog switch.  We pull down \nPROBE_CONFIG for our probe when not connected to\nhelp ensure a well-defined level.  The NC switch is\nchosen so that we can run active-low ~CARDSEL\ndirectly to U10 write protect.
+$Comp
+L Device:R_US R?
+U 1 1 601A4569
+P 8400 5050
+AR Path="/5DFCF14D/5DE42731/601A4569" Ref="R?"  Part="1" 
+AR Path="/5E448095/5DE42731/601A4569" Ref="R?"  Part="1" 
+AR Path="/5E45936E/5DE42731/601A4569" Ref="R?"  Part="1" 
+AR Path="/5E525F2C/5E6427A0/5DE42731/601A4569" Ref="R?"  Part="1" 
+AR Path="/5E624B3C/5DFCF14D/5DE42731/601A4569" Ref="R?"  Part="1" 
+AR Path="/5E624B3C/5E448095/5DE42731/601A4569" Ref="R?"  Part="1" 
+AR Path="/5E624B3C/5E45936E/5DE42731/601A4569" Ref="R?"  Part="1" 
+AR Path="/5E62FD57/5DFCF14D/5DE42731/601A4569" Ref="R?"  Part="1" 
+AR Path="/5E62FD57/5E448095/5DE42731/601A4569" Ref="R?"  Part="1" 
+AR Path="/5E62FD57/5E45936E/5DE42731/601A4569" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/601A4569" Ref="R39"  Part="1" 
+F 0 "R39" V 8500 5000 50  0000 L CNN
+F 1 "200K" V 8300 5000 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 8440 5040 50  0001 C CNN
+F 3 "~" H 8400 5050 50  0001 C CNN
+F 4 "1%" H 8400 5050 50  0001 C CNN "Notes"
+F 5 "54" H 8400 5050 50  0001 C CNN "DK line"
+F 6 "200 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric)  Thin Film" H 8400 5050 50  0001 C CNN "Description"
+F 7 "YAG5945CT-ND" H 8400 5050 50  0001 C CNN "Digikey"
+F 8 "RT0603FRE07200KL" H 8400 5050 50  0001 C CNN "MPN"
+F 9 "Yageo" H 8400 5050 50  0001 C CNN "Manufacturer"
+	1    8400 5050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8400 4900 8400 4700
+Connection ~ 8400 4700
+Wire Wire Line
+	8400 4700 9100 4700
+$Comp
+L power:GND #PWR025
+U 1 1 601CC6BE
+P 8400 5250
+F 0 "#PWR025" H 8400 5000 50  0001 C CNN
+F 1 "GND" H 8400 5100 50  0000 C CNN
+F 2 "" H 8400 5250 50  0001 C CNN
+F 3 "" H 8400 5250 50  0001 C CNN
+	1    8400 5250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8400 5200 8400 5250
 $EndSCHEMATC

@@ -385,8 +385,6 @@ F 8 "KEMET" H 12150 4200 50  0001 C CNN "Manufacturer"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	11650 6050 11650 6000
-Wire Wire Line
 	11650 3850 11650 4100
 $Comp
 L power:GNDA #PWR06
@@ -583,15 +581,15 @@ AR Path="/5E2EB92B/5EACDE4D" Ref="R14"  Part="1"
 AR Path="/5E624B3C/5E2EB92B/5EACDE4D" Ref="R?"  Part="1" 
 AR Path="/5EBEDCCA/5EACDE4D" Ref="R?"  Part="1" 
 F 0 "R14" V 9400 3550 50  0000 C CNN
-F 1 "200" V 9200 3550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9340 3540 50  0001 C CNN
-F 3 "" H 9300 3550 50  0001 C CNN
-F 4 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 9300 3550 50  0001 C CNN "Description"
-F 5 "RNCP0603FTD200RCT-ND" H 9300 3550 50  0001 C CNN "Digikey"
+F 1 "499" V 9200 3550 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 9340 3540 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 9300 3550 50  0001 C CNN
+F 4 "RES SMD 499 OHM 0.1% 1/4W 0805" H 9300 3550 50  0001 C CNN "Description"
+F 5 "A110514CT-ND" H 9300 3550 50  0001 C CNN "Digikey"
 F 6 "" H 9300 3550 50  0001 C CNN "Notes"
-F 7 "55" H 9300 3550 50  0001 C CNN "DK line"
-F 8 "RNCP0603FTD200R" H 9300 3550 50  0001 C CNN "MPN"
-F 9 "Stackpole Electronics Inc" H 9300 3550 50  0001 C CNN "Manufacturer"
+F 7 "30" H 9300 3550 50  0001 C CNN "DK line"
+F 8 "8-2176091-9" H 9300 3550 50  0001 C CNN "MPN"
+F 9 "TE Connectivity Passive Product" H 9300 3550 50  0001 C CNN "Manufacturer"
 	1    9300 3550
 	-1   0    0    1   
 $EndComp
@@ -618,15 +616,15 @@ AR Path="/5E2EB92B/5EAD4090" Ref="R5"  Part="1"
 AR Path="/5E624B3C/5E2EB92B/5EAD4090" Ref="R?"  Part="1" 
 AR Path="/5EBEDCCA/5EAD4090" Ref="R?"  Part="1" 
 F 0 "R5" V 9750 3550 50  0000 C CNN
-F 1 "200" V 9550 3550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9690 3540 50  0001 C CNN
-F 3 "" H 9650 3550 50  0001 C CNN
-F 4 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 9650 3550 50  0001 C CNN "Description"
-F 5 "RNCP0603FTD200RCT-ND" H 9650 3550 50  0001 C CNN "Digikey"
+F 1 "499" V 9550 3550 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 9690 3540 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 9650 3550 50  0001 C CNN
+F 4 "RES SMD 499 OHM 0.1% 1/4W 0805" H 9650 3550 50  0001 C CNN "Description"
+F 5 "A110514CT-ND" H 9650 3550 50  0001 C CNN "Digikey"
 F 6 "" H 9650 3550 50  0001 C CNN "Notes"
-F 7 "55" H 9650 3550 50  0001 C CNN "DK line"
-F 8 "RNCP0603FTD200R" H 9650 3550 50  0001 C CNN "MPN"
-F 9 "Stackpole Electronics Inc" H 9650 3550 50  0001 C CNN "Manufacturer"
+F 7 "30" H 9650 3550 50  0001 C CNN "DK line"
+F 8 "8-2176091-9" H 9650 3550 50  0001 C CNN "MPN"
+F 9 "TE Connectivity Passive Product" H 9650 3550 50  0001 C CNN "Manufacturer"
 	1    9650 3550
 	-1   0    0    1   
 $EndComp
@@ -739,17 +737,11 @@ F 6 "KEMET" V 6450 5200 50  0001 C CNN "Manufacturer"
 $EndComp
 Wire Wire Line
 	6450 5100 6450 4800
-Text Notes 6550 6100 0    50   ~ 0
-Ground sense
 Wire Wire Line
 	6450 4800 7200 4800
 Connection ~ 10250 2800
 Wire Wire Line
-	6450 6000 11650 6000
-Wire Wire Line
 	6450 5300 6450 6000
-Wire Wire Line
-	11650 6000 11650 4400
 Wire Wire Line
 	4600 5250 4600 5400
 Wire Wire Line
@@ -765,8 +757,7 @@ Wire Wire Line
 	2850 5350 2850 6000
 Wire Wire Line
 	2850 6000 6450 6000
-Connection ~ 6450 6000
-Text Notes 10100 6150 0    50   ~ 0
+Text Notes 10050 6250 0    50   ~ 0
 Ground at reference bus, eg. C5, C6.
 Text Notes 6550 5650 0    50   ~ 0
 The R37/C42 15 Hz lowpass filter rejects HF crud in the incoming \nreference, and also noise from the diff amp itself (which operates\nat noise gain of 2).
@@ -824,11 +815,46 @@ Wire Wire Line
 	7000 2800 10250 2800
 Wire Wire Line
 	7000 4600 7200 4600
-Connection ~ 11650 6000
 Text Label 6750 4800 0    50   ~ 0
 U3B+
 Text Label 7000 4500 0    50   ~ 0
 U3B-
 Text Label 7950 4700 0    50   ~ 0
 U3BOUT
+Wire Wire Line
+	11650 4400 11650 6000
+$Comp
+L Device:R_US R?
+U 1 1 5FF7F603
+P 11000 6000
+AR Path="/5DFF6C0D/5FF7F603" Ref="R?"  Part="1" 
+AR Path="/5E1D6729/5E1DA2AA/5FF7F603" Ref="R?"  Part="1" 
+AR Path="/5E2EB92B/5FF7F603" Ref="R38"  Part="1" 
+AR Path="/5E624B3C/5E2EB92B/5FF7F603" Ref="R?"  Part="1" 
+AR Path="/5EBEDCCA/5FF7F603" Ref="R?"  Part="1" 
+F 0 "R38" V 11100 6000 50  0000 C CNN
+F 1 "0" V 10900 6000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 11040 5990 50  0001 C CNN
+F 3 "?" H 11000 6000 50  0001 C CNN
+F 4 "" V 11000 6000 50  0001 C CNN "Notes"
+F 5 "" H 11000 6000 50  0001 C CNN "DK line"
+F 6 "?" H 11000 6000 50  0001 C CNN "Description"
+F 7 "" H 11000 6000 50  0001 C CNN "Digikey"
+F 8 "" H 11000 6000 50  0001 C CNN "MPN"
+F 9 "" H 11000 6000 50  0001 C CNN "Manufacturer"
+	1    11000 6000
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	10850 6000 6450 6000
+Connection ~ 6450 6000
+Wire Wire Line
+	11150 6000 11650 6000
+Connection ~ 11650 6000
+Wire Wire Line
+	11650 6000 11650 6050
+Text Label 6550 6000 0    50   ~ 0
+VREF_GROUND_SENSE
+Text Notes 6550 6300 0    50   ~ 0
+There are detectable voltage drops across the ground plane during\nsupply ripple testing, especially due to ripple current in the the raw \ninput bulk caps C20, C21.  So we sense DC and LF near the VREF bus.
 $EndSCHEMATC

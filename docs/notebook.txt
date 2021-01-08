@@ -39,6 +39,8 @@ Main board revisions:
 
 
 Input board revisions:
+ -- Set up to work with LTC2500-32 ADC also, to help with possible supply
+    issues.
  -- ~10 dB of noise peaking in reference buffer near 6 kHz.
  -- Board select logic, mux for one-wire and I2C, onboard eeprom and
     IO expander.
@@ -50,8 +52,6 @@ Input board revisions:
  -- More ground TPs.  More exposed top ground pour.
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
  -- Make board longer to get the right panel position.
- -- Q3E fuse trace is narrow.
- -- +8 remote sense line is shorted to bus too early by large vias.
  -- Change to high quality input connector, with external dongle
     adapter for RJ45.  Or leave both footprints, if possible.
  -- Or keep RJ45, recess the input board, and move chassis ground
@@ -66,6 +66,12 @@ Input board revisions:
 
  ==> Double check reference buffer supply and C129 mods.
 
+Fixed in new rev, number ???
+ -- +8 remote sense line is shorted to bus too early by large vias.
+ -- Q3E fuse trace is narrow.
+
+
+
 Input board changes made (bodged on board and in schematic):
  -- Change to new reference buffer supply setup (bodged, I think)
  -- Reference lowpass filter.
@@ -73,7 +79,9 @@ Input board changes made (bodged on board and in schematic):
  -- Fix filter frequency response by changing C129, C130, C111 (and
     corresponding on other channels) to 10 nF. 
  -- Increase class A bias in reference buffer from 4 to 20 mA by
-    changing R5 from 499 to 100 (by paralleling two 200s). 
+    changing R5 from 499 to 100 (by paralleling two 200s).
+    ### I reckon we had 6 mA with 499 and 8V rail.  But now rail is 10V, so we
+    would want 250 Ohms for 20 mA, or 499 || 499.
 
 
 Calibration todo:
@@ -119,6 +127,57 @@ Software & research tasks:
      - Navio test publication
  -- EMI testing, lab and onsite.
  -- EMI publication
+
+
+[8 Jan 21]
+
+I had a minor goof on the SMA breakout board, the output header centers are
+wrong.  I have a revision that fixes this, and also has the conventional
+rotation direction for the gain trim.
+
+
+Was going over the input board BOM, and noticed that Digikey had only 16
+LTC2512-24 in stock.  I ordered 25 to get the price break.
+
+It seems like a good idea to incorporate support for the LTC2500-32 into the
+input board revision, to increase options.  I don't currently have anything on
+the input board itself, but I did think to include it in the main board.  The
+main issue is that with the LTC2500-32 we want SDI for chip configuration.
+
+But at the moment the inventory is actually better for the LTC2512-24, with
+Analog saying they have >1K in their stock, whereas apparently no stock for
+the LTC2500-32.  Both parts are fairly thinly stocked at the distributors,
+with 10's to a few hundred.  The ordering unit from Analog is 52, which is not
+entirely crazy for us, but the Digikey price break @ 25 is the same, and if
+they exist out there, then Digikey will presumably restock.  16 would get us 5
+input boards, assuming no wastage, which would be enough to populate 2
+single-sensor boxes, or 1 fully loaded.
+
+[It's plausible that as a high price top-of-the-line part, the LTC2500-32
+doesn't sell that well, especially with the downscale high and low decimation
+versions.  There aren't many applications where you would need the flexibility
+on decimation rate and filter type.]
+
+There are other similar LTC chips, but less of a drop-in replacement.  And
+with our FPGA and LVDS link we could also do decimation in the FPGA using
+another SAR ADC.  Or whatever.  But let's hope it isn't necessary.
+
+There are a number of parts which are out of stock, or seem rather low stock,
+but most of these are chip capacitors and other easily substituted things.
+The diff amp, THS4131 does not IIRC have very close replacements, but the
+pinout seems to be pretty standard.
+
+
+I have the PCB changes for the input board revisions which I bodged in, mainly to
+the reference buffer.
+ ==> Still want to look at the reference noise peaking
+
+I'm starting on adding the board select and config EEPROM, which seems pretty
+easy.
+
+Still putting off the decision on whether to move the chassis ground
+protection/filter stuff to a front panel board.  Pretty sure this is the
+"right" thing to do, but it seems like work.
 
 
 [5 Jan 21]

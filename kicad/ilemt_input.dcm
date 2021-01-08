@@ -1,5 +1,17 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP 74CBT1G384
+D Single FET Bus Switch
+K Single FET Bus Switch
+F http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf
+$ENDCMP
+#
+$CMP 74CBTD1G384
+D Single FET Bus Switch
+K Single FET Bus Switch
+F http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf
+$ENDCMP
+#
 $CMP AD797_copy
 D Ultralow Distortion, Ultralow Noise Op Amp, DIP-8/SOIC-8
 K single opamp
