@@ -7,6 +7,58 @@ FPGA code:
     to output DAC or BIST DAC?
  -- Some way for software to readback the FPGA firmware version
 
+
+Driver/box:
+ -- Modify driver boards for lower gain and with bigger bypass caps.
+ -- Mechanical chassis/shield panel
+
+
+________________
+Input board revisions:
+ -- Set up to work with LTC2500-32 ADC also, to help with possible supply
+    issues.
+ -- ~10 dB of noise peaking in reference buffer near 6 kHz.
+ -- Beef up input clamp and TVS diodes?  Experience with BAS21S in the
+    regulators makes it seem a little delicate, but TVS is getting hit
+    way harder.  In simulation was having difficulty with getting the
+    diodes to conduct even when the TVS stress was super huge.
+ -- Change testpoint style, turret or at least larger hole.
+ -- More ground TPs.  More exposed top ground pour.
+ -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
+
+Input board front panel connector migration:
+ -- Make board longer to get the right length for eg. latch/eject in recessed mount.
+ -- Change to high quality input connector, with external dongle
+    adapter for RJ45.  Or leave both footprints, if possible.
+ -- Or keep RJ45, recess the input board, and move chassis ground
+    components, CM choke, to a front panel board.  This board can have
+    either style connector. 
+ -- Rework input filter to use dual planes for dirty cavity to
+    shield input leads before the filter.  Move bead close to input,
+    change 10 Ohm to bead, etc.
+ -- Add more exposed chassis ground on input edge for bonding.
+
+ ==> Double check reference buffer supply and C129 mods.
+
+Fixed in new rev 1:
+ -- Board select logic, mux for one-wire and I2C, onboard eeprom and
+    IO expander.
+ -- +8 remote sense line is shorted to bus too early by large vias.
+ -- Q3E fuse trace is narrow.
+These revs also bodged:
+ -- Change to new reference buffer supply setup (bodged, I think)
+ -- Reference lowpass filter.
+ -- Change V- regulator + supply to use +2.5 with ferrite bead.
+ -- Fix filter frequency response by changing C129, C130, C111 (and
+    corresponding on other channels) to 10 nF. 
+ -- Increase class A bias in reference buffer from 6 to 20 mA by
+    changing R5 from 499 to 499 || 499.  Note + rail for VREF buffer increased
+    from 8V to 10V due to getting rid of supply bootstrapping.
+
+
+________________
+
+
 Output board revisions:
  -- Do something about excess HF noise.
  -- Fix opamp footprint
@@ -14,14 +66,6 @@ Output board revisions:
  -- Add digital outputs for front panel lights?  Maybe support for LCD
     display?  This could also be added to main board.
  -- Temporary -15V supply
-
-
-
-Driver:
- -- Output filter and feedback sense board at front panel
- -- SMA breakout boards for amp input with gain trim
- -- Modify driver boards for lower gain and with bigger bypass caps.
- -- Chassis shelf cantilever
 
 LV supply card:
  -- Add bulk cap on +5?  There is LF glitching on +5 ANA, though it
@@ -37,51 +81,7 @@ Main board revisions:
  -- Is ADC reference buffer output stable with the C load?  Noise gain
     peaking?  
 
-
-Input board revisions:
- -- Set up to work with LTC2500-32 ADC also, to help with possible supply
-    issues.
- -- ~10 dB of noise peaking in reference buffer near 6 kHz.
- -- Board select logic, mux for one-wire and I2C, onboard eeprom and
-    IO expander.
- -- Beef up input clamp and TVS diodes?  Experience with BAS21S in the
-    regulators makes it seem a little delicate, but TVS is getting hit
-    way harder.  In simulation was having difficulty with getting the
-    diodes to conduct even when the TVS stress was super huge.
- -- Change testpoint style, turret or at least larger hole.
- -- More ground TPs.  More exposed top ground pour.
- -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
- -- Make board longer to get the right panel position.
- -- Change to high quality input connector, with external dongle
-    adapter for RJ45.  Or leave both footprints, if possible.
- -- Or keep RJ45, recess the input board, and move chassis ground
-    components, CM choke, to a front panel board.  This board can have
-    either style connector. 
- -- Rework input filter to use dual planes for dirty cavity to
-    shield input leads before the filter.  Move bead close to input,
-    change 10 Ohm to bead, etc.
- -- Add more exposed chassis ground on input edge for bonding.
- -- Revisit stage 1 opamp selection, may want higher bandwidth for low
-    distortion, PSRR, CMRR.
-
- ==> Double check reference buffer supply and C129 mods.
-
-Fixed in new rev, number ???
- -- +8 remote sense line is shorted to bus too early by large vias.
- -- Q3E fuse trace is narrow.
-
-
-
-Input board changes made (bodged on board and in schematic):
- -- Change to new reference buffer supply setup (bodged, I think)
- -- Reference lowpass filter.
- -- Change V- regulator + supply to use +2.5 with ferrite bead.
- -- Fix filter frequency response by changing C129, C130, C111 (and
-    corresponding on other channels) to 10 nF. 
- -- Increase class A bias in reference buffer from 4 to 20 mA by
-    changing R5 from 499 to 100 (by paralleling two 200s).
-    ### I reckon we had 6 mA with 499 and 8V rail.  But now rail is 10V, so we
-    would want 250 Ohms for 20 mA, or 499 || 499.
+Input don't forget:
 
 
 Calibration todo:
@@ -95,13 +95,13 @@ Calibration todo:
 
 Other hardware issues:
  -- Re-wind Z source coil
- -- Buy spare amp and supply for driver box?  Parts express still has
-    driver? 
  -- Stage mount reinforcement
     - Bolt/glue/mortar
  -- Stage refinements: Ry axis, slider mod for Rx axis.
 
 Don't forget:
+ -- Revisit input board stage 1 opamp selection, may want higher bandwidth for low
+    distortion, PSRR, CMRR.
  -- Some scaling problem in the spectrum window when looking at "Chart high"?
     The plot moves way up and down depending on the FFT parameters, window,
     etc., and seems basically too low.
@@ -127,6 +127,76 @@ Software & research tasks:
      - Navio test publication
  -- EMI testing, lab and onsite.
  -- EMI publication
+
+
+[13 Jan 20]
+
+Getting nervous about taking R1 input board directly to assembly run w/o any
+testing.  The revisions are stacking up, there is the noise peaking in the
+reference buffer, and BIST still isn't tested.  While it wouldn't be terrible,
+the realistic worst case is that all the assembled boards would need some
+bodges, or wouldn't be fully functional.
+
+The component supply chain is getting tight (somewhat related to the
+pandemic), and this might affect things.  While this in particular is not a
+problem because there are many plausible drop-in replacements, the OPA830 used
+in the input board regulators is out of stock.  Not sure how this should
+affect my plans.  I guess it would be an argument for going to assembly
+sooner, since there is uncertaintly, and the situation may get worse.
+
+Aside from the ADC there aren't any parts on the input board which would be a
+huge nuisance if they were unavailable.  But I just realized I should stock up
+on some Microzed boards.
+
+We do not desperately need more than one tracker in the next few months, but
+there is not a lot of runway on the funding, and if we don't make any
+multiples then they won't get made.  And I do need multiple input boards to
+get even one working tracker.  I really want at least 3 so that I can have
+feedback and two sensors.
+
+The LVDS tx and rx chips are somewhat obscure, but do have multiple sources.
+The LV regs board would need to be completely redone without those
+single-source regulator modules.  I'm not too worried about the availability
+of IRAUDAMP7 boards and the supply board, although I might have to substitute
+a different version.
+
+The DACs are single-source.
+
+Maybe stockpile now (needed for input boards):
+ -- LVDS tx/rx
+ -- Fully diff amp chip
+ -- Input CM filter (will be on front panel board)
+ -- Polymer caps
+
+
+Single source things to maybe pre-order for multi-tracker build:
+ -- Enclosures
+ -- Regulator modules
+ -- Microzed
+ -- Microzed connectors
+ -- DAC PCM1794ADBR
+ -- Some of the analog regulators may be single-source, especially M.7
+    AP7361C-25SP-13DICT-ND
+ -- VREF MAX6220ASA-5.0+-ND
+ -- Clock oscillator 336-2519-ND
+ -- BIST DAC DAC80004IPW
+
+
+Of course, everyone is stockpiling, which is why supply is drying up, but what
+are you gonna do?
+
+
+So, what else is up?
+ -- Finish input board revisions, split off chassis ground parts to connector
+    board.
+ -- Investigate VREF noise peaking on input board.  Never looked into main
+    board reference stability either.
+ -- Work out mechanicals for enclosure, 24V supply, fan, assemble and wire
+    up.
+ -- Order missing box parts (rails).  Anything we need for recessed mount.  Do
+    I have the right latch/eject footprint on the input and DAC board?
+
+
 
 
 [8 Jan 21]
@@ -168,12 +238,21 @@ The diff amp, THS4131 does not IIRC have very close replacements, but the
 pinout seems to be pretty standard.
 
 
-I have the PCB changes for the input board revisions which I bodged in, mainly to
-the reference buffer.
- ==> Still want to look at the reference noise peaking
+I finished the PCB changes for the input board revisions which I bodged in,
+mainly to the reference buffer.
+==> Still want to look at the reference noise peaking
 
 I'm starting on adding the board select and config EEPROM, which seems pretty
 easy.
+
+I am giving up on the idea of putting an IO expander on the input board, since
+it doesn't seem to have much/any use anymore.  We need various digital IOs for
+the front panel, source config memory, etc., and I don't think it makes much
+sense for them to come from the input boards.  And for configuring the
+decimation rate, it seems we are pretty much boxed in due to the constraints
+added by the DAC clocking.  I'm leaving the decimation jumpers for now.  I
+guess that the LTC2500-32 has SDI on one of those pins?
+
 
 Still putting off the decision on whether to move the chassis ground
 protection/filter stuff to a front panel board.  Pretty sure this is the

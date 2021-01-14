@@ -506,8 +506,8 @@ F 6 "Keystone Electronics" H 1500 3900 50  0001 C CNN "Manufacturer"
 	1    1500 3900
 	1    0    0    -1  
 $EndComp
-Text Notes 4550 4350 0    50   ~ 0
-Current transformer primary is 3 turns \non Tx01, giving 100:1 current ratio
+Text Notes 3900 4900 0    50   ~ 0
+Current transformer primary is 3 turns on Tx01, giving 100:1 current\nratio. Use 16 ga wire. Three turns means three passes through the\ncenter of the CT, starting from jumper pad 1, thru core in the arrow\ndirection (right to left), around the core and back thru 2 more times.\nThe last half-turn passes around the outside of the core, returning to\njumper pad 2.  In the PCB layout Y channel W301 is not right next to\nthe CT.  The wire run from the jumper pads to the CT should be\ntwisted.\n
 $Comp
 L Device:R_US R207
 U 1 1 5FDFDDFC
