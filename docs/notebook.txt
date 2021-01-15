@@ -15,30 +15,30 @@ Driver/box:
 
 ________________
 Input board revisions:
+ -- Make board longer to get the right length for eg. latch/eject in recessed mount.
+==> Figure out how long to make the board
  -- Set up to work with LTC2500-32 ADC also, to help with possible supply
-    issues.
+    issues.  Bring out pin 16 (LTC2500 SDI), have pin 10 (LTC2500 PRE) jumper
+    to ground or float. 
  -- ~10 dB of noise peaking in reference buffer near 6 kHz.
- -- Beef up input clamp and TVS diodes?  Experience with BAS21S in the
-    regulators makes it seem a little delicate, but TVS is getting hit
-    way harder.  In simulation was having difficulty with getting the
-    diodes to conduct even when the TVS stress was super huge.
+==> See if we can simulate, fix.
  -- Change testpoint style, turret or at least larger hole.
  -- More ground TPs.  More exposed top ground pour.
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
+==> Double check reference buffer supply and C129 mods.
 
-Input board front panel connector migration:
- -- Make board longer to get the right length for eg. latch/eject in recessed mount.
+Front panel board:
+ -- Beef up input clamp and TVS diodes?  Experience with BAS21S in the
+    regulators makes it seem a little delicate, but TVS is getting hit
+    way harder.  In simulation was having difficulty with getting the
+    diodes to conduct even when the TVS stress was super huge, so TVS is
+    probably the main concern.
  -- Change to high quality input connector, with external dongle
     adapter for RJ45.  Or leave both footprints, if possible.
- -- Or keep RJ45, recess the input board, and move chassis ground
-    components, CM choke, to a front panel board.  This board can have
-    either style connector. 
  -- Rework input filter to use dual planes for dirty cavity to
     shield input leads before the filter.  Move bead close to input,
     change 10 Ohm to bead, etc.
- -- Add more exposed chassis ground on input edge for bonding.
 
- ==> Double check reference buffer supply and C129 mods.
 
 Fixed in new rev 1:
  -- Board select logic, mux for one-wire and I2C, onboard eeprom and
@@ -129,7 +129,45 @@ Software & research tasks:
  -- EMI publication
 
 
-[13 Jan 20]
+[15 Jan 21]
+
+
+Pinout differences between LTC2513 and LTC2500:
+
+	Pins		LTC2513		LTC2500
+	10		REF		PRE (GND)
+	11		SEL0		GND	
+	12		SEL1		GND
+	16		GND		SDI
+
+One thought is that although REF and GND are critical signals, when a pin is
+an "extra pin" for one of these on one chip and a digital signal on the other,
+then we could probably even leave that pin floating when it is "extra".
+
+For pin 10, this area is packed annoyingly tightly.  And I don't want to break
+out this line in common across channels since I don't want to couple VREF.  So
+I need to squeeze in a per-channel jumper or two.  I think we could ground for
+the LTC2500 and let float for LTC2513
+
+We don't need to do anything about pins 11, 12.  For the LTC2500 we can just
+jumper these both low, which grounds them.  This is not a "good" ground, but
+that shouldn't matter.
+
+For pin 16, we need to route it out so that it can be connected to the SDI
+input, and we also don't want SDI shorted to ground when using the LTC2513.
+But it seems best to ground this net with the 2513 to cut off a possible noise
+path between channels.  So some configuration with DNP is needed here.
+
+One (minor) issue with using the LTC2500 is that it doesn't support as high a
+sample rate as the LTC2513.  So clocking would need to change, and any tracker
+box that has any boards with the LTC2500 has to run at the lower rate, since
+the clock distribution is global.  Supporting both chips in a single box would
+also require more complexity in the FPGA driver code.  This is (at the moment)
+a somewhat remote contingency.
+
+
+
+[13 Jan 21]
 
 Getting nervous about taking R1 input board directly to assembly run w/o any
 testing.  The revisions are stacking up, there is the noise peaking in the

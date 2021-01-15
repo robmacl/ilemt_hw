@@ -1,4 +1,4 @@
-update=1/7/2021 11:24:45 AM
+update=1/15/2021 11:41:17 AM
 version=1
 last_client=kicad
 [general]
@@ -12,16 +12,6 @@ NetIExt=net
 version=1
 LibDir=
 [eeschema/libraries]
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceAjustPassiveValues=0
-LabSize=50
-ERC_TestSimilarLabels=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
@@ -297,17 +287,6 @@ dPairWidth=0.175
 dPairGap=0.2
 dPairViaGap=0.25
 [pcbnew/Netclasses/4]
-Name=Input
-Clearance=0.2
-TrackWidth=0.5
-ViaDiameter=0.6
-ViaDrill=0.3
-uViaDiameter=0.3
-uViaDrill=0.1
-dPairWidth=0.175
-dPairGap=0.2
-dPairViaGap=0.25
-[pcbnew/Netclasses/5]
 Name=LVDS
 Clearance=0.0889
 TrackWidth=0.175
@@ -318,7 +297,7 @@ uViaDrill=0.1
 dPairWidth=0.175
 dPairGap=0.2
 dPairViaGap=0.25
-[pcbnew/Netclasses/6]
+[pcbnew/Netclasses/5]
 Name=Power
 Clearance=0.2
 TrackWidth=0.5
@@ -329,18 +308,18 @@ uViaDrill=0.1
 dPairWidth=0.175
 dPairGap=0.2
 dPairViaGap=0.25
-[pcbnew/Netclasses/7]
+[pcbnew/Netclasses/6]
 Name=Sensitive
-Clearance=0.2
+Clearance=0.15
 TrackWidth=0.15
 ViaDiameter=0.6
 ViaDrill=0.3
 uViaDiameter=0.3
 uViaDrill=0.1
-dPairWidth=0.175
-dPairGap=0.2
+dPairWidth=0.15
+dPairGap=0.15
 dPairViaGap=0.25
-[pcbnew/Netclasses/8]
+[pcbnew/Netclasses/7]
 Name=Slow
 Clearance=0.2
 TrackWidth=0.15
@@ -351,3 +330,13 @@ uViaDrill=0.1
 dPairWidth=0.175
 dPairGap=0.2
 dPairViaGap=0.25
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=Pcbnew
+SpiceAjustPassiveValues=0
+LabSize=50
+ERC_TestSimilarLabels=1

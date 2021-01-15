@@ -619,40 +619,6 @@ $EndComp
 Text Label 2150 8350 0    50   ~ 0
 GND
 $Comp
-L Device:C_Small C?
-U 1 1 5E290B0B
-P 3650 8350
-AR Path="/5DFF6C0D/5E290B0B" Ref="C?"  Part="1" 
-AR Path="/5E1D6729/5E1DA2AA/5E290B0B" Ref="C?"  Part="1" 
-AR Path="/5E2EB92B/5E290B0B" Ref="C?"  Part="1" 
-AR Path="/5E51E83D/5E290B0B" Ref="C32"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5E290B0B" Ref="C32"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5E290B0B" Ref="C?"  Part="1" 
-F 0 "C32" V 3421 8350 50  0000 C CNN
-F 1 "10nF" V 3512 8350 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 3650 8350 50  0001 C CNN
-F 3 "https://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.ashx?la=en-us" H 3650 8350 50  0001 C CNN
-F 4 "2% C0G" H 3650 8350 50  0001 C CNN "Notes"
-F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 3650 8350 50  0001 C CNN "Description"
-F 6 "490-8296-1-ND" H 3650 8350 50  0001 C CNN "Digikey"
-F 7 "GRM2195C1H103GA01D" H 3650 8350 50  0001 C CNN "MPN"
-F 8 "14" H 3650 8350 50  0001 C CNN "DK line"
-F 9 "Murata Electronics" H 3650 8350 50  0001 C CNN "Manufacturer"
-	1    3650 8350
-	0    -1   -1   0   
-$EndComp
-$Comp
-L power:Earth #PWR038
-U 1 1 5E2BF916
-P 4300 8450
-F 0 "#PWR038" H 4300 8200 50  0001 C CNN
-F 1 "Earth" H 4300 8300 50  0001 C CNN
-F 2 "" H 4300 8450 50  0001 C CNN
-F 3 "~" H 4300 8450 50  0001 C CNN
-	1    4300 8450
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR041
 U 1 1 5E2C030A
 P 2950 8450
@@ -696,19 +662,6 @@ F 3 "" H 2950 5400 50  0001 C CNN
 	1    2950 5400
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:PWR_FLAG #FLG03
-U 1 1 5E30BE39
-P 4200 8250
-F 0 "#FLG03" H 4200 8325 50  0001 C CNN
-F 1 "PWR_FLAG" V 4200 8550 50  0000 C CNN
-F 2 "" H 4200 8250 50  0001 C CNN
-F 3 "~" H 4200 8250 50  0001 C CNN
-	1    4200 8250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4300 8350 4300 8450
 $Comp
 L power:PWR_FLAG #FLG04
 U 1 1 5E317B15
@@ -2326,26 +2279,6 @@ Wire Wire Line
 	4500 1400 4700 1400
 Wire Wire Line
 	4350 1400 4500 1400
-$Comp
-L Device:D_Zener D3
-U 1 1 5FA1D797
-P 3650 8900
-AR Path="/5E51E83D/5FA1D797" Ref="D3"  Part="1" 
-AR Path="/5E1D6729/5FA1D797" Ref="D?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5FA1D797" Ref="D?"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5FA1D797" Ref="D?"  Part="1" 
-F 0 "D3" H 3650 8800 50  0000 C CNN
-F 1 "10V (standoff)" H 3650 9000 50  0000 C CNN
-F 2 "Diode_SMD:D_SMA" H 3650 8900 50  0001 C CNN
-F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 3650 8900 50  0001 C CNN
-F 4 "824500500" H 3650 8900 50  0001 C CNN "MPN"
-F 5 "TVS DIODE 10V 17V DO214AC" H 3650 8900 50  0001 C CNN "Description"
-F 6 "732-9947-1-ND" H 3650 8900 50  0001 C CNN "Digikey"
-F 7 "41" H 3650 8900 50  0001 C CNN "DK line"
-F 8 "Würth Elektronik" H 3650 8900 50  0001 C CNN "Manufacturer"
-	1    3650 8900
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	2100 8350 2500 8350
 Wire Wire Line
@@ -2353,60 +2286,4 @@ Wire Wire Line
 Connection ~ 2500 8350
 Wire Wire Line
 	2500 8350 2750 8350
-$Comp
-L Device:D_Zener D5
-U 1 1 5FA3410D
-P 3650 9250
-AR Path="/5E51E83D/5FA3410D" Ref="D5"  Part="1" 
-AR Path="/5E1D6729/5FA3410D" Ref="D?"  Part="1" 
-AR Path="/5E624B3C/5E51E83D/5FA3410D" Ref="D?"  Part="1" 
-AR Path="/5E62FD57/5E630FEC/5FA3410D" Ref="D?"  Part="1" 
-F 0 "D5" H 3650 9350 50  0000 C CNN
-F 1 "10V (standoff)" H 3650 9150 50  0000 C CNN
-F 2 "Diode_SMD:D_SMA" H 3650 9250 50  0001 C CNN
-F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 3650 9250 50  0001 C CNN
-F 4 "824500500" H 3650 9250 50  0001 C CNN "MPN"
-F 5 "TVS DIODE 10V 17V DO214AC" H 3650 9250 50  0001 C CNN "Description"
-F 6 "732-9947-1-ND" H 3650 9250 50  0001 C CNN "Digikey"
-F 7 "41" H 3650 9250 50  0001 C CNN "DK line"
-F 8 "Würth Elektronik" H 3650 9250 50  0001 C CNN "Manufacturer"
-	1    3650 9250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2950 8350 3300 8350
-Connection ~ 2950 8350
-Wire Wire Line
-	3500 9250 3300 9250
-Connection ~ 3300 8350
-Wire Wire Line
-	3300 8900 3500 8900
-Wire Wire Line
-	3550 8350 3300 8350
-Wire Wire Line
-	3750 8350 4050 8350
-Connection ~ 4050 8350
-Wire Wire Line
-	3800 9250 4050 9250
-Wire Wire Line
-	4050 8900 3800 8900
-Wire Wire Line
-	3300 8350 3300 8900
-Connection ~ 3300 8900
-Wire Wire Line
-	3300 8900 3300 9250
-Wire Wire Line
-	4050 8350 4050 8900
-Connection ~ 4050 8900
-Wire Wire Line
-	4050 8900 4050 9250
-Wire Wire Line
-	4300 8350 4200 8350
-Wire Wire Line
-	4200 8250 4200 8350
-Connection ~ 4200 8350
-Wire Wire Line
-	4200 8350 4050 8350
-Text Notes 4250 9050 0    50   ~ 0
-Earth ground is the ground that the input protection uses.  We\nwe bypass and clamp this to the signal ground, which may be\nparticularly useful when the front panel is off.  Then the only\nchassis connection is through the edge connector.\n
 $EndSCHEMATC

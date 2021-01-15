@@ -453,52 +453,6 @@ Wire Wire Line
 Connection ~ 2450 1200
 Wire Wire Line
 	2450 1200 2550 1200
-$Comp
-L power:Earth #PWR?
-U 1 1 5E748772
-P 6450 4150
-AR Path="/5E51E83D/5E748772" Ref="#PWR?"  Part="1" 
-AR Path="/5E1D6729/5E748772" Ref="#PWR0159"  Part="1" 
-AR Path="/5E624B3C/5E1D6729/5E748772" Ref="#PWR0159"  Part="1" 
-F 0 "#PWR0159" H 6450 3900 50  0001 C CNN
-F 1 "Earth" H 6450 4000 50  0001 C CNN
-F 2 "" H 6450 4150 50  0001 C CNN
-F 3 "~" H 6450 4150 50  0001 C CNN
-	1    6450 4150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6350 3850 6450 3850
-Wire Wire Line
-	6450 3850 6450 3950
-Wire Wire Line
-	6350 3950 6450 3950
-Connection ~ 6450 3950
-Wire Wire Line
-	6450 3950 6450 4150
-$Comp
-L power:Earth #PWR?
-U 1 1 5E750415
-P 5550 4150
-AR Path="/5E51E83D/5E750415" Ref="#PWR?"  Part="1" 
-AR Path="/5E1D6729/5E750415" Ref="#PWR0160"  Part="1" 
-AR Path="/5E624B3C/5E1D6729/5E750415" Ref="#PWR0160"  Part="1" 
-F 0 "#PWR0160" H 5550 3900 50  0001 C CNN
-F 1 "Earth" H 5550 4000 50  0001 C CNN
-F 2 "" H 5550 4150 50  0001 C CNN
-F 3 "~" H 5550 4150 50  0001 C CNN
-	1    5550 4150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5550 4150 5550 3950
-Wire Wire Line
-	5550 3950 5650 3950
-Wire Wire Line
-	5650 3850 5550 3850
-Wire Wire Line
-	5550 3850 5550 3950
-Connection ~ 5550 3950
 Wire Wire Line
 	6700 3750 6450 3750
 $Comp
@@ -1060,4 +1014,8 @@ F 3 "" H 8400 5250 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8400 5200 8400 5250
+NoConn ~ 6350 3850
+NoConn ~ 6350 3950
+NoConn ~ 5650 3950
+NoConn ~ 5650 3850
 $EndSCHEMATC

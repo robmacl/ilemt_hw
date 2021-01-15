@@ -1103,4 +1103,16 @@ Wire Wire Line
 	8550 1000 8450 1000
 Text Notes 9200 1900 1    50   ~ 0
 --- to BIST buffer ---
+Text Label 5900 1000 0    50   ~ 0
+X+
+Text Label 5900 1100 0    50   ~ 0
+X-
+Text Label 5900 2300 0    50   ~ 0
+Y+
+Text Label 5900 2400 0    50   ~ 0
+Y-
+Text Label 5900 2550 0    50   ~ 0
+Z+
+Text Label 5900 2650 0    50   ~ 0
+Z-
 $EndSCHEMATC
