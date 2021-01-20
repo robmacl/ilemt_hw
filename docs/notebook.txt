@@ -11,7 +11,31 @@ FPGA code:
 Driver/box:
  -- Modify driver boards for lower gain and with bigger bypass caps.
  -- Mechanical chassis/shield panel
+==> What height on output connector, for standoffs and EMI gasket?
+==> Need at least a temporary front panel and chassis plate
+==> Order more box rails, 1/2 width rails, another full box kit?
+    For recessed mount we need 2 more rails per box, and are already short a
+    couple.  For the steel L-sheet box divider concept, we want 1/2 length
+    rails holding the upper card guides and middle of the main board.  The
+    bottom rails (4) are full width because the divider/chassis sits on them.
+    So we need 4 of the full length outer rails (notched for the corner trim),
+    2 full length inner rails on the bottom, and 2 half-length inner rails in
+    the middle.  The front and back panels (we supply) are attached only at
+    the top and bottom rails because there are only those rails at front and
+    back.  IIRC the steel trim panels on top, bottom and sides connect only to
+    the corner brackets.  FWIW, the rails do not directly appear on the PO,
+    seem to be part of "kits".
 
+
+Front panel board:
+ -- Choose high-quality connector and figure out how to mount it.  HR10?  For
+    this board I am feeling OK with the board not being easily removable from
+    the front panel, which simplifies the mechanics.
+ -- Beef up input clamp and TVS diodes?  Experience with BAS21S in the
+    regulators makes it seem a little delicate, but TVS is getting hit
+    way harder.  In simulation was having difficulty with getting the
+    diodes to conduct even when the TVS stress was super huge, so TVS is
+    probably the main concern.
 
 ________________
 Input board revisions:
@@ -26,19 +50,6 @@ Input board revisions:
  -- More ground TPs.  More exposed top ground pour.
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
 ==> Double check reference buffer supply and C129 mods.
-
-Front panel board:
- -- Beef up input clamp and TVS diodes?  Experience with BAS21S in the
-    regulators makes it seem a little delicate, but TVS is getting hit
-    way harder.  In simulation was having difficulty with getting the
-    diodes to conduct even when the TVS stress was super huge, so TVS is
-    probably the main concern.
- -- Change to high quality input connector, with external dongle
-    adapter for RJ45.  Or leave both footprints, if possible.
- -- Rework input filter to use dual planes for dirty cavity to
-    shield input leads before the filter.  Move bead close to input,
-    change 10 Ohm to bead, etc.
-
 
 Fixed in new rev 1:
  -- Board select logic, mux for one-wire and I2C, onboard eeprom and
@@ -129,11 +140,91 @@ Software & research tasks:
  -- EMI publication
 
 
+[18 Jan 21]
+
+Looked at the input card length a bit more.  While I'm sure it would be
+possible, reducing the input card length 48mm seems pretty unpleasant.  It
+seems I would have to relayout pretty much the entire input channel.  It is
+easy to reduce the length by 15mm or so just by compressing out the space
+freed up by moving the input filter to the panel board.
+
+I can also eliminate the problem with needing room for the input panel by
+locating that above the card slots.  With this change we likely would not need
+to even move the card mounting rails back, since we would have about 27mm
+between cards and front panel to feed the input cables up.
+
+I had been kind of wanting to keep as much as possible within the 3U lower box
+to sort of leave open that migration path if the main board were redone. But
+the current issues are mostly box specific anyway.  Give we have the space,
+might as well use it.
+
+Because the card slots are so wide spaced, 36mm, we could also switch to a
+vertical RJ45, which would basically eliminate the need for any room in front
+of the card (other than for whatever we might choose to mount on the front
+panel).  27mm is tight for the stickout on a booted RJ45, but 36mm just about
+does it.  The cable would surely end up touching the next card over, though.
+I guess the stickout on the boot for a front jack would hold the card in :).
+These are without moving back at all.  With 30mm recess it would seem there is
+all kinds of space.  Such as that we wouldn't need to shorten the cards if we
+mounted the input panel high.
+
+
+
+
+
 [15 Jan 21]
 
+Our 280mm card is 12mm short. We would need to go down to 220mm nominal, or
+48mm shorter for the next standard card length. This would be rather a
+nuisance for the input card, even with the stuff moved to the front
+panel. With the current layout we would need to gain about 15mm, which seems
+quite doable by tightening the placement, but probably not a good use of
+effort at this time.
+
+Oh, but there actually isn't room at the back to recess 60mm because the two
+rails touch, leaving no room for the main board. The amount we can recess is
+50mm at the very most. But recessing 30mm is the min (the rail depth), and
+does not really leave any room for the input panel board.
+
+So we could not go to a shorter box, but even so, maybe it is worth crunching
+the input board to get a standard format that will fit in the box.
+
+Other possibility is to use non-standard card depth and some other arrangement
+to hold the cards in. The card guides only come in the standard increments,
+but the card doesn't absolutely have to match the guide.
+
+If we move back 30mm then we have a clear 30+12 mm for the input panel. And if
+we shortened the card by 20mm, which would be easy, then we would have 62mm,
+which would be plenty for the panel card and wires from the panel to input
+cards.
+
+Not sure what to do here, but it isn't a big enough problem to make me want to
+ditch the idea of the input panel board.  Of course we could go to a *deeper*
+box rather than making the input card shorter.
+
+
+I looked a bit at layout for the input panel, and I'm not sure that trying to
+get a "dirty compartment" using the PCB itself really makes sense.  One issue
+is where to locate the GDT.  If it's dirty, then we want it on the back, but
+it is probably also a "large" component, as is the CM filter.  And you don't
+want "large" SMT components on both sides of the board.  But if we move the
+GDT to after the bead, then if the GDT is doing anything useful (questionable,
+maybe a direct electrosurgery hit) then there is risk of blowing the bead.
+Another consideration is manufacturing with thru-hole components (connectors)
+on both sides of the board.  But this may be premature optimization, given
+that any use of thru-hole is probably going to be hand-soldered anyway (and
+there is only one input panel per tracker).  Especially if I am reflowing
+myself, it's much nicer if all the SMT parts are on the top.
+ ==> Since this is now a seperate board, don't over-design it.  I
+     doubt GHz RFI sensitivity is going to be a big problem.  Also, just
+     moving to the input panel seems like a big improvement since we have an
+     excellent ground, and the dirty stuff is moved away from the sensitive
+     analog circuits.
+
+
+re. support for both LTC2513 and LTC2500.
 
 Pinout differences between LTC2513 and LTC2500:
-
 	Pins		LTC2513		LTC2500
 	10		REF		PRE (GND)
 	11		SEL0		GND	
@@ -164,7 +255,6 @@ box that has any boards with the LTC2500 has to run at the lower rate, since
 the clock distribution is global.  Supporting both chips in a single box would
 also require more complexity in the FPGA driver code.  This is (at the moment)
 a somewhat remote contingency.
-
 
 
 [13 Jan 21]
@@ -1715,6 +1805,54 @@ No matter what we do, we need some sort of output sequencer because we can
 only add one word to the FIFO per cycle. [2] would use more resources, but is
 also more similar to the current code, so would probably be easier to get
 right.
+
+
+[13 Aug 20]
+
+Running RTOS on one Zynq core is well established thing that people do. Xilinx
+has demo version.  OpenAMP seems to be the main starting point. AMP =
+Asymmetric Multi Processor
+
+FreeRTOS is one common choice, it seems. This is a very minimal thread
+package, lacking drivers, network, and so on. But you can do Linux syscalls
+from the slave RTOS.
+
+But not clear how much advantage you would get if you go thru Linux to get to
+the net. While I talk about running the control on the ILEMT precessor, any
+near term integration with micron would stream the measurements over the net
+to micron. This makes the net latency crucial, but would not require a full
+internet stack, eg. UDP to a hardwired address would work.
+
+Just realized that in my main board I didn't consider allowing for any
+controller IOs. But I have mapped all the IOs, with lots of them on the output
+card, and also the debug port. Ideally there would be another card slot, but I
+can bring out unused IOs on the output card to headers.
+
+
+[?? July 20]
+
+Main source of delay for SDOB is the two RX and one TX in the clock
+distribution. Data path also has one TX. Trace delay is only 1-2 ns. Round
+trip delay is maybe 16 ns, which is more than a clock period. Setup built into
+SPI is only 5 ns, so we need to phase shift the clock. This may be hard to do
+using worst case specs, but should be possible to dial it in as-built for
+testing.
+
+Could oversample the input data in the FPGA to see where the data edge
+falls. Say three samples at nominal time and +/- 5 ns. This is much better
+than a scope measurement because this is the exact thing we want to know. This
+can be a special test firmware that doesn't have to actually receive the
+data. Looking at the LSB should give a random bit. We want to see that no two
+adjacent oversamples are highly correlated (the bracketing samples should not
+fall in the same data bit as the central sample).
+
+But I'm thinking there is really not any use for the full rate data. This can
+only tell you what is going on between the decimation cutoff and 500 kHz, but
+it is mathematically certain that will be highly attenuated by the decimation
+filter, so doesn't really matter. The other idea is for BIST of the frequency
+response, but we likely don't need full rate, and it would only work on the X
+channel anyway. So far as lab test goes, we can look at the ADC input signals
+up to high bandwidth using the test connectors.
 
 
 [9 July 20]

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 13 16
+Sheet 3 16
 Title ""
 Date ""
 Rev ""
@@ -16,7 +16,7 @@ $EndDescr
 $Comp
 L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
 U 1 1 5DE42B90
-P 3100 2000
+P 2850 2000
 AR Path="/5DFCF14D/5DE42731/5DE42B90" Ref="FB?"  Part="1" 
 AR Path="/5E448095/5DE42731/5DE42B90" Ref="FB?"  Part="1" 
 AR Path="/5E45936E/5DE42731/5DE42B90" Ref="FB?"  Part="1" 
@@ -37,22 +37,22 @@ AR Path="/60030EBA/6001E9CD/5DE42B90" Ref="FB1001"  Part="1"
 AR Path="/60030EFF/600142B2/5DE42B90" Ref="FB1301"  Part="1" 
 AR Path="/60030EFF/6001E836/5DE42B90" Ref="FB1401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5DE42B90" Ref="FB1501"  Part="1" 
-F 0 "FB1301" H 3100 2287 60  0000 C CNN
-F 1 "2K Ohm" H 3100 2181 60  0000 C CNN
-F 2 "Inductor_SMD:L_0805_2012Metric" H 3300 2200 60  0001 L CNN
-F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 3300 2300 60  0001 L CNN
-F 4 " 240-2396-1-ND" H 3300 2400 60  0001 L CNN "Digi-Key_PN"
-F 5 "HZ0805C202R-10" H 3300 2500 60  0001 L CNN "MPN"
-F 6 "Filters" H 3300 2600 60  0001 L CNN "Category"
-F 7 "Ferrite Beads and Chips" H 3300 2700 60  0001 L CNN "Family"
-F 8 "https://product.tdk.com/info/en/catalog/datasheets/beads_commercial_power_mpz2012_en.pdf" H 3300 2800 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H 3300 2900 60  0001 L CNN "DK_Detail_Page"
-F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 3300 3000 60  0001 L CNN "Description"
-F 11 "Laird-Signal Integrity Products" H 3300 3100 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3300 3200 60  0001 L CNN "Status"
-F 13 "5" H 3100 2000 50  0001 C CNN "DK line"
-F 14 "240-2396-1-ND" H 3100 2000 50  0001 C CNN "Digikey"
-	1    3100 2000
+F 0 "FB301" H 2850 2287 60  0000 C CNN
+F 1 "2K Ohm" H 2850 2181 60  0000 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 3050 2200 60  0001 L CNN
+F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 3050 2300 60  0001 L CNN
+F 4 " 240-2396-1-ND" H 3050 2400 60  0001 L CNN "Digi-Key_PN"
+F 5 "HZ0805C202R-10" H 3050 2500 60  0001 L CNN "MPN"
+F 6 "Filters" H 3050 2600 60  0001 L CNN "Category"
+F 7 "Ferrite Beads and Chips" H 3050 2700 60  0001 L CNN "Family"
+F 8 "https://product.tdk.com/info/en/catalog/datasheets/beads_commercial_power_mpz2012_en.pdf" H 3050 2800 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H 3050 2900 60  0001 L CNN "DK_Detail_Page"
+F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 3050 3000 60  0001 L CNN "Description"
+F 11 "Laird-Signal Integrity Products" H 3050 3100 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 3050 3200 60  0001 L CNN "Status"
+F 13 "5" H 2850 2000 50  0001 C CNN "DK line"
+F 14 "240-2396-1-ND" H 2850 2000 50  0001 C CNN "Digikey"
+	1    2850 2000
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -79,7 +79,7 @@ AR Path="/60030EBA/6001E9CD/5DE46A26" Ref="C1001"  Part="1"
 AR Path="/60030EFF/600142B2/5DE46A26" Ref="C1301"  Part="1" 
 AR Path="/60030EFF/6001E836/5DE46A26" Ref="C1401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5DE46A26" Ref="C1501"  Part="1" 
-F 0 "C1301" H 3842 2246 50  0000 L CNN
+F 0 "C301" H 3842 2246 50  0000 L CNN
 F 1 "1nF" H 3842 2155 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 3750 2200 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Yageo%20PDFs/CCseries_mlcc_2002.pdf" H 3750 2200 50  0001 C CNN
@@ -92,7 +92,7 @@ F 8 "Yageo" H 3750 2200 50  0001 C CNN "Manufacturer"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3300 2000 3750 2000
+	3050 2000 3350 2000
 Wire Wire Line
 	3750 2000 3750 2100
 Wire Wire Line
@@ -121,7 +121,7 @@ AR Path="/60030EBA/6001E9CD/5E195561" Ref="FL1001"  Part="1"
 AR Path="/60030EFF/600142B2/5E195561" Ref="FL1301"  Part="1" 
 AR Path="/60030EFF/6001E836/5E195561" Ref="FL1401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E195561" Ref="FL1501"  Part="1" 
-F 0 "FL1301" H 4700 3031 50  0000 C CNN
+F 0 "FL301" H 4700 3031 50  0000 C CNN
 F 1 "4.7mH" H 4700 2940 50  0000 C CNN
 F 2 "input:L_CommonMode_Bourns_DR331" H 4700 2500 50  0001 C CNN
 F 3 "https://www.bourns.com/docs/Product-Datasheets/dr331.pdf" V 4700 2790 50  0001 C CNN
@@ -136,7 +136,7 @@ $EndComp
 $Comp
 L dk_Ferrite-Beads-and-Chips:MPZ2012S601AT000 FB?
 U 1 1 5DE4DC1A
-P 3100 3550
+P 2850 3550
 AR Path="/5DFCF14D/5DE42731/5DE4DC1A" Ref="FB?"  Part="1" 
 AR Path="/5E448095/5DE42731/5DE4DC1A" Ref="FB?"  Part="1" 
 AR Path="/5E45936E/5DE42731/5DE4DC1A" Ref="FB?"  Part="1" 
@@ -157,22 +157,22 @@ AR Path="/60030EBA/6001E9CD/5DE4DC1A" Ref="FB1002"  Part="1"
 AR Path="/60030EFF/600142B2/5DE4DC1A" Ref="FB1302"  Part="1" 
 AR Path="/60030EFF/6001E836/5DE4DC1A" Ref="FB1402"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5DE4DC1A" Ref="FB1502"  Part="1" 
-F 0 "FB1302" H 3100 3837 60  0000 C CNN
-F 1 "2K Ohm" H 3100 3731 60  0000 C CNN
-F 2 "Inductor_SMD:L_0805_2012Metric" H 3300 3750 60  0001 L CNN
-F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 3300 3850 60  0001 L CNN
-F 4 " 240-2396-1-ND" H 3300 3950 60  0001 L CNN "Digi-Key_PN"
-F 5 "HZ0805C202R-10" H 3300 4050 60  0001 L CNN "MPN"
-F 6 "Filters" H 3300 4150 60  0001 L CNN "Category"
-F 7 "Ferrite Beads and Chips" H 3300 4250 60  0001 L CNN "Family"
-F 8 "https://product.tdk.com/info/en/catalog/datasheets/beads_commercial_power_mpz2012_en.pdf" H 3300 4350 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H 3300 4450 60  0001 L CNN "DK_Detail_Page"
-F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 3300 4550 60  0001 L CNN "Description"
-F 11 "Laird-Signal Integrity Products" H 3300 4650 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3300 4750 60  0001 L CNN "Status"
-F 13 "5" H 3100 3550 50  0001 C CNN "DK line"
-F 14 "240-2396-1-ND" H 3100 3550 50  0001 C CNN "Digikey"
-	1    3100 3550
+F 0 "FB302" H 2850 3837 60  0000 C CNN
+F 1 "2K Ohm" H 2850 3731 60  0000 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric" H 3050 3750 60  0001 L CNN
+F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 3050 3850 60  0001 L CNN
+F 4 " 240-2396-1-ND" H 3050 3950 60  0001 L CNN "Digi-Key_PN"
+F 5 "HZ0805C202R-10" H 3050 4050 60  0001 L CNN "MPN"
+F 6 "Filters" H 3050 4150 60  0001 L CNN "Category"
+F 7 "Ferrite Beads and Chips" H 3050 4250 60  0001 L CNN "Family"
+F 8 "https://product.tdk.com/info/en/catalog/datasheets/beads_commercial_power_mpz2012_en.pdf" H 3050 4350 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H 3050 4450 60  0001 L CNN "DK_Detail_Page"
+F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 3050 4550 60  0001 L CNN "Description"
+F 11 "Laird-Signal Integrity Products" H 3050 4650 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 3050 4750 60  0001 L CNN "Status"
+F 13 "5" H 2850 3550 50  0001 C CNN "DK line"
+F 14 "240-2396-1-ND" H 2850 3550 50  0001 C CNN "Digikey"
+	1    2850 3550
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -199,7 +199,7 @@ AR Path="/60030EBA/6001E9CD/5E195563" Ref="C1002"  Part="1"
 AR Path="/60030EFF/600142B2/5E195563" Ref="C1302"  Part="1" 
 AR Path="/60030EFF/6001E836/5E195563" Ref="C1402"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E195563" Ref="C1502"  Part="1" 
-F 0 "C1302" H 3842 3846 50  0000 L CNN
+F 0 "C302" H 3842 3846 50  0000 L CNN
 F 1 "1nF" H 3842 3755 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 3750 3800 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Yageo%20PDFs/CCseries_mlcc_2002.pdf" H 3750 3800 50  0001 C CNN
@@ -212,7 +212,7 @@ F 8 "Yageo" H 3750 3800 50  0001 C CNN "Manufacturer"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3300 3550 3750 3550
+	3050 3550 3350 3550
 Wire Wire Line
 	3750 3550 3750 3700
 Wire Wire Line
@@ -253,7 +253,7 @@ AR Path="/60030EBA/6001E9CD/5DE60CD7" Ref="D1001"  Part="1"
 AR Path="/60030EFF/600142B2/5DE60CD7" Ref="D1301"  Part="1" 
 AR Path="/60030EFF/6001E836/5DE60CD7" Ref="D1401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5DE60CD7" Ref="D1501"  Part="1" 
-F 0 "D1301" V 5504 2379 50  0000 L CNN
+F 0 "D301" V 5504 2379 50  0000 L CNN
 F 1 "8V" V 5595 2379 50  0000 L CNN
 F 2 "Diode_SMD:D_SOD-323" H 5550 2300 50  0001 C CNN
 F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq4022_datasheet.pdf" H 5550 2300 50  0001 C CNN
@@ -293,7 +293,7 @@ AR Path="/60030EBA/6001E9CD/5DE6E14A" Ref="D1002"  Part="1"
 AR Path="/60030EFF/600142B2/5DE6E14A" Ref="D1302"  Part="1" 
 AR Path="/60030EFF/6001E836/5DE6E14A" Ref="D1402"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5DE6E14A" Ref="D1502"  Part="1" 
-F 0 "D1302" V 5504 3929 50  0000 L CNN
+F 0 "D302" V 5504 3929 50  0000 L CNN
 F 1 "8V" V 5595 3929 50  0000 L CNN
 F 2 "Diode_SMD:D_SOD-323" H 5550 3850 50  0001 C CNN
 F 3 "https://www.bourns.com/docs/Product-Datasheets/CDSOD323-TxxLC.pdf" H 5550 3850 50  0001 C CNN
@@ -349,7 +349,7 @@ AR Path="/60030EBA/6001E9CD/5E34568D" Ref="#PWR01003"  Part="1"
 AR Path="/60030EFF/600142B2/5E34568D" Ref="#PWR01303"  Part="1" 
 AR Path="/60030EFF/6001E836/5E34568D" Ref="#PWR01403"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E34568D" Ref="#PWR01503"  Part="1" 
-F 0 "#PWR01303" H 3750 3700 50  0001 C CNN
+F 0 "#PWR0303" H 3750 3700 50  0001 C CNN
 F 1 "Earth" H 3750 3800 50  0001 C CNN
 F 2 "" H 3750 3950 50  0001 C CNN
 F 3 "~" H 3750 3950 50  0001 C CNN
@@ -382,7 +382,7 @@ AR Path="/60030EBA/6001E9CD/5E34C64A" Ref="#PWR01002"  Part="1"
 AR Path="/60030EFF/600142B2/5E34C64A" Ref="#PWR01302"  Part="1" 
 AR Path="/60030EFF/6001E836/5E34C64A" Ref="#PWR01402"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E34C64A" Ref="#PWR01502"  Part="1" 
-F 0 "#PWR01302" H 3750 2100 50  0001 C CNN
+F 0 "#PWR0302" H 3750 2100 50  0001 C CNN
 F 1 "Earth" H 3750 2200 50  0001 C CNN
 F 2 "" H 3750 2350 50  0001 C CNN
 F 3 "~" H 3750 2350 50  0001 C CNN
@@ -413,7 +413,7 @@ AR Path="/60030EBA/6001E9CD/5E362593" Ref="#PWR01004"  Part="1"
 AR Path="/60030EFF/600142B2/5E362593" Ref="#PWR01304"  Part="1" 
 AR Path="/60030EFF/6001E836/5E362593" Ref="#PWR01404"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E362593" Ref="#PWR01504"  Part="1" 
-F 0 "#PWR01304" H 5550 2250 50  0001 C CNN
+F 0 "#PWR0304" H 5550 2250 50  0001 C CNN
 F 1 "Earth" H 5550 2350 50  0001 C CNN
 F 2 "" H 5550 2500 50  0001 C CNN
 F 3 "~" H 5550 2500 50  0001 C CNN
@@ -444,7 +444,7 @@ AR Path="/60030EBA/6001E9CD/5E3629C3" Ref="#PWR01005"  Part="1"
 AR Path="/60030EFF/600142B2/5E3629C3" Ref="#PWR01305"  Part="1" 
 AR Path="/60030EFF/6001E836/5E3629C3" Ref="#PWR01405"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E3629C3" Ref="#PWR01505"  Part="1" 
-F 0 "#PWR01305" H 5550 3800 50  0001 C CNN
+F 0 "#PWR0305" H 5550 3800 50  0001 C CNN
 F 1 "Earth" H 5550 3900 50  0001 C CNN
 F 2 "" H 5550 4050 50  0001 C CNN
 F 3 "~" H 5550 4050 50  0001 C CNN
@@ -454,7 +454,7 @@ $EndComp
 $Comp
 L power:Earth #PWR?
 U 1 1 5E371801
-P 2800 2750
+P 3650 2750
 AR Path="/5DFCF14D/5DE42731/5E371801" Ref="#PWR?"  Part="1" 
 AR Path="/5E448095/5DE42731/5E371801" Ref="#PWR?"  Part="1" 
 AR Path="/5E45936E/5DE42731/5E371801" Ref="#PWR?"  Part="1" 
@@ -475,17 +475,17 @@ AR Path="/60030EBA/6001E9CD/5E371801" Ref="#PWR01001"  Part="1"
 AR Path="/60030EFF/600142B2/5E371801" Ref="#PWR01301"  Part="1" 
 AR Path="/60030EFF/6001E836/5E371801" Ref="#PWR01401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E371801" Ref="#PWR01501"  Part="1" 
-F 0 "#PWR01301" H 2800 2500 50  0001 C CNN
-F 1 "Earth" H 2800 2600 50  0001 C CNN
-F 2 "" H 2800 2750 50  0001 C CNN
-F 3 "~" H 2800 2750 50  0001 C CNN
-	1    2800 2750
+F 0 "#PWR0301" H 3650 2500 50  0001 C CNN
+F 1 "Earth" H 3650 2600 50  0001 C CNN
+F 2 "" H 3650 2750 50  0001 C CNN
+F 3 "~" H 3650 2750 50  0001 C CNN
+	1    3650 2750
 	0    -1   -1   0   
 $EndComp
 $Comp
 L ilemt_input:GDT E?
 U 1 1 5E376466
-P 2500 2750
+P 3350 2750
 AR Path="/5DFCF14D/5DE42731/5E376466" Ref="E?"  Part="1" 
 AR Path="/5E448095/5DE42731/5E376466" Ref="E?"  Part="1" 
 AR Path="/5E45936E/5DE42731/5E376466" Ref="E?"  Part="1" 
@@ -506,34 +506,24 @@ AR Path="/60030EBA/6001E9CD/5E376466" Ref="E1001"  Part="1"
 AR Path="/60030EFF/600142B2/5E376466" Ref="E1301"  Part="1" 
 AR Path="/60030EFF/6001E836/5E376466" Ref="E1401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E376466" Ref="E1501"  Part="1" 
-F 0 "E1301" H 2500 2950 50  0000 C CNN
-F 1 "2036-07-SMLF" H 2500 2850 50  0000 C CNN
-F 2 "input:GDT_3LINE_Bourns_2036-xx-SM" H 2500 2680 50  0001 C CNN
-F 3 "https://www.bourns.com/docs/Product-Datasheets/2036-xx-SM.pdf" V 2500 2750 50  0001 C CNN
-F 4 "2036-07-SMLF-ND" H 2500 2750 50  0001 C CNN "Digikey"
-F 5 "GDT 75V 20% 10KA SURFACE MOUNT" H 2500 2750 50  0001 C CNN "Description"
-F 6 "8" H 2500 2750 50  0001 C CNN "DK line"
-F 7 "2036-07-SMLF" H 2500 2750 50  0001 C CNN "MPN"
-F 8 "Bourns Inc." H 2500 2750 50  0001 C CNN "Manufacturer"
-	1    2500 2750
+F 0 "E301" H 3350 2950 50  0000 C CNN
+F 1 "2036-07-SMLF" H 3350 2850 50  0000 C CNN
+F 2 "input:GDT_3LINE_Bourns_2036-xx-SM" H 3350 2680 50  0001 C CNN
+F 3 "https://www.bourns.com/docs/Product-Datasheets/2036-xx-SM.pdf" V 3350 2750 50  0001 C CNN
+F 4 "2036-07-SMLF-ND" H 3350 2750 50  0001 C CNN "Digikey"
+F 5 "GDT 75V 20% 10KA SURFACE MOUNT" H 3350 2750 50  0001 C CNN "Description"
+F 6 "8" H 3350 2750 50  0001 C CNN "DK line"
+F 7 "2036-07-SMLF" H 3350 2750 50  0001 C CNN "MPN"
+F 8 "Bourns Inc." H 3350 2750 50  0001 C CNN "Manufacturer"
+	1    3350 2750
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	2700 2750 2800 2750
+	3550 2750 3650 2750
 Wire Wire Line
-	2500 3550 2900 3550
+	3350 2950 3350 3550
 Wire Wire Line
-	2400 3550 2500 3550
-Connection ~ 2500 3550
-Wire Wire Line
-	2500 2950 2500 3550
-Wire Wire Line
-	2500 2000 2900 2000
-Wire Wire Line
-	2350 2000 2500 2000
-Connection ~ 2500 2000
-Wire Wire Line
-	2500 2550 2500 2000
+	3350 2550 3350 2000
 Text Label 5125 2000 0    50   ~ 0
 input+1
 Text Label 5175 3550 0    50   ~ 0
@@ -544,4 +534,14 @@ Text HLabel 5950 3550 2    50   Output ~ 0
 -out
 Text Notes 7050 6750 0    50   ~ 0
 Input filter, first stage of transient/ESD protection
+Wire Wire Line
+	2400 3550 2650 3550
+Wire Wire Line
+	2350 2000 2650 2000
+Connection ~ 3350 2000
+Connection ~ 3350 3550
+Wire Wire Line
+	3350 2000 3750 2000
+Wire Wire Line
+	3350 3550 3750 3550
 $EndSCHEMATC
