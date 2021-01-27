@@ -140,6 +140,35 @@ Software & research tasks:
  -- EMI publication
 
 
+[22 Jan 21]
+
+Think I have a box plan now.  I've shortened the input card 10mm, and we will
+recess the card cage 30mm.  This gives 52mm between card edge and front panel.
+Then we can mount the input panel high, and there will be plenty of room.
+
+I'm using the same Hirose HR10 connector as used for ASAP as the
+high-reliability probe connector.  Just don't get confused...
+
+
+What is panel board standoff distance from inside of front panel?  This is set
+by the connector and front panel thickness (since connector is front mount).
+If panel is 3.175mm (0.125") thick, then rear standoff is:
+
+   5.7 rear body stickout from panel front
+  -3.175 panel thickness
+  = 2.52mm min
+
+pin length seems to be 15.5 - 6.3 - 5.7 = 3.5
+If board thickness is 1.6, then the max standoff to make the board
+flush is min + 1.9, or 4.42.
+ ==> So 2.52mm min, 4.42 max.  Let's say 3.5mm?  This is too short for a
+     threaded standoff, need to use a hollow spacer.
+
+I've picked a PLCC4 LED, which is pretty big and thick by modern standards
+(1.9mm).  The light pipe length would be in the ballpark of 3.5 - 1.9
+
+
+
 [18 Jan 21]
 
 Looked at the input card length a bit more.  While I'm sure it would be
@@ -167,9 +196,6 @@ I guess the stickout on the boot for a front jack would hold the card in :).
 These are without moving back at all.  With 30mm recess it would seem there is
 all kinds of space.  Such as that we wouldn't need to shorten the cards if we
 mounted the input panel high.
-
-
-
 
 
 [15 Jan 21]

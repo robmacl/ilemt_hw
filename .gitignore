@@ -13,3 +13,5 @@ fp-info-cache
 /dac/output
 /driver/out_filter/gbr
 /driver/sma_breakout/output
+/in_panel/replicate_layout.log
+/in_panel/length_stats.log

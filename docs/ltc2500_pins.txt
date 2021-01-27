@@ -1,0 +1,37 @@
+RDLA (Pin 1): Read Low Input A (Filtered Output). When RDLA is low, the serial data output A (SDOA) pin is enabled.  When RDLA is high, SDOA pin is in a high impedance state. Logic levels are determined by OVDD.
+
+RDLB (Pin 2): Read Low Input B (No Latency Output).  When RDLB is low, the serial data output B (SDOB) pin is enabled. When RDLB is high, SDOB pin is in a high impedance state. Logic levels are determined by OVDD.
+
+VDD (Pin 3): 2.5V Power Supply. The range of VDD is 2.375V to 2.625V. Bypass VDD to GND with a 10µF ceramic capacitor.
+
+GND (Pins 4, 7, 11, 12, 23, 24): Ground.
+
+IN + (Pin 5): Positive Analog Input.
+
+IN – (Pin 6): Negative Analog Input.
+
+REF (Pins 8, 9): Reference Input. The range of REF is 2.5V to 5.1V. This pin is referred to the GND pin and should be decoupled closely to the pin with a 47µF ceramic capacitor (X7R, 1210 size, 10V rating).
+
+PRE (Pin 10): Preset Input. By setting PRE high, the SDI pin is used to select between two preset digital filter modes.  Setting PRE low allows the digital filter to be configured by entering a configuration word at SDI. Logic levels are determined by REF, with range of REF being 2.5V to 5.1V.
+
+MCLK (Pin 13): Master Clock Input. A rising edge on this input powers up the part and initiates a new conversion.  Logic levels are determined by OVDD.
+
+SYNC (Pin 14): Synchronization Input. A pulse on this input is used to synchronize the phase of the digital filter.  When applied across multiple devices, a SYNC pulse synchronizes all the devices to the same phase. Logic levels are determined by OVDD.
+
+DRL (Pin 15): Data Ready Low Output. A falling edge on this pin indicates that a new filtered output code is available in the output register of SDOA. Logic levels are determined by OVDD.
+
+SDI (Pin 16): Serial Data Input. Data provided on this line, in synchrony with SCKA, can be used to program the digital filter and DGC/DGE modes. Input data on SDI is latched on rising edges of SCKA. Logic levels are determined by OVDD.
+
+SDOA (Pin 17): Serial Data Output A (Filtered Output).  The filtered output code appears on this pin (MSB first) on each rising edge of SCKA. The output data is in 2’s complement format. Logic levels are determined by OVDD.
+
+SCKA (Pin 18): Serial Data Clock Input A (Filtered Output).  When SDOA is enabled, the filtered output code is shifted out (MSB first) on the rising edges of this clock. Logic levels are determined by OVDD.
+
+SCKB (Pin 19): Serial Data Clock Input B (No Latency Output). When SDOB is enabled, the no latency output code is shifted out (MSB first) on the rising edges of this clock. Logic levels are determined by OVDD.
+
+SDOB (Pin 20): Serial Data Output B (No Latency Output).  The 32-bit no latency composite output code appears on this pin (MSB first) on each rising edge of SCKB. The output data is in 2’s complement format. Logic levels are determined by OVDD.
+
+BUSY (Pin 21): BUSY Indicator. Goes high at the start of a new conversion and returns low when the conversion has finished. Logic levels are determined by OVDD.
+
+OVDD (Pin 22): I/O Interface Digital Power. The range of OVDD is 1.71V to 5.25V. This supply is nominally set to the same supply as the host interface (1.8V, 2.5V, 3.3V, or 5V). Bypass OVDD to GND (Pin 23) with a 0.1µF capacitor.
+
+GND (Exposed Pad Pin 25): Ground. Exposed pad must be soldered directly to the ground plane.
