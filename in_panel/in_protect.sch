@@ -37,7 +37,7 @@ AR Path="/60030EBA/6001E9CD/5DE42B90" Ref="FB1001"  Part="1"
 AR Path="/60030EFF/600142B2/5DE42B90" Ref="FB1301"  Part="1" 
 AR Path="/60030EFF/6001E836/5DE42B90" Ref="FB1401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5DE42B90" Ref="FB1501"  Part="1" 
-F 0 "FB1501" H 3150 2287 60  0000 C CNN
+F 0 "FB301" H 3150 2287 60  0000 C CNN
 F 1 "2K Ohm" H 3150 2181 60  0000 C CNN
 F 2 "Inductor_SMD:L_0805_2012Metric" H 3350 2200 60  0001 L CNN
 F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 3350 2300 60  0001 L CNN
@@ -50,7 +50,7 @@ F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H
 F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 3350 3000 60  0001 L CNN "Description"
 F 11 "Laird-Signal Integrity Products" H 3350 3100 60  0001 L CNN "Manufacturer"
 F 12 "Active" H 3350 3200 60  0001 L CNN "Status"
-F 13 "5" H 3150 2000 50  0001 C CNN "DK line"
+F 13 "I.5" H 3150 2000 50  0001 C CNN "DK line"
 F 14 "240-2396-1-ND" H 3150 2000 50  0001 C CNN "Digikey"
 	1    3150 2000
 	1    0    0    -1  
@@ -79,14 +79,14 @@ AR Path="/60030EBA/6001E9CD/5DE46A26" Ref="C1001"  Part="1"
 AR Path="/60030EFF/600142B2/5DE46A26" Ref="C1301"  Part="1" 
 AR Path="/60030EFF/6001E836/5DE46A26" Ref="C1401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5DE46A26" Ref="C1501"  Part="1" 
-F 0 "C1501" H 3842 2246 50  0000 L CNN
+F 0 "C301" H 3842 2246 50  0000 L CNN
 F 1 "1nF" H 3842 2155 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 3750 2200 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Yageo%20PDFs/CCseries_mlcc_2002.pdf" H 3750 2200 50  0001 C CNN
 F 4 "311-3585-1-ND" H 3750 2200 50  0001 C CNN "Digikey"
 F 5 "CC0805FRNPO0BN102" H 3750 2200 50  0001 C CNN "MPN"
 F 6 "CAP CER 1000PF 100V NPO 0805" H 3750 2200 50  0001 C CNN "Description"
-F 7 "1" H 3750 2200 50  0001 C CNN "DK line"
+F 7 "I.1" H 3750 2200 50  0001 C CNN "DK line"
 F 8 "Yageo" H 3750 2200 50  0001 C CNN "Manufacturer"
 	1    3750 2200
 	1    0    0    -1  
@@ -119,13 +119,13 @@ AR Path="/60030EBA/6001E9CD/5E195561" Ref="FL1001"  Part="1"
 AR Path="/60030EFF/600142B2/5E195561" Ref="FL1301"  Part="1" 
 AR Path="/60030EFF/6001E836/5E195561" Ref="FL1401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E195561" Ref="FL1501"  Part="1" 
-F 0 "FL1501" H 4700 3031 50  0000 C CNN
+F 0 "FL301" H 4700 3031 50  0000 C CNN
 F 1 "4.7mH" H 4700 2940 50  0000 C CNN
 F 2 "input:L_CommonMode_Bourns_DR331" H 4700 2500 50  0001 C CNN
 F 3 "https://www.bourns.com/docs/Product-Datasheets/dr331.pdf" V 4700 2790 50  0001 C CNN
 F 4 "DR331-475BECT-ND" H 4700 2750 50  0001 C CNN "Digikey"
 F 5 "DR331-475BE" H 4700 2750 50  0001 C CNN "MPN"
-F 6 "6" H 4700 2750 50  0001 C CNN "DK line"
+F 6 "I.6" H 4700 2750 50  0001 C CNN "DK line"
 F 7 "CMC 4.7MH 200MA 2LN SMD" H 4700 2750 50  0001 C CNN "Description"
 F 8 "Bourns Inc." H 4700 2750 50  0001 C CNN "Manufacturer"
 	1    4700 2750
@@ -155,7 +155,7 @@ AR Path="/60030EBA/6001E9CD/5DE4DC1A" Ref="FB1002"  Part="1"
 AR Path="/60030EFF/600142B2/5DE4DC1A" Ref="FB1302"  Part="1" 
 AR Path="/60030EFF/6001E836/5DE4DC1A" Ref="FB1402"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5DE4DC1A" Ref="FB1502"  Part="1" 
-F 0 "FB1502" H 3150 3837 60  0000 C CNN
+F 0 "FB302" H 3150 3837 60  0000 C CNN
 F 1 "2K Ohm" H 3150 3731 60  0000 C CNN
 F 2 "Inductor_SMD:L_0805_2012Metric" H 3350 3750 60  0001 L CNN
 F 3 "https://assets.lairdtech.com/home/brandworld/files/Catalog_EMI%20FILTERING%20RF%200717.pdf" H 3350 3850 60  0001 L CNN
@@ -168,7 +168,7 @@ F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H
 F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 3350 4550 60  0001 L CNN "Description"
 F 11 "Laird-Signal Integrity Products" H 3350 4650 60  0001 L CNN "Manufacturer"
 F 12 "Active" H 3350 4750 60  0001 L CNN "Status"
-F 13 "5" H 3150 3550 50  0001 C CNN "DK line"
+F 13 "I.5" H 3150 3550 50  0001 C CNN "DK line"
 F 14 "240-2396-1-ND" H 3150 3550 50  0001 C CNN "Digikey"
 	1    3150 3550
 	1    0    0    -1  
@@ -197,14 +197,14 @@ AR Path="/60030EBA/6001E9CD/5E195563" Ref="C1002"  Part="1"
 AR Path="/60030EFF/600142B2/5E195563" Ref="C1302"  Part="1" 
 AR Path="/60030EFF/6001E836/5E195563" Ref="C1402"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E195563" Ref="C1502"  Part="1" 
-F 0 "C1502" H 3842 3846 50  0000 L CNN
+F 0 "C302" H 3842 3846 50  0000 L CNN
 F 1 "1nF" H 3842 3755 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 3750 3800 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Yageo%20PDFs/CCseries_mlcc_2002.pdf" H 3750 3800 50  0001 C CNN
 F 4 "311-3585-1-ND" H 3750 3800 50  0001 C CNN "Digikey"
 F 5 "CC0805FRNPO0BN102" H 3750 3800 50  0001 C CNN "MPN"
 F 6 "CAP CER 1000PF 100V NPO 0805" H 3750 3800 50  0001 C CNN "Description"
-F 7 "1" H 3750 3800 50  0001 C CNN "DK line"
+F 7 "I.1" H 3750 3800 50  0001 C CNN "DK line"
 F 8 "Yageo" H 3750 3800 50  0001 C CNN "Manufacturer"
 	1    3750 3800
 	1    0    0    -1  
@@ -249,13 +249,13 @@ AR Path="/60030EBA/6001E9CD/5DE60CD7" Ref="D1001"  Part="1"
 AR Path="/60030EFF/600142B2/5DE60CD7" Ref="D1301"  Part="1" 
 AR Path="/60030EFF/6001E836/5DE60CD7" Ref="D1401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5DE60CD7" Ref="D1501"  Part="1" 
-F 0 "D1501" V 5504 2379 50  0000 L CNN
+F 0 "D301" V 5504 2379 50  0000 L CNN
 F 1 "8V" V 5595 2379 50  0000 L CNN
 F 2 "Diode_SMD:D_SOD-323" H 5550 2300 50  0001 C CNN
 F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq4022_datasheet.pdf" H 5550 2300 50  0001 C CNN
 F 4 "CDSOD323-T08LCT-ND" V 5550 2300 50  0001 C CNN "Digikey"
 F 5 "CDSOD323-T08L" V 5550 2300 50  0001 C CNN "MPN"
-F 6 "58" H 5550 2300 50  0001 C CNN "DK line"
+F 6 "I.58" H 5550 2300 50  0001 C CNN "DK line"
 F 7 "TVS DIODE 8V 18.3V SOD323" H 5550 2300 50  0001 C CNN "Description"
 F 8 "Bourns Inc." H 5550 2300 50  0001 C CNN "Manufacturer"
 	1    5550 2300
@@ -289,13 +289,13 @@ AR Path="/60030EBA/6001E9CD/5DE6E14A" Ref="D1002"  Part="1"
 AR Path="/60030EFF/600142B2/5DE6E14A" Ref="D1302"  Part="1" 
 AR Path="/60030EFF/6001E836/5DE6E14A" Ref="D1402"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5DE6E14A" Ref="D1502"  Part="1" 
-F 0 "D1502" V 5504 3929 50  0000 L CNN
+F 0 "D302" V 5504 3929 50  0000 L CNN
 F 1 "8V" V 5595 3929 50  0000 L CNN
 F 2 "Diode_SMD:D_SOD-323" H 5550 3850 50  0001 C CNN
 F 3 "https://www.bourns.com/docs/Product-Datasheets/CDSOD323-TxxLC.pdf" H 5550 3850 50  0001 C CNN
 F 4 "CDSOD323-T08LCT-ND" V 5550 3850 50  0001 C CNN "Digikey"
 F 5 "CDSOD323-T08L" V 5550 3850 50  0001 C CNN "MPN"
-F 6 "58" H 5550 3850 50  0001 C CNN "DK line"
+F 6 "I.58" H 5550 3850 50  0001 C CNN "DK line"
 F 7 "TVS DIODE 8V 18.3V SOD323" H 5550 3850 50  0001 C CNN "Description"
 F 8 "Bourns Inc." H 5550 3850 50  0001 C CNN "Manufacturer"
 	1    5550 3850
@@ -311,7 +311,7 @@ Text HLabel 2350 2000 0    50   Input ~ 0
 in+
 Wire Wire Line
 	5550 2150 5550 2000
-Text Notes 3600 4600 0    50   ~ 0
+Text Notes 6400 2950 0    50   ~ 0
 Capacitance matching between + and - inputs is critical for \ncommon mode rejection.  1 nF capacitors are 1% C0G, and\ndiodes are chosen for low capacitance to minimize\nincidental capacitance mismatch.
 Wire Wire Line
 	5550 3700 5550 3550
@@ -502,13 +502,13 @@ AR Path="/60030EBA/6001E9CD/5E376466" Ref="E1001"  Part="1"
 AR Path="/60030EFF/600142B2/5E376466" Ref="E1301"  Part="1" 
 AR Path="/60030EFF/6001E836/5E376466" Ref="E1401"  Part="1" 
 AR Path="/60030EFF/6001E9CD/5E376466" Ref="E1501"  Part="1" 
-F 0 "E1501" H 2600 2950 50  0000 C CNN
+F 0 "E301" H 2600 2950 50  0000 C CNN
 F 1 "2036-07-SMLF" H 2600 2850 50  0000 C CNN
 F 2 "input:GDT_3LINE_Bourns_2036-xx-SM" H 2600 2680 50  0001 C CNN
 F 3 "https://www.bourns.com/docs/Product-Datasheets/2036-xx-SM.pdf" V 2600 2750 50  0001 C CNN
 F 4 "2036-07-SMLF-ND" H 2600 2750 50  0001 C CNN "Digikey"
 F 5 "GDT 75V 20% 10KA SURFACE MOUNT" H 2600 2750 50  0001 C CNN "Description"
-F 6 "8" H 2600 2750 50  0001 C CNN "DK line"
+F 6 "I.8" H 2600 2750 50  0001 C CNN "DK line"
 F 7 "2036-07-SMLF" H 2600 2750 50  0001 C CNN "MPN"
 F 8 "Bourns Inc." H 2600 2750 50  0001 C CNN "Manufacturer"
 	1    2600 2750
@@ -528,8 +528,8 @@ Text HLabel 5950 2000 2    50   Output ~ 0
 out+
 Text HLabel 5950 3550 2    50   Output ~ 0
 out-
-Text Notes 7050 6750 0    50   ~ 0
-Input filter, first stage of transient/ESD protection
+Text Notes 7250 6900 0    50   ~ 0
+Input filter, first stage of transient/ESD protection. This first stage is\nreferenced to the chassis ground, while the input card filter and clamps are\nreferenced to the card's ground.
 Wire Wire Line
 	3350 2000 3750 2000
 Wire Wire Line
@@ -548,4 +548,6 @@ Text Label 4000 2000 0    50   ~ 0
 filt+
 Text Label 4000 3550 0    50   ~ 0
 filt-
+Text Notes 2950 5200 0    50   ~ 0
+The idea is to intercept ESD, surges, and RFI at the front panel, and then \npresent a high common mode output impedance to the input card.\nAside from protecting against damage, we also want to suppress any\nRFI that might be rectified at the amplifier input, especially in the\nrange of 1-100 MHz or so.\n\nThe sensor coil is a floating AC coupled input, and is biased to a\ncommon mode voltage of about 2.5V by the input card.  The input\nrange is nominally 0 to 5V, though the common mode range\nwill be somewhat wider.
 $EndSCHEMATC

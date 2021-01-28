@@ -26,17 +26,6 @@ Driver/box:
     the corner brackets.  FWIW, the rails do not directly appear on the PO,
     seem to be part of "kits".
 
-
-Front panel board:
- -- Choose high-quality connector and figure out how to mount it.  HR10?  For
-    this board I am feeling OK with the board not being easily removable from
-    the front panel, which simplifies the mechanics.
- -- Beef up input clamp and TVS diodes?  Experience with BAS21S in the
-    regulators makes it seem a little delicate, but TVS is getting hit
-    way harder.  In simulation was having difficulty with getting the
-    diodes to conduct even when the TVS stress was super huge, so TVS is
-    probably the main concern.
-
 ________________
 Input board revisions:
  -- Make board longer to get the right length for eg. latch/eject in recessed mount.
@@ -90,9 +79,13 @@ Evaluation tasks:
 
 Main board revisions:
  -- Is ADC reference buffer output stable with the C load?  Noise gain
-    peaking?  
+    peaking?
 
-Input don't forget:
+Output filter:
+ -- It may not work to hook the voltage sense directly to the input card
+    because it expects the input to be centered on +2.5V.  We can likely see
+    something because our CM range will go down to -2 or -3 V.
+
 
 
 Calibration todo:

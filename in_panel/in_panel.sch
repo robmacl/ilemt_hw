@@ -38,7 +38,7 @@ F2 "RED_LED" I L 7350 4000 50
 F3 "GREEN_LED" I L 7350 4100 50 
 $EndSheet
 Text Notes 7150 7000 0    50   ~ 0
-The ILEMT input protection board, which has probe connectors first stage of RFI\nand transient protection.  Up to three probes are supported, each of which\nconnects to a seperate input card.  What is directly on this sheet is an IO\nexpander which drives indicator LEDS.\n
+The ILEMT input protection board, which has the probe connectors and first stage\nof RFI and transient protection.  Up to three probes are supported, each of\nwhich connects to a seperate input card.  What is directly on this sheet is an\nIO expander which drives indicator LEDS.\n
 $Comp
 L Interface_Expansion:MCP23008-xSO U?
 U 1 1 600CFFBE
@@ -49,6 +49,11 @@ F 0 "U101" H 4600 3350 50  0000 C CNN
 F 1 "MCP23008-xSO" H 5350 2200 50  0000 C CNN
 F 2 "Package_SO:SOIC-18W_7.5x11.6mm_P1.27mm" H 4950 1750 50  0001 C CNN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/MCP23008-MCP23S08-Data-Sheet-20001919F.pdf" H 6250 1600 50  0001 C CNN
+F 4 "IP.4" H 4950 2800 50  0001 C CNN "DK line"
+F 5 "IC I/O EXPANDER I2C 8B 18SOIC" H 4950 2800 50  0001 C CNN "Description"
+F 6 "MCP23008-E/SO-ND" H 4950 2800 50  0001 C CNN "Digikey"
+F 7 "MCP23008-E/SO" H 4950 2800 50  0001 C CNN "MPN"
+F 8 "Microchip Technology" H 4950 2800 50  0001 C CNN "Manufacturer"
 	1    4950 2800
 	1    0    0    -1  
 $EndComp
@@ -143,7 +148,12 @@ P 2750 2400
 F 0 "J101" H 2750 2600 50  0000 C CNN
 F 1 "LED control" H 2750 2100 50  0000 C CNN
 F 2 "input:molex_kk100_PinHeader_1x4_P2.54_Drill1.1mm" H 2750 2400 50  0001 C CNN
-F 3 "~" H 2750 2400 50  0001 C CNN
+F 3 "https://www.molex.com/pdm_docs/sd/022232041_sd.pdf" H 2750 2400 50  0001 C CNN
+F 4 "IP.6" H 2750 2400 50  0001 C CNN "DK line"
+F 5 "CONN HEADER VERT 4POS 2.54MM" H 2750 2400 50  0001 C CNN "Description"
+F 6 "WM4202-ND" H 2750 2400 50  0001 C CNN "Digikey"
+F 7 "0022232041" H 2750 2400 50  0001 C CNN "MPN"
+F 8 "Molex" H 2750 2400 50  0001 C CNN "Manufacturer"
 	1    2750 2400
 	1    0    0    -1  
 $EndComp
@@ -222,7 +232,7 @@ $EndComp
 Wire Wire Line
 	1550 4250 1550 4300
 Text Notes 1050 3900 0    50   ~ 0
-Earth/chassis ground comes directly from the mounting
+Earth/chassis ground comes directly from the mounting.\nThere is no connection on this board between chassis\nground and the GND used for the LED control.
 Text Label 3350 2500 0    50   ~ 0
 SCL
 Text Label 3350 2600 0    50   ~ 0
@@ -250,7 +260,12 @@ AR Path="/6011D484" Ref="D102"  Part="1"
 F 0 "D102" H 7750 5325 50  0000 C CNN
 F 1 "Ready" H 7750 4850 50  0000 C CNN
 F 2 "input:LED_Wurth-PLCC4_3.2x2.8mm" H 7780 5100 50  0001 C CNN
-F 3 "~" H 7780 5100 50  0001 C CNN
+F 3 "https://katalog.we-online.de/led/datasheet/150141RV73100.pdf" H 7780 5100 50  0001 C CNN
+F 4 "150141RV73100" H 7750 5100 50  0001 C CNN "MPN"
+F 5 "IP.3" H 7750 5100 50  0001 C CNN "DK line"
+F 6 "LED GREEN/RED CLEAR 3528 SMD" H 7750 5100 50  0001 C CNN "Description"
+F 7 "732-5001-1-ND" H 7750 5100 50  0001 C CNN "Digikey"
+F 8 "Würth Elektronik" H 7750 5100 50  0001 C CNN "Manufacturer"
 	1    7750 5100
 	-1   0    0    -1  
 $EndComp
@@ -281,6 +296,11 @@ F 0 "R102" V 6900 5000 50  0000 C CNN
 F 1 "200" V 7000 5000 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 7140 4990 50  0001 C CNN
 F 3 "~" H 7100 5000 50  0001 C CNN
+F 4 "I.55" H 7100 5000 50  0001 C CNN "DK line"
+F 5 "RES 200 OHM 1% 1/8W 0603" H 7100 5000 50  0001 C CNN "Description"
+F 6 "RNCP0603FTD200RCT-ND" H 7100 5000 50  0001 C CNN "Digikey"
+F 7 "RNCP0603FTD200R" H 7100 5000 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 7100 5000 50  0001 C CNN "Manufacturer"
 	1    7100 5000
 	0    1    1    0   
 $EndComp
@@ -296,6 +316,11 @@ F 0 "R103" V 7200 5200 50  0000 C CNN
 F 1 "200" V 7300 5200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 7140 5190 50  0001 C CNN
 F 3 "~" H 7100 5200 50  0001 C CNN
+F 4 "I.55" H 7100 5200 50  0001 C CNN "DK line"
+F 5 "RES 200 OHM 1% 1/8W 0603" H 7100 5200 50  0001 C CNN "Description"
+F 6 "RNCP0603FTD200RCT-ND" H 7100 5200 50  0001 C CNN "Digikey"
+F 7 "RNCP0603FTD200R" H 7100 5200 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 7100 5200 50  0001 C CNN "Manufacturer"
 	1    7100 5200
 	0    1    1    0   
 $EndComp
@@ -339,7 +364,12 @@ AR Path="/601255DA" Ref="D101"  Part="1"
 F 0 "D101" H 5000 5325 50  0000 C CNN
 F 1 "Power" H 5000 4850 50  0000 C CNN
 F 2 "input:LED_Wurth-PLCC4_3.2x2.8mm" H 5030 5100 50  0001 C CNN
-F 3 "~" H 5030 5100 50  0001 C CNN
+F 3 "https://katalog.we-online.de/led/datasheet/150141RV73100.pdf" H 5030 5100 50  0001 C CNN
+F 4 "150141RV73100" H 5000 5100 50  0001 C CNN "MPN"
+F 5 "IP.3" H 5000 5100 50  0001 C CNN "DK line"
+F 6 "LED GREEN/RED CLEAR 3528 SMD" H 5000 5100 50  0001 C CNN "Description"
+F 7 "732-5001-1-ND" H 5000 5100 50  0001 C CNN "Digikey"
+F 8 "Würth Elektronik" H 5000 5100 50  0001 C CNN "Manufacturer"
 	1    5000 5100
 	-1   0    0    -1  
 $EndComp
@@ -370,6 +400,11 @@ F 0 "R101" V 4150 5000 50  0000 C CNN
 F 1 "200" V 4250 5000 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4390 4990 50  0001 C CNN
 F 3 "~" H 4350 5000 50  0001 C CNN
+F 4 "I.55" H 4350 5000 50  0001 C CNN "DK line"
+F 5 "RES 200 OHM 1% 1/8W 0603" H 4350 5000 50  0001 C CNN "Description"
+F 6 "RNCP0603FTD200RCT-ND" H 4350 5000 50  0001 C CNN "Digikey"
+F 7 "RNCP0603FTD200R" H 4350 5000 50  0001 C CNN "MPN"
+F 8 "Stackpole Electronics Inc" H 4350 5000 50  0001 C CNN "Manufacturer"
 	1    4350 5000
 	0    1    1    0   
 $EndComp
@@ -444,6 +479,8 @@ F 0 "MH101" H 2050 4650 50  0000 C CNN
 F 1 "GND" H 2050 4450 50  0000 C CNN
 F 2 "MountingHole:MountingHole_3.2mm_M3_Pad" H 2050 4550 50  0001 C CNN
 F 3 "~" H 2050 4550 50  0001 C CNN
+F 4 "Mounting hole" H 2050 4550 50  0001 C CNN "Description"
+F 5 "DNP" H 2050 4550 50  0001 C CNN "MPN"
 	1    2050 4550
 	1    0    0    1   
 $EndComp
@@ -458,6 +495,8 @@ F 0 "MH102" H 2050 5050 50  0000 C CNN
 F 1 "GND" H 2050 4850 50  0000 C CNN
 F 2 "MountingHole:MountingHole_3.2mm_M3_Pad" H 2050 4950 50  0001 C CNN
 F 3 "~" H 2050 4950 50  0001 C CNN
+F 4 "Mounting hole" H 2050 4950 50  0001 C CNN "Description"
+F 5 "DNP" H 2050 4950 50  0001 C CNN "MPN"
 	1    2050 4950
 	1    0    0    1   
 $EndComp
@@ -469,6 +508,8 @@ F 0 "MH104" H 2550 5050 50  0000 C CNN
 F 1 "GND" H 2550 4850 50  0000 C CNN
 F 2 "MountingHole:MountingHole_3.2mm_M3_Pad" H 2550 4950 50  0001 C CNN
 F 3 "~" H 2550 4950 50  0001 C CNN
+F 4 "Mounting hole" H 2550 4950 50  0001 C CNN "Description"
+F 5 "DNP" H 2550 4950 50  0001 C CNN "MPN"
 	1    2550 4950
 	1    0    0    1   
 $EndComp
@@ -480,6 +521,8 @@ F 0 "MH103" H 2550 4650 50  0000 C CNN
 F 1 "GND" H 2550 4450 50  0000 C CNN
 F 2 "MountingHole:MountingHole_3.2mm_M3_Pad" H 2550 4550 50  0001 C CNN
 F 3 "~" H 2550 4550 50  0001 C CNN
+F 4 "Mounting hole" H 2550 4550 50  0001 C CNN "Description"
+F 5 "DNP" H 2550 4550 50  0001 C CNN "MPN"
 	1    2550 4550
 	1    0    0    1   
 $EndComp
