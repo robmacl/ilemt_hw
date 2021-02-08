@@ -1,17 +1,17 @@
-FPGA code:
- -- Check MCLK_ENA setup wrt. SYSCLK
- -- Program oscillator for 48 ks/s
- -- Interface BIST DAC
- -- Add registers to control BIST DAC and status registers that count
-    read/write overruns, etc.  Just flag to say whether FIFO data goes
-    to output DAC or BIST DAC?
- -- Some way for software to readback the FPGA firmware version
+ ==> Stuff to order
+ -- Got wrong probe connector, need 10 pin
+ -- Other parts, see [13 Jan 21], especially input board.  Get on reel
+ -- 8" rj45 patch cable x4
+
+Ordered:
+ -- Microzed [Got 2 of '10, large '20 variant back-ordered]
+ -- Source driver and supply cards.
+    [Got same driver cards. Got one different supply, should have one already.]
 
 
 Driver/box:
  -- Modify driver boards for lower gain and with bigger bypass caps.
  -- Mechanical chassis/shield panel
-==> What height on output connector, for standoffs and EMI gasket?
 ==> Need at least a temporary front panel and chassis plate
 ==> Order more box rails, 1/2 width rails, another full box kit?
     For recessed mount we need 2 more rails per box, and are already short a
@@ -26,23 +26,32 @@ Driver/box:
     the corner brackets.  FWIW, the rails do not directly appear on the PO,
     seem to be part of "kits".
 
+ -- Need ground tie point on chassis plate.
+ -- Move 15V supply holes forward 10mm
+ -- A nuisance to have chassis plate mount by nuts hidden under the power
+    supply card. If we had a blind fastener would be good. Also, move rear
+    mount to back card rail, not back rail, so we can remove the back rail
+    more easily. 
+ -- Shorten chassis plate maybe 5mm at front and back and narrow from 212 to
+    208 mm.  This gives more clearance for surrounding stuff. 
+ -- Poor access to power supply output terminals. Move 24V supply a bit left
+    and driver supply a bit right? 
+
+
 ________________
 Input board revisions:
- -- Make board longer to get the right length for eg. latch/eject in recessed mount.
-==> Figure out how long to make the board
  -- Set up to work with LTC2500-32 ADC also, to help with possible supply
     issues.  Bring out pin 16 (LTC2500 SDI), have pin 10 (LTC2500 PRE) jumper
     to ground or float. 
  -- ~10 dB of noise peaking in reference buffer near 6 kHz.
 ==> See if we can simulate, fix.
- -- Change testpoint style, turret or at least larger hole.
- -- More ground TPs.  More exposed top ground pour.
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
 ==> Double check reference buffer supply and C129 mods.
 
 Fixed in new rev 1:
- -- Board select logic, mux for one-wire and I2C, onboard eeprom and
-    IO expander.
+ -- Change testpoint style, turret or at least larger hole.
+ -- More ground TPs.  More exposed top ground pour.
+ -- Board select logic, mux for one-wire and I2C, onboard eeprom.
  -- +8 remote sense line is shorted to bus too early by large vias.
  -- Q3E fuse trace is narrow.
 These revs also bodged:
@@ -54,9 +63,17 @@ These revs also bodged:
  -- Increase class A bias in reference buffer from 6 to 20 mA by
     changing R5 from 499 to 499 || 499.  Note + rail for VREF buffer increased
     from 8V to 10V due to getting rid of supply bootstrapping.
-
-
 ________________
+
+
+FPGA code:
+ -- Check MCLK_ENA setup wrt. SYSCLK
+ -- Program oscillator for 48 ks/s
+ -- Interface BIST DAC
+ -- Add registers to control BIST DAC and status registers that count
+    read/write overruns, etc.  Just flag to say whether FIFO data goes
+    to output DAC or BIST DAC?
+ -- Some way for software to readback the FPGA firmware version
 
 
 Output board revisions:
@@ -65,12 +82,12 @@ Output board revisions:
  -- Exposed probe ground near digital testpoints
  -- Add digital outputs for front panel lights?  Maybe support for LCD
     display?  This could also be added to main board.
- -- Temporary -15V supply
 
 LV supply card:
  -- Add bulk cap on +5?  There is LF glitching on +5 ANA, though it
     doesn't seem to make it through to eg. +2.5 on the input board.
  -- In revision, add -15V for DAC?
+
 
 Evaluation tasks:
  -- BIST injection test
@@ -84,8 +101,17 @@ Main board revisions:
 Output filter:
  -- It may not work to hook the voltage sense directly to the input card
     because it expects the input to be centered on +2.5V.  We can likely see
-    something because our CM range will go down to -2 or -3 V.
-
+    something because our CM range will go down to -2 or -3 V.  We could put
+    AC coupling caps somewhere, but the caps would probably want to be many
+    uF, so a nuisance to fit on the out filter board, and we are not likely to
+    use them anyway.  We could make an in-between dongle board for AC coupling
+    in tests.  It would also be possible to do a passive level shift by
+    biasing the divider to other than ground.  This seems like a better
+    solution, but not clear where/how to implement this.  If just for testing,
+    then can have a testpoint for bias injection.
+ -- Changed to shielded RJ45 jacks w/ shield to chassis.  We want the shield
+    grounded somewhere, and also we are using the shielded version of this
+    part on the in_panel.
 
 
 Calibration todo:
@@ -133,6 +159,453 @@ Software & research tasks:
  -- EMI publication
 
 
+[7 Feb 21]
+
+Try:
+ -- Load transient on VREF
+ -- What noise level are we seeing as nV/rtHz, compared to what we expect?
+
+
+In simulation, adding a resistor in series with the feedback cap lets us
+control the peaking, and seems like a good idea.  You can dial in a critically
+damped transient response, and this improves the disturbance rejection over
+the 1 kHz - 10 kHz range.  This gets rid of the noise peaking, and does not
+seem to increase the noise bandwidth too much.
+
+ ==> OK, once I found the actual C2 and messed with it, I'm seeing behavior in
+     pretty good agreement with the simulation.  I can squelch the 3 kHz peak
+     with series resistor.
+
+The actual gain peaking (in agreement with simulation) was around 3 dB, which
+is not terrible.  But the more damped response with the new R40 seems
+worthwhile.
+
+There remains a gradual rolloff noise rolloff of 3 dB from 1-20 kHz which I
+was attributing to noise peaking, bringing it up from the actual 3 dB to
+something like 6 dB, which was fairly concerning.  This noise rolloff is
+predicted by the simetrix noise model, and has to do with the transition from
+active stabilization to passive.  The flattening above 20 kHz is probably just
+because we are hitting our measurement noise floor.
+
+I'd still like to do transient testing, not just for thoroughness, but also
+because that should be a crisper way to tweak R40.
+
+I don't have a lot of guidance from design considerations on where to set the
+reference buffer bandwidth.  Less noise is better, but it is not so clear
+where it is best to push the noise to.  With the output capacitors regarded as
+fixed, moving down the corner keeps reducing the LF disturbance rejection.  If
+there is LF disturbance (unknown) then that would be bad.  We do care rather
+more about reference noise < 500 Hz because this will fall entirely inside our
+baseband (eg. 1/f noise).  High frequency noise should be more smeared out,
+acting like white noise in the signal path.  Reference noise in the range
+blocked by the decimation filter should not be a problem (and this should be
+pretty low anyway).  The reference buffer compensation does not intersect too
+strongly with any of these considerations, other than suggesting to avoid
+peaking, and not to push the corner much lower.
+
+
+[5 Feb 21]
+
+I ran spice noise analysis on the reference buffer.  I don't trust
+these results because the models are probably not noise accurate, but
+the result is actually pretty close to what I measured
+
+re. my discussion of the output buffer C2 [Kicad refid] compensation,
+while the stability benefits are somewhat dubious, AC and noise
+analysis show the reduced feedback control bandwidth.  This is seen in
+the transient response, and noise analysis also plausibly claims that
+this considerably reduces the noise bandwidth.  But the reduction in
+bandwidth does also reduce the low frequency disturbance rejection by
+20 dB.  I could try testing ADC performance with and without, but it
+would probably hard to detect any difference.  ==> Note that the
+disturbance rejection is "only 30 dB", but this is re. a 1A nominal
+disturbance.  So the effective Zout is 30 mOhm.
+
+Simulation says that replacing the ceramic reference bus caps with the
+poly aluminum would get rid of disturbance and noise peaking near
+10-100 kHz, even if we use C2 to roll off the loop gain in that
+region.  I guess it's damping a passive resonance.  So that seems like
+a worthwhile change.
+
+The emitter resistor reduces disturbance rejection w/o C2, but has nil
+effect with it present.
+
+What I'm seeing with the measurements is somewhat indistinct due to
+being near the noise floor, and having hum in it, but the VREF noise
+seems rather like the disturbance sensitivity curve, and not the
+feedforward bandwidth (or simulated noise).  But unless I failed to
+disconnect C2, it isn't acting at all like the sensitivity because it
+doesn't respond to the C2 change (I think).
+
+
+
+[5 Feb 21]
+
+The 6 kHz  noise is definitely due  to the +3.3V regulator  and 330 uF
+cap.  Moving the cap to right by the regulator cleans up the VREF, but
+peak is still visible in the LPF input.  Totally lifting the cap gets
+rid of even that.  The output still seems stable, with peaking around
+35 kHz and then rolloff.  I guess the local ceramic bypass capacitance
+is enough for stability.
+
+The NCP1117 (improved 317) regulator used for the +2.5 supply seems to
+have low enough dropout for use on the +3.3V.  The dropout is
+specified, and fairly solidly < 1.4V even at high current and across
+temperature.  0.3V may seem kind of skimpy for margin, but the input
+is already a regulated and moderately well filtered supply.
+
+The HF noise on VREF is below the measurement floor with the current
+setup, TEK 7A22 on 20 uV/div into Agilent 89410A.  With input
+impedance set at 1 Megohm we are using the +14 dBm range or even
+higher, so we are noise limited by the 7A22 and probing.  The 89410A
+noise floor/dynamic range is well below this, even at +20 dBm range.
+
+There is however still measureable excess noise on VREF with peak at 3
+kHz.  The peak is basically at the LPF input level, so the LPF is
+ineffective here.
+
+I moved the C1 reference input filter cap to ground at the ground
+reference tap rather than to the plane, but this did not have any
+effect that I could see.  This should not be very relevant at 3 kHz
+because C1 does not take over until 8 kHz (or maybe 16?).
+
+I haven't found 3 kHz anywhere else, either.  This is roughly where
+gain peaking should be according to the simulation, but the magnitude
+is larger than expected.
+
+I did another detour into looking into tones visible in the spectra at
+10 Hz and 30 Hz RBW.  These seem to be hum related, though not all
+harmonics are equal.  First you see every 60, then the bigger peaks
+are every 120, then up in the kHz range most 120 Hz peaks are there,
+but it is hit or miss which ones are big, and some are missing.
+
+One unexpected thing is that these hum tones are higher under the
+shorted probe condition than in the (relatively) noisier reference
+signals.  I think this must be an effect of the noise interacting with
+the spectral averaging.  Also, generally, without a better probing
+setup it is impossible to know to what degree the hum might actually
+be present.
+
+I also don't have a great sense of what level of noise might matter.
+The first few hum tones, out to 300 Hz or so, are quite strong, and it
+would be bad if they were actually there.
+
+The top priority is getting a better handle on the 3 kHz VREF noise
+hump.
+
+Time to think a bit more about how the reference buffer is supposed to
+function and look at some signals.
+ ==> There is no detectable noise across the LPF capacitor
+ ==> The output to Q1 has 37 dB more noise than is on VREF.  This is
+     lower at LF and rises in the range where VREF noise is rising, say
+     500 Hz to 3 kHz.
+
+I noticed how there is a lot of noise on the transistor drive before,
+I think this is true on the V+/V- regulators also.  Need to look at
+this in simulation.  This is at some level a consequence of the loop
+gain, we are wagging that base really hard to try to get it to control
+the capacitive load.  Question is whether we are cancelling noise at
+the output or injecting it.
+
+Because overall feedback attenuation is increasing with frequency, the gain
+seen at the opamp output, either to noise in that stage, or at the input, is
+going up like a differentiator.
+
+But the net effect at the buffer output should be basically flat?  Not
+exactly.  If there is flat noise disturbance at the output, then our ability
+to reject it drops with decreasing loop gain.  If the noise is dominated by an
+output disturbance, then we expect increasing noise through the entire
+feedback stabilization band, only dropping once the output capacitance takes
+over.  This may be part of what we are seeing, not really noise peaking, but
+just that the noise is getting worse, pokes up above the floor, then starts
+rolling off again.
+
+
+
+ ==> Investigate taking AC feedback directly at opamp output.  This always
+     seemed bad wrt. C-load compensation, but I'm not sure why.  It would roll
+     off the differentiator action.  [I guess that gets rid of phase lead.]
+
+ ==> re. note on [24 April 20] about shot noise, there is *not* considerable
+     reference buffer loop gain at 1 kHz.  Not sure what this says about
+     possible effects of Q1 intrinsic noise & shot noise.  btw, this is when I
+     did a lot of VREF noise measurement and analysis.  I really never gave a
+     thought to the Q1 noise in my original design, figuring that the overall
+     feedback would get rid of it.  But there is no loop gain at the crossover
+     frequency. 
+
+
+ ==> One thing to simulate is supply rejection on the class-A bias.
+     We may want to use a lower noise supply, perhaps dropping an
+     electrolytic in the middle of the bias string.
+ ==> Also, may help with any peaking by switching to electrolytic at the
+     output, perhaps with extra series resistance.  And if we are not using
+     C2 then we don't need R7 either.
+
+Bodge does not match the current schematic.  In particular, the R5 bias
+resistor is still going to V+, not to either the FILT or LPF raw supplies.
+This means there is much less LF noise, but somewhat more HF noise at the
+input.  It seems to start fine with this setup, which seems reasonable, since
+the opamp can source current into VREF until V+ starts.  So perhaps this is
+even a reasonable thing to do.  Whatever noise we inject thru the bias is an
+unnecessary output disturbance.  But I was trying to get rid of the
+bootstrapping for simplicity & easier analysis.
+
+btw, I also found I hadn't entirely fixed the dual opamp input +/-
+swap that came from here, but surfaced on the DAC boad.  So that's
+a good consequence of this investigation.
+
+
+Huh, re. discussion on [1 Feb 21] about the open-loop output impedance, I had
+completely forgotten about 2.74 Ohm R6, which is in Q1E.  I think this is here
+just to implement the current limit, but it roughly triples the open loop
+output impedance.  If we are adding a resistor just to squelch possible Q1 RF
+instability, then it would be better to add it at the collector.  But without
+R6 we don't have any current limiting.  I guess we could use a Q1 collector
+resistor to get some current limiting.  Most simply, if we had even 10 Ohms
+in the collector then it would limit the Q1 current to say 500 mA.  Under
+normal operating conditions even 50 Ohms in the collector would not be a DC
+bias problem.  But we can get sustained current being sourced into VREF due to
+input saturation, and we want to be able to sink that.
+
+Simulation says that the PSRR to the bias resistor is deteriorating up to 3.5
+kHz, but is also pretty high, like -100 dB.  Given that V+ is quite low noise,
+this doesn't seem like any sort of explanation for the 3 kHz noise.  V+ noise
+is only like 8 dB higher than the VREF noise.  3-4 kHz is the loop unity gain
+frequency, and lots of things are going to change around there.
+
+
+
+
+[3 Feb 21]
+
+Summary:
+ -- 6 kHz noise hump seen on the reference has to with ground potentials on
+    the input card.
+ -- I can't rule out hum on the reference, and there is proably also glitchy
+    step noise.
+ -- The setup using the 7A22 for probing, using the 1x probes, seems not
+    entirely trustworthy.  I see hum which is probably not actually there on
+    the board, and perhaps the flaky step glitching could be an analog issue
+    in the scope.
+ -- I was hoping to go to making new input cards soon, but at least the ground
+    potential issues need to be dealt with, and it would be good to get a
+    higher degree of confidence that the reference is actually clean.  The
+    89410A testing has given a new view on this, but I'm also learning how to
+    use it.
+
+Todo:
+ -- Map ground potentials on input board
+    ==> can use prototype ILEMT LNA for ground probing
+ -- Get box parts so we can test with the closed up
+ -- Make AC diff amp?  Or AC coupling setup for ILEMT LNA?  But can't get very
+    low hum because of dual BNC connector arrangement.
+
+
+
+
+The 6 kHz noise seems to real, and to be related to ground potential
+differences.  It is "real" in the sense that I see it right at the ADC, and
+also that the ground penninsulas differ in this way across channels.  So, as
+is, there is no way to choose the "right" ground reference.
+
+[Need to take a look at how it is bodged, but the ground reference is taken at
+the reference distribution buss bypass.  Possibly we want to return the input
+filter C1 there also?]
+
+If the reference noise does matter at the level I have optimized it, then I
+really do need to fix this, because the channels are even going to see
+different noise, and this will likely not be common across boards.
+
+So the question is where does the current causing this drop come from, and can
+we either get rid of it or direct it to avoid the signal ground?  Adding
+another layer for another ground could be one solution.
+
+
+This signal is really quite small.
+ ==> Oops, I think we really need to use the 1 Meg input on 89410A to do
+     measurements, since the Zout of the 7904 SIG OUT is way more than the 50
+     Ohms I was thinking.  The frequency response also seems to shift with the
+     termination.
+
+But looking at VREF vs the ground turret, it's about -31 dBm on the 89401A,
+with 7A22 on 20 uV range.  20 uV is -94 dB re. 1 V, but +6 for the SIG OUT
+scale, so -88 dB.  This gives -88 + -31 or -119 dBm.  1 dBm is 224 mV into 50
+Ohms, so that would be 250 nV, which gives and idea of the signal we are
+looking at, and why it is hard to see in the time domain.  But also it seems
+to be a noise hump, which is hard to see in the time domain anyway.  The total
+noise power across the band is more than the voltage would imply.
+
+[There may be spectral normalization issues also.  I'm not quite sure how the
+instrument handles the effect of varying bin size on the scaling.  IIRC, the
+normalization can't be "right" for both noise and narrowband signals as the
+bin width changes.  So they are probably using the narrowband normalization.]
+
+
+Another issue is that I am getting considerable hum pickup, which is probably
+mostly due to the probing.  But it would be nice to know for sure, and also
+if the resolution bandwidth is >60 Hz then all we see is a rise in the "noise"
+floor, which is deceptive in the < 2 kHz range.
+
+This would require better probing.  I had planned to make an AC coupled diff
+amp with a AC low corner for investigating noise in the 1/f range, even not
+appreciating the hum issue.
+
+
+Also seeing sporadic digital-ish spiking on VREF of up to 400 uV p-p This is
+sporadic enough that it's hard to know what has an effect.  Sort of like what
+I was seeing on the input board low noise regulators.  This was fixed by the
+shielded box, and I attributed to wifi.  Perhaps a probing issue also, but I
+suspect not.  I haven't seen it with the probes both grounded.  This seems way
+too big to have to do with ground issues, more likely either a bad connection
+or RFI.  Hmmn, I am seeing some of this stuff when probing the main VREF also,
+tho not so big at the moment.
+
+
+But the ground potential issues are in any case defintely real and need to be
+dealt with.
+ ==> One obvious thing to do is to map the differential.
+ ==> Hmmn, biggest difference is seen at the ground of the +3.3V bus
+     capacitor.
+
+Also, the +3.3V is pretty noisy, 2 mV p-p of mostly LF noise.  And there is 10
+dB of peaking at 6 kHz.  Hmmn.  This supply is super noisy compared to the
++2.5 which comes from an LM317.  It looks like what I am seeing is the effect
+of the noise being driven into the +3.3V bus bypass cap thru the ground
+plane.  The noise peaking is presumably a LDO compensation thing.  But the
+1.7V dropout re. 5V is rather low for a non-LDO regulator, which is I guess
+why I went for this part.  I have these all over the main board also, and on
+the DAC board.
+
+
+
+[1 Feb 21]
+
+Thermaltronics on Amazon is Metcal soldering iron compatible.
+
+
+Driver terminal screw width 6mm, screw is M3. Looks like the 3M red #4 block
+fork just barely fits. BS-31-4S-NB For 15V, also 6mm, but #4 does not quite
+fit in.
+
+24V supply 8mm, M3.5? Need a #6 lug for this.
+
+
+Not sure about supply grounding scheme. 15V supply could be grounded only at
+dac card. I guess 24V supply should ground to chassis. Original plan was to
+have 24V distribution board with filter.
+
+
+I changed the input reference buffer simulation to more closely match the
+implemented hardware and tried to reproduce the noise peaking, without much
+success.  I do see 2.8 dB peaking at the buffer output @ 3 kHz which is due to
+output buffer and bypass cap interactions.  The peak height and frequence is a
+fair amount different from the 10 dB @ 6 kHz I measured.
+
+But in the transient analysis I see a different story wrt. load step recovery
+than what the AC analysis shows.  Increasing the R7 output decoupling resistor
+gives an increasingly bad transient response, even as it makes little
+difference in the noise gain peaking.
+ ==> OK, I see this effect injecting AC on the R22 DC feedback path.
+
+Peaking due to R7 is in the ballpark of the R7 pole with total output
+capacitance (about 1000 uF?).  With 10 nF feedback cap (as built), the
+feedback zero is at 8 kHz.  To do anything useful we would want the C6 zero
+near or below the output pole.
+
+According to the simulation (AC and transient) R7/C6 is only doing harm,
+but I stuck with the classic opamp cap drive setup because I didn't entirely
+trust the simulation, and too much bandwidth might cause high frequency
+instability.
+
+The open-loop output impedance (from Q1) should be 25 Ohms/20 mA or 1.25 Ohms,
+giving a pole at 127 Hz.  I think that what is going on is that our HF (40
+kHz) instability is being compensated by the electrolytic cap zero, and as set
+up, we don't need anything else.  With the electrolytics missing then C6/R7
+does become a big help.  So we could regard R7/C22 as insurance against
+inaccurate model of the output caps, or drift in characteristics.
+
+
+[18 Jan 21]
+
+Pick 24V supply, line entry module. -15V supply?
+
+Front and rear panel
+Line entry
+Fan/vent
+Output connector
+Input connectors
+Any lights, etc
+Serial LCD module?
+Adafruit 3258 for usb console breakout
+
+
+Box parts:
+Summary: we need three internal rails and one handle.
+
+We have:
+4 notched rails for box outside
+3 non-notched rails with bonus tapped holes, presumably the 3U adaptation kit.
+Wrt original non-recessed concept we are short 1 internal rail. To do the recessed mount we need two more rails, or 3 in all (in addition).
+
+Only 1 handle!
+Need 2
+
+4 84HP insulated "spacer strips"
+Only need 3 of 1/2 width (42 HP). (Good)
+
+6 84hp tapped strips
+2 81hp tapped strip
+What we need is 7 strips, 3 of which can be 1/2 width. So we are (good)
+
+10 card guides (good)
+2 corner piece set (good if we have 2 handles on front)
+2 "cover plate 6u" part of back panel edge trim w/ corner pieces (good)
+Have 4 feet, which is promising
+
+Output filter board does fit between the 3U rails, so we don't actually need to get rid of the 3U top rails on the left side. Maybe stay with full width rails, and have a hole in the chassis shield for the middle rear rail?
+Really could be just a slot from the rear for mid rail. We would only need 60mm slot, very little effect mechanically or magnetically. This might make installation easier.
+
+Now thinking C section, with wrap around on the top for anchor there.
+
+Notch for mid rail at the front is more of a magnetic issue, since kind of defeats mag shield. Not using a full width rail would really be better, makes assembly easier too. With that setup you can remove the left side panel for access and still have structural integrity. The upper C arm could stretch all the way across the top, tho my feel is that the mag shield does not improve much between halfway across the top until you get to a full wrap. Might be useful keeping some access to output side thru top panel.
+
+Full width rails simplifies the problem of getting the right part number. :( But for now can cut and tap long ones.
+
+Corner trim sets the max front/rear panel thickness at a bit over 4mm. 0.125" would be fine
+
+Think we want the shield to go the full box depth, for chassis and air flow control.
+
+With the drivers and supplies flat on the box bottom there is not much extra floor space. Of course things could go with board vertical and into the upper box half. So there is loads of volume.
+
+We could make the C shield in just the lower 3U, clearing under mid rails. That would surely be better for magnetic, but might make access to the output side a bit of a pain. In this case would want the full top on the C. But can remove side panel, front and back.
+
+With a full C, it is a bit of a pain to screw the shield to the rails from the inside, using the tapped strips, but it is possible with a stubby screwdriver. Or could use self tapping screws from the outside. Nylon nuts and bolts at the rear. The tapped strips are here more awkward than nut and bolt, so maybe skip entirely for shield mounting. Can isolate shield from rear rails using tape on the rail.
+
+Maybe fan mounted on top of C over drivers, blowing down? Exhaust slits on bottom left rear panel, intake on top left rear, and anywhere else that seems like reasonable. Maybe a few on right rear. I guess all intake could be on right rear, since the main board does not really block flow behind the board then around to fan on top left. This will promote airflow past the other electronics. Then we don't need any holes in the shield for airflow. (Except for the fan, probably want that well to the left front.)
+
+No longer feeling quite so sure about my idea of floating the chassis from the rails, etc.  True this can let outside currents flow in the chassis, and possibly currents from the output side chassis "ground plane" into the box structure.  But I don't think it would *hurt* to isolate at the middle/back.  I am still inclined to enter ac power on the front, though I don't think it makes much difference.
+
+
+
+[28 Jan 21]
+
+Rev 0 of in_panel board is off to fab.
+
+Sorting out the BOMs and various things.
+
+The Hirose JR16RK-7S is ~13mm from front of flange to back of body, which is
+the front panel standoff with back-of-panel mount.  I've gone for a 15mm
+standoff with a 4mm foam EMI gasket (compressed to 2mm).
+
+I'm going for a 4mm standoff for the in_panel, with a 6.4mm EMI gasket.
+Because of front mount, the standoff varies with panel thickness.  This should
+work with 0.125".
+
+
+
+
+
 [22 Jan 21]
 
 Think I have a box plan now.  I've shortened the input card 10mm, and we will
@@ -158,7 +631,9 @@ flush is min + 1.9, or 4.42.
      threaded standoff, need to use a hollow spacer.
 
 I've picked a PLCC4 LED, which is pretty big and thick by modern standards
-(1.9mm).  The light pipe length would be in the ballpark of 3.5 - 1.9
+(1.9mm).  The light pipe length would be in the ballpark of 3.5 - 1.9.  I've
+picked a 1/8" pipe, which doesn't extend out from the panel at all.  Should be
+fine.
 
 
 
@@ -3664,6 +4139,10 @@ On [24 April 20] I seem to have missed that a larger resistor
 1/sqrt() effect because the resistor noise is increasing as sqrt().
 As the resistor becomes large, it also swamps any upstream broadband
 noise with its internal noise (even as it reduces the output noise).
+    [6 Feb 21: You can also see this as a current noise effect.  The
+    voltage noise on the cap is proportional to the current noise, which
+    drops as sqrt(R)]
+
 This added noise is non-common, which is nominally bad, but as long as
 the master reference broadband noise is low (as above) then this noise
 has already been swamped by the buffer diff amp.  There is no common

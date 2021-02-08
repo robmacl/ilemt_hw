@@ -32,6 +32,55 @@ the signal slews ~50k LSB between conversions (with 32 bit ADC), so
 can never "settle".
 
 
+Box assembly:
+
+Notes on mechanical assembly of the box and the power chassis side.
+
+Microzed mounts onto main board using M3 x 8mm male/female standoffs, with
+male stud thru main board. Microzed screw is M3 x 6mm.
+
+Two of the same mounting holes are used for the Microzed and the low-volt
+regulators card. The LV regs attaches with M3 x 11mm female standoff and M3 x
+6 mm screw, two screwed into studs from the Microzed standoffs.
+
+The rails are different front and back (tapped strip slot) and top and bottom
+(flush or dual level), so of the 4 ways you could put in a rail, only *one* is
+correct. The flush surface of the rail must go toward the card guide or
+chassis plate. The non-flush side goes towards the top and bottom
+panels. Tapped strips go to front on the two sets of front rails and to the
+back on the two sets of back rails.
+
+The front/back corner rails have a corner cutout in the tapped strip side for
+the corner fittings. There are two different heights of tapped strip for the
+two extrusion styles. The outside corner rails use a taller one that will not
+fit in the internal rails.
+
+The card rack is recessed 30 mm wrt the box front. This requires adding 4
+holes on each side panel 30 mm back from the front rail holes.
+
+Don't mount the rear top and bottom rails until after the main board is
+installed, for easier access to main board screws.
+
+Card guides snap in with slight rotation. Insert the snap lock tab side first,
+then the square post. If you need to remove, compress snap locks (on the back
+side), and reverse rotation so they come out first. The spacing from slot 1 to
+2 (output card to first input) is 8 * 0.2", remaining slots are 7. This means
+that empty square holes are 6 and 5. There are 4 full holes and 1/2 from
+rightmost card slot to right side panel.
+
+Cut insulated spacer strips for main card mount to about 200 mm. These go
+between the rear card rack rails and the front of the main board. Put the flat
+side of the strip toward the rail.
+
+Put a card in a slot to line up the main board with the card guides. Then, on
+each strip, use a thin tool thru the holes in main board, insulated strip and
+tapped strip to line up the holes. Use 2.5 x 10mm screws. Socket head screws
+make it easier to access past the rear rail.
+
+Tapped mounting strips are a pain if not fixed so they can't slide. After
+lined up, tack in place with a bit of hot glue.
+
+
 Procedures:
 
 This page is documentation on current procedures, including specific commands
@@ -112,3 +161,56 @@ on ilemt:
 vncserver -compatiblekbd
 password BogPickle
 ________________
+
+
+Agilent 89410A
+
+Set input to 1 Megohm, default 50 Ohms will load down the source,
+especially if using eg. TEK 7904 "SIG OUT".
+
+Noise measurement:
+
+To convert between dBm and V/rtHz:
+    dBm 	= log10(V^2)*10 + dB_offset
+    V/rtHz 	= sqrt(10^((dBm - dB_offset)/10))
+
+dB_offset values for R=50 with various RBW:
+	RBW	offset
+-------------------------------------------
+	300	38
+
+When signal is directly connected to the 89410A then the measured dBm is
+dBm[true].  With input amplification:
+  dBm[true] = dBm[measured] - dB_gain
+
+To get dB_gain via 7904 SIG OUT (which is 0.5 V/div):
+    dB_gain 	= -(20*log10(V/div)) - 6
+
+gain values for various V/div:
+	V/div	Gain
+--------------------------------
+	20uV	88 dB
+
+
+To convert with amplification, use the combined offset
+(dB_offset - dB_gain):
+	 RBW	V/DIV	 dB
+--------------------------------
+	300	20uV	-50
+
+So if dBm[measured] = -39 with 20 uV/div and RBW 300 Hz, then
+    V/rtHz = 
+
+
+Derivation:
+
+V to dBm, assuming V is normalized to 1 Hz bandwidth, i.e. V/rtHz.
+  P = V^2/R
+  R = 50
+  P[RBW] = P * RBW
+  dBm = log10(P[RBW] * 1e3) * 10
+  dBm = log10(V^2 * (1/50) * RBW * 1e3) * 10
+  dB_offset = log10((1/50) * RBW * 1e3) * 10
+  dBm = log10(V^2) * 10 + dB_offset
+
+SIG OUT is 0.5 V/div, so -6 dB re. plugin gain

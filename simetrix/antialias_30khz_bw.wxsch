@@ -932,15 +932,15 @@ Netnames
 --EndSXVERSION1.5
 .TextAnnotation
 Attributes orient=N0 x=4320 y=3480  
-TextInfo text="This is a non-differential model of the antialias/driver in the input channel. \nC2 here is 2x the value in the actual differential circuit.  Also, in the actual\ncircuit the third pole has been moved into the first stage, rather than having\ntwo stages in the antialias driver.  But this does not have any real effect on\nthe frequency response, which is what we are simulating here. \n\nThis is a multiple feedback filter with something like a third order Butterworth\nresponse.  We do not want high Q (like a Chebyshev) because this creates\nnoise gain peaking, and we do not need a super-rapid rolloff due to the ADC\ninternal oversampling. C2 should actually be more like 16 nF, so the Q is a\nlittle high for Butterworth.  I chose this because I already had 10 nF\non the BOM." font="arial" size="9" italics="false" bold="false" 
+TextInfo text="This is a non-differential model of the antialias/driver in the input channel. \nIn the actual circuit the odd third pole is in the input stage and then the\npole pair is in the differential ADC driver. But this does not have any real effect on\nthe frequency response, which is what we are simulating here. \n\nC2 here is 2x the value in the actual differential circuit in this\nnon-differential version.\n\nThis is a multiple feedback filter with something like a third order Butterworth\nresponse.  We do not want high Q (like a Chebyshev) because this creates\nnoise gain peaking, and we do not need a super-rapid rolloff due to the ADC\ninternal oversampling. C2 should actually be more like 16 nF, so the Q is a\nlittle high for Butterworth.  I chose this because I already had 10 nF\non the BOM." font="arial" size="9" italics="false" bold="false" 
 Property name="StyleNormal" value="DefaultAnnotation" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="TextAlignment" value="AlignLeft" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 .EndTextAnnotation
 --SXVERSION1.5
 .Instance
-Attributes type=symbol name="Free_text" selected=0 protected=0 x=4320 y=3480 orient=N0
-Property name="value" value="This is a non-differential model of the antialias/driver in the input channel. \nC2 here is 2x the value in the actual differential circuit.  Also, in the actual\ncircuit the third pole has been moved into the first stage, rather than having\ntwo stages in the antialias driver.  But this does not have any real effect on\nthe frequency response, which is what we are simulating here. \n\nThis is a multiple feedback filter with something like a third order Butterworth\nresponse.  We do not want high Q (like a Chebyshev) because this creates\nnoise gain peaking, and we do not need a super-rapid rolloff due to the ADC\ninternal oversampling. C2 should actually be more like 16 nF, so the Q is a\nlittle high for Butterworth.  I chose this because I already had 10 nF\non the BOM." autopos=0 x=0 y=156 align=LeftBase linear=1 selectable=1 font=FreeText
+Attributes type=symbol name="Free_text" selected=1 protected=0 x=4320 y=3480 orient=N0
+Property name="value" value="This is a non-differential model of the antialias/driver in the input channel. \nIn the actual circuit the odd third pole is in the input stage and then the\npole pair is in the differential ADC driver. But this does not have any real effect on\nthe frequency response, which is what we are simulating here. \n\nC2 here is 2x the value in the actual differential circuit in this\nnon-differential version.\n\nThis is a multiple feedback filter with something like a third order Butterworth\nresponse.  We do not want high Q (like a Chebyshev) because this creates\nnoise gain peaking, and we do not need a super-rapid rolloff due to the ADC\ninternal oversampling. C2 should actually be more like 16 nF, so the Q is a\nlittle high for Butterworth.  I chose this because I already had 10 nF\non the BOM." autopos=0 x=0 y=156 align=LeftBase linear=1 selectable=1 font=FreeText
 Netnames
 .EndInstance
 --EndSXVERSION1.5
@@ -961,10 +961,11 @@ Netnames
 Text value=".simulator SIMETRIX\n*.TRAN 1m\n.AC DEC 100 100 100000000\n*.NOISE FREQ DEC 50 100 10000000 V=VOUT VN=0\n.simulator DEFAULT\n"
 LicenseInfo version="8.20k" feats=Basic|AD|Micron|Mcore2|Schematic|Advanced|Sim|Demo|Rtn|SIMPLIS_IF|beta serial=unknown user="unknown" code=unknown product="Elements" binarch=x86 system="WINNT/10.0/x64/34260295680/4/1/8/1215923956"
 SimulatorMode value="SIMetrix"
-View x=-159 y=-690 zoomlevel=31 zoom=8 snapgrid=120 offsetX=-206 offsetY=690
+View x=437 y=-3004 zoomlevel=29 zoom=7 snapgrid=120 offsetX=-437 offsetY=475
 Property name="CreateProduct" value="Elements" type=value
+Property name="CurrentMeasureItem" value="Lowpass -3dB (db Plot, auto)|0|0|0|" type=value
 Property name="GUID" value="{9a2899c6-b18a-4894-9e5e-607150727fd9}" type=value
-Property name="UserVersion" value="34" type=value
-Property name="WriteLog" value="34/34/976656/976656" type=value
+Property name="UserVersion" value="47" type=value
+Property name="WriteLog" value="47/47/987470/987470" type=value
 .EndSchematic
 .EndComponent

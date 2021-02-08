@@ -359,7 +359,7 @@ Attributes type=symbol name="isrc" selected=0 protected=0 x=5400 y=-2880 orient=
 Property name="MODEL" value="I" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
-Property name="value" value="80m AC 1 0 Pulse(80m 100m 10u 50n 50n 50u)" autopos=1 normal=Right rotated=Top font=Default order=1
+Property name="value" value="80m Pulse(80m 100m 10u 50n 50n 50u)" autopos=1 normal=Right rotated=Top font=Default order=1
 Property name="REF" value="I1" autopos=1 normal=Right rotated=Bottom font=Default order=2
 Netnames pin1="R21_P" pin2="0"
 .EndInstance
@@ -519,7 +519,7 @@ Property name="MODEL" value="V" autopos=1 normal=Left rotated=Left visible=0 fon
 Property name="ref" value="V1" autopos=1 normal=Right rotated=Bottom font=Default order=-1
 Property name="StyleNormal" value="DefaultInstance" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
 Property name="StyleSelected" value="DefaultSelected" autopos=1 normal=Left rotated=Left visible=0 font=Default order=-1
-Property name="value" value="5" autopos=1 normal=Right rotated=Top font=Default order=1
+Property name="value" value="5 AC 1 0" autopos=1 normal=Right rotated=Top font=Default order=1
 Netnames pin1="V1_P" pin2="0"
 .EndInstance
 .Instance
@@ -1050,10 +1050,10 @@ Netnames
 Text value=".simulator SIMETRIX\n.TRAN 200u\n.AC DEC 50 10 100000000\n.options method=Gear\n+  abstol=100f\n+  reltol=1u\n+  vntol=1n\n.simulator DEFAULT\n"
 LicenseInfo version="8.20k" feats=Basic|AD|Micron|Mcore2|Schematic|Advanced|Sim|Demo|Rtn|SIMPLIS_IF|beta serial=unknown user="unknown" code=unknown product="Elements" binarch=x86 system="WINNT/10.0/x64/34260295680/4/1/8/1215923956"
 SimulatorMode value="SIMetrix"
-View x=-6248 y=-5635 zoomlevel=30 zoom=8 snapgrid=120 offsetX=5323 offsetY=5635
+View x=-5324 y=-6004 zoomlevel=30 zoom=8 snapgrid=120 offsetX=5324 offsetY=5635
 Property name="CreateProduct" value="Elements" type=value
 Property name="GUID" value="{b35d949e-c41c-42f5-8137-ba15c00a916a}" type=value
-Property name="UserVersion" value="48" type=value
-Property name="WriteLog" value="48/48/335010/335010" type=value
+Property name="UserVersion" value="60" type=value
+Property name="WriteLog" value="60/60/344861/344861" type=value
 .EndSchematic
 .EndComponent
