@@ -27,7 +27,7 @@ F 3 "https://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/rjhse538x.pdf" V 2
 F 4 "RJHSE5387-ND" H 2650 2750 50  0001 C CNN "Digikey"
 F 5 "RJHSE5387" H 2650 2750 50  0001 C CNN "MPN"
 F 6 "CONN MOD JACK 8P8C R/A SHIELDED" H 2650 2750 50  0001 C CNN "Description"
-F 7 "18" H 2650 2750 50  0001 C CNN "DK line"
+F 7 "I.18" H 2650 2750 50  0001 C CNN "DK line"
 F 8 "Amphenol ICC (Commercial Products)" H 2650 2750 50  0001 C CNN "Manufacturer"
 	1    2650 2750
 	1    0    0    -1  

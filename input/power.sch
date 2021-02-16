@@ -29,7 +29,7 @@ F 4 "NCP1117STAT3G" H 4250 7800 60  0001 L CNN "MPN"
 F 5 "ON Semiconductor" H 4250 8400 60  0001 L CNN "Manufacturer"
 F 6 "NCP1117STAT3GOSCT-ND" H 4050 7300 50  0001 C CNN "Digikey"
 F 7 "IC REG LINEAR POS ADJ 1A SOT223" H 4050 7300 50  0001 C CNN "Description"
-F 8 "26" H 4050 7300 50  0001 C CNN "DK line"
+F 8 "I.26" H 4050 7300 50  0001 C CNN "DK line"
 	1    4050 7300
 	1    0    0    -1  
 $EndComp
@@ -50,7 +50,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 3400 5500 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 3400 5500 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 3400 5500 50  0001 C CNN "MPN"
-F 7 "27" H 3400 5500 50  0001 C CNN "DK line"
+F 7 "I.27" H 3400 5500 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 3400 5500 50  0001 C CNN "Manufacturer"
 	1    3400 5500
 	-1   0    0    1   
@@ -81,7 +81,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 5700 5900 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 5700 5900 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 5700 5900 50  0001 C CNN "MPN"
-F 7 "19" H 5700 5900 50  0001 C CNN "DK line"
+F 7 "I.19" H 5700 5900 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 5700 5900 50  0001 C CNN "Manufacturer"
 	1    5700 5900
 	1    0    0    -1  
@@ -102,7 +102,7 @@ F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 2950 5500 50  0
 F 4 "824500500" H 2950 5500 50  0001 C CNN "MPN"
 F 5 "TVS DIODE 5V 9.2V DO214AC" H 2950 5500 50  0001 C CNN "Description"
 F 6 "732-9974-1-ND" H 2950 5500 50  0001 C CNN "Digikey"
-F 7 "40" H 2950 5500 50  0001 C CNN "DK line"
+F 7 "I.40" H 2950 5500 50  0001 C CNN "DK line"
 F 8 "Würth Elektronik" H 2950 5500 50  0001 C CNN "Manufacturer"
 	1    2950 5500
 	0    1    1    0   
@@ -133,7 +133,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 3450 7500 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 3450 7500 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 3450 7500 50  0001 C CNN "MPN"
-F 7 "27" H 3450 7500 50  0001 C CNN "DK line"
+F 7 "I.27" H 3450 7500 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 3450 7500 50  0001 C CNN "Manufacturer"
 	1    3450 7500
 	-1   0    0    1   
@@ -156,7 +156,7 @@ F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 3000 7500 50  0
 F 4 "824500500" H 3000 7500 50  0001 C CNN "MPN"
 F 5 "TVS DIODE 5V 9.2V DO214AC" H 3000 7500 50  0001 C CNN "Description"
 F 6 "732-9974-1-ND" H 3000 7500 50  0001 C CNN "Digikey"
-F 7 "40" H 3000 7500 50  0001 C CNN "DK line"
+F 7 "I.40" H 3000 7500 50  0001 C CNN "DK line"
 F 8 "Würth Elektronik" H 3000 7500 50  0001 C CNN "Manufacturer"
 	1    3000 7500
 	0    1    1    0   
@@ -225,7 +225,7 @@ F 0 "R21" V 5100 7750 50  0000 C CNN
 F 1 "200" V 4900 7750 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 5040 7740 50  0001 C CNN
 F 3 "~" H 5000 7750 50  0001 C CNN
-F 4 "55" H 5000 7750 50  0001 C CNN "DK line"
+F 4 "I.55" H 5000 7750 50  0001 C CNN "DK line"
 F 5 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 5000 7750 50  0001 C CNN "Description"
 F 6 "RNCP0603FTD200RCT-ND" H 5000 7750 50  0001 C CNN "Digikey"
 F 7 "RNCP0603FTD200R" H 5000 7750 50  0001 C CNN "MPN"
@@ -248,7 +248,7 @@ F 0 "R22" V 4800 8000 50  0000 C CNN
 F 1 "200" V 4600 8000 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4740 7990 50  0001 C CNN
 F 3 "~" H 4700 8000 50  0001 C CNN
-F 4 "55" H 4700 8000 50  0001 C CNN "DK line"
+F 4 "I.55" H 4700 8000 50  0001 C CNN "DK line"
 F 5 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 4700 8000 50  0001 C CNN "Description"
 F 6 "RNCP0603FTD200RCT-ND" H 4700 8000 50  0001 C CNN "Digikey"
 F 7 "RNCP0603FTD200R" H 4700 8000 50  0001 C CNN "MPN"
@@ -277,7 +277,7 @@ F 3 "http://datasheets.avx.com/cx5r.pdf" H 4050 8000 50  0001 C CNN
 F 4 "CAP CER 10UF 6.3V X5R 0603" H 4050 8000 50  0001 C CNN "Description"
 F 5 "478-5318-1-ND" H 4050 8000 50  0001 C CNN "Digikey"
 F 6 "06036D106MAT2A" H 4050 8000 50  0001 C CNN "MPN"
-F 7 "29" H 4050 8000 50  0001 C CNN "DK line"
+F 7 "I.29" H 4050 8000 50  0001 C CNN "DK line"
 F 8 "AVX Corporation" H 4050 8000 50  0001 C CNN "Manufacturer"
 	1    4050 8000
 	1    0    0    -1  
@@ -329,11 +329,11 @@ F 0 "D8" H 3700 2750 50  0000 C CNN
 F 1 "10V (standoff)" H 3700 2500 50  0000 C CNN
 F 2 "Diode_SMD:D_SMA" H 3700 2650 50  0001 C CNN
 F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 3700 2650 50  0001 C CNN
-F 4 "824500500" H 3700 2650 50  0001 C CNN "MPN"
+F 4 "P4SMA12A-E3/61" H 3700 2650 50  0001 C CNN "MPN"
 F 5 "TVS DIODE 10V 17V DO214AC" H 3700 2650 50  0001 C CNN "Description"
-F 6 "732-9947-1-ND" H 3700 2650 50  0001 C CNN "Digikey"
-F 7 "41" H 3700 2650 50  0001 C CNN "DK line"
-F 8 "Würth Elektronik" H 3700 2650 50  0001 C CNN "Manufacturer"
+F 6 "P4SMA12A-E3/61GICT-ND" H 3700 2650 50  0001 C CNN "Digikey"
+F 7 "I.41" H 3700 2650 50  0001 C CNN "DK line"
+F 8 "Vishay General Semiconductor - Diodes Division" H 3700 2650 50  0001 C CNN "Manufacturer"
 	1    3700 2650
 	0    1    1    0   
 $EndComp
@@ -355,7 +355,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 4350 2650 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 4350 2650 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 4350 2650 50  0001 C CNN "MPN"
-F 7 "19" H 4350 2650 50  0001 C CNN "DK line"
+F 7 "I.19" H 4350 2650 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 4350 2650 50  0001 C CNN "Manufacturer"
 	1    4350 2650
 	1    0    0    -1  
@@ -378,7 +378,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 3100 2650 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 3100 2650 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 3100 2650 50  0001 C CNN "MPN"
-F 7 "27" H 3100 2650 50  0001 C CNN "DK line"
+F 7 "I.27" H 3100 2650 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 3100 2650 50  0001 C CNN "Manufacturer"
 	1    3100 2650
 	-1   0    0    1   
@@ -410,11 +410,11 @@ F 0 "D4" H 3700 1900 50  0000 C CNN
 F 1 "10V (standoff)" H 3700 1650 50  0000 C CNN
 F 2 "Diode_SMD:D_SMA" H 3700 1800 50  0001 C CNN
 F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 3700 1800 50  0001 C CNN
-F 4 "824500500" H 3700 1800 50  0001 C CNN "MPN"
+F 4 "P4SMA12A-E3/61" H 3700 1800 50  0001 C CNN "MPN"
 F 5 "TVS DIODE 10V 17V DO214AC" H 3700 1800 50  0001 C CNN "Description"
-F 6 "732-9947-1-ND" H 3700 1800 50  0001 C CNN "Digikey"
-F 7 "41" H 3700 1800 50  0001 C CNN "DK line"
-F 8 "Würth Elektronik" H 3700 1800 50  0001 C CNN "Manufacturer"
+F 6 "P4SMA12A-E3/61GICT-ND" H 3700 1800 50  0001 C CNN "Digikey"
+F 7 "I.41" H 3700 1800 50  0001 C CNN "DK line"
+F 8 "Vishay General Semiconductor - Diodes Division" H 3700 1800 50  0001 C CNN "Manufacturer"
 	1    3700 1800
 	0    1    1    0   
 $EndComp
@@ -436,7 +436,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 4350 1800 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 4350 1800 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 4350 1800 50  0001 C CNN "MPN"
-F 7 "19" H 4350 1800 50  0001 C CNN "DK line"
+F 7 "I.19" H 4350 1800 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 4350 1800 50  0001 C CNN "Manufacturer"
 	1    4350 1800
 	1    0    0    -1  
@@ -459,7 +459,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 3100 1800 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 3100 1800 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 3100 1800 50  0001 C CNN "MPN"
-F 7 "27" H 3100 1800 50  0001 C CNN "DK line"
+F 7 "I.27" H 3100 1800 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 3100 1800 50  0001 C CNN "Manufacturer"
 	1    3100 1800
 	-1   0    0    1   
@@ -752,7 +752,7 @@ F 2 "Capacitor_SMD:C_0603_1608Metric" H 11950 5900 50  0001 C CNN
 F 3 "~" H 11950 5900 50  0001 C CNN
 F 4 "47pF ±5% 50V Ceramic Capacitor C0G, NP0 0603 (1608 Metric)" H 11950 5900 50  0001 C CNN "Description"
 F 5 "311-1065-1-ND" H 11950 5900 50  0001 C CNN "Digikey"
-F 6 "44" H 11950 5900 50  0001 C CNN "DK line"
+F 6 "I.44" H 11950 5900 50  0001 C CNN "DK line"
 F 7 "CC0603JRNPO9BN470" H 11950 5900 50  0001 C CNN "MPN"
 F 8 "Yageo" H 11950 5900 50  0001 C CNN "Manufacturer"
 	1    11950 5900
@@ -823,7 +823,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 5150 1800 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 5150 1800 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 5150 1800 50  0001 C CNN "MPN"
-F 7 "19" H 5150 1800 50  0001 C CNN "DK line"
+F 7 "I.19" H 5150 1800 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 5150 1800 50  0001 C CNN "Manufacturer"
 	1    5150 1800
 	1    0    0    -1  
@@ -839,7 +839,7 @@ F 1 "750 mA 90 mOhm" V 12200 2400 50  0000 C CNN
 F 2 "input:Fuse_BEL_0ZCJ_1206_3216Metric" H 12150 2200 50  0001 L CNN
 F 3 "https://www.belfuse.com/resources/datasheets/circuitprotection/ds-cp-0zcj-series.pdf" H 12100 2400 50  0001 C CNN
 F 4 "0ZCJ0075AF2E" V 12100 2400 50  0001 C CNN "MPN"
-F 5 "21" H 12100 2400 50  0001 C CNN "DK line"
+F 5 "I.21" H 12100 2400 50  0001 C CNN "DK line"
 F 6 "PTC RESET FUSE 16V 750MA 1206" H 12100 2400 50  0001 C CNN "Description"
 F 7 "507-1805-1-ND" H 12100 2400 50  0001 C CNN "Digikey"
 F 8 "Bel Fuse Inc." H 12100 2400 50  0001 C CNN "Manufacturer"
@@ -865,7 +865,7 @@ F 1 "33" V 10250 2150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 10390 2140 50  0001 C CNN
 F 3 "~" H 10350 2150 50  0001 C CNN
 F 4 "RMCF0603FT33R0CT-ND" H 10350 2150 50  0001 C CNN "Digikey"
-F 5 "52" H 10350 2150 50  0001 C CNN "DK line"
+F 5 "I.52" H 10350 2150 50  0001 C CNN "DK line"
 F 6 "RES 33 OHM 1% 1/10W 0603" H 10350 2150 50  0001 C CNN "Description"
 F 7 "RMCF0603FT33R0" H 10350 2150 50  0001 C CNN "MPN"
 F 8 "Stackpole Electronics Inc" H 10350 2150 50  0001 C CNN "Manufacturer"
@@ -888,7 +888,7 @@ F 2 "Resistor_SMD:R_0805_2012Metric" V 4890 1390 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 4850 1400 50  0001 C CNN
 F 4 "541-10TACT-ND" H 4850 1400 50  0001 C CNN "Digikey"
 F 5 "Thick film surge resist" H 4850 1400 50  0001 C CNN "Notes"
-F 6 "9" H 4850 1400 50  0001 C CNN "DK line"
+F 6 "I.9" H 4850 1400 50  0001 C CNN "DK line"
 F 7 "RES SMD 10 OHM 5% 1/2W 0805" H 4850 1400 50  0001 C CNN "Description"
 F 8 "CRCW080510R0JNEAHP" H 4850 1400 50  0001 C CNN "MPN"
 F 9 "Vishay Dale" H 4850 1400 50  0001 C CNN "Manufacturer"
@@ -910,7 +910,7 @@ F 2 "Package_TO_SOT_SMD:TO-252-3_TabPin2" H 11150 2250 50  0001 C CNN
 F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/group2/a4/1a/10/b8/53/ac/42/a3/CD00110236/files/CD00110236.pdf/jcr:content/translations/en.CD00110236.pdf" H 10950 2150 50  0001 C CNN
 F 4 "497-5236-1-ND" H 10950 2150 50  0001 C CNN "Digikey"
 F 5 "TRANS NPN 65V 6A DPAK" H 10950 2150 50  0001 C CNN "Description"
-F 6 "22" H 10950 2150 50  0001 C CNN "DK line"
+F 6 "I.22" H 10950 2150 50  0001 C CNN "DK line"
 F 7 "2STD1665T4" H 10950 2150 50  0001 C CNN "MPN"
 F 8 "STMicroelectronics" H 10950 2150 50  0001 C CNN "Manufacturer"
 	1    10950 2150
@@ -932,7 +932,7 @@ F 2 "Capacitor_SMD:C_0603_1608Metric" H 11050 2700 50  0001 C CNN
 F 3 "~" H 11050 2700 50  0001 C CNN
 F 4 "47pF ±5% 50V Ceramic Capacitor C0G, NP0 0603 (1608 Metric)" H 11050 2700 50  0001 C CNN "Description"
 F 5 "311-1065-1-ND" H 11050 2700 50  0001 C CNN "Digikey"
-F 6 "44" H 11050 2700 50  0001 C CNN "DK line"
+F 6 "I.44" H 11050 2700 50  0001 C CNN "DK line"
 F 7 "CC0603JRNPO9BN470" H 11050 2700 50  0001 C CNN "MPN"
 F 8 "Yageo" H 11050 2700 50  0001 C CNN "Manufacturer"
 	1    11050 2700
@@ -952,7 +952,7 @@ F 0 "U4" H 9550 2400 50  0000 L CNN
 F 1 "OPA830" H 9550 2300 50  0000 L CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 9450 2200 50  0001 C CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa830" H 9450 2300 50  0001 C CNN
-F 4 "20" H 9400 2150 50  0001 C CNN "DK line"
+F 4 "I.20" H 9400 2150 50  0001 C CNN "DK line"
 F 5 "IC OPAMP VFB 1 CIRCUIT 8SOIC" H 9400 2150 50  0001 C CNN "Description"
 F 6 "296-17400-5-ND" H 9400 2150 50  0001 C CNN "Digikey"
 F 7 "OPA830ID" H 9400 2150 50  0001 C CNN "MPN"
@@ -1000,7 +1000,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 9800 1750 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 9800 1750 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 9800 1750 50  0001 C CNN "MPN"
-F 7 "27" H 9800 1750 50  0001 C CNN "DK line"
+F 7 "I.27" H 9800 1750 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 9800 1750 50  0001 C CNN "Manufacturer"
 	1    9800 1750
 	0    1    1    0   
@@ -1057,7 +1057,7 @@ F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 8600 5000 50  0001 C CNN
 F 4 "0.1%" V 8600 5000 50  0001 C CNN "Notes"
 F 5 "RES SMD 499 OHM 0.1% 1/4W 0805" H 8600 5000 50  0001 C CNN "Description"
 F 6 "A110514CT-ND" H 8600 5000 50  0001 C CNN "Digikey"
-F 7 "30" H 8600 5000 50  0001 C CNN "DK line"
+F 7 "I.30" H 8600 5000 50  0001 C CNN "DK line"
 F 8 "8-2176091-9" H 8600 5000 50  0001 C CNN "MPN"
 F 9 "TE Connectivity Passive Product" H 8600 5000 50  0001 C CNN "Manufacturer"
 	1    8600 5000
@@ -1080,7 +1080,7 @@ F 3 "~" H 8600 5400 50  0001 C CNN
 F 4 "0.1%" V 8600 5400 50  0001 C CNN "Notes"
 F 5 "392 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 8600 5400 50  0001 C CNN "Description"
 F 6 "RNCP0603FTD392RCT-ND" H 8600 5400 50  0001 C CNN "Digikey"
-F 7 "49" H 8600 5400 50  0001 C CNN "DK line"
+F 7 "I.49" H 8600 5400 50  0001 C CNN "DK line"
 F 8 "RNCP0603FTD392R" H 8600 5400 50  0001 C CNN "MPN"
 F 9 "Stackpole Electronics Inc" H 8600 5400 50  0001 C CNN "Manufacturer"
 	1    8600 5400
@@ -1103,7 +1103,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 5150 2650 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 5150 2650 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 5150 2650 50  0001 C CNN "MPN"
-F 7 "19" H 5150 2650 50  0001 C CNN "DK line"
+F 7 "I.19" H 5150 2650 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 5150 2650 50  0001 C CNN "Manufacturer"
 	1    5150 2650
 	1    0    0    -1  
@@ -1136,7 +1136,7 @@ F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 8750 6400 50  0001 C CNN
 F 4 "0.1%" V 8750 6400 50  0001 C CNN "Notes"
 F 5 "RES SMD 499 OHM 0.1% 1/4W 0805" H 8750 6400 50  0001 C CNN "Description"
 F 6 "A110514CT-ND" H 8750 6400 50  0001 C CNN "Digikey"
-F 7 "30" H 8750 6400 50  0001 C CNN "DK line"
+F 7 "I.30" H 8750 6400 50  0001 C CNN "DK line"
 F 8 "8-2176091-9" H 8750 6400 50  0001 C CNN "MPN"
 F 9 "TE Connectivity Passive Product" H 8750 6400 50  0001 C CNN "Manufacturer"
 	1    8750 6400
@@ -1156,7 +1156,7 @@ F 1 "750 mA 90 mOhm" V 12550 5200 50  0000 C CNN
 F 2 "input:Fuse_BEL_0ZCJ_1206_3216Metric" H 12500 5000 50  0001 L CNN
 F 3 "https://www.belfuse.com/resources/datasheets/circuitprotection/ds-cp-0zcj-series.pdf" H 12450 5200 50  0001 C CNN
 F 4 "0ZCJ0075AF2E" V 12450 5200 50  0001 C CNN "MPN"
-F 5 "21" H 12450 5200 50  0001 C CNN "DK line"
+F 5 "I.21" H 12450 5200 50  0001 C CNN "DK line"
 F 6 "PTC RESET FUSE 16V 750MA 1206" H 12450 5200 50  0001 C CNN "Description"
 F 7 "507-1805-1-ND" H 12450 5200 50  0001 C CNN "Digikey"
 F 8 "Bel Fuse Inc." H 12450 5200 50  0001 C CNN "Manufacturer"
@@ -1180,7 +1180,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 13250 5550 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 13250 5550 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 13250 5550 50  0001 C CNN "MPN"
-F 7 "19" H 13250 5550 50  0001 C CNN "DK line"
+F 7 "I.19" H 13250 5550 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 13250 5550 50  0001 C CNN "Manufacturer"
 	1    13250 5550
 	-1   0    0    1   
@@ -1208,7 +1208,7 @@ F 2 "Resistor_SMD:R_0805_2012Metric" V 4890 3090 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/20043/crcwhpe3.pdf" H 4850 3100 50  0001 C CNN
 F 4 "541-10TACT-ND" H 4850 3100 50  0001 C CNN "Digikey"
 F 5 "Thick film surge resist" H 4850 3100 50  0001 C CNN "Notes"
-F 6 "9" H 4850 3100 50  0001 C CNN "DK line"
+F 6 "I.9" H 4850 3100 50  0001 C CNN "DK line"
 F 7 "RES SMD 10 OHM 5% 1/2W 0805" H 4850 3100 50  0001 C CNN "Description"
 F 8 "CRCW080510R0JNEAHP" H 4850 3100 50  0001 C CNN "MPN"
 F 9 "Vishay Dale" H 4850 3100 50  0001 C CNN "Manufacturer"
@@ -1248,7 +1248,7 @@ F 1 "33" V 10300 5500 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 10440 5490 50  0001 C CNN
 F 3 "~" H 10400 5500 50  0001 C CNN
 F 4 "RMCF0603FT33R0CT-ND" H 10400 5500 50  0001 C CNN "Digikey"
-F 5 "52" H 10400 5500 50  0001 C CNN "DK line"
+F 5 "I.52" H 10400 5500 50  0001 C CNN "DK line"
 F 6 "RES 33 OHM 1% 1/10W 0603" H 10400 5500 50  0001 C CNN "Description"
 F 7 "RMCF0603FT33R0" H 10400 5500 50  0001 C CNN "MPN"
 F 8 "Stackpole Electronics Inc" H 10400 5500 50  0001 C CNN "Manufacturer"
@@ -1291,7 +1291,7 @@ F 2 "Package_TO_SOT_SMD:TO-252-3_TabPin2" H 11200 5600 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/MJD31-D.PDF" H 11000 5500 50  0001 C CNN
 F 4 "NSS1C300ET4GOSCT-ND" H 11000 5500 50  0001 C CNN "Digikey"
 F 5 "TRANS PNP 100V 3A 3DPAK" H 11000 5500 50  0001 C CNN "Description"
-F 6 "23" H 11000 5500 50  0001 C CNN "DK line"
+F 6 "I.23" H 11000 5500 50  0001 C CNN "DK line"
 F 7 "NSS1C300ET4G" H 11000 5500 50  0001 C CNN "MPN"
 F 8 "ON Semiconductor" H 11000 5500 50  0001 C CNN "Manufacturer"
 	1    11000 5500
@@ -1314,7 +1314,7 @@ F 3 "~" H 12450 6400 50  0001 C CNN
 F 4 "0.1%" V 12450 6400 50  0001 C CNN "Notes"
 F 5 "392 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 12450 6400 50  0001 C CNN "Description"
 F 6 "RNCP0603FTD392RCT-ND" H 12450 6400 50  0001 C CNN "Digikey"
-F 7 "49" H 12450 6400 50  0001 C CNN "DK line"
+F 7 "I.49" H 12450 6400 50  0001 C CNN "DK line"
 F 8 "RNCP0603FTD392R" H 12450 6400 50  0001 C CNN "MPN"
 F 9 "Stackpole Electronics Inc" H 12450 6400 50  0001 C CNN "Manufacturer"
 	1    12450 6400
@@ -1334,7 +1334,7 @@ F 0 "U6" H 9600 5750 50  0000 L CNN
 F 1 "OPA830" H 9600 5650 50  0000 L CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 9500 5550 50  0001 C CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fopa830" H 9500 5650 50  0001 C CNN
-F 4 "20" H 9450 5500 50  0001 C CNN "DK line"
+F 4 "I.20" H 9450 5500 50  0001 C CNN "DK line"
 F 5 "IC OPAMP VFB 1 CIRCUIT 8SOIC" H 9450 5500 50  0001 C CNN "Description"
 F 6 "296-17400-5-ND" H 9450 5500 50  0001 C CNN "Digikey"
 F 7 "OPA830ID" H 9450 5500 50  0001 C CNN "MPN"
@@ -1378,7 +1378,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 9850 5950 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 9850 5950 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 9850 5950 50  0001 C CNN "MPN"
-F 7 "27" H 9850 5950 50  0001 C CNN "DK line"
+F 7 "I.27" H 9850 5950 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 9850 5950 50  0001 C CNN "Manufacturer"
 	1    9850 5950
 	0    1    1    0   
@@ -1425,7 +1425,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 9850 5100 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 9850 5100 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 9850 5100 50  0001 C CNN "MPN"
-F 7 "27" H 9850 5100 50  0001 C CNN "DK line"
+F 7 "I.27" H 9850 5100 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 9850 5100 50  0001 C CNN "Manufacturer"
 	1    9850 5100
 	0    1    1    0   
@@ -1465,7 +1465,7 @@ F 1 "301" V 8450 2050 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 8590 2040 50  0001 C CNN
 F 3 "~" H 8550 2050 50  0001 C CNN
 F 4 "0.1%" V 8550 2050 50  0001 C CNN "Notes"
-F 5 "50" H 8550 2050 50  0001 C CNN "DK line"
+F 5 "I.50" H 8550 2050 50  0001 C CNN "DK line"
 F 6 "301 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 8550 2050 50  0001 C CNN "Description"
 F 7 "RNCP0603FTD301RCT-ND" H 8550 2050 50  0001 C CNN "Digikey"
 F 8 "RNCP0603FTD301R" H 8550 2050 50  0001 C CNN "MPN"
@@ -1490,7 +1490,7 @@ F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 8550 1650 50  0001 C CNN
 F 4 "0.1%" V 8550 1650 50  0001 C CNN "Notes"
 F 5 "RES SMD 499 OHM 0.1% 1/4W 0805" H 8550 1650 50  0001 C CNN "Description"
 F 6 "A110514CT-ND" H 8550 1650 50  0001 C CNN "Digikey"
-F 7 "30" H 8550 1650 50  0001 C CNN "DK line"
+F 7 "I.30" H 8550 1650 50  0001 C CNN "DK line"
 F 8 "8-2176091-9" H 8550 1650 50  0001 C CNN "MPN"
 F 9 "TE Connectivity Passive Product" H 8550 1650 50  0001 C CNN "Manufacturer"
 	1    8550 1650
@@ -1519,7 +1519,7 @@ F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 13600 5550 50  
 F 4 "824500500" H 13600 5550 50  0001 C CNN "MPN"
 F 5 "TVS DIODE 5V 9.2V DO214AC" H 13600 5550 50  0001 C CNN "Description"
 F 6 "732-9974-1-ND" H 13600 5550 50  0001 C CNN "Digikey"
-F 7 "40" H 13600 5550 50  0001 C CNN "DK line"
+F 7 "I.40" H 13600 5550 50  0001 C CNN "DK line"
 F 8 "Würth Elektronik" H 13600 5550 50  0001 C CNN "Manufacturer"
 	1    13600 5550
 	0    -1   -1   0   
@@ -1606,7 +1606,7 @@ F 0 "TP4" H 2800 9350 50  0000 C CNN
 F 1 "GND" H 2800 9450 50  0000 C CNN
 F 2 "input:TestPoint_THTPad_D5.0mm_Drill2.41mm" H 3000 9100 50  0001 C CNN
 F 3 "~" H 3000 9100 50  0001 C CNN
-F 4 "33" H 2800 9100 50  0001 C CNN "DK line"
+F 4 "I.33" H 2800 9100 50  0001 C CNN "DK line"
 F 5 "TERM TURRET HOLLOW L=6.75MM TIN" H 2800 9100 50  0001 C CNN "Description"
 F 6 "36-1540-2-ND" H 2800 9100 50  0001 C CNN "Digikey"
 F 7 "1540-2" H 2800 9100 50  0001 C CNN "MPN"
@@ -1661,7 +1661,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 5350 8100 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 5350 8100 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 5350 8100 50  0001 C CNN "MPN"
-F 7 "19" H 5350 8100 50  0001 C CNN "DK line"
+F 7 "I.19" H 5350 8100 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 5350 8100 50  0001 C CNN "Manufacturer"
 	1    5350 8100
 	1    0    0    -1  
@@ -1764,11 +1764,11 @@ F 0 "D15" H 12900 2800 50  0000 C CNN
 F 1 "10V (standoff)" H 12900 2900 50  0000 C CNN
 F 2 "Diode_SMD:D_SMA" H 12900 2700 50  0001 C CNN
 F 3 "https://katalog.we-online.de/pbs/datasheet/824500500.pdf" H 12900 2700 50  0001 C CNN
-F 4 "824500500" H 12900 2700 50  0001 C CNN "MPN"
+F 4 "P4SMA12A-E3/61" H 12900 2700 50  0001 C CNN "MPN"
 F 5 "TVS DIODE 10V 17V DO214AC" H 12900 2700 50  0001 C CNN "Description"
-F 6 "732-9947-1-ND" H 12900 2700 50  0001 C CNN "Digikey"
-F 7 "41" H 12900 2700 50  0001 C CNN "DK line"
-F 8 "Würth Elektronik" H 12900 2700 50  0001 C CNN "Manufacturer"
+F 6 "P4SMA12A-E3/61GICT-ND" H 12900 2700 50  0001 C CNN "Digikey"
+F 7 "I.41" H 12900 2700 50  0001 C CNN "DK line"
+F 8 "Vishay General Semiconductor - Diodes Division" H 12900 2700 50  0001 C CNN "Manufacturer"
 	1    12900 2700
 	0    1    1    0   
 $EndComp
@@ -1791,7 +1791,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "565-4285-1-ND" V 12550 2700 50  0001 C CNN "Digikey"
 F 5 "APXG160ARA331MH70G" V 12550 2700 50  0001 C CNN "MPN"
 F 6 "16V aluminum solid polymer, ESR 22 mOhm" V 12550 2700 50  0001 C CNN "Description"
-F 7 "19" H 12550 2700 50  0001 C CNN "DK line"
+F 7 "I.19" H 12550 2700 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 12550 2700 50  0001 C CNN "Manufacturer"
 	1    12550 2700
 	1    0    0    -1  
@@ -1811,7 +1811,7 @@ F 1 "301" V 11450 3450 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 11590 3440 50  0001 C CNN
 F 3 "~" H 11550 3450 50  0001 C CNN
 F 4 "0.1%" V 11550 3450 50  0001 C CNN "Notes"
-F 5 "50" H 11550 3450 50  0001 C CNN "DK line"
+F 5 "I.50" H 11550 3450 50  0001 C CNN "DK line"
 F 6 "301 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 11550 3450 50  0001 C CNN "Description"
 F 7 "RNCP0603FTD301RCT-ND" H 11550 3450 50  0001 C CNN "Digikey"
 F 8 "RNCP0603FTD301R" H 11550 3450 50  0001 C CNN "MPN"
@@ -1853,7 +1853,7 @@ F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 8550 3450 50  0001 C CNN
 F 4 "0.1%" V 8550 3450 50  0001 C CNN "Notes"
 F 5 "RES SMD 499 OHM 0.1% 1/4W 0805" H 8550 3450 50  0001 C CNN "Description"
 F 6 "A110514CT-ND" H 8550 3450 50  0001 C CNN "Digikey"
-F 7 "30" H 8550 3450 50  0001 C CNN "DK line"
+F 7 "I.30" H 8550 3450 50  0001 C CNN "DK line"
 F 8 "8-2176091-9" H 8550 3450 50  0001 C CNN "MPN"
 F 9 "TE Connectivity Passive Product" H 8550 3450 50  0001 C CNN "Manufacturer"
 	1    8550 3450
@@ -1915,7 +1915,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 8450 6650 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 8450 6650 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 8450 6650 50  0001 C CNN "MPN"
-F 7 "27" H 8450 6650 50  0001 C CNN "DK line"
+F 7 "I.27" H 8450 6650 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 8450 6650 50  0001 C CNN "Manufacturer"
 	1    8450 6650
 	1    0    0    -1  
@@ -1961,7 +1961,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 8100 2300 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 8100 2300 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 8100 2300 50  0001 C CNN "MPN"
-F 7 "27" H 8100 2300 50  0001 C CNN "DK line"
+F 7 "I.27" H 8100 2300 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 8100 2300 50  0001 C CNN "Manufacturer"
 	1    8100 2300
 	1    0    0    -1  
@@ -2046,7 +2046,7 @@ F 9 "/product-detail/en/tdk-corporation/MPZ2012S601AT000/445-2206-1-ND/765104" H
 F 10 "FERRITE BEAD 2 KOHM 0805 1LN" H 9150 5550 60  0001 L CNN "Description"
 F 11 "Laird-Signal Integrity Products" H 9150 5650 60  0001 L CNN "Manufacturer"
 F 12 "Active" H 9150 5750 60  0001 L CNN "Status"
-F 13 "5" H 8950 4550 50  0001 C CNN "DK line"
+F 13 "I.5" H 8950 4550 50  0001 C CNN "DK line"
 F 14 "240-2396-1-ND" H 8950 4550 50  0001 C CNN "Digikey"
 	1    8950 4550
 	1    0    0    -1  
@@ -2273,7 +2273,7 @@ F 0 "TP10" H 3050 9350 50  0000 C CNN
 F 1 "GND" H 3050 9450 50  0000 C CNN
 F 2 "input:TestPoint_THTPad_D5.0mm_Drill2.41mm" H 3250 9100 50  0001 C CNN
 F 3 "~" H 3250 9100 50  0001 C CNN
-F 4 "33" H 3050 9100 50  0001 C CNN "DK line"
+F 4 "I.33" H 3050 9100 50  0001 C CNN "DK line"
 F 5 "TERM TURRET HOLLOW L=6.75MM TIN" H 3050 9100 50  0001 C CNN "Description"
 F 6 "36-1540-2-ND" H 3050 9100 50  0001 C CNN "Digikey"
 F 7 "1540-2" H 3050 9100 50  0001 C CNN "MPN"
@@ -2298,7 +2298,7 @@ F 4 "NCP1117STAT3G" H 4200 5800 60  0001 L CNN "MPN"
 F 5 "ON Semiconductor" H 4200 6400 60  0001 L CNN "Manufacturer"
 F 6 "NCP1117STAT3GOSCT-ND" H 4000 5300 50  0001 C CNN "Digikey"
 F 7 "IC REG LINEAR POS ADJ 1A SOT223" H 4000 5300 50  0001 C CNN "Description"
-F 8 "26" H 4000 5300 50  0001 C CNN "DK line"
+F 8 "I.26" H 4000 5300 50  0001 C CNN "DK line"
 	1    4000 5300
 	1    0    0    -1  
 $EndComp
@@ -2340,7 +2340,7 @@ F 0 "R42" V 5050 5750 50  0000 C CNN
 F 1 "200" V 4850 5750 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 4990 5740 50  0001 C CNN
 F 3 "~" H 4950 5750 50  0001 C CNN
-F 4 "55" H 4950 5750 50  0001 C CNN "DK line"
+F 4 "I.55" H 4950 5750 50  0001 C CNN "DK line"
 F 5 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 4950 5750 50  0001 C CNN "Description"
 F 6 "RNCP0603FTD200RCT-ND" H 4950 5750 50  0001 C CNN "Digikey"
 F 7 "RNCP0603FTD200R" H 4950 5750 50  0001 C CNN "MPN"
@@ -2369,7 +2369,7 @@ F 3 "http://datasheets.avx.com/cx5r.pdf" H 4000 6000 50  0001 C CNN
 F 4 "CAP CER 10UF 6.3V X5R 0603" H 4000 6000 50  0001 C CNN "Description"
 F 5 "478-5318-1-ND" H 4000 6000 50  0001 C CNN "Digikey"
 F 6 "06036D106MAT2A" H 4000 6000 50  0001 C CNN "MPN"
-F 7 "29" H 4000 6000 50  0001 C CNN "DK line"
+F 7 "I.29" H 4000 6000 50  0001 C CNN "DK line"
 F 8 "AVX Corporation" H 4000 6000 50  0001 C CNN "Manufacturer"
 	1    4000 6000
 	1    0    0    -1  

@@ -92,7 +92,7 @@ F 4 "FBMJ2125HM210NT" H 2400 4600 60  0001 L CNN "MPN"
 F 5 "Ferrite Beads and Chips" H 2400 4800 60  0001 L CNN "Family"
 F 6 "FERRITE BEAD 21 OHM 0805, 100 nH, 5 mOhm" H 2400 5100 60  0001 L CNN "Description"
 F 7 "587-1765-1-ND" H 2200 4100 50  0001 C CNN "Digikey"
-F 8 "24" H 2200 4100 50  0001 C CNN "DK line"
+F 8 "I.24" H 2200 4100 50  0001 C CNN "DK line"
 F 9 "Taiyo Yuden" H 2200 4100 50  0001 C CNN "Manufacturer"
 	1    2200 4100
 	1    0    0    -1  
@@ -168,7 +168,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 2800 4350 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 2800 4350 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 2800 4350 50  0001 C CNN "MPN"
-F 7 "19" H 2800 4350 50  0001 C CNN "DK line"
+F 7 "I.19" H 2800 4350 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 2800 4350 50  0001 C CNN "Manufacturer"
 	1    2800 4350
 	1    0    0    -1  
@@ -219,7 +219,7 @@ F 4 "FBMJ2125HM210NT" H 2350 5750 60  0001 L CNN "MPN"
 F 5 "Ferrite Beads and Chips" H 2350 5950 60  0001 L CNN "Family"
 F 6 "FERRITE BEAD 21 OHM 0805, 100 nH, 5 mOhm" H 2350 6250 60  0001 L CNN "Description"
 F 7 "587-1765-1-ND" H 2150 5250 50  0001 C CNN "Digikey"
-F 8 "24" H 2150 5250 50  0001 C CNN "DK line"
+F 8 "I.24" H 2150 5250 50  0001 C CNN "DK line"
 F 9 "Taiyo Yuden" H 2150 5250 50  0001 C CNN "Manufacturer"
 	1    2150 5250
 	1    0    0    -1  
@@ -249,7 +249,7 @@ F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfn
 F 4 "16V aluminum solid polymer, ESR 22 mOhm" H 2800 4950 50  0001 C CNN "Description"
 F 5 "565-4285-1-ND" H 2800 4950 50  0001 C CNN "Digikey"
 F 6 "APXG160ARA331MH70G" H 2800 4950 50  0001 C CNN "MPN"
-F 7 "19" H 2800 4950 50  0001 C CNN "DK line"
+F 7 "I.19" H 2800 4950 50  0001 C CNN "DK line"
 F 8 "United Chemi-Con" H 2800 4950 50  0001 C CNN "Manufacturer"
 	1    2800 4950
 	1    0    0    -1  

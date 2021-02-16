@@ -1,16 +1,37 @@
+Todo:
+ -- Wire power side of box
+ -- Fire it up!
+ -- Finish any input board testing:
+     - DAC loopback
+     - Overload test, supply current
+     - RJ45 AC coupling adapter/
+     - BIST?
+ -- Assemble input panel
+ -- Fabricate:
+     - Front panel
+     - Back panel
+     - power supply chassis
+ -- Special diff amp for reference testing, etc?
+
+Critical path:
+ -- Order box parts
+ -- Update input board BOM
+ -- Order input board BOM and other stuff (probe connector), RJ45 cable?
+ -- Order new rev of input board
+ -- Get input board assembled?
+
  ==> Stuff to order
  -- Got wrong probe connector, need 10 pin
- -- Other parts, see [13 Jan 21], especially input board.  Get on reel
+ -- Stock up parts, see [13 Jan 21], especially input board.  Get on reel
  -- 8" rj45 patch cable x4
 
 Ordered:
  -- Microzed [Got 2 of '10, large '20 variant back-ordered]
  -- Source driver and supply cards.
-    [Got same driver cards. Got one different supply, should have one already.]
+    [Got same driver cards. Got one different supply, need more if this works]
 
 
 Driver/box:
- -- Modify driver boards for lower gain and with bigger bypass caps.
  -- Mechanical chassis/shield panel
 ==> Need at least a temporary front panel and chassis plate
 ==> Order more box rails, 1/2 width rails, another full box kit?
@@ -43,10 +64,8 @@ Input board revisions:
  -- Set up to work with LTC2500-32 ADC also, to help with possible supply
     issues.  Bring out pin 16 (LTC2500 SDI), have pin 10 (LTC2500 PRE) jumper
     to ground or float. 
- -- ~10 dB of noise peaking in reference buffer near 6 kHz.
 ==> See if we can simulate, fix.
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
-==> Double check reference buffer supply and C129 mods.
 
 Fixed in new rev 1:
  -- Change testpoint style, turret or at least larger hole.
@@ -82,10 +101,12 @@ Output board revisions:
  -- Exposed probe ground near digital testpoints
  -- Add digital outputs for front panel lights?  Maybe support for LCD
     display?  This could also be added to main board.
+ -- Reference buffer issues inherited from input board?  Noise peaking?
 
 LV supply card:
  -- Add bulk cap on +5?  There is LF glitching on +5 ANA, though it
     doesn't seem to make it through to eg. +2.5 on the input board.
+    Or maybe another 5V regulator?
  -- In revision, add -15V for DAC?
 
 
@@ -95,8 +116,8 @@ Evaluation tasks:
  -- Measure supply current, in saturation and otherwise.
 
 Main board revisions:
- -- Is ADC reference buffer output stable with the C load?  Noise gain
-    peaking?
+ -- Is reference buffer output stable with the C load?  Noise gain
+    peaking? 
 
 Output filter:
  -- It may not work to hook the voltage sense directly to the input card
@@ -159,8 +180,123 @@ Software & research tasks:
  -- EMI publication
 
 
-[7 Feb 21]
+[15 Feb 21]
 
+
+
+
+
+[11 Feb 21]
+
+re. driver board tweaks, [4 Jan 21], the IRAUDAMP7 design manual says
+to change gain by adjusting the input resistor, and that changing the
+feedback resistor changes the modulator.  That makes sense.  The
+feedback gain is determined by the bus voltage and the feedback
+resistor.  To keep the loop gain the same, you have to increase the
+feedback resistor at higher rail voltages.  We are using the high
+rail, so we need the big feedback resistor.  We would want an 8.7K
+input resistor for gain of 15.  But we have 360 + the 5K trim in the
+breakout board.  If we call this 2.9K then we want 5.8K on the board.
+I'm using 4.99K because I have that on hand.
+
+
+[10 Feb 21]
+
+Chassis grounding.
+
+Disturbances:
+ - Power line common mode
+ - Supply switching ripple and common mode
+ - Driver currents to load and back to supply
+
+Goals:
+ - direct power line common mode around the box, and not thru signal grounds.
+ - Minimize noise injection into signal ground via 24V and -15V
+ - adequately clean ground for the DAC pseudo differential output
+ - minimize common impedance to driver currents, use tree connection.
+ - keep driver currents out of the signal grounds.
+ - minimize loop area of driver currents
+
+The supplies and earth ground are the main path for power line common
+mode. Grounding the supply output ground should help to intercept common mode,
+or at least turn it into differential mode. Maybe we will want common mode
+choke for signal supplies, but leave out for now. Had planned 24V distribution
+board, but that was when it was going to the drivers also.
+
+Seeming like it makes now makes sense to have the ground mecca at the back of
+the chassis, near the supplies, and power entrance, at the back rail. Green
+wire ties here also. If we were to float the chassis, it would probably be at
+the front, but I am not longer so sure this matters.
+
+The drivers do not tie to ground (or to each other) at the output except for
+the RFI caps.  There is no ground path via the DAC because of the pseudo
+differential output. We don't want the driver ground terribly noisy wrt the
+DAC, but the lowpass filter to that ground should give cover here.
+
+Chassis ground is no longer used anywhere on the main board, but FWIW it and
++24V return both go to ground at the mecca.
+
+
+[9 Feb 21]
+
+I noticed earlier that there was glitching in input board VREF when
+acqusition starts and stops, when I run labview_connect, but the
+connection is timing out.
+ ==> Note that this is not necesarily a problem because acqusition is
+     normally on continuously during operation.
+
+I thought this might be the transient response of the VREF buffer to
+the sampling current, but no, it is something else which seems related
+to the supplies.  VREF is glitching maybe 20 uV p-p, but there is also
+a similar difference across the ground plane.  The +10/-6 supplies
+seem pretty clean.
+
+The +5 supplies, including the "clean" +5 ANA are wandering up and
+down several mV at LF, with 30 mV p-p spiking.  But none of this seems
+to be making it through into the output on eg. +3.3V.
+
+However, +2.5V has 500 uV steps in it.  There is a really slow
+response tail on long glitches, which probably has to do with the AC
+coupling.
+
+Seeing 40 uV or more steps on VREF at the ADC, but this may be the
+actual load effect.  This is true when taken either wrt the local
+ground, or wrt. the main VREF testpoint.
+
+The drops across the ground plane, of 20 uV or so, are mainly
+left-to-right rather than top-to-bottom, so there it doesn't appear
+across the channels.  This is consistent with drops due to varying
+supply current.
+
+DC measurements using Fluke 8810A. Voltage drop across ground plane
+from ground turret to SDOB1 jack is 20 uV when not acquiring and 40 uV
+when running.  Drop from main VREF testpoint to channel is 20 uV idle,
+73 uV running.
+
+ ==> This glitching is probably not a big deal.  If I did the LV
+     regulators again I would probably have a separate regulator for
+     +5ANA/+5DIG going to the input cards.  But the crap that is there
+     on +5V does not seem to be making it through the regulators.
+     Probably more careful ground referencing in the reference buffer
+     would reduce the effect; we see glitching even right across the
+     VREF bus cap, which is supposed to be the exact quantity
+     stabilized by the reference buffer.  But the distribution IR
+     drops are larger.
+
+I did impulse response test on VREF, and ended up with about the same
+compensation trim as from the noise tuning.  I get 6.54K, which is
+close enough to the 6.8K I picked in simulation.
+
+
+[8 Feb 21]
+
+I'm measuring 540 nV RMS on VREF over 1 Hz - 1 kHz, using TEK 7A22 10 uV range
+and Ballantine 323.  This is not far from the noise floor, and there is hum,
+so this will be somewhat high.
+
+
+[7 Feb 21]
+ 
 Try:
  -- Load transient on VREF
  -- What noise level are we seeing as nV/rtHz, compared to what we expect?
@@ -203,6 +339,11 @@ pretty low anyway).  The reference buffer compensation does not intersect too
 strongly with any of these considerations, other than suggesting to avoid
 peaking, and not to push the corner much lower.
 
+ ==> See [18 April 20] for argument that the 10 Hz - 1 kHz reference noise
+     should ideally be less than 200 nV RMS or 6 nV/rtHz to contribute
+     negligibly. 
+
+
 
 [5 Feb 21]
 
@@ -217,9 +358,9 @@ the transient response, and noise analysis also plausibly claims that
 this considerably reduces the noise bandwidth.  But the reduction in
 bandwidth does also reduce the low frequency disturbance rejection by
 20 dB.  I could try testing ADC performance with and without, but it
-would probably hard to detect any difference.  ==> Note that the
-disturbance rejection is "only 30 dB", but this is re. a 1A nominal
-disturbance.  So the effective Zout is 30 mOhm.
+would probably hard to detect any difference.
+ ==> Note that the disturbance rejection is "only 30 dB", but this is
+     re. a 1A nominal disturbance.  So the effective Zout is 30 mOhm.
 
 Simulation says that replacing the ceramic reference bus caps with the
 poly aluminum would get rid of disturbance and noise peaking near
@@ -557,6 +698,7 @@ Only need 3 of 1/2 width (42 HP). (Good)
 6 84hp tapped strips
 2 81hp tapped strip
 What we need is 7 strips, 3 of which can be 1/2 width. So we are (good)
+ ==> There are narrow and wide strips.  External corner extrusions use the wide one.
 
 10 card guides (good)
 2 corner piece set (good if we have 2 handles on front)
@@ -994,6 +1136,8 @@ want a driver gain of at least 11.  The L25D board seems to have a feedback
 resistor of 130K and an input resistor of 3K, giving gain 43.  For gain 15 we
 would want 45K.  The board does have the 1 nF / 300 Ohm RFI filter.  Possibly
 I modified this on the IRAUDAMP7 boards to lower the corner?
+ ==> IRAUDAMP7 design manual says to change gain by adjusting the
+     input resistor, see [11 Feb 21].
 
 Maybe I would want to set the input pole at even say 20 kHz because of the
 excess noise in the DAC output.  I guess it would be nice to minimize the
@@ -4175,7 +4319,7 @@ uF/3.3K seems pretty good.  FWIW, leaded film capacitors in this range
 are still way way cheaper than SMT.
 
 
-[An interesting aside: the frequency response of all the LC filters
+[An interesting aside: the frequency response of all the RC filters
 does of course behave nicely linear, so that it would not affect the
 frequency response if the various stages were reordered.  But noise
 addition is nonlinear, and the noise sources are placed along the
@@ -5463,11 +5607,11 @@ terrible.
 
 Summary:
  -- To contribute negligibly, reference noise (from maybe 10 Hz to 1
-    kHz) should be something like 200 nV RMS. This comes from comparing
-    to channel bandwidth noise, rather than full ADC bandwidth.
-    Ignoring 1/f noise, this is a noise density of 6 nV/rtHz.  As long
-    as reference noise is rolling off, noise above 500 Hz or so will
-    contribute very little.
+    kHz) should be something like 200 nV RMS. This comes from comparing to
+    channel bandwidth noise, rather than full ADC bandwidth, because this
+    in-band reference noise will appear in every channel.  Ignoring 1/f noise,
+    this is a noise density of 6 nV/rtHz.  As long as reference noise is
+    rolling off, noise above 500 Hz or so will contribute very little.
 
 
 re. how much reference noise we would like.

@@ -35,7 +35,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 4875 1500 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 4875 1500 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 4875 1500 50  0001 C CNN "MPN"
-F 7 "27" H 4875 1500 50  0001 C CNN "DK line"
+F 7 "I.27" H 4875 1500 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 4875 1500 50  0001 C CNN "Manufacturer"
 	1    4875 1500
 	0    1    1    0   
@@ -91,7 +91,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 4875 2350 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 4875 2350 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 4875 2350 50  0001 C CNN "MPN"
-F 7 "27" H 4875 2350 50  0001 C CNN "DK line"
+F 7 "I.27" H 4875 2350 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 4875 2350 50  0001 C CNN "Manufacturer"
 	1    4875 2350
 	0    1    1    0   
@@ -152,7 +152,7 @@ F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 4100 5750 50  0001 C CNN
 F 4 "RES SMD 499 OHM 0.1% 1/4W 0805" H 4100 5750 50  0001 C CNN "Description"
 F 5 "A110514CT-ND" H 4100 5750 50  0001 C CNN "Digikey"
 F 6 "0.1%" H 4100 5750 50  0001 C CNN "Notes"
-F 7 "30" H 4100 5750 50  0001 C CNN "DK line"
+F 7 "I.30" H 4100 5750 50  0001 C CNN "DK line"
 F 8 "8-2176091-9" H 4100 5750 50  0001 C CNN "MPN"
 F 9 "TE Connectivity Passive Product" H 4100 5750 50  0001 C CNN "Manufacturer"
 	1    4100 5750
@@ -181,7 +181,7 @@ F 2 "Connector_PinHeader_2.00mm:PinHeader_2x02_P2.00mm_Vertical_SMD" H 3100 4050
 F 3 "~" H 3100 4050 50  0001 C CNN
 F 4 "CONN HEADER SMD 4POS 2MM" H 3100 4050 50  0001 C CNN "Description"
 F 5 "S6009-02-ND" H 3100 4050 50  0001 C CNN "Digikey"
-F 6 "32" H 3100 4050 50  0001 C CNN "DK line"
+F 6 "I.32" H 3100 4050 50  0001 C CNN "DK line"
 F 7 "NRPN022MAMS-RC" H 3100 4050 50  0001 C CNN "MPN"
 F 8 "Sullins Connector Solutions" H 3100 4050 50  0001 C CNN "Manufacturer"
 	1    3100 4050
@@ -208,7 +208,7 @@ F 2 "Resistor_SMD:R_0603_1608Metric" V 3140 4540 50  0001 C CNN
 F 3 "~" H 3100 4550 50  0001 C CNN
 F 4 "0.1%" V 3100 4550 50  0001 C CNN "Notes"
 F 5 "P100DBCT-ND" H 3100 4550 50  0001 C CNN "Digikey"
-F 6 "51" H 3100 4550 50  0001 C CNN "DK line"
+F 6 "I.51" H 3100 4550 50  0001 C CNN "DK line"
 F 7 "100 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 3100 4550 50  0001 C CNN "Description"
 F 8 "ERA-3AEB101V" H 3100 4550 50  0001 C CNN "MPN"
 F 9 "Panasonic Electronic Components" H 3100 4550 50  0001 C CNN "Manufacturer"
@@ -234,7 +234,7 @@ F 0 "R325" V 3600 4550 50  0000 C CNN
 F 1 "243" V 3400 4550 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3540 4540 50  0001 C CNN
 F 3 "~" H 3500 4550 50  0001 C CNN
-F 4 "57" H 3500 4550 50  0001 C CNN "DK line"
+F 4 "I.57" H 3500 4550 50  0001 C CNN "DK line"
 F 5 "243 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 3500 4550 50  0001 C CNN "Description"
 F 6 "P243DBCT-ND" H 3500 4550 50  0001 C CNN "Digikey"
 F 7 "ERA-3AEB2430V" H 3500 4550 50  0001 C CNN "MPN"
@@ -262,7 +262,7 @@ F 1 "1K" V 3800 4550 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3940 4540 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 3900 4550 50  0001 C CNN
 F 4 "0.1%" H 3900 4550 50  0001 C CNN "Notes"
-F 5 "48" H 3900 4550 50  0001 C CNN "DK line"
+F 5 "I.48" H 3900 4550 50  0001 C CNN "DK line"
 F 6 "RES SMD 1K OHM 0.1% 1/10W 0603" H 3900 4550 50  0001 C CNN "Description"
 F 7 "P1.0KDBCT-ND" H 3900 4550 50  0001 C CNN "Digikey"
 F 8 "ERA-3AEB102V" H 3900 4550 50  0001 C CNN "MPN"
@@ -364,7 +364,7 @@ F 1 "AD8599" H 3425 2100 60  0000 L CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 4200 2100 60  0001 L CNN
 F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/AD8597_8599.pdf" H 4200 2200 60  0001 L CNN
 F 4 "IC OPAMP GP 2 CIRCUIT 8SOIC" H 4200 2900 60  0001 L CNN "Description"
-F 5 "12" H 4000 1900 50  0001 C CNN "DK line"
+F 5 "I.12" H 4000 1900 50  0001 C CNN "DK line"
 F 6 "AD8599ARZ-ND" H 4000 1900 50  0001 C CNN "Digikey"
 F 7 "AD8599ARZ" H 4000 1900 50  0001 C CNN "MPN"
 F 8 "Analog Devices Inc." H 4000 1900 50  0001 C CNN "Manufacturer"
@@ -390,7 +390,7 @@ F 1 "AD8599" H 3625 6825 60  0000 L CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 4300 6750 60  0001 L CNN
 F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/AD8597_8599.pdf" H 4300 6850 60  0001 L CNN
 F 4 "IC OPAMP GP 2 CIRCUIT 8SOIC" H 4300 7550 60  0001 L CNN "Description"
-F 5 "12" H 4100 6550 50  0001 C CNN "DK line"
+F 5 "I.12" H 4100 6550 50  0001 C CNN "DK line"
 F 6 "AD8599ARZ-ND" H 4100 6550 50  0001 C CNN "Digikey"
 F 7 "AD8599ARZ" H 4100 6550 50  0001 C CNN "MPN"
 F 8 "Analog Devices Inc." H 4100 6550 50  0001 C CNN "Manufacturer"
@@ -440,7 +440,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 4600 2100 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 4600 2100 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 4600 2100 50  0001 C CNN "MPN"
-F 7 "27" H 4600 2100 50  0001 C CNN "DK line"
+F 7 "I.27" H 4600 2100 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 4600 2100 50  0001 C CNN "Manufacturer"
 	1    4600 2100
 	-1   0    0    1   
@@ -558,7 +558,7 @@ F 3 "http://www.vishay.com/docs/28758/tnpw_e3.pdf" H 4100 2850 50  0001 C CNN
 F 4 "RES SMD 499 OHM 0.1% 1/4W 0805" H 4100 2850 50  0001 C CNN "Description"
 F 5 "A110514CT-ND" H 4100 2850 50  0001 C CNN "Digikey"
 F 6 "0.1%" H 4100 2850 50  0001 C CNN "Notes"
-F 7 "30" H 4100 2850 50  0001 C CNN "DK line"
+F 7 "I.30" H 4100 2850 50  0001 C CNN "DK line"
 F 8 "8-2176091-9" H 4100 2850 50  0001 C CNN "MPN"
 F 9 "TE Connectivity Passive Product" H 4100 2850 50  0001 C CNN "Manufacturer"
 	1    4100 2850
@@ -584,8 +584,8 @@ F 4 "2% C0G" H 4100 5300 50  0001 C CNN "Notes"
 F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 4100 5300 50  0001 C CNN "Description"
 F 6 "490-8296-1-ND" H 4100 5300 50  0001 C CNN "Digikey"
 F 7 "GRM2195C1H103GA01D" H 4100 5300 50  0001 C CNN "MPN"
-F 8 "14" H 4100 5300 50  0001 C CNN "DK line"
-F 9 "Murata Electronics" H 4100 5300 50  0001 C CNN "Manufacturer"
+F 8 "I.14" H 4100 5300 50  0001 C CNN "DK line"
+F 9 "GRM2195C1H103GA01D" H 4100 5300 50  0001 C CNN "Manufacturer"
 	1    4100 5300
 	0    1    1    0   
 $EndComp
@@ -609,8 +609,8 @@ F 4 "2% C0G" H 4100 3350 50  0001 C CNN "Notes"
 F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 4100 3350 50  0001 C CNN "Description"
 F 6 "490-8296-1-ND" H 4100 3350 50  0001 C CNN "Digikey"
 F 7 "GRM2195C1H103GA01D" H 4100 3350 50  0001 C CNN "MPN"
-F 8 "14" H 4100 3350 50  0001 C CNN "DK line"
-F 9 "Murata Electronics" H 4100 3350 50  0001 C CNN "Manufacturer"
+F 8 "I.14" H 4100 3350 50  0001 C CNN "DK line"
+F 9 "GRM2195C1H103GA01D" H 4100 3350 50  0001 C CNN "Manufacturer"
 	1    4100 3350
 	0    1    1    0   
 $EndComp

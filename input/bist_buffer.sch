@@ -25,7 +25,7 @@ F 4 "OPA1679IDR" H 3350 3350 60  0001 L CNN "MPN"
 F 5 "IC AUDIO 4 CIRCUIT 14SOIC" H 3350 3850 60  0001 L CNN "Description"
 F 6 "Texas Instruments" H 3350 3950 60  0001 L CNN "Manufacturer"
 F 7 "296-46621-1-ND" H 3150 2850 50  0001 C CNN "Digikey"
-F 8 "31" H 3150 2850 50  0001 C CNN "DK line"
+F 8 "I.31" H 3150 2850 50  0001 C CNN "DK line"
 	1    3150 2850
 	1    0    0    -1  
 $EndComp
@@ -45,7 +45,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 3500 2450 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 3500 2450 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 3500 2450 50  0001 C CNN "MPN"
-F 7 "27" H 3500 2450 50  0001 C CNN "DK line"
+F 7 "I.27" H 3500 2450 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 3500 2450 50  0001 C CNN "Manufacturer"
 	1    3500 2450
 	0    1    1    0   
@@ -87,7 +87,7 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_d
 F 4 "CAP CER 1UF 16V X7R 0805 " H 3500 3300 50  0001 C CNN "Description"
 F 5 "1276-6471-1-ND" H 3500 3300 50  0001 C CNN "Digikey"
 F 6 "CL21B105KOFNNNG" H 3500 3300 50  0001 C CNN "MPN"
-F 7 "27" H 3500 3300 50  0001 C CNN "DK line"
+F 7 "I.27" H 3500 3300 50  0001 C CNN "DK line"
 F 8 "Samsung Electro-Mechanics" H 3500 3300 50  0001 C CNN "Manufacturer"
 	1    3500 3300
 	0    1    1    0   
@@ -156,7 +156,7 @@ F 1 "200" V 2200 2950 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 2340 2940 50  0001 C CNN
 F 3 "~" H 2300 2950 50  0001 C CNN
 F 4 "" H 2300 2950 50  0001 C CNN "Notes"
-F 5 "55" H 2300 2950 50  0001 C CNN "DK line"
+F 5 "I.55" H 2300 2950 50  0001 C CNN "DK line"
 F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 2300 2950 50  0001 C CNN "Description"
 F 7 "RNCP0603FTD200RCT-ND" H 2300 2950 50  0001 C CNN "Digikey"
 F 8 "RNCP0603FTD200R" H 2300 2950 50  0001 C CNN "MPN"
@@ -188,7 +188,7 @@ F 10 "/product-detail/en/texas-instruments/LM324ADR/296-9540-1-ND/405286" H 6100
 F 11 "296-9540-1-ND" H 6100 2850 50  0001 C CNN "Digi-Key_PN"
 F 12 "Linear - Amplifiers - Instrumentation, OP Amps, Buffer Amps" H 6100 2850 50  0001 C CNN "Family"
 F 13 "Active" H 6100 2850 50  0001 C CNN "Status"
-F 14 "31" H 6100 2850 50  0001 C CNN "DK line"
+F 14 "I.31" H 6100 2850 50  0001 C CNN "DK line"
 	2    6100 2850
 	1    0    0    -1  
 $EndComp
@@ -204,7 +204,7 @@ F 1 "200" V 5150 2950 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 5290 2940 50  0001 C CNN
 F 3 "~" H 5250 2950 50  0001 C CNN
 F 4 "" H 5250 2950 50  0001 C CNN "Notes"
-F 5 "55" H 5250 2950 50  0001 C CNN "DK line"
+F 5 "I.55" H 5250 2950 50  0001 C CNN "DK line"
 F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 5250 2950 50  0001 C CNN "Description"
 F 7 "RNCP0603FTD200RCT-ND" H 5250 2950 50  0001 C CNN "Digikey"
 F 8 "RNCP0603FTD200R" H 5250 2950 50  0001 C CNN "MPN"
@@ -234,7 +234,7 @@ F 10 "/product-detail/en/texas-instruments/LM324ADR/296-9540-1-ND/405286" H 3150
 F 11 "296-9540-1-ND" H 3150 4800 50  0001 C CNN "Digi-Key_PN"
 F 12 "Linear - Amplifiers - Instrumentation, OP Amps, Buffer Amps" H 3150 4800 50  0001 C CNN "Family"
 F 13 "Active" H 3150 4800 50  0001 C CNN "Status"
-F 14 "31" H 3150 4800 50  0001 C CNN "DK line"
+F 14 "I.31" H 3150 4800 50  0001 C CNN "DK line"
 	3    3150 4800
 	1    0    0    -1  
 $EndComp
@@ -250,7 +250,7 @@ F 1 "200" V 2225 4900 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 2365 4890 50  0001 C CNN
 F 3 "~" H 2325 4900 50  0001 C CNN
 F 4 "" H 2325 4900 50  0001 C CNN "Notes"
-F 5 "55" H 2325 4900 50  0001 C CNN "DK line"
+F 5 "I.55" H 2325 4900 50  0001 C CNN "DK line"
 F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 2325 4900 50  0001 C CNN "Description"
 F 7 "RNCP0603FTD200RCT-ND" H 2325 4900 50  0001 C CNN "Digikey"
 F 8 "RNCP0603FTD200R" H 2325 4900 50  0001 C CNN "MPN"
@@ -276,7 +276,7 @@ F 4 "OPA1679IDR" H 6300 5300 60  0001 L CNN "MPN"
 F 5 "IC AUDIO 4 CIRCUIT 14SOIC" H 6300 5800 60  0001 L CNN "Description"
 F 6 "Texas Instruments" H 6300 5900 60  0001 L CNN "Manufacturer"
 F 7 "296-46621-1-ND" H 6100 4800 50  0001 C CNN "Digikey"
-F 8 "31" H 6100 4800 50  0001 C CNN "DK line"
+F 8 "I.31" H 6100 4800 50  0001 C CNN "DK line"
 	4    6100 4800
 	1    0    0    -1  
 $EndComp
@@ -292,7 +292,7 @@ F 1 "200" V 5175 4900 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 5315 4890 50  0001 C CNN
 F 3 "~" H 5275 4900 50  0001 C CNN
 F 4 "" H 5275 4900 50  0001 C CNN "Notes"
-F 5 "55" H 5275 4900 50  0001 C CNN "DK line"
+F 5 "I.55" H 5275 4900 50  0001 C CNN "DK line"
 F 6 "200 Ohms ±1% 0.125W, 1/8W Chip Resistor 0603 (1608 Metric) Anti-Sulfur, Moisture Resistant Thin Film" H 5275 4900 50  0001 C CNN "Description"
 F 7 "RNCP0603FTD200RCT-ND" H 5275 4900 50  0001 C CNN "Digikey"
 F 8 "RNCP0603FTD200R" H 5275 4900 50  0001 C CNN "MPN"
@@ -341,8 +341,8 @@ F 4 "2% C0G" H 2600 3200 50  0001 C CNN "Notes"
 F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 2600 3200 50  0001 C CNN "Description"
 F 6 "490-8296-1-ND" H 2600 3200 50  0001 C CNN "Digikey"
 F 7 "GRM2195C1H103GA01D" H 2600 3200 50  0001 C CNN "MPN"
-F 8 "14" H 2600 3200 50  0001 C CNN "DK line"
-F 9 "Murata Electronics" H 2600 3200 50  0001 C CNN "Manufacturer"
+F 8 "I.14" H 2600 3200 50  0001 C CNN "DK line"
+F 9 "GRM2195C1H103GA01D" H 2600 3200 50  0001 C CNN "Manufacturer"
 	1    2600 3200
 	-1   0    0    1   
 $EndComp
@@ -381,8 +381,8 @@ F 4 "2% C0G" H 2600 5150 50  0001 C CNN "Notes"
 F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 2600 5150 50  0001 C CNN "Description"
 F 6 "490-8296-1-ND" H 2600 5150 50  0001 C CNN "Digikey"
 F 7 "GRM2195C1H103GA01D" H 2600 5150 50  0001 C CNN "MPN"
-F 8 "14" H 2600 5150 50  0001 C CNN "DK line"
-F 9 "Murata Electronics" H 2600 5150 50  0001 C CNN "Manufacturer"
+F 8 "I.14" H 2600 5150 50  0001 C CNN "DK line"
+F 9 "GRM2195C1H103GA01D" H 2600 5150 50  0001 C CNN "Manufacturer"
 	1    2600 5150
 	-1   0    0    1   
 $EndComp
@@ -433,8 +433,8 @@ F 4 "2% C0G" H 5550 5150 50  0001 C CNN "Notes"
 F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 5550 5150 50  0001 C CNN "Description"
 F 6 "490-8296-1-ND" H 5550 5150 50  0001 C CNN "Digikey"
 F 7 "GRM2195C1H103GA01D" H 5550 5150 50  0001 C CNN "MPN"
-F 8 "14" H 5550 5150 50  0001 C CNN "DK line"
-F 9 "Murata Electronics" H 5550 5150 50  0001 C CNN "Manufacturer"
+F 8 "I.14" H 5550 5150 50  0001 C CNN "DK line"
+F 9 "GRM2195C1H103GA01D" H 5550 5150 50  0001 C CNN "Manufacturer"
 	1    5550 5150
 	-1   0    0    1   
 $EndComp
@@ -505,8 +505,8 @@ F 4 "2% C0G" H 5550 3200 50  0001 C CNN "Notes"
 F 5 "CAP CER 10000PF 50V C0G/NP0 0805" H 5550 3200 50  0001 C CNN "Description"
 F 6 "490-8296-1-ND" H 5550 3200 50  0001 C CNN "Digikey"
 F 7 "GRM2195C1H103GA01D" H 5550 3200 50  0001 C CNN "MPN"
-F 8 "14" H 5550 3200 50  0001 C CNN "DK line"
-F 9 "Murata Electronics" H 5550 3200 50  0001 C CNN "Manufacturer"
+F 8 "I.14" H 5550 3200 50  0001 C CNN "DK line"
+F 9 "GRM2195C1H103GA01D" H 5550 3200 50  0001 C CNN "Manufacturer"
 	1    5550 3200
 	-1   0    0    1   
 $EndComp

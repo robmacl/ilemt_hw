@@ -143,8 +143,8 @@ Text Notes 7500 3000 0    50   ~ 0
 Gain
 Text Notes 5800 3000 0    50   ~ 0
 20 kHz LPF
-Text Notes 6600 2050 0    50   ~ 0
-With 3.3K input resistance on the driver board, the 5K pot can \nvary the gain down to about 1/3 of nominal.  But it's preferable to\nreduce the gain by increasing the feedback resistor on the driver\nboard.
+Text Notes 6650 1950 0    50   ~ 0
+The normal gain 40 input resistor on the 250W IRAUDAMP7 is 3K. \nI increased it to 4.99K on the boards, which gives us a gain range\nof 13-26 with RV1.  It would probably make more sense to put\nextra resistance here rather than do the board modification.\n
 Text Notes 4850 3950 0    50   ~ 0
 Having this lowpass filter here helps to suppress any high frequency\npickup due to the single-ended quasi-differential output, and\nalso reduces excess HF noise from the DAC sigma-delta which\nmight be aliased by the class-D modulator. \n\nThe driver board has a 300 Ohm/1 nF RFI filter onboard, which is\nsomewhat redundant, but does no harm.
 Connection ~ 6600 2650
@@ -210,4 +210,6 @@ Wire Wire Line
 Connection ~ 7350 2650
 Wire Wire Line
 	7350 2650 7450 2650
+Text Notes 4850 4550 0    50   ~ 0
+Note: this goes to an audio board which is based on the International Rectifier\nIRAUDAMP7 board, with the IRS2092 control chip.  This is the 250W variant with\n+/- 70V bus voltage.   I modifed the board by increasing the bus bypass caps, and\nalso removed the C13 "Zobel" network, which interferes with the output filter, and\nis also overloaded by our output.\n
 $EndSCHEMATC
