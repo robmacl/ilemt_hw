@@ -15,9 +15,9 @@ Todo:
 
 Critical path:
  -- Order box parts
- -- Update input board BOM
  -- Order input board BOM and other stuff (probe connector), RJ45 cable?
  -- Order new rev of input board
+ -- Get Kicad BOM description, MPN, etc., to match current Digikey BOM
  -- Get input board assembled?
 
  ==> Stuff to order

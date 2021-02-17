@@ -84,7 +84,7 @@ AR Path="/5E624B3C/5E45936E/5E23902C" Ref="FB103"  Part="1"
 AR Path="/5E62FD57/5DFCF14D/5E23902C" Ref="FB?"  Part="1" 
 AR Path="/5E62FD57/5E448095/5E23902C" Ref="FB?"  Part="1" 
 AR Path="/5E62FD57/5E45936E/5E23902C" Ref="FB?"  Part="1" 
-F 0 "FB302" H 2200 4387 60  0000 C CNN
+F 0 "FB103" H 2200 4387 60  0000 C CNN
 F 1 "21 Ohm" H 2200 4281 60  0000 C CNN
 F 2 "Inductor_SMD:L_0805_2012Metric" H 2400 4300 60  0001 L CNN
 F 3 "https://www.yuden.co.jp/productdata/catalog/chipbeads01_e.pdf" H 2400 4400 60  0001 L CNN
@@ -161,7 +161,7 @@ AR Path="/5E624B3C/5E45936E/5E23EF6F" Ref="C119"  Part="1"
 AR Path="/5E62FD57/5DFCF14D/5E23EF6F" Ref="C?"  Part="1" 
 AR Path="/5E62FD57/5E448095/5E23EF6F" Ref="C?"  Part="1" 
 AR Path="/5E62FD57/5E45936E/5E23EF6F" Ref="C?"  Part="1" 
-F 0 "C301" V 2950 4350 50  0000 C CNN
+F 0 "C119" V 2950 4350 50  0000 C CNN
 F 1 "330uF" V 2662 4350 50  0000 C CNN
 F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 2800 4350 50  0001 C CNN
 F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 2800 4350 50  0001 C CNN
@@ -211,7 +211,7 @@ AR Path="/5E624B3C/5E45936E/5E24179B" Ref="FB104"  Part="1"
 AR Path="/5E62FD57/5DFCF14D/5E24179B" Ref="FB?"  Part="1" 
 AR Path="/5E62FD57/5E448095/5E24179B" Ref="FB?"  Part="1" 
 AR Path="/5E62FD57/5E45936E/5E24179B" Ref="FB?"  Part="1" 
-F 0 "FB301" H 2150 5537 60  0000 C CNN
+F 0 "FB104" H 2150 5537 60  0000 C CNN
 F 1 "21 Ohm" H 2150 5431 60  0000 C CNN
 F 2 "Inductor_SMD:L_0805_2012Metric" H 2350 5450 60  0001 L CNN
 F 3 "https://www.yuden.co.jp/productdata/catalog/chipbeads01_e.pdf" H 2350 5550 60  0001 L CNN
@@ -242,7 +242,7 @@ AR Path="/5E624B3C/5E45936E/5E2417A1" Ref="C133"  Part="1"
 AR Path="/5E62FD57/5DFCF14D/5E2417A1" Ref="C?"  Part="1" 
 AR Path="/5E62FD57/5E448095/5E2417A1" Ref="C?"  Part="1" 
 AR Path="/5E62FD57/5E45936E/5E2417A1" Ref="C?"  Part="1" 
-F 0 "C302" V 2950 4950 50  0000 C CNN
+F 0 "C133" V 2950 4950 50  0000 C CNN
 F 1 "330uF" V 2662 4950 50  0000 C CNN
 F 2 "Capacitor_SMD:CP_Elec_8x6.7" H 2800 4950 50  0001 C CNN
 F 3 "http://www.chemi-con.co.jp/cgi-bin/CAT_DB/SEARCH/cat_db_al.cgi?e=e&j=p&pdfname=pxg" H 2800 4950 50  0001 C CNN

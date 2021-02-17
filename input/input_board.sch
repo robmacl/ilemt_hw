@@ -345,6 +345,7 @@ F 5 "I.51" H 1675 4450 50  0001 C CNN "DK line"
 F 6 "100 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 1675 4450 50  0001 C CNN "Description"
 F 7 "ERA-3AEB101V" H 1675 4450 50  0001 C CNN "MPN"
 F 8 "Panasonic Electronic Components" H 1675 4450 50  0001 C CNN "Manufacturer"
+F 9 "0.1%" H 1675 4450 50  0001 C CNN "Notes"
 	1    1675 4450
 	0    -1   -1   0   
 $EndComp
@@ -396,6 +397,7 @@ F 5 "I.51" H 1675 4850 50  0001 C CNN "DK line"
 F 6 "100 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 1675 4850 50  0001 C CNN "Description"
 F 7 "ERA-3AEB101V" H 1675 4850 50  0001 C CNN "MPN"
 F 8 "Panasonic Electronic Components" H 1675 4850 50  0001 C CNN "Manufacturer"
+F 9 "0.1%" H 1675 4850 50  0001 C CNN "Notes"
 	1    1675 4850
 	0    -1   -1   0   
 $EndComp
@@ -435,6 +437,7 @@ F 5 "I.51" H 1675 5250 50  0001 C CNN "DK line"
 F 6 "100 Ohms ±0.1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Automotive AEC-Q200 Thin Film" H 1675 5250 50  0001 C CNN "Description"
 F 7 "ERA-3AEB101V" H 1675 5250 50  0001 C CNN "MPN"
 F 8 "Panasonic Electronic Components" H 1675 5250 50  0001 C CNN "Manufacturer"
+F 9 "0.1%" H 1675 5250 50  0001 C CNN "Notes"
 	1    1675 5250
 	0    -1   -1   0   
 $EndComp
@@ -639,6 +642,7 @@ F 5 "RES SMD 1K OHM 0.1% 1/10W 0603" H 3950 6750 50  0001 C CNN "Description"
 F 6 "P1.0KDBCT-ND" H 3950 6750 50  0001 C CNN "Digikey"
 F 7 "ERA-3AEB102V" H 3950 6750 50  0001 C CNN "MPN"
 F 8 "Panasonic Electronic Components" H 3950 6750 50  0001 C CNN "Manufacturer"
+F 9 "0.1%" H 3950 6750 50  0001 C CNN "Notes"
 	1    3950 6750
 	1    0    0    -1  
 $EndComp
@@ -699,6 +703,7 @@ F 5 "RES SMD 1K OHM 0.1% 1/10W 0603" H 9525 3300 50  0001 C CNN "Description"
 F 6 "P1.0KDBCT-ND" H 9525 3300 50  0001 C CNN "Digikey"
 F 7 "ERA-3AEB102V" H 9525 3300 50  0001 C CNN "MPN"
 F 8 "Panasonic Electronic Components" H 9525 3300 50  0001 C CNN "Manufacturer"
+F 9 "0.1%" H 9525 3300 50  0001 C CNN "Notes"
 	1    9525 3300
 	0    -1   -1   0   
 $EndComp
@@ -796,6 +801,7 @@ F 5 "RES SMD 1K OHM 0.1% 1/10W 0603" H 3450 6750 50  0001 C CNN "Description"
 F 6 "P1.0KDBCT-ND" H 3450 6750 50  0001 C CNN "Digikey"
 F 7 "ERA-3AEB102V" H 3450 6750 50  0001 C CNN "MPN"
 F 8 "Panasonic Electronic Components" H 3450 6750 50  0001 C CNN "Manufacturer"
+F 9 "0.1%" H 3450 6750 50  0001 C CNN "Notes"
 	1    3450 6750
 	1    0    0    -1  
 $EndComp
@@ -817,6 +823,7 @@ F 5 "RES SMD 1K OHM 0.1% 1/10W 0603" H 4450 6750 50  0001 C CNN "Description"
 F 6 "P1.0KDBCT-ND" H 4450 6750 50  0001 C CNN "Digikey"
 F 7 "ERA-3AEB102V" H 4450 6750 50  0001 C CNN "MPN"
 F 8 "Panasonic Electronic Components" H 4450 6750 50  0001 C CNN "Manufacturer"
+F 9 "0.1%" H 4450 6750 50  0001 C CNN "Notes"
 	1    4450 6750
 	1    0    0    -1  
 $EndComp
