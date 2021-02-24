@@ -367,19 +367,19 @@ Wire Wire Line
 	3400 2900 3400 3950
 Text Notes 7100 6850 0    50   ~ 0
 Output filter and feedback sense for one source axis
-Text Notes 6650 5850 0    50   ~ 0
+Text Notes 6650 6150 0    50   ~ 0
 C_out\nCx01 + Cx05\n\n470 nF + 470 nF\n\n470 nF\n\n100 nF\n
-Text Notes 7500 5850 0    50   ~ 0
+Text Notes 7500 6150 0    50   ~ 0
 R_shunt\nRx01 || Rx06\n\n15 Ohm || 15 Ohm\n\n15 Ohm\n\nopen\n
-Text Notes 8400 5850 0    50   ~ 0
+Text Notes 8400 6150 0    50   ~ 0
 C_snub\nCx02\n\nopen\n\nopen\n\n100 nF\n
-Text Notes 8800 5850 0    50   ~ 0
+Text Notes 8800 6150 0    50   ~ 0
 R_snub\nRx02\n\nopen\n\nopen\n\n47 Ohm
-Text Notes 9250 5850 0    50   ~ 0
+Text Notes 9250 6150 0    50   ~ 0
 Parallel \nresonance\n\n9 kHz\n\n10.9 kHz\n\n12.8 kHz\n
-Text Notes 9800 5850 0    50   ~ 0
+Text Notes 9800 6150 0    50   ~ 0
 Series\nresonance\n\n25 kHz\n\n32 kHz\n\n46 kHz\n
-Text Notes 1300 7400 0    50   ~ 0
+Text Notes 1250 7700 0    50   ~ 0
 The 33 uH/470 nF output filter on the IRAUDAMP7 board leaves a 300 kHz PWM\nripple which can be several volts.  This output filter adds an additional second\norder section Lx01/Cx01 to reduce the ripple.\n\nAnother feature is that if C_out + 470 nF is parallel resonant with the source\ncoil at the high carrier frequency, then the driver has to supply very little\ncurrent for the high carrier.  The resonance is moderately broad, but if you\nhave to drive at a different frequency then it's better to go lower, because\nabove the resonance the input current becomes larger than the load current,\nwhereas below the two simply converge.\n\nWe add additional RC snubbers to dampen the series resonance of Lx01 + 33 uH.\nChannels have either Rx01 or Rx02/Cx02 snubbers, but not both.  The "Zobel\nnetwork" snubber on the IRAUDAMP7 is disconnected by removing the capacitor.\n\nSee simetrix/out_filter.sxsch and notebook.txt on 21-23 Jan 16.\n\nDamping the resonance may be a good practice in general, but in particular, this\nresonance for the 7.5 kHz carrier is very near annoying second harmonic\ndistortion products.  Even without those, the noise floor rises in a hump near\nthe resonance (above what it would be without the filter).  For the X channel,\nC101 places the parallel resonance at 8.5 kHz, a bit above the carrier, but\nmaintains considerable current reduction while shifting the series resonance up\nin frequency (above the second harmonic).\n\nPossibly this damping, or even the second filter stage itself, is not entirely\nnecessary.\n
 Text Notes 6600 3250 0    50   ~ 0
 V sense divide by 101
@@ -436,9 +436,9 @@ Connection ~ 3400 3950
 Connection ~ 4050 3950
 Wire Wire Line
 	4050 3950 4950 3950
-Text Notes 6500 5850 0    50   ~ 0
+Text Notes 6500 6150 0    50   ~ 0
 X:\n\nY:\n\nZ:
-Text Notes 10350 5850 0    50   ~ 0
+Text Notes 10350 6150 0    50   ~ 0
 Carrier freq\n\n7.5 kHz\n\n10.5 kHz\n\n13.5 kHz\n
 $Comp
 L Device:R_US R206
@@ -506,8 +506,8 @@ F 6 "Keystone Electronics" H 1500 3900 50  0001 C CNN "Manufacturer"
 	1    1500 3900
 	1    0    0    -1  
 $EndComp
-Text Notes 3900 4900 0    50   ~ 0
-Current transformer primary is 3 turns on Tx01, giving 100:1 current\nratio. Use 16 ga wire. Three turns means three passes through the\ncenter of the CT, starting from jumper pad 1, thru core in the arrow\ndirection (right to left), around the core and back thru 2 more times.\nThe last half-turn passes around the outside of the core, returning to\njumper pad 2.  In the PCB layout Y channel W301 is not right next to\nthe CT.  The wire run from the jumper pads to the CT should be\ntwisted.\n
+Text Notes 3850 5250 0    50   ~ 0
+Current transformer primary is 3 turns on Tx01, giving 100:1 current\nratio.  With Rx05 = 5.1 Ohm this gives 51 mV/A at the current sense\noutput, or 0.816 V/A after 16x gain on the input card.  The ADC full\nscale is 5V, so the peak current is 6.1A.\n\nUse 16 ga wire. Three turns means three passes through the\ncenter of the CT, starting from jumper pad 1, thru core in the arrow\ndirection (right to left), around the core and back thru 2 more times.\nThe last half-turn passes around the outside of the core, returning to\njumper pad 2.  In the PCB layout Y channel W301 is not right next to\nthe CT.  The wire run from the jumper pads to the CT should be\ntwisted.\n
 $Comp
 L Device:R_US R207
 U 1 1 5FDFDDFC

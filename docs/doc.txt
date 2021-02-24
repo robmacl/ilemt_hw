@@ -93,7 +93,7 @@ The present theory re. output levels is that the overall gain from digital
 code to coil voltage should be the same across channels, and also this level
 should be set by thermal limits (and near DAC full scale).  Turn off high
 carriers and then measure voltage at coil as 1.15 V RMS (with 0.05 peak low
-carrier amplitude).  See [26 Sep 19]
+carrier amplitude).  See [6 Nov 19] and [26 Sep 19]
 
 I have been setting the UR44 DAW output levels at -6 dB, but with
 drivers set for this level the PCM1794A board doesn't have enough

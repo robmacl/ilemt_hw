@@ -1,62 +1,27 @@
+Critical path:
+ -- FPGA BIST support
+ -- Supply cards
+
 Todo:
- -- Wire power side of box
- -- Fire it up!
+ -- Stock up parts, see [13 Jan 21], especially input board.  Get on reel
  -- Finish any input board testing:
      - DAC loopback
      - Overload test, supply current
-     - RJ45 AC coupling adapter/
-     - BIST?
+     - RJ45 AC coupling adapter
  -- Assemble input panel
  -- Fabricate:
      - Front panel
      - Back panel
-     - power supply chassis
  -- Special diff amp for reference testing, etc?
-
-Critical path:
- -- Order box parts
- -- Order input board BOM and other stuff (probe connector), RJ45 cable?
- -- Order new rev of input board
  -- Get Kicad BOM description, MPN, etc., to match current Digikey BOM
  -- Get input board assembled?
 
- ==> Stuff to order
- -- Got wrong probe connector, need 10 pin
- -- Stock up parts, see [13 Jan 21], especially input board.  Get on reel
- -- 8" rj45 patch cable x4
-
-Ordered:
- -- Microzed [Got 2 of '10, large '20 variant back-ordered]
- -- Source driver and supply cards.
-    [Got same driver cards. Got one different supply, need more if this works]
-
 
 Driver/box:
- -- Mechanical chassis/shield panel
-==> Need at least a temporary front panel and chassis plate
-==> Order more box rails, 1/2 width rails, another full box kit?
-    For recessed mount we need 2 more rails per box, and are already short a
-    couple.  For the steel L-sheet box divider concept, we want 1/2 length
-    rails holding the upper card guides and middle of the main board.  The
-    bottom rails (4) are full width because the divider/chassis sits on them.
-    So we need 4 of the full length outer rails (notched for the corner trim),
-    2 full length inner rails on the bottom, and 2 half-length inner rails in
-    the middle.  The front and back panels (we supply) are attached only at
-    the top and bottom rails because there are only those rails at front and
-    back.  IIRC the steel trim panels on top, bottom and sides connect only to
-    the corner brackets.  FWIW, the rails do not directly appear on the PO,
-    seem to be part of "kits".
-
- -- Need ground tie point on chassis plate.
- -- Move 15V supply holes forward 10mm
- -- A nuisance to have chassis plate mount by nuts hidden under the power
-    supply card. If we had a blind fastener would be good. Also, move rear
-    mount to back card rail, not back rail, so we can remove the back rail
-    more easily. 
+ -- Maybe move rear mount to back card rail, not back rail, so we can
+    remove the back rail more easily. 
  -- Shorten chassis plate maybe 5mm at front and back and narrow from 212 to
     208 mm.  This gives more clearance for surrounding stuff. 
- -- Poor access to power supply output terminals. Move 24V supply a bit left
-    and driver supply a bit right? 
 
 
 ________________
@@ -64,24 +29,8 @@ Input board revisions:
  -- Set up to work with LTC2500-32 ADC also, to help with possible supply
     issues.  Bring out pin 16 (LTC2500 SDI), have pin 10 (LTC2500 PRE) jumper
     to ground or float. 
-==> See if we can simulate, fix.
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
 
-Fixed in new rev 1:
- -- Change testpoint style, turret or at least larger hole.
- -- More ground TPs.  More exposed top ground pour.
- -- Board select logic, mux for one-wire and I2C, onboard eeprom.
- -- +8 remote sense line is shorted to bus too early by large vias.
- -- Q3E fuse trace is narrow.
-These revs also bodged:
- -- Change to new reference buffer supply setup (bodged, I think)
- -- Reference lowpass filter.
- -- Change V- regulator + supply to use +2.5 with ferrite bead.
- -- Fix filter frequency response by changing C129, C130, C111 (and
-    corresponding on other channels) to 10 nF. 
- -- Increase class A bias in reference buffer from 6 to 20 mA by
-    changing R5 from 499 to 499 || 499.  Note + rail for VREF buffer increased
-    from 8V to 10V due to getting rid of supply bootstrapping.
 ________________
 
 
@@ -180,10 +129,191 @@ Software & research tasks:
  -- EMI publication
 
 
-[15 Feb 21]
+[24 Feb 21]
+
+Misc observations from the full box testing:
+ -- In the current sense there is noticeable carrier output to source
+    coil even when drivers are powered off.  This is not spurious
+    cross coupling on the sense side because it goes away when the
+    source coil is disconnected.  I guess the driver input is making
+    it through to the output, and the source resonance is amping this
+    up a bit.
+ -- There is coupling from the DAC to the input card which is well
+    above the noise floor.  At some point I should do isolation
+    testing for output => input, between XYZ input channels, and
+    between input cards.  This may be enough to cause position error.
+
+I need to do more testing after BIST is turned off and carrier levels
+adjusted, but it tentatively seems that:
+ -- The input broadband noise floor is not improved all that much.
+ -- driver noise is perhaps lower, especially for the low carrier.
+ -- 1/f is hugely improved, which is significantly improving the
+    demodulated RMS noise.
+ -- Low rate noise seems *much* lower relative to high rate than it
+    used to be.
+ -- Low carrier cross coupling on the output is now a quite a bit
+    better, now comparable to the high carrier coupling.
+ -- The high coupling is perhaps worse.  This could be an output =>
+    input cross coupling rather than an actual output coupling.
+ -- There is no lowpass filtering that I can see on the high rate
+    output.  Is KF entirely disabled?  Might be noise adaptation
+    issue.
 
 
+re. drive levels, to get a direct comparison with previous results
+it's somewhat interesting to make the drive levels the same as the
+previous standard conditions, but since there are changes in the
+output side noise, and the low rate noise seems greatly reduced, it
+makes sense to shift the high/low drive ratio toward more high.
 
+The improved low rate noise may well be due to the DAC 1/f
+improvement, since the old 20 Hz 1/f corner was well above the ~3.5 Hz
+low rate bandwidth.  Any reduction in driver noise will also help low
+rate relatively more because the voltage amplitude at the low rate is
+much smaller.
+
+
+Notes on stuff fixed in rev1 of the input board, circuit changes also
+bodged on the current rev 0 board:
+
+These revs bodged (and on rev 1 board):
+ -- Change VCCIO +3.3V regulator to lower noise adjustable reg, move
+    bulk capacitor to by the regulator.
+ -- Add loop compensation resistor in reference buffer to get rid of
+    noise gain peaking and give a well-damped transient response.
+ -- Change VREF bus capacitor from ceramic caps to aluminum poly.
+ -- Change to new reference buffer supply setup
+ -- Reference lowpass filter.  Ground sense at the VREF bus cap.
+ -- Change V- regulator + supply to use +2.5 with ferrite bead.
+ -- Fix filter frequency response by changing C129, C130, C111 (and
+    corresponding on other channels) to 10 nF. 
+ -- Adjustment in class A bias resistors in reference buffer for 20
+    mA.
+
+Board/layout changes in rev 1, not bodged:
+ -- Added another ground turret tespoint, changed supply testpoints to
+    loop style, rather than just a hole.
+ -- Board select logic, mux for one-wire and I2C, onboard eeprom.
+ -- +8 remote sense line is shorted to bus too early by large vias.
+ -- Q3E fuse trace is narrow.
+ -- Added bottom side ground pour in power area to reduce ground
+    plane resistance.
+ -- Move chassis ground input protection off of the input board, now
+    on the input panel.
+
+
+[23 Feb 21]
+
+ ==> Do something about BIST.  As well as possibly injecting noise
+     into the input, it is messing up the DC bias.  We are sitting at
+     0.24V, not 2.5V.  This makes all the measurements I just took
+     (below) rather dubious, especially near full scale.
+
+
+I got the box working with the drivers and the (old non-dipole) source
+and sensor coils.  The noise results are extremely encouraging.  I
+would need to compare in detail with earlier data, but noise seems
+much better than even what I was getting with the eval board box.
+
+It seems there is not any bandwidth limit on the high rate demodulated
+output from eg. KF?  The noise spectrum is flat.  Wrong parameter
+value, or turned off?
+
+1/f is greatly improved, corner dropping from ~20 Hz to about 3 Hz.
+This is without the current feedback.  This is pretty much what I saw
+when I hacked into the DAC reference using the eval board setup, see
+[6 Oct 20].  Reference feedback should further improve this.
+
+What is more of a surprise is that it seems like the broadband noise
+floor (no or low signal) is improved maybe 10 dB, wrt. the eval board,
+and also wrt. the earlier input board testing.  If true, the most
+plausible explanation I can think of is my recent mods to the input
+board supplies, and especially the reworking of the +3.3V VCCIO supply
+to have much lower noise, and also not to run the bulk capacitor noise
+currents all across the ground plane.
+
+It also seems that low carrier noise is significantly improved?  This
+is probably at least in part to the general noise floor improvement,
+but I think the driver noise is also improved.  This would be expected
+with the reduced driver gain.  The D is significantly improved?  This
+is probably at least in part to the general noise floor improvement,
+but I think the driver noise is also improved.  This would be expected
+with the reduced driver gain.  The DAC may also be interacting with
+driver better due to the lower rolloff on the DAC board and driver
+breakout.
+
+And the noise floor rise in presence of signal is also improved?  This
+could be due to lower ADC reference noise wrt. the eval board.
+
+[There is no noise floor humping at all in the vicinity of the
+carriers.  I don't recall, but this may have been the case ever since
+the switch from sigma-delta ADC to the oversampling SAR.]
+
+See [6 Nov 19] for last round of noise measurements comparing UR44 and
+the eval board box (using the RMS noise of the demodulated signal).  I
+think this is more or less the state of the art in the noise
+measurements.
+
+[26 Sep 19] has a bunch of noise floor measurements.  There was then
+about a 10 dB drop in SNR from input shorted to "all on".
+
+
+It's not easy to do an exact comparison between the old measurements
+and the new ones because I don't have adjustable gain trims on the
+inputs and outputs (well, I do on the outputs, but they are set at
+min).
+
+What should the current feedback scale be?  From [17 Dec 20]:
+    scale V/A = G * R / N
+where G = amp gain, R = sense resistor, N = CT ratio.  We have:
+    scale = 16 * 5.1 / 100 = 0.816 V/A
+
+ADC full scale is 5V, so full scale current is 6.13A peak.  According
+to this my low carrier X current is 0.318 * 6.13 = 1.95.  Using
+current probe with scope and 323 RMS meter I get 1.8A, which is fair
+agreement.
+[6.13A full scale would be 4.3A RMS for a single sine, but our crest
+factor is higher with the double carrier.]
+
+Carrier current according to current sense w/ 6.13A FS:
+Low:         1.94A	1.74A	1.82A
+High:        1.49A	1.48A	1.42A
+Combined:    2.45A	2.29A	2.31A
+
+Not entirely sure what currents I ended up with.  Back then, I reduced
+the low drive from 0.05 to 0.03 after current measurement, so the low
+current should have been around 3/5 of the measurement, or around
+1.8A.  This is also about what we have now.  But the high carriers are
+significantly low compared to then, roughly 1/2.
+
+With 0.85 drive we have:
+High:        2.64A	2.62A	2.52A
+
+Hmmn, something in the driver wasn't happy with 0.85/0.03 drive, was
+in hiccup mode.  It is OK with one channel doing that, so maybe the
+power supply?  But also we are clipping on the current sense.  I've
+gone to 0.7/0.03.  This is giving:
+Low:         1.94A	1.74A	1.82A   (unchanged, copied from above)
+High:	     2.18A	2.16A	2.07A
+Combined:    2.91A	2.76A	2.75A
+
+This is still significantly lower than the [26 Sep 19] values.  Maybe
+increase the driver gain trims?  May have been clipping in the DAC
+with the 0.85/0.03, and that might cause driver issues, bus pumping,
+etc.  IDK
+
+
+Oh, yeah, also the low carrier cross coupling in the current sense is
+way better.  From [17 May 19]:
+    It remains the case that the low carrier axis cross coupling is
+    significantly worse, something like -48 dB vs -62 dB, or 14 dB
+    worse.
+
+Now I am seeing maybe -62 dB low and -55 dB high.  So possibly high
+has gotten worse.  Don't know about high (drivers in same box probably
+an issues), but the low improvement was what I wanted the
+quasi-differential output to solve.  Maybe this is reducing noise
+coupled into the low carrier, improving low SNR?
 
 
 [11 Feb 21]
@@ -10073,7 +10203,7 @@ calibrate with the YZ carriers off using UR44.
 
  ==> OK, I spent a half day on this, and I think I finally have the
      calibration and distance processing sorted.  I realized that what
-     I was doing with that loop in state_to_calibration was solving
+     I was doing with the loop in state_to_calibration: solving
      for the low carrer Ks.  I kept this (without the loop and discarded high
      carrier re-solution), ripped out the 2D Ks array in the
      calibration.  Also, when I added a test for the calibration being
@@ -10692,10 +10822,10 @@ Summary:
     transformer (unless fixed this would likely make current sense ineffective
     for pre-distortion).
 
-I set levels at 129mm as described above (1.43V at coil, input gains equal.
-Theory is that this should give roughly equal sensor outputs (modulo magnetic
-configuration and sensor assymmetry), with higher current at the lower
-carriers.
+I set levels at 129mm as described above (1.43V low carrier at coil,
+input gains equal).  Theory is that this should give roughly equal
+sensor outputs (modulo magnetic configuration and sensor assymmetry),
+with higher current at the lower carriers.
 
 I checked that the current sense inputs are equal by swapping sense cables at
 the driver box.  With both carriers I am getting currents:
@@ -12830,7 +12960,7 @@ coils are shorted.
 
 See [5 Apr 19] re. effect of current sense on high vs. low and
 possible mechanisms of drift.  I recall more recently having some
-brain wave about drift and the effectiveness of the current sense
+brainwave about drift and the effectiveness of the current sense
 feedback.  (That is, current sense is much more effective at low
 vs. high.)  But I can't find any notes.
 
