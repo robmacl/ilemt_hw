@@ -100,8 +100,12 @@ Other hardware issues:
  -- Stage refinements: Ry axis, slider mod for Rx axis.
 
 Don't forget:
- -- Revisit input board stage 1 opamp selection, may want higher bandwidth for low
-    distortion, PSRR, CMRR.
+ -- Input board BIST is broken?  Had to rip out the buffer.  Do we want a
+    different opamp or some ESD protection?  The DAC has so much noise that
+    there is not much benefit from a low noise opamp, I think.  This is
+    perhaps a MOSFET input, IDK.
+ -- Revisit input board stage 1 opamp selection, may want higher bandwidth for
+    low distortion, PSRR, CMRR.
  -- Some scaling problem in the spectrum window when looking at "Chart high"?
     The plot moves way up and down depending on the FFT parameters, window,
     etc., and seems basically too low.
@@ -127,6 +131,925 @@ Software & research tasks:
      - Navio test publication
  -- EMI testing, lab and onsite.
  -- EMI publication
+
+
+[3 Mar 21]
+
+Summary:
+
+I think it's time to move on from the distortion and cross coupling, and
+finish the input boards and box.  I figured some things out, but there are new
+mysteries from new measurements.
+ -- The distortion seems to be about -80 dBc, and seems to be mostly happening
+    in the drivers.
+ -- The source cross coupling is somewhere between -60 and -80 dB, depending
+    on which channel you look at, and how you measure it.  Cross coupling is
+    significantly higher in the current sense.  The V sense cross coupling is
+    not much affected when the source is disconnected, so is not caused by
+    source coil interactions.
+ -- Cross coupling in the shorted input is -110 to -120 dB, but ...
+ -- In cross coupling measurements you have to be *super careful* of effects
+    from the *source* field itself.  This couples into the box.
+ -- Magnetic shielding around the input cards might be a good idea, since it
+    would help with both inside-box and external cross coupling.
+ -- Detailed distortion results are somewhat puzzling.  I don't understand why
+    we have the distortion tones that we do, and the off-diagonal distortion is
+    bigger than I would expect.  This is especially puzzling when only one
+    source axis is driven.
+ -- There is still much more distortion in the current sense than in the
+    sensor or V sense.  Also, the cross coupling is different too.  So it is
+    seeming that current sense may be difficult to use for cancellation
+    of either of these.
+ -- Distortion and cross-coupling differences between V and I sense are
+    presumed to be measurement artifacts.  The only "real" explanation would
+    be nonlinearity in the source coil.  Would be interesting to compare the
+    air-core dipole-approximating source.
+ -- I've left the DAC power input connected to the driver power supply aux
+    outputs, which may not be a good thing.
+
+
+
+What happens to distortion when we drop out some carriers:
+(200mm, dBFS sensor levels)
+
+Distortion levels with YZ drive off:
+    -93.303	-112.045	-116.688	
+    -119.241	-124.193	-127.387	
+    -103.825	-123.100	-127.266	
+
+Peaks at 274, 429 and 703 Hz
+
+All on:
+    -93.347	-102.469	-104.457	
+    -106.913	-99.846		-112.909	
+    -103.230	-116.090	-95.645	
+
+Peaks are the same.
+
+BTW, this is the all-on coupling:
+    -14.217	-78.110		-86.276	
+    -56.450	-18.412		-55.559	
+    -55.457	-51.546		-17.140	
+
+Here's distortion as dBc, all carriers:
+    -79.222	-24.560		-18.405	
+    -50.490	-81.594		-57.192	
+    -47.968	-65.129		-78.781	
+
+And distortion w/o YZ carriers, re. ref level dBc:
+    -79.273	-34.311		-30.749	
+    -62.557	-104.443	-69.552	
+    -48.751	-69.207		-103.589
+
+The difference in the off-axis terms is less than I was expecting.  The ZX and
+ZY hardly changed, and XY, XZ, YX, YZ only dropped 10 dB.  But the dBc
+measurements are deceptive because some of the carrier-on distortion values
+are not too far from the noise floor, so they can't drop all that much.  It
+still is odd that ZX didn't change.
+
+
+From [2 Mar 21]:
+
+V sense cross coupling:
+    -7.470	-85.685	-86.420	
+    -88.122	-7.429	-76.559	
+    -81.502	-75.359	-7.383
+
+This is the high carrier coupling in the current sense via the input board:
+    -14.272	-103.059	-109.133	
+    -90.076	-16.642		-74.709	
+    -100.950	-76.837		-17.183
+
+I was just registering the possible signifcance of the V sense and I sense
+cross couplings being different, which I saw on [2 mar 21].  Most obviously,
+this means I sense may not be effective for compensating cross coupling.  But
+also I wonder about the mechanism.  Since the I sense couplings are higher,
+and also more variable, it could be that the I sense is experiencing spurious
+coupling into the measurement.
+
+This is the current sense coupling relative to the V sense:
+    -6.794	-14.442		-34.226
+    -2.182	-9.204		1.837	
+    -21.023	-1.407		-9.792	
+
+The current sense scale is overall around 9 dB lower, but some of the
+couplings have dropped much more than you would expect (XZ and ZX), while the
+others have dropped rather less than expected.  Eh, IDK.  A much lower
+levels is somewhat inconsistent with extra spurious cross coupling into the I
+sense, though it is possible with the V/I or other phase shifts.
+
+
+[2 Mar 21]
+
+Summary:
+ -- Investigation of distortion, confusion, then added "Distortion" source in
+    levels display.  Distortion seems to be about the same as [26 Sep 19].
+    Distortion in the current sense is +5 ... +15 dB worse than over air or
+    voltage sense.  This is improved maybe 5 dB over [26 Sep 19], but still
+    enough to make the current sense useless for distortion measurement.
+ -- Flaky changing varying distortion seen.  Maybe bad connection?
+ -- The high/low distortion as dBc should not change in the various signals
+    along the path unless there is nonlinearity.  Even with moderate non-flat
+    frequency response, the spurs are so close to the carrier that they will
+    be affected much the same.
+ -- There are some large unexplained tones in the demodulated signal.  Maybe
+    3'rd order?
+ -- Distortion on V sense is not much affected by input gain change.
+ -- V sense cross coupling does not get better when source coil is
+    disconnected, perhaps even a bit worse.  So cross coupling is not
+    happening in the source.
+ -- With distortion levels matrix, the sensor channel distortion is seen to be
+    much the same across channels, source axes are pretty similar too.  In
+    standard orientation there is more distortion on the diagonal because
+    there is more signal.
+ -- Measured as dBc, distortion is *higher* on the off-axis couplings.  This
+    suggests that the source cross coupling is enriched for distortion.  Maybe
+    there is another mechanism injecting this distortion which is not relative
+    to the channel's nominal carrier?  3'rd order, etc.  Note that the carrier
+    levels display is only the carrier magnitude, not including other stuff in
+    the channel.
+ -- Distortion in the input (and V sense) is about -80 dB, which is not too
+    bad from an audio distortion perspective, but way above the noise floor,
+    so we have to deal with it somehow.
+ -- V sense and I sense cross couplings are also noticeably different.
+ -- It is seeming like it is not a good idea to try to cancel distortion on
+    the source side.  Current feedback will not work, and what we care about
+    is the received distortion.  
+
+
+[### This "distortion amplitude" is wrong, see below.  This is just the source
+X row in the distortion, so the X being bigger is spurious.  So ignore about X
+being worse.]
+
+Now the distortion amplitude is showing as:
+    -97 dB	-106 dB	     -106 dB
+
+So X is looking distinctly worse, although the "funny" humping and drift is
+not there.  This extra X distortion is happening only on the V sense, not in
+the I sense.  
+
+Hmmn, wiggling the driver connectors on the output board causes noticeable
+glitching on that channel.  Z seems a bit worse.  This is pretty equal,
+probably doesn't have to do with the excess X distortion.
+
+Dropping the gain to 2 does not change the excess X distortion on V sense.
+
+One thing that is different about V sense is that the signal is unbalanced.
+
+Well, that's certainly annoying for my distortion test plans, but the V sense
+is not part of the intended operation.
+
+
+On current sense, run into 89410A, using AC cable with input board
+disconnected, I am seeing source cross coupling:
+
+    0		-75	-83
+    <-90	0	-60
+    <-90	-57	0
+
+
+This is the high carrier coupling in the current sense via the input board:
+    -14.272	-103.059	-109.133	
+    -90.076	-16.642		-74.709	
+    -100.950	-76.837		-17.183
+
+After converting to dBc this is in pretty good agreement for the high YZ ZY
+cross couplings.
+
+V sense cross coupling:
+    -7.470	-85.685	-86.420	
+    -88.122	-7.429	-76.559	
+    -81.502	-75.359	-7.383
+
+So V sense agrees with "I" sense that YZ ZY are worse.  In V sense the
+off-axis couplings are moderately consistent at about -80 dBc, while in "I"
+sense the weak couplings are less consistent.  The average cross coupling may
+be lower in I sense, but what matters is probably the worst coupling.  The
+badness of the bad YZ ZY couplings is relatively less in V than in I, -70 dBc
+vs, -60 dBc.
+ ==> So V sense and I sense cross couplings are noticeably different?  This is
+     not a good sign for compensating cross coupling via I sense.
+
+When I disconnect the source, the V sense couplings are:
+    -5.472	-77.969	-77.266	
+    -76.647	-5.281	-75.113	
+    -77.727	-71.778	-4.876	
+
+This is pretty similar to with the source connected, or even a bit worse.  So
+it does not seem that the cross coupling is happening in the source.
+
+Distortion amplitude is:
+    -106   -106	     -105
+
+With source connected again, distortion is:
+    -96	   -106      -105
+
+So the excess X distortion on V sense happens only with the source connected.
+
+Hm, now using the sensor, I am now seeing about 10 dB more distortion on X,
+even though the signal is only around 3-4 dB stronger (due to the magnetic
+configuration.  And when I rotate 90, the distortion moves to the Y sensor
+channel.  So it seems that the higher X distortion is a real thing which is
+only seen in the voltage, and only appears in interaction between the driver,
+filter and source.  I am not quite sure what to make of the voltage being
+distorted when the current is not.  Does this make sense?
+
+AFAICT, the only way the IMD sideband relative to carrier can be different for
+voltage and current is if the source is nonlinear.  This is not entirely
+surprising for a ferrite core.
+
+This is another reason why it is not a good idea to cancel distortion using
+the current sense.  What we care about is the signal seen on the input.
+
+The biggest distortion tones on the X source (Y axis) are:
+    274 Hz  -120 dB
+    429 Hz  -120 dB
+    703 Hz  -124 dB
+
+274 Hz is the X low carrier.  548 @ -122 dB is 2x low carrier.  Not sure where
+the others come from.
+
+Back to standard sensor orientation, but still gain 6
+    
+The X source distortion seems more prominent in the output at longer ranges,
+eg. at 260 mm I get:
+    -118 dB   -128 dB	-129 dB
+
+But at 130 mm:
+    -94	   -98	-100
+
+Possibly this could be because input distortion increases at the higher
+levels?  IDK.  Hm, that was actually still at gain 6.  Let's try 16.
+
+At 130 mm:
+    -85	-89	-92
+
+
+ ==> Oh, I was confused.  In looking at the distortion model, I had forgotten
+     that there are 9 models, one for each coupling.  The excess X distortion
+     idea is not well founded.
+
+I think I need to write some distortion analysis features.
+
+OK, I added "Distortion" as a source for the levels tab, and fiddled with both
+it and the time domain statistics to get them to agree.  I needed to add "DC"
+coupling to the time domain because the distortion magnitude is a non-negative
+magnitude.  With this display of all the distortion terms, it is clear that
+there is not much difference in distortion by channel/axis.
+    -101.486	-113.650	-115.274	
+    -117.387	-107.574	-120.735	
+    -111.131	-119.405	-103.210	
+
+In standard orientation then on-diagonal distortion is larger because the on
+diagonal signal is stronger.  If we look at distortion relative to "carrier"
+then:
+    -80.569	-48.221	-60.203	
+    -30.814	-82.534	-57.181	
+    -49.008	-59.782	-79.364	
+
+Distortion relative to carrier is basically the same across source axes.  The
+off-diagonal terms are conspicuously inflated relative to carrier.  [Also on
+the sense, see below.]
+
+Also, the distortion is roughly in line with what I get from the carrier -
+spur in the spectrum.  Eg. for X-X, the peak spur is -86 dBc, which is close
+to the -80 dBc above.  It makes sense that the distortion number is higher
+since it includes all the distortion in the passband, and also some noise.
+
+
+Looking at current sense (gain 6), this is the distortion relative to FS:
+    -80.776	-80.587	-78.871	
+    -90.001	-89.312	-87.900	
+    -95.630	-96.487	-91.734	
+
+And relative to carrier:
+    -66.801	19.780	52.887	
+    -0.208	-72.971	-13.520	
+    6.998	-19.988	-74.855	
+
+Distortion relative to carrier is significantly worse than at the sensor, +14
+dB, +10 dB, +5 dB.  Not sure what to make of the relative flatness of dBFS
+across wide carrier variation.  The noise floor is about -130 dB here, so this
+isn't explained by noise.  Perhaps the cross-coupling is disproportionately
+composed of distortion, rather than carrier?
+
+Comparing to [26 Sep 19], I was using the peak difference in spectrum method
+then, but both the over-air and current sense distortion are about the same as
+now, measured as dBc.
+
+
+On V sense, dBFS:
+    -89.176	-98.929		-97.761	
+    -106.888	-90.467		-105.524	
+    -97.283	-107.244	-85.790	
+
+And dBC:
+    -82.026	-13.507	-11.478	
+    -19.714	-83.324	-29.377	
+    -16.125	-32.282	-78.689	
+
+There is pretty good agreement between V sense and sensor input, a bit lower
+on V sense, which is plausible due to the lower gain.
+
+Once again, note the relative flatness of distortion dB FS, even with the big
+carrier variation (the source cross coupling):
+    -7.315	-85.573	-86.425	
+    -87.437	-7.286	-76.265	
+    -81.269	-75.072	-7.240	
+
+If I zero the low carrier drive, then the distortion drops to:
+    -115.415	-130.532	-132.131	
+    -130.829	-115.422	-132.087	
+    -131.223	-123.292	-115.058	
+
+Those off-axis distortion terms are way way above the noise floor.  This is
+consistent with the idea that the cross-coupling is enriched for
+distortion.  Distorted cross coupling is what you would expect from power
+supply coupling, for example.  The diagonal "distortion" with only high
+carrier seems to be just the 1/f noise in the carrier amplitude, it is not a
+stable pattern.
+
+Side note: It's a consequence of the carrier location that the high/low IMD is
+the only distortion that causes problems.  Harmonic distortion of the high
+carriers does not fall in any passband (too high frequency).  The high carrier
+differences are in the kHz range where we have no carriers.  Also, distortion
+is mainly a source side thing, and each driver only has only a single high/low
+pair.  Well, maybe.  I'm not sure where all those distortion tones are coming
+from, the 429 Hz and 703 Hz.
+[Third order IMD, intermodulation with carrier harmonics could still be a
+problem.  Even though higher carrier 2nd harmonic, etc. are outside of the
+input passband, they still exist on the source side, and will intermodulate.]
+
+
+
+[1 Mar 21]
+
+Todo:
+ -- Come to conclusion on DAC->input cross coupling.  Try changing the DAC
+    supply.  Investigate causes, why does driver-on interference increase with
+    higher LPF impedance on breakout board.
+ -- Look at current readback now that YZ channels are flat.
+ -- Look at voltage readback, especially compare voltage and current
+    distortion.
+ -- Test input cross-coupling at loopback at gain 16 using attenuator.
+ -- Document performance baselines for signal path fidelity, doc.txt I
+    guess.  Noise levels, cross coupling and distortion.  Expected
+    interference, hum.
+ -- Test and retune Kalman filter.  Not limiting bandwidth, is burst
+    noise rejection still working?
+ -- Input boards, update noise performance
+ -- Front and back panels, input panel, anything else to finish box.
+ -- Get hum filter working, change clock, or any other way.
+ -- Implement output/input synch in FPGA
+ -- Evaluate commercial sensor coils
+ -- Prepare for in-vivo testing:
+     - Test out dual ASAP/ILEMT operation, output comparison. 
+     - Data logging, probably via ilemt_ui, but need time synch with ASAP.
+       Could have data sent from Micron to ilemt_ui, but would also need to
+       send to Arpita.
+
+
+I changed to using the driver aux supply for the DAC analog supplies, and am
+getting this coupling to the shorted input (can only do with driver on).  I
+dressed the supply wire along the DAC output wires and pinched down the loops
+in the cables to minimize loop area.  This should help with the drive current
+loop magnetic coupling theory.
+    -108.355	-108.658	-116.493	
+    -104.004	-100.264	-100.791	
+    -103.639	-100.308	-101.705
+
+
+So, this is even a bit worse than we left it after the breakout LPF mod on
+[28 Feb 21].  The driver *off* coupling was significantly helped by the LPF
+change, though.
+
+One observation is that current *can* flow in the driver cable, limited by the
+10 Ohm resistor on the quasi-differential output and whatever the ground
+difference is.
+
+
+So, I adjusted the driver gain trims so that outputs XYZ all are 25V RMS (for
+high and low combined).  This will be dominated by the high carrier.  This had
+a fairly minimal effect because the voltage rolloff was not too much, but the
+updated driver-on cross coupling into shorted input is:
+    -108.025	-108.478	-116.464
+    -103.146	-99.409		-99.880	
+    -101.662	-98.465		-99.602	
+
+The Z level increased about 2 dB, and so did the cross coupling.
+
+With current sense (gain 6, 16.3A FS) I am getting:
+Low:         1.74A	1.68A	1.99A
+High:        2.28A	1.73A	1.63A
+Combined:    2.87A	2.41A	2.56A
+
+We do now see the sort of high carrier current rolloff I was expecting (now
+that we hold the high carrier voltage pretty much flat).  On [25 Feb 21] the
+output voltages ranged from 28V RMS down to 22.  Of course we have a drive
+level knob for each of these numbers, and can make them whatever we want
+within the limits of the DAC full scale.  It's not going to be possible to
+make the high and low carrier voltages all equal across channels by a gain
+trim because of the lowpass rolloff in the driver LPF (and elsewhere).
+
+ ==> OOPS!  I had moved the source coil back to right near the box at the time
+     when I changed the driver LPF.
+
+With the source back across the room, the coupling into shorted input (drivers
+on) is now:
+    -119.375	-112.825	-115.814	
+    -120.431	-115.798	-117.639	
+    -118.416	-115.275	-109.217	
+
+This is back to pretty much what I was getting before the LPF change, with
+some differences perhaps explained by the drive level change.  Looking a the
+max across source axes per input channel, I see:
+    109-118 = -9	111-113 = -2		114-109 = +5
+
+
+Hmmn, OK, there are *big* changes in the coupling depending on how I orient
+the source.  If I set ref in one orientation, then rotate 90 degees (while
+keeping distance the same), I get shorted input coupling changes (dB) of:
+    -8.060	-9.546	-2.415	
+    4.073	0.323	-0.553	
+    -1.126	0.433	0.217
+
+Or, oh yeah, just rotating my dual bananna shorting block 90 degrees is the
+same size effect.  
+
+ -- The routing of the DAC power cable does not seem to matter
+ -- The routing of the DAC output cables makes a big difference.  It is much
+    better to run them over the top of the DAC card than to pass them by the
+    input card front end.  Can get +16 dB by making the cables into a loop and
+    holding them close to the input section.
+
+The Z-Z coupling seems persistently the worst, and not much affected by any of
+the things I tried, including moving the source.  Now, the Z driver is
+*closest* to the input card.
+ ==> OK, when I put one of the steel box sides vertically between the Z driver
+     and the card slots, the higher Z couplings improve significantly,
+     3 dB on Z-Z.
+
+So an internal shield would surely help somewhat, but really -109 dB is almost
+certainly fine.  Effects from the source to the box innards is more of a
+concern, and something to keep an eye on.  Steel front and back panels are
+seeming like a good idea.
+
+
+Looking a the V sense, with AC coupling connector.  Gain 6.  The V sense is
+supposed to be 101x.  That would be 84V full scale.  That about checks out.
+I'm showing all the channels at about 25.6V, close to the 25V I set using the
+179 meter.  So, what about distortion?
+
+Residue dB in time domain is:
+    -83    	-89	-84
+
+Distortion amplitude:
+    -100	-107	-105
+
+Ok, so the distortion model is less than the residue.  Not sure residue and
+distortion model are directly commensurate anyway, but I thought I had seen
+the distortion being bigger, which can't be true if if the units are the same,
+since the residue includes noise and also harmonics we don't care about.
+
+Interesting that the X distortion model amplitude is worse, and also the X
+model is "uglier" in the frequency domain, higher, and with humping.
+
+Huh, I'm seeing considerable time variation in the voltage readback, 1/f or
+whatever.  Big enough to cause noticeable base broadening in the spectrum,
+vector amplitude jumps of 35m.
+
+ ==> OK, I think there was/is a problem at the input connection, either with
+     the AC cable or the jack.  I frobbed it, caused glitching, and now the
+     funny X distortion has gone away, and seemingingl the amplitude wander.
+
+Now distortion amplitude is:
+    -99 dB	    -107 dB	-106 dB
+
+So the distortion amplitude has not changed, but the "funny" is gone.
+
+
+[28 Feb 21]
+
+Summary:
+ -- There is no detectable hum with input shorted.
+ -- In loopback noise starts to increase below around 300 Hz
+ -- Theory that coupling from DAC into input board is due to the large return
+    current path for the quasi-differential output.
+ -- Measurements of of coupling into shorted input, with and without drivers
+    on.
+ -- Changed LPF on driver breakout to higher Z.  This helped driver-off
+    coupling to shorted input, but seemed to hurt driver on.  [Above seen to
+    be due to coupling from the source, which was moved closer.]
+ -- Thoughts on how to measure distortion.
+
+re. the observation of a dead flat noise floor, with no coupling from
+DAC (when not connected to drivers), is that there is *no* detectable
+hum in the spectrum.  This is rather remarkable given the wide dynamic
+range.  The absence of hum also holds true in loopback mode.
+
+In loopback there is an increase in noise at LF, starting around 300
+Hz, so we are up about 5 dB @ 100 Hz.  But the effect on the low
+carriers at 300 Hz is pretty small
+
+The coupling from DAC into input board would seem to be due to the
+extremely circuitous return path for the fairly large DAC output
+currents.  These currents are so large because of the low impedance
+LPF I put on the driver breakout boards.  The loop is from DAC output
+to the driver ground, through the driver supply lead to the ground
+mecca, through the ground tie up to the 24V supply, through +24V
+return to the LV regulator board, through the +10V regulator, down the
++10V bus across the main board, into the DAC card and across to the
+DAC output.
+
+I am guessing that the current on this loop is inductively coupling
+into the input board.  Note that the current does *not* flow through
+the main board ground, so it is not a ground plane IR drop problem.
+Not flowing through the main board ground is sort of part of the
+problem.
+
+
+Updating some of the measurements from below:
+
+Coupling gain 16, input shorted, 0.8/0.03 drive, drivers connected,
+drivers off:
+    -125.283	-122.739	-131.848	
+    -110.686	-138.069	-123.241	
+    -108.761	-111.026	-117.866	
+
+With drivers on:
+    -116.064	-121.669	-121.279	
+    -108.891	-117.788	-119.248	
+    -112.904	-110.710	-114.867	
+
+This is pretty similar to what I saw yesterday.  The worst cross coupling does
+not increase more than maybe 3 dB with the drivers on.  Both on and off, the
+results are moderately variable with changes in the setup such as (when on)
+the source pose wrt the box and sensor wire.  At one point the levels were
+quite equal across the input channels, varying by source axis.  But that has
+gone away.
+
+
+The driver power switch got welded contacts.  I changed to a beefier switch
+and added a 10 Ohm resistor in series.  While the driver switch is not
+something that we will usually have, we don't want to weld the main power
+switch either.  Maybe an inrush limiter in series with a few ohms power
+resistor?  I don't entirely trust the inrush limiter alone, because it only
+works when cold.  The 10 Ohm 10W is getting a bit hot, but not smoking.
+
+
+So, I have a pretty good handle on the noise via the RMS distance.  (The 1/f
+should improve further when we have the current feedback.)  But I want to
+characterize and summarize the cross-coupling and distortion happening in the
+various signal blocks: DAC, driver, source coil, and input board.  It seems
+all of the cross couplings other than at the source are more than good enough
+(>100 dB), but I need to know what to expect in the other blocks related to
+efforts to cancel cross coupling and distortion at the source.
+
+I don't really know how big a cross-coupling would be a problem.  For one
+thing, it seems likely that the calibration can absorb some coupling errors
+which can be referred to just the source or sensor moments.  And I also just
+don't know the sensitivity of the position solution to the coupling.  But,
+roughly speaking, if we want 100 um error at 200 mm, then that is -66 dB.  To
+be pretty certain that the cross-coupling is not contributing significantly to
+the overall error, we can aim for say -86 dB.  As it is, the source cross
+coupling could be a problem, but -100 dB is well in the clear.
+
+For the distortion, this may be a bit harder to cancel, and I don't really
+have procedures for quantifying this.  So far I've visually read the
+difference of carrier and spur off of the spectrum.  There are two
+measurements which are already implemented, and which seem relevant.  I can
+look at the distortion filter and the residue signal.  The residue should be
+something like SINAD, while the distortion model is fairly precisely the
+distortion falling into the channel passband (since the distortion filter is
+extremely effective).
+
+The residue is perhaps a bit dubious because the interaction of the passband
+with the residue is non-obvious, and this signal is no longer used (partly for
+that reason).  But spurs that fall within the passband, and are then rejected
+by the distortion filter, are indeed showing up in the residue, which makes
+sense.
+
+Something I need to figure out is what quantitative relation to expect between
+the between the f_s residue magnitude and the f_d distortion model.
+
+Hmmn, I changed the driver breakout board LPF from 360 Ohm/22 nF to 2K/3.9
+nF.  This did considerably improve the driver-off coupling (as I expected):
+    -142.001	-125.878	-141.330	
+    -121.469	-133.124	-132.502	
+    -120.316	-120.663	-128.113
+So around 10 dB better.
+
+But the driver-on coupling seems rather *worse* than it was:
+    -111.343	-114.132	-133.036	
+    -103.833	-101.084	-100.908	
+    -104.766	-102.006	-104.028	
+3-15 dB worse.
+
+I also increased the length of the mounting wires so the pot was easier to
+adjust.  Possibly there is coupling into the driver inputs from the other
+drivers, and the higher drive impedance has made this worse.  And/or the
+larger loop area of the breakout board mounting.  [But we aren't looking for
+coupling into the *driver*, we are looking for coupling into the input card.]
+
+
+[26 Feb 21]
+
+Summary:
+ -- When the drivers are off and the input is shorted, carriers are
+    present at -110 to -120 dB (increasing across XYZ). This coupling
+    from DAC into input board goes away when the DAC outputs are not
+    connected to the drivers. [At gain ???]
+ -- First loopback testing. DAC output isolation is quite good, 120 dB or
+    better. [Loopback load is very low compared to drivers.]
+ -- Input board channel isolation is around 100 dB. [At gain 2]
+ -- Y and Z antialias caps had not been fixed, so the frequency
+    response was messed up, explaining the odd current sense
+    measurements (not dropping on Y and Z).
+ -- High rate cross coupling in the source output was being greatly
+    increased by coupling through the 10 nF RF suppression caps to the
+    (unconnected) chassis ground.  With ground connected the high rate
+    source cross coupling is -60 dB to -80 dB (varying by channel).
+    This is now as good or better than the low rate.
+
+
+High coupling with input shorted and drivers off:
+-127.463	-119.439	-125.145	
+-112.510	-128.128	-116.625	
+-110.046	-107.716	-109.992
+
+With drivers on:
+-111.769	-105.328	-109.229	
+-113.609	-120.458	-113.540	
+-112.587	-105.615	-111.675	
+
+While it would be nice to have no coupling at all, the increase with drivers
+on is really pretty small, and -100 dB is not bad at all.  This is way less
+than the coupling we are currently seeing between the source axes.  And based
+on moving around the source and the shorting block end, it seems that a lot of
+the coupling is actually where it should be, between the source and the input,
+and not internal to the box.  Coupling from the source into the box should be
+improved when the steel panels are on, but even as it is, the coupling change
+I am seeing in the demodulated output is only several times the p-p noise,
+until the input lead actually touches an output lead.
+
+Huh, with the DAC outputs disconnected, drivers off, and with the input
+shorted, I am getting zero feedthru from the DAC to the input.  So there is
+not an EM coupling between the boards (as I had thought).
+    -160.695	-171.410	-160.286	
+    -152.642	-167.928	-157.491	
+    -152.702	-166.805	-154.950	
+
+
+Oh, also, a lot of the high rate source cross coupling was due to the 10 nF
+output RFI filter caps coupling through the non-connected chassis ground.
+I was getting:
+    -7.313	-65.444	-64.632	
+    -64.060	-7.388	-56.846	
+    -62.826	-55.856	-7.728	
+
+When I connect chassis ground with a cliplead, the cross coupling is greatly
+improved: 
+    -7.303	-87.270	-109.287	
+    -83.552	-7.370	-65.624	
+    -96.434	-67.640	-7.703	
+
+Something to keep in mind is that the driver output impedance is not all that
+low at the high carrier frequencies.  We have two 33 uH inductors in series,
+which is 4 Ohms at 10 kHz.  The reactance of the two 10 nF caps in series
+between two lines is 3 kOhm @ 10 kHz, which is about -60 dB of cross coupling,
+just about what we are seeing.
+
+
+I made an AC coupling adapter and set it up for loopback from the DAC.  I had
+to back off the input gain to 2, and also reduce the high carrier drive to
+0.2.
+
+This is with all the channels:
+    -8.577	-105.897	-111.853	
+    -105.251	-5.536		-101.910	
+    -108.801	-99.205		-4.189
+
+That the level increases with frequency was a surprise.  I guess this is the
+gain peaking in the input antialias?  IDK
+ ==> I didn't fix the antialias caps on the YZ channels.  Now it's flat.
+
+
+With X and Y connected and Z input shorted, I get:
+    -8.577	-105.835	-118.050	
+    -105.183	-5.536		-109.181	
+    -154.183	-138.805	-149.460	
+
+The XY coupling is around -100 dB, but includes whatever coupling is
+present in the DAC output.  But there is just about no Z->X or Z->Y
+coupling, which would be the DAC contribution.  So it seems this cross
+coupling is happening almost entirely on the input board.  Given the
+layout, it makes sense that XZ coupling is lower than XY or YZ.  So
+the channel isolation on the input board is around 100 dB, which is
+pretty good, and way better than eg. the output cross coupling, which
+is (now) about -60 dB.
+
+
+With DAC disconnected and inputs shorted, X channel is set for
+gain 16, while YZ are 2.  The noise is dead flat over the
+full frequency range, about -155 dB:
+    -155.9	-157.8	-157.7	
+    -156.3	-157.3	-158.0	
+
+If noise contribution from amp and ADC were equal, we would expect
+about a 3 dB noise increase, while we are seeing more like 2 dB.  So
+at gain 16 the amp noise is a bit less than the ADC.  This is about
+what I expected from my noise analysis.
+
+
+[25 Feb 21]
+
+Summary:
+ -- Disable the BIST stuff in hardware for now.  There was some problem with
+    the BIST inputs on the input board loading down the bus also, as well as
+    needing the DAC disabled.
+ -- Measurements of noise w/ sensor and output current. Funny trend across
+    carriers, determined above to be due to bad antialias response on YZ
+    inputs.
+ -- First looks at the distortion
+
+
+I decided not work on interfacing the BIST DAC for now.  Instead I ripped out
+the DAC chip, figuring the pullup/pulldown resistors would drive the lines to
+the right state.  But there is something wonky with the BIST circuits on the
+input board.  The lines were really loading down a lot, more like 4V and
+0.25V.  This went away when the card was unplugged, and also when I desoldered
+the BIST buffer chip on the input board.  In this mode it was somehow
+injecting a lot of noise in to the X channel also.  I think that BIST worked
+OK, or at least got out of the way, when I had the lines strapped to the
+supplies.  I don't know if the chip is fried, or if there is some issue with
+my Kicad library def.  There should not be any significant DC load on the
+input: the bias spec is 10 pA.  I guess this must be a FET input of some sort,
+and perhaps vulnerable to ESD.  Anyway, since I am hacking out the BIST this
+is not an immediate concern.
+
+130 mm, drive 0.7, 0.03.
+
+Noise floor:
+    -150.2	-145.6	-146.5	
+    -145.2	-149.4	-150.5
+
+RMS noise: 80n, 110n
+The low rate RMS is probably inflated a bit by the drift.
+
+Hmmn, compared to [26 Sep 19], the noise floor may be about 10 dB better.  And
+on [6 Nov 19] I was getting 278n/445n RMS noise with the eval boad at 120mm
+(with distortion filter, as now).  That is also roughly 10 dB better.  Or
+maybe 5 dB better than the eval board, but 10 dB better than the UR33 at that
+time?  There was only 4-5 dB benefit from the eval board to UR44 at short
+range on [26 Sep 19]
+
+Comparing RMS to [6 Nov 19] at 240 mm, we now have: 490n/550n.  This is in the
+ballpark of 6 dB better than the eval board at that time, and around 20 dB
+better than the UR44.  The greater improvement at short range of now vs. eval
+board is presumably due to reduced DAC and driver noise.
+
+High coupling:
+    -3.554	-42.924	-38.971	
+    -36.596	-5.065	-42.728	
+    -35.872	-38.039	-3.550	
+
+These levels are near full scale, and roughly similar to [26 Sep 19], not sure
+why Z is so high.  This may be affected by the somewhat different filters in
+the output filter board.
+
+Not sure what currents we are running at, but the source is only warm.  After
+changing input board jumpers to gain of 6, sensitivity is then 306 mV/A, and
+full scale is 16.3A.  Now I get:
+Low:         1.96A    	1.75A	1.83A
+High:        2.20A	2.19A	2.11A
+Combined:    2.94A	2.81A	2.79A
+
+So I am seeing the same pattern from of [23 Feb 21] where the high carrier
+currents are basically flat.  I had suspected that result due to near input
+saturation and the BIST bias problem, but it seems to hold.  And the low
+carriers are exactly the same as then.  What changed was the increase of drive
+from 0.45(?)/0.03 to 0.7/0.03.  It seems the high carrier voltage must be
+increasing across the channels?
+
+The driver is tolerating 0.8/0.03, which was the old settings.  This gives:
+High:        2.53	2.51	2.41A
+Combined:    3.19A	3.06A	3.04A
+
+We had been using around 3.5A RMS total on [26 Sep 19], though this "ran hot",
+and I backed off a bit.  At that time we had a somewhat sensible current drop
+across the high carriers.
+
+Looking at input and output RMS voltage at the output filter using Keithley
+179 meter, high carriers only: 
+	X	Y	Z
+Input:	29.7V	27.5V	24.6V
+Output:	27.8V	25.5V	21.8V
+
+Note output voltage actually *drops* considerably across XYZ.  This is I guess
+explained by the rolloff in the breakout board LPF, and to some degree in the
+DAC.  But if the voltage is dropping, why is the current increasing?
+
+Hmm, from [21-23 Jan 16], the inductance drops somewhat across XYZ:
+    On GR1833-A @ 10 kHz, 0.5A AC, DC 0A, DCR from Fluke 8810A
+    4-wire ohms:
+	X: 236 uH	Q 37	ESR 0.401 Ohm	DCR 0.334 Ohm
+	Y: 222 uH	Q 36	ESR 0.387 Ohm	DCR 0.350 Ohm
+	Z: 184 uH	Q 29	ESR 0.398 Ohm	DCR 0.345 Ohm
+
+But the inductance doesn't drop nearly as much by channel as the carrier
+frequency increases.  And the loss is quite low.
+
+The source output voltage dropoff (above) as dB is:
+    0 dB    -0.75 dB    -2.1 dB
+
+The inductance ratio is:
+    0 dB    -0.5 dB    -2.2 dB
+
+This is almost identical (but opposite in effect) across the channels (which
+would cancel), but the frequency increases:
+    0 dB    2.9 dB    5.1 dB
+
+So I still think the high carrier currents should drop.
+
+
+I considered messing with the driver gain trims (and/or the drive levels), but
+I'm not quite sure what I should do.  The theory of having the voltages equal
+seemed nice.  But having the currents equal is not so bad (if they truly are
+equal, doesn't make sense).  Anyway, for now I am leaving the gain trims
+untouched (at minimum) and the drive increased to 0.8/0.03.
+
+Coupling in standard orientation at 240mm:
+    -18.028	-62.799	-66.982	
+    -79.481	-19.976	-59.255	
+    -62.971	-53.978	-18.490	
+
+Rotated 90 degrees CCW
+    -57.150	-16.201	-58.184	
+    -23.395	-58.833	-53.081	
+    -56.252	-81.602	-18.496
+
+In soX -> seZ orientation:
+    -51.686	-56.242	-19.146	
+    -52.426	-22.171	-53.251	
+    -25.541	-48.505	-53.514	
+
+Following the source axes across the sensor X, we have the source relative
+gains as:
+    0 dB    -5.4 dB	-7.4 dB
+
+And the sensor axis gains (on soX 7.5 kHz) are:
+    0 dB    +2.2 dB	-1 dB
+
+So the sensor gains are fairly equal between XYZ axes (on a single source),
+and the source coil effect is fairly close to the (0, -6, -6) we expect from
+the dipole model.
+
+
+If we look at dB re. noise (same conditions), levels re. trace display,
+averaging 6 to reduce noise in the noise:
+
+Standard orientation:
+    133.350	86.198	76.477	
+    76.753	125.857	87.400	
+    86.143	92.214	127.877	
+
+90 CCW:
+    92.097	131.881	86.461	
+    124.098	84.489	90.513	
+    90.221	76.817	126.086	
+
+In soX -> seZ orientation:
+    100.323	98.568	131.658	
+    100.672	126.707	100.473	
+    127.466	100.506	95.849	
+
+Note that roughly speaking, the SNR follows the source axis around, across the
+sensors.  That is what you would expect if the inputs are roughly equal SNR
+and the source field (and perhaps the interference field) varies by the axes
+of the source (in fixed orientation).  By the dipole model, in standard
+orientation, the XX coupling should be 6 dB greater than the YY and ZZ
+coupling.  This is roughly what we see in the SNR, but soX is maybe a couple
+dB greater than it ought to be, roughly in line with the voltage dropoff.
+
+
+The high rate cross coupling seems rather worse than before, as bad as -50 dB.
+There is detectable coupling from the DAC to the input board (with drivers off
+an source disconnected), but this is -118 dB or lower.  With the source
+connected the carriers are -113, -97, -100 dB (easily visible above noise in
+the time domain).  These sort of effects are far smaller than the cross
+coupling with the drivers on.
+ ==> There are various tests I could do, DAC loopback, and using the 89410A.
+     But the cross coupling is not so bad that it is clearly a high priority.
+     If this is not actually present in the source, then adding the internal
+     driver shield should help. If it is in the source, then predistortion
+     using the feedback would probably be the best solution.
+
+In the current sense now, I am seeing about 80 dB SFDR comparing the
+fundamental with the low carrier IMD sidebands, and is basically identical in
+the sensor raw data.  This is much better than [26 Sep 19], looks like the
+current sense IMD is greatly improved.  [Nope, see 2 Mar 21]  While we can
+certainly cancel driver cross-coupling with the current sense, it may be that
+we can now cancel much distortion also.
 
 
 [24 Feb 21]
@@ -203,6 +1126,17 @@ Board/layout changes in rev 1, not bodged:
 
 
 [23 Feb 21]
+
+Summary:
+ -- Box is working with new drivers and one input card.  Noise is good,
+    especially 1/f.  Low carrier source cross coupling is much better.
+ -- BIST is messing up the DC bias of the input.
+ -- No bandwidth limiting on high rate output?
+ -- Feedback current scale is:
+        scale V/A = G * R / N
+    where G = amp gain, R = sense resistor, N = CT ratio.  We have:
+        scale = 16 * 5.1 / 100 = 0.816 V/A
+        [Full scale 5V = 6.13A peak, or 16.34A @ gain 6]
 
  ==> Do something about BIST.  As well as possibly injecting noise
      into the input, it is messing up the DC bias.  We are sitting at
