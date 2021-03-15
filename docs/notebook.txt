@@ -1,17 +1,13 @@
 Critical path:
- -- FPGA BIST support
  -- Supply cards
 
 Todo:
- -- Stock up parts, see [13 Jan 21], especially input board.  Get on reel
- -- Finish any input board testing:
-     - DAC loopback
-     - Overload test, supply current
-     - RJ45 AC coupling adapter
- -- Assemble input panel
  -- Fabricate:
      - Front panel
      - Back panel
+ -- Finish any input board testing:
+     - Overload test, supply current
+ -- Stock up parts, see [13 Jan 21], especially input board.  Get on reel
  -- Special diff amp for reference testing, etc?
  -- Get Kicad BOM description, MPN, etc., to match current Digikey BOM
  -- Get input board assembled?
@@ -30,7 +26,6 @@ Input board revisions:
     issues.  Bring out pin 16 (LTC2500 SDI), have pin 10 (LTC2500 PRE) jumper
     to ground or float. 
  -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
-
 ________________
 
 
@@ -58,6 +53,11 @@ LV supply card:
     Or maybe another 5V regulator?
  -- In revision, add -15V for DAC?
 
+Input panel:
+ -- Increase pad size and solder for the input protection diodes,
+    D301, etc.  It's a nuisance for placement, and hard to inspect.
+    Maybe replace with another part that uses a bigger pad?
+ -- Check LED pads, seem like they should stick out more.
 
 Evaluation tasks:
  -- BIST injection test
@@ -100,10 +100,7 @@ Other hardware issues:
  -- Stage refinements: Ry axis, slider mod for Rx axis.
 
 Don't forget:
- -- Input board BIST is broken?  Had to rip out the buffer.  Do we want a
-    different opamp or some ESD protection?  The DAC has so much noise that
-    there is not much benefit from a low noise opamp, I think.  This is
-    perhaps a MOSFET input, IDK.
+ -- Input board BIST is broken.  Had to rip out the buffers.
  -- Revisit input board stage 1 opamp selection, may want higher bandwidth for
     low distortion, PSRR, CMRR.
  -- Some scaling problem in the spectrum window when looking at "Chart high"?
@@ -123,6 +120,11 @@ Software & research tasks:
      - matlab prototype, closed form?
      - real-time implementation
  -- Metal interference tests, high/low algorithm development (KF, etc)
+     - It seems that phase shift in lower strength couplings may be a
+       better indicator of metal distortion than for strong couplings.
+       These seem to get angles that are far from the 0/180 usually
+       expected.  Of course at very low levels the phase becomes
+       ill-defined.
  -- Metal interference publication
  -- In-vivo tests
      - Setup for next bunny, in spring
@@ -131,6 +133,312 @@ Software & research tasks:
      - Navio test publication
  -- EMI testing, lab and onsite.
  -- EMI publication
+
+
+[15 Mar 21]
+
+logger VI not using current ref
+
+
+[12 Mar 21]
+
+re. distortion, [2 Mar 21], if I zero the YZ carriers, the distortion in the X
+output (at sensor) hardly changes.  This is evidence for the distortion being
+dominated by the interaction of high/low carriers within the individual source
+axis output.  And also, it supports the idea of having the distortion filter
+deal with changing coupling by scaling the distortion model according to the
+channel main carrier (demodulated amplitude).
+
+So, about the distortion tones from [2 Mar 21].  X carriers are
+274 Hz, 7.63 kHz.
+    274 Hz  -120 dB	low carrier
+    429 Hz  -120 dB	???
+    703 Hz  -124 dB	= 429 + 274
+
+703 will no longer be mysterious once 429 is explained.  429 - 274 = 155?
+
+Ripping into the labview code, changing some of the representations like "raw
+data" and "carrier levels" to work with multiple input cards.  The current
+sense is now just the first input card.
+
+
+[11 Mar 21]
+
+Summary:
+ -- Output->input synch in the FPGA enables phase measurement wrt. the digital
+    output.
+ -- Measurements of phase shift along the analog signal path.  The ADC and DAC
+    delay are quite significant.
+ -- After correcting the delay, the loopback frequency response is pretty much
+    what would be expected from the DAC buffer and input antialias filter.
+    The drivers add more phase shift, of course.
+ -- The impedance of the source coils as measured by voltage vs. current seem
+    reasonable.
+
+Trying to understand the frequency response of the full signal path, working
+toward cancelling output cross coupling.
+
+I implemented output->input synch in the FPGA. What happens is that we reset
+the ADC whenever the DAC is either not open or in underrun.  I also am copying
+the low 8 bits from the DAC sample into the ADC sample, which allows testing
+of the output->input synch.  This does indeed work correctly if ilemt_ui is
+ready when labview_connect starts, but gets out of synch if I start and stop
+ilemt_ui.  Not sure what is going on there, data is getting buffered or
+dropped.  Probably time to write that C++ code to open both files in the right
+order, and so on.
+
+I also changed to using inverse FFT to generate the output drive.
+
+It seems like the DAC output is inverted?
+ ==> No, it's just delay.  But the driver *is* inverting.
+
+And I got the Y current sense leads swapped. [Fixed]
+
+The phase shift is much larger than I was expecting on the low carriers.  I am
+getting: 
+    -148.907    178.488    158.886	
+
+on XYZ in loopback.  So, accounting for the DAC inversion, we expect around
+180 degrees.  But there is 20 degrees between X and Y, and then Y and Z.
+According to the simulation, the antialias filter only lags about 1.5 degrees
+at 400 Hz.  Likewise, the DAC buffer is 1 degee at 400 Hz.  So, indeed, no
+significant phase shift in either place.
+
+But both ADC and DAC do have pure delay also.  The ADC decimation filter has a
+group delay of 17.5 samples.  Ah, and the DAC has *55* sample delay.  So we
+expect 1.5 ms total delay.  That is a great deal of phase, 162 degrees at 300
+Hz.  I had been paying attention to the ADC delay, because it affects
+measurement latency.  Fortunately the DAC doesn't, since its delay is a lot
+more. 
+
+FWIW, the simulation was saying that the DAC output is inverted, a consequence
+of inversion in the transimpedance stage.  The datasheet rather suggests that
+it *should* be inverting using the suggested application.  It says Iout+ is
+positive (becomes less negative) as the code increases.  But I think the
+"output current" is sign flipped.  The DAC is actually sourcing current if it
+is giving a negative voltage at the IV stage, which I would call a positive
+current.  The apparent inversion at low carrier is due to the 1.5 ms delay,
+which can be clearly seen by looking a the channel 4 square wave.  No
+inversion, just delay.  I fixed the simulation by changing the source phases.
+
+At low carriers {274, 334, 369} Hz, we expect a phase delay of:
+    -148	-180   	-199 (= +161)
+
+This is excellent agreement with what I measure, especially after allowing for
+the 1-2 degree analog phase lag.  I added a time shift to compensate the
+latency in the carrier generation, which gives low carrier phase:
+    -2.349     -3.093    -3.580	
+
+This is around what we expect from the analog phase shift.
+
+
+At high carriers {7.6, 10.7, 13.7} kHz, we expect phase shift:
+DAC buffer:
+    -19		-26	-33
+ADC antialias:
+    -30		-41	-54
+Total:
+    -49		-67	-87
+
+What I am measuring with 72.5 (17.5 + 55) sample time shift is:
+    -84.758	    -118.417	-153.994
+
+This is roughly twice what we expect.  But with 73.15 samples, agreement is
+good:
+    -48.204	-67.241	   -88.196	
+
+And at low rate it is:
+    -1.035 	-1.493    -1.809	
+
+It isn't actually necessary to time shift for compensating the delay, but it's
+easy to do, and lets us see that the frequency response is pretty much as
+expected.
+
+With drivers running, V sense absolute phase is:
+High:    -79.513 -110.303  -140.493	
+Low:     -3.981	 -4.387	   -6.098
+
+So, of course, the drivers (and LPF on breakout board) add phase lag.
+
+For the current sense, it seems more interesting to look at the current
+relative to V sense, rather than the absolute phase, which is a direct measure
+of the source impedance:
+High:	-85.102	-84.593	-83.082	
+Low:	-48.105	-51.928	-50.400	
+
+We can see that the high current phase does lag nearly 90 degrees, as expected
+for the reasonably high Q at that frequency, while at low carriers the phase
+lag is a good bit lower, due to the substantial resistive component of the
+impedance. 
+
+
+What we actually need to do cross-coupling compensation from the current sense
+is the frequency response from DAC to current sense, which is something we can
+directly measure without making use of V sense (which we do not expect to have
+during normal operation).  But we need the off-axis frequency responses also,
+which requires special outputs.
+
+We'll have to see how well the current sense works for the cross coupling.
+The mismatch between the current and voltage cross-coupling is worrying, but
+this may be due to the very issue that the off-axis frequency response are not
+matched.  The current created by a voltage depends on the source impedance at
+the off-axis frequency.
+
+The output filter response will also affect the frequency response from DAC to
+current sense (with distinct off-axis contributions).  But this does not
+itself explain the V sense mismatch, since V sense is taken after the output
+filter.
+
+
+[9 Mar 21]
+
+Summary:
+ -- We need more bandwidth in the current sense to cancel high rate 1/f noise.
+ -- Preliminary thoughts on what functionality we need in the realtime C++
+    code and how to interface the Labview UI.
+ -- Seeing significant phase shifts as the sensor is rotated, bad sign for
+    metal detection by phase shift.  Possibly due to source/sensor
+    nonidealities.
+
+
+I got the other input board working, was just a soldering problem.  So, aside
+from the front and back panel, the box is basically done.
+
+So (after finishing box):
+ -- Start working on papers
+ -- Prepare for in-vivio testing
+ -- Start work on realtime software
+
+(For making duplicates we would need to revisit hardware: getting boards
+assembled, CAD up mechanicals for the chassis and panels, draw up cable
+assemblies.)
+
+
+I messed with the Kalman filter parameters a bit, and we are now in a zone
+where the KF is doing something.  I reduced the measurement lower limit.
+Perhaps the process noise should be even bigger.  Hard to tell what the
+bandwidth is from the noise floor.  Maybe bring out the Kalman gain so it can
+be monitored from ilemt_ui.  We can test frequency response by signal
+injection, eg. into the source drive.
+
+
+On thinking about it, I can see that I definitely need more bandwidth on the
+current sense to suppress the noise in the 1-6 Hz range.  For whatever reason
+the noise starts going up around 6 Hz, but the current feedback is not
+effective, since although that is about where the low carrer bandwidth starts,
+there is way too much phase lag for the compensation to be effective.
+
+I think we need to demodulate the current sense at high rate, but the
+bandwidth can be reduced to perhaps 60 Hz, getting the 1/f reduction benefit
+without introducing noise.  We don't need the Kalman filter for the current
+sense because there should be no EMI.  But perhaps code reuse would be
+simplest to implement?  IDK In any case, we need to change how the reference
+is propagated and applied, since currently it is represented as a single
+low-rate measurement.
+
+
+I guess I can start on the real-time C++ code framework at any time, and
+moving the Labview demodulation over.  I want to keep the Labview ilemt_ui
+pretty much as it is, for testing and visualization.  I guess this would
+require something like sending the "Trace info" over the net from C++ to
+Labview.  While potentially a bit dangerous, because it could diverge from
+what is happening in C++, we can continue to do FFT processing in the ilemt_ui
+display.  There is also no point in porting the existing 1DOF calibration and
+distance processing.
+
+(The "Trace info" is pretty complex, dumping all that as a flat stream is
+going to be a nuisance.  Maybe use some sort of serialization library?  What's
+that Facebook thing that LLNL/SIGMA was using?  Or compressed JSON?)
+
+
+So, initially the C++ code is going to be generating a stream of coupling
+matrices.  (But this, and even the raw data, are inside the "Trace info".)
+
+Then we will add the pose solver, and output poses over a more user-oriented
+net interface.  Also, there should be a clean way to run the tracker as a
+subsystem within your own C++ application, which is the story of integration
+with the application realtime control.
+
+
+Some of the ilemt_ui features would take additional work, and we could
+skip until we need them:
+ -- Setting parameters from labview
+ -- "offline" processing.  The IO processing is all going to be
+    remote, so this the history buffer have to be remote, and the
+    stepping commands would have to be transmitted from Labview gui.
+
+What gets moved to C++ at this point is not so complicated:
+ -- Device I/O
+ -- FFT processing.  Likely want to implement everything above the
+    bare FFT so as not to have to deal with the quirks of another STFT
+    implementation. Eg. everything in my_stft.vi and above.
+ -- Some sort of Kalman filter.  Maybe dig up my old C++
+    implementation from eg. the Navlab laser tracking.
+
+Should look at some C++ libraries.  Conceivably some popular and good-enough
+library with vector, matrix, and complex number support has emerged.  But I am
+suspecting I'm going to end up using some of my old code, and/or implementing
+new.  Also, the the Unscented filter is going to require some sort of new
+stuff.
+
+I think a makefile should be adequate for the C++ build requirements.  We
+don't really need to worry about cross-platform issues since we are targeting
+a particular hardware/OS combination.  This would change somewhat if/when
+people adapt the ILEMT code for other uses, but I don't think it's really
+going to be that complicated, especially so far as OS dependencies go.  The
+main area where that would come up is with real-time: setting priorities, etc.
+But probably POSIX would get us most of the way there.
+
+Seems like it would be reasonable to keep every fft_demodulator as a separate
+object, so there is one per XYZ sensor channel.  But I should move the KF out
+of fft_demodulator, putting that in another object with a multi-axis
+interface.  In fft_demodulator the KF is not actually doing anything inside
+the loop, this is a holdover from the Kalman demodulator scheme (which I am
+planning to ditch).
+
+
+What exactly is "Set ref" doing?  Aside from the visualization function, of
+setting a zero to evaluate stability, what we are getting is a nominal phase
+reference used to calibrate the sign of the coupling matrix.  That is, this is
+an initialization that should happen automatically.  I need to implement the
+input/output synch in the FPGA so this phase will be basically fixed.  The
+phase is just a measurement of the frequency response (and our choice of the
+initial phase).  For detecting phase shifts for eg. metal interference we may
+want some adaptive estimation, but that is something that may be a part of the
+advanced metal interference work, rather than anything we need to think about
+now.  I would expect that a one-time calibration would give expected phase
+which is more than accurate enough to supply the coupling sign.
+
+I'm not feeling so optimistic about the usability of phase shift for detecting
+and compensating metal interference, since I'm seeing considerable phase shift
+(degrees) as the sensor is moved around, with no metal present.  This
+situation may be better with the air-core dipole-approximating setup.  I'm a
+little puzzled where the phase shift is coming from, perhaps an interaction
+between the axes or with the core.  But also, at least for non-ferromagnetic
+objects, with sizes of typical surgical instruments, the metal interference
+effects are pretty low.  I expect that even with ferromagnetic, the high/low
+mismatch at least serves as an indication that there is a problem.  This will
+likely also be visible in the pose solution residue.
+
+
+[5 Mar 21]
+
+I got an input panel and new rev 1 input boards built.  The problem
+with the input board loading down the BIST bus, and otherwise being
+weird, is definitely a design problem, because the new one did it
+also.  So I pulled the BIST buffer chip.
+
+ -- Increased noise in high rate, between 1-6 Hz?
+ -- Noise peak around 1Hz.  Where does that come from?
+ -- Why does "STFT low" look like hourglass in the time domain?  Is that
+    just the window?
+
+With the reference, low carrier drift is way down, as before, and the
+RMS noise also seems significantly reduced.  And/or the high rate
+noise is increased...
+
+Maybe we need higher rate reference update for high carrier to get the
+LF noise reduction.
 
 
 [3 Mar 21]
@@ -1922,10 +2230,10 @@ myself, it's much nicer if all the SMT parts are on the top.
      analog circuits.
 
 
-re. support for both LTC2513 and LTC2500.
+re. support for both LTC2512 and LTC2500.
 
-Pinout differences between LTC2513 and LTC2500:
-	Pins		LTC2513		LTC2500
+Pinout differences between LTC2512 and LTC2500:
+	Pins		LTC2512		LTC2500
 	10		REF		PRE (GND)
 	11		SEL0		GND	
 	12		SEL1		GND
@@ -1938,19 +2246,19 @@ then we could probably even leave that pin floating when it is "extra".
 For pin 10, this area is packed annoyingly tightly.  And I don't want to break
 out this line in common across channels since I don't want to couple VREF.  So
 I need to squeeze in a per-channel jumper or two.  I think we could ground for
-the LTC2500 and let float for LTC2513
+the LTC2500 and let float for LTC2512
 
 We don't need to do anything about pins 11, 12.  For the LTC2500 we can just
 jumper these both low, which grounds them.  This is not a "good" ground, but
 that shouldn't matter.
 
 For pin 16, we need to route it out so that it can be connected to the SDI
-input, and we also don't want SDI shorted to ground when using the LTC2513.
+input, and we also don't want SDI shorted to ground when using the LTC2512.
 But it seems best to ground this net with the 2513 to cut off a possible noise
 path between channels.  So some configuration with DNP is needed here.
 
 One (minor) issue with using the LTC2500 is that it doesn't support as high a
-sample rate as the LTC2513.  So clocking would need to change, and any tracker
+sample rate as the LTC2512.  So clocking would need to change, and any tracker
 box that has any boards with the LTC2500 has to run at the lower rate, since
 the clock distribution is global.  Supporting both chips in a single box would
 also require more complexity in the FPGA driver code.  This is (at the moment)
