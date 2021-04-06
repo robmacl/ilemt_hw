@@ -1,130 +1,45 @@
 Critical path:
- -- Supply cards
+ -- Claudia's paper
+
+Sayan:
+ -- Stage Ry
+ -- linearity test
+ -- Resurrect high/low KF? Carveup with Eric
+
+Prepare for calibration with ILEMT box:
+ -- Finish enclosure
+ -- Propagate ILEMT status to stage_calibration
+ -- Reliable auto startup for ilemt_server.
+ -- Split the phase_correct_coupling phase reference out from "Set ref" so
+    that we no longer have to worry about setting/losing the reference to get
+    meaningful coupling matrices.
 
 Todo:
- -- Fabricate:
-     - Front panel
-     - Back panel
- -- Finish any input board testing:
-     - Overload test, supply current
+ -- Paint and install front panel.
+ -- Panels to fab
+ -- Re-wind Z source coil
  -- Stock up parts, see [13 Jan 21], especially input board.  Get on reel
- -- Special diff amp for reference testing, etc?
- -- Get Kicad BOM description, MPN, etc., to match current Digikey BOM
- -- Get input board assembled?
 
-
-Driver/box:
- -- Maybe move rear mount to back card rail, not back rail, so we can
-    remove the back rail more easily. 
- -- Shorten chassis plate maybe 5mm at front and back and narrow from 212 to
-    208 mm.  This gives more clearance for surrounding stuff. 
-
-
-________________
-Input board revisions:
- -- Set up to work with LTC2500-32 ADC also, to help with possible supply
-    issues.  Bring out pin 16 (LTC2500 SDI), have pin 10 (LTC2500 PRE) jumper
-    to ground or float. 
- -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
-________________
-
-
-FPGA code:
- -- Check MCLK_ENA setup wrt. SYSCLK
- -- Program oscillator for 48 ks/s
- -- Interface BIST DAC
- -- Add registers to control BIST DAC and status registers that count
-    read/write overruns, etc.  Just flag to say whether FIFO data goes
-    to output DAC or BIST DAC?
- -- Some way for software to readback the FPGA firmware version
-
-
-Output board revisions:
- -- Do something about excess HF noise.
- -- Fix opamp footprint
- -- Exposed probe ground near digital testpoints
- -- Add digital outputs for front panel lights?  Maybe support for LCD
-    display?  This could also be added to main board.
- -- Reference buffer issues inherited from input board?  Noise peaking?
-
-LV supply card:
- -- Add bulk cap on +5?  There is LF glitching on +5 ANA, though it
-    doesn't seem to make it through to eg. +2.5 on the input board.
-    Or maybe another 5V regulator?
- -- In revision, add -15V for DAC?
-
-Input panel:
- -- Increase pad size and solder for the input protection diodes,
-    D301, etc.  It's a nuisance for placement, and hard to inspect.
-    Maybe replace with another part that uses a bigger pad?
- -- Check LED pads, seem like they should stick out more.
-
-Evaluation tasks:
- -- BIST injection test
- -- Preliminary RFI and ESD testing on input board.
- -- Measure supply current, in saturation and otherwise.
-
-Main board revisions:
- -- Is reference buffer output stable with the C load?  Noise gain
-    peaking? 
-
-Output filter:
- -- It may not work to hook the voltage sense directly to the input card
-    because it expects the input to be centered on +2.5V.  We can likely see
-    something because our CM range will go down to -2 or -3 V.  We could put
-    AC coupling caps somewhere, but the caps would probably want to be many
-    uF, so a nuisance to fit on the out filter board, and we are not likely to
-    use them anyway.  We could make an in-between dongle board for AC coupling
-    in tests.  It would also be possible to do a passive level shift by
-    biasing the divider to other than ground.  This seems like a better
-    solution, but not clear where/how to implement this.  If just for testing,
-    then can have a testpoint for bias injection.
- -- Changed to shielded RJ45 jacks w/ shield to chassis.  We want the shield
-    grounded somewhere, and also we are using the shielded version of this
-    part on the in_panel.
-
-
-Calibration todo:
+Calibration:
  -- Linearity tests
+     - Finish converting ASAP code, debug
+     - Run tests
  -- Paper
+ -- Set up and interface stage Ry axis (parts already made)
  -- Rotate source 45 degrees so that our workspace is more centered on
     the source field strength.  Wondering if the reason we have poor
     accuracy at -Y extreme is just low signal strength, and perhaps
     also unfavorable coupling configuration.
-
-
-Other hardware issues:
- -- Re-wind Z source coil
+ -- Stage Rx axis
  -- Stage mount reinforcement
     - Bolt/glue/mortar
- -- Stage refinements: Ry axis, slider mod for Rx axis.
-
-Don't forget:
- -- Input board BIST is broken.  Had to rip out the buffers.
- -- Revisit input board stage 1 opamp selection, may want higher bandwidth for
-    low distortion, PSRR, CMRR.
- -- Some scaling problem in the spectrum window when looking at "Chart high"?
-    The plot moves way up and down depending on the FFT parameters, window,
-    etc., and seems basically too low.
- -- Could probably reduce high rate noise about 3 dB by only using the
-    in-phase component of the signal, then adjusting the phase at low
-    rate to allow for actual phase shift.
- -- What effect does placing the output filter resonance at the
-    carrier frequency have on driver noise?  Does this help or hurt?
-
 
 Software & research tasks:
- -- Resurrect calibration
- -- Calibration tests, linearity, calibration paper
  -- Pose solution development:
      - matlab prototype, closed form?
      - real-time implementation
- -- Metal interference tests, high/low algorithm development (KF, etc)
-     - It seems that phase shift in lower strength couplings may be a
-       better indicator of metal distortion than for strong couplings.
-       These seem to get angles that are far from the 0/180 usually
-       expected.  Of course at very low levels the phase becomes
-       ill-defined.
+ -- Metal interference tests, high/low algorithm development (KF,
+    etc), phase shift.
  -- Metal interference publication
  -- In-vivo tests
      - Setup for next bunny, in spring
@@ -134,10 +49,551 @@ Software & research tasks:
  -- EMI testing, lab and onsite.
  -- EMI publication
 
-
-[15 Mar 21]
+FPGA/RT code:
+ -- Auto-close FIFO files to flag overrun/underrun, or handle this in some
+    other way.
+ -- Figure out coding style and architecture issues
+ -- Program oscillator for 48 ks/s
+ -- Some way for software to readback the FPGA firmware version
 
-logger VI not using current ref
+Signal processing:
+ -- Is KF noise adaptation still useful, or can it be made to work again by
+    removing distortion or estimating noise another way?
+ -- Could probably reduce high rate noise about 3 dB by only using the
+    in-phase component of the signal, then adjusting the phase at low
+    rate to allow for actual phase shift.
+
+Labview GUI:
+ -- Bugs in startup reset behavior, too many reset buttons we need to hit.
+     ==> I got "Reset RMS" working much better, and reduced the startup
+         position gitch, but clicks on "Reset RMS" and "Restart averaging" are
+	 still pretty necessary.  It would be nice to restart averaging on
+	 startup, and any change in the signal source.  But I wasn't able to
+	 get this to work.See note in trace_display.vi
+ -- Issues with spectrum params breaking quantitative.  "Trace display" levels
+    display goes from spectrum, where parameters may not match the defaults.
+    If block is 1, then levels are messed up.
+ -- Spectrum Y (noise) scale moves up and with spectrum parameter changes.
+    This is a direct consquence of the varying frequency resolution, but is
+    somewhat confusing, especially with the chart display.  Maybe add a power
+    density option, eg. 1/sqrt(Hz)?
+ -- But is "Order" being handled right?  Seems to move the peaks up and down,
+    not just the noise, at least for hum peaks in the chart display.
+    ==> Maybe holding STFT in reset for chart display is messing up the
+        scale.  I think this settling of STFT is also the cause of the problem
+        with automatic reset of averaging.
+ -- Add detrend feature for spectrum display.
+ -- Add a downsampled chart plotter VI for looking at LF noise and drift.
+ -- "Trace display" "Raw data" levels disagree significantly (~10 dB)
+    from "Carrier levels" on the off-axis magnitudes.  Probably more
+    something to understand rather than fix, but IDK.
+ -- Do we want to keep the 3 dB hack in time domain dB display?  Maybe
+    make conditional on source?  eg. only for pre-demodulation full rate
+    signals where there is an expectation of a sine signal.
+
+Driver/box:
+ -- Maybe move rear mount to back card rail, not back rail, so we can
+    remove the back rail more easily. 
+ -- Shorten chassis plate maybe 5mm at front and back and narrow from 212 to
+    208 mm.  This gives more clearance for surrounding stuff. 
+
+[5 Apr 21]
+
+Where am I using the "Ref" reference?
+ 1] Nominal sensor phase angle for coupling sign determination
+ 2] Normalization by current sense amplitude, change relative to time at "set
+    ref". 
+ 3] For relative display
+ ... Others?
+
+So, splitting off the display function [3] is easy, and [1] can be captured by
+a distinct calibration button, and saved more or less permanently somwhere.
+
+For [2], I think the main reason I brought in the reference is so that the
+normalization can be nominally unity gain.  The full scale doesn't change, and
+we can turn current sense on and off.  At least so far as preserving the
+units, there isn't a need to have the "reference" particularly close to the
+actual value, but we would want it to be calibrated for each box and source
+coil combination.
+
+So, "ref" is going to become three separately set things.  Perhaps the UI
+function can be joined with "Reset RMS".
+
+Which one do we want in the levels display?  I guess I can make all three
+available for "re.".
+
+Hmmn, I guess [1] and [3] can be taken at the same time.  
+
+
+[1 Apr 21]
+
+After the success with the cross coupling, I'm feeling more optimistic
+about the possibility of distortion cancellation using the current
+sense.  One thought is that if there is any nonlinearity in the
+source, then distortion of the current is exactly what we expect,
+since the voltage is more-or-less forced.  Will be interesting to see
+what happens with the air-core dipole-approximating source.
+
+
+In the guard channel noise estimate, at 230mm the distortion has
+dropped down much nearer the broadband noise.  Seeing more like 7u
+peak, way below our 60u parameter.  But ZX noise (actually distortion)
+is more like 33u peak, way above the noise.
+
+I think it's a problem if our noise estimate is too noisy, though.
+It's going to intermodulate with the signal.  Probably we should do
+something like have a lowpass filtered measure of the variance, and
+then only pass through noise spikes when they are 3 sigma or so.  The
+filtered noise estimate can be our noise baseline, so that we do adapt
+to variation in the background.
+
+Does the process noise need to adapt to the carrier levels?  That
+makes sense so far as the actual measurement goes, in that if we have
+a certain expected level of motion, this is appears as being relative
+to the carrier strength.  Also, if we don't adapt the process noise,
+then bandwidth will tend to decrease at shorter ranges because of
+source noise in the measurement.
+
+But also, the distortion is cleaned out before the KF, so we don't
+want to include it in our noise estimate.
+
+I expect that it is a somewhat application dependent decision whether
+you want to roll off bandwidth at longer ranges to get roughly equal
+noise, or keep constant bandwidth and let the noise increase.  To a
+degree, this may apply to noise adaptation more generally, but I'd
+think the impulse rejection is a win regardless.
+
+
+So, winding down in my efforts to break the Labview code.  Things seem
+to be basically working, and time to get the box together and into the
+lab, where we can run calibration on it.
+
+There are kind of three areas of work:
+ 1] Getting basic tracker function: real-time pose solution, basic
+    high/low fusion.
+ 2] Research/publication efforts which document our work and establish
+    tracker performance, but don't (directly) improve the tracker.
+    In-vivo studies, paper writing, lab performance tests.
+ 3] Efforts to improve performance via research: EMI, metal
+    interference.
+ 4] Packaging/product: documentation and design for small scale
+    production.  This is the "open" part.
+
+This is also more-or-less priority or sequence order, with some
+concurrent effort on consecutive phases.  Ongoing, try to keep [2] and
+[4] in mind, even when the focus is elsewhere.
+
+
+[31 Mar 21]
+
+We weren't getting reliable out->in synch, so I reworked the TCP IO, changing
+to a single loop in the Labview which writes and reads alternately.  Also,
+Labview is now the client, and there is only one socket used for both read and
+write.  This ended up actually working worse using ncp on the Linux side, so I
+bit the bullet and started writing C code for ilemt_server.  With this in
+place, synch is now reliable.  I think the main problem I was seeing was that
+the DAC was getting an undderun because not enough data was buffered before
+the first write triggered acqusition start.  The underrun caused us to get out
+of synch on the DAC and lose ADC data (when the DAC underrun forced it into
+reset).
+
+The network bandwidth on windows is about what you would expect: 10 Mbits/sec
+incoming, 6 outgoing.  So, this is not a very fat pipe by modern standards.
+
+
+Thoughts on realtime code:
+ -- One controller object which manages all the activity, running the sensor
+    processing and shipping out the results.  Configuration, connection
+    management, etc.
+ -- Some sort of master configuration object which we can read, write and
+    create inheriting derived configs.  An evolution of the MCL "Config"? Use
+    JSON for values?
+ -- An object per sensor (or card), perhaps including the current sense.
+    Further division by input channel, and then 3x3 demodulated signal.
+ -- Everything should be thread safe; we do have a moderate amount of
+    potential parallelism between eg. 9 input channels and 27 demodulated
+    signals.  But the Microzed only has two cores, so it would make more sense
+    to divide by time-critical vs. not, perhaps eventually RTOS on one core.
+ -- Logical division between high/low coupling matrices and pose
+    solution/filtering.  
+ -- Something like the current "split averaging filter"
+ -- Short Time Fourier Transform, and related window generation
+ -- Some "Signal" data buffer structure analogous to Labview waveform where we
+    can pass around time slices of data, at the various sample rates (full,
+    high, low), and do operations on them like read, write, FFT and filtering.
+ -- Complex numbers.  Probably want a complex signal type to avoid a vector of
+    a gazillion object instances, and we can directly use low level numeric
+    libraries for FFT, etc.
+ -- Efficient fixed-size matrix operations for eg. Kalman filter.  Natural
+    infix syntax similar to libraries I developed for Navlab, MCL, etc.
+ -- I'll give it another look, but I'm not expecting to use some comprehensive
+    numeric library, instead a mix of standard C++ libraries and homegrown.
+    The C++ ecosystem does not seem to be conducive to building of solid
+    foundation libraries, outside of the language standardization itself.
+    Reducing the semantic distance between C++ and Labview is also a priority,
+    eg. for "Waveform".
+ -- We'll see how it goes, but I'd prefer to avoid continuous dynamic memory
+    allocation, at least during the high rate cycle.  So, mostly allocate
+    once, and reuse buffers.  This is part of why I don't want to use some
+    big library.
+ -- Maybe use JSON and/or Thrift for serialized stream and config data?
+ -- I'm not expecting to need FPGA signal processing, at least for the current
+    algorithms.  Perhaps if we do a general adaptive noise cancellation.
+ 
+
+See also [9 Mar 21]
+
+
+[24 Mar 21]
+
+The high rate noise at 130mm is now more like 70 nm, not the 90-120 nm we were
+seeing before.  Probably this has to do with the incorporation and refinement
+of the high rate current feedback.
+
+
+The off-axis compensation results from [23 Mar 21] are pretty interesting,
+especially the sensitivity to the source magnetic environment.  Takeaways:
+ -- The measured cross coupling is significantly contributed to by
+    magnetic interactions between the source coils (mutual
+    inductance).
+ -- With the magnetic coupling, an increase in the off-axis voltage is
+    exactly what we would expect for cancelling the off-axis current.
+    Since the current is actually what creates the field, this is what
+    we want to do.  Independent measurement with HP 89410A shows that
+    reduction from -57 dBc down to -77 dBc is actually happening.
+ -- At the levels of cross coupling we have, it is fairly sensitive to
+    subtle effects.  With 120 dB SNR, which it seems we can routinely
+    get on the high-at-low measurement, you can see some really tiny
+    effects.  This is to some degree a warning about how much pose
+    accuracy benefit the coupling compensation could have.
+
+
+The off-axis current compensation should reduce influence on the field
+from having what is effectively a shorted coil right next door.  Not a
+new thought, but now I am actually seeing it.
+
+re. sensitivity of the coupling comp, it seems like the cancellation
+can degrade from -120 dBc down to -80 dBc just by drift, with no
+sensor motion.  Now, -80 dBc is what I was aiming for, and HP 89410A
+suggests that this is more like what the compensation actually is.  So
+this sensitivity is not so much a real effect on the output as an
+indication of how sensitive our measurement is.  Creating the null
+subtracts a similar signal, causing a small relative change in
+amplitude to be seen as large in a dB display.
+
+My hunch is that the detectable environmental influence on the source
+cross coupling is neither a problem nor much of an opportunity.  We
+could likely detect this way if there is a big metal interference near
+the source.
+
+But if there is a metal interference, it is doing to have a much
+larger direct effect on the pose solution than it has via the
+influence on source behavior.  So, re. the thought about limits to
+effectiveness of the axis compensation, the effect could only be seen
+in a relatively benign metal interference environment.  
+
+It is conceivable that the cross compensation could actually help
+near-source metal interference, I'd guess most likely for
+ferromagnetics.  We expect to be able to cancel the shorted-loop
+effect of the off-axis coils, but we can only do this because we
+measure the shorted-loop currents.  With eddy current interference,
+those currents are not measured.
+
+
+[23 Mar 21]
+
+Summary:
+ -- Implementation of off-axis carrier compensation.  Seems to significantly
+    reduce off-axis currents.  20 dB reduction seen with current probe and HP
+    89410A.  This takes us down to around -80 dBc, which is where I guessed we
+    wanted to be to not significantly affect the position error budget.
+ -- A lot of this coupling seems to be from magnetic interaction between the
+    source coils.  Cancelling involves *increasing* the off-axis voltages.
+ -- There is easily measurable influence on the current feedback from metal
+    interference near the source.
+ -- Don't forget the need for chassis ground on the output filter to avoid
+    gratuitous output cross-coupling.  Consider smaller RF filter caps.
+
+I've hacked in a quick and dirty off-axis carrier cancellation based on the
+current sense, and after only 3 cycles or so of compensation, the cancellation
+is essentially perfect, near the noise floor, >100 dBc.  But this is just so
+far as the current sense is concerned.  I guess that given a reasonable level
+of linearity on the measured path, we would expect to see this.  But
+cross-coupling in the sense itself will be an error wrt. the actual source
+output.
+ ==> Hmmn, according to V sense, the compensation makes things significantly
+     *worse*.  So this is the usual problem with having two measurements.
+
+With short on sensor input, the residual signal is about -130 dB.  With the
+cable just disconnected on the output filter end, but hanging there, the
+levels (on or off axis) are about -100 dB.
+
+So, I'm getting this on current sense with the source coil unplugged:
+    -68.763	-73.008	-72.684	
+    -69.164	-67.298	-69.519	
+    -66.692	-67.395	-65.555	
+
+Oh, I forgot about needing the chassis ground on the output board.  Now I get:
+    -71.073	-127.751	-125.041	
+    -116.597	-70.884		-109.356	
+    -111.536	-120.849	-70.637	
+
+That's way more reasonable.
+
+I redid the frequency response and coupling compensation with the chassis
+ground jumper.  The frequency response definitely changed, and the
+cancellation on current sense seems even better, but still hurts V sense cross
+coupling.  It does seem to work to some degree on V sense for the low
+carriers, but YZ and ZY still get worse.
+
+The apparent current coupling compensation does not seem to be all that much
+affected by the dress of the current sense cable, until you get right up to
+the driver output leads.  But whether the chassis ground is present or not
+makes a big difference.
+
+One thought is that the current sense is responding to common mode current as
+well as diff mode, while the V sense nominally does not.  There should not be
+any common mode current in the source and leads itself, but there is common
+mode current in the output suppression caps, which goes thru the current
+sense.  It would be possible to wind the current transformer so that common
+mode current is not measured.
+
+The current cancellation is moderately sensitive to the dress of the CT
+windings, taking us from -140 down to -100 dB FS, or about -80 dBc.
+
+With current probe on one of the Z wires in the lead, using the 89410A, I see
+the Y->Z cross coupling as -77 dBc with comp on, and -57 dBc with comp off.
+So it seems that the comp is is actually reducing the current coupling, even
+out in the lead.  This is a diff mode current (which is what we nominally care
+about).  I can't get the probe over the full lead, but back at the input to
+the output filter board, the common mode current is -37 dB, so pretty
+significant at the levels we are talking about.  This is unsurprisingly pretty
+much the same as the ground lead current.
+
+It also seems to work to use the current probe directly at the source coil.
+Even at the source there is really not any signal with no wire in the probe.
+I get the same measurement as farther back up the lead on the Z axis.  X->Z is
+also improved ~20 dB by comp.  The current comp has no effect on ->X that I
+can see with the current probe (?).
+
+The current cancellation seen in the sense is quite sensitive to the presence
+of the current probe, knocking us back from the noise floor (-140) to -75 dB
+FS (about 60 dBc).
+
+Here's a theory: nulling the off-axis current is mostly dealing with mutual
+inductance in the coils.  So we are adding off-axis voltages to cancel
+off-axis currents, increasing the off-axis voltage.  Possibly this is a good
+thing.
+
+Putting the steel bolt next to the source also kicks Y->Z up to -68 dB.  But I
+can once again knock this down to zero on the current sense by redoing the
+comp.  There is even a 10 - 20 dB effect of rolling my chair next to the
+source.  The aluminum rod has an even bigger effect on the cross coupling.
+This change is easily visible even without the compensation null.  With comp
+off we kick from about -75 dB FS on YZ & ZY to -66.
+
+The effect of the metal on the V sense is much less, though YZ and ZY
+couplings still jump 5.7 dB.  And when I turn the comp on it jumps even more
+
+
+I notice that the "Trace display" "Raw data" levels disagree significantly
+(~10 dB) from "Carrier levels" on the off-axis magnitudes.  The deviation in
+the coupling dB is also quite precisely skew-symmetric.  This must be some
+sort of windowing discrepancy or something.  But the window choice itself
+doesn't seem to matter.  "KF output" levels agree with "Carrier levels", which
+is perhaps unsuprising, since "Carrier levels" directly comes from there.  But
+both measurements agree that the coupling compensation is worse by 10 dB or
+so.
+
+
+I need to deal with the IO better, for various reasons.  Aside from the
+difficulty of starting up in synch, the big output delay is also a problem for
+closed loop off-axis compensation, since we need to calculate based on the
+output that created the current input.
+
+
+[22 Mar 21]
+
+
+What are the next steps I am working toward?
+
+Next next steps:
+ -- Start C++ signal processing
+ -- Get calibration data with new box, with dipole source.
+ -- Setup for in-vivo testing
+
+I want to do off-axis source compensation before doing the calibration, since
+that may have an effect.
+
+Todo:
+ -- Fix out->in synch problems somehow
+ -- Test phase and normalization in various sensor poses.
+ -- Test the log data, wrt. the display, plot in matlab?
+ -- Tune KF noise for the right bandwidths
+
+
+I'm not seeing now the big jump in levels display as "Sense" is turned
+on/off, but I was seeing sign flips in the levels, which cleared up when I did
+"set ref".  Maybe the reference was something weird?  More generally, I've
+been seeing weird stuff on startup sometimes.
+ ==> One thing is that I was not restarting labview_connect, which is
+     necessary to get the out->in phase synch.  But even that is not entirely
+     reliable.  I'm seeing data going to the wrong DAC channel, the square
+     wave synch going to one of the drivers.
+I added error indicators for input sync error and low drive current, which may
+flag when there is a synch problem  I really should start writing the C++ code...
+
+re. phase_correct_coupling, and what "set ref" does, and how we should instead
+be initializing.  So, we need to know whether the coupling is positive or
+negative.  This requires knowing the expected phase shift.  For determining
+sign we don't need too much accuracy, so we should be able to use a one-time
+calibration, or even the same nominal response for all boxes with the same
+source/sensor configuration.
+ ==> If we *do* get reliable out->in synch, then the phase can be a constant.
+
+Why is there a difference (beyond the sign flips) between "mismatch re. full
+scale" and "phase re. ref level"?  There is 2-3 degrees in the YZ and ZY
+couplings in standard orientation.  Maybe cross-coupling is causing this shift
+in a low amplitude term?
+
+
+[19 Mar 21]
+
+Summary:
+ -- KF noise adaptation is not really working because the guard channel
+    distortion is way above the noise level.  For now, have increased the
+    min measure noise and process noise to get reasonably KF bandwidth in the
+    presence of the distortion.  This effect surely got worse with the high
+    SNR in the new box, but was probably present at some level before.
+ -- Testing and debugging new micron_ui.vi trace display features, especially
+    demodulated signal amplitude display in coupling matrix format.
+ -- Confusion by weird transient effects probably having to do with I/O synch
+    problems. 
+
+OK, figured out what was going on with the KF output and noise estimate.  The
+guard channel power is being dominated by distortion, and the effect varies by
+channel because each has different guard bands, and the distortion spurs are
+scattered about.  Then high noise channels were getting really slowed down the
+the KF.
+
+Not entirely sure what to *do* about this.  For now I am just using a high
+"Measure noise" min value which largely defeats the noise adaptation.  One
+possibility would be to run distortion filters on the guard channels also.
+
+Yesterday I took quite a while refactoring the trace display, especially for
+the demodulated signals.  Now it is possible to use the levels display to
+visualize the power in demodulated signals such as the noise estimate.
+
+
+Lots of confusion about the new levels display, inconsistencies.  Let's get
+some data:
+
+Current, raw data, low carriers off:
+
+Both Levels/Carrier levels and Levels/Trace display say:
+Levels:		0.197	0.150	0.140
+dB:	     	-14.1	-16.5	-17.1
+
+Time domain says:
+Peak:		0.196	0.150	0.140
+RMS:		0.139	0.106	0.099
+RMS + 3 dB:	0.196	0.150	0.140
+dB:		-14.1	-16.5	-17.1
+
+Spectrum display says:
+dB:	 	-14.1	-16.5	-17.1
+
+So, for a full rate signal everything is consistent except for time domain,
+where dB also agrees, but it's RMS + 3 dB that matches the levels display.
+There is the special +3 dB hack in the the dB display.
+
+
+With a demodulated signal ("KF output"):
+
+Trace display:
+Levels:		0.134	0.102	0.072
+dB:		-17.1	-19.5	-20.1
+
+Time domain:
+RMS & peak:	0.197	0.150	0.140	
+dB:   		-11.	-13.5	-14.1
+
+With the demodulated signal, the actual carrier levels do not change, but the
+trace display changes, so both time domain and levels/trace display signals
+are different.  Ideally we would like levels and dB to *not* change.
+
+Now time domain has increased 3 dB (both dB and level), so the time domain
+level agrees with Levels/Carrier levels, but the time domain dB is 3 dB too
+high.  (Demodulated signal is DC, so max=DC=RMS.)
+
+Trace display levels and dB are now both 3 dB too low in comparison to
+"Carrier levels" (and also the raw data trace display, which was then the same
+as carrier levels).
+
+
+So, where do we have 3 dB hacks?
+ -- Time domain, +3 dB on the dB display only
+ -- extract_carriers -3 dB on any demodulated signal (affects both dB and
+    level). 
+
+
+Let's set aside time domain for now.  Not sure about the dB hack, and dB
+computation from RMS, but otherwise it is doing the right thing.  It does
+display the peak, DC and RMS.  Discrete time may also have effects on the sine
+amplitudes.
+
+
+So, without the -3 dB in extract carriers, (will only affect a demodulated
+signal):
+
+Trace display:
+Levels:		0.190	0.145	0.102
+dB:		-14.1	-16.5	-17.1
+
+dB agrees with "Carrier levels", but "levels" *don't*.  Something weird is
+going on with phase_correct_coupling?
+ ==> Ok, we were only showing the real part of the coupling, which is
+     arbitrarily far off if the phase doesn't match the reference phase.
+     Which is the case with demodulated signals, since the phase is 0.
+
+I fixed this, and now the levels match.  It makes no sense to phase correct
+the trace display demodulated signals.  The business of adding the signs also
+doesn't make sense without any phase info.  Even with phase not sure it makes
+sense for signals other than STFT high, etc.
+ ==> Now phase related levels displays are empty for no-phase signals.
+
+
+[17 Mar 21]
+
+What is "level" re. "ref level" doing?
+ ==> This is something to do with phase_correct_coupling, which I am a
+     little fuzzy on how its normalization would interact.  We would
+     be doing the phase correction twice, I'd think, but IDK why the
+     magnitudes are weird.
+
+Something is weird with the high rate current feedback in level processing.
+It seems to add a lot of HF noise, regardless of the bandwidth setting.  Maybe
+the LPF is not working?
+
+
+X current sense "FFT high noise" is bonkers wrt. YZ or the sensor channels,
+like 60 dB higher.  One or the other is wrong.  Something weird with the
+current X demodulated signals, doesn't seem to actually be in the input.
+
+Running now remote, with Microzed plugged into the LAN.  There is
+maybe more noise?
+
+
+[16 Mar 21]
+
+
+I discovered some bugs/weirdnesses in my Labview code cleanup:
+ -- logger VI not using the current sense, using next timestamp rather than
+    this one.
+ -- Various VIs using the previous carrier amplitudes when they could use the
+    new ones.  Among other things, this was not helping the current sense
+    latency.
+
 
 
 [12 Mar 21]
@@ -348,7 +804,7 @@ distance processing.
 
 (The "Trace info" is pretty complex, dumping all that as a flat stream is
 going to be a nuisance.  Maybe use some sort of serialization library?  What's
-that Facebook thing that LLNL/SIGMA was using?  Or compressed JSON?)
+that Facebook thing that LLNL/SIGMA was using?  [Thrift] Or compressed JSON?)
 
 
 So, initially the C++ code is going to be generating a stream of coupling
@@ -392,9 +848,9 @@ But probably POSIX would get us most of the way there.
 Seems like it would be reasonable to keep every fft_demodulator as a separate
 object, so there is one per XYZ sensor channel.  But I should move the KF out
 of fft_demodulator, putting that in another object with a multi-axis
-interface.  In fft_demodulator the KF is not actually doing anything inside
-the loop, this is a holdover from the Kalman demodulator scheme (which I am
-planning to ditch).
+interface.  In fft_demodulator the KF no longer uses the predict carriers
+feedback loop, this is a holdover from the Kalman demodulator scheme (which I
+am planning to ditch).
 
 
 What exactly is "Set ref" doing?  Aside from the visualization function, of
@@ -2077,28 +2533,62 @@ What we need is 7 strips, 3 of which can be 1/2 width. So we are (good)
 2 "cover plate 6u" part of back panel edge trim w/ corner pieces (good)
 Have 4 feet, which is promising
 
-Output filter board does fit between the 3U rails, so we don't actually need to get rid of the 3U top rails on the left side. Maybe stay with full width rails, and have a hole in the chassis shield for the middle rear rail?
-Really could be just a slot from the rear for mid rail. We would only need 60mm slot, very little effect mechanically or magnetically. This might make installation easier.
+Output filter board does fit between the 3U rails, so we don't actually need
+to get rid of the 3U top rails on the left side. Maybe stay with full width
+rails, and have a hole in the chassis shield for the middle rear rail?  Really
+could be just a slot from the rear for mid rail. We would only need 60mm slot,
+very little effect mechanically or magnetically. This might make installation
+easier.
 
 Now thinking C section, with wrap around on the top for anchor there.
 
-Notch for mid rail at the front is more of a magnetic issue, since kind of defeats mag shield. Not using a full width rail would really be better, makes assembly easier too. With that setup you can remove the left side panel for access and still have structural integrity. The upper C arm could stretch all the way across the top, tho my feel is that the mag shield does not improve much between halfway across the top until you get to a full wrap. Might be useful keeping some access to output side thru top panel.
+Notch for mid rail at the front is more of a magnetic issue, since kind of
+defeats mag shield. Not using a full width rail would really be better, makes
+assembly easier too. With that setup you can remove the left side panel for
+access and still have structural integrity. The upper C arm could stretch all
+the way across the top, tho my feel is that the mag shield does not improve
+much between halfway across the top until you get to a full wrap. Might be
+useful keeping some access to output side thru top panel.
 
-Full width rails simplifies the problem of getting the right part number. :( But for now can cut and tap long ones.
+Full width rails simplifies the problem of getting the right part number. :(
+But for now can cut and tap long ones.
 
-Corner trim sets the max front/rear panel thickness at a bit over 4mm. 0.125" would be fine
+Corner trim sets the max front/rear panel thickness at a bit over 4mm. 0.125"
+would be fine
 
-Think we want the shield to go the full box depth, for chassis and air flow control.
+Think we want the shield to go the full box depth, for chassis and air flow
+control.
 
-With the drivers and supplies flat on the box bottom there is not much extra floor space. Of course things could go with board vertical and into the upper box half. So there is loads of volume.
+With the drivers and supplies flat on the box bottom there is not much extra
+floor space. Of course things could go with board vertical and into the upper
+box half. So there is loads of volume.
 
-We could make the C shield in just the lower 3U, clearing under mid rails. That would surely be better for magnetic, but might make access to the output side a bit of a pain. In this case would want the full top on the C. But can remove side panel, front and back.
+We could make the C shield in just the lower 3U, clearing under mid
+rails. That would surely be better for magnetic, but might make access to the
+output side a bit of a pain. In this case would want the full top on the
+C. But can remove side panel, front and back.
 
-With a full C, it is a bit of a pain to screw the shield to the rails from the inside, using the tapped strips, but it is possible with a stubby screwdriver. Or could use self tapping screws from the outside. Nylon nuts and bolts at the rear. The tapped strips are here more awkward than nut and bolt, so maybe skip entirely for shield mounting. Can isolate shield from rear rails using tape on the rail.
+With a full C, it is a bit of a pain to screw the shield to the rails from the
+inside, using the tapped strips, but it is possible with a stubby
+screwdriver. Or could use self tapping screws from the outside. Nylon nuts and
+bolts at the rear. The tapped strips are here more awkward than nut and bolt,
+so maybe skip entirely for shield mounting. Can isolate shield from rear rails
+using tape on the rail.
 
-Maybe fan mounted on top of C over drivers, blowing down? Exhaust slits on bottom left rear panel, intake on top left rear, and anywhere else that seems like reasonable. Maybe a few on right rear. I guess all intake could be on right rear, since the main board does not really block flow behind the board then around to fan on top left. This will promote airflow past the other electronics. Then we don't need any holes in the shield for airflow. (Except for the fan, probably want that well to the left front.)
+Maybe fan mounted on top of C over drivers, blowing down? Exhaust slits on
+bottom left rear panel, intake on top left rear, and anywhere else that seems
+like reasonable. Maybe a few on right rear. I guess all intake could be on
+right rear, since the main board does not really block flow behind the board
+then around to fan on top left. This will promote airflow past the other
+electronics. Then we don't need any holes in the shield for airflow. (Except
+for the fan, probably want that well to the left front.)
 
-No longer feeling quite so sure about my idea of floating the chassis from the rails, etc.  True this can let outside currents flow in the chassis, and possibly currents from the output side chassis "ground plane" into the box structure.  But I don't think it would *hurt* to isolate at the middle/back.  I am still inclined to enter ac power on the front, though I don't think it makes much difference.
+No longer feeling quite so sure about my idea of floating the chassis from the
+rails, etc.  True this can let outside currents flow in the chassis, and
+possibly currents from the output side chassis "ground plane" into the box
+structure.  But I don't think it would *hurt* to isolate at the middle/back.
+I am still inclined to enter ac power on the front, though I don't think it
+makes much difference.
 
 
 
@@ -2115,9 +2605,6 @@ standoff with a 4mm foam EMI gasket (compressed to 2mm).
 I'm going for a 4mm standoff for the in_panel, with a 6.4mm EMI gasket.
 Because of front mount, the standoff varies with panel thickness.  This should
 work with 0.125".
-
-
-
 
 
 [22 Jan 21]

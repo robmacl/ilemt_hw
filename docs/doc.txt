@@ -233,3 +233,60 @@ Hotplate soldering:
  -- Replace insulation on hotplate, set board on insulation w/o paper
     for 20 sec.  
  -- Pick up board and hold in the air until cooled to 150 C or so.
+
+
+Hardware issue list (future revision thoughts):
+
+Input board:
+ -- Preliminary RFI and ESD testing.
+ -- Measure supply current, in saturation and otherwise.
+ -- Revisit stage 1 opamp selection, may want higher bandwidth for
+    low distortion, PSRR, CMRR.
+ -- Set up to work with LTC2500-32 ADC also, to help with possible supply
+    issues.  Bring out pin 16 (LTC2500 SDI), have pin 10 (LTC2500 PRE) jumper
+    to ground or float. 
+ -- Use a bigger series resistor on multi-drop low speed lines like SYNC?
+ -- Get Kicad BOM description, MPN, etc., to match current Digikey BOM
+ -- Get input board assembled?
+
+BIST:
+ -- Input board BIST is broken.  Had to rip out the buffers.
+ -- FPGA interface BIST DAC
+ -- Add registers to control BIST DAC and status registers that count
+    read/write overruns, etc.  Just flag to say whether FIFO data goes
+    to output DAC or BIST DAC?
+ -- BIST injection test
+
+Output board revisions:
+ -- Do something about excess HF noise.
+ -- Fix opamp footprint
+ -- Exposed probe ground near digital testpoints
+ -- Add digital outputs for front panel lights?  Maybe support for LCD
+    display?  This could also be added to main board.
+ -- Reference buffer issues inherited from input board?  Noise peaking?
+
+LV supply card:
+ -- Add bulk cap on +5?  There is LF glitching on +5 ANA, though it
+    doesn't seem to make it through to eg. +2.5 on the input board.
+    Or maybe another 5V regulator?
+ -- In revision, add -15V for DAC?
+
+Input panel:
+ -- Increase pad size and solder for the input protection diodes,
+    D301, etc.  It's a nuisance for placement, and hard to inspect.
+    Maybe replace with another part that uses a bigger pad?
+ -- Check LED pads, seem like they should stick out more.
+
+Main board revisions:
+ -- Check MCLK_ENA setup wrt. SYSCLK
+ -- Is reference buffer output stable with the C load?  Noise gain
+    peaking?
+ -- Special diff amp for reference testing, etc?
+ -- Direct chassis ground?
+
+Output filter:
+ -- Changed to shielded RJ45 jacks w/ shield to chassis.  We want the shield
+    grounded somewhere, and also we are using the shielded version of this
+    part on the in_panel.
+ -- What effect does placing the output filter resonance at the
+    carrier frequency have on driver noise?  Does this help or hurt?
