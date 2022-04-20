@@ -1,43 +1,32 @@
 Critical path:
- -- Claudia's paper
+ -- ILEMT box on net
 
-Sayan:
- -- Stage Ry
- -- linearity test
- -- Resurrect high/low KF? Carveup with Eric
+ -- Resurrect high/low KF
 
-Prepare for calibration with ILEMT box:
- -- Finish enclosure
  -- Propagate ILEMT status to stage_calibration
- -- Reliable auto startup for ilemt_server.
- -- Split the phase_correct_coupling phase reference out from "Set ref" so
-    that we no longer have to worry about setting/losing the reference to get
-    meaningful coupling matrices.
+ -- Fixes to TCP connection?
+     - Error detection/recovery?
+     - Checks on C++ side?  Overcurrent shutdown?
+     - Problem where read loop terminates, but write loop is hung
+     - Handle interrupt in ilemt_server, free ports
+     - ilemt_server overrun/underrun handling (FPGA auto close)
 
 Todo:
- -- Paint and install front panel.
- -- Panels to fab
+ -- Continuous off-axis compensation
  -- Re-wind Z source coil
+ -- Get DSO
  -- Stock up parts, see [13 Jan 21], especially input board.  Get on reel
+    Microzed connectors
 
 Calibration:
- -- Linearity tests
-     - Finish converting ASAP code, debug
-     - Run tests
  -- Paper
- -- Set up and interface stage Ry axis (parts already made)
- -- Rotate source 45 degrees so that our workspace is more centered on
-    the source field strength.  Wondering if the reason we have poor
-    accuracy at -Y extreme is just low signal strength, and perhaps
-    also unfavorable coupling configuration.
- -- Stage Rx axis
- -- Stage mount reinforcement
-    - Bolt/glue/mortar
 
 Software & research tasks:
  -- Pose solution development:
-     - matlab prototype, closed form?
-     - real-time implementation
+     - matlab prototype (UKF?)
+ -- Realtime:
+     - Signal processing
+     - pose solution
  -- Metal interference tests, high/low algorithm development (KF,
     etc), phase shift.
  -- Metal interference publication
@@ -69,7 +58,7 @@ Labview GUI:
          position gitch, but clicks on "Reset RMS" and "Restart averaging" are
 	 still pretty necessary.  It would be nice to restart averaging on
 	 startup, and any change in the signal source.  But I wasn't able to
-	 get this to work.See note in trace_display.vi
+	 get this to work, see note in trace_display.vi
  -- Issues with spectrum params breaking quantitative.  "Trace display" levels
     display goes from spectrum, where parameters may not match the defaults.
     If block is 1, then levels are messed up.
@@ -92,10 +81,374 @@ Labview GUI:
     signals where there is an expectation of a sine signal.
 
 Driver/box:
+ -- Panel labelling, need better painting solution.
+ -- Mag shield around input cards?  Coupling from Z axis...
+ -- Different power supply card?  Add some sort of power supervision card for
+    soft start and bus pumping overvolt?
+ -- Bulkhead ethernet jack does not give shield continuity.  Use different
+    one, or give up?  Could make a board for this.
+ -- Clearance is iffy between AC input module and HV supply card, works with
+    the module "upside down".
  -- Maybe move rear mount to back card rail, not back rail, so we can
     remove the back rail more easily. 
  -- Shorten chassis plate maybe 5mm at front and back and narrow from 212 to
-    208 mm.  This gives more clearance for surrounding stuff. 
+    208 mm.  This gives more clearance for surrounding stuff.
+
+Maybe later:
+ -- Set up and interface stage Ry axis (parts already made)
+ -- Stage Rx axis
+ -- Stage mount reinforcement
+    - Bolt/glue/mortar
+
+
+[18 Jun 21]
+
+[BTW, see ilemt/matlab/testing/notes.txt for most recent activity on the software side.]
+
+
+[29 Apr 21]
+
+It's pretty definite that the calibration accuracy is significantly worse with
+the ILEMT box vs. the old UR44.  Results are better with the off-axis comp on
+than with off, but still much worse than before.  See ilemt/testing/notes.txt
+[28-29 Apr 21].
+
+I am pretty sure that this has to be due to increased loading on the sensor,
+which increases the sensor coil interaction.  When I was doing the input
+filter design I was aiming for a flat response with expected sensor
+inductance range, but not considering the load on the sensor.
+
+If I change the 1 nF caps to 100 pF and get rid of the 3.3 nF snubber, then
+in the simulation the diff mode attenuation at 13 MHz is reduced 40 dB, but is still
+-160 dB.  But the CM attenuation (with 200 pF coupling model) drops from -83
+to -42.
+
+A minor advantage of reducing the filter caps is that reduces the CM -> diff
+conversion due to mismatch.  At 100 pF we are similar to the cable
+capacitance, and impedance is also similar to the 100K bias resistor.  So we
+can expect this to not increase the load too much over fairly inflexible other
+factors. 
+
+Simulation showing 111 uA @ 13.5 kHz with the 1 nF (but no snubber) vs 18 uA with 100
+nF.  With the snubber we have 935 uA !  This is AC with 1V nominal signal,
+actual signal is 350 mV or less.   With all caps set to 0, current is 10 uA.
+So with 100 pF we roughly double the load.
+
+Simulation says that with the 100 pF, changing to 10 Ohm + bead vs 20 Ohm on
+the input board has minimal effect on CM attenuation.  Possibly this is wrong,
+since I am using the Laird macromodel, which I don't understand.
+ ==> This is because the CM choke swamps the bead effect.  The filter on the
+     input board is mainly going to get within-box radiated interference.
+
+
+I get fairly similar results with a simple bead model:
+  (1 pF || 2K || 2.5 uH + 300 mOhm)
+
+Using 200 pF vs 100 pF is not a huge win for CM rejection.  We would expect
+roughly 6 dB, and simulation says 8 dB at 13.5 MHz.  But there is a lot going
+on between 50 kHz and 10 MHz, sim says unbalanced response is actually worse
+between 200k and 9M.  My feels are that if we want a lot more HF attenuation,
+then we need to do something significantly different.
+
+If we replace the input bead with a 100 uH inductor, then 13.5 MHz goes from
+-42 dB to -72.  Probably better to use both in series.  This is with an ideal
+100 uH, no parasitic capacitance, so reality would not be so good.  It looks
+like with say Murata LQW32FT470M0HL you can get 47 uH with 30 MHz SRF in a
+1210 wirewound part.  This corresponds to a shunt capacitance of 0.6 pF.  I
+messed with a simple model of this in the sim, and it seems that it would help
+a bunch at 13.5 MHz, maybe 24 dB.  But from the extra resonance also creates
+peaking at ~2 MHz.  This particular part isn't rated for Q, but assuming Q=10
+@ 1 MHz this gives a shunt resistance of 3K.  This seems typical for other
+nearby parts in my search which do have Q specs.  Then the peaking isn't
+really any worse than with the bead alone, it just happens at a lower
+frequency.  Adding this would only require an input panel respin.
+
+
+[22 Apr 21]
+
+I got calibration sort of working with data from the ILEMT box.  There seems
+to be a sign flip on the sensor X, which is causing both the source and sensor
+X moments to be sign flipped.  I recall that this was true with the UR44 also,
+and I was negating the X signal in the UR44 settings.
+
+The result calibration is very "pretty", with the off-axis components in the
+source moments greatly reduced, and the source fixture also more nearly
+aligned in rotation.  The sensor moment magnitudes are almost exactly the same
+(because there are no gain knobs).
+
+This is so far only working with the single Z fixturing.  Also, with Sayan's
+cal_3_8 data using the UR44, I notice that using Z only gives a much lower
+residual.  I am suspicious that I did not do the stage Rz alignment correctly,
+since we restarted calibration work with Sayan.  Need to check that the Rz
+motion is nulled when moving the stage in "Pose" mode, I had forgotten about
+this distinction, and motion_ui defaults to "Absolute axis".
+
+
+[20 Apr 21]
+
+I did mechanical realignment of the stage.  For the stage vertical and Rz
+zero, we were within maybe 500 microns or better on the sweeps of 50-100 mm.
+The Rx XY position alignment, which I think is most critical, was off by
+around 350 microns.
+ ==> Getting the sensor mount zeroed wrt. Rz 0 does not matter at all, because
+     we can fold that into the sensor fixture.  Getting the mount vertical is
+     modestly important so that the Rz axis is orthogonal to Rx Ry.
+
+What are we depending on for the Rx Ry refixturing to work?  I think it's
+basically that the XYZ axes intersect and are orthogonal, where the X and Y
+axis location are defined by the center of rotation of the sensor fixture.
+Maybe the sensor fixture translation can absorb some of the XY offset of the
+Rz axis?  IDK I think there is a problem because of the sequential kinematic
+order, but we are simulating Rz being after translation in the kinematic
+chain.
+
+My feel is that we are lucky if our accuracy is 100 microns, and 200-300 is
+more likely.  The pole is just super easy to bump even 100 microns sideways,
+and during a Rz move the pole end tweaks by 10's of microns (though it seems
+to settle back).
+
+But at the level of error (mm max) we have gotten so far, I don't think the
+ground truth accuracy is limiting.
+ ==> With the revived test code with the fixture transform optimization, I can
+     try accuracy test with just one fixturing.  This will avoid any
+     refixturing error.
+
+
+[19 Apr 21]
+
+Got the tracker into the lab on 16 Apr.  After putting the new connector on
+the source, everything seems to be working.  At first I thought the high rate
+noise was terrible, but then I realized that the broad peaks at 10 Hz and 20
+Hz were ambient vibration.  This was noticeable with ASAP, but I don't recall
+seeing it with the ILEMT prototype.  Likely the much lower noise level made it
+more conspicuous.
+
+Another interesting thing is that the source current cross coupling is
+significantly greater with the dipole approximating coils.  This is not
+entirely surprising; while the concentric coils ideally have no coupling, the
+non-concentric coils clearly do have coupling.  See eg. [17 May 19], though I
+had perhaps somewhat forgotten the inductive coupling concern (partly because
+it was inconsistent with the low coupling being worse).  With the dipole
+coils, the cross coupling was as bad as -30 dB, which surely has a measurable
+effect on the pose measurement.
+
+Even so the coupling compensation was able to drive the coupling measurement
+way down, to > 100 dB (but not as low as with the concentric source).  So
+there should definitely be a considerable reduction in the coupling effects
+(although the null acheived in the coupling measurement surely exaggerates
+this).  Somewhat interesting that the measurement wasn't driven all the way to
+the noise floor (as it was with the concentric source).
+
+
+
+
+
+[An aside: the problem of cross coupling is largely peculiar to the ILEMT
+architecture, or at least to systems where all source coils are driven
+simultaneously.  With time multiplexing it would be easy to leave the undriven
+coils floating, and you might well do this by accident, without even
+considering what what happens when all coils have low-Z drive.  So, while the
+off-axis compensation is worth publishing, it probably doesn't apply broadly.
+It could easily be read as a reason to not do frequency domain multiplexing,
+but a reason that is not obvious, so worth knowing.]
+
+
+
+
+
+[14 Apri 21]
+
+The "optimize everything" calibration did terminate without everything running
+away to infinity, and also did not change too much when I switched from small
+to medium data.  But the result is just pretty silly.
+
+In the end we have bigger quadrupole moments on X and Y than Z, which is not
+obviously crazy.  But what is really puzzling is that the XY dipole moments
+have dropped drastically, like 8x.  The biggest red flag, is that the
+quadrupole moment is not really all that big, given how much the dipole has
+dropped.  How we represented the quadrupole is with two opposed dipoles with
+the same scaling as the dipole moment.  These are only 4mm apart, so should
+nearly cancel at ~200mm.  Even disregarding that the field should be quite
+different, and so not be substituitable, we should need much higher magnitude
+on the quadrupole to get a similar field at any given distant point.  But it
+would seem that the "quadrupole" field for a given moment is perhaps even
+somewhat stronger.
+
+
+
+[13 Apr 21]
+
+I've been messing with the Matlab calibration code a bit.  Something
+interesting going on when I enabled optimizing the dipole and quadrupole
+together, this using the "small" data from Sayan.  After optimizing quadrupole
+only, starting from the dipole only model (the procedure I told Sayan to use),
+I added back the diplole and am letting it run.
+
+This may be an excess DOF problem, but what I am seeing is that the Z source
+quadrupole and the Z source fixture transform are running away together.  The
+Z quadrupole moment has gotten *much* bigger (though Y is getting bigger too).
+But the source fixture XY rotation and Z translation have also blown up to
+levels that are mechanically implausible.
+
+Now, it makes sense that the fixture transform would change if there is
+something weird with the Z axis, since we have forced the Z dipole moment to
+[0 0 1] and the position to [0 0 0].  So if the Z dipole and quadrupole need
+to shift relative importance, then the fixture transform also has to change.
+In effect the source Z dipole is floating away, more or less up the Z axis,
+but also rotating.  And the Z quadrupole is getting bigger.
+
+So, this is consistent with the idea that there is something weird with the Z
+source coil, and raises the priority of rewinding Z.  But as well as seeing if
+this still happens with the ILEMT box, with the off-axis compensation.  Would
+also need to see if this is a robust effect.  Does it still happen with larger
+cal data?  Does it improve the position solution accuracy?
+
+This could also happen there is a bug in the quadrupole stuff, so that it is
+producing a weird response on Z.  If it had a symmetric problem on all axes,
+then it seems unlikely that only the Z quadrupole would be running away.
+Though perhaps the Z dipole moment being fixed would trigger this?  IDK  It
+*should* be the case that the dipole and quadrupole responses are quite
+distinct.  But given the rather ad-hoc code in the quadrupole model, it is
+conceivable that there is a Z specific bug.
+
+Also, the XY source dipole positions are not really running away, nor are the
+source quadrupole positions (especially on the strong Z quadrupole).
+ ==> Oh, OK, the source fixture translation is not really blowing up, it's
+     just that the X displacement is rotating into Z.  And the XY dipole
+     moments are rotating to compensate for the rotation of the Z dipole (which
+     has been forced into the fixture transform).
+
+At 130 iterations, and the residual seems to be going down linearly, slow, but
+no sign of slowing down.  So I'm going to let it run just to see what happens.
+
+ ==> Dipole deviation could also be caused by axis cross coupling, especially
+     with the non-coaxial dipole approximating source, since the carrier is
+     being emitted by coils at multiple locations.
+
+The sensor paramters and fixture have changed very little.  This makes sense
+if we are adjusting the source dipole wrt. the source quadrupole, and there is
+no sensor quadrupole.
+
+ ==> The Y quadrupole is getting pretty big too, catching up with Z.
+
+
+[9 Apr 21]
+
+I've dived into the Matlab linearity code, matlab/testing, porting over from
+ASAP.
+
+Also starting to clean up matlab/calibration related to this.  So far just
+refactoring, don't want to break things until I am doing regression tests.
+
+Front and back panels are supposed to be here today.  Getting the box together
+and into the lab is top priority.  After that, it seems like the matlab
+testing and calibration is going to be the main emphasis for the next week or so.
+
+When we have results that I feel fairly confident of, including the linearity
+tests, then we can finish up the paper.  Not sure whether I will dig into the
+quadrupole code or not.
+
+
+I'm thinking that for visualization it would better to make more use of the
+tip moment idea to reduce the dimensions of our results.  Not only can we turn
+rotation into translation for the fixture optimization, we can visualize this
+error vector in XYZ space.  Because of the moment, the tip positions will
+spread out in 3D space.
+
+Also the tip position error can be reduced to a distance, giving a scalar
+error output, which is easier for presenting statistics.
+
+We do need to choose a direction for the moment, which is going to mean that
+we are really only looking at 2DOF of the rotation error.  We can still report
+the RMS translation and rotation error, but IMO it is rather hard (even for
+me) to evaluate the rotation error without reference to a moment.
+
+
+[6 Apr 21]
+
+So, re. work plans for Sayan, what would we do to improve position accuracy?
+
+This is aside from improving the ideality of the hardware, off-axis
+compensation, rewinding the Z coil, etc.  These things are some of the first
+things to do, but I'm not quite ready yet, and it makes sense to think about
+how we would progress.  Unless things become magically wonderful with the new
+hardware, we are still going to want to take a whack at improving the
+accuracy.
+
+Well, the obvious idea would be to increase the order of the calibration
+model.  But how to do that?  We proposed a brute-force lookup table as a
+solution, but this would be a last resort.
+
+To improve accuracy, one of the first things to do would be to try to
+understand what is going on, what is going wrong.  What are the
+characteristics of the errors?  There do seem to be outlier points.  What is
+funny about these?  Even so far as the central distribution of error, can we
+glean any statistical patterns?  For example, if the Z coil is bad, then we
+might expect higher residuals on the Z source row in the couplings.
+
+Reproducible robust results are also necessary, or trying to "improve" is a
+fool's errand.  eg., perhaps the error is due to magnetic interference.
+ ==> For this, it would be a big help to have a real-time pose solution, or at
+     least a continuous online one.  So we could see how sensitive the 6DOF
+     pose is to environmental changes.  Just looking at the orientation of the
+     coupling vector would also be highly informative.
+
+Observations:
+ -- If the calibration model is not fitting, then we will see this as
+    increased residuals.  This is so even if higher residuals do not always
+    correspond to worse pose errors.  Issue with normalizing for coupling
+    magnitude.  Mismatch should be measured as a relative error, not
+    absolute, since coupling varies across the workspace (I think by a
+    lot). 
+
+Ideas:
+ -- Look at the entire coupling residual, statistics for each XY element.
+    Are some particular elements worse?  Some row or column?
+ -- Are we normalizing by the coupling magnitude in the calibration
+    optimization?
+ -- Look at sensitivity and reproducibility of the calibration and of pose
+    errors.  Try putting the source and/or sensor in different rotations.  Try
+    just doing the same data collection twice.  How do the pose errors differ,
+    and how does the calibration itself differ?
+ -- After resurrecting the ASAP fixture transform code, we can test accuracy
+    outside of the calibration fixturing.
+ -- Look at pose errors with dipole only.
+ -- Compare accuracy and calibrations at high vs. low carriers.
+ -- Reimplement the quadrupole model
+
+So, I don't want to think *too* hard about this until we see what happens with
+the real hardware, but these are some things we could look at.
+
+
+Looking at the calibrations Sayan generated.  I think these are not *so*
+different from what Claudia had, although the calibration is not working quite
+so well now.  But some things are pretty screwy, especially the source
+moments.  Y is 4.4 degrees (77 mrad) off normal from Z.  This can't correspond
+to any mechanical misalignment.  Will be very interesting to see what happens
+with the off-axis source compensation.  And also if the moment magnitudes
+equalize more; the sensor X moment is oddly small.
+
+The sensor othogonality is better, but Y is 21 mrad (1.2 degrees) off normal.
+
+Another observation is that looking at the results with and without
+quadrupole, there are changes around 5 mrad, which corresponds to a tangential
+position shift of ~1 mm, which is down around the position error we are
+getting.  And yet this is a 15x smaller angle than our "funny" Y source moment
+orientation.
+
+Tentatively, it seems that the calibration model is working pretty well to
+compensate for nonidealities, but the nonidealities are big enough that there
+is a lot of error left.  eg. given that there is no actual 4 degree
+misalignment, there is no reason to suppose that whatever we are compensating
+for will be modelled especially well by the dipole moment model.
+
+Hmmn, FWIW the source quadrupole moment magnitudes are: [0.001, 0.008, 0.015].
+So X is much lower, and Z is 2x worse than Y.  Possibly this is the sort of
+thing that could be caused by the Z coil splice.  Also, if the quadrupole was
+a consequence of the basic coil geometry, then it should not vary much across
+the coils.  (But I am not very confident that the quadrupole model is
+correctly implemented.)
+
 
 [5 Apr 21]
 
@@ -928,6 +1281,9 @@ mysteries from new measurements.
     presumed to be measurement artifacts.  The only "real" explanation would
     be nonlinearity in the source coil.  Would be interesting to compare the
     air-core dipole-approximating source.
+     ==> [20 Apr 20] Partly wrong.  AFAIK true of distortion, but greater
+         current coupling than voltage is exactly what we expect from coil
+	 mutual inductance when driven from a low impedance source.
  -- I've left the DAC power input connected to the driver power supply aux
     outputs, which may not be a good thing.
 
@@ -1399,7 +1755,7 @@ Summary:
  -- In loopback noise starts to increase below around 300 Hz
  -- Theory that coupling from DAC into input board is due to the large return
     current path for the quasi-differential output.
- -- Measurements of of coupling into shorted input, with and without drivers
+ -- Measurements of coupling into shorted input, with and without drivers
     on.
  -- Changed LPF on driver breakout to higher Z.  This helped driver-off
     coupling to shorted input, but seemed to hurt driver on.  [Above seen to
@@ -14676,7 +15032,7 @@ becoming unavailable due to obsolescence.
 
 [26 July 19]
 
-re. high/low differences. I Looked back to [19 May 19], the last
+re. high/low differences. I Looked back to [17 May 19], the last
 discussion of cross-axis coupling. The cross coupling is 14 dB higher
 at low carrier than at high, which is similar magnitude to the
 difference in drive voltage between high and low. This could be a

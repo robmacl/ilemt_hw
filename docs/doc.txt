@@ -224,15 +224,20 @@ Hotplate soldering:
 
  -- Most recently used solder paste is SRA soldering products SSNC-C5
     Sn63Pb37 (from DigiKey).  This does dry out after stenciling, but
-    still remains somewhat tacky after several hours.
+    still remains somewhat tacky after several hours.  Peak reflow
+    temp 215 C.
  -- Set hotplate to 285, with ceramic fiber insulation on top.  (May
     not need to be this hot.)
  -- Set placed board on top of insulation, board top covered by a sheet of
     paper (for insulation).  Preheat for 3:15 minutes (ideally reaches 150 C).
- -- Reflow on hotplate.
+ -- Reflow on hotplate.  Make sure all the edges and corners get
+    reflowed, press down board as needed.
  -- Replace insulation on hotplate, set board on insulation w/o paper
     for 20 sec.  
  -- Pick up board and hold in the air until cooled to 150 C or so.
+
+ ==> Using Chipquik SMD291SNL50T3 lead-free, Sn96.5/Ag3.0/Cu0.5,
+     listed peak reflow temp 249 C.  Set hotplate to 300 C.
 
 
 Hardware issue list (future revision thoughts):
