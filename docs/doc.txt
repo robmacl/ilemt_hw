@@ -237,7 +237,12 @@ Hotplate soldering:
  -- Pick up board and hold in the air until cooled to 150 C or so.
 
  ==> Using Chipquik SMD291SNL50T3 lead-free, Sn96.5/Ag3.0/Cu0.5,
-     listed peak reflow temp 249 C.  Set hotplate to 300 C.
+     listed peak reflow temp 249 C.  Set hotplate to 285 C (have used 300)
+
+ -- For rework preheat, set to 125-150 C, giving maybe 125 board temp.
+ -- Need 280-300 on air tool for Sn96.5/Ag3.0/Cu0.5, lower with preheat.
+ -- Low temp bismuth solder is good for rework, more like 220 on the
+    air tool. 
 
 
 Hardware issue list (future revision thoughts):
