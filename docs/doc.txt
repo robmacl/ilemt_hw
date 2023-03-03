@@ -203,7 +203,7 @@ To convert with amplification, use the combined offset
 	300	20uV	-50
 
 So if dBm[measured] = -39 with 20 uV/div and RBW 300 Hz, then
-    V/rtHz = 
+    V/rtHz = ???
 
 
 Derivation:
@@ -252,10 +252,11 @@ Hotplate soldering:
     touching it with the solder iron even when I use the hot air.
 
 While there is presumably some risk of component damage by overcooking, I've
-had many problems with joints that did not reflow sufficiently, and hardly any
-cases where components failed immediately.  So I suggest checking that
+had many problems with joints that did not reflow sufficiently, and no cases
+where components were dead after reflow.  So I suggest checking that
 everything visible has reflowed, and then giving some extra margin also, maybe
-15 sec.
+15 sec. [Overheat can damage the package and cause long-term unreliability due
+to eg. moisture getting in.]
 
 
 Hardware issue list (future revision thoughts):
