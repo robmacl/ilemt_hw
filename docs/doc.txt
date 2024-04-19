@@ -166,6 +166,13 @@ Static IP address is set in:
 /etc/NetworkManager/system-connections/Wired connection 1
 
 
+To start ILEMT realtime server on CMU realtime net:
+
+Use putty or other ssh client to connect to 192.168.1.15
+Login as ilemt, password BogPickle
+cd ilemt/realtime
+./ilemt_server 
+
 
 Agilent 89410A
 
