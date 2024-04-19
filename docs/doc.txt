@@ -210,7 +210,7 @@ To convert with amplification, use the combined offset
 	300	20uV	-50
 
 So if dBm[measured] = -39 with 20 uV/div and RBW 300 Hz, then
-    V/rtHz = 
+    V/rtHz = ???
 
 
 Derivation:
@@ -231,15 +231,39 @@ Hotplate soldering:
 
  -- Most recently used solder paste is SRA soldering products SSNC-C5
     Sn63Pb37 (from DigiKey).  This does dry out after stenciling, but
-    still remains somewhat tacky after several hours.
+    still remains somewhat tacky after several hours.  Peak reflow
+    temp 215 C.
  -- Set hotplate to 285, with ceramic fiber insulation on top.  (May
     not need to be this hot.)
  -- Set placed board on top of insulation, board top covered by a sheet of
-    paper (for insulation).  Preheat for 3:15 minutes (ideally reaches 150 C).
- -- Reflow on hotplate.
+    paper (for insulation).  Preheat for ~4 minutes (ideally reaches 150 C).
+ -- Reflow on hotplate.  Make sure all the edges and corners get
+    reflowed, board will warp, press down as needed to get contact.
  -- Replace insulation on hotplate, set board on insulation w/o paper
     for 20 sec.  
- -- Pick up board and hold in the air until cooled to 150 C or so.
+ -- Pick up board and hold in the air until cooled to 150 C or so.  Or
+    just set it down, IDK.
+
+ ==> Using Chipquik SMD291SNL50T3 lead-free, Sn96.5/Ag3.0/Cu0.5,
+     listed peak reflow temp 249 C.  Set hotplate to 285 C (have used 300)
+     This is not so great for extended tackiness.  Parts like WS2812 leds that
+     just come loose during handling around reflow.  Also I've had
+     tombstoning, and perhaps more solder bridging on TSSOP pitch devices.
+
+ -- For rework preheat, set hotplate to 150 C, giving maybe 125 board temp.
+ -- Need 280-300 on air tool for Sn96.5/Ag3.0/Cu0.5, 260 works with preheat.
+ -- Low temp bismuth solder is good for rework, more like 220 on the
+    air tool. ??? Not getting very impressive wetting action with the
+    hot air, seems like the board is not getting hot enough.  Maybe
+    higher preheat, higher air temp, or wider nozzle?  I've ended up
+    touching it with the solder iron even when I use the hot air.
+
+While there is presumably some risk of component damage by overcooking, I've
+had many problems with joints that did not reflow sufficiently, and no cases
+where components were dead after reflow.  So I suggest checking that
+everything visible has reflowed, and then giving some extra margin also, maybe
+15 sec. [Overheat can damage the package and cause long-term unreliability due
+to eg. moisture getting in.]
 
 
 Hardware issue list (future revision thoughts):
@@ -265,6 +289,8 @@ BIST:
  -- BIST injection test
 
 Output board revisions:
+    ==> ram: 19 Sep 22, I think all these issues were addressed in the
+        current board revision. 
  -- Do something about excess HF noise.
  -- Fix opamp footprint
  -- Exposed probe ground near digital testpoints

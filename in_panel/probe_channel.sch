@@ -108,8 +108,8 @@ Wire Wire Line
 	6500 2450 6150 2450
 Wire Wire Line
 	6500 2750 6150 2750
-Text Notes 6150 2000 0    50   ~ 0
-To the input card\n\nThis pinout uses the pairing of the \nT-568B RJ45 ethernet cable
+Text Notes 6600 2000 0    50   ~ 0
+To the input card\n
 $Comp
 L power:Earth #PWR?
 U 1 1 60020BCE
@@ -267,4 +267,18 @@ Wire Wire Line
 	3800 5050 4000 5050
 Wire Wire Line
 	3800 5250 4000 5250
+Text Notes 7800 2050 0    50   ~ 0
+This pinout uses the pairs in T-568 (A or B) RJ45 ethernet cable, but\n(unlike 1000BASE-T) the T568 solid-color wire is consistently +.\nThere is no rationale for how the signals got mapped onto these\npairs, but it doesn't matter since this is purely out convention.\nIt *does* matter which wires are paired for interference rejection.\nSee ilemt_hw/docs/Rj45_probe_pinout.xlsx
+Text Notes 8150 2950 0    50   ~ 0
+ILEMT signal\n\nCFG_GND\nCFG_SIGNAL\nX-\nZ+\nZ-\nX+\nY-\nY+\n
+Text Notes 7950 2950 0    50   ~ 0
+Pin\n\n1\n2\n3\n4\n5\n6\n7\n8\n
+Text Notes 8750 2950 0    50   ~ 0
+T568B color\n\nwhite/orange stripe\norange solid\nwhite/green stripe\nblue solid\nwhite/blue stripe\ngreen solid\nwhite/brown stripe\nbrown solid\n
+Text Notes 8150 3900 0    50   ~ 0
+ILEMT signal\n\nCFG_GND\nCFG_SIGNAL\nX-\nX+\nY-\nY+\nZ-\nZ+\n
+Text Notes 8750 3900 0    50   ~ 0
+T568B color\n\nwhite/orange stripe\norange solid\nwhite/green stripe\ngreen solid\nwhite/brown stripe\nbrown solid\nwhite/blue stripe\nblue solid
+Text Notes 7950 3900 0    50   ~ 0
+Pin\n\n1\n2\n3\n6\n7\n8\n5\n4
 $EndSCHEMATC
