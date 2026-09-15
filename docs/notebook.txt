@@ -1,3 +1,6 @@
+US. Pat. No. 5,347,289 (Elhardt) discloses
+
+
 Critical path:
  -- ILEMT box on net
 

@@ -135,9 +135,17 @@ ________________
 
 Shell snips: 
 ________________
-Send ADC data to labview:
-# Has laptop IP address wired in, may change
-~/labview_connect &
+Run server on ILEMT Zedboard:
+
+ssh ilemt@192.168.1.15
+password BogPickle
+ilemt@ilemt:~$ cd ilemt/realtime/
+ilemt@ilemt:~/ilemt/realtime$ ./ilemt_server
+Listening
+# start ilemt_ui.vi now, server will print:
+server: got connection from 192.168.1.11 port 58290
+begin read_loop
+begin write_loop
 ________________
 Install new FPGA bit file:
 
@@ -145,7 +153,7 @@ In Vivado, Make sure to generate the bitstream file!
 
 On windows:
 cd ~/Documents/Work/ilemt_fpga/verilog/ilemt/vivado/ilemt.runs/impl_1/
-scp ilemt.bit ilemt@192.168.2.15:/tmp/xillydemo.bit
+scp ilemt.bit ilemt@192.168.1.15:/tmp/xillydemo.bit
 
 On ilemt:
 sudo mount /dev/mmcblk0p1 /mnt/card
@@ -155,7 +163,7 @@ sudo reboot
 ________________
 VNC access:
 # ilemt.local works on home net
-ssh -L 5905:127.0.0.1:5901  ilemt@192.168.2.15
+ssh -L 5905:127.0.0.1:5901  ilemt@192.168.1.15
 
 on ilemt:
 vncserver -compatiblekbd
